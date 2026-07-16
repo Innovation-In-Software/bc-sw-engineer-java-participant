@@ -9,7 +9,7 @@ Early-career developers build full-stack enterprise Java skills — from JVM fou
 | **Audience** | Early-career developers preparing for enterprise Java roles |
 | **Format** | 6 weeks · theory + hands-on labs |
 | **Through-line project** | Evolving **Customer Management Platform** (CRM) across Labs 1–52 |
-| **Repository** | [Innovation-In-Software/bc-sw-engineer-java](https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant-participant) |
+| **Repository** | [Innovation-In-Software/bc-sw-engineer-java-participant](https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant) |
 | **Cohort env** | Shared AWS host `100.22.136.97` · see [FINAL-SETUP-README](labs/FINAL-SETUP-README.md) |
 
 ---
@@ -31,18 +31,17 @@ Early-career developers build full-stack enterprise Java skills — from JVM fou
 ```text
 bc-sw-engineer-java-participant/
 ├── README.md                 ← You are here (synced from course README.participant.md)
-├── labs/                     ← Lab guides and setup docs
-│   ├── FINAL-SETUP-README.md
-│   ├── PARTICIPANT-SETUP-README.md
-│   ├── SETUP-INSTRUCTIONS.md
-│   ├── TECHNOLOGY-STACK-GUIDE.md
-│   └── Week N - …/module-NN/
-│       ├── exercises/        ← Week 1 pre-lab practice (when present)
-│       └── labN/             ← Lab guide + Windows/macOS how-tos
-└── slides/                   ← Slide packs (when published)
+└── labs/                     ← Lab guides and setup docs (no solution/ folders)
+    ├── FINAL-SETUP-README.md
+    ├── PARTICIPANT-SETUP-README.md
+    ├── SETUP-INSTRUCTIONS.md
+    ├── TECHNOLOGY-STACK-GUIDE.md
+    └── Week N - …/module-NN/
+        ├── exercises/        ← Week 1 pre-lab practice (when present)
+        └── labN/             ← Lab guide + Windows/macOS how-tos
 ```
 
-Instructor curriculum sources (slide PNGs, PPTX decks, notes) live in the full instructor repository under `curriculum/`, `decks/`, and `notes/`. This repository is the **student-facing** copy of **labs** (and **slides** when synced).
+**No `solution/` folders** are published here. Complete each lab yourself. Slide decks and instructor notes are provided separately by your instructor.
 
 ---
 
@@ -142,7 +141,7 @@ Reachability requires the **class IP allowlist** (or instructor VPN). Never comm
 
 ```bash
 git clone https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant.git
-cd bc-sw-engineer-java
+cd bc-sw-engineer-java-participant
 ```
 
 1. Open [`labs/FINAL-SETUP-README.md`](labs/FINAL-SETUP-README.md)  
