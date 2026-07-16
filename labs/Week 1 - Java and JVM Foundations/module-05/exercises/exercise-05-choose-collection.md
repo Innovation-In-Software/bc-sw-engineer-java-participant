@@ -1,6 +1,6 @@
 # Exercise — Choose the Right Collection
 
-**Module 5** · Pre-lab practice · then open [`../../lab5/README.md`](../lab5/README.md)
+**Module 5** · Pre-lab practice · then open [`../../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)
 
 ## Goal
 

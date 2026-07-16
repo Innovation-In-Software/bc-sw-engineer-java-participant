@@ -1,6 +1,6 @@
 # Exercise — Leak Sketch (safe)
 
-**Module 4** · Pre-lab practice · then open [`../../lab4/README.md`](../lab4/README.md)
+**Module 4** · Pre-lab practice · then open [`../../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)
 
 ## Goal
 

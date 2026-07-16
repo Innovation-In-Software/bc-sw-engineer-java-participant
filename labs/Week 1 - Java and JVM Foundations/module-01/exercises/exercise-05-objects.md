@@ -1,6 +1,6 @@
 # Exercise — Objects and Classes
 
-**Module 1** · Pre-lab practice · then open [`../../lab1/README.md`](../lab1/README.md)
+**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
 
 ## Goal
 

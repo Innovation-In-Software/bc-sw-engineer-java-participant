@@ -8,7 +8,7 @@
 **Audience:** Client sponsors, engineering leads, L&D / talent partners, hiring managers, instructors  
 **Version:** 2.0 · July 2026  
 
-> One document for product description, Week 6 flow, evidence expectations, scoring rubrics, defense checklist, and company sign-off. Day-to-day lab steps remain in Labs [48](lab48/README.md)–[52](lab52/README.md). Operational schedule lives in the [Week 6 Capstone README](README.md).
+> One document for product description, Week 6 flow, evidence expectations, scoring rubrics, defense checklist, and company sign-off. Day-to-day lab steps remain in Labs [48](module-48/lab48/LAB-48-GUIDE.md)–[52](module-52/lab52/LAB-52-GUIDE.md). Operational schedule lives in the [Week 6 Capstone index](WEEK-LABS-INDEX.md).
 >
 > **Word deliverables (Platform Engineer reference style):** [Java_Software_Engineer_Capstone.docx](Java_Software_Engineer_Capstone.docx) (project brief) · [Java_Software_Engineer_Capstone_Rubric.docx](Java_Software_Engineer_Capstone_Rubric.docx) (4-point weighted evaluation rubric).
 
@@ -78,11 +78,11 @@ Teams define **measurable** NFRs covering security, traceability, recoverability
 
 | Phase | Module | Lab | What participants produce |
 | ----- | ------ | --- | ------------------------- |
-| **Plan** | 48 | [Lab 48](lab48/README.md) | C4 context/containers, measurable NFRs, ADRs, prioritized backlog, risk register, ownership plan |
-| **Backend** | 49 | [Lab 49](lab49/README.md) | Spring Boot vertical slice, service/repository layers, Kafka producer/consumer, unit & integration tests |
-| **Full stack** | 50 | [Lab 50](lab50/README.md) | React agent journey + PostgreSQL/JPA end-to-end flow, accessible UI, UI→DB verification |
-| **Release** | 51 | [Lab 51](lab51/README.md) | JWT/RBAC hardening, GitHub pipeline gates, Docker digests, k3s deploy, smoke + rollback |
-| **Defend** | 52 | [Lab 52](lab52/README.md) | Stakeholder demo, evidence-backed Q&A, architecture review, retrospective, individual reflection |
+| **Plan** | 48 | [Lab 48](module-48/lab48/LAB-48-GUIDE.md) | C4 context/containers, measurable NFRs, ADRs, prioritized backlog, risk register, ownership plan |
+| **Backend** | 49 | [Lab 49](module-49/lab49/LAB-49-GUIDE.md) | Spring Boot vertical slice, service/repository layers, Kafka producer/consumer, unit & integration tests |
+| **Full stack** | 50 | [Lab 50](module-50/lab50/LAB-50-GUIDE.md) | React agent journey + PostgreSQL/JPA end-to-end flow, accessible UI, UI→DB verification |
+| **Release** | 51 | [Lab 51](module-51/lab51/LAB-51-GUIDE.md) | JWT/RBAC hardening, GitHub pipeline gates, Docker digests, k3s deploy, smoke + rollback |
+| **Defend** | 52 | [Lab 52](module-52/lab52/LAB-52-GUIDE.md) | Stakeholder demo, evidence-backed Q&A, architecture review, retrospective, individual reflection |
 
 **Style:** Team-based delivery (recommended 3–5 people) with peer review and evidence gates. Instructors coach for enterprise standards; sponsors may attend the final defense by invitation.
 
@@ -358,8 +358,8 @@ Confirm this single brief before Week 6 delivery (or at program kickoff).
 | -------- | ------- |
 | [Java_Software_Engineer_Capstone.docx](Java_Software_Engineer_Capstone.docx) | Company-shareable project brief (Mainframe-style) |
 | [Java_Software_Engineer_Capstone_Rubric.docx](Java_Software_Engineer_Capstone_Rubric.docx) | 4-point weighted evaluation rubric (Networking-style) |
-| [Week 6 Capstone README](README.md) | Operational master document (schedule, module narratives) |
-| Labs [48](lab48/README.md)–[52](lab52/README.md) | Day-to-day student lab guides |
+| [Week 6 Capstone index](WEEK-LABS-INDEX.md) | Operational master document (schedule, module narratives) |
+| Labs [48](module-48/lab48/LAB-48-GUIDE.md)–[52](module-52/lab52/LAB-52-GUIDE.md) | Day-to-day student lab guides |
 | [SETUP-INSTRUCTIONS.md](../SETUP-INSTRUCTIONS.md) | Environment and tool verification |
 | [TECHNOLOGY-STACK-GUIDE.md](../TECHNOLOGY-STACK-GUIDE.md) | Technology rationale for learners |
 | Curriculum slides folder | [Week 6 - Capstone Project](../../Week%206%20-%20Capstone%20Project/) (outline + module slide text) |

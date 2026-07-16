@@ -1,6 +1,6 @@
 # Exercise — Inheritance Sketch
 
-**Module 3** · Pre-lab practice · then open [`../../lab3/README.md`](../lab3/README.md)
+**Module 3** · Pre-lab practice · then open [`../../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)
 
 ## Goal
 

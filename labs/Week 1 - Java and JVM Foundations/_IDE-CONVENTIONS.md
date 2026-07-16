@@ -18,8 +18,8 @@ Week 1 examples live under: `java-bootcamp/examples/`
 
 OS-specific Lab 0 setup:
 
-- Windows → [`lab0/README-windows.md`](lab0/README-windows.md)
-- macOS → [`lab0/README-macos.md`](lab0/README-macos.md)
+- Windows → [`lab0/LAB-0-WINDOWS.md`](lab0/LAB-0-WINDOWS.md)
+- macOS → [`lab0/LAB-0-MACOS.md`](lab0/LAB-0-MACOS.md)
 
 ## Choose an IDE
 
@@ -65,9 +65,9 @@ Each Week 1 lab folder includes:
 
 | File | Use when |
 | ---- | -------- |
-| `README.md` | Full lab content (platform-neutral steps) |
-| `README-windows.md` | Windows + IntelliJ (primary) how-to for that lab |
-| `README-macos.md` | macOS + IntelliJ (primary) how-to for that lab |
+| `LAB-N-GUIDE.md` | Full lab content (platform-neutral steps) |
+| `LAB-N-WINDOWS.md` | Windows + IntelliJ (primary) how-to for that lab |
+| `LAB-N-MACOS.md` | macOS + IntelliJ (primary) how-to for that lab |
 
 ## Diagram legend used in lab guides
 

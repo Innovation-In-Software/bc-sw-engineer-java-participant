@@ -19,8 +19,8 @@ Early-career developers build full-stack enterprise Java skills — from JVM fou
 1. Read **[Final Lab Environment Setup](labs/FINAL-SETUP-README.md)** — shared host, Postgres / Kafka / k3s / GHCR  
 2. Read **[Participant Setup README](labs/PARTICIPANT-SETUP-README.md)** — what you install on the laptop vs what the instructor provides  
 3. Skim Week 1 **[IDE conventions](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)** — **IntelliJ IDEA Community** (primary) and **VS Code** (optional)  
-4. Complete **[Lab 0 — Development Environment Setup](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md)** on **your laptop** ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README-windows.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README-macos.md))  
-5. Use the **[Lab Index](labs/README.md)** for Labs 1–52  
+4. Complete **[Lab 0 — Development Environment Setup](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** on **your laptop** ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md))  
+5. Use the **[Lab Index](labs/LABS-INDEX.md)** for Labs 1–52  
 
 **All labs run from your laptop.** Credentials and kubeconfigs are handed out by the instructor — they are **not** stored in this Git repository.
 
@@ -56,7 +56,7 @@ bc-sw-engineer-java-participant/
 | [5](labs/Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/) | DevOps, CI/CD and Kubernetes (k3s) | 40–47 | AppSec, Docker, kubectl/k3s, CI/CD, IaC |
 | [6](labs/Week%206%20-%20Capstone%20Project/) | Capstone Project | 48–52 | Plan → build → secure/deploy → defense |
 
-Full lab titles: **[labs/README.md](labs/README.md)**. Capstone: **[Week 6](labs/Week%206%20-%20Capstone%20Project/README.md)**.
+Full lab titles: **[labs/LABS-INDEX.md](labs/LABS-INDEX.md)**. Capstone: **[Week 6](labs/Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md)**.
 
 ---
 
@@ -145,7 +145,7 @@ cd bc-sw-engineer-java-participant
 ```
 
 1. Open [`labs/FINAL-SETUP-README.md`](labs/FINAL-SETUP-README.md)  
-2. Complete [`labs/Week 1 - Java and JVM Foundations/module-00/lab0/README.md`](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md)  
+2. Complete [`labs/Week 1 - Java and JVM Foundations/module-00/lab0/LAB-0-GUIDE.md`](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)  
 3. Work under `~/java-bootcamp` or `C:\Users\<you>\java-bootcamp`  
 
 Do not treat `labs/.../solution/` as your working project unless a lab says otherwise.

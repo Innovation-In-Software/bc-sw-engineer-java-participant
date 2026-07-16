@@ -6,7 +6,7 @@
 
 This document is the **final setup README** for the Java Software Engineer Bootcamp lab environment. Use it whenever configuring laptops, labs, or shared connectivity.
 
-Related guides: [PARTICIPANT-SETUP-README](PARTICIPANT-SETUP-README.md) · [SETUP-INSTRUCTIONS](SETUP-INSTRUCTIONS.md) · [Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md)
+Related guides: [PARTICIPANT-SETUP-README](PARTICIPANT-SETUP-README.md) · [SETUP-INSTRUCTIONS](SETUP-INSTRUCTIONS.md) · [Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)
 
 ---
 

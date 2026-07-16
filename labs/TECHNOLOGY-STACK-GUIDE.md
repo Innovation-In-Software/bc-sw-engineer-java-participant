@@ -2,7 +2,7 @@
 
 A reference for every major technology in the Java Software Engineer Bootcamp — what it is, why you learn it, how it is used in the course, and where it appears in industry.
 
-**Back to:** [Lab Index](README.md) · **Setup / install:** [Labs Setup Instructions](SETUP-INSTRUCTIONS.md)
+**Back to:** [Lab Index](LABS-INDEX.md) · **Setup / install:** [Labs Setup Instructions](SETUP-INSTRUCTIONS.md)
 
 ---
 
@@ -181,7 +181,7 @@ Quick lookup for abbreviations used across the bootcamp. See [week sections](#we
 | --- | --- |
 | **What it is** | The JDK provides the compiler (`javac`), runtime (`java`), and inspection tools (`javap`). The JVM executes compiled bytecode on any supported platform. |
 | **Why learn it** | Production outages — memory leaks, slow GC, class-loading failures — require JVM knowledge to diagnose. |
-| **In this bootcamp** | [Lab 1](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/lab1/README.md) compiles and runs programs, inspects bytecode, and observes heap/stack behaviour. Labs 4–5 apply memory concepts to collections. |
+| **In this bootcamp** | [Lab 1](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/lab1/LAB-1-GUIDE.md) compiles and runs programs, inspects bytecode, and observes heap/stack behaviour. Labs 4–5 apply memory concepts to collections. |
 | **Industry use** | Every Java backend — banking, telecom, healthcare. |
 
 ---
@@ -205,7 +205,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | VisualVM profiles JVM memory and threads. G1 and ZGC are modern garbage collectors with different latency/throughput trade-offs. |
 | **Why learn it** | Applications crash from memory exhaustion. Developers must read GC logs and tune heap settings. |
-| **In this bootcamp** | [Lab 4](Week%201%20-%20Java%20and%20JVM%20Foundations/module-04/lab4/README.md) triggers allocation, observes GC, and introduces performance analysis for capstone-scale data. |
+| **In this bootcamp** | [Lab 4](Week%201%20-%20Java%20and%20JVM%20Foundations/module-04/lab4/LAB-4-GUIDE.md) triggers allocation, observes GC, and introduces performance analysis for capstone-scale data. |
 | **Industry use** | Performance engineering and SRE in high-traffic systems. |
 
 ---
@@ -222,7 +222,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Maven automates builds and dependencies via `pom.xml`. Standard layout (`src/main/java`, `src/test/java`) and packages (`controller`, `service`, `repository`) organise large codebases. |
 | **Why learn it** | Enterprise projects have hundreds of dependencies. Manual JAR management does not scale. |
-| **In this bootcamp** | [Lab 8](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-08/lab8/README.md) structures the project; [Lab 9](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-09/lab9/README.md) adds Maven for Spring, Kafka, and PostgreSQL drivers later. |
+| **In this bootcamp** | [Lab 8](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-08/lab8/LAB-8-GUIDE.md) structures the project; [Lab 9](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-09/lab9/LAB-9-GUIDE.md) adds Maven for Spring, Kafka, and PostgreSQL drivers later. |
 | **Industry use** | De facto Java build standard worldwide. |
 
 ---
@@ -233,7 +233,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Copilot generates code, tests, and refactors from prompts in IntelliJ IDEA. Prompt engineering shapes output quality. |
 | **Why learn it** | AI pair-programming is part of enterprise workflows. Developers must know when to trust, verify, and refine output. |
-| **In this bootcamp** | [Labs 10–11](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-10/lab10/README.md) scaffold code and tests. Labs 12, 25, 27, 45 use Copilot for refactoring, repositories, transactions, and IaC — always with human review. |
+| **In this bootcamp** | [Labs 10–11](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-10/lab10/LAB-10-GUIDE.md) scaffold code and tests. Labs 12, 25, 27, 45 use Copilot for refactoring, repositories, transactions, and IaC — always with human review. |
 | **Industry use** | Banking, insurance, and product teams accelerating delivery. |
 
 ---
@@ -244,7 +244,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | SOAP is a contract-first XML protocol. WSDL describes the interface; XSD defines data schemas. |
 | **Why learn it** | Banks, government systems, and ERP platforms still expose SOAP. Java developers must publish and consume it. |
-| **In this bootcamp** | [Labs 13–14](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-13/lab13/README.md) design contracts and DTOs. [Lab 24](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-24/lab24/README.md) implements Spring WS endpoints. [Lab 35](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-35/lab35/README.md) connects React to SOAP. |
+| **In this bootcamp** | [Labs 13–14](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-13/lab13/LAB-13-GUIDE.md) design contracts and DTOs. [Lab 24](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-24/lab24/LAB-24-GUIDE.md) implements Spring WS endpoints. [Lab 35](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-35/lab35/LAB-35-GUIDE.md) connects React to SOAP. |
 | **Industry use** | Financial services, healthcare integrations, enterprise ERP. |
 
 ---
@@ -255,7 +255,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | DTOs decouple API contracts from entities. Bean Validation (`@NotNull`, `@Size`) enforces input rules. The service layer holds business logic away from controllers and persistence. |
 | **Why learn it** | Clean boundaries prevent leaking database models and centralise rules for testability. |
-| **In this bootcamp** | [Labs 14–16](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-14/lab14/README.md) build validated models, services, and global exception handling. |
+| **In this bootcamp** | [Labs 14–16](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-14/lab14/LAB-14-GUIDE.md) build validated models, services, and global exception handling. |
 | **Industry use** | Standard in every enterprise API — REST, SOAP, or event-driven. |
 
 ---
@@ -266,7 +266,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | JUnit 5 — unit testing. Mockito — mocks and stubs for isolation. Selenium — browser automation via WebDriver. |
 | **Why learn it** | Enterprise teams block merges without automated tests. |
-| **In this bootcamp** | [Labs 17–19](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-17/lab17/README.md) add unit, mocked, and UI tests. Capstone Labs 49–50 require test evidence. |
+| **In this bootcamp** | [Labs 17–19](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-17/lab17/LAB-17-GUIDE.md) add unit, mocked, and UI tests. Capstone Labs 49–50 require test evidence. |
 | **Industry use** | CI pipelines gate every production deployment. |
 
 ---
@@ -277,7 +277,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | SLF4J/Logback for structured logging with correlation IDs. Spring Actuator exposes `/health`, metrics, and diagnostics. |
 | **Why learn it** | When production fails at 2 AM, logs and health endpoints are the first diagnostic tools. |
-| **In this bootcamp** | [Lab 20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/lab20/README.md) adds logging. [Lab 21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/lab21/README.md) wires Actuator — preparation for [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/README.md) and capstone ops. |
+| **In this bootcamp** | [Lab 20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/lab20/LAB-20-GUIDE.md) adds logging. [Lab 21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/lab21/LAB-21-GUIDE.md) wires Actuator — preparation for [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/LAB-46-GUIDE.md) and capstone ops. |
 | **Industry use** | SRE, DevOps, and on-call engineering. |
 
 ---
@@ -294,7 +294,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Spring's IoC container manages object lifecycles. Dependency injection wires components without `new`. |
 | **Why learn it** | Spring Boot powers most enterprise Java backends. IoC/DI underpins every Spring annotation. |
-| **In this bootcamp** | [Lab 22](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-22/lab22/README.md) replaces manual wiring. Labs 23–29, 31, 39, 49 all depend on the container. |
+| **In this bootcamp** | [Lab 22](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-22/lab22/LAB-22-GUIDE.md) replaces manual wiring. Labs 23–29, 31, 39, 49 all depend on the container. |
 | **Industry use** | Banking, telecom, insurance — virtually every large Java organisation. |
 
 ---
@@ -305,7 +305,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Boot removes boilerplate. Starters bundle dependencies. Auto-configuration sets up Tomcat, Jackson, and datasources from the classpath. |
 | **Why learn it** | Modern services are created and deployed in minutes, not days of XML config. |
-| **In this bootcamp** | [Lab 23](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-23/lab23/README.md) bootstraps the platform. [Lab 26](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-26/lab26/README.md) adds `dev`/`staging`/`prod` profiles. |
+| **In this bootcamp** | [Lab 23](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-23/lab23/LAB-23-GUIDE.md) bootstraps the platform. [Lab 26](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-26/lab26/LAB-26-GUIDE.md) adds `dev`/`staging`/`prod` profiles. |
 | **Industry use** | Default choice for new microservices and APIs. |
 
 ---
@@ -316,7 +316,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Spring WS for SOAP endpoints. `@Transactional` for ACID operations. Spring Security for JWT and RBAC. `@ControllerAdvice` for unified errors. |
 | **Why learn it** | Production apps must be secure, consistent, and data-safe — non-negotiable requirements. |
-| **In this bootcamp** | [Labs 24–29](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-24/lab24/README.md) harden the platform — endpoints, repositories, config, transactions, JWT, validation. |
+| **In this bootcamp** | [Labs 24–29](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-24/lab24/LAB-24-GUIDE.md) harden the platform — endpoints, repositories, config, transactions, JWT, validation. |
 | **Industry use** | Required for Spring Boot roles in regulated industries. |
 
 ---
@@ -333,7 +333,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Kafka streams events across topics and partitions. Spring Kafka provides `KafkaTemplate` and `@KafkaListener`. |
 | **Why learn it** | Modern systems use events for orders, notifications, audit trails, and service decoupling. |
-| **In this bootcamp** | [Lab 30](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/lab30/README.md) designs flows. [Lab 31](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/lab31/README.md) integrates with Boot. [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/README.md) adds monitoring and DLQs. |
+| **In this bootcamp** | [Lab 30](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/lab30/LAB-30-GUIDE.md) designs flows. [Lab 31](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/lab31/LAB-31-GUIDE.md) integrates with Boot. [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/LAB-46-GUIDE.md) adds monitoring and DLQs. |
 | **Industry use** | Banks, telcos, Netflix-scale data pipelines. |
 
 ---
@@ -344,7 +344,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Circuit breakers, retries, and timeouts prevent cascading failures in distributed calls. |
 | **Why learn it** | Distributed systems fail. Resilient services degrade gracefully. |
-| **In this bootcamp** | [Lab 32](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-32/lab32/README.md) wraps SOAP and Kafka calls — essential for capstone integration. |
+| **In this bootcamp** | [Lab 32](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-32/lab32/LAB-32-GUIDE.md) wraps SOAP and Kafka calls — essential for capstone integration. |
 | **Industry use** | Cloud-native microservices architectures. |
 
 ---
@@ -355,7 +355,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | React builds UIs with components and JSX. Hooks (`useState`, `useEffect`) manage state. Axios calls backend APIs. |
 | **Why learn it** | Full-stack Java roles require frontend skills. The CRM capstone has a React UI. |
-| **In this bootcamp** | [Labs 33–36](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-33/lab33/README.md) build screens, state, API integration, and security. [Lab 50](Week%206%20-%20Capstone%20Project/module-50/lab50/README.md) delivers the capstone frontend. |
+| **In this bootcamp** | [Labs 33–36](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-33/lab33/LAB-33-GUIDE.md) build screens, state, API integration, and security. [Lab 50](Week%206%20-%20Capstone%20Project/module-50/lab50/LAB-50-GUIDE.md) delivers the capstone frontend. |
 | **Industry use** | Standard frontend paired with Java backends. |
 
 ---
@@ -366,7 +366,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | PostgreSQL stores relational data. SQL queries and indexes tune performance. JPA/Hibernate maps objects to tables via repositories. |
 | **Why learn it** | Enterprise data lives in RDBMS systems. Developers must design schemas and write efficient queries. |
-| **In this bootcamp** | [Labs 37–38](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-37/lab37/README.md) design and tune the schema. [Lab 39](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-39/lab39/README.md) connects JPA. [Lab 50](Week%206%20-%20Capstone%20Project/module-50/lab50/README.md) persists capstone data. |
+| **In this bootcamp** | [Labs 37–38](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-37/lab37/LAB-37-GUIDE.md) design and tune the schema. [Lab 39](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-39/lab39/LAB-39-GUIDE.md) connects JPA. [Lab 50](Week%206%20-%20Capstone%20Project/module-50/lab50/LAB-50-GUIDE.md) persists capstone data. |
 | **Industry use** | Banking, government, large corporate IT. |
 
 ---
@@ -385,7 +385,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Static scans find vulnerabilities — SQL injection, secrets, insecure dependencies — before deployment. |
 | **Why learn it** | Finding flaws in CI is cheaper than remediating breaches. |
-| **In this bootcamp** | [Lab 40](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab40/README.md) integrates scanning. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/README.md) runs SAST/DAST in capstone delivery. |
+| **In this bootcamp** | [Lab 40](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab40/LAB-40-GUIDE.md) integrates scanning. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) runs SAST/DAST in capstone delivery. |
 | **Industry use** | Regulated industries and secure-SDLC programmes. |
 
 ---
@@ -396,7 +396,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Docker packages apps into portable images via `Dockerfile`. Images run identically anywhere. |
 | **Why learn it** | Every cloud deployment starts with a container image. |
-| **In this bootcamp** | [Lab 41](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab41/README.md) containerises backend and frontend. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/README.md) ships capstone containers. |
+| **In this bootcamp** | [Lab 41](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab41/LAB-41-GUIDE.md) containerises backend and frontend. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) ships capstone containers. |
 | **Industry use** | Universal format for Kubernetes deployments. |
 
 ---
@@ -407,7 +407,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Kubernetes orchestrates containers — scaling, health checks, rolling updates. **This cohort** uses **k3s** with **Traefik** Ingress (not k3s). |
 | **Why learn it** | Enterprise Java runs on clusters, not individual servers. |
-| **In this bootcamp** | [Lab 42](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab42/README.md) deploys with **`kubectl`** into your namespace. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/README.md) is the production-style target. Prefer Ingress over “k3s Route” wording. See [FINAL-SETUP-README.md](FINAL-SETUP-README.md). |
+| **In this bootcamp** | [Lab 42](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab42/LAB-42-GUIDE.md) deploys with **`kubectl`** into your namespace. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) is the production-style target. Prefer Ingress over “k3s Route” wording. See [FINAL-SETUP-README.md](FINAL-SETUP-README.md). |
 | **Industry use** | Finance, telecom, government cloud-native platforms. |
 
 ---
@@ -418,7 +418,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | GitHub Actions automates build-test-deploy. CD promotes artefacts across environments. Terraform provisions infrastructure; Ansible configures and deploys. |
 | **Why learn it** | Modern teams ship through pipelines. IaC makes infrastructure repeatable and auditable. |
-| **In this bootcamp** | [Labs 43–44](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab43/README.md) build the pipeline. [Lab 45](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab45/README.md) provisions infra. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/README.md) wires full delivery. |
+| **In this bootcamp** | [Labs 43–44](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab43/LAB-43-GUIDE.md) build the pipeline. [Lab 45](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab45/LAB-45-GUIDE.md) provisions infra. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) wires full delivery. |
 | **Industry use** | Atlassian, AWS, Azure, and hybrid-cloud DevOps. |
 
 ---
@@ -429,7 +429,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Consumer-lag alerts, dead-letter queues, and schema evolution keep Kafka healthy. Agile ceremonies and clear communication align teams. |
 | **Why learn it** | Production Kafka needs observability. Soft skills get architecture approved and code merged. |
-| **In this bootcamp** | [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/README.md) monitors Kafka. [Lab 47](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab47/README.md) prepares for stand-ups, reviews, and [Lab 52](Week%206%20-%20Capstone%20Project/module-52/lab52/README.md) defense. |
+| **In this bootcamp** | [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/LAB-46-GUIDE.md) monitors Kafka. [Lab 47](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab47/LAB-47-GUIDE.md) prepares for stand-ups, reviews, and [Lab 52](Week%206%20-%20Capstone%20Project/module-52/lab52/LAB-52-GUIDE.md) defense. |
 | **Industry use** | Platform engineering and every professional dev role. |
 
 ---
@@ -442,11 +442,11 @@ The capstone combines every technology from Weeks 1–5 into a production-style 
 
 | Lab | Focus | Key technologies |
 | --- | ----- | ---------------- |
-| [48](Week%206%20-%20Capstone%20Project/module-48/lab48/README.md) | Architecture, planning, documentation | UML, Agile backlog, risk assessment |
-| [49](Week%206%20-%20Capstone%20Project/module-49/lab49/README.md) | Backend and messaging | Spring Boot, Kafka, Spring Security, JUnit |
-| [50](Week%206%20-%20Capstone%20Project/module-50/lab50/README.md) | Frontend and persistence | React, Spring Data JPA, PostgreSQL, Selenium |
-| [51](Week%206%20-%20Capstone%20Project/module-51/lab51/README.md) | Security, CI/CD, deployment | JWT, Docker, **k3s**/kubectl, GHCR, GitHub Actions, SAST |
-| [52](Week%206%20-%20Capstone%20Project/module-52/lab52/README.md) | Final defense and retrospective | Architecture review, demo, lessons learned |
+| [48](Week%206%20-%20Capstone%20Project/module-48/lab48/LAB-48-GUIDE.md) | Architecture, planning, documentation | UML, Agile backlog, risk assessment |
+| [49](Week%206%20-%20Capstone%20Project/module-49/lab49/LAB-49-GUIDE.md) | Backend and messaging | Spring Boot, Kafka, Spring Security, JUnit |
+| [50](Week%206%20-%20Capstone%20Project/module-50/lab50/LAB-50-GUIDE.md) | Frontend and persistence | React, Spring Data JPA, PostgreSQL, Selenium |
+| [51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) | Security, CI/CD, deployment | JWT, Docker, **k3s**/kubectl, GHCR, GitHub Actions, SAST |
+| [52](Week%206%20-%20Capstone%20Project/module-52/lab52/LAB-52-GUIDE.md) | Final defense and retrospective | Architecture review, demo, lessons learned |
 
 | | |
 | --- | --- |

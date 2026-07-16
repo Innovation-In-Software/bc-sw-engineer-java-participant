@@ -4,9 +4,9 @@ Complete this guide **before Lab 1**. It lists every tool, account, and cloud re
 
 **Participant overview (start here):** [PARTICIPANT-SETUP-README.md](PARTICIPANT-SETUP-README.md) — whole setup explained in plain language  
 **Live cohort endpoints:** [FINAL-SETUP-README.md](FINAL-SETUP-README.md) — shared host `100.22.136.97` (Postgres / Kafka / k3s / GHCR)  
-**Hands-on install steps:** [Lab 0 — Development Environment Setup](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md)  
+**Hands-on install steps:** [Lab 0 — Development Environment Setup](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)  
 **What each technology is for:** [Technology Stack Guide](TECHNOLOGY-STACK-GUIDE.md)  
-**Lab index:** [README.md](README.md)
+**Lab index:** [LABS-INDEX.md](LABS-INDEX.md)
 
 ---
 
@@ -70,7 +70,7 @@ You develop on your **laptop** with **IntelliJ IDEA Community** (primary) and op
 
 ## 2. Complete Lab 0 first
 
-Follow [lab0/README.md](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md) end-to-end. When finished you should have:
+Follow [lab0/LAB-0-GUIDE.md](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md) end-to-end. When finished you should have:
 
 - [ ] IntelliJ IDEA Community (primary IDE; SDK 21)
 - [ ] Optional: VS Code + Extension Pack for Java (see Week 1 [`_IDE-CONVENTIONS.md`](Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md))
@@ -117,7 +117,7 @@ Installed on the **laptop** in Lab 0 (except cloud CLIs noted later).
 
 `JAVA_HOME` should point at JDK 21.
 
-**Verified Windows reference (Lab 0 clean install):** Temurin **21.0.11** at `C:\Program Files\Eclipse Adoptium\jdk-21`; Maven **3.9.9** at `C:\Program Files\Apache\maven\current`; workspace `%USERPROFILE%\java-bootcamp`. Full steps: [lab0/README.md](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md).
+**Verified Windows reference (Lab 0 clean install):** Temurin **21.0.11** at `C:\Program Files\Eclipse Adoptium\jdk-21`; Maven **3.9.9** at `C:\Program Files\Apache\maven\current`; workspace `%USERPROFILE%\java-bootcamp`. Full steps: [lab0/LAB-0-GUIDE.md](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md).
 
 ---
 
@@ -315,9 +315,9 @@ This cohort uses **k3s + kubectl + Traefik**.
 | Document | Role |
 | -------- | ---- |
 | [FINAL-SETUP-README.md](FINAL-SETUP-README.md) | **Authoritative** shared host endpoints |
-| [Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md) | Step-by-step laptop toolchain install |
+| [Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md) | Step-by-step laptop toolchain install |
 | [Technology Stack Guide](TECHNOLOGY-STACK-GUIDE.md) | Concepts and “why this technology” |
-| [Lab Index](README.md) | Links to every lab guide |
+| [Lab Index](LABS-INDEX.md) | Links to every lab guide |
 | [Participant Setup README](PARTICIPANT-SETUP-README.md) | Student-facing setup overview |
 | Course [README](../README.md) | Program overview |
 

@@ -1,6 +1,6 @@
 # Exercise — Custom Exception
 
-**Module 7** · Pre-lab practice · then open [`../../lab7/README.md`](../lab7/README.md)
+**Module 7** · Pre-lab practice · then open [`../../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
 
 ## Goal
 

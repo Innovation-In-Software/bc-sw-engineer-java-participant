@@ -1,6 +1,6 @@
 # Exercise — Filter by Salary
 
-**Module 6** · Pre-lab practice · then open [`../../lab6/README.md`](../lab6/README.md)
+**Module 6** · Pre-lab practice · then open [`../../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
 
 ## Goal
 

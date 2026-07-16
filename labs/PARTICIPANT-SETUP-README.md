@@ -9,10 +9,10 @@ This README explains **the whole setup you need** to participate successfully: w
 | Related guide | Use it when you need… |
 | ------------- | --------------------- |
 | **[Final Lab Environment Setup](FINAL-SETUP-README.md)** | **Authoritative** final setup: shared host, Postgres / Kafka / k3s / GHCR |
-| **[Lab 0 — Development Environment Setup](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md)** | Step-by-step laptop toolchain install |
+| **[Lab 0 — Development Environment Setup](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** | Step-by-step laptop toolchain install |
 | **[Labs Setup Instructions](SETUP-INSTRUCTIONS.md)** | Full version matrix, ports, and lab-by-lab requirements |
 | **[Technology Stack Guide](TECHNOLOGY-STACK-GUIDE.md)** | What each tool is and why the course uses it |
-| **[Lab Index](README.md)** | Links to Labs 0–52 (organized by week) |
+| **[Lab Index](LABS-INDEX.md)** | Links to Labs 0–52 (organized by week) |
 | **[Course overview](../README.md)** | Program structure and modules |
 
 ---
@@ -108,7 +108,7 @@ You do **not** need a personal 16 GB cloud VM just for PostgreSQL/Kafka. Docker 
 
 ## 5. Laptop baseline (Lab 0 — required for everyone)
 
-Complete **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md)** before Lab 1. When finished you must have:
+Complete **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** before Lab 1. When finished you must have:
 
 | Check | Expected |
 | ----- | -------- |
@@ -121,7 +121,7 @@ Complete **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/
 | `JAVA_HOME` | Points at JDK 21 |
 | Smoke test | HelloWorld compiles and runs under `java-bootcamp/examples` |
 
-**Verified Windows reference:** Temurin 21 at `C:\Program Files\Eclipse Adoptium\jdk-21`; Maven 3.9.x at `C:\Program Files\Apache\maven\current`. See [Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/README.md) for install steps kept in sync with a clean run.
+**Verified Windows reference:** Temurin 21 at `C:\Program Files\Eclipse Adoptium\jdk-21`; Maven 3.9.x at `C:\Program Files\Apache\maven\current`. See [Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md) for install steps kept in sync with a clean run.
 
 **Do not start Lab 1 until Lab 0 verification passes.**
 
@@ -193,7 +193,7 @@ You must be on the **class network / allowlisted IP** (or instructor VPN) to rea
 5. **Create / sign in** to GitHub; enable Copilot before Week 2.  
 6. **Before Week 4**, install Node 22 and confirm connection notes for PostgreSQL and Kafka.  
 7. **Run the always-on verification** (section 10).  
-8. **Only then** open [Lab 1](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/lab1/README.md).
+8. **Only then** open [Lab 1](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/lab1/LAB-1-GUIDE.md).
 
 ---
 
@@ -292,7 +292,7 @@ Capstone documents:
 
 - [Capstone project brief (DOCX)](Week%206%20-%20Capstone%20Project/Java_Software_Engineer_Capstone.docx)  
 - [Capstone evaluation rubric (DOCX)](Week%206%20-%20Capstone%20Project/Java_Software_Engineer_Capstone_Rubric.docx)  
-- [Week 6 Capstone README](Week%206%20-%20Capstone%20Project/README.md)  
+- [Week 6 Capstone index](Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md)  
 - Live env reference: [FINAL-SETUP-README.md](FINAL-SETUP-README.md)  
 
 ---
