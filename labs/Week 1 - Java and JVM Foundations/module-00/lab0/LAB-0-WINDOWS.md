@@ -84,20 +84,27 @@ git --version
 
 **Where to run this:** Open a **new Windows PowerShell** window from the Start menu (or Win + X → **Windows Terminal** / **Terminal**). Do **not** use IntelliJ’s terminal yet — that comes in Step 6 after you open the folder. You can start from any directory; the commands create `%USERPROFILE%\java-bootcamp` under your user home (for example `C:\Users\<You>\java-bootcamp`).
 
+This layout matches what you use in every later lab: hands-on code under `examples\`, Lab 0 evidence under `notes\screenshots\`. (Do **not** create a top-level `labs\` here — course lab guides live in the bootcamp GitHub clone, not in this workspace.)
+
 ```powershell
 $root = Join-Path $env:USERPROFILE 'java-bootcamp'
 New-Item -ItemType Directory -Force -Path @(
-  "$root\labs",
   "$root\examples",
-  "$root\assignments",
-  "$root\projects",
-  "$root\notes"
+  "$root\notes\screenshots"
 ) | Out-Null
 cd $root
 Get-ChildItem
+Get-ChildItem notes
 ```
 
-**Expected:** `%USERPROFILE%\java-bootcamp` with five subfolders.
+**Expected:**
+
+```text
+java-bootcamp\
+  examples\            # HelloJava next; later labs: lab1-answers, labN-crm, …
+  notes\
+    screenshots\       # Pass-criteria screenshots (redact secrets)
+```
 
 ### Step 6 — Open workspace in IntelliJ
 
@@ -177,7 +184,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 2 | Maven 3.9.x on Java 21 | Pass / Fail |
 | 3 | Git works; `user.name` / `user.email` set | Pass / Fail |
 | 4 | `JAVA_HOME` points at Temurin 21 | Pass / Fail |
-| 5 | Workspace `%USERPROFILE%\java-bootcamp` with five folders | Pass / Fail |
+| 5 | Workspace `%USERPROFILE%\java-bootcamp` with `examples\` and `notes\screenshots\` | Pass / Fail |
 | 6 | HelloWorld prints from terminal | Pass / Fail |
 | 7 | HelloWorld runs via IntelliJ green arrow | Pass / Fail |
 | 8 | (Optional) VS Code opens the same folder | Pass / Fail |

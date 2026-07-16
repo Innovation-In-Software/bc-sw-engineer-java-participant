@@ -116,12 +116,12 @@ Complete **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/
 
 ```text
 ~/java-bootcamp/
-├── labs/          # Optional local copies of guides / notes
-├── examples/      # Lab exercise projects (labN-crm, etc.)
-├── assignments/   # Instructor assignments if any
-├── projects/      # Larger CRM / capstone work
-└── notes/         # Evidence screenshots (redact secrets)
+├── examples/           # Hands-on projects (HelloJava, lab1-answers, labN-crm, capstone, …)
+└── notes/
+    └── screenshots/    # Lab 0 / course evidence (redact secrets)
 ```
+
+Course lab guides live in the bootcamp GitHub clone under `labs/` — not inside this workspace. Later labs often also keep evidence under `examples/<lab>/notes/screenshots/`.
 
 ---
 

@@ -14,7 +14,8 @@ Cohort shared services (PostgreSQL, Kafka, k3s) are documented in [`../FINAL-SET
 | Windows | `%USERPROFILE%\java-bootcamp` (example: `C:\Users\<you>\java-bootcamp`) |
 | macOS | `~/java-bootcamp` |
 
-Week 1 examples live under: `java-bootcamp/examples/`
+Hands-on projects live under: `java-bootcamp/examples/` (Lab 0 `HelloJava`, then `lab1-answers`, `labN-crm`, …).  
+Lab 0 evidence: `java-bootcamp/notes/screenshots/` (later labs often also use `examples/<lab>/notes/screenshots/`).
 
 OS-specific Lab 0 setup:
 

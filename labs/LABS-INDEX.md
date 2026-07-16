@@ -14,7 +14,7 @@ Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculu
 2. Open the week folder → module-NN/labN/ → read **LAB-N-GUIDE.md** plus your OS how-to (LAB-N-WINDOWS.md or LAB-N-MACOS.md).
 3. Follow **How to follow this lab** at the top of each guide: Step → Expected → next step.
 4. Mark **Pass criteria** tables in your own notes (**Pass** / **Fail**). GitHub file view cannot tick checkboxes.
-5. Keep code under ~/java-bootcamp/examples/ (Windows: %USERPROFILE%\java-bootcamp\examples).
+5. Keep code under `~/java-bootcamp/examples/` (Windows: `%USERPROFILE%\java-bootcamp\examples`). Capture evidence under `notes/screenshots/` (Lab 0) or `examples/<lab>/notes/screenshots/` (later labs).
 
 **Primary IDE:** IntelliJ IDEA Community · **Optional IDE:** VS Code  
 

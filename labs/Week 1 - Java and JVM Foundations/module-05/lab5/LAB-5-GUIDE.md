@@ -179,7 +179,7 @@ javac -version
 
 ```bash
 mkdir -p "$HOME/java-bootcamp/examples/Lab5-LibraryManagement/src/com/academy/library"
-mkdir -p "$HOME/java-bootcamp/notes"
+mkdir -p "$HOME/java-bootcamp/notes/screenshots"
 cd "$HOME/java-bootcamp/examples/Lab5-LibraryManagement"
 ```
 
@@ -187,6 +187,7 @@ Windows cmd:
 
 ```text
 mkdir %USERPROFILE%\java-bootcamp\examples\Lab5-LibraryManagement\src\com\academy\library
+mkdir %USERPROFILE%\java-bootcamp\notes\screenshots
 cd /d %USERPROFILE%\java-bootcamp\examples\Lab5-LibraryManagement
 ```
 

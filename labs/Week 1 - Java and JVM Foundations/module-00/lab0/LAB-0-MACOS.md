@@ -85,13 +85,23 @@ git --version
 
 **Where to run this:** Open **Terminal.app** (Applications → Utilities → Terminal), or iTerm if you use it. Do **not** use IntelliJ’s terminal yet — that comes in Step 6 after you open the folder. You can start from any directory; the commands create `~/java-bootcamp` under your home folder (for example `/Users/<you>/java-bootcamp`).
 
+This layout matches what you use in every later lab: hands-on code under `examples/`, Lab 0 evidence under `notes/screenshots/`. (Do **not** create a top-level `labs/` here — course lab guides live in the bootcamp GitHub clone, not in this workspace.)
+
 ```bash
-mkdir -p ~/java-bootcamp/{labs,examples,assignments,projects,notes}
+mkdir -p ~/java-bootcamp/examples ~/java-bootcamp/notes/screenshots
 cd ~/java-bootcamp
 ls
+ls notes
 ```
 
-**Expected:** `~/java-bootcamp` with five subfolders.
+**Expected:**
+
+```text
+java-bootcamp/
+  examples/            # HelloJava next; later labs: lab1-answers, labN-crm, …
+  notes/
+    screenshots/       # Pass-criteria screenshots (redact secrets)
+```
 
 ### Step 6 — Open workspace in IntelliJ
 
@@ -170,7 +180,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 2 | Maven 3.9.x on Java 21 | Pass / Fail |
 | 3 | Git works; `user.name` / `user.email` set | Pass / Fail |
 | 4 | `JAVA_HOME` points at JDK 21 | Pass / Fail |
-| 5 | Workspace `~/java-bootcamp` with five folders | Pass / Fail |
+| 5 | Workspace `~/java-bootcamp` with `examples/` and `notes/screenshots/` | Pass / Fail |
 | 6 | HelloWorld prints from terminal | Pass / Fail |
 | 7 | HelloWorld runs via IntelliJ green arrow | Pass / Fail |
 | 8 | (Optional) VS Code opens the same folder | Pass / Fail |

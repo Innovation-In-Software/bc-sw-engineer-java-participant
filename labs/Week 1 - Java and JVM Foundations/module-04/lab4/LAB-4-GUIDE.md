@@ -172,7 +172,7 @@ javac -version
 
 ```bash
 mkdir -p "$HOME/java-bootcamp/examples/Lab4-MemoryManagement"
-mkdir -p "$HOME/java-bootcamp/notes"
+mkdir -p "$HOME/java-bootcamp/notes/screenshots"
 cd "$HOME/java-bootcamp/examples/Lab4-MemoryManagement"
 ```
 
@@ -180,6 +180,7 @@ Windows cmd equivalent:
 
 ```text
 mkdir %USERPROFILE%\java-bootcamp\examples\Lab4-MemoryManagement
+mkdir %USERPROFILE%\java-bootcamp\notes\screenshots
 cd /d %USERPROFILE%\java-bootcamp\examples\Lab4-MemoryManagement
 ```
 
