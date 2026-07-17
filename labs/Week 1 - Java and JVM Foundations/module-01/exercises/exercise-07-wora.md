@@ -17,6 +17,17 @@ Run an existing `.class` with `java`. Note why recompile is not required for ano
 
 **Write once, run anywhere:** compile once to bytecode; any matching JVM can run that `.class` without changing your source for each OS.
 
+```mermaid
+flowchart LR
+    S["Person.java<br/>source"] -->|javac| C["Person.class<br/>bytecode"]
+    C -->|java on Windows| W["JVM runs"]
+    C -->|java on macOS| M["JVM runs"]
+    C -->|java on Linux| L["JVM runs"]
+    W --> O["Same program behavior"]
+    M --> O
+    L --> O
+```
+
 ## Do this
 
 **Why:** Prove you are running bytecode, not re-interpreting the `.java` file each time.
@@ -39,15 +50,24 @@ cd ~/java-bootcamp/examples/module-01-exercises
 java Person
 ```
 
-- Write 2–3 sentences: source vs bytecode vs JVM (save as `notes/wora-notes.md` or similar under the workspace)
+**Expected:** Something like `Aman is 21 years old` (same as Exercise 5 — no `javac` needed if `.class` already exists).
 
-**Sample note you can adapt:**
+**Verified (Windows):** `java Person` prints:
 
 ```text
-javac turns Person.java into Person.class (bytecode).
-The java command starts a JVM that executes that bytecode.
-I do not need to rewrite or recompile for another OS if that OS has a compatible JVM —
-the .class is already platform-independent.
+Aman is 21 years old
+```
+
+(Re-run without recompiling proves you are executing bytecode, not re-reading the `.java` file.)
+
+- Write 2–3 sentences: source vs bytecode vs JVM (save as `notes/wora-notes.md` under the workspace)
+
+**Sample note:**
+
+```text
+javac turned Person.java into Person.class (bytecode).
+The java command starts a JVM that runs that bytecode — I did not need to recompile to run it again.
+Any OS with a compatible JVM can run the same .class file without changing the source — that is Write Once, Run Anywhere.
 ```
 
 ## Expected result

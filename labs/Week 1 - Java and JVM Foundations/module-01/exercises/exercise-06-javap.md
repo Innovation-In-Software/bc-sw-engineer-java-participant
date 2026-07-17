@@ -163,6 +163,8 @@ You do **not** need to memorize every line. The point: **`javac` turned your Jav
 - Save text or a local screenshot under `notes/screenshots/` (keep screenshots on your laptop only)
 - Explain three of: `new`, `ldc`, `invokevirtual`, `aload`, `return`
 
+**Verified (Windows):** `javap -c Person` shows constructor, `display()`, and `main` with the opcodes above (use `-c` only; skip `-v` for beginners).
+
 ## Expected result
 
 You can name what three instructions do from your listing.
