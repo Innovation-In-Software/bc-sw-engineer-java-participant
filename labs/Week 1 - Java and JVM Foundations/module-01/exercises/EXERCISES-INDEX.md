@@ -60,6 +60,7 @@ Stay in this folder for every exercise below (or `cd` back before each compile/r
 | ----- | --- |
 | **New → Java Class** | Often missing on `module-01-exercises` (hyphens are not a valid Java package name under a Sources Root) |
 | Mark `examples` or `module-01-exercises` as **Sources Root** | Conflicts with Lab 0’s `HelloJava/src` Sources Root; Mark Directory as may only offer **Excluded** |
+| Leaving `examples` marked as Sources Root | Causes IDE error: *Missing package statement… package name 'module-01-exercises' … is invalid* (hyphens). **Fix:** right-click `examples` → **Mark Directory as → Unmark as Sources Root**. Keep only `HelloJava/src` (and later lab `src/` folders) as Sources Root. |
 | Creating files under `examples/HelloJava` | That folder is Lab 0 only — keep Module 1 practice in `module-01-exercises` |
 
 Terminal alternative (same result):

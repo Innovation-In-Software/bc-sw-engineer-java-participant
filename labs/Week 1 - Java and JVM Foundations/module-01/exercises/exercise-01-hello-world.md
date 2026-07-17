@@ -61,7 +61,7 @@ Then open `Hello.java` in the editor and paste the starter code.
 * **New → Java Class** missing → normal here; use **New → File** instead.
 * **Mark Directory as** only shows **Excluded** on `module-01-exercises` → ignore; you do not need Sources Root for these exercises.
 * Do not mark `examples` as Sources Root for this step (breaks the Lab 0 `HelloJava/src` layout).
-
+* Red IDE error *package name 'module-01-exercises' … is invalid* → `examples` was marked Sources Root. Right-click `examples` → **Mark Directory as → Unmark as Sources Root**. Your `.java` file is fine; `javac` / `java` still work from Terminal.
 ### Step 3 — Compile and run from Terminal
 
 **Windows:**
