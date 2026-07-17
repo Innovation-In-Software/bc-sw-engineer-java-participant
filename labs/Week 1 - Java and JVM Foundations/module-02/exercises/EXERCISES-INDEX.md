@@ -8,7 +8,8 @@
 
 > **When:** Complete these exercises **after the module slides** and **before** the full lab.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
-> Keep practice sources separate from the graded lab.
+> Keep practice sources separate from the graded lab (`examples/Lab2-JavaSyntax/`).  
+> Each exercise includes **starter code with line comments**, a short **why** for each step, and Windows / macOS commands.
 
 ## Already covered — do not redo
 
@@ -18,7 +19,7 @@
 | Hard-coded variables and types | Module 1 Exercise 2 |
 | Methods, control flow, classes, `javap`, WORA | Module 1 Exercises 3–7 |
 
-Module 2 practice is **new**: console input with `Scanner`, typed reads (`nextLine` / `nextInt` / `nextDouble`), leftover-newline pitfalls, `Math.PI`, and `printf` formatting — the skills Lab 2 needs for the student menu app.
+Module 2 practice is **new**: console input with `Scanner`, typed reads, leftover-newline pitfalls, `Math.PI`, and `printf` formatting — the skills Lab 2 needs for the student menu app.
 
 ## Workspace
 
@@ -30,7 +31,7 @@ Module 2 practice is **new**: console input with `Scanner`, typed reads (`nextLi
 
 ### Setup — create the exercises folder (do once)
 
-**Windows (PowerShell):**
+**Windows (PowerShell)** — verified:
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
@@ -38,6 +39,8 @@ New-Item -ItemType Directory -Force -Path examples\module-02-exercises | Out-Nul
 cd examples\module-02-exercises
 pwd
 ```
+
+**Expected (Windows):** `pwd` prints `C:\Users\<you>\java-bootcamp\examples\module-02-exercises`.
 
 **macOS (zsh/bash):**
 
@@ -48,12 +51,33 @@ cd examples/module-02-exercises
 pwd
 ```
 
+**Expected (macOS):** `pwd` prints `/Users/<you>/java-bootcamp/examples/module-02-exercises`.
+
+Stay in this folder for every exercise below (or `cd` back before each compile/run).
+
+### How to create each `.java` file (IntelliJ)
+
+**Use this only** (same pattern as Module 1):
+
+1. Right-click `module-02-exercises` → **New → File**
+2. Type the full name including extension, e.g. `PersonalDetails.java`
+3. Paste the starter code → save (**Ctrl+S** / **⌘S**)
+4. Compile and run from the IntelliJ **Terminal** with `javac` / `java`
+
+**Do not:**
+
+| Avoid | Why |
+| ----- | --- |
+| **New → Java Class** | Often missing on hyphenated folders |
+| Mark `examples` as **Sources Root** | Conflicts with Lab 0 `HelloJava/src` |
+| Click **Move to source root** on the yellow banner | Moves the file into Lab 0 — ignore the banner; use Terminal `javac` / `java` |
+
 ## Exercise index
 
 | # | Exercise | New skill | File |
 | - | -------- | --------- | ---- |
-| 1 | Personal Details | `Scanner` + `nextLine` / `nextInt` | [`exercise-01-personal-details.md`](exercise-01-personal-details.md) |
-| 2 | Product Information | Mix `String` / `int` / `double` input | [`exercise-02-product-info.md`](exercise-02-product-info.md) |
+| 1 | Personal Details | `Scanner` + `nextLine` / `nextInt` + leftover newline | [`exercise-01-personal-details.md`](exercise-01-personal-details.md) |
+| 2 | Product Information | Mix `String` / `int` / `double` via `nextLine` + parse | [`exercise-02-product-info.md`](exercise-02-product-info.md) |
 | 3 | Calculations | Read two numbers; arithmetic + labels | [`exercise-03-calculator.md`](exercise-03-calculator.md) |
 | 4 | Area of Circle | `Math.PI` + `printf` decimals | [`exercise-04-circle-area.md`](exercise-04-circle-area.md) |
 | 5 | Bill Summary (challenge) | Money math + `%.2f` | [`exercise-05-bill-summary.md`](exercise-05-bill-summary.md) |
