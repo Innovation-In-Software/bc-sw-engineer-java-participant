@@ -8,7 +8,8 @@
 
 > **When:** Complete these exercises **after the module slides** and **before** the full lab.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
-> Keep practice sources separate from the graded lab (`examples/jvm-compilation-lab/`).
+> Keep practice sources separate from the graded lab (`examples/jvm-compilation-lab/`).  
+> Each exercise includes **line comments in starter code**, a short **why** for each step, and plain-English meanings for commands / bytecode.
 
 ## Workspace
 

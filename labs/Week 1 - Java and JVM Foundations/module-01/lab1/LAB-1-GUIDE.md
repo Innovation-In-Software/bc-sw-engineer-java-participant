@@ -401,12 +401,20 @@ ls
 Create `HelloWorld.java` in the lab folder with IntelliJ **New → File** → `HelloWorld.java` (include the `.java` extension). Do **not** require **New → Java Class** or marking the lab folder as Sources Root for flat `.java` files in this lab.
 
 ```java
+// Class name must match file name HelloWorld.java
 public class HelloWorld {
+    // JVM entry point when you run: java HelloWorld
     public static void main(String[] args) {
+        // Print one line to the terminal
         System.out.println("Hello, JVM!");
     }
 }
 ```
+
+| Command | Easy meaning |
+| ------- | ------------ |
+| `javac HelloWorld.java` | Compile source → `HelloWorld.class` (bytecode) |
+| `java HelloWorld` | Start JVM and run `main` (use class name, not `.java` / `.class`) |
 
 **Compile and run (terminal — both IDEs):**
 

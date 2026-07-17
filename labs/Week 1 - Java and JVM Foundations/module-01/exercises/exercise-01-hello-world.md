@@ -7,19 +7,30 @@
 
 Write, compile, and run a minimal program that prints `Hello, JVM!`.
 
-## Starter / reference
+## Starter / reference (with line comments)
 
 ```java
+// Public class — name must match the file name Hello.java
 public class Hello {
+    // Program entry point: the JVM starts here when you run `java Hello`
     public static void main(String[] args) {
+        // Print one line of text to the console, then end the line
         System.out.println("Hello, JVM!");
     }
 }
 ```
 
+| Line idea | Why it matters |
+| --------- | -------------- |
+| `public class Hello` | Defines a class the JVM can load; file must be `Hello.java` |
+| `main(String[] args)` | Special method the `java` launcher looks for |
+| `System.out.println(...)` | Sends text to the terminal |
+
 ## Steps
 
 ### Step 1 — Create the exercises folder
+
+**Why:** Keep Module 1 practice separate from Lab 0’s `HelloJava` and from the graded Lab 1 folder.
 
 Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup.
 
@@ -29,6 +40,8 @@ Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup.
 | macOS | `/Users/<you>/java-bootcamp/examples/module-01-exercises` |
 
 ### Step 2 — Create `Hello.java`
+
+**Why:** Source code lives in a `.java` file before the compiler can turn it into bytecode.
 
 **Do this (IntelliJ):**
 
@@ -62,7 +75,16 @@ Then open `Hello.java` in the editor and paste the starter code.
 * **Mark Directory as** only shows **Excluded** on `module-01-exercises` → ignore; you do not need Sources Root for these exercises.
 * Do not mark `examples` as Sources Root for this step (breaks the Lab 0 `HelloJava/src` layout).
 * Red IDE error *package name 'module-01-exercises' … is invalid* → `examples` was marked Sources Root. Right-click `examples` → **Mark Directory as → Unmark as Sources Root**. Your `.java` file is fine; `javac` / `java` still work from Terminal.
+
 ### Step 3 — Compile and run from Terminal
+
+**Why:** `javac` turns source into bytecode (`.class`). `java` starts a JVM and runs that bytecode.
+
+| Command | Easy meaning |
+| ------- | ------------ |
+| `cd …\module-01-exercises` | Go to the folder that contains `Hello.java` |
+| `javac Hello.java` | Compile → creates `Hello.class` (no output if success) |
+| `java Hello` | Run the class named `Hello` (not `Hello.java` / not `Hello.class`) |
 
 **Windows:**
 
@@ -90,11 +112,17 @@ java Hello
 
 ### Step 4 — Optional: inspect bytecode
 
+**Why:** Prove that the JVM does not run your `.java` text — it runs compiled instructions.
+
 ```text
 javap -c Hello
 ```
 
-(Same command on Windows and macOS.)
+| Part of the command | Easy meaning |
+| ------------------- | ------------ |
+| `javap` | Java class file disassembler (reads `.class`) |
+| `-c` | Show bytecode for methods |
+| `Hello` | Class name to inspect |
 
 **Expected:** Disassembly includes `main` and a `println` call.
 

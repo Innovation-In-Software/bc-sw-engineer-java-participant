@@ -7,19 +7,21 @@
 
 Create `Variables.java` with local variables of several primitive types and one `String`; print each.
 
-## Starter / reference
+## Starter / reference (with line comments)
 
 ```java
+// Class name must match file name Variables.java
 public class Variables {
+    // Entry point — JVM starts here
     public static void main(String[] args) {
-        int age = 21;
-        long population = 8_000_000_000L;
-        double price = 19.99;
-        boolean enrolled = true;
-        char grade = 'A';
-        String name = "Aman";
+        int age = 21;                       // whole number (32-bit)
+        long population = 8_000_000_000L;   // bigger whole number; L means long
+        double price = 19.99;               // decimal number
+        boolean enrolled = true;            // true or false only
+        char grade = 'A';                  // single character in single quotes
+        String name = "Aman";               // text (object) in double quotes
 
-        System.out.println(age);
+        System.out.println(age);            // print each value on its own line
         System.out.println(population);
         System.out.println(price);
         System.out.println(enrolled);
@@ -29,9 +31,20 @@ public class Variables {
 }
 ```
 
+| Type | Easy meaning | Example |
+| ---- | ------------ | ------- |
+| `int` | Small/medium whole numbers | `21` |
+| `long` | Large whole numbers | `8_000_000_000L` |
+| `double` | Decimals | `19.99` |
+| `boolean` | Yes/no flag | `true` |
+| `char` | One character | `'A'` |
+| `String` | Text (not a primitive) | `"Aman"` |
+
 ## Steps
 
 ### Step 1 — Create `Variables.java`
+
+**Why:** Practice storing different kinds of data in named boxes (variables).
 
 1. Right-click `module-01-exercises` → **New → File** (not Java Class).
 2. Name it exactly `Variables.java`.
@@ -40,6 +53,13 @@ public class Variables {
 Ignore any yellow *outside of the module source root* banner.
 
 ### Step 2 — Compile and run
+
+**Why:** Confirm the types compile and print correctly.
+
+| Command | Easy meaning |
+| ------- | ------------ |
+| `javac Variables.java` | Compile source → `Variables.class` |
+| `java Variables` | Run `main` |
 
 **Windows:**
 

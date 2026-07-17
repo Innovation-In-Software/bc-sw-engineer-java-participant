@@ -7,7 +7,18 @@
 
 Disassemble `Person` (or `Hello`) with `javap` and note three bytecode instructions.
 
+## What each command piece means
+
+| Piece | Easy meaning |
+| ----- | ------------ |
+| `javap` | Read a `.class` file and show its structure |
+| `-c` | Include bytecode for each method |
+| `-v` | Verbose: more detail (constants, flags) |
+| `Person` | Class name to inspect (must already be compiled) |
+
 ## Do this
+
+**Why:** Connect your Java source to the instructions the JVM actually runs.
 
 From the exercises folder (after `javac` produced the `.class`):
 
@@ -23,6 +34,12 @@ javap -c -v Person
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
 javap -c -v Person
+```
+
+If you prefer the smaller Exercise 1 example:
+
+```text
+javap -c Hello
 ```
 
 - Save text or a local screenshot under `notes/screenshots/` (keep screenshots on your laptop only)

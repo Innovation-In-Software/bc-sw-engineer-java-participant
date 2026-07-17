@@ -7,13 +7,55 @@
 
 Create `Methods.java` with at least two methods that take parameters and return a value; call them from `main`.
 
-## Do this
+## Starter / reference (with line comments)
 
-1. Create `Methods.java` with **New → File** (not Java Class) under `module-01-exercises` — see [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
-2. Write `add(int, int)` and `greet(String)`
-3. Call both from `main` and print results
+```java
+public class Methods {
+    // Entry point — call other methods from here
+    public static void main(String[] args) {
+        int sum = add(10, 20);              // call add; store returned int
+        System.out.println(sum);            // expect 30
 
-### Compile and run
+        String message = greet("Aman");     // call greet; store returned String
+        System.out.println(message);        // expect Hello, Aman!
+    }
+
+    // Takes two ints (parameters a, b); returns their sum
+    public static int add(int a, int b) {
+        return a + b;                       // send result back to the caller
+    }
+
+    // Takes a String name; returns a greeting String
+    public static String greet(String name) {
+        return "Hello, " + name + "!";      // + joins text pieces
+    }
+}
+```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Parameter | Input value the method receives (`a`, `b`, `name`) |
+| Return | Value sent back to the caller (`return …`) |
+| Call from `main` | `main` pauses, runs the method, then continues with the result |
+
+**Stack hint:** Each method call gets its own short-lived frame (locals + return address) on the **stack**.
+
+## Steps
+
+### Step 1 — Create `Methods.java`
+
+**Why:** Methods let you reuse logic and pass data in/out.
+
+1. Create `Methods.java` with **New → File** (not Java Class) under `module-01-exercises`.
+2. Paste the starter code (or write your own with the same ideas).
+3. Save.
+
+### Step 2 — Compile and run
+
+| Command | Easy meaning |
+| ------- | ------------ |
+| `javac Methods.java` | Compile |
+| `java Methods` | Run `main` → calls `add` and `greet` |
 
 **Windows:**
 
@@ -30,6 +72,8 @@ cd ~/java-bootcamp/examples/module-01-exercises
 javac Methods.java
 java Methods
 ```
+
+**Expected:** Prints `30` and `Hello, Aman!` (or your equivalent).
 
 ## Expected result
 
