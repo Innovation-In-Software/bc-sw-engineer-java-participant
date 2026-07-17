@@ -91,6 +91,21 @@ java ControlFlow
 
 **Expected:** Even/odd line, numbers 1–5, a short countdown, and a day label.
 
+**Verified (Windows):**
+
+```text
+even
+1
+2
+3
+4
+5
+countdown 3
+countdown 2
+countdown 1
+Tuesday
+```
+
 ## Expected result
 
 All four control structures run and print clear output.
