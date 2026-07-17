@@ -38,3 +38,5 @@ Code goes in **your** laptop folder, not inside this `labs/` clone:
 
 - Exercises → `java-bootcamp/examples/module-01-exercises/`
 - Lab 1 → `java-bootcamp/examples/jvm-compilation-lab/`
+
+**IntelliJ tip for exercises:** create sources with **New → File** → `ClassName.java`. Do **not** use **New → Java Class** or mark `module-01-exercises` as Sources Root (those options often fail with this folder name). Details: [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md).

@@ -30,8 +30,13 @@ Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup.
 
 ### Step 2 — Create `Hello.java`
 
-1. In IntelliJ Project pane: right-click `module-01-exercises` → **New → File** → `Hello.java`.  
-   Or create from the terminal:
+**Do this (IntelliJ):**
+
+1. Right-click `module-01-exercises` → **New → File** (not **Java Class**).
+2. Name it exactly `Hello.java` (include the `.java` extension).
+3. Paste the starter code above. Save (Windows: **Ctrl+S** · macOS: **⌘S**).
+
+**Or from Terminal:**
 
 **Windows:**
 
@@ -47,9 +52,15 @@ cd ~/java-bootcamp/examples/module-01-exercises
 touch Hello.java
 ```
 
-2. Paste the starter code above. Save (Windows: **Ctrl+S** · macOS: **⌘S**).
+Then open `Hello.java` in the editor and paste the starter code.
 
-**Expected:** `Hello.java` under `module-01-exercises`; editor shows the `Hello` class with no red errors.
+**Expected:** `Hello.java` under `module-01-exercises`; editor shows the `Hello` class.
+
+**If it fails / what not to do:**
+
+* **New → Java Class** missing → normal here; use **New → File** instead.
+* **Mark Directory as** only shows **Excluded** on `module-01-exercises` → ignore; you do not need Sources Root for these exercises.
+* Do not mark `examples` as Sources Root for this step (breaks the Lab 0 `HelloJava/src` layout).
 
 ### Step 3 — Compile and run from Terminal
 

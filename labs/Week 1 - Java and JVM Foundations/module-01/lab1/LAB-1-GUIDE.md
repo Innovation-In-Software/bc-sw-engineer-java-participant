@@ -398,7 +398,7 @@ ls
 
 **Do this:**
 
-Create `HelloWorld.java` in the lab folder (VS Code / IntelliJ: New File).
+Create `HelloWorld.java` in the lab folder with IntelliJ **New → File** → `HelloWorld.java` (include the `.java` extension). Do **not** require **New → Java Class** or marking the lab folder as Sources Root for flat `.java` files in this lab.
 
 ```java
 public class HelloWorld {

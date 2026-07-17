@@ -9,8 +9,9 @@ Create `Variables.java` with local variables of several primitive types and one 
 
 ## Do this
 
-- Declare `int`, `long`, `double`, `boolean`, `char`, `String`
-- Print with `System.out.println`
+1. Create `Variables.java` with **New → File** (not Java Class) under `module-01-exercises` — see [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
+2. Declare `int`, `long`, `double`, `boolean`, `char`, `String`
+3. Print with `System.out.println`
 
 ### Compile and run
 

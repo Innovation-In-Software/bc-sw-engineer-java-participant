@@ -9,10 +9,11 @@ Create `ControlFlow.java` using `if`, `for`, `while`, and `switch` with simple e
 
 ## Do this
 
-- `if`: even/odd check
-- `for`: print 1..5
-- `while`: countdown
-- `switch`: day-of-week label
+1. Create `ControlFlow.java` with **New → File** (not Java Class) under `module-01-exercises` — see [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
+2. `if`: even/odd check
+3. `for`: print 1..5
+4. `while`: countdown
+5. `switch`: day-of-week label
 
 ### Compile and run
 

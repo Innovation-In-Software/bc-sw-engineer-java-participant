@@ -9,8 +9,9 @@ Create `Methods.java` with at least two methods that take parameters and return 
 
 ## Do this
 
-- Write `add(int, int)` and `greet(String)`
-- Call both from `main` and print results
+1. Create `Methods.java` with **New → File** (not Java Class) under `module-01-exercises` — see [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
+2. Write `add(int, int)` and `greet(String)`
+3. Call both from `main` and print results
 
 ### Compile and run
 

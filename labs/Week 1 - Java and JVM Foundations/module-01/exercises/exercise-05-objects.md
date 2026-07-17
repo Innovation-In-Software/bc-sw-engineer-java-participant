@@ -9,10 +9,11 @@ Create `Person.java` with fields, a constructor, and a method; instantiate in `m
 
 ## Do this
 
-- Fields: `name` (String), `age` (int)
-- Constructor sets both
-- `toString` or `display()` prints the person
-- `new Person(...)` in `main`
+1. Create `Person.java` with **New → File** (not Java Class) under `module-01-exercises` — see [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
+2. Fields: `name` (String), `age` (int)
+3. Constructor sets both
+4. `toString` or `display()` prints the person
+5. `new Person(...)` in `main`
 
 ### Compile and run
 

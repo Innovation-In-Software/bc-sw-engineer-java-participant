@@ -45,6 +45,30 @@ pwd
 
 Stay in this folder for every exercise below (or `cd` back before each compile/run).
 
+### How to create each `.java` file (IntelliJ)
+
+**Use this only** (verified on Windows with this workspace layout):
+
+1. Right-click `module-01-exercises` → **New → File**
+2. Type the full name including extension, e.g. `Hello.java` or `Variables.java`
+3. Paste the code → save (**Ctrl+S** / **⌘S**)
+4. Compile and run from the IntelliJ **Terminal** with `javac` / `java` (commands in each exercise)
+
+**Do not** rely on these for the exercises folder (they often fail or mislead):
+
+| Avoid | Why |
+| ----- | --- |
+| **New → Java Class** | Often missing on `module-01-exercises` (hyphens are not a valid Java package name under a Sources Root) |
+| Mark `examples` or `module-01-exercises` as **Sources Root** | Conflicts with Lab 0’s `HelloJava/src` Sources Root; Mark Directory as may only offer **Excluded** |
+| Creating files under `examples/HelloJava` | That folder is Lab 0 only — keep Module 1 practice in `module-01-exercises` |
+
+Terminal alternative (same result):
+
+**Windows:** `New-Item -ItemType File -Force -Path Hello.java | Out-Null`  
+**macOS:** `touch Hello.java`
+
+Then open the file in the editor and paste the code.
+
 ### Git commits — after Lab 1 Step 0
 
 Pre-lab exercises run **before** Lab 1. Finish the Java work here first. After **[Lab 1 Step 0](../lab1/LAB-1-GUIDE.md)** creates your personal `java-bootcamp` GitHub repo, commit exercise sources (Lab 1 Step 12 also picks up `examples/module-01-exercises`).
