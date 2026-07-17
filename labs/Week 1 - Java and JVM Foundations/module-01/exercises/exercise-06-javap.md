@@ -16,6 +16,18 @@ Disassemble `Person` (or `Hello`) with `javap` and note three bytecode instructi
 | `-v` | Optional advanced detail; skip for this beginner exercise |
 | `Person` | Class name to inspect (must already be compiled) |
 
+## Big picture (diagram)
+
+```mermaid
+flowchart LR
+    A["Person.java<br/>(your source)"] -->|javac| B["Person.class<br/>(bytecode)"]
+    B -->|javap -c| C["Readable<br/>instructions"]
+    B -->|java Person| D["JVM runs<br/>the steps"]
+    D --> E["Output:<br/>Aman is 21 years old"]
+```
+
+`javac` compiles once. `javap` just *shows* the bytecode; `java` *runs* it.
+
 ## Do this
 
 **Why:** Connect your Java source to the instructions the JVM actually runs.
@@ -102,6 +114,32 @@ person.display();
 | `return` | Finish `main` |
 
 **One sentence:** Create Person(Aman, 21) → save it → call display → stop.
+
+#### `main` as a flow
+
+```mermaid
+flowchart TD
+    N["new Person"] --> L["ldc &quot;Aman&quot; + bipush 21"]
+    L --> I["invokespecial &lt;init&gt;<br/>(run constructor)"]
+    I --> S["astore_1<br/>(save as person)"]
+    S --> C["invokevirtual display<br/>(person.display())"]
+    C --> R["return"]
+```
+
+#### How the object sits in memory
+
+```mermaid
+flowchart LR
+    subgraph Stack["Stack (local variables)"]
+        P["person (reference)"]
+    end
+    subgraph Heap["Heap (objects)"]
+        O["Person<br/>name = &quot;Aman&quot;<br/>age = 21"]
+    end
+    P -->|points to| O
+```
+
+The variable `person` (a reference) lives on the **stack**; the actual Person object lives on the **heap**.
 
 ### What you can ignore for now
 
