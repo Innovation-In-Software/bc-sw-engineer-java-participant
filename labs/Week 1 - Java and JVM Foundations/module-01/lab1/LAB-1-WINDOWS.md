@@ -8,7 +8,8 @@
 **Full lab steps:** [LAB-1-GUIDE.md](LAB-1-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-1-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-- Pre-lab exercises: [`../exercises/`](../exercises/)
+- Pre-lab exercises: [`../exercises/`](../exercises/) — Windows workspace: `%USERPROFILE%\java-bootcamp\examples\module-01-exercises` (create once; see [EXERCISES-INDEX.md](../exercises/EXERCISES-INDEX.md))
+
 ## Prerequisites (Windows)
 
 - [Lab 0 (Windows)](../../module-00/lab0/LAB-0-WINDOWS.md) complete (JDK 21, Maven when needed, Git)
