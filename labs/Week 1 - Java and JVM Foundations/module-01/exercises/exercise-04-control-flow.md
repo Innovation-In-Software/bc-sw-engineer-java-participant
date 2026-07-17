@@ -1,6 +1,7 @@
 # Exercise — Control Flow
 
-**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ## Goal
 
@@ -12,6 +13,26 @@ Create `ControlFlow.java` using `if`, `for`, `while`, and `switch` with simple e
 - `for`: print 1..5
 - `while`: countdown
 - `switch`: day-of-week label
+
+### Compile and run
+
+**Windows:**
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
+javac ControlFlow.java
+java ControlFlow
+```
+
+**macOS:**
+
+```bash
+cd ~/java-bootcamp/examples/module-01-exercises
+javac ControlFlow.java
+java ControlFlow
+```
+
+Then commit/push per [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
 
 ## Expected result
 

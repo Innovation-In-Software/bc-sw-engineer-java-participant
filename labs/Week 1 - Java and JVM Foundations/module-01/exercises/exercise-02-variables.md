@@ -1,6 +1,7 @@
 # Exercise — Variables and Data Types
 
-**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ## Goal
 
@@ -10,7 +11,26 @@ Create `Variables.java` with local variables of several primitive types and one 
 
 - Declare `int`, `long`, `double`, `boolean`, `char`, `String`
 - Print with `System.out.println`
-- `javac Variables.java && java Variables`
+
+### Compile and run
+
+**Windows:**
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
+javac Variables.java
+java Variables
+```
+
+**macOS:**
+
+```bash
+cd ~/java-bootcamp/examples/module-01-exercises
+javac Variables.java
+java Variables
+```
+
+Then commit/push per [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
 
 ## Expected result
 

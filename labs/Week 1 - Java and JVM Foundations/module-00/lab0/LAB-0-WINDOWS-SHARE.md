@@ -151,7 +151,14 @@ Hello Java Bootcamp!
 2. Right-click `src` → **Mark Directory as → Sources Root** if needed.
 3. Green ▶ beside `main` → **Run ‘HelloJava.main()’**.
 
-### Step 10 — Git + identity (for later labs)
+### Step 10 — Git + identity + personal `java-bootcamp` repo
+
+You keep **two** Git things separate:
+
+| Repo | What it is |
+| ---- | ---------- |
+| Course handouts | Materials your instructor shares — read / follow |
+| **Your** `java-bootcamp` workspace | **Your** code under `%USERPROFILE%\java-bootcamp` — **you** init, commit, and push this for the whole bootcamp |
 
 1. Create or sign in to a **GitHub** account (website: github.com).
 2. Set Git to your **display name** and your GitHub **noreply email** (recommended — avoids push errors if your personal email is private on GitHub).
@@ -166,6 +173,49 @@ git --version
 ```
 
 **Expected:** `user.name` and `user.email` appear in the list; `git --version` shows **2.x**.
+
+3. On GitHub: **New repository** → name `java-bootcamp` → **Private** → **do not** add README / `.gitignore` / license (empty repo).
+4. In PowerShell, turn your workspace into a Git repo and push:
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp
+@"
+# Build / IDE
+**/out/
+**/*.class
+.idea/
+*.iml
+.vscode/
+
+# Local evidence — keep on laptop only
+notes/screenshots/
+
+# Secrets — never commit
+.env
+**/kubeconfig*
+**/*secret*
+"@ | Set-Content -Encoding utf8 .gitignore
+
+git init
+git add .
+git status
+git commit -m "Initial java-bootcamp workspace (Lab 0)"
+git branch -M main
+git remote add origin https://github.com/<your-github-username>/java-bootcamp.git
+git push -u origin main
+```
+
+Replace `<your-github-username>` with your GitHub username. Sign in with a **Personal Access Token** or `gh auth login` if prompted.
+
+**Optional (GitHub CLI):** after `git commit`:
+
+```powershell
+gh repo create java-bootcamp --private --source=. --remote=origin --push
+```
+
+**Expected:** GitHub shows your `java-bootcamp` repo; `notes/screenshots/` is not committed.
+
+**Habit:** after each lab or exercise, from `%USERPROFILE%\java-bootcamp`: `git add` → `git commit` → `git push`.
 
 **If push fails with GH007 (“private email address”):** your commit used a personal `@gmail.com` (or similar) address. Re-run Step 10 with the **noreply** email from GitHub Settings → Emails, or disable “Block command line pushes that expose my email” on that same page.
 
@@ -183,6 +233,8 @@ git --version
 echo $env:JAVA_HOME
 cd $env:USERPROFILE\java-bootcamp
 Get-Location
+git status
+git remote -v
 ```
 
 _Mark each row **Pass** or **Fail** in your own notes._
@@ -196,7 +248,8 @@ _Mark each row **Pass** or **Fail** in your own notes._
 | 5 | Workspace `%USERPROFILE%\java-bootcamp` with `examples\` and `notes\screenshots\` | Pass / Fail |
 | 6 | HelloWorld prints from terminal | Pass / Fail |
 | 7 | HelloWorld runs via IntelliJ green arrow | Pass / Fail |
-| 8 | (Optional) VS Code opens the same folder | Pass / Fail |
+| 8 | Personal GitHub repo `java-bootcamp` exists; local folder is a git repo with `origin` and at least one push | Pass / Fail |
+| 9 | (Optional) VS Code opens the same folder | Pass / Fail |
 
 **Do not start Lab 1 until every Pass criteria row is Pass in your notes.**
 

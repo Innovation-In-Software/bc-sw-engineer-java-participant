@@ -17,31 +17,43 @@ public class Hello {
 }
 ```
 
-## Steps (Windows — IntelliJ + PowerShell)
+## Steps
 
 ### Step 1 — Create the exercises folder
 
-Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup. Confirm terminal cwd is:
+Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup.
 
-```text
-C:\Users\<you>\java-bootcamp\examples\module-01-exercises
-```
+| OS | Confirm terminal cwd |
+| -- | -------------------- |
+| Windows | `C:\Users\<you>\java-bootcamp\examples\module-01-exercises` |
+| macOS | `/Users/<you>/java-bootcamp/examples/module-01-exercises` |
 
 ### Step 2 — Create `Hello.java`
 
-1. In IntelliJ Project pane: right-click `examples\module-01-exercises` → **New → File** → name it `Hello.java`.  
-   Or in Terminal:
+1. In IntelliJ Project pane: right-click `module-01-exercises` → **New → File** → `Hello.java`.  
+   Or create from the terminal:
+
+**Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
 New-Item -ItemType File -Force -Path Hello.java | Out-Null
 ```
 
-2. Paste the starter code above. Save (**Ctrl+S**).
+**macOS:**
 
-**Expected:** `Hello.java` appears under `module-01-exercises`; editor shows the `Hello` class with no red errors.
+```bash
+cd ~/java-bootcamp/examples/module-01-exercises
+touch Hello.java
+```
+
+2. Paste the starter code above. Save (Windows: **Ctrl+S** · macOS: **⌘S**).
+
+**Expected:** `Hello.java` under `module-01-exercises`; editor shows the `Hello` class with no red errors.
 
 ### Step 3 — Compile and run from Terminal
+
+**Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
@@ -49,17 +61,31 @@ javac Hello.java
 java Hello
 ```
 
-**Expected:** Console prints `Hello, JVM!`. Project pane (or `dir`) shows `Hello.class` next to `Hello.java`.
+**macOS:**
 
-**If it fails:** Confirm `javac -version` / `java -version` are 21.x (Lab 0). Confirm you are in `module-01-exercises`, not `examples\HelloJava`.
+```bash
+cd ~/java-bootcamp/examples/module-01-exercises
+javac Hello.java
+java Hello
+```
+
+**Expected:** Console prints `Hello, JVM!`. `Hello.class` appears next to `Hello.java` (list with `dir` / `ls`).
+
+**If it fails:** Confirm `javac -version` / `java -version` are 21.x (Lab 0). Confirm you are in `module-01-exercises`, not `examples/HelloJava`.
 
 ### Step 4 — Optional: inspect bytecode
 
-```powershell
+```text
 javap -c Hello
 ```
 
+(Same command on Windows and macOS.)
+
 **Expected:** Disassembly includes `main` and a `println` call.
+
+### Step 5 — Commit to your personal `java-bootcamp` repo
+
+See [EXERCISES-INDEX.md](EXERCISES-INDEX.md) — commit/push after the exercise works.
 
 ## Expected result
 

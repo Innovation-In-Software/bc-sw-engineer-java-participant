@@ -1,6 +1,7 @@
 # Exercise — Objects and Classes
 
-**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ## Goal
 
@@ -12,6 +13,26 @@ Create `Person.java` with fields, a constructor, and a method; instantiate in `m
 - Constructor sets both
 - `toString` or `display()` prints the person
 - `new Person(...)` in `main`
+
+### Compile and run
+
+**Windows:**
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
+javac Person.java
+java Person
+```
+
+**macOS:**
+
+```bash
+cd ~/java-bootcamp/examples/module-01-exercises
+javac Person.java
+java Person
+```
+
+Then commit/push per [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
 
 ## Expected result
 

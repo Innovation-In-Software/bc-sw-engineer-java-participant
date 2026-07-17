@@ -1,6 +1,7 @@
 # Exercise — Inspect Bytecode
 
-**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ## Goal
 
@@ -8,8 +9,26 @@ Disassemble `Person` (or `Hello`) with `javap` and note three bytecode instructi
 
 ## Do this
 
-- `javap -c -v Person` (save text or screenshot)
+From the exercises folder (after `javac` produced the `.class`):
+
+**Windows:**
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
+javap -c -v Person
+```
+
+**macOS:**
+
+```bash
+cd ~/java-bootcamp/examples/module-01-exercises
+javap -c -v Person
+```
+
+- Save text or a local screenshot under `notes/screenshots/` (do **not** commit screenshots)
 - List three of: `ldc`, `invokevirtual`, `return`, `aload`, `istore`
+
+Then commit any written notes under `examples/` or `notes/` (not screenshots) per [EXERCISES-INDEX.md](EXERCISES-INDEX.md).
 
 ## Expected result
 

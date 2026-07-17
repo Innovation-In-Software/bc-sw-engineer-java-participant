@@ -35,8 +35,9 @@ Shared services (Week 4+): [`../../../FINAL-SETUP-README.md`](../../../FINAL-SET
 - IntelliJ opens `java-bootcamp` with Project SDK **21**
 - `java` / `javac` / `mvn` / `git` work in the IntelliJ terminal
 - `Hello Java Bootcamp!` runs from the terminal **and** the IntelliJ green arrow
+- Your `java-bootcamp` folder is a **personal GitHub repo** (Lab 0 Step 10) — separate from the course handouts clone — and you can `git push` to it
 - (Optional) Same workspace opens in VS Code if you use it
 
 **Do not start Lab 1 until your OS guide checklist passes.**
 
-Next: [Lab 1](../../module-01/lab1/LAB-1-GUIDE.md) · [Lab 1 Windows](../../module-01/lab1/LAB-1-WINDOWS.md) · [Lab 1 macOS](../../module-01/lab1/LAB-1-MACOS.md)
+Next: [Lab 1](../../module-01/lab1/LAB-1-GUIDE.md) · [Lab 1 Windows](../../module-01/lab1/LAB-1-WINDOWS.md) · [Lab 1 macOS](../../module-01/lab1/LAB-1-MACOS.md) · [Module 1 pre-lab exercises](../../module-01/exercises/EXERCISES-INDEX.md)
