@@ -1,8 +1,10 @@
 # Module 1 — Pre-Lab Exercises
 
+> **Start here for Module 1:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md)
+
 **Module:** 1 — JVM Architecture and Runtime Model  
 **Source:** Module 1 slides: Lab Overview / Lab Tasks (JVM and Compilation)  
-**Next:** Full lab guide → [`lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Next (after all 7 exercises):** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
 
 > **When:** Complete these exercises **after the module slides** and **before** the full lab.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  

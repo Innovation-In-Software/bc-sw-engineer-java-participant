@@ -2,7 +2,10 @@
 
 Hands-on lab guides for the Java Software Engineer Bootcamp.
 
-- **Lab 0** — pre-course environment setup (`module-00/lab0`)
+**Participants — which file when?** → **[_PARTICIPANT-FILE-GUIDE.md](_PARTICIPANT-FILE-GUIDE.md)**  
+For Week 1 Modules 1–7, also open **`module-NN/README.md`** first (Start here).
+
+- **Lab 0** — pre-course environment setup (`module-00/lab0`) — follow your **OS how-to** (`LAB-0-WINDOWS.md` or `LAB-0-MACOS.md`)
 - **Labs 1–52** — one lab per module under `module-NN/labN`, **grouped by week**
 - **Week 1 exercises** — `module-01`…`07/exercises/` (after slides, before the lab)
 
@@ -10,22 +13,24 @@ Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculu
 
 ## How to use these labs
 
-1. Start from **[PARTICIPANT-SETUP-README.md](PARTICIPANT-SETUP-README.md)** and **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)**.
-2. Open the week folder → module-NN/labN/ → read **LAB-N-GUIDE.md** plus your OS how-to (LAB-N-WINDOWS.md or LAB-N-MACOS.md).
-3. Follow **How to follow this lab** at the top of each guide: Step → Expected → next step.
-4. Mark **Pass criteria** tables in your own notes (**Pass** / **Fail**). GitHub file view cannot tick checkboxes.
-5. Keep code under `~/java-bootcamp/examples/` (Windows: `%USERPROFILE%\java-bootcamp\examples`). Capture evidence under workspace-root `notes/screenshots/` (Lab 0) or `notes/screenshots/lab-N/` (Labs 1–52). Do not create a top-level `labs/` folder inside `java-bootcamp`.
+1. Start from **[PARTICIPANT-SETUP-README.md](PARTICIPANT-SETUP-README.md)** and **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md)** (or macOS).
+2. Read **[_PARTICIPANT-FILE-GUIDE.md](_PARTICIPANT-FILE-GUIDE.md)** once so you know GUIDE vs WINDOWS vs exercises.
+3. For each later module: open **`module-NN/README.md`** (Week 1) → exercises (if any) → **one** OS how-to → **`LAB-N-GUIDE.md`**.
+4. Follow **How to follow this lab** at the top of each GUIDE: Step → Expected → next step.
+5. Mark **Pass criteria** tables in your own notes (**Pass** / **Fail**). GitHub file view cannot tick checkboxes.
+6. Keep code under `~/java-bootcamp/examples/` (Windows: `%USERPROFILE%\java-bootcamp\examples`). Capture evidence under workspace-root `notes/screenshots/` (Lab 0) or `notes/screenshots/lab-N/` (Labs 1–52). Do not create a top-level `labs/` folder inside `java-bootcamp`.
 
 **Primary IDE:** IntelliJ IDEA Community · **Optional IDE:** VS Code  
 
 Every lab lives under its module folder as `module-NN/labN/` and includes:
-- `LAB-N-GUIDE.md` — full lab steps  
-- `LAB-N-WINDOWS.md` — Windows + IntelliJ how-to  
-- `LAB-N-MACOS.md` — macOS + IntelliJ how-to  
-- Week 1 also has `module-NN/exercises/` (pre-lab practice after slides)
+- `LAB-N-GUIDE.md` — full lab steps (**your main file for Labs 1–52**)  
+- `LAB-N-WINDOWS.md` — Windows + IntelliJ how-to (**pick one OS**)  
+- `LAB-N-MACOS.md` — macOS + IntelliJ how-to (**pick one OS**)  
+- Week 1 also has `module-NN/exercises/` (pre-lab practice after slides) and `module-NN/README.md` (Start here)
 
 | Guide | Purpose |
 | ----- | ------- |
+| [**Which file do I open?**](_PARTICIPANT-FILE-GUIDE.md) | Participant sequence + what to ignore |
 | [**Final Lab Environment Setup**](FINAL-SETUP-README.md) | **Authoritative final setup** — shared host Postgres 17, Kafka 4.0, k3s, GHCR |
 | [**Participant Setup README**](PARTICIPANT-SETUP-README.md) | Whole environment setup for students (laptop + shared services, accounts, pass criteria) |
 | [**Labs Setup Instructions**](SETUP-INSTRUCTIONS.md) | Tools, versions, ports, and lab-by-lab requirements matrix |

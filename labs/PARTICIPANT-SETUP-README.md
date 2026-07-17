@@ -8,6 +8,7 @@ This README explains **the whole setup you need** to participate successfully: w
 
 | Related guide | Use it when you need… |
 | ------------- | --------------------- |
+| **[Which file do I open?](_PARTICIPANT-FILE-GUIDE.md)** | Sequence per module — GUIDE vs WINDOWS vs exercises vs solution |
 | **[Final Lab Environment Setup](FINAL-SETUP-README.md)** | **Authoritative** final setup: shared host, Postgres / Kafka / k3s / GHCR |
 | **[Lab 0 — Development Environment Setup](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** | Step-by-step laptop toolchain install |
 | **[Labs Setup Instructions](SETUP-INSTRUCTIONS.md)** | Full version matrix, ports, and lab-by-lab requirements |

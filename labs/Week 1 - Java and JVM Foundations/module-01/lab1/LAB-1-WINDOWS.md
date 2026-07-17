@@ -1,5 +1,7 @@
 # Lab 1: JVM and Compilation — Windows
 
+> **Participants:** Start at [`../README.md`](../README.md). This file = Windows paths/shell only. Do the Steps in [`LAB-1-GUIDE.md`](LAB-1-GUIDE.md). [Which file when?](../../../_PARTICIPANT-FILE-GUIDE.md)
+
 **OS:** Windows  
 **Primary IDE:** IntelliJ IDEA Community Edition  
 **Optional IDE:** VS Code  

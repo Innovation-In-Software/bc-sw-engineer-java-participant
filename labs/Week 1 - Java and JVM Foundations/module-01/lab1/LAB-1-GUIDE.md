@@ -1,5 +1,7 @@
 # Lab 1: JVM and Compilation
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). Open **one** OS how-to ([Windows](LAB-1-WINDOWS.md) · [macOS](LAB-1-MACOS.md)), then do **every Step below**. Skip `INSTRUCTOR-DEMO.md` and `solution/`. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
 **Module:** 1 — Java Fundamentals and the JVM  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-01/lab1/`  
 **Difficulty:** Beginner–Intermediate  

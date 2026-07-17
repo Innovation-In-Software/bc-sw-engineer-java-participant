@@ -132,9 +132,10 @@ cd bc-sw-engineer-java-participant
 ```
 
 1. Open [`labs/FINAL-SETUP-README.md`](labs/FINAL-SETUP-README.md)  
-2. Complete Lab 0 ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md)) — includes Git identity  
-3. Work under `~/java-bootcamp` or `%USERPROFILE%\java-bootcamp`  
-4. In **Lab 1 Step 0**, turn that folder into **your own private GitHub repo** named `java-bootcamp` (separate from this course clone). Commit and push again in Lab 1 Step 12 and after later labs.
+2. Read [`labs/_PARTICIPANT-FILE-GUIDE.md`](labs/_PARTICIPANT-FILE-GUIDE.md) once (which file when)  
+3. Complete Lab 0 ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md)) — includes Git identity  
+4. Work under `~/java-bootcamp` or `%USERPROFILE%\java-bootcamp`  
+5. For each later module: open `module-NN/README.md` (Week 1) → exercises → one OS how-to → `LAB-N-GUIDE.md`. **Lab 1 Step 0** creates your private `java-bootcamp` GitHub repo.
 
 Do not treat `labs/.../solution/` as your working project unless a lab says otherwise.
 
