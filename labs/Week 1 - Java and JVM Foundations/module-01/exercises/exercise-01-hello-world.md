@@ -98,6 +98,8 @@ javap -c Hello
 
 **Expected:** Disassembly includes `main` and a `println` call.
 
+**Verified (Windows):** `javap -c Hello` shows `main`, with bytecode including `getstatic`, `ldc` (`"Hello, JVM!"`), `invokevirtual` (`println`), and `return`.
+
 ### Step 5 — Commit (after Lab 1 Step 0)
 
 Pre-lab exercises come **before** Lab 1. Skip git until **[Lab 1 Step 0](../lab1/LAB-1-GUIDE.md)** creates your personal repo; then commit per [EXERCISES-INDEX.md](EXERCISES-INDEX.md) (or wait for Lab 1 Step 12).
