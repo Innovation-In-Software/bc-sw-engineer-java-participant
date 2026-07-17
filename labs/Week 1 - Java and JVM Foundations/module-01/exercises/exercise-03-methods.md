@@ -75,6 +75,13 @@ java Methods
 
 **Expected:** Prints `30` and `Hello, Aman!` (or your equivalent).
 
+**Verified (Windows):**
+
+```text
+30
+Hello, Aman!
+```
+
 ## Expected result
 
 Method results print; you can explain stack frames for the calls.
