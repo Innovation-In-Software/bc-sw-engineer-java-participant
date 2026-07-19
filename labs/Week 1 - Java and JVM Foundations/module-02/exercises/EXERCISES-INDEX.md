@@ -16,8 +16,9 @@
 | Topic | Where you did it |
 | ----- | ---------------- |
 | `Hello` / `main` / `System.out.println` | Lab 0 · Module 1 Exercise 1 |
-| Hard-coded variables and types | Module 1 Exercise 2 |
-| Methods, control flow, classes, `javap`, WORA | Module 1 Exercises 3–7 |
+| Platform independence (WORA), control flow (bytecode) | Module 1 Exercises 2–3 |
+| Hard-coded variables and types | Module 1 Exercise 5 |
+| Methods, classes/objects, `javap` | Module 1 Exercises 6–8 |
 
 Module 2 practice is **new**: console input with `Scanner`, typed reads, leftover-newline pitfalls, `Math.PI`, and `printf` formatting — the skills Lab 2 needs for the student menu app.
 
@@ -74,13 +75,18 @@ Stay in this folder for every exercise below (or `cd` back before each compile/r
 
 ## Exercise index
 
+Numbered to match the order these topics appear in the Module 2 slides — work in order.
+
 | # | Exercise | New skill | File |
 | - | -------- | --------- | ---- |
-| 1 | Personal Details | `Scanner` + `nextLine` / `nextInt` + leftover newline | [`exercise-01-personal-details.md`](exercise-01-personal-details.md) |
-| 2 | Product Information | Mix `String` / `int` / `double` via `nextLine` + parse | [`exercise-02-product-info.md`](exercise-02-product-info.md) |
-| 3 | Calculations | Read two numbers; arithmetic + labels | [`exercise-03-calculator.md`](exercise-03-calculator.md) |
-| 4 | Area of Circle | `Math.PI` + `printf` decimals | [`exercise-04-circle-area.md`](exercise-04-circle-area.md) |
-| 5 | Bill Summary (challenge) | Money math + `%.2f` | [`exercise-05-bill-summary.md`](exercise-05-bill-summary.md) |
-| 6 | Personal Profile (bonus) | Aligned `printf` table layout | [`exercise-06-profile-bonus.md`](exercise-06-profile-bonus.md) |
+| 1 | Calculations | Read two numbers; arithmetic + labels | [`exercise-01-calculator.md`](exercise-01-calculator.md) |
+| 2 | Decision Making | `if` / `else if` / `else` and `switch` | [`exercise-02-decision-making.md`](exercise-02-decision-making.md) |
+| 3 | Loops | `for`, `while`, and `do-while` | [`exercise-03-loops.md`](exercise-03-loops.md) |
+| 4 | Methods | Parameters, return values, and overloading | [`exercise-04-methods.md`](exercise-04-methods.md) |
+| 5 | Personal Details | `Scanner` + `nextLine` / `nextInt` + leftover newline | [`exercise-05-personal-details.md`](exercise-05-personal-details.md) |
+| 6 | Product Information | Mix `String` / `int` / `double` via `nextLine` + parse | [`exercise-06-product-info.md`](exercise-06-product-info.md) |
+| 7 | Area of Circle | `Math.PI` + `printf` decimals | [`exercise-07-circle-area.md`](exercise-07-circle-area.md) |
+| 8 | Bill Summary (challenge) | Money math + `%.2f` | [`exercise-08-bill-summary.md`](exercise-08-bill-summary.md) |
+| 9 | Personal Profile (bonus) | Aligned `printf` table layout | [`exercise-09-profile-bonus.md`](exercise-09-profile-bonus.md) |
 
 Work in order. Keep practice sources separate from the graded lab submission.

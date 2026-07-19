@@ -1,7 +1,9 @@
-# Exercise 4 — Area of Circle
+# Exercise 7 — Area of Circle
 
 **Module 2** · Pre-lab practice · then open [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
+
+![Java Math: Calculating the Area of a Circle](../../../lab_diagrams/mod02-ex07-circle-area.png)
 
 > **New for Module 2:** `Math.PI` and `printf` decimal formatting (Lab 2 uses `printf` for tables).
 

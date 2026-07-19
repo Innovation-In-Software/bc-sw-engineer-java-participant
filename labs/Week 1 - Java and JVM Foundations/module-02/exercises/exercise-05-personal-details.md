@@ -1,7 +1,9 @@
-# Exercise 1 — Personal Details
+# Exercise 5 — Personal Details
 
 **Module 2** · Pre-lab practice · then open [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
+
+![Java Console Input with Scanner](../../../lab_diagrams/mod02-ex05-personal-details.png)
 
 > **Not a repeat of Module 1:** Module 1 used hard-coded variables. Here you **read** name, age, and city from the console with `Scanner`.
 

@@ -4,7 +4,7 @@
 
 **Module:** 1 — JVM Architecture and Runtime Model  
 **Source:** Module 1 slides: Lab Overview / Lab Tasks (JVM and Compilation)  
-**Next (after all 7 exercises):** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Next (after all 8 exercises):** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
 
 > **When:** Complete these exercises **after the module slides** and **before** the full lab.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
@@ -73,14 +73,17 @@ Then open the file in the editor and paste the code.
 
 ## Exercise index
 
+Numbered to match the order these topics appear in the Module 1 slides — work in order.
+
 | # | Exercise | File |
 | - | -------- | ---- |
 | 1 | Hello World | [`exercise-01-hello-world.md`](exercise-01-hello-world.md) |
-| 2 | Variables and Data Types | [`exercise-02-variables.md`](exercise-02-variables.md) |
-| 3 | Methods and Parameters | [`exercise-03-methods.md`](exercise-03-methods.md) |
-| 4 | Control Flow | [`exercise-04-control-flow.md`](exercise-04-control-flow.md) |
-| 5 | Objects and Classes | [`exercise-05-objects.md`](exercise-05-objects.md) |
-| 6 | Inspect Bytecode | [`exercise-06-javap.md`](exercise-06-javap.md) |
-| 7 | Platform Independence (WORA) | [`exercise-07-wora.md`](exercise-07-wora.md) |
+| 2 | Platform Independence (WORA) | [`exercise-02-wora.md`](exercise-02-wora.md) |
+| 3 | Control Flow | [`exercise-03-control-flow.md`](exercise-03-control-flow.md) |
+| 4 | Watch Class Loading | [`exercise-04-class-loading.md`](exercise-04-class-loading.md) |
+| 5 | Variables and Data Types | [`exercise-05-variables.md`](exercise-05-variables.md) |
+| 6 | Methods and Parameters | [`exercise-06-methods.md`](exercise-06-methods.md) |
+| 7 | Objects and Classes | [`exercise-07-objects.md`](exercise-07-objects.md) |
+| 8 | Inspect Bytecode | [`exercise-08-javap.md`](exercise-08-javap.md) |
 
 Work in order.

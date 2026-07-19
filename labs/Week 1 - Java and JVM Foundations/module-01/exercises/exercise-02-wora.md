@@ -21,7 +21,7 @@ Run an existing `.class` with `java`. Note why recompile is not required for ano
 
 ```mermaid
 flowchart LR
-    S["Person.java<br/>source"] -->|javac| C["Person.class<br/>bytecode"]
+    S["Hello.java<br/>source"] -->|javac| C["Hello.class<br/>bytecode"]
     C -->|java on Windows| W["JVM runs"]
     C -->|java on macOS| M["JVM runs"]
     C -->|java on Linux| L["JVM runs"]
@@ -36,28 +36,28 @@ flowchart LR
 
 | Command | Easy meaning |
 | ------- | ------------ |
-| `java Person` | Start JVM, load `Person.class`, run `main` (no `javac` needed if `.class` already exists) |
+| `java Hello` | Start JVM, load `Hello.class`, run `main` (no `javac` needed if `.class` already exists) |
 
 **Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
-java Person
+java Hello
 ```
 
 **macOS:**
 
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
-java Person
+java Hello
 ```
 
-**Expected:** Something like `Aman is 21 years old` (same as Exercise 5 — no `javac` needed if `.class` already exists).
+**Expected:** Something like `Hello, JVM!` (same as Exercise 1 — no `javac` needed if `.class` already exists).
 
-**Verified (Windows):** `java Person` prints:
+**Verified (Windows):** `java Hello` prints:
 
 ```text
-Aman is 21 years old
+Hello, JVM!
 ```
 
 (Re-run without recompiling proves you are executing bytecode, not re-reading the `.java` file.)
@@ -67,7 +67,7 @@ Aman is 21 years old
 **Sample note:**
 
 ```text
-javac turned Person.java into Person.class (bytecode).
+javac turned Hello.java into Hello.class (bytecode).
 The java command starts a JVM that runs that bytecode — I did not need to recompile to run it again.
 Any OS with a compatible JVM can run the same .class file without changing the source — that is Write Once, Run Anywhere.
 ```

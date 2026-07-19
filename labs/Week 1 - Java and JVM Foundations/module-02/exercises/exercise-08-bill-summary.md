@@ -1,9 +1,11 @@
-# Exercise 5 — Bill Summary (challenge)
+# Exercise 8 — Bill Summary (challenge)
 
 **Module 2** · Pre-lab practice · then open [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
-> **Combines Exercises 2–4:** product input, arithmetic, money-style `printf`.
+![Java Bill Calculation: Total, Discount, and Final Amount](../../../lab_diagrams/mod02-ex08-bill-summary.png)
+
+> **Combines Exercises 1, 6–7:** product input, arithmetic, money-style `printf`.
 
 ## Goal
 

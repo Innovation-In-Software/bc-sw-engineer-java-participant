@@ -1,9 +1,11 @@
-# Exercise 2 — Product Information
+# Exercise 6 — Product Information
 
 **Module 2** · Pre-lab practice · then open [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
-> **Builds on Exercise 1:** same `Scanner` idea; prefer **`nextLine()` + parse** (Lab 2’s safer style) so leftover newlines do not bite you.
+![Java Input Conversion: From Text to Numbers](../../../lab_diagrams/mod02-ex06-product-info.png)
+
+> **Builds on Exercise 5:** same `Scanner` idea; prefer **`nextLine()` + parse** (Lab 2’s safer style) so leftover newlines do not bite you.
 
 ## Goal
 

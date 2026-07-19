@@ -1,25 +1,123 @@
-# Exercise — Object Lifecycle
+# Exercise 2 — Object Lifecycle and Reachability
 
-**Module 4** · Pre-lab practice · then open [`../../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)
+**Module 4** · Pre-lab practice · then open [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ## Goal
 
-Create objects, null a reference, optional `System.gc()`; describe reachability.
+Create one object with two references. Remove references one at a time and explain when the object becomes **eligible** for garbage collection.
 
-## Do this
+## Starter / reference
 
-- Object → reference → `null`
-- Observation notes
+```java
+public class ObjectLifecycleDemo {
+    static class Person {
+        final String name;
+
+        Person(String name) {
+            this.name = name;
+        }
+    }
+
+    public static void main(String[] args) {
+        Person first = new Person("Aman"); // create + reference
+        Person alias = first;              // second reference, same object
+
+        System.out.println(
+                "Same object: " + (first == alias));
+
+        first = null; // object remains reachable through alias
+        System.out.println(
+                "Still reachable through alias: " + alias.name);
+
+        alias = null; // no strong references remain
+        System.out.println(
+                "No strong references remain; object is GC-eligible.");
+
+        System.gc();  // request only; JVM may ignore or delay it
+        System.out.println("GC requested, not guaranteed.");
+    }
+}
+```
+
+## Reachability timeline
+
+```mermaid
+flowchart LR
+    A["first ─┐<br/>alias ─┴→ Person"] --> B["first = null<br/>alias → Person"]
+    B --> C["alias = null<br/>Person unreachable"]
+    C --> D["GC-eligible<br/>collection time unknown"]
+```
+
+| State | Reachable? | Why |
+| ----- | ---------- | --- |
+| After construction | Yes | `first` points to object |
+| After `alias = first` | Yes | Two references point to same object |
+| After `first = null` | Yes | `alias` still points to object |
+| After `alias = null` | No strong path from the demo | Object becomes GC-eligible |
+
+## Steps
+
+### Step 1 — Create, compile, and run
+
+**Windows:**
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\module-04-exercises
+javac ObjectLifecycleDemo.java
+java ObjectLifecycleDemo
+```
+
+**macOS:**
+
+```bash
+cd ~/java-bootcamp/examples/module-04-exercises
+javac ObjectLifecycleDemo.java
+java ObjectLifecycleDemo
+```
+
+**Verified (Windows):**
+
+```text
+Same object: true
+Still reachable through alias: Aman
+No strong references remain; object is GC-eligible.
+GC requested, not guaranteed.
+```
+
+### Step 2 — Explain `==`
+
+**Why:** For object references, `==` checks whether both references point to the same object.
+
+`first == alias` is `true`; no second `Person` was created.
+
+### Step 3 — Write the lifecycle note
+
+Add to `notes.md`:
+
+```markdown
+An object is not collectible merely because one reference becomes null.
+It becomes GC-eligible only when no live strong-reference path can reach it.
+Eligibility does not guarantee immediate collection, and System.gc() is only
+a request.
+```
 
 ## Expected result
 
-You can define reachable vs unreachable.
+You can explain the difference between removing one alias, losing all strong references, becoming GC-eligible, and actually being collected.
+
+## Common mistakes
+
+| Incorrect statement | Correct statement |
+| ------------------- | ----------------- |
+| `first = null` destroys the object | The object remains reachable through `alias` |
+| `System.gc()` immediately frees it | Collection timing is controlled by the JVM |
+| Two references mean two objects | Both references can point to one object |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | Output confirms both references initially share one object | Pass / Fail |
+| 2 | You identify the exact GC-eligibility point | Pass / Fail |
+| 3 | You state that `System.gc()` is not guaranteed | Pass / Fail |

@@ -10,7 +10,7 @@ Parent index: [labs/LABS-INDEX.md](../LABS-INDEX.md) · Setup: [SETUP-INSTRUCTIO
 
 | Lab | Guide |
 | --- | ----- |
-| [lab8](module-08/lab8/LAB-8-GUIDE.md) | [Open guide](module-08/lab8/LAB-8-GUIDE.md) |
+| [lab8](module-08/README.md) | [Start](module-08/README.md) · [Exercises](module-08/exercises/EXERCISES-INDEX.md) · [Lab guide](module-08/lab8/LAB-8-GUIDE.md) |
 | [lab9](module-09/lab9/LAB-9-GUIDE.md) | [Open guide](module-09/lab9/LAB-9-GUIDE.md) |
 | [lab10](module-10/lab10/LAB-10-GUIDE.md) | [Open guide](module-10/lab10/LAB-10-GUIDE.md) |
 | [lab11](module-11/lab11/LAB-11-GUIDE.md) | [Open guide](module-11/lab11/LAB-11-GUIDE.md) |

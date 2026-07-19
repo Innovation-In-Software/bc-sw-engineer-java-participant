@@ -1,0 +1,172 @@
+# Exercise 1 — Lambda and a Custom Functional Interface
+
+**Module 6** · Pre-lab practice · then open [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
+
+> **Start here:** This exercise creates the shared `Employee` model and sample
+> dataset used by Exercises 2–7.
+
+## Goal
+
+Create a five-employee dataset, declare a custom functional interface with one
+abstract method, and implement the same salary rule with an anonymous class and
+a lambda.
+
+## Key vocabulary
+
+| Term | Easy meaning |
+| ---- | ------------ |
+| Functional interface | An interface with exactly one abstract method |
+| Lambda | A short implementation of that one method |
+| Parameter | Input on the left side of `->` |
+| Expression body | Value or action on the right side of `->` |
+| Effectively final | A captured local value that is not reassigned |
+
+## Starter / reference (with line comments)
+
+Create `Employee.java`:
+
+```java
+// A record is an immutable data carrier. Java generates the constructor
+// and accessor methods: id(), name(), department(), and salary().
+public record Employee(
+        int id,
+        String name,
+        String department,
+        double salary) {
+}
+```
+
+Create `EmployeeData.java`:
+
+```java
+import java.util.List;
+
+public final class EmployeeData {
+    // Utility classes do not need instances.
+    private EmployeeData() {
+    }
+
+    public static List<Employee> sample() {
+        // List.of returns an unmodifiable list, which is ideal for read-only exercises.
+        return List.of(
+                new Employee(1, "Alice", "HR", 72_000),
+                new Employee(2, "Bob", "IT", 65_000),
+                new Employee(3, "Charlie", "HR", 80_000),
+                new Employee(4, "Diana", "Finance", 90_000),
+                new Employee(5, "Evan", "IT", 55_000));
+    }
+}
+```
+
+Create `SalaryCheck.java`:
+
+```java
+@FunctionalInterface
+public interface SalaryCheck {
+    // One abstract method makes this interface compatible with a lambda.
+    boolean test(Employee employee);
+}
+```
+
+Create `LambdaDemo.java`:
+
+```java
+public class LambdaDemo {
+    public static void main(String[] args) {
+        Employee alice = EmployeeData.sample().get(0);
+
+        // Anonymous class: explicit implementation object.
+        SalaryCheck anonymous = new SalaryCheck() {
+            @Override
+            public boolean test(Employee employee) {
+                return employee.salary() > 60_000;
+            }
+        };
+
+        // Lambda: same SalaryCheck contract and same result.
+        SalaryCheck lambda = employee -> employee.salary() > 60_000;
+
+        System.out.println("Employee: " + alice.name());
+        System.out.println("Anonymous result: " + anonymous.test(alice));
+        System.out.println("Lambda result: " + lambda.test(alice));
+    }
+}
+```
+
+## Steps
+
+### Step 1 — Create the shared model and dataset
+
+**Why:** Every later exercise should answer a new stream question against the
+same known data instead of redefining inconsistent employees.
+
+Create `Employee.java` and `EmployeeData.java` exactly as shown.
+
+### Step 2 — Create the functional contract
+
+**Why:** The lambda's target type tells Java the parameter and return types.
+
+Create `SalaryCheck.java`. Keep exactly one abstract method.
+
+### Step 3 — Compare both implementations
+
+Create `LambdaDemo.java`. Read the anonymous class first, then identify the
+same parameter, condition, and boolean result in the lambda.
+
+### Step 4 — Compile and run
+
+**Windows (PowerShell):**
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\module-06-exercises
+javac Employee.java EmployeeData.java SalaryCheck.java LambdaDemo.java
+java LambdaDemo
+```
+
+**macOS (zsh/bash):**
+
+```bash
+cd ~/java-bootcamp/examples/module-06-exercises
+javac Employee.java EmployeeData.java SalaryCheck.java LambdaDemo.java
+java LambdaDemo
+```
+
+**Expected output:**
+
+```text
+Employee: Alice
+Anonymous result: true
+Lambda result: true
+```
+
+### Step 5 — Change the threshold
+
+Change both checks from `60_000` to `75_000`, recompile, and rerun.
+
+Expected: both results become `false`. Restore `60_000` before Exercise 2.
+
+## Expected result
+
+Four source files compile. The anonymous class and lambda produce identical
+results for both tested thresholds.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `cannot find symbol Employee` | Compile `Employee.java` with the other files and stay in the exercises folder |
+| `SalaryCheck is not a functional interface` | Keep exactly one abstract method in `SalaryCheck` |
+| Record access error such as `salary has private access` | Call `employee.salary()`, not `employee.salary` |
+| Anonymous and lambda results differ | Use the same comparison and threshold in both implementations |
+
+## Pass criteria
+
+_Mark each row **Pass** or **Fail** in your lab notes._
+
+| # | Confirm | Your notes |
+| - | ------- | ---------- |
+| 1 | All four files compile and `LambdaDemo` runs | Pass / Fail |
+| 2 | Both implementations return `true` at 60,000 | Pass / Fail |
+| 3 | Both implementations return `false` at 75,000 | Pass / Fail |
+| 4 | You can explain what `employee -> ...` means | Pass / Fail |

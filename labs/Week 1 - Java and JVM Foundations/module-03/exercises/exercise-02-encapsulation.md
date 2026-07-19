@@ -1,26 +1,167 @@
-# Exercise — Encapsulation Practice
+# Exercise 2 — Encapsulation Practice
 
-**Module 3** · Pre-lab practice · then open [`../../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)
+**Module 3** · Pre-lab practice · then open [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
+
+> **Builds on Exercise 1:** `Account` owns the balance, so callers request a deposit or withdrawal instead of writing the field directly.
 
 ## Goal
 
-Create `Account` with private `balance`; `deposit` / `withdraw` methods; no public field writes.
+Create `Account.java` with private balance state and validated operations. Create `EncapsulationDemo.java` to prove valid operations succeed and an invalid withdrawal is rejected.
 
-## Do this
+## Starter / reference
 
-- `private double balance`
-- `deposit` / `withdraw` with basic validation
-- `main` demos deposit then withdraw
+### `Account.java`
+
+```java
+public class Account {
+    // Hidden state: outside code cannot write account.balance directly
+    private double balance;
+
+    public Account(double initialBalance) {
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException(
+                    "Initial balance cannot be negative");
+        }
+        balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println(
+                    "Deposit rejected: amount must be positive.");
+            return;
+        }
+        balance += amount;
+    }
+
+    public boolean withdraw(double amount) {
+        if (amount <= 0 || amount > balance) {
+            System.out.println("Withdrawal rejected.");
+            return false;
+        }
+        balance -= amount;
+        return true;
+    }
+
+    // Read-only access: callers can inspect, but not assign, the balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // Exercise 3 will override this method
+    public String getAccountType() {
+        return "Account";
+    }
+}
+```
+
+### `EncapsulationDemo.java`
+
+```java
+public class EncapsulationDemo {
+    public static void main(String[] args) {
+        Account account = new Account(100.00);
+
+        account.deposit(50.00);     // balance: 150
+        account.withdraw(30.00);    // balance: 120
+        account.withdraw(500.00);   // rejected; balance remains 120
+
+        System.out.printf(
+                "Final balance: %.2f%n", account.getBalance());
+    }
+}
+```
+
+| Design choice | Why it matters |
+| ------------- | -------------- |
+| `private double balance` | Prevents uncontrolled writes |
+| No `setBalance(...)` | A setter would bypass deposit/withdraw rules |
+| Constructor validation | Stops an invalid object from being created |
+| `withdraw` returns `boolean` | Caller can tell whether the operation succeeded |
+| `getBalance()` | Allows read-only observation |
+
+## Steps
+
+### Step 1 — Create both files
+
+**Why:** One class models the account; the demo class only exercises its public API.
+
+Create:
+
+```text
+module-03-exercises/
+  Account.java
+  EncapsulationDemo.java
+```
+
+Paste the starter code and save.
+
+### Step 2 — Compile both classes
+
+**Windows:**
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\module-03-exercises
+javac Account.java EncapsulationDemo.java
+```
+
+**macOS:**
+
+```bash
+cd ~/java-bootcamp/examples/module-03-exercises
+javac Account.java EncapsulationDemo.java
+```
+
+**Why:** `EncapsulationDemo` depends on `Account`, so both source files must be available to the compiler.
+
+### Step 3 — Run the demo
+
+```text
+java EncapsulationDemo
+```
+
+**Verified (Windows):**
+
+```text
+Withdrawal rejected.
+Final balance: 120.00
+```
+
+### Step 4 — Prove direct access is blocked
+
+**Why:** Encapsulation is enforced by the compiler, not merely by convention.
+
+Temporarily add this line inside `main`:
+
+```java
+account.balance = 999999;
+```
+
+Compile again. Expected compiler message includes:
+
+```text
+balance has private access in Account
+```
+
+Remove the failure-experiment line before continuing.
 
 ## Expected result
 
-Balance only changes through methods.
+Valid operations change the balance; the oversized withdrawal does not. Outside code cannot directly assign `balance`.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `class Account is public, should be declared...` | File must be exactly `Account.java` |
+| Final balance is `-380.00` | Validate before subtracting |
+| Demo cannot access balance | Use `getBalance()`; do not make balance public |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | Demo prints rejection and final balance `120.00` | Pass / Fail |
+| 2 | Direct `account.balance` access fails to compile | Pass / Fail |
+| 3 | You can explain why no public `setBalance` exists | Pass / Fail |
