@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Exercise 6 SOLID SRP beginner slide diagram</title>
+  <desc id="desc">A slide explaining Single Responsibility Principle by refactoring a mixed interest calculation and print method into separate calculation, display, and coordination methods.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1f2937" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C62828"/>
+    </marker>
+    <linearGradient id="topBand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C62828"/>
+      <stop offset="100%" stop-color="#8E1B1B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1920" height="146" fill="url(#topBand)"/>
+  <text x="96" y="64" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">Module 3 - Exercise 6</text>
+  <text x="96" y="116" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="800" fill="#FFFFFF">SOLID Spot-Check: Single Responsibility Principle</text>
+  <text x="1470" y="94" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#FEE2E2">Beginner OOP</text>
+
+  <text x="960" y="218" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800" fill="#111827">Main idea: one method should have one clear reason to change</text>
+  <text x="960" y="263" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" fill="#4B5563">Separate business calculation from console display so each part is easier to reuse, test, and modify.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="96" y="322" width="720" height="442" rx="22" fill="#FFFFFF"/>
+  </g>
+  <rect x="96" y="322" width="720" height="86" rx="22" fill="#FEE2E2"/>
+  <rect x="96" y="386" width="720" height="22" fill="#FEE2E2"/>
+  <text x="136" y="377" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#991B1B">Before: mixed responsibilities</text>
+
+  <rect x="136" y="448" width="640" height="184" rx="14" fill="#111827"/>
+  <text x="166" y="492" font-family="Consolas, Menlo, monospace" font-size="24" fill="#D1FAE5">calculateAndPrintInterest(balance, rate)</text>
+  <text x="166" y="534" font-family="Consolas, Menlo, monospace" font-size="23" fill="#FDE68A">interest = balance * rate / 100.0</text>
+  <text x="166" y="576" font-family="Consolas, Menlo, monospace" font-size="23" fill="#BFDBFE">System.out.printf("Interest earned...")</text>
+
+  <rect x="148" y="660" width="296" height="62" rx="31" fill="#FEE2E2" stroke="#C62828" stroke-width="3"/>
+  <text x="296" y="700" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800" fill="#991B1B">Formula can change</text>
+  <rect x="476" y="660" width="288" height="62" rx="31" fill="#FEE2E2" stroke="#C62828" stroke-width="3"/>
+  <text x="620" y="700" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800" fill="#991B1B">UI can change</text>
+
+  <g>
+    <path d="M 848 548 C 902 548, 954 548, 1008 548" fill="none" stroke="#C62828" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+    <rect x="862" y="488" width="132" height="46" rx="23" fill="#FFFFFF" stroke="#C62828" stroke-width="3"/>
+    <text x="928" y="520" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#C62828">Refactor</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1040" y="322" width="784" height="442" rx="22" fill="#FFFFFF"/>
+  </g>
+  <rect x="1040" y="322" width="784" height="86" rx="22" fill="#DCFCE7"/>
+  <rect x="1040" y="386" width="784" height="22" fill="#DCFCE7"/>
+  <text x="1080" y="377" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#166534">After: separate responsibilities</text>
+
+  <rect x="1088" y="442" width="688" height="82" rx="16" fill="#F0FDF4" stroke="#22C55E" stroke-width="3"/>
+  <text x="1124" y="476" font-family="Consolas, Menlo, monospace" font-size="25" font-weight="700" fill="#14532D">calculateInterest()</text>
+  <text x="1124" y="509" font-family="Inter, Arial, sans-serif" font-size="24" fill="#374151">Apply the interest formula and return a double.</text>
+
+  <rect x="1088" y="550" width="688" height="82" rx="16" fill="#EFF6FF" stroke="#3B82F6" stroke-width="3"/>
+  <text x="1124" y="584" font-family="Consolas, Menlo, monospace" font-size="25" font-weight="700" fill="#1E3A8A">printInterest()</text>
+  <text x="1124" y="617" font-family="Inter, Arial, sans-serif" font-size="24" fill="#374151">Format and display the result. No formula here.</text>
+
+  <rect x="1088" y="658" width="688" height="82" rx="16" fill="#FFF7ED" stroke="#F97316" stroke-width="3"/>
+  <text x="1124" y="692" font-family="Consolas, Menlo, monospace" font-size="25" font-weight="700" fill="#9A3412">main()</text>
+  <text x="1124" y="725" font-family="Inter, Arial, sans-serif" font-size="24" fill="#374151">Coordinate: calculate first, then print.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="160" y="818" width="1600" height="140" rx="22" fill="#FFFFFF"/>
+  </g>
+  <text x="208" y="870" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="800" fill="#111827">Lab 3 connection</text>
+  <text x="208" y="918" font-family="Inter, Arial, sans-serif" font-size="27" fill="#374151">Main handles menu input</text>
+  <circle cx="552" cy="909" r="7" fill="#C62828"/>
+  <text x="584" y="918" font-family="Inter, Arial, sans-serif" font-size="27" fill="#374151">BankService coordinates banking operations</text>
+  <circle cx="1114" cy="909" r="7" fill="#C62828"/>
+  <text x="1146" y="918" font-family="Inter, Arial, sans-serif" font-size="27" fill="#374151">Domain classes protect their own state</text>
+
+  <rect x="160" y="988" width="1600" height="44" rx="22" fill="#111827"/>
+  <text x="960" y="1018" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">Expected output: Interest earned: 500.00</text>
+</svg>
