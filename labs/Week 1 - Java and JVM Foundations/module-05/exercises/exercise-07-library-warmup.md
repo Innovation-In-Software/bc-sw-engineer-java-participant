@@ -3,6 +3,8 @@
 **Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
+![Java Collections Warm-Up: Library Checkout Workflow](../../../lab_diagrams/mod05-ex07-library-warmup.png)
+
 > **Bridge to Lab 5:** Coordinate two collections around one checkout rule without yet building the full library application.
 
 ## Goal

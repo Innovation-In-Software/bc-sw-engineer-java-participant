@@ -3,6 +3,8 @@
 **Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
+![Java Collections: HashSet and TreeSet](../../../lab_diagrams/mod05-ex02-hashset.png)
+
 ## Goal
 
 Create `SetDemo.java`, prove duplicate rejection with `add`’s return value, and create a sorted `TreeSet` view.

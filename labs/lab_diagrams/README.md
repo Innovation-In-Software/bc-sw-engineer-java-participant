@@ -60,3 +60,24 @@ Exercise guides: [`module-04/exercises/`](../Week%201%20-%20Java%20and%20JVM%20F
 | [`mod04-ex05-zgc.png`](mod04-ex05-zgc.png) | Exercise 5 — ZGC Flag |
 | [`mod04-ex06-retained-references.png`](mod04-ex06-retained-references.png) | Exercise 6 — Retention Sketch |
 | [`mod04-ex07-string-vs-builder.png`](mod04-ex07-string-vs-builder.png) | Exercise 7 — String vs StringBuilder |
+
+## Module 5 — Collections Framework
+
+Exercise guides: [`module-05/exercises/`](../Week%201%20-%20Java%20and%20JVM%20Foundations/module-05/exercises/)
+
+| File | Exercise |
+| ---- | -------- |
+| [`mod05-ex01-arraylist.png`](mod05-ex01-arraylist.png) | Exercise 1 — Working with `ArrayList` |
+| [`mod05-ex02-hashset.png`](mod05-ex02-hashset.png) | Exercise 2 — Working with `HashSet` |
+| [`mod05-ex03-hashmap.png`](mod05-ex03-hashmap.png) | Exercise 3 — Working with `HashMap` |
+| [`mod05-ex04-sorted-collections.png`](mod05-ex04-sorted-collections.png) | Exercise 4 — Sorted Collections: `TreeMap` |
+| [`mod05-ex05-iteration.png`](mod05-ex05-iteration.png) | Exercise 5 — Safe Removal During Iteration |
+| [`mod05-ex07-library-warmup.png`](mod05-ex07-library-warmup.png) | Exercise 7 — Library Collections Warm-up |
+
+## Module 6 — Streams and Lambda Expressions
+
+Exercise guides: [`module-06/exercises/`](../Week%201%20-%20Java%20and%20JVM%20Foundations/module-06/exercises/)
+
+| File | Exercise |
+| ---- | -------- |
+| [`mod06-ex01-lambda-functional-interface.png`](mod06-ex01-lambda-functional-interface.png) | Exercise 1 — Lambda and a Custom Functional Interface |

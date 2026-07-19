@@ -3,6 +3,8 @@
 **Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
+![Java Collections: Sorting Map Keys with TreeMap](../../../lab_diagrams/mod05-ex04-sorted-collections.png)
+
 > **Builds on Exercise 2:** You already used `new TreeSet<>(...)` to get a sorted view of a `Set`. `TreeMap` applies the same idea to key-value pairs.
 
 ## Goal

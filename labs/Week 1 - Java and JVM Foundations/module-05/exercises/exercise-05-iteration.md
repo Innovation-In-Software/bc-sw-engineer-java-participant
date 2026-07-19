@@ -3,6 +3,8 @@
 **Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
+![Java Collections: Safe Removal with Iterator](../../../lab_diagrams/mod05-ex05-iteration.png)
+
 ## Goal
 
 Create `IteratorDemo.java` and safely remove matching titles through the active `Iterator`.

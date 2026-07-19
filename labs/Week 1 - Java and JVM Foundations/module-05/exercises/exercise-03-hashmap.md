@@ -3,6 +3,8 @@
 **Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
+![Java Collections: HashMap and TreeMap](../../../lab_diagrams/mod05-ex03-hashmap.png)
+
 ## Goal
 
 Create `MapDemo.java` using ISBN-like strings as keys and copy counts as values. Practice put, get, update, remove, default lookup, and entry iteration.

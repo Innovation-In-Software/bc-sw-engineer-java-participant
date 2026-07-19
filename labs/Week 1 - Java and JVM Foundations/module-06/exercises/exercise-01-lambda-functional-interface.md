@@ -3,6 +3,8 @@
 **Module 6** · Pre-lab practice · then open [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
+![Java Lambdas: From Anonymous Class to Functional Interface](../../../lab_diagrams/mod06-ex01-lambda-functional-interface.png)
+
 > **Start here:** This exercise creates the shared `Employee` model and sample
 > dataset used by Exercises 2–7.
 
