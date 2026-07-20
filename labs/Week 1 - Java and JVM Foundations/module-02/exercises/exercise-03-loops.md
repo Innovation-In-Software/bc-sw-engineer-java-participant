@@ -1,6 +1,6 @@
 # Exercise 3 — Loops
 
-**Module 2** · Pre-lab practice · then open [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Loops: for, while, and do-while](../../../lab_diagrams/mod02-ex03-loops.png)
@@ -57,7 +57,7 @@ public class LoopsDemo {
 
 ### Step 1 — Create `LoopsDemo.java`
 
-**Why:** Lab 2's student menu repeats until the user chooses to exit — that is a `do-while`.
+**Why:** Lab 2's student menu repeats until the user chooses to exit — same idea as this `do-while` toy. The graded Lab 2 menu uses `while (true)` + Exit choice (either form is fine for “repeat until done”).
 
 1. **New → File** → `LoopsDemo.java`.
 2. Paste the starter. Save.

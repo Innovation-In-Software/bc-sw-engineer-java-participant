@@ -1,6 +1,6 @@
 # Exercise 7 — Library Collections Warm-up
 
-**Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections Warm-Up: Library Checkout Workflow](../../../lab_diagrams/mod05-ex07-library-warmup.png)
@@ -165,3 +165,11 @@ First checkout succeeds, the same member’s second checkout fails, and the titl
 | 2 | Final list and map match verified output | Pass / Fail |
 | 3 | Unavailable-title test leaves state unchanged | Pass / Fail |
 | 4 | You can state the checkout invariant | Pass / Fail |
+
+---
+
+## Next
+
+Exercises 1–7 complete → open **one** OS how-to → [`../lab5/LAB-5-WINDOWS.md`](../lab5/LAB-5-WINDOWS.md) or [`../lab5/LAB-5-MACOS.md`](../lab5/LAB-5-MACOS.md) → then graded [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md) (builds on these seven; separate folder `examples/Lab5-LibraryManagement/` with `src/com/academy/library/`).
+
+Bring your Exercise 6 collection-choice notes and Exercise 7 invariant explanation to the Lab 5 core checkpoint.

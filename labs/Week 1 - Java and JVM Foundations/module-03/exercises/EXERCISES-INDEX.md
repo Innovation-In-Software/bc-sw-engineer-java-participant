@@ -4,12 +4,14 @@
 
 **Module:** 3 — Object-Oriented Programming in Java  
 **Source:** Module 3 slides: Lab Overview / Lab Tasks (Object-Oriented Design)  
-**Next (after all 8 exercises):** OS how-to → [`../lab3/LAB-3-WINDOWS.md`](../lab3/LAB-3-WINDOWS.md) or [`../lab3/LAB-3-MACOS.md`](../lab3/LAB-3-MACOS.md) → then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)
+**Next (after Exercises 1–8 Pass):** OS how-to → [`../lab3/LAB-3-WINDOWS.md`](../lab3/LAB-3-WINDOWS.md) or [`../lab3/LAB-3-MACOS.md`](../lab3/LAB-3-MACOS.md) → then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** and **before** the full lab.  
+> **When:** Complete these exercises **after the module slides** and **before** the graded lab.  
+> **Gate for Lab 3:** All **eight** exercises must be Pass.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice sources separate from the graded lab (`examples/Lab3-BankingSystem/`).  
-> Exercises 2–5 build on the same small banking model, so work in order.
+> Exercises 2–5 build on the same small banking model, so work in order.  
+> **Lab 3 assumes** you can already apply encapsulation, inheritance, abstract types, interfaces, SOLID spot-checks, and mini UML — Lab 3 packages them into a banking menu app, not first teaching.
 
 ## Already covered — do not redo
 
@@ -86,3 +88,5 @@ Numbered to match the order these topics appear in the Module 3 slides — work 
 | 8 | Mini UML | Inheritance, association, multiplicity | [`exercise-08-uml-mini.md`](exercise-08-uml-mini.md) |
 
 Work in order. Keep these practice files separate from the graded Lab 3 submission.
+
+When all **eight** Pass criteria are **Pass**, open your OS how-to and then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md). Do not start Lab 3 mid-exercise list.

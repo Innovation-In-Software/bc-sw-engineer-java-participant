@@ -4,12 +4,13 @@
 
 **Module:** 1 — JVM Architecture and Runtime Model  
 **Source:** Module 1 slides: Lab Overview / Lab Tasks (JVM and Compilation)  
-**Next (after all 8 exercises):** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Next (after all 8 exercises Pass):** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** and **before** the full lab.  
+> **When:** Complete these exercises **after the module slides** (and instructor demo) and **before** the graded lab.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice sources separate from the graded lab (`examples/jvm-compilation-lab/`).  
-> Each exercise includes **line comments in starter code**, a short **why** for each step, and plain-English meanings for commands / bytecode.
+> Each exercise includes **line comments in starter code**, a short **why** for each step, and plain-English meanings for commands / bytecode.  
+> **Lab 1 assumes** you can already compile/run, use `-verbose:class`, sketch stack vs heap, and read `javap -c` from these eight exercises — Lab 1 Steps 2–8 are graded consolidation, not first teaching.
 
 ## Workspace
 
@@ -87,3 +88,5 @@ Numbered to match the order these topics appear in the Module 1 slides — work 
 | 8 | Inspect Bytecode | [`exercise-08-javap.md`](exercise-08-javap.md) |
 
 Work in order.
+
+When all eight Pass criteria are **Pass**, open your OS how-to and then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md). Do not start Lab 1 mid-exercise list.

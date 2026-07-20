@@ -1,11 +1,11 @@
 # Lab 1: JVM and Compilation
 
-> **Participants:** Module sequence is in [`../README.md`](../README.md). Open **one** OS how-to ([Windows](LAB-1-WINDOWS.md) · [macOS](LAB-1-MACOS.md)), then do **every Step below**. Skip `INSTRUCTOR-DEMO.md` and `solution/`. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 1 [pre-lab exercises 1–8](../exercises/EXERCISES-INDEX.md). Then open **one** OS how-to ([Windows](LAB-1-WINDOWS.md) · [macOS](LAB-1-MACOS.md)) and do **every Step below**. Skip `INSTRUCTOR-DEMO.md` and `solution/`. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
-**Module:** 1 — Java Fundamentals and the JVM  
+**Module:** 1 — JVM Architecture and Runtime Model  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-01/lab1/`  
 **Difficulty:** Beginner–Intermediate  
-**Duration:** 90–120 minutes
+**Duration:** 65–120 minutes (Day 1 core checkpoint ~65 min; finish remaining steps as extended work)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
 
@@ -16,17 +16,18 @@
 
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
-> **Pre-lab exercises:** Complete [`../exercises/`](../exercises/) (from the Module 1 slides) before starting this lab.
+> **Hard gate — pre-lab exercises:** Complete **all eight** Module 1 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** in your notes **before** Step 0 of this lab. Lab 1 is graded consolidation in a **separate** folder (`examples/jvm-compilation-lab/`), not a replacement for the exercises folder (`examples/module-01-exercises/`).
 
 ---
 
 ## How to follow this lab
 
-1. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-2. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-3. For each **Step N**: read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-5. Capture evidence under `notes/screenshots/lab-1/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. Confirm Lab 0 + Module 1 Exercises 1–8 are done (checklists below).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
+3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
+4. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
+5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
+6. Capture evidence under `notes/screenshots/lab-1/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
 ## Lab 0 baseline you must already have
 
@@ -48,17 +49,36 @@ javap -version         # 21.x
 
 Maven is **not** required for Lab 1 (plain `javac` / `java`). If any check fails, **stop and re-do Lab 0**.
 
+## Module 1 exercises you must already have completed
+
+Lab 1 assumes you already practiced these skills in `examples/module-01-exercises/`. Do **not** treat Steps 2–8 as your first time seeing `javac` / `java` / `javap`.
+
+| Exercise | You already did | Lab 1 builds on it |
+| -------- | --------------- | ------------------ |
+| 1 — Hello World | `Hello.java` → `Hello, JVM!` | Graded `HelloWorld.java` + file inspection |
+| 2 — WORA | Re-run `.class`; short independence note | Same mental model in Concepts / written answers |
+| 3 — Control Flow | `if` / loops / `switch` warm-up | Syntax comfort only (not a Lab 1 deliverable) |
+| 4 — Class loading | `java -verbose:class Hello` | Same flags on graded `Employee` + screenshot evidence |
+| 5 — Variables | Locals / `String` | Prep for stack vs heap narratives |
+| 6 — Methods | `add(10, 20)` → `30` | Graded `Calculator` + stack-frame table + `iadd` / `invokestatic` |
+| 7 — Objects | `Person` + stack ref vs heap | Graded `Employee(101, "Aman")` + heap sketch |
+| 8 — `javap` | `javap -c Person`; name three opcodes | `javap -c` on `HelloWorld` and `Calculator` for deliverables |
+
+**Lab-only additions (not in the eight exercises):** personal GitHub repo (Steps 0 / 12), `MemoryDemo` allocation stress, `PrintFlagsFinal` / `-Xmx` practice, clean/rebuild of all four classes, failure experiments, and formal LMS evidence pack.
+
+If any exercise Pass row is still **Fail**, finish that exercise first — then return here.
+
 ---
 
 ## Lab Overview
 
-This Module 1 lab builds **JVM literacy** before you touch Spring Boot, Maven multi-module builds, or the Customer Management Platform. You will write small Java programs, compile them with `javac`, run them with `java`, inspect bytecode with `javap`, watch class loading, and observe how the stack and heap relate to ordinary method calls and `new` objects.
+This Module 1 lab is the **graded consolidation** after Module 1 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced compile/run, WORA, class loading, methods, objects, and `javap` in `module-01-exercises/`. Here you repeat the JVM story with **new graded class names**, deeper evidence, heap stress (`MemoryDemo`), JVM flags, and your personal GitHub workspace.
 
-**Purpose.** Enterprise Java teams debug production incidents in terms of heap size, GC flags, classloading, and bytecode-level surprises. Lab 1 forces the mental model: **source → bytecode → JVM load → execute**.
+**Purpose.** Enterprise Java teams debug production incidents in terms of heap size, GC flags, classloading, and bytecode-level surprises. Lab 1 locks the mental model: **source → bytecode → JVM load → execute** — with submit-ready screenshots and written answers.
 
-**What success looks like.** Under `java-bootcamp/examples/jvm-compilation-lab/` you have four source files (`HelloWorld`, `Calculator`, `Employee`, `MemoryDemo`), matching `.class` files after compile, evidence of `javap -c`, verbose class load output, heap-related flags, and short written answers about stack versus heap.
+**What success looks like.** Under `java-bootcamp/examples/jvm-compilation-lab/` you have four source files (`HelloWorld`, `Calculator`, `Employee`, `MemoryDemo`), matching `.class` files after compile, evidence of `javap -c`, verbose class load output, heap-related flags, and short written answers about stack versus heap. Your earlier exercise sources remain under `examples/module-01-exercises/` (also committed in Step 12).
 
-**Depends on Lab 0.** If the IDE, `java`, or `javac` fail, stop and fix Lab 0 / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md).
+**Depends on Lab 0 + Exercises 1–8.** If the IDE, `java`, or `javac` fail, stop and fix Lab 0 / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). If you have not finished the exercises, stop and open [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
 
 **CRM connection (future only).** Later labs build the **Customer Management Platform**. This lab does **not** create CRM services. It uses pedagogical types (`Employee`, name `Aman`) so you can see object allocation clearly.
 
@@ -66,17 +86,17 @@ This Module 1 lab builds **JVM literacy** before you touch Spring Boot, Maven mu
 
 ## Learning Objectives
 
-After completing this lab, you will be able to:
+After completing this lab, you will be able to **consolidate and extend** what you practiced in Exercises 1–8:
 
-* Create Java source files in the standard bootcamp workspace using VS Code or IntelliJ
-* Compile `.java` sources to `.class` bytecode with `javac` and explain what the compiler produced
-* Execute entry-point classes with `java` and state why the command takes a **class name**, not a `.java` path
-* Inspect method signatures and disassembled bytecode with `javap` and `javap -c`
-* Trace simple method-call flow (`main` → `add` → return) and map locals / frames to the **stack**
-* Explain object creation (`new Employee(...)`) and map instance fields / `String` objects to the **heap**
-* Observe JVM class loading with `-verbose:class` or `-Xlog:class+load`
-* Interpret basic memory and GC-related flags (`-Xms`, `-Xmx`, `PrintFlagsFinal`, G1 mentions)
-* Clean and recompile wisely (delete `*.class` without deleting sources) and re-verify all programs
+* Work confidently in the standard bootcamp workspace (IntelliJ primary / VS Code optional) with a **separate** graded lab folder
+* Produce graded compile/run evidence for four entry-point classes (`HelloWorld`, `Calculator`, `Employee`, `MemoryDemo`)
+* Apply exercise `javap` skills to Calculator opcodes such as `iadd` / `invokestatic` / `iload` / `istore` and capture screenshots for the LMS
+* Trace method-call flow (`main` → `add` → return) and complete a stack-frame table suitable for grading
+* Explain object creation (`new Employee(...)`) with a stack-reference vs heap-object sketch (same story as Exercise 7 `Person`, graded names)
+* Capture richer class-loading evidence on `Employee` (same flags as Exercise 4 on `Hello`)
+* Interpret basic memory and GC-related flags (`-Xms`, `-Xmx`, `PrintFlagsFinal`, G1 mentions) after stressing allocation with `MemoryDemo`
+* Clean and recompile wisely (delete `*.class` without deleting sources) and re-verify all four programs
+* Create and push a personal `java-bootcamp` GitHub repo that includes both exercise and lab sources
 * Articulate how this local JVM workflow later maps to Maven/`mvn compile` and Spring Boot packaging (conceptually)
 
 ---
@@ -85,7 +105,7 @@ After completing this lab, you will be able to:
 
 Northstar Financial Services is onboarding you onto a greenfield **Customer Management Platform**. Before you open tickets for customer `CUS-1001` (Amina Khan) or write Spring controllers, the platform lead requires every engineer to demonstrate JVM fundamentals on **their laptop**.
 
-Today’s onboarding pass list is pedagogical, not CRM:
+You already practiced the basics in Module 1 Exercises 1–8. Today’s **graded** onboarding pass list consolidates that work:
 
 * Prove you can compile and run a tiny `HelloWorld` that prints `Hello, JVM!`
 * Prove you can read bytecode for a `Calculator` (stack-friendly primitives)
@@ -146,12 +166,29 @@ flowchart LR
 
 ## Prerequisites
 
-Complete [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) and skim [SETUP-INSTRUCTIONS](../../../SETUP-INSTRUCTIONS.md). Confirm:
+Complete **both** of the following before Step 0:
+
+1. [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) (skim [SETUP-INSTRUCTIONS](../../../SETUP-INSTRUCTIONS.md) if anything fails)
+2. Module 1 [Exercises 1–8](../exercises/EXERCISES-INDEX.md) — all Pass rows marked **Pass** in your notes
+
+Confirm environment:
 
 * **JDK 21** with `javac`, `java`, and `javap` on `PATH`
 * **VS Code** and/or **IntelliJ IDEA Community** with `java-bootcamp` open
 * No secrets (keys, tokens, passwords) committed to Git
 * **Git identity** from Lab 0 Step 10 (`user.name` / noreply `user.email`) — you create the personal `java-bootcamp` GitHub repo in **Step 0** below
+
+Confirm exercise readiness (from your notes / `examples/module-01-exercises/`):
+
+| # | Exercise skill | Ready? |
+| - | -------------- | ------ |
+| 1 | `Hello.java` compiles and prints `Hello, JVM!` | Pass / Fail |
+| 4 | You can run `-verbose:class` (or `-Xlog:class+load`) and spot bootstrap vs application classes | Pass / Fail |
+| 6 | You can explain `add(10, 20)` → `30` and that method locals live in stack frames | Pass / Fail |
+| 7 | You can sketch stack reference vs heap object for a simple `new` type | Pass / Fail |
+| 8 | `javap -c` shows opcodes you can name (at least three) | Pass / Fail |
+
+If any row is **Fail**, finish that exercise before continuing. Exercises 2, 3, and 5 still belong in the full eight-exercise Pass set even though they are not re-listed above.
 
 ### Pre-flight
 
@@ -166,6 +203,7 @@ javap -version
 git --version
 Get-Location
 Get-ChildItem $env:USERPROFILE\java-bootcamp
+Get-ChildItem $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
 ```
 
 **macOS / Linux:**
@@ -177,6 +215,7 @@ javap -version
 git --version
 pwd
 ls ~/java-bootcamp
+ls ~/java-bootcamp/examples/module-01-exercises
 ```
 
 **Expected result (versions may vary slightly):**
@@ -187,15 +226,16 @@ javac 21....
 javap 21....
 git version 2....
 ... examples  notes
+... Hello.java  (and other exercise sources from 1–8)
 ```
 
-Fix environment failures before writing application code.
+Fix environment failures before writing Lab 1 application code. If `module-01-exercises` is missing or empty, return to [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
 
 ---
 
 ## Suggested Project Files
 
-Create everything under the bootcamp workspace:
+Create everything under the bootcamp workspace (**separate from** `examples/module-01-exercises/`):
 
 **Windows:** `%USERPROFILE%\java-bootcamp\examples\jvm-compilation-lab`  
 **macOS / Linux:** `~/java-bootcamp/examples/jvm-compilation-lab`
@@ -228,14 +268,14 @@ replay_pid*
 
 ## Concepts to Discuss
 
-Before coding, write two or three sentences for each prompt. Revisit after Checkpoint C.
+Before Lab steps, **revisit** your exercise notes and write two or three sentences for each prompt. Revisit again after Checkpoint C.
 
-1. **Why bytecode?** Why does Java compile to platform-neutral bytecode instead of a native `.exe` on each OS?
-2. **Class name vs file path.** Why does `java HelloWorld` omit `.class`, and what goes wrong if you type `java HelloWorld.java` or `java helloworld`?
-3. **Stack frames.** What is created when `main` calls `Calculator.add`, and what happens to that frame on `return`?
-4. **Heap identity.** In `Employee emp = new Employee(101, "Aman")`, what lives on the stack versus the heap?
-5. **Class loading cost.** Why does `java -verbose:class Employee` print dozens of JDK classes before your `Employee` line?
-6. **`-Xmx` / source of truth.** What does `-Xmx` constrain, and if `.java` and `.class` disagree after an edit without `javac`, which file does `java` execute?
+1. **Why bytecode?** Why does Java compile to platform-neutral bytecode instead of a native `.exe` on each OS? *(Exercise 2 WORA)*
+2. **Class name vs file path.** Why does `java HelloWorld` omit `.class`, and what goes wrong if you type `java HelloWorld.java` or `java helloworld`? *(Exercises 1–2)*
+3. **Stack frames.** What is created when `main` calls `Calculator.add`, and what happens to that frame on `return`? *(Exercise 6 → Lab Steps 5–6)*
+4. **Heap identity.** In `Employee emp = new Employee(101, "Aman")`, what lives on the stack versus the heap? *(Exercise 7 → Lab Step 7)*
+5. **Class loading cost.** Why does `java -verbose:class Employee` print dozens of JDK classes before your `Employee` line? *(Exercise 4 → Lab Step 8)*
+6. **`-Xmx` / source of truth.** What does `-Xmx` constrain, and if `.java` and `.class` disagree after an edit without `javac`, which file does `java` execute? *(Lab-only depth + Exercise 2)*
 7. **Forward look.** How will Maven (`mvn compile`) change *tooling* but not the javac → bytecode → JVM story for the future CRM?
 
 ---
@@ -246,7 +286,7 @@ Complete each step in order. Prefer the **IDE integrated terminal**. Opening the
 
 ### Step 0 — Create your personal `java-bootcamp` GitHub repo (first time)
 
-**Why:** Course handouts live in the instructor/participant clone. **Your** code under `java-bootcamp` needs its **own** private GitHub repo. Lab 0 only set Git identity; this is the first create + first commit.
+**Why:** Course handouts live in the instructor/participant clone. **Your** code under `java-bootcamp` (including the Module 1 exercises you already finished) needs its **own** private GitHub repo. Lab 0 only set Git identity; this is the first create + first commit for *your* workspace.
 
 You keep **two** Git things separate:
 
@@ -341,13 +381,15 @@ gh repo create java-bootcamp --private --source=. --remote=origin --push
 * GH007 private email → fix noreply email (Lab 0 Step 10) and amend or make a new commit
 * Auth failed → use PAT or `gh auth login`
 
-**Habit after this step:** when a lab or exercise finishes, from the workspace root: `git add` → `git commit` → `git push`. Do **not** commit screenshots or secrets.
+**Habit after this step:** when a lab or exercise finishes, from the workspace root: `git add` → `git commit` → `git push`. Do **not** commit screenshots or secrets. If you already finished Exercises 1–8 before Step 0, your first commit may already include `examples/module-01-exercises/` — that is expected and desirable.
 
 ---
 
 ### Step 1 — Create the lab directory and open it
 
-**Why:** A known path under `java-bootcamp/examples/` matches Lab 0 conventions and keeps evidence easy to grade.
+**Why:** A known path under `java-bootcamp/examples/` matches Lab 0 conventions and keeps graded evidence separate from `examples/module-01-exercises/`.
+
+**Builds on:** You already created and used `module-01-exercises/` during the pre-lab exercises. This folder is the **graded** twin — do not overwrite exercise sources.
 
 **Do this:**
 
@@ -394,7 +436,9 @@ ls
 
 ### Step 2 — Create and run HelloWorld
 
-**Why:** Establishes the full write → compile → run loop with a single predictable string for evidence.
+**Why:** Establishes graded write → compile → run evidence with a single predictable string.
+
+**Builds on Exercise 1:** You already compiled and ran `Hello.java` printing `Hello, JVM!`. Here the graded class name is `HelloWorld` in `jvm-compilation-lab/` — same output string, submit-ready path and naming.
 
 **Do this:**
 
@@ -447,9 +491,10 @@ HelloWorld.class
 
 **What you should learn**
 
-* `.java` = source; `.class` = bytecode
+* Confirm again: `.java` = source; `.class` = bytecode (you already saw this in Exercises 1–2)
 * `javac` compiles; `java` starts the JVM and executes bytecode
 * The JVM does **not** read your `.java` file at runtime (unless you use tools that compile on the fly—out of scope here)
+* Graded deliverables use **`HelloWorld`**, not the exercise file `Hello`
 
 ---
 
@@ -492,7 +537,9 @@ HelloWorld.class
 
 ### Step 4 — Inspect bytecode using javap
 
-**Why:** Shows that “compiled Java” is a sequence of JVM instructions, not machine code for one CPU.
+**Why:** Shows that “compiled Java” is a sequence of JVM instructions, not machine code for one CPU — and captures LMS evidence on the graded class.
+
+**Builds on Exercise 8:** You already ran `javap -c Person` and named opcodes. Repeat the skill on `HelloWorld` (and later `Calculator`) for graded screenshots.
 
 **Do this:**
 
@@ -539,7 +586,9 @@ Capture a screenshot of `javap -c HelloWorld` for deliverables.
 
 ### Step 5 — Create a Calculator program
 
-**Why:** Integer locals and `invokestatic` make stack behavior easier to see than UI apps.
+**Why:** Integer locals and `invokestatic` make stack behavior easier to see than UI apps — and give graders a richer bytecode sample than HelloWorld alone.
+
+**Builds on Exercise 6:** You already wrote a methods demo with `add(10, 20)` → `30`. Here the graded class is `Calculator` with the same arithmetic story, plus required `javap -c` evidence (`iadd`, `invokestatic`, …).
 
 **Do this:**
 
@@ -613,6 +662,8 @@ public static int add(int, int);
 
 **Why:** Connects Calculator code to the runtime memory model you will reuse for every Spring request thread later.
 
+**Builds on Exercises 5–6:** Locals, parameters, and the `add` call pattern are familiar; this step forces a **written table** and call-flow narrative for grading.
+
 **Do this:**
 
 Using `Calculator.java`, fill this table in your notes (from reading the code + bytecode, not guessing):
@@ -655,6 +706,8 @@ javap -c -p Calculator
 ### Step 7 — Object creation and heap memory
 
 **Why:** Shows references on the stack pointing at objects on the heap—the pattern behind every CRM entity later.
+
+**Builds on Exercise 7:** You already built `Person` with `new`, fields, and a display method. Here the graded type is `Employee` (`id=101`, `name="Aman"`) with the same stack-ref vs heap-object story and optional `javap` for `new` / `invokespecial` / `invokevirtual`.
 
 **Do this:**
 
@@ -730,7 +783,9 @@ Look for `new`, `dup`, `invokespecial` (constructor), and `invokevirtual` (`disp
 
 ### Step 8 — Observe class loading
 
-**Why:** Demystifies “slow first request” and shows the JVM loads far more than your one class.
+**Why:** Demystifies “slow first request” and shows the JVM loads far more than your one class — with graded evidence on `Employee`.
+
+**Builds on Exercise 4:** You already ran `-verbose:class` (or `-Xlog:class+load`) on `Hello`. Repeat on `Employee`, capture bootstrap + application lines, and keep a screenshot for deliverables.
 
 **Do this:**
 
@@ -792,6 +847,8 @@ The JVM loads (and links) a web of classes to start even a tiny main. Frameworks
 ### Step 9 — Trigger more object allocation (MemoryDemo)
 
 **Why:** Makes heap pressure visible; connects to `-Xmx` and later production memory settings.
+
+**Lab-only depth:** Exercises did not require a 100_000-object allocation loop. This step is new consolidation after you already understand `Employee` / heap from Exercise 7 and Step 7.
 
 **Do this:**
 
@@ -1299,7 +1356,7 @@ Optional: failure-experiment log (min. three); Security and Production Review an
 
 | Criteria | Marks | What reviewers look for |
 | -------- | ----: | ----------------------- |
-| Environment readiness (IDE, JDK 21, correct folder, personal GitHub repo Step 0) | 10 | Pre-flight versions; path under `examples/jvm-compilation-lab`; `origin` push works |
+| Environment readiness (Lab 0 + Exercises 1–8 Pass, IDE, JDK 21, correct folder, personal GitHub repo Step 0) | 10 | Pre-flight versions; exercise folder present; path under `examples/jvm-compilation-lab`; `origin` push works |
 | HelloWorld compile / run / file inspection | 10 | Exact `Hello, JVM!`; `.java` + `.class` evidence |
 | `javap` bytecode literacy | 15 | Readable `javap -c` capture; can name key opcodes |
 | Calculator + stack explanation | 15 | `Sum = 30`; coherent stack-frame narrative / table |
@@ -1345,23 +1402,30 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
+| 0 | Module 1 Exercises 1–8 Pass criteria are complete **before** Lab Steps 2+ | Pass / Fail |
 | 1 | Work in `java-bootcamp/examples/jvm-compilation-lab/` on your laptop (VS Code and/or IntelliJ) | Pass / Fail |
 | 2 | Compile and run `HelloWorld`, `Calculator`, `Employee`, and `MemoryDemo` with the exact expected outputs | Pass / Fail |
-| 3 | Explain `.java` versus `.class` and demonstrate `javap -c` | Pass / Fail |
-| 4 | Describe stack frames vs heap objects using Calculator and Employee | Pass / Fail |
+| 3 | Explain `.java` versus `.class` and demonstrate `javap -c` (building on Exercise 8) | Pass / Fail |
+| 4 | Describe stack frames vs heap objects using Calculator and Employee (building on Exercises 6–7) | Pass / Fail |
 | 5 | Show class-loading evidence and locate basic heap/GC flags | Pass / Fail |
 | 6 | Clean `*.class`, recompile, and re-run successfully | Pass / Fail |
 | 7 | Personal GitHub repo `java-bootcamp` created (Step 0) and Lab 1 committed/pushed (Step 12) | Pass / Fail |
 | 8 | Submit sources, screenshots, and short answers per the deliverables list | Pass / Fail |
 | 9 | Articulate that this JVM flow underpins future CRM services (this lab does not build the CRM) | Pass / Fail |
 
-This lab bridges Lab 0’s environment to Module 1 runtime fluency.
+This lab bridges **Module 1 exercises** (after Lab 0) to graded JVM evidence and a personal GitHub workspace.
 
 ---
 
 ## Instructor Notes
 
-**Before this lab:** run the full [Instructor Demonstration](INSTRUCTOR-DEMO.md) for the class (Demo 1–4: compile, inspect bytecode, create objects and observe memory, trigger garbage collection — ~30–40 minutes, complete runnable code and expected output included). Students then do their own version of these ideas below with `HelloWorld`, `Calculator`, `Employee`, and `MemoryDemo`.
+**Classroom order (do not reverse):**
+
+1. Module 1 PPT + live [Instructor Demonstration](INSTRUCTOR-DEMO.md) (Demo 1–4, ~30–40 min) during/after the slides
+2. Students complete [Exercises 1–8](../exercises/EXERCISES-INDEX.md) in `module-01-exercises/`
+3. Students open the OS how-to, then this guide — `HelloWorld`, `Calculator`, `Employee`, `MemoryDemo` under `jvm-compilation-lab/`
+
+**Before students open this guide:** confirm exercise checkpoint Pass (Hello compile/run, class-loading ID, stack vs heap sketch, three `javap` opcodes). Lab 1 pacing assumes those skills already exist.
 
 **Core story to repeat (whiteboard):**
 
@@ -1376,17 +1440,19 @@ flowchart TB
 
 **Key takeaway line:** Java does not directly run source code. Source is compiled to bytecode; the JVM executes bytecode.
 
-**Classroom pacing:** Pre-flight (~10) → HelloWorld+javap / Checkpoint A (~25) → Calculator+stack / Checkpoint B (~25) → Employee+verbose (~20) → MemoryDemo+flags+clean / Checkpoint C (~20) → Evidence (~10–20).
+**Classroom pacing (Day 1 after exercises):** Pre-flight + Step 0 (~10) → HelloWorld+javap / Checkpoint A (~15) → Calculator+stack / Checkpoint B (~15) → Employee+verbose (~15) → MemoryDemo+flags start / Checkpoint C (~10) → Evidence handoff. Assign remaining Steps 9–12 / failure experiments as extended completion.
 
 **Common misconceptions**
 
+* “I can skip the exercises and jump to Lab 1” — No; Lab 1 is consolidation. Send them back to [`../exercises/`](../exercises/EXERCISES-INDEX.md).
 * “`java HelloWorld.java` is fine” — stick to classic `javac` / `java ClassName` for this lab.
 * “Objects and locals both live on the heap” — force the Employee sketch.
 * “`-verbose:class` means my app is broken” — normalize volume of JDK loads.
 * “CRM must appear in Lab 1 code” — keep Aman/Employee; `CUS-1001` is future context only.
+* Confusing `Hello` (exercise) with `HelloWorld` (lab) or mixing folders — keep `module-01-exercises/` and `jvm-compilation-lab/` separate.
 
-**Grading tips.** Prefer understanding over pretty bytecode formatting. Credit the stale-`.class` experiment. Fail closed if the student cannot produce `Hello, JVM!` or confuses `.java` / `.class` after coaching.
+**Grading tips.** Prefer understanding over pretty bytecode formatting. Credit the stale-`.class` experiment. Fail closed if the student cannot produce `Hello, JVM!` or confuses `.java` / `.class` after coaching. Do not re-teach Exercise 1 from zero unless the exercise gate was skipped.
 
-**Environment.** Primary: laptop + JDK 21 from Lab 0 + VS Code or IntelliJ. Reference solution: [`solution/`](solution/). Related: [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md) · [\_IDE-CONVENTIONS.md](../../_IDE-CONVENTIONS.md) · [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) · [Week 1 index](../../WEEK-LABS-INDEX.md)
+**Environment.** Primary: laptop + JDK 21 from Lab 0 + VS Code or IntelliJ. Reference solution: [`solution/`](solution/). Related: [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md) · [\_IDE-CONVENTIONS.md](../../_IDE-CONVENTIONS.md) · [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) · [Exercises](../exercises/EXERCISES-INDEX.md) · [Week 1 index](../../WEEK-LABS-INDEX.md)
 
 Early finishers may attempt Bonus Challenges; do not skip ahead to Spring/CRM scaffolding until the module schedule says so.

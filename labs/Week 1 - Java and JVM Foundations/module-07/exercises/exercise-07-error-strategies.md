@@ -1,6 +1,6 @@
 # Exercise 7 — Error Handling Strategies
 
-**Module 7** · Pre-lab practice · then open [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > **Independent of Exercise 6:** a different flaky failure this time — the focus

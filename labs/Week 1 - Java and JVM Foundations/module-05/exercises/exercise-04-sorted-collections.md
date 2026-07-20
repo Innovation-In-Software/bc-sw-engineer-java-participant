@@ -1,6 +1,6 @@
 # Exercise 4 — Sorted Collections: `TreeMap`
 
-**Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections: Sorting Map Keys with TreeMap](../../../lab_diagrams/mod05-ex04-sorted-collections.png)

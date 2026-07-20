@@ -1,6 +1,6 @@
 # Exercise 8 — `parallelStream` Correctness Bonus
 
-**Module 6** · Optional pre-lab challenge · then open [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Optional parallel bonus · finish Exercises 1–7 Pass first, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > **Correctness first:** Parallel streams are not automatically faster. The
@@ -141,3 +141,11 @@ state that the exercise demonstrates correctness—not a performance win.
 | 2 | You ran the comparison five times | Pass / Fail |
 | 3 | You did not claim one tiny run proves performance | Pass / Fail |
 | 4 | You can explain why a shared mutable counter is unsafe | Pass / Fail |
+
+---
+
+## Next
+
+Exercise 8 complete → if Exercises 1–7 are already Pass, open **one** OS how-to → [`../lab6/LAB-6-WINDOWS.md`](../lab6/LAB-6-WINDOWS.md) or [`../lab6/LAB-6-MACOS.md`](../lab6/LAB-6-MACOS.md) → then graded [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md).
+
+Bring your parallel-vs-sequential notes to Lab 6 bonus menu options — do not skip the CORE path (menu 1–9) for parallel experiments.

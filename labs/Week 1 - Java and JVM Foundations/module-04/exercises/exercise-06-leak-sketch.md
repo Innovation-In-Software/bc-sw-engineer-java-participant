@@ -1,6 +1,6 @@
 # Exercise 6 — Retained References (Safe Leak Sketch)
 
-**Module 4** · Pre-lab practice · then open [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Retained References Before and After Clearing a Static Cache](../../../lab_diagrams/mod04-ex06-retained-references.png)

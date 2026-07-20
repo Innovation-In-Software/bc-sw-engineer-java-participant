@@ -1,6 +1,6 @@
 # Exercise — Inspect Bytecode
 
-**Module 1** · Pre-lab practice · then open [`../../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
 **Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Inspecting Person Bytecode with javap](../../../lab_diagrams/mod01-ex08-javap-bytecode.png)
@@ -179,3 +179,9 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | - | ------- | ---------- |
 | 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
 | 2 | You can explain the result in one sentence | Pass / Fail |
+
+---
+
+## Next
+
+Exercises 1–8 complete → open **one** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then graded [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md) (builds on these eight; separate folder `examples/jvm-compilation-lab/`).

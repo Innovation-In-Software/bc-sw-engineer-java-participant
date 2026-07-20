@@ -1,6 +1,6 @@
 # Exercise 8 — Mini UML Class Diagram
 
-**Module 3** · Pre-lab practice · then open [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Mini UML Class Diagram for Banking Types](../../../lab_diagrams/mod03-ex08-uml-mini.png)
@@ -130,3 +130,9 @@ The rendered diagram matches your code and clearly distinguishes inheritance, in
 | 2 | Inheritance and interface arrows are correct | Pass / Fail |
 | 3 | Customer–Account and Account–Transaction multiplicities appear | Pass / Fail |
 | 4 | You can explain the three relationship types | Pass / Fail |
+
+---
+
+## Next
+
+Exercises 1–8 complete → open **one** OS how-to → [`../lab3/LAB-3-WINDOWS.md`](../lab3/LAB-3-WINDOWS.md) or [`../lab3/LAB-3-MACOS.md`](../lab3/LAB-3-MACOS.md) → then graded [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md) (builds on these eight; separate folder `examples/Lab3-BankingSystem/`).

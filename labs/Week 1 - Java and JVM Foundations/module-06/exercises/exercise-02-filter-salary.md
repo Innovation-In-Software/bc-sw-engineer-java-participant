@@ -1,6 +1,6 @@
 # Exercise 2 — Filter Employees by Salary
 
-**Module 6** · Pre-lab practice · then open [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Pre-lab practice · finish Exercises 1–7 Pass, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > **Builds on Exercise 1:** Reuse `Employee.java` and `EmployeeData.java`.

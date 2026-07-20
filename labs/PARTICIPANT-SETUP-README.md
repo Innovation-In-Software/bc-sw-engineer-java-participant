@@ -111,18 +111,18 @@ Complete **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/
 
 **Verified Windows reference:** Temurin 21 at `C:\Program Files\Eclipse Adoptium\jdk-21`; Maven 3.9.x at `C:\Program Files\Apache\maven\current`. See [Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md) for install steps kept in sync with a clean run.
 
-**Do not start Lab 1 until Lab 0 verification passes.**
+**Do not start Lab 1 until Lab 0 verification passes and Module 1 Exercises 1–8 are Pass.** Sequence: Lab 0 → Module 1 slides → [`module-01/exercises/`](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/exercises/EXERCISES-INDEX.md) → then Lab 1.
 
 ### Workspace layout you will use
 
 ```text
 ~/java-bootcamp/
-├── examples/           # Hands-on projects (HelloJava, jvm-compilation-lab, LabN-…, labN-crm, customer-management-platform, …)
+├── examples/           # Hands-on projects (HelloJava, module-0N-exercises, jvm-compilation-lab, Lab2-JavaSyntax, Lab3-BankingSystem, …)
 └── notes/
     └── screenshots/    # Lab 0 evidence; later labs use screenshots/lab-N/ (redact secrets)
 ```
 
-Course lab guides live in the bootcamp GitHub clone under `labs/` — not inside this workspace. Open `java-bootcamp` in IntelliJ every lab; put code only under `examples/`.
+Course lab guides live in the bootcamp GitHub clone under `labs/` — not inside this workspace. Open `java-bootcamp` in IntelliJ every lab; put code only under `examples/`. For Module 1: finish `examples/module-01-exercises/` before `examples/jvm-compilation-lab/`. For Module 2: finish `examples/module-02-exercises/` (Exercises 1–7) before `examples/Lab2-JavaSyntax/`. For Module 3: finish `examples/module-03-exercises/` (Exercises 1–8) before `examples/Lab3-BankingSystem/`. For Module 4: finish `examples/module-04-exercises/` (Exercises 1–7) before `examples/Lab4-MemoryManagement/`. For Module 5: finish `examples/module-05-exercises/` (Exercises 1–7) before `examples/Lab5-LibraryManagement/`. For Module 6: finish `examples/module-06-exercises/` (Exercises 1–7) before `examples/Lab6-EmployeeAnalytics/`. For Module 7: finish `examples/module-07-exercises/` (Exercises 1–8) before `examples/Lab7-ATMSystem/`.
 
 ---
 
@@ -181,7 +181,7 @@ You must be on the **class network / allowlisted IP** (or instructor VPN) to rea
 5. **Create / sign in** to GitHub; enable Copilot before Week 2.  
 6. **Before Week 4**, install Node 22 and confirm connection notes for PostgreSQL and Kafka.  
 7. **Run the always-on verification** (section 10).  
-8. **Only then** open [Lab 1](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/lab1/LAB-1-GUIDE.md).
+8. **Then** open Module 1 [`README.md`](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/README.md) → complete [Exercises 1–8](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/exercises/EXERCISES-INDEX.md) → **only then** open [Lab 1](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/lab1/LAB-1-GUIDE.md).
 
 ---
 

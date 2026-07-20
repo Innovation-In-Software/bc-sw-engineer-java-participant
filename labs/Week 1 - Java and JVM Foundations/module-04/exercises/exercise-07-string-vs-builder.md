@@ -1,6 +1,6 @@
 # Exercise 7 — String vs StringBuilder
 
-**Module 4** · Pre-lab practice · then open [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![String Concatenation Compared with StringBuilder](../../../lab_diagrams/mod04-ex07-string-vs-builder.png)
@@ -134,3 +134,11 @@ Both methods produce 50,000 characters. Across repeated runs, `StringBuilder` sh
 | 1 | Both output lengths equal `50000` | Pass / Fail |
 | 2 | You recorded three timing runs | Pass / Fail |
 | 3 | You can explain immutability and temporary allocation | Pass / Fail |
+
+---
+
+## Next
+
+Exercises 1–7 complete → on Day 4 open **one** OS how-to → [`../lab4/LAB-4-WINDOWS.md`](../lab4/LAB-4-WINDOWS.md) or [`../lab4/LAB-4-MACOS.md`](../lab4/LAB-4-MACOS.md) → then graded [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md) (builds on these seven; separate folder `examples/Lab4-MemoryManagement/`).
+
+Bring your Exercise 4–5 G1/ZGC notes to the Day 4 Lab 4 core checkpoint.

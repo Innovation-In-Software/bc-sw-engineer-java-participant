@@ -4,9 +4,10 @@
 
 **Module:** 6 — Streams and Functional Programming  
 **Source:** Module 6 slides: Lab Overview (Streams and Lambdas)  
-**Next (after all 8 exercises):** OS how-to → [`../lab6/LAB-6-WINDOWS.md`](../lab6/LAB-6-WINDOWS.md) or [`../lab6/LAB-6-MACOS.md`](../lab6/LAB-6-MACOS.md) → then [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Next (after Exercises 1–7 Pass):** OS how-to → [`../lab6/LAB-6-WINDOWS.md`](../lab6/LAB-6-WINDOWS.md) or [`../lab6/LAB-6-MACOS.md`](../lab6/LAB-6-MACOS.md) → then [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
 
 > **When:** Complete these exercises **after the module slides** and **before** the full lab.
+> **Gate for Lab 6:** Exercises **1–7** must be Pass. Exercise 8 is recommended parallel bonus.
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).
 > Keep practice separate from the graded lab (`examples/Lab6-EmployeeAnalytics/`).
 > Exercises 2–7 reuse the five-employee dataset created in Exercise 1, so work in order.
@@ -92,3 +93,5 @@ Numbered to match the order these topics appear in the Module 6 slides — work 
 | 8 | `parallelStream` Bonus | Correctness first; cautious performance interpretation | [`exercise-08-parallel-bonus.md`](exercise-08-parallel-bonus.md) |
 
 Work in order. Keep practice sources separate from the graded lab submission.
+
+When Exercises **1–7** Pass criteria are **Pass**, open your OS how-to and then [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md). Do not start Lab 6 GUIDE Steps mid-exercise list. Complete Exercise 8 (parallel bonus) when time allows — bring notes to lab stretch options.

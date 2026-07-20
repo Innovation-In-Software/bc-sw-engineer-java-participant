@@ -1,6 +1,6 @@
 # Exercise 2 — Encapsulation Practice
 
-**Module 3** · Pre-lab practice · then open [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Encapsulation with Private State and Validated Methods](../../../lab_diagrams/mod03-ex02-encapsulation.png)

@@ -1,6 +1,6 @@
 # Exercise 2 — Object Lifecycle and Reachability
 
-**Module 4** · Pre-lab practice · then open [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Object References and Garbage-Collection Eligibility](../../../lab_diagrams/mod04-ex02-object-lifecycle.png)

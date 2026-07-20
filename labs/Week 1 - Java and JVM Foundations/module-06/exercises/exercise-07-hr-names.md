@@ -1,6 +1,6 @@
 # Exercise 7 — Compose a Pipeline for HR Names
 
-**Module 6** · Pre-lab practice · then open [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Pre-lab practice · finish Exercises 1–7 Pass, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ## Goal
@@ -112,3 +112,11 @@ The final list contains only Alice and Charlie in alphabetical order.
 | 2 | The pipeline contains filter, map, sorted, and toList | Pass / Fail |
 | 3 | Case-insensitive test works | Pass / Fail |
 | 4 | You can trace the element type after each operation | Pass / Fail |
+
+---
+
+## Next
+
+Exercises **1–7** complete (core gate) → open **one** OS how-to → [`../lab6/LAB-6-WINDOWS.md`](../lab6/LAB-6-WINDOWS.md) or [`../lab6/LAB-6-MACOS.md`](../lab6/LAB-6-MACOS.md) → then graded [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md) (builds on these seven; separate folder `examples/Lab6-EmployeeAnalytics/` with `src/com/academy/analytics/`).
+
+Exercise 8 (parallel bonus) is recommended stretch — complete it before or after the lab core as your instructor directs.

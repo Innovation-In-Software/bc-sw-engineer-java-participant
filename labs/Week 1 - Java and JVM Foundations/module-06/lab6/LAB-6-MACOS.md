@@ -1,5 +1,7 @@
 # Lab 6: Streams and Lambda Expressions — Employee Analytics System — macOS
 
+> **Participants:** Start at [`../README.md`](../README.md). Complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) first. This file = macOS paths/shell only. Do the Steps in [`LAB-6-GUIDE.md`](LAB-6-GUIDE.md). [Which file when?](../../../_PARTICIPANT-FILE-GUIDE.md)
+
 **OS:** macOS  
 **Primary IDE:** IntelliJ IDEA Community Edition  
 **Optional IDE:** VS Code  
@@ -8,10 +10,12 @@
 **Full lab steps:** [LAB-6-GUIDE.md](LAB-6-GUIDE.md)  
 **Other OS:** [Windows guide](LAB-6-WINDOWS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-- Pre-lab exercises: [`../exercises/`](../exercises/)
+- Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `~/java-bootcamp/examples/module-06-exercises`
+
 ## Prerequisites (macOS)
 
 - [Lab 0 (macOS)](../../module-00/lab0/LAB-0-MACOS.md) complete (JDK 21, Maven when needed, Git)
+- Module 6 [Exercises 1–7](../exercises/EXERCISES-INDEX.md) Pass criteria marked **Pass** in your notes
 - IntelliJ IDEA Community with **Project SDK 21**
 - Optional: VS Code + Extension Pack for Java
 
@@ -50,9 +54,10 @@ cd examples/Lab6-EmployeeAnalytics
 
 ### Commands this lab typically uses
 
-```text
-javac -d out src/.../*.java
-java -cp out ...Main
+```bash
+mkdir -p out
+javac -d out src/com/academy/analytics/*.java
+java -cp out com.academy.analytics.Main
 ```
 
 ## Run configurations (IntelliJ)
@@ -64,8 +69,8 @@ java -cp out ...Main
 
 ## Do the lab
 
-Complete **every step** in **[LAB-6-GUIDE.md](LAB-6-GUIDE.md)**.  
-Wherever that guide shows `~/java-bootcamp`, on macOS use `~/java-bootcamp`. Prefer IntelliJ for Java editing and runs; use VS Code only if you already prefer it.
+After Exercises 1–7 Pass, complete **every step** in **[LAB-6-GUIDE.md](LAB-6-GUIDE.md)**.  
+Wherever that guide shows `$HOME/java-bootcamp`, on macOS use `~/java-bootcamp`. Prefer IntelliJ for Java editing and runs; use VS Code only if you already prefer it.
 
 ## Evidence / screenshots
 
@@ -77,6 +82,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
+| 0 | Module 6 Exercises 1–7 Pass before Lab Step 1 | Pass / Fail |
 | 1 | Workspace `~/java-bootcamp` open in IntelliJ with SDK **21** | Pass / Fail |
 | 2 | Lab project under `examples/Lab6-EmployeeAnalytics` as in [LAB-6-GUIDE.md](LAB-6-GUIDE.md) | Pass / Fail |
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |

@@ -1,6 +1,6 @@
 # Exercise 9 — Personal Profile (bonus)
 
-**Module 2** · Pre-lab practice · then open [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Formatted Output: Building a Console Table](../../../lab_diagrams/mod02-ex09-profile-bonus.png)

@@ -1,9 +1,11 @@
 # Lab 4: Memory Management and Garbage Collection
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 4 [pre-lab exercises 1–7](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Exercises run on Day 3; this graded lab is Day 4. Day 3 “Lab 4 briefing” is folder/notes prep only — not GUIDE Steps. Then open **one** OS how-to ([Windows](LAB-4-WINDOWS.md) · [macOS](LAB-4-MACOS.md)) and do **every Step below**. Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
 **Module:** 4 — Memory Management and Performance  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-04/lab4/`  
 **Difficulty:** Intermediate (Beginner-Friendly)  
-**Duration:** 3–4 Hours
+**Duration:** 60–240 minutes (Day 4 core checkpoint ~60 min; finish remaining demos/tools as extended work)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
 
@@ -14,29 +16,56 @@
 
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
-> **Pre-lab exercises:** Complete [`../exercises/`](../exercises/) (from the Module 4 slides) before starting this lab.
+> **Hard gate — pre-lab exercises:** Complete **all seven** Module 4 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 4 is graded consolidation in a **separate** flat folder (`examples/Lab4-MemoryManagement/`), not a replacement for the exercises folder (`examples/module-04-exercises/`).
 
 ---
 
 ## How to follow this lab
 
-1. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-2. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-3. For each **Step N**: read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-5. Capture evidence under `notes/screenshots/lab-4/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. Confirm Lab 0 + Module 4 Exercises 1–7 are done (checklists below). Bring your Exercise 4–5 G1/ZGC notes for the Day 4 compare checkpoint.
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
+3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
+4. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
+5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
+6. Capture evidence under `notes/screenshots/lab-4/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+
+## Module 4 exercises you must already have completed
+
+Lab 4 assumes you already practiced these runtime skills in `examples/module-04-exercises/`. Do **not** treat Steps 3–8 as your first time seeing stack/heap, lifecycle, GC logs, or retention.
+
+| Exercise | You already did | Lab 4 builds on it |
+| -------- | --------------- | ------------------ |
+| 1 — Stack vs Heap | `StackHeapDemo` — locals/refs vs heap | Steps 3–4 (`StackExample`, `HeapExample`) |
+| 2 — Object Lifecycle | Aliases → null → eligible | Step 5 (`ObjectLifecycle`) |
+| 3 — GC Observe | Bounded allocate + `-Xlog:gc` | Steps 6–7 (`GarbageCollectionDemo` + GC log) |
+| 4 — G1 Flag | Re-run with `-XX:+UseG1GC` | Day 4 compare checkpoint; Step 7 often shows G1 implicitly |
+| 5 — ZGC Flag | Re-run with `-XX:+UseZGC`; contrast Ex 4 | Day 4 compare (reuse Ex notes; optional lab re-run) |
+| 6 — Retention Sketch | Static cache + `clear()` | Step 8 (`MemoryLeakDemo` leak/fix) |
+| 7 — String vs StringBuilder | Concat vs builder timing | Lab **bonus** `StringMemoryComparison` |
+
+**Intentional deltas (extend — do not paste exercise code blindly):**
+
+* Exercises are smaller/bounded demos; Lab uses shared `Person` + `MemoryMonitor` and larger batch sizes for clearer reports
+* Keep exercise and lab folders separate (both flat, different names)
+* Exercise G1/ZGC evidence counts for the Day 4 “compare collectors” checkpoint — bring those notes
+
+**Lab-only additions:** `Person` / `MemoryMonitor`, `WeakReferenceDemo`, `PerformanceTest` + results table, optional `jstat`/`jconsole`/VisualVM, bonus OOM/`ListMemoryComparison`
+
+If any of Exercises 1–7 is still **Fail**, finish that exercise first — then return here.
+
+---
 
 ## Lab Overview
 
-This Module 4 lab builds **JVM memory literacy**: stack versus heap, object lifecycle, garbage collection, leak patterns, weak references, heap flags, and laptop-friendly diagnostics (`Runtime` API, GC logs, optional `jstat` / `jconsole` / VisualVM).
+This Module 4 lab is the **graded consolidation** after Module 4 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md). You already practiced stack/heap, lifecycle, GC observation, G1/ZGC flags, retention, and StringBuilder cost in `module-04-exercises/`. Here you assemble those skills into a **shared-monitor demo suite** with leak/fix, weak references, performance table, and optional laptop tools.
 
-**Purpose.** Features without heap awareness become production `OutOfMemoryError` fire drills. Lab 4 trains you to *see* allocation, reachability, and GC recovery on your own machine before you stress a real multi-service stack.
+**Purpose.** Features without heap awareness become production `OutOfMemoryError` fire drills. Lab 4 locks the mental model: allocation, reachability, and GC recovery on your own machine—with submit-ready evidence—before you stress a real multi-service stack.
 
-**What you build (exercise).** Flat-package demos under `examples/Lab4-MemoryManagement/`: `Person`, `MemoryMonitor`, `StackExample`, `HeapExample`, `ObjectLifecycle`, `GarbageCollectionDemo`, `MemoryLeakDemo` (`leak` / `fix`), `WeakReferenceDemo`, `PerformanceTest`, plus optional bonuses (`StringMemoryComparison`, `ListMemoryComparison`, `OutOfMemoryDemo`).
+**What you build.** Flat-package demos under `examples/Lab4-MemoryManagement/`: `Person`, `MemoryMonitor`, `StackExample`, `HeapExample`, `ObjectLifecycle`, `GarbageCollectionDemo`, `MemoryLeakDemo` (`leak` / `fix`), `WeakReferenceDemo`, `PerformanceTest`, plus optional bonuses (`StringMemoryComparison`, `ListMemoryComparison`, `OutOfMemoryDemo`).
 
-**What success looks like.** You compile with `javac *.java`, run each demo, capture memory reports and GC log snippets, complete an allocation comparison table, explain a leak and its fix, and optionally peek at heap tools—without committing heap dumps that may contain sensitive data.
+**What success looks like.** You compile with `javac *.java`, run each demo, capture memory reports and GC log snippets, complete an allocation comparison table, explain a leak and its fix, and optionally peek at heap tools—without committing heap dumps that may contain sensitive data. Exercise sources remain under `examples/module-04-exercises/`.
 
-**Depends on Lab 0.** If VS Code / IntelliJ, `java`, or `javac` fail, fix [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md).
+**Depends on Lab 0 + Exercises 1–7.** If VS Code / IntelliJ, `java`, or `javac` fail, fix [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). If exercises are incomplete, open [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
 
 **CRM connection (future only).** From Lab 8 onward the **Customer Management Platform** will allocate customers, caches, and payloads at scale. This lab does **not** build CRM APIs. Treat it as the memory mental model you will need when a CRM service blows the heap under load.
 
@@ -46,25 +75,28 @@ This Module 4 lab builds **JVM memory literacy**: stack versus heap, object life
 
 ## Learning Objectives
 
-After completing this lab, you will be able to:
+After completing this lab, you will be able to **consolidate and extend** what you practiced in Exercises 1–7:
 
-* Explain **stack** (per-thread frames: primitives + references) versus **heap** (shared objects)
+* Explain **stack** (per-thread frames: primitives + references) versus **heap** (shared objects) with graded demos (builds on Exercise 1)
 * Trace nested method calls and sketch which locals live in which frame
 * Allocate objects on the heap and use `System.identityHashCode()` as an identity hint
-* Narrate the object lifecycle: create → use → share references → drop references → GC-eligible
-* Allocate large batches of objects, null the root reference, and observe used memory before/after GC
-* Monitor heap with `Runtime.getRuntime()` (total / free / used / max)
-* Reproduce a **reachable** collection “leak” and recover memory with `clear()` / null + GC
-* Compare **strong** vs `WeakReference` behavior after `System.gc()`
-* Measure allocation cost with `System.nanoTime()` across object counts
-* Enable GC logging (`-Xlog:gc`), tune `-Xms` / `-Xmx`, and optionally use `jstat`, `jconsole`, or VisualVM on the laptop
+* Narrate the object lifecycle: create → use → share references → drop references → GC-eligible (builds on Exercise 2)
+* Allocate large batches, null the root, and observe used memory before/after GC with shared `MemoryMonitor` (builds on Exercise 3)
+* Enable GC logging (`-Xlog:gc`), tune `-Xms` / `-Xmx`, and compare G1/ZGC evidence from Exercises 4–5
+* Reproduce a **reachable** collection “leak” and recover memory with `clear()` / null + GC (builds on Exercise 6)
+* Compare **strong** vs `WeakReference` behavior after `System.gc()` (**lab-only** depth)
+* Measure allocation cost with `System.nanoTime()` across object counts (**lab-only** depth)
+* Optionally use `jstat`, `jconsole`, or VisualVM on the laptop
 * Fill a results table and answer reflection questions with evidence-backed wording
+* Extend Exercise 7 habits into the optional `StringMemoryComparison` bonus
 
 ---
 
 ## Business Scenario
 
 A banking batch job is consuming excessive memory and occasionally crashes with **`OutOfMemoryError: Java heap space`**. Mentors want proof you can investigate—not restart blindly.
+
+You already practiced the runtime building blocks in Module 4 Exercises 1–7. Today’s **graded** pass consolidates those skills into a shared-monitor demo suite (pedagogical types — not live CRM PII).
 
 You need to determine:
 
@@ -133,13 +165,32 @@ flowchart LR
 
 ## Prerequisites
 
-Complete [Labs Setup Instructions](../../../SETUP-INSTRUCTIONS.md) and [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Confirm:
+Complete **both** of the following before Step 1:
+
+1. [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS](../../../SETUP-INSTRUCTIONS.md) and [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
+2. Module 4 [Exercises 1–7](../exercises/EXERCISES-INDEX.md) — all Pass rows marked **Pass**
+
+Confirm:
 
 * **JDK 21** with `javac` and `java` on `PATH`
-* **VS Code** and/or **IntelliJ IDEA** on the laptop — see [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
+* **VS Code** and/or **IntelliJ IDEA** on the laptop
 * Workspace root open: `%USERPROFILE%\java-bootcamp` or `$HOME/java-bootcamp`
 * Comfort with Lab 1–style `javac` / `java` on flat `.java` files
+* `examples/module-04-exercises/` has your Exercise 1–7 work
 * No secrets committed to Git
+
+Confirm exercise readiness (from your notes / `module-04-exercises/`):
+
+| # | Exercise skill | Ready? |
+| - | -------------- | ------ |
+| 1 | Stack locals/refs vs heap objects sketched | Pass / Fail |
+| 2 | Lifecycle: aliases → null → GC-eligible explained | Pass / Fail |
+| 3 | Bounded GC run with `-Xlog:gc` evidence | Pass / Fail |
+| 4–5 | G1 and ZGC flag runs compared at a high level | Pass / Fail |
+| 6 | Retention root identified and cleared | Pass / Fail |
+| 7 | String vs StringBuilder trend noted | Pass / Fail |
+
+If any row is **Fail**, finish that exercise before continuing.
 
 ### Pre-flight
 
@@ -150,9 +201,21 @@ java -version
 javac -version
 ```
 
-**Expected theme:** OpenJDK / Temurin **21.x**.
+**Windows PowerShell also:**
 
-**If it fails:** Revisit Lab 0 (`JAVA_HOME`, new terminal after PATH changes).
+```powershell
+Get-ChildItem $env:USERPROFILE\java-bootcamp\examples\module-04-exercises
+```
+
+**macOS / Linux also:**
+
+```bash
+ls ~/java-bootcamp/examples/module-04-exercises
+```
+
+**Expected theme:** OpenJDK / Temurin **21.x**; exercise sources present.
+
+**If it fails:** Revisit Lab 0 (`JAVA_HOME`, new terminal after PATH changes). If exercises are missing, return to [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
 
 ---
 
@@ -163,6 +226,8 @@ javac -version
 ### Step 1 — Create the Lab 4 workspace
 
 **Why:** A known path under `examples/` matches Lab 0 conventions and keeps grading evidence easy to find.
+
+**Builds on:** Exercises used `module-04-exercises/`. This graded folder is separate — do not overwrite exercise sources.
 
 **Do this:**
 
@@ -194,6 +259,8 @@ cd /d %USERPROFILE%\java-bootcamp\examples\Lab4-MemoryManagement
 
 **Why:** Shared model + memory reporting keep every later demo readable and consistent.
 
+**Lab-only foundation:** Exercises used one-off demos; Lab shares `Person` + `MemoryMonitor` across programs.
+
 **Do this:** Create both files in the Lab4 folder (default package — **no** `package` line).
 
 `Person.java` should hold `name` / `age`, a constructor, getters, and a clear `toString()`.
@@ -213,6 +280,8 @@ cd /d %USERPROFILE%\java-bootcamp\examples\Lab4-MemoryManagement
 ### Step 3 — `StackExample` — nested frames
 
 **Why:** Stack frames store primitives and **references**; seeing `main → A → B → C` makes “locals die when methods return” concrete.
+
+**Builds on Exercise 1:** Same stack-vs-heap story — graded nested-frame walkthrough.
 
 **Do this:** Create `StackExample.java` that:
 
@@ -254,6 +323,8 @@ Back in main() - methodC() frame has been removed from the stack.
 
 **Why:** Multiple object types with printed identity hashes prove references (stack) ≠ objects (heap).
 
+**Builds on Exercise 1:** Same heap identity idea — graded multi-object demo with `identityHashCode`.
+
 **Do this:** Create `HeapExample.java` that:
 
 1. Prints a memory report **before** allocation
@@ -294,6 +365,8 @@ Exact MB numbers vary by JDK and OS—that is normal.
 
 **Why:** GC eligibility is about **reachability**, not “old objects.”
 
+**Builds on Exercise 2:** Same create → alias → null → eligible narrative with Lab’s `Person` / monitor.
+
 **Do this:** Create `ObjectLifecycle.java` that walks five narrative steps:
 
 1. Create a `Person`
@@ -329,6 +402,8 @@ An object becomes eligible for GC when no live thread can reach it.
 ### Step 6 — `GarbageCollectionDemo` — allocate, null, observe
 
 **Why:** A large batch makes Before / After Allocation / After GC reports easier to read than one object.
+
+**Builds on Exercise 3:** Same bounded allocate → null → observe pattern; Lab batch may be larger for clearer reports — stay within guide counts.
 
 **Do this:** Create `GarbageCollectionDemo.java` that:
 
@@ -369,6 +444,8 @@ java -Xlog:gc GarbageCollectionDemo
 
 **Why:** Application prints show *your* labels; GC logs show what the **collector** did.
 
+**Builds on Exercises 3–5:** Reuse `-Xlog:gc` habit; bring Exercise 4–5 G1/ZGC notes for the Day 4 collector compare.
+
 **Do this:**
 
 ```bash
@@ -401,6 +478,8 @@ You should see:
 ### Step 8 — `MemoryLeakDemo` — `leak` vs `fix`
 
 **Why:** The classic “bug” is **reachable** retention (static/list holder), not a broken GC.
+
+**Builds on Exercise 6:** Same retention-root idea — graded `leak` / `fix` modes with clear evidence.
 
 **Do this:** Create `MemoryLeakDemo.java` with two modes:
 
@@ -448,6 +527,8 @@ Observation:
 
 **Why:** Caches and listeners often should not pin objects forever; weak refs teach that pattern.
 
+**Lab-only depth:** Not covered as a Module 4 exercise — new consolidation after retention (Exercise 6 / Step 8).
+
 **Do this:** Create `WeakReferenceDemo.java` that:
 
 1. Keeps a strong `Person`, calls GC, shows the object still prints
@@ -481,6 +562,8 @@ Observation:
 ### Step 10 — `PerformanceTest` + results table
 
 **Why:** Timing + memory deltas train evidence habits before APM tools appear.
+
+**Lab-only depth:** Builds measurement habits; Exercise 7 StringBuilder timing is related practice for the optional string bonus.
 
 **Do this:** Create `PerformanceTest.java` that allocates for counts such as `{10, 100, 1000, 100000, 1000000}`, prints a table of Objects / Used Memory / Execution Time, and includes a few extra micro-measurements (loop, large array, ~10 MB `byte[]`).
 
@@ -768,9 +851,40 @@ Align with [`solution/Lab4-MemoryManagement/`](solution/Lab4-MemoryManagement/):
 
 ---
 
+## Success Criteria
+
+You have completed Lab 4 when you can:
+
+_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+| # | Confirm | Your notes |
+| - | ------- | ---------- |
+| 0 | Module 4 Exercises 1–7 Pass criteria are complete **before** Lab Steps 2+ | Pass / Fail |
+| 1 | Work in `java-bootcamp/examples/Lab4-MemoryManagement/` (flat files) | Pass / Fail |
+| 2 | Stack/heap and lifecycle demos run; you can narrate reachability | Pass / Fail |
+| 3 | GC demo + `-Xlog:gc` evidence; G1/ZGC compare from Exercises 4–5 notes | Pass / Fail |
+| 4 | `MemoryLeakDemo` leak vs fix explained with evidence | Pass / Fail |
+| 5 | WeakReference and/or PerformanceTest evidence (core or extended as assigned) | Pass / Fail |
+| 6 | Screenshots/notes under `notes/screenshots/lab-4/` without heap dumps or secrets | Pass / Fail |
+
+This lab bridges **Module 4 exercises** (after Lab 0) to graded JVM memory evidence.
+
+---
+
 ## Instructor Notes
 
-Solution demos live in [`solution/Lab4-MemoryManagement/`](solution/Lab4-MemoryManagement/). Score reachability narrative, `leak`/`fix`, GC snippet, and performance table. Dual IDE on laptop; optional `jstat` / `jconsole` / VisualVM. Pitfalls: un-nulled aliases, trusting `System.gc()` for tiny objects, committing `.hprof`.
+**Classroom order (do not reverse):**
+
+1. Module 4 PPT (Day 3)
+2. Students complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) in `module-04-exercises/` (Day 3)
+3. Day 3 evening: Lab 4 **briefing/setup only** (folder + notes) — **not** GUIDE Steps until Pass
+4. Day 4: OS how-to → this guide — core checkpoint, then Kahoot 4
+
+**Before students open this guide:** confirm exercise checkpoint Pass (stack/heap, lifecycle, GC log, G1/ZGC notes, retention, StringBuilder). Lab 4 pacing assumes those skills already exist.
+
+Solution demos live in [`solution/Lab4-MemoryManagement/`](solution/Lab4-MemoryManagement/). Score reachability narrative, `leak`/`fix`, GC snippet, and performance table. Dual IDE on laptop; optional `jstat` / `jconsole` / VisualVM. Pitfalls: skipping exercises; un-nulled aliases; trusting `System.gc()` for tiny objects; committing `.hprof`; mixing `module-04-exercises/` with `Lab4-MemoryManagement/`; using packaged `src`/`out` commands on this flat lab.
+
+**Timing:** Day 4 core ~60 min; extended demos/tools after Kahoot or as homework.
 
 ---
 

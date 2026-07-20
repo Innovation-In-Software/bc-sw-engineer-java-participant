@@ -4,12 +4,14 @@
 
 **Module:** 4 — Memory Management and Performance  
 **Source:** Module 4 slides: Lab Overview (Memory and Garbage Collection)  
-**Next (after all 7 exercises):** OS how-to → [`../lab4/LAB-4-WINDOWS.md`](../lab4/LAB-4-WINDOWS.md) or [`../lab4/LAB-4-MACOS.md`](../lab4/LAB-4-MACOS.md) → then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)
+**Next (after Exercises 1–7 Pass):** OS how-to → [`../lab4/LAB-4-WINDOWS.md`](../lab4/LAB-4-WINDOWS.md) or [`../lab4/LAB-4-MACOS.md`](../lab4/LAB-4-MACOS.md) → then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** and **before** the full lab.  
+> **When:** Complete these exercises **after the module slides** (Day 3) and **before** the graded lab (Day 4).  
+> **Gate for Lab 4:** All **seven** exercises must be Pass.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice separate from the graded lab (`examples/Lab4-MemoryManagement/`).  
-> Memory and timing values vary by machine. Explain the **pattern**, not an exact number.
+> Memory and timing values vary by machine. Explain the **pattern**, not an exact number.  
+> **Lab 4 assumes** you can already sketch stack/heap, lifecycle, GC logs, G1/ZGC, retention, and StringBuilder cost — Lab 4 consolidates them into a shared-monitor suite, not first teaching.
 
 ## Already covered — do not redo
 
@@ -98,3 +100,5 @@ Numbered to match the order these topics appear in the Module 4 slides — work 
 | 7 | String vs StringBuilder | Measure repeated concatenation | [`exercise-07-string-vs-builder.md`](exercise-07-string-vs-builder.md) |
 
 Work in order. Keep practice sources separate from the graded lab submission.
+
+When all **seven** Pass criteria are **Pass**, open your OS how-to and then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md) on Day 4. Do not start Lab 4 GUIDE Steps mid-exercise list (Day 3 briefing = folder/notes only).

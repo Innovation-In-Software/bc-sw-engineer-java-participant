@@ -1,6 +1,6 @@
 # Exercise 8 — Contextual Logging Warm-up
 
-**Module 7** · Pre-lab practice · then open [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > This exercise uses JDK `java.util.logging` so no dependency is required.
@@ -148,3 +148,11 @@ remains concise.
 | 2 | User message contains no stack trace | Pass / Fail |
 | 3 | Catch block is not empty | Pass / Fail |
 | 4 | You can name data that must never be logged | Pass / Fail |
+
+---
+
+## Next
+
+Exercises 1–8 complete → open **one** OS how-to → [`../lab7/LAB-7-WINDOWS.md`](../lab7/LAB-7-WINDOWS.md) or [`../lab7/LAB-7-MACOS.md`](../lab7/LAB-7-MACOS.md) → then graded [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md) (builds on these eight; separate folder `examples/Lab7-ATMSystem/` with `src/com/academy/atm/`).
+
+Bring your logging warm-up notes and propagation sketch to the Lab 7 core checkpoint. Never log real PINs or secrets.

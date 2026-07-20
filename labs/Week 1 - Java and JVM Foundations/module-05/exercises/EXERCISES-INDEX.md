@@ -7,6 +7,7 @@
 **Next (after all 7 exercises):** OS how-to → [`../lab5/LAB-5-WINDOWS.md`](../lab5/LAB-5-WINDOWS.md) or [`../lab5/LAB-5-MACOS.md`](../lab5/LAB-5-MACOS.md) → then [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)
 
 > **When:** Complete these exercises **after the module slides** and **before** the full lab.  
+> **Gate for Lab 5:** All **seven** exercises must be Pass.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice separate from the graded lab (`examples/Lab5-LibraryManagement/`).  
 > `HashSet` and `HashMap` iteration order is unspecified; do not grade exact printed order.
@@ -86,3 +87,5 @@ Numbered to match the order these topics appear in the Module 5 slides — work 
 | 7 | Library Warm-up | Coordinate a `List` and `Map` | [`exercise-07-library-warmup.md`](exercise-07-library-warmup.md) |
 
 Work in order. Keep practice sources separate from the graded lab submission.
+
+When all **seven** Pass criteria are **Pass**, open your OS how-to and then [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md). Do not start Lab 5 GUIDE Steps mid-exercise list.

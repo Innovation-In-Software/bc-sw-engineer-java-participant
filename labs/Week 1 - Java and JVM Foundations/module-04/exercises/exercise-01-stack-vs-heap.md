@@ -1,6 +1,6 @@
 # Exercise 1 — Stack vs Heap Basics
 
-**Module 4** · Pre-lab practice · then open [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Thread Stack Frames Referencing an Object on the Heap](../../../lab_diagrams/mod04-ex01-stack-vs-heap.png)

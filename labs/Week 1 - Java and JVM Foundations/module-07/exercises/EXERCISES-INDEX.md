@@ -4,9 +4,10 @@
 
 **Module:** 7 — Exception Handling and Error Management  
 **Source:** Module 7 slides: Lab Overview (Exception Handling)  
-**Next (after all 8 exercises):** OS how-to → [`../lab7/LAB-7-WINDOWS.md`](../lab7/LAB-7-WINDOWS.md) or [`../lab7/LAB-7-MACOS.md`](../lab7/LAB-7-MACOS.md) → then [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Next (after all 8 exercises Pass):** OS how-to → [`../lab7/LAB-7-WINDOWS.md`](../lab7/LAB-7-WINDOWS.md) or [`../lab7/LAB-7-MACOS.md`](../lab7/LAB-7-MACOS.md) → then [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** and **before** the full lab.
+> **When:** Complete these exercises **after the module slides** and **before** the full lab.  
+> **Gate for Lab 7:** All **eight** exercises must be Pass.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).
 > Keep practice separate from the graded lab (`examples/Lab7-ATMSystem/`).
 > Exercises deliberately trigger failures, but every expected failure is caught so the JVM continues.
@@ -80,3 +81,5 @@ Numbered to match the order these topics appear in the Module 7 slides — work 
 | 8 | Logging Warm-up | Context + exception + user-safe message | [`exercise-08-logging-warmup.md`](exercise-08-logging-warmup.md) |
 
 Work in order. Never use real account data, PINs, credentials, or secrets in logs/screenshots.
+
+When all **eight** Pass criteria are **Pass**, open your OS how-to and then [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md). Do not start Lab 7 GUIDE Steps mid-exercise list.

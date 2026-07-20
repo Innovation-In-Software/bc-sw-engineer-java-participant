@@ -1,9 +1,11 @@
 # Lab 2: Java Syntax and Input/Output
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 2 [core pre-lab exercises 1–7](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Exercises 8–9 are challenge/bonus — strongly recommended before the display/`printf` steps. Then open **one** OS how-to ([Windows](LAB-2-WINDOWS.md) · [macOS](LAB-2-MACOS.md)) and do **every Step below**. Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
 **Module:** 2 — Java Syntax and Core Constructs  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-02/lab2/`  
 **Difficulty:** Beginner  
-**Duration:** 2.5–3 hours  
+**Duration:** 90–180 minutes (Day 2 core checkpoint ~90 min; finish remaining menu paths as extended work)  
 **IDE conventions:** See [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -15,23 +17,46 @@
 
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
-> **Pre-lab exercises:** Complete [`../exercises/`](../exercises/) (from the Module 2 slides) before starting this lab.
+> **Hard gate — pre-lab exercises:** Complete Module 2 **Exercises 1–7** under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 2 is graded consolidation in a **separate** packaged project (`examples/Lab2-JavaSyntax/`), not a replacement for the flat exercises folder (`examples/module-02-exercises/`).
 
 ---
 
 ## How to follow this lab
 
-1. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-2. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-3. For each **Step N**: read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-5. Capture evidence under `notes/screenshots/lab-2/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. Confirm Lab 0 + Module 2 Exercises 1–7 are done (checklists below). Exercises 8–9 help with money/`printf` tables — finish them if you can before Step 7.
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
+3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
+4. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
+5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
+6. Capture evidence under `notes/screenshots/lab-2/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+
+## Module 2 exercises you must already have completed
+
+Lab 2 assumes you already practiced these skills in `examples/module-02-exercises/`. Do **not** treat Steps 5–7 as your first time seeing `Scanner`, `switch`, loops, or `printf`.
+
+| Exercise | You already did | Lab 2 builds on it |
+| -------- | --------------- | ------------------ |
+| 1 — Calculations | Two numbers, arithmetic, labeled output | Average marks math (Step 9) |
+| 2 — Decision Making | `if` / `else if` / `switch` | Menu `switch` + validation branches |
+| 3 — Loops | `for` / `while` / `do-while` | Occupied-slot loops; menu uses `while (true)` (same “repeat until exit” idea as your `do-while` menu toy) |
+| 4 — Methods | Params, return, overload | Named methods on `StudentManager` |
+| 5 — Personal Details | `Scanner` + leftover-newline pitfall | One shared `Scanner`; prefer all-`nextLine`+parse |
+| 6 — Product Information | `nextLine` + parse int/double | Add-student ID / marks parsing |
+| 7 — Area of Circle | `Math.PI` + `printf` decimals | `%.2f` on marks / average |
+| 8 — Bill Summary *(challenge)* | Multi-step calc + `%.2f` | Stronger formatting habits for averages/tables |
+| 9 — Personal Profile *(bonus)* | Aligned `printf` columns | Student display table widths (Step 7) |
+
+**Lab-only additions (not in the nine exercises):** `package com.academy.student` + `src/`/`out/` layout, three-class design (`Student` / `StudentManager` / thin `Main`), fixed array + `studentCount`, injected shared `Scanner`, full menu CRUD (add / display / search / average), validation harden, and LMS evidence pack.
+
+If any of Exercises 1–7 is still **Fail**, finish that exercise first — then return here.
+
+---
 
 ## Lab Overview
 
-Build a **menu-driven Student Management console app** using packages, `Scanner`, arrays, methods, loops, validation, and `printf` formatting. No frameworks—plain JDK only.
+This Module 2 lab is the **graded consolidation** after Module 2 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md) (plus 8–9 when done). You already practiced arithmetic, decisions, loops, methods, `Scanner`, parsing, and `printf` in `module-02-exercises/`. Here you assemble those skills into a **menu-driven Student Management console** with packages and a clear model/manager/`Main` split.
 
-**Purpose.** Before Spring Boot or databases, you must organize packages, read console input safely, separate model from manager logic, and produce readable output. Lab 2 builds that muscle memory.
+**Purpose.** Before Spring Boot or databases, you must organize packages, read console input safely, separate model from manager logic, and produce readable output. Lab 2 locks that muscle memory with submit-ready evidence.
 
 **What you build.** Classes under package `com.academy.student`:
 
@@ -41,7 +66,7 @@ Build a **menu-driven Student Management console app** using packages, `Scanner`
 | `StudentManager` | Array storage + add / display / search / average |
 | `Main` | Menu loop and entry point |
 
-**What success looks like.** Under `java-bootcamp/examples/Lab2-JavaSyntax/` you compile, run, walk the menu, and see a formatted student table.
+**What success looks like.** Under `java-bootcamp/examples/Lab2-JavaSyntax/` you compile with `javac -d out`, run with `java -cp out`, walk the menu, and see a formatted student table. Your earlier exercise sources remain under `examples/module-02-exercises/`.
 
 **Project path (mirror the solution layout):**
 
@@ -54,27 +79,32 @@ java-bootcamp/examples/Lab2-JavaSyntax/
   out/                    ← created by javac -d out
 ```
 
+**Depends on Lab 0 + Exercises 1–7.** If the IDE, `java`, or `javac` fail, stop and fix Lab 0. If exercises are incomplete, open [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
+
 A reference implementation lives in [`solution/Lab2-JavaSyntax/`](solution/Lab2-JavaSyntax/). Use it only if you are stuck after trying—**do not copy blindly**; graders expect your own names, comments, and understanding.
 
 ---
 
 ## Learning Objectives
 
-After this lab you will be able to:
+After this lab you will be able to **consolidate and extend** what you practiced in Exercises 1–7:
 
-* Create package folders that match `package com.academy.student`
-* Open the project in **VS Code** or **IntelliJ IDEA Community** (SDK 21)
-* Read console input with `Scanner` (`nextLine()` + parse)
-* Store students in a fixed-size array with a counter
-* Implement a `while (true)` menu loop with `switch`
-* Format a table with `printf`
-* Compile packages with `javac -d out` and run with `java -cp out ...`
+* Organize a packaged project (`src` / `out`) that matches `package com.academy.student`
+* Apply exercise `Scanner` / parse habits with **one shared** `Scanner` injected into `StudentManager`
+* Store students in a fixed-size array with a `studentCount` (new lab structure)
+* Implement a `while (true)` menu loop with `switch` (builds on Exercises 2–3)
+* Format a student table with `printf` (builds on Exercises 7–9)
+* Compile packages with `javac -d out` and run with `java -cp out com.academy.student.Main`
+* Validate IDs, non-empty strings, and marks range before storing records
+* Explain why `Main` stays thin and manager methods own operations (builds on Exercise 4)
 
 ---
 
 ## Business Scenario
 
 A training institute needs a console app for registration week: add students, list them, search by ID, compute average marks, and exit. Mentors want plain JDK—no database, no GUI.
+
+You already practiced the syntax building blocks in Module 2 Exercises 1–7. Today’s **graded** pass consolidates those skills into one Student Management menu (pedagogical student records — not the future CRM).
 
 Demo data you should use later (matches the reference sample):
 
@@ -136,7 +166,10 @@ flowchart LR
 
 ## Prerequisites
 
-Complete [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) and follow [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
+Complete **both** of the following before Step 1:
+
+1. [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) and [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
+2. Module 2 [Exercises 1–7](../exercises/EXERCISES-INDEX.md) — all Pass rows marked **Pass** (Exercises 8–9 strongly recommended)
 
 | Check | Must be true |
 | ----- | ------------ |
@@ -144,6 +177,20 @@ Complete [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) and follow [`../_IDE-CONVE
 | Workspace | `java-bootcamp` exists on your laptop |
 | IDE | Desktop **VS Code** and/or **IntelliJ IDEA Community** installed |
 | Terminal | Integrated terminal works inside your IDE |
+| Exercises | `examples/module-02-exercises/` has your Exercise 1–7 sources |
+
+Confirm exercise readiness (from your notes / `module-02-exercises/`):
+
+| # | Exercise skill | Ready? |
+| - | -------------- | ------ |
+| 1 | Arithmetic + labeled output | Pass / Fail |
+| 2 | `if` / `switch` branching | Pass / Fail |
+| 3 | You can explain `for` / `while` / `do-while` | Pass / Fail |
+| 4 | Methods with parameters and return values | Pass / Fail |
+| 5–6 | `Scanner` + `nextLine` + parse (and leftover-newline awareness) | Pass / Fail |
+| 7 | `printf` with decimal places | Pass / Fail |
+
+If any row is **Fail**, finish that exercise before continuing.
 
 ### Pre-flight
 
@@ -156,6 +203,7 @@ java -version
 javac -version
 cd $env:USERPROFILE\java-bootcamp
 pwd
+Get-ChildItem examples\module-02-exercises
 ```
 
 **macOS / Linux**
@@ -165,11 +213,12 @@ java -version
 javac -version
 cd ~/java-bootcamp
 pwd
+ls examples/module-02-exercises
 ```
 
-**Expected result:** Both tools report 21.x. `pwd` (or PowerShell current path) ends under `java-bootcamp`.
+**Expected result:** Both tools report 21.x. `pwd` ends under `java-bootcamp`. Exercise sources appear under `module-02-exercises`.
 
-**If it fails:** Re-do Lab 0. Fix `PATH` / `JAVA_HOME` before continuing. Do not invent a second JDK folder “just for this lab.”
+**If it fails:** Re-do Lab 0 for JDK/workspace. If the exercises folder is missing or empty, return to [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md). Do not invent a second JDK folder “just for this lab.”
 
 ---
 
@@ -187,11 +236,14 @@ Optional bonus later: menu items 6–10 (top / lowest / pass-fail / sort / stats
 
 ## Concepts to Discuss (with instructor)
 
-* Why package name must match folder path
-* Why one `Scanner` on `System.in` is shared (not recreated every method)
-* Why `nextLine()` + `Integer.parseInt` avoids leftover-newline bugs
-* Why arrays need a separate `studentCount` (do not loop to `students.length` blindly)
-* Why `Main` stays thin and `StudentManager` owns operations
+Revisit your exercise notes, then discuss:
+
+* Why package name must match folder path *(lab-only depth — exercises were flat files)*
+* Why one `Scanner` on `System.in` is shared (not recreated every method) *(Exercises 5–6)*
+* Why `nextLine()` + `Integer.parseInt` avoids leftover-newline bugs *(Exercises 5–6)*
+* Why arrays need a separate `studentCount` (do not loop to `students.length` blindly) *(lab-only)*
+* Why `Main` stays thin and `StudentManager` owns operations *(Exercise 4)*
+* How `printf` column widths from Exercises 7–9 transfer to the student table *(Exercises 7–9)*
 
 ---
 
@@ -205,6 +257,8 @@ Prefer writing code yourself. Peek at [`solution/`](solution/) only after a genu
 ### Step 1 — Create the project folders
 
 **Why:** Java packages map to directories. `package com.academy.student` requires folders `com/academy/student` under `src`.
+
+**Builds on:** Exercises used a **flat** `module-02-exercises/` folder. This lab introduces the packaged `src/` / `out/` layout you will reuse in later Week 1 labs.
 
 **Do this:**
 
@@ -275,6 +329,8 @@ find src -type d
 
 **Why:** The model holds data only. Menu logic belongs elsewhere. Encapsulation (private fields + getters/setters) is a Week 1 habit.
 
+**Builds on Exercise 4 / Module 1 objects:** You already wrote methods and simple classes. Here the graded model is `Student` with id, name, course, and marks.
+
 **Do this:** Create `src/com/academy/student/Student.java`:
 
 ```java
@@ -330,6 +386,8 @@ You may keep getters/setters on one line or expand them—style is yours as long
 
 **Why:** A fixed-size array + `studentCount` is the beginner storage pattern before collections. The manager owns operations.
 
+**Builds on Exercise 4:** Named methods (not one giant `main`) — now grouped on a manager class with injected `Scanner`.
+
 **Do this:** Create `src/com/academy/student/StudentManager.java` with at least:
 
 ```java
@@ -378,6 +436,8 @@ public class StudentManager {
 ### Step 5 — Create `Main` with the menu loop
 
 **Why:** Consoles stay alive with `while (true)` until the user chooses Exit. `Main` should only display/choose and delegate.
+
+**Builds on Exercises 2–3:** You already used `switch` and loop forms. Lab menu uses `while (true)` + `switch` (same “repeat until exit” idea as the Exercise 3 `do-while` menu toy). Prefer all-`nextLine`+parse for the choice (Exercise 6 habit).
 
 **Do this:** Create `src/com/academy/student/Main.java`:
 
@@ -448,6 +508,8 @@ Until manager methods exist, you can temporarily leave empty methods that print 
 
 **Why:** Creation is the first real data path. Validate ID uniqueness, non-empty strings, and marks in range.
 
+**Builds on Exercises 5–6:** Same `Scanner` / `nextLine` + parse pattern as Personal Details and Product Information — now with uniqueness and range checks.
+
 **Do this:** In `StudentManager`, implement roughly:
 
 1. If `studentCount >= MAX_STUDENTS`, print full and return.
@@ -476,6 +538,8 @@ Student Added Successfully.
 ### Step 7 — Implement Display Students (`printf` table)
 
 **Why:** Graders and mentors read columns faster than free-form dumps. `printf` widths keep a clean table.
+
+**Builds on Exercises 7–9:** You practiced `%.2f` and aligned columns. Apply that to student rows (Exercise 9 is especially useful if you finished the bonus).
 
 **Do this:** Loop `i` from `0` to `studentCount - 1` (not to `MAX_STUDENTS`). Print:
 
@@ -512,6 +576,8 @@ If `studentCount == 0`, print `No students to display.`
 
 **Why:** Searching by ID proves you can traverse the occupied portion of the array and call `Student.display()`.
 
+**Builds on Exercises 2–3:** Branch when found / not found; loop only over `studentCount` occupied slots.
+
 **Do this:**
 
 1. If no students, print `No students to search.`
@@ -538,6 +604,8 @@ Marks : 91.0
 
 **Why:** Aggregates over occupied slots only. Practice `double` totals and `printf`.
 
+**Builds on Exercises 1 and 7–8:** Arithmetic + `%.2f` formatting — now over an array of marks.
+
 **Do this:** Sum `getMarks()` for `0 .. studentCount-1`, divide by `studentCount`, print:
 
 ```text
@@ -556,6 +624,8 @@ Average Marks : 91.00
 ### Step 10 — Harden validation
 
 **Why:** Real users type letters for numbers and blank names. Re-prompt until valid (or reject clearly).
+
+**Builds on Exercises 2 and 5–6:** Decision branches + safe parse; reject bad input without crashing the menu.
 
 **Do this:** Confirm these behaviors:
 
@@ -576,6 +646,8 @@ Average Marks : 91.00
 ### Step 11 — Compile and run from the terminal
 
 **Why:** You must understand package compile/classpath even when the IDE Run button works. Both VS Code and IntelliJ terminals use the same commands.
+
+**Builds on:** Flat `javac ClassName.java` from exercises / Lab 1. Here you use `javac -d out` and `java -cp out` for packages — lab-only depth.
 
 **Do this:** From project root `Lab2-JavaSyntax`:
 
@@ -818,17 +890,41 @@ Try after the core menu works. Reference ideas live under [`solution/`](solution
 
 ## Success Criteria
 
-You can: create package folders; write `Student` / `StudentManager` / `Main`; validate input; print a `printf` table; compile with `javac -d out` and run `java -cp out com.academy.student.Main` from VS Code or IntelliJ; explain each layer without copying the solution.
+You have completed Lab 2 when you can:
+
+_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+| # | Confirm | Your notes |
+| - | ------- | ---------- |
+| 0 | Module 2 Exercises 1–7 Pass criteria are complete **before** Lab Steps 3+ | Pass / Fail |
+| 1 | Package folders match `com.academy.student` under `examples/Lab2-JavaSyntax/src/` | Pass / Fail |
+| 2 | `Student` / `StudentManager` / thin `Main` compile and run | Pass / Fail |
+| 3 | One shared `Scanner`; add path works for demo `101` / `John` / `Java` / `91` | Pass / Fail |
+| 4 | Display prints a `printf` student table | Pass / Fail |
+| 5 | Search and average menu paths work | Pass / Fail |
+| 6 | `javac -d out` and `java -cp out com.academy.student.Main` succeed from the terminal | Pass / Fail |
+| 7 | You can explain each layer without copying the solution | Pass / Fail |
+
+This lab bridges **Module 2 exercises** (after Lab 0 / Lab 1 habits) to a graded packaged console app.
 
 ---
 
 ## Instructor Notes
 
+**Classroom order (do not reverse):**
+
+1. Module 2 PPT (+ any live demos during slides)
+2. Students complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) in `module-02-exercises/` (8–9 challenge/bonus as time allows)
+3. Students open the OS how-to, then this guide — `Lab2-JavaSyntax` with packages
+
+**Before students open this guide:** confirm exercise checkpoint Pass (arithmetic, decisions/loops, methods, `Scanner`+parse, `printf`). Lab 2 pacing assumes those skills already exist.
+
 * **Reference solution:** [`solution/Lab2-JavaSyntax/`](solution/Lab2-JavaSyntax/) includes core features plus bonus menu options 6–10. Guide students toward helpers (`readValidMarks`, `findStudentIndex`) before revealing full files. **Students must not copy the solution blindly**—use it as a last resort and require them to explain their code.
-* **Scanner pitfalls:** Mixing `nextInt()`/`nextDouble()` with `nextLine()` skips prompts. Enforce one shared `Scanner` injected into `StudentManager`.
-* **Classpath teaching moment:** Demo compiling without `-d out` / running without `-cp out` so Step 11 sticks.
-* **IDEs:** Prefer IntelliJ Community (primary); VS Code is optional (Sources Root + SDK 21 + Run `Main`). Score table screenshots and a thin `Main`.
-* **Timing:** Core path fits ~2.5–3 hours; bonuses are stretch.
+* **Scanner pitfalls:** Mixing `nextInt()`/`nextDouble()` with `nextLine()` skips prompts. Enforce one shared `Scanner` injected into `StudentManager` (Exercises 5–6 already warned them).
+* **Classpath teaching moment:** Demo compiling without `-d out` / running without `-cp out` so Step 11 sticks — this is new relative to flat exercises.
+* **Common misconception:** “I can skip the exercises and jump to Lab 2” — No; send them back to [`../exercises/`](../exercises/EXERCISES-INDEX.md). Also: do not mix `module-02-exercises/` with `Lab2-JavaSyntax/`.
+* **IDEs:** Prefer IntelliJ Community (primary); VS Code is optional (Sources Root on `src` + SDK 21 + Run `Main`). Score table screenshots and a thin `Main`.
+* **Timing (Day 2):** Core checkpoint ~90 min after exercises; full menu + validation + evidence as extended completion. Bonuses are stretch.
 
 ---
 

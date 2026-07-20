@@ -4,12 +4,14 @@
 
 **Module:** 2 — Java Syntax and Core Constructs  
 **Source:** Module 2 slides: Lab Overview / Lab Tasks (Java Syntax and I/O)  
-**Next (after these exercises):** OS how-to → [`../lab2/LAB-2-WINDOWS.md`](../lab2/LAB-2-WINDOWS.md) or [`../lab2/LAB-2-MACOS.md`](../lab2/LAB-2-MACOS.md) → then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)
+**Next (after Exercises 1–7 Pass):** OS how-to → [`../lab2/LAB-2-WINDOWS.md`](../lab2/LAB-2-WINDOWS.md) or [`../lab2/LAB-2-MACOS.md`](../lab2/LAB-2-MACOS.md) → then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** and **before** the full lab.  
+> **When:** Complete these exercises **after the module slides** and **before** the graded lab.  
+> **Core gate for Lab 2:** Exercises **1–7** must be Pass. Exercises **8–9** are challenge/bonus (strongly recommended before Lab display/`printf` steps).  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice sources separate from the graded lab (`examples/Lab2-JavaSyntax/`).  
-> Each exercise includes **starter code with line comments**, a short **why** for each step, and Windows / macOS commands.
+> Each exercise includes **starter code with line comments**, a short **why** for each step, and Windows / macOS commands.  
+> **Lab 2 assumes** you can already use arithmetic, decisions, loops, methods, `Scanner`+parse, and `printf` from these exercises — Lab 2 packages them into a menu app, not first teaching.
 
 ## Already covered — do not redo
 
@@ -90,3 +92,5 @@ Numbered to match the order these topics appear in the Module 2 slides — work 
 | 9 | Personal Profile (bonus) | Aligned `printf` table layout | [`exercise-09-profile-bonus.md`](exercise-09-profile-bonus.md) |
 
 Work in order. Keep practice sources separate from the graded lab submission.
+
+When Exercises **1–7** Pass criteria are **Pass**, open your OS how-to and then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md). Do not start Lab 2 mid-exercise list. Finish 8–9 when you can (before or during Lab extended time).

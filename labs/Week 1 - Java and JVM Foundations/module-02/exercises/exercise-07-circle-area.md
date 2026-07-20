@@ -1,6 +1,6 @@
 # Exercise 7 — Area of Circle
 
-**Module 2** · Pre-lab practice · then open [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Math: Calculating the Area of a Circle](../../../lab_diagrams/mod02-ex07-circle-area.png)
@@ -92,3 +92,11 @@ Area matches π × r × r and prints with two decimals.
 | - | ------- | ---------- |
 | 1 | Area prints with two decimals for your radius | Pass / Fail |
 | 2 | You can write the formula `Math.PI * r * r` from memory | Pass / Fail |
+
+---
+
+## Next
+
+Core Exercises **1–7** complete → open **one** OS how-to → [`../lab2/LAB-2-WINDOWS.md`](../lab2/LAB-2-WINDOWS.md) or [`../lab2/LAB-2-MACOS.md`](../lab2/LAB-2-MACOS.md) → then graded [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md) (builds on these exercises; separate folder `examples/Lab2-JavaSyntax/`).
+
+Optional: continue to Exercises 8–9 (challenge/bonus) before or during Lab extended time.

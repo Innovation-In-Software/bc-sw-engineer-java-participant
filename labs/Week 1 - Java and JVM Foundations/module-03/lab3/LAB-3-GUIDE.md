@@ -1,9 +1,11 @@
 # Lab 3: Object-Oriented Design — Banking Management System
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 3 [pre-lab exercises 1–8](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Exercises 1–2 were started on Day 2; finish 3–8 before this lab. Then open **one** OS how-to ([Windows](LAB-3-WINDOWS.md) · [macOS](LAB-3-MACOS.md)) and do **every Step below**. Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
 **Module:** 3 — Object-Oriented Programming in Java  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-03/lab3/`  
 **Difficulty:** Intermediate (beginner-friendly)  
-**Duration:** 3–4 hours  
+**Duration:** 90–240 minutes (Day 3 core checkpoint ~90 min; finish remaining menu paths as extended work)  
 **IDE conventions:** See [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -15,23 +17,52 @@
 
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
-> **Pre-lab exercises:** Complete [`../exercises/`](../exercises/) (from the Module 3 slides) before starting this lab.
+> **Hard gate — pre-lab exercises:** Complete **all eight** Module 3 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 3 is graded consolidation in a **separate** packaged project (`examples/Lab3-BankingSystem/`), not a replacement for the flat exercises folder (`examples/module-03-exercises/`).
 
 ---
 
 ## How to follow this lab
 
-1. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-2. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-3. For each **Step N**: read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-5. Capture evidence under `notes/screenshots/lab-3/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. Confirm Lab 0 + Lab 2 package habits + Module 3 Exercises 1–8 are done (checklists below).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
+3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
+4. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
+5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
+6. Capture evidence under `notes/screenshots/lab-3/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+
+## Module 3 exercises you must already have completed
+
+Lab 3 assumes you already practiced these design skills in `examples/module-03-exercises/`. Do **not** treat Steps 3–6 as your first time seeing encapsulation, inheritance, abstract classes, or interfaces.
+
+| Exercise | You already did | Lab 3 builds on it |
+| -------- | --------------- | ------------------ |
+| 1 — Domain entities | Customer / Account / Transaction notes | Same nouns in the packaged model + Step 14 UML |
+| 2 — Encapsulation | Private balance; validated deposit/withdraw | Steps 4–5 / 10 balance protection |
+| 3 — Inheritance / polymorphism | Savings / Current + `Account[]` demo | Steps 5–6, 10 polymorphic display |
+| 4 — Abstract classes | Separate `AbstractAccount` mini | Lab makes real `Account` abstract (Steps 4, 11) — same idea, graded names |
+| 5 — Interface | `Printable` + `Customer` | Step 3; Lab also has Savings/Current implement `Printable` |
+| 6 — SOLID SRP | Main vs service vs domain sentence | Steps 8–12 thin `Main` / `BankService` |
+| 7 — SOLID OCP/LSP/ISP/DIP | Notes + `FrozenAccount` thought experiment | Step 13 checklist (FrozenAccount not required in Lab core) |
+| 8 — Mini UML | Six-type Mermaid | Step 14 grows diagram to include `BankService` / `Main` |
+
+**Intentional design deltas (extend — do not paste exercise code blindly):**
+
+* Exercises were **flat** default-package files; Lab uses `package com.academy.bank` + `src` / `out`
+* Exercise 3 may fee via `super.withdraw(amount + FEE)`; Lab prefers a `calculateCharges()` hook in base `withdraw`
+* Exercise 4 used `AbstractAccount`; Lab’s graded base type is named `Account` (abstract)
+* Exercise 2 may omit `setBalance`; Lab often uses `protected setBalance` for safe subtype updates
+
+**Lab-only additions:** packaged banking console, `BankService` arrays + full menu, `Transaction` wiring, sample session C101 / savings / deposit / withdraw, LMS evidence pack.
+
+If any of Exercises 1–8 is still **Fail**, finish that exercise first — then return here.
+
+---
 
 ## Lab Overview
 
-Build a **menu-driven Banking Management System** that applies encapsulation, inheritance, abstraction, interfaces, polymorphism, and clear service responsibilities—still plain JDK, no Spring/database.
+This Module 3 lab is the **graded consolidation** after Module 3 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced domain modeling, encapsulation, inheritance, abstraction, interfaces, SOLID spot-checks, and mini UML in `module-03-exercises/`. Here you assemble those skills into a **menu-driven Banking Management System** with packages and a clear model / service / `Main` split.
 
-**Purpose.** Lab 2 taught syntax and console I/O. Lab 3 teaches **design**: type hierarchies, invariants, polymorphic arrays, and a thin `Main` over a coordinating service.
+**Purpose.** Lab 2 taught syntax and console I/O. Module 3 exercises taught OOP design pieces. Lab 3 locks the **full design**: type hierarchies, invariants, polymorphic arrays, and a thin `Main` over a coordinating service—with submit-ready evidence.
 
 **What you build.** Classes under package `com.academy.bank`:
 
@@ -46,7 +77,7 @@ Build a **menu-driven Banking Management System** that applies encapsulation, in
 | `BankService` | Arrays + create / deposit / withdraw / display |
 | `Main` | Menu loop entry point |
 
-**What success looks like.** Under `java-bootcamp/examples/Lab3-BankingSystem/` you compile, run, create a customer and savings account, deposit/withdraw, and display accounts polymorphically.
+**What success looks like.** Under `java-bootcamp/examples/Lab3-BankingSystem/` you compile with `javac -d out`, run with `java -cp out`, create a customer and savings account, deposit/withdraw, and display accounts polymorphically. Exercise sources remain under `examples/module-03-exercises/`.
 
 **Project path (mirror the solution layout):**
 
@@ -64,22 +95,25 @@ java-bootcamp/examples/Lab3-BankingSystem/
   out/                    ← created by javac -d out
 ```
 
+**Depends on Lab 0 + Lab 2 habits + Exercises 1–8.** If packages/`Scanner`/menu feel unfamiliar, revisit Lab 2. If OOP exercises are incomplete, open [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
+
 A reference implementation lives in [`solution/Lab3-BankingSystem/`](solution/Lab3-BankingSystem/). Use it only if stuck after a real attempt—**do not copy blindly**; you must explain inheritance and polymorphism.
 
 ---
 
 ## Learning Objectives
 
-After this lab you will be able to:
+After this lab you will be able to **consolidate and extend** what you practiced in Exercises 1–8:
 
-* Design classes from a banking scenario (customer, accounts, transactions)
-* Apply encapsulation (`private` fields; protected balance updates on `Account`)
-* Model inheritance: abstract `Account` → `SavingsAccount` / `CurrentAccount`
-* Define and implement an interface (`Printable`)
+* Assemble a packaged banking domain from exercise entity notes (Customer, accounts, transactions)
+* Apply encapsulation with `private` fields and protected balance updates on abstract `Account`
+* Model inheritance: abstract `Account` → `SavingsAccount` / `CurrentAccount` (builds on Exercises 3–4)
+* Define and implement `Printable` on Customer and account types (builds on Exercise 5)
 * Use polymorphism: `Account[]` holding both account types; runtime `displayAccount()`
-* Keep `Main` thin and put operations in `BankService`
+* Keep `Main` thin and put operations in `BankService` (builds on Exercise 6 SRP)
+* Complete a SOLID design checklist for your console design (builds on Exercises 6–7)
+* Grow your Exercise 8 UML to include `BankService` / `Main`
 * Compile/run packages with `javac -d out` / `java -cp out` in VS Code or IntelliJ
-* Sketch a UML class diagram of your design
 
 ---
 
@@ -92,6 +126,8 @@ Bank staff need a console tool to:
 * Deposit and withdraw
 * Display accounts and customers
 * Exit cleanly
+
+You already practiced the OOP building blocks in Module 3 Exercises 1–8. Today’s **graded** pass consolidates those skills into one Banking Management menu (pedagogical bank types — not Spring/CRM).
 
 Demo data matching the reference sample:
 
@@ -207,14 +243,32 @@ flowchart LR
 
 ## Prerequisites
 
-Complete [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) and Lab 2 habits (packages, `Scanner`, menu loop). Follow [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
+Complete **all** of the following before Step 1:
+
+1. [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) and Lab 2 habits (packages, `Scanner`, menu loop) — [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
+2. Module 3 [Exercises 1–8](../exercises/EXERCISES-INDEX.md) — all Pass rows marked **Pass**
 
 | Check | Must be true |
 | ----- | ------------ |
 | JDK | `java` / `javac` show **21.x** |
 | Workspace | `java-bootcamp/examples/` available |
 | IDE | Desktop **VS Code** and/or **IntelliJ IDEA Community** |
-| Prior lab | Comfortable with `javac -d out` / `java -cp out` |
+| Prior lab | Comfortable with `javac -d out` / `java -cp out` (Lab 2) |
+| Exercises | `examples/module-03-exercises/` has your Exercise 1–8 work |
+
+Confirm exercise readiness (from your notes / `module-03-exercises/`):
+
+| # | Exercise skill | Ready? |
+| - | -------------- | ------ |
+| 1 | Domain entity table for Customer / Account / Transaction | Pass / Fail |
+| 2 | Encapsulated deposit/withdraw without exposing raw balance writes | Pass / Fail |
+| 3 | Inheritance + polymorphic `Account[]` display | Pass / Fail |
+| 4 | Abstract type that cannot be instantiated | Pass / Fail |
+| 5 | Interface + `implements` + interface reference | Pass / Fail |
+| 6–7 | SRP / OCP–DIP spot-check notes | Pass / Fail |
+| 8 | Mini UML with inheritance + associations | Pass / Fail |
+
+If any row is **Fail**, finish that exercise before continuing.
 
 ### Pre-flight
 
@@ -225,6 +279,7 @@ java -version
 javac -version
 cd $env:USERPROFILE\java-bootcamp
 pwd
+Get-ChildItem examples\module-03-exercises
 ```
 
 **macOS / Linux**
@@ -234,11 +289,12 @@ java -version
 javac -version
 cd ~/java-bootcamp
 pwd
+ls examples/module-03-exercises
 ```
 
-**Expected result:** JDK 21.x; current directory under `java-bootcamp`.
+**Expected result:** JDK 21.x; current directory under `java-bootcamp`; exercise sources present.
 
-**If it fails:** Stop and fix Lab 0 (`PATH` / `JAVA_HOME`). Do not continue with a mismatched JDK.
+**If it fails:** Stop and fix Lab 0 (`PATH` / `JAVA_HOME`). If exercises are missing, return to [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
 
 ---
 
@@ -259,12 +315,15 @@ pwd
 
 ## Concepts to Discuss (with instructor)
 
-* Why `Account` is abstract (no generic “account” without a product type)
-* Why `setBalance` is often `protected` (subtypes / base ops update balance safely)
-* Why `Account[]` can hold Savings and Current (polymorphism)
-* Why `instanceof` should be rare; prefer overrides
+Revisit your exercise notes, then discuss:
+
+* Why `Account` is abstract (no generic “account” without a product type) *(Exercises 3–4)*
+* Why `setBalance` is often `protected` (subtypes / base ops update balance safely) *(Exercise 2 → lab extension)*
+* Why `Account[]` can hold Savings and Current (polymorphism) *(Exercise 3)*
+* Why `instanceof` should be rare; prefer overrides *(Exercise 3)*
 * Why `double` is OK for teaching but production money often uses `BigDecimal`
-* SOLID at console scale: thin `Main`, service owns orchestration, models stay focused
+* SOLID at console scale: thin `Main`, service owns orchestration, models stay focused *(Exercises 6–7)*
+* How Exercise 8’s six-type UML grows when `BankService` / `Main` appear *(Exercise 8 → Step 14)*
 
 ---
 
@@ -278,6 +337,8 @@ Prefer writing your own code. Peek at [`solution/`](solution/) only after trying
 ### Step 1 — Create the project folders
 
 **Why:** Package `com.academy.bank` must match folders under `src`.
+
+**Builds on:** Exercises used a **flat** `module-03-exercises/` folder. This lab uses the packaged `src/` / `out/` layout from Lab 2.
 
 **Do this:**
 
@@ -341,6 +402,8 @@ find src -type d
 
 **Why:** Interfaces define a contract. Customers implement printable details for consistent display.
 
+**Builds on Exercises 1 and 5:** Same Customer entity and `Printable` contract — now under `com.academy.bank` for the graded app.
+
 **Do this:** Create `Printable.java`:
 
 ```java
@@ -362,6 +425,8 @@ Create `Customer.java` with private fields `customerId`, `name`, `email`, `phone
 ### Step 4 — Create abstract `Account`
 
 **Why:** Shared deposit/withdraw logic lives once. Subclasses supply product-specific display and fees/interest.
+
+**Builds on Exercises 2 and 4:** Encapsulation of balance + abstract contract. Exercise 4 may have used `AbstractAccount`; here the graded type is named `Account` (abstract). Prefer `protected setBalance` for safe updates.
 
 **Do this:** Create abstract class `Account` with:
 
@@ -386,6 +451,8 @@ Create `Customer.java` with private fields `customerId`, `name`, `email`, `phone
 
 **Why:** Savings earns interest. Override display and interest calculation.
 
+**Builds on Exercise 3:** Same Savings specialization — now packaged, implements `Printable`, and plugs into Lab’s `Account` base.
+
 **Do this:** `SavingsAccount extends Account implements Printable`:
 
 * Extra field `interestRate`
@@ -405,6 +472,8 @@ Create `Customer.java` with private fields `customerId`, `name`, `email`, `phone
 
 **Why:** Current accounts charge a fee on withdrawal via `calculateCharges()`.
 
+**Builds on Exercise 3:** Same Current specialization. Prefer the Lab fee hook (`calculateCharges()` in base `withdraw`) over pasting an exercise-only `super.withdraw(amount + FEE)` pattern unless you justify it.
+
 **Do this:** `CurrentAccount extends Account implements Printable`:
 
 * Field `transactionFee`
@@ -423,6 +492,8 @@ Create `Customer.java` with private fields `customerId`, `name`, `email`, `phone
 
 **Why:** Even without a database, recording activity teaches an audit trail mindset.
 
+**Builds on Exercise 1:** Transaction was in your domain notes — now a real class wired by `BankService`.
+
 **Do this:** Fields such as `transactionId`, `amount`, `type`, `date`, `accountNumber`; constructor; getters; a `display()` line (printf is fine).
 
 **Expected result:** `BankService` can append transactions after successful deposit/withdraw.
@@ -434,6 +505,8 @@ Create `Customer.java` with private fields `customerId`, `name`, `email`, `phone
 ### Step 8 — Build `BankService` storage skeleton
 
 **Why:** The service owns arrays and counts—same idea as Lab 2’s manager, richer domain.
+
+**Builds on Exercise 6 (SRP) + Lab 2:** Orchestration lives in a service, not in `Main` or model classes.
 
 **Do this:** Create `BankService` with:
 
@@ -471,6 +544,8 @@ Add empty/stub public methods matching menu actions until you implement them.
 
 **Why:** You need a customer before opening an account. Service looks up by ID.
 
+**Builds on Exercises 1–2:** Same entities and validation mindset — now through `BankService` prompts.
+
 **Do this:**
 
 **Create customer:** prompt ID / name / email / phone; reject duplicate IDs; store in `customers[customerCount++]`; print `Customer Created Successfully.`
@@ -503,6 +578,8 @@ Interest Rate : 5%
 
 **Why:** Money movement exercises base `Account` methods; display proves polymorphism.
 
+**Builds on Exercises 2–3:** Validated deposit/withdraw + polymorphic `Account[]` display from exercises — now in the graded menu paths.
+
 **Do this:**
 
 * **Deposit:** find account by number; read amount; `account.deposit(amount)`; record transaction; print `Balance Updated : ...`
@@ -524,6 +601,8 @@ Interest Rate : 5%
 
 **Why:** Abstract types prevent invalid objects.
 
+**Builds on Exercise 4:** Same compiler proof you already saw — confirm graded `Account` is abstract.
+
 **Do this:** Temporarily add (then delete) in any method:
 
 ```java
@@ -539,6 +618,8 @@ Interest Rate : 5%
 ### Step 12 — Create menu-driven `Main`
 
 **Why:** Entry point owns the loop only—same pattern as Lab 2.
+
+**Builds on Exercise 6 + Lab 2:** Thin `Main` + `switch` menu; all banking ops stay in `BankService`.
 
 **Do this:** `Main` creates `Scanner` + `BankService`, loops, reads choice with `nextLine()` + parse, switches:
 
@@ -565,6 +646,8 @@ Print the menu headers exactly (or very close) to the sample so screenshots matc
 
 **Why:** Mentors mark design thinking, not only “it runs.”
 
+**Builds on Exercises 6–7:** Reuse your SRP / OCP–DIP spot-check notes against this packaged design (FrozenAccount demo not required in Lab core).
+
 **Do this:** Self-review:
 
 | Principle | Lab 3 evidence |
@@ -585,6 +668,8 @@ Print the menu headers exactly (or very close) to the sample so screenshots matc
 
 **Why:** Diagrams communicate inheritance and “uses” relationships for code reviews.
 
+**Builds on Exercise 8:** Start from your mini UML of six types; grow it to include `BankService` and `Main`.
+
 **Do this:** Sketch (paper, whiteboard, or Mermaid) showing:
 
 * `Printable` ← `Customer`, `SavingsAccount`, `CurrentAccount`
@@ -601,6 +686,8 @@ Print the menu headers exactly (or very close) to the sample so screenshots matc
 ### Step 15 — Compile and run
 
 **Why:** Terminal compile/run remains the course truth; IDE Run is optional confirmation.
+
+**Builds on Lab 2 + flat exercise `javac`:** Same `-d out` / `-cp out` story as Lab 2; do not compile exercise files into this project.
 
 **Do this:** From `Lab3-BankingSystem`:
 
@@ -836,19 +923,42 @@ Attempt after the core menu works. Ideas exist under [`solution/`](solution/) (m
 
 ## Success Criteria
 
-You can: build the Account hierarchy with an interface; coordinate operations in `BankService`; run a clean menu from VS Code or IntelliJ; demonstrate polymorphic display; explain your design; compile with `javac -d out` and run `java -cp out com.academy.bank.Main`—without blindly pasting the solution.
+You have completed Lab 3 when you can:
+
+_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+| # | Confirm | Your notes |
+| - | ------- | ---------- |
+| 0 | Module 3 Exercises 1–8 Pass criteria are complete **before** Lab Steps 3+ | Pass / Fail |
+| 1 | Package folders match `com.academy.bank` under `examples/Lab3-BankingSystem/src/` | Pass / Fail |
+| 2 | Abstract `Account` hierarchy + `Printable` compile; cannot `new Account(...)` | Pass / Fail |
+| 3 | Create customer C101 + savings; deposit/withdraw work | Pass / Fail |
+| 4 | Polymorphic display via `Account[]` (no unnecessary casts) | Pass / Fail |
+| 5 | Thin `Main` + `BankService` orchestration; SOLID checklist explained | Pass / Fail |
+| 6 | UML matches files (includes service/Main growth from Exercise 8) | Pass / Fail |
+| 7 | `javac -d out` and `java -cp out com.academy.bank.Main` succeed | Pass / Fail |
+
+This lab bridges **Module 3 exercises** (after Lab 2 package habits) to a graded OOP banking console.
 
 ---
 
 ## Instructor Notes
 
+**Classroom order (do not reverse):**
+
+1. Module 3 PPT (Day 2 intro + Day 3 completion)
+2. Students complete [Exercises 1–8](../exercises/EXERCISES-INDEX.md) in `module-03-exercises/` (1–2 on Day 2; 3–8 on Day 3)
+3. Students open the OS how-to, then this guide — `Lab3-BankingSystem` with packages
+
+**Before students open this guide:** confirm exercise checkpoint Pass (encapsulation, inheritance/polymorphism, abstract, interface, SOLID notes, mini UML). Lab 3 pacing assumes those skills already exist.
+
 * **Reference solution:** [`solution/Lab3-BankingSystem/`](solution/Lab3-BankingSystem/) includes core banking plus bonus menu options 9–13. Coach helpers (`findCustomer`, `findAccount`, `readPositiveAmount`, `recordTransaction`) before releasing full sources. **Students must not copy the solution blindly**—require a walkthrough of inheritance and polymorphism.
 * **API fidelity to solution (when aligning demos):** `protected Account(...)`, `protected setBalance`, `boolean withdraw`, `Printable.printDetails()`, `BankService(Scanner)`, auto account numbers from `10001`.
-* **Common pitfalls:** Scanner newline bugs; instantiating abstract `Account`; looping to array capacity; blind casts; logic dumped into `Main`.
+* **Common pitfalls:** Skipping exercises; Scanner newline bugs; instantiating abstract `Account`; looping to array capacity; blind casts; logic dumped into `Main`; pasting Exercise 3 fee pattern instead of `calculateCharges()`; mixing `module-03-exercises/` with `Lab3-BankingSystem/`.
 * **Classpath moment:** Show failing run without `-cp out` so Step 15 sticks.
 * **IDEs:** Prefer IntelliJ Community (primary); VS Code is optional (Sources Root + SDK 21 + Run `Main`). Score UML + polymorphic display screenshots.
 * **Money note:** Mention `BigDecimal` for production; keep `double` for teaching speed unless students finish early.
-* **Timing:** Core path ~3–4 hours; bonuses are stretch.
+* **Timing (Day 3):** Core checkpoint ~90 min after Exercises 3–8; full menu + UML + evidence as extended completion. Bonuses are stretch.
 
 ---
 

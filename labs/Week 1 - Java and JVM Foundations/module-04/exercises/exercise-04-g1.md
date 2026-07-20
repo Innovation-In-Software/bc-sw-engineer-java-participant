@@ -1,6 +1,6 @@
 # Exercise 4 — Select and Verify G1
 
-**Module 4** · Pre-lab practice · then open [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > **Reuse Exercise 3:** No new Java file is needed. Run `GcObserve` again with an explicit collector flag.

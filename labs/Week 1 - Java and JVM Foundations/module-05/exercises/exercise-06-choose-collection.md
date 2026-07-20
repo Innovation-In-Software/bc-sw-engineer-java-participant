@@ -1,6 +1,6 @@
 # Exercise 6 — Choose the Right Collection
 
-**Module 5** · Pre-lab practice · then open [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > **Analysis exercise:** No Java code is required. Choose from requirements instead of defaulting to `ArrayList` for everything.

@@ -1,9 +1,11 @@
 # Lab 7: Exception Handling and Error Management — ATM Banking System
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 7 [pre-lab exercises 1–8](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Then open **one** OS how-to ([Windows](LAB-7-WINDOWS.md) · [macOS](LAB-7-MACOS.md)) and do **every Step below**. Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
 **Module:** 7 — Exception Handling and Error Management  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-07/lab7/`  
 **Difficulty:** Intermediate  
-**Duration:** 3–4 Hours
+**Duration:** 65–240 minutes (Day 5 core checkpoint ~65 min; finish remaining ATM paths as extended work)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
 
@@ -14,29 +16,57 @@
 
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
-> **Pre-lab exercises:** Complete [`../exercises/`](../exercises/) (from the Module 7 slides) before starting this lab.
+> **Hard gate — pre-lab exercises:** Complete **all eight** Module 7 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 7 is graded consolidation in a **separate** packaged project (`examples/Lab7-ATMSystem/`), not a replacement for the flat exercises folder (`examples/module-07-exercises/`).
 
 ---
 
 ## How to follow this lab
 
-1. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-2. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-3. For each **Step N**: read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-5. Capture evidence under `notes/screenshots/lab-7/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. Confirm Lab 0 + prior Week 1 menus/packages + Module 7 Exercises 1–8 are done (checklists below).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
+3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
+4. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
+5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
+6. Capture evidence under `notes/screenshots/lab-7/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+
+## Module 7 exercises you must already have completed
+
+Lab 7 assumes you already practiced exception skills in `examples/module-07-exercises/`. Do **not** treat Steps 2–12 as your first time with custom exceptions, `throw`/`throws`, or try-with-resources.
+
+| Exercise | You already did | Lab 7 builds on it |
+| -------- | --------------- | ------------------ |
+| 1 — Common exceptions | Specific unchecked catches | Step 12 unchecked demos |
+| 2 — `try-catch-finally` | Success/failure cleanup | Step 8 `executeTransaction` multi-catch + finally |
+| 3 — Try-with-resources | Auto-close reader | Step 11 mini statement / `transactions.txt` |
+| 4 — `throw` / `throws` | Signal vs declare | Steps 3, 7, 9 Account/service contracts |
+| 5 — Custom exception | Checked domain failure | Step 2 four ATM exception types |
+| 6 — Propagation | Trace stack to boundary | Steps 3, 8–9 `Account` → `ATMService` → `Main` |
+| 7 — Error strategies | Retry and fallback | Step 7 login PIN attempts / recovery |
+| 8 — Logging warm-up | Context + exception + safe message | Step 5 `LoggerUtil` → `logs/application.log` |
+
+**Intentional deltas (extend — do not paste exercise code blindly):**
+
+* Exercises were **flat** default-package demos; Lab uses `package com.academy.atm` + `src` / `out` (Lab 5–6 pattern)
+* Exercise 5 used one custom type; Lab adds four domain exceptions with extra fields
+* Exercise 8 was a small log sketch; Lab wires logging into every ATM failure path
+
+**Lab-only additions:** seed accounts + PIN login, deposit/withdraw/transfer, mini statement, menu recovery, run-from-project-root for relative files, LMS evidence pack.
+
+If any of Exercises 1–8 is still **Fail**, finish that exercise first — then return here.
+
+---
 
 ## Lab Overview
 
-This Module 7 lab teaches **Java exception handling** by building a fault-tolerant **ATM Banking System** console application. You will wrap banking operations in `try-catch-finally`, declare and throw **custom checked exceptions**, demonstrate **exception propagation** from `Account` → `ATMService` → `Main`, read files with **try-with-resources**, and log failures to `logs/application.log`—so invalid input never crashes the process.
+This Module 7 lab is the **graded consolidation** after Module 7 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced catching common exceptions, `try-catch-finally`, try-with-resources, `throw`/`throws`, custom exceptions, propagation, retry/fallback, and logging in `module-07-exercises/`. Here you assemble those skills into a fault-tolerant **ATM Banking System**.
 
-**Purpose.** Labs 3–6 focused on *what* the program does (OOP, collections, streams). Lab 7 focuses on *what happens when things go wrong*: negative deposits, overdrafts, bad PINs, missing accounts, bad numeric input, and missing files. Enterprise Java APIs live or die on clear error contracts and recovery—this ATM is a compact rehearsal.
+**Purpose.** Labs 3–6 focused on *what* the program does (OOP, collections, streams). Module 7 exercises taught each error-handling skill in isolation. Lab 7 locks the **enterprise habit**: domain throws, boundary catches, log detail, short user messages, menu keeps running.
 
-**What you build (exercise).** An ATM console under package `com.academy.atm`: login with PIN retry limits, deposit, withdraw, balance, transfer (with optional rollback), mini statement (session + file), unchecked-exception demos, and centralized logging. Core types: `Account`, `Transaction`, `ATMService`, `LoggerUtil`, `Main`, plus four custom exceptions.
+**What you build.** An ATM console under package `com.academy.atm`: login with PIN retry limits, deposit, withdraw, balance, transfer (with optional rollback), mini statement (session + file), unchecked-exception demos, and centralized logging. Core types: `Account`, `Transaction`, `ATMService`, `LoggerUtil`, `Main`, plus four custom exceptions.
 
-**What success looks like.** Under `java-bootcamp/examples/Lab7-ATMSystem/` you compile with `javac -d out ...`, run `java -cp out com.academy.atm.Main` **from the project root**, walk success and failure paths (including withdraw-too-much → insufficient balance), inspect `logs/application.log`, and submit evidence graders can recompile.
+**What success looks like.** Under `java-bootcamp/examples/Lab7-ATMSystem/` you compile with `javac -d out ...`, run `java -cp out com.academy.atm.Main` **from the project root**, walk success and failure paths (including withdraw-too-much → insufficient balance), inspect `logs/application.log`, and submit evidence graders can recompile. Exercise sources remain under `examples/module-07-exercises/`.
 
-**Depends on Lab 0 + prior Week 1 skills.** If your IDE, `java`, or `javac` fail, stop and fix [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). Comfort with packages, service layering (Lab 5), and menu + Scanner loops (Labs 5–6) speeds this lab. IDE paths: [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
+**Depends on Lab 0 + prior Week 1 skills + Exercises 1–8.** If your IDE, `java`, or `javac` fail, stop and fix [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). Comfort with packages, service layering (Lab 5), and menu + Scanner loops (Labs 5–6) speeds this lab. IDE paths: [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
 
 **CRM connection (future only).** From Lab 8 onward the **Customer Management Platform** will throw domain exceptions (not found, validation failed), map them to API error responses, and log diagnostics. This lab does **not** build CRM APIs, Spring `@ControllerAdvice`, or a database. Treat the ATM as a **skill bridge**: today’s custom exceptions and recovery loops reappear when CRM services reject bad requests without taking down the JVM.
 
@@ -44,24 +74,24 @@ This Module 7 lab teaches **Java exception handling** by building a fault-tolera
 
 ## Learning Objectives
 
-After completing this lab, you will be able to:
+After completing this lab, you will be able to **consolidate and extend** what you practiced in Exercises 1–8:
 
-* Distinguish **checked** vs **unchecked** exceptions and choose appropriately
-* Wrap operations in **`try` / `catch` / `finally`** (and multiple catch blocks)
-* Create **custom exception** classes with meaningful messages (and optional fields)
-* Use **`throw`** to signal rule violations and **`throws`** to declare checked propagation
-* Trace **exception propagation** across `Main → ATMService → Account`
-* Use **try-with-resources** for `FileReader` / `BufferedReader` without manual `close()`
-* Log errors with timestamp, level, type, message, and stack trace via `LoggerUtil`
+* Distinguish **checked** vs **unchecked** exceptions and choose appropriately (builds on Exercises 1 & 5)
+* Wrap operations in **`try` / `catch` / `finally`** (and multiple catch blocks) (builds on Exercise 2)
+* Create **custom exception** classes with meaningful messages (and optional fields) (builds on Exercise 5)
+* Use **`throw`** to signal rule violations and **`throws`** to declare checked propagation (builds on Exercise 4)
+* Trace **exception propagation** across `Main → ATMService → Account` (builds on Exercise 6)
+* Use **try-with-resources** for `FileReader` / `BufferedReader` without manual `close()` (builds on Exercise 3)
+* Log errors with timestamp, level, type, message, and stack trace via `LoggerUtil` (builds on Exercise 8)
 * Validate numeric input and recover from `InputMismatchException` / `NumberFormatException`
-* Keep the ATM menu running after recoverable failures (**error recovery**)
+* Keep the ATM menu running after recoverable failures (**error recovery**) (builds on Exercise 7)
 * Compile and run with `javac -d out` / `java -cp out` **from the project root** on your laptop (VS Code or IntelliJ)
 
 ---
 
 ## Business Scenario
 
-A bank wants to harden its classroom ATM simulator. Today, invalid amounts or bad PINs can abort the JVM or leave the console in a confusing state.
+A bank wants to harden its classroom ATM simulator. You already practiced exception building blocks in Module 7 Exercises 1–8. Today’s **graded** pass consolidates those skills into one recoverable ATM menu (pedagogical demo accounts — not live banking PII).
 
 The bank requires the ATM software to:
 
@@ -148,9 +178,13 @@ Complete the [Labs Setup Instructions](../../../SETUP-INSTRUCTIONS.md) and [Lab 
 * **Laptop IDE:** **IntelliJ IDEA Community** (primary) or **VS Code** (optional) — see [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
 * Workspace open at `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`)
 * Working integrated terminal in your IDE
+* **Module 7 Exercises 1–8 Pass** — hard gate before Step 1 (see mapping table above)
 * **Prior Week 1 recommended:** packages, service layer, menu + `Scanner` (`nextLine`), basic collections (`HashMap` for accounts)
 * **Maven is optional**—plain `javac`/`java` is the primary path
 * No secrets (keys, tokens, passwords) committed to Git
+
+**Exercise workspace (already done):** `examples/module-07-exercises/` (flat files)  
+**Graded lab workspace (this guide):** `examples/Lab7-ATMSystem/` (`src/com/academy/atm/` + `out/` + `logs/` + `transactions.txt`)
 
 ### Pre-flight
 
@@ -246,6 +280,8 @@ Parts 1–20 from the Module 7 exercise map into the steps below (model → exce
 
 **Why:** Folder path must match `package com.academy.atm;`. Relative files (`transactions.txt`, `logs/`) only work when the JVM starts in the **project root**.
 
+**Builds on Lab 5–6:** Same `src/com/academy/...` + `out/` compile pattern — exercises stayed flat; the graded lab is packaged and must run from project root.
+
 **Do this:**
 
 ```bash
@@ -285,6 +321,8 @@ Open the project folder in VS Code or IntelliJ. Stub the Java files listed under
 ### Step 2 — Create custom exception classes (Parts 9–12)
 
 **Why:** Domain rules deserve named types. Catching `InvalidAmountException` is clearer than parsing a generic `Exception` message—and later CRM APIs map named exceptions to status codes.
+
+**Builds on Exercise 5:** Same checked domain-exception pattern — lab adds four ATM types with optional fields (requested/available, attempts remaining).
 
 **Do this:** Create four checked exceptions under `src/com/academy/atm/`:
 
@@ -359,6 +397,8 @@ public class AccountNotFoundException extends Exception {
 ### Step 3 — Create the `Account` class (Parts 1, 13–14)
 
 **Why:** Business mutations throw at the source of truth. `throws` on `deposit`/`withdraw` documents the checked contract for `ATMService`.
+
+**Builds on Exercises 4–6:** `throw`/`throws` at the domain layer; propagation starts here and continues through `ATMService` to the menu boundary.
 
 **Do this:** Create `src/com/academy/atm/Account.java`:
 
@@ -444,6 +484,8 @@ Match [`solution/`](solution/) if you want grading parity.
 ### Step 5 — Create `LoggerUtil` (Part 17)
 
 **Why:** Users see short ERROR text; mentors need timestamps and stack traces in `logs/application.log`.
+
+**Builds on Exercise 8:** Same context + exception + user-safe message habit — lab centralizes file append under `logs/application.log`.
 
 **Do this:** Create `src/com/academy/atm/LoggerUtil.java`:
 
@@ -584,6 +626,8 @@ public class ATMService {
 
 **Why:** Login shows multi-catch, custom exception fields, logging, and `finally` return messaging—without exiting the app.
 
+**Builds on Exercises 5 & 7:** Custom `InvalidPinException` plus retry/fallback strategy (max attempts) from the error-strategies exercise.
+
 **Do this:**
 
 ```java
@@ -633,6 +677,8 @@ public void login() {
 ### Step 8 — Shared `executeTransaction` with multi-catch + finally (Parts 3, 6–8, 18)
 
 **Why:** One boundary handler keeps deposit/withdraw/transfer DRY and guarantees the “Returning to Main Menu” message.
+
+**Builds on Exercises 2 & 6:** Same success/failure cleanup as Exercise 2; propagation lands here as the service boundary (Exercise 6).
 
 **Do this:** Add helpers:
 
@@ -829,6 +875,8 @@ public void transferFunds() {
 
 **Why:** Reading files is a classic **checked** `IOException` path. Try-with-resources auto-closes the reader.
 
+**Builds on Exercise 3:** Same auto-close reader pattern — lab reads `transactions.txt` from the project root.
+
 **Do this:**
 
 ```java
@@ -872,6 +920,8 @@ private void loadTransactionsFromFile() {
 ### Step 12 — Unchecked exception demos (Part 5)
 
 **Why:** Students must handle common runtime faults without letting them kill the menu loop.
+
+**Builds on Exercise 1:** Same NPE / arithmetic / bounds demos — lab keeps the menu alive after each catch.
 
 **Do this:**
 
@@ -1381,7 +1431,21 @@ Generate a session transaction summary (total / successful / failed).
 
 ## Success Criteria
 
-By the end of this lab, you should be able to:
+You have completed Lab 7 when you can:
+
+_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+| # | Confirm | Your notes |
+| - | ------- | ---------- |
+| 0 | Module 7 Exercises 1–8 Pass criteria are complete **before** Lab Step 1 | Pass / Fail |
+| 1 | Work in `java-bootcamp/examples/Lab7-ATMSystem/` with `package com.academy.atm` | Pass / Fail |
+| 2 | Custom exceptions + login/deposit/withdraw; insufficient-funds path works | Pass / Fail |
+| 3 | Menu recovers after failures; `logs/application.log` has diagnostic entries | Pass / Fail |
+| 4 | `javac -d out` / `java -cp out com.academy.atm.Main` succeed **from project root** | Pass / Fail |
+| 5 | You can narrate throw site → catch boundary → log → return to menu | Pass / Fail |
+| 6 | Screenshots/evidence under `notes/screenshots/lab-7/` without secrets or real PINs | Pass / Fail |
+
+By the end of this lab, you should also be able to:
 
 * Design Java applications that fail gracefully instead of crashing
 * Handle checked and unchecked exceptions appropriately
@@ -1392,16 +1456,27 @@ By the end of this lab, you should be able to:
 * Keep a console ATM recoverable under bad input and business-rule failures
 * Explain how Lab 7’s exception design prepares (but does not implement) later CRM API error handling
 
+This lab bridges **Module 7 exercises** (after Labs 5–6) to graded ATM recovery evidence.
+
 ---
 
 ## Instructor Notes
 
+**Classroom order (do not reverse):**
+
+1. Module 7 PPT (Day 5 afternoon)
+2. Students complete [Exercises 1–8](../exercises/EXERCISES-INDEX.md) in `module-07-exercises/` (Day 5, 3:00–4:30)
+3. OS how-to → this guide (Day 5, 4:30–5:35 core checkpoint)
+4. Kahoot Module 7 + Week 1 review / Week 2 bridge
+
+**Before students open this guide:** confirm all eight exercise Pass rows (common exceptions, try-catch-finally, try-with-resources, throw/throws, custom exception, propagation, retry/fallback, logging). Lab 7 pacing assumes those skills already exist.
+
 * **Reference solution:** Full implementation including menu options 8–10 and transfer rollback is in [`solution/`](solution/) under `Lab7-ATMSystem/` (`com.academy.atm`). Seed accounts: **`1001`/`1234`/$11000** and **`1002`/`5678`/$5000**. Guide learners to finish core menu 1–7 + logging before revealing bonuses. Emphasize withdraw `$20000` → Insufficient Balance as the signature failure demo.
 * **API fidelity:** Align with solution signatures—`Account.deposit/withdraw` checked throws; `InsufficientFundsException(message, requested, available)`; `InvalidPinException(message, attemptsRemaining)`; `ATMService(Scanner)`; `LoggerUtil` path `logs/application.log`; `TRANSACTION_FILE = "transactions.txt"`; user messages for invalid numeric input and insufficient balance as specified.
-* **Common pitfalls:** Running from the wrong directory; putting catches only in `Main` while leaving `Account` undeclared; catching `Exception` first; forgetting `finally`; logging PINs; crashing on `NumberFormatException` instead of translating to a friendly message.
+* **Common pitfalls:** Skipping exercises; running from the wrong directory; putting catches only in `Main` while leaving `Account` undeclared; catching `Exception` first; forgetting `finally`; logging PINs; crashing on `NumberFormatException` instead of translating to a friendly message; mixing `module-07-exercises/` flat files with packaged lab commands.
 * **Classpath / cwd / IDE:** Demo failure when starting Java outside the project root so try-with-resources + logging paths “click.” Dual IDE on laptop: IntelliJ Community primary, VS Code optional — [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md). In IntelliJ, set working directory to project root. Score screenshots of **failure** paths + log evidence, not only happy-path deposits.
 * **Teaching emphasis:** Boundaries catch; domain throws; users get short messages; logs get detail. CRM/Spring exception handlers (Week 2+) reuse this mental model—Lab 7 stays console + file I/O on purpose.
-* **Timing:** Core path fits 3–4 hours; bonuses are stretch. After Lab 7, optionally point students to the Week 1 integrated mini-project below as a portfolio bridge into Week 2.
+* **Timing:** Day 5 core ~65 min (login + one success + insufficient funds + log evidence); remaining paths as extended completion. After Lab 7, optionally point students to the Week 1 integrated mini-project below as a portfolio bridge into Week 2.
 
 ---
 
