@@ -31,17 +31,18 @@ Early-career developers build full-stack enterprise Java skills — from JVM fou
 ```text
 bc-sw-engineer-java-participant/
 ├── README.md                 ← You are here (synced from course README.participant.md)
-└── labs/                     ← Lab guides and setup docs (no solution/ folders)
-    ├── FINAL-SETUP-README.md
-    ├── PARTICIPANT-SETUP-README.md
-    ├── SETUP-INSTRUCTIONS.md
-    ├── TECHNOLOGY-STACK-GUIDE.md
-    └── Week N - …/module-NN/
-        ├── exercises/        ← Week 1 pre-lab practice (when present)
-        └── labN/             ← Lab guide + Windows/macOS how-tos
+├── labs/                     ← Lab guides and setup docs (no solution/ folders)
+│   ├── FINAL-SETUP-README.md
+│   ├── PARTICIPANT-SETUP-README.md
+│   ├── SETUP-INSTRUCTIONS.md
+│   ├── TECHNOLOGY-STACK-GUIDE.md
+│   └── Week N - …/module-NN/
+│       ├── exercises/        ← Week 1 pre-lab practice (when present)
+│       └── labN/             ← Lab guide + Windows/macOS how-tos
+└── slides/                   ← Student-facing module slide PDFs
 ```
 
-**No `solution/` folders** are published here. Complete each lab yourself. Shareable PDF module decks are in [`decks/pdf/`](decks/pdf/). Editable PPTX decks and instructor notes are provided separately by your instructor.
+**No `solution/` folders** are published here. Complete each lab yourself. Slide PDFs are under [`slides/`](slides/). Editable PPTX decks and instructor notes are provided separately by your instructor.
 
 ---
 

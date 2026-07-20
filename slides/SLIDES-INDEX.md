@@ -14,13 +14,4 @@ Student-facing slide package folder (synced to **both** IIS instructor and parti
 | 6 | [Module 6 - Streams and Functional Programming.pdf](Module%206%20-%20Streams%20and%20Functional%20Programming.pdf) |
 | 7 | [Module 7 - Exception Handling and Error Management.pdf](Module%207%20-%20Exception%20Handling%20and%20Error%20Management.pdf) |
 
-Source PPTX and authoring copies live under [`../decks/`](../decks/).
-
-## Where slide sources live
-
-| Asset | Location |
-| ----- | -------- |
-| Slide images (PNG) by module | [`../curriculum/`](../curriculum/) → `Week …/module-NN/` |
-| Editable PPTX decks | [`../decks/pptx/`](../decks/pptx/) |
-| PDF exports (authoring) | [`../decks/pdf/`](../decks/pdf/) |
-| Slide master / templates | [`../templates/`](../templates/) |
+On the **participant** repo this folder is the published slide package (`labs/` + `slides/` only). Editable PPTX and authoring sources stay in the instructor authoring repo under `decks/` and `curriculum/`.
