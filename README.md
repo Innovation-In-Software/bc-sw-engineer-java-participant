@@ -41,7 +41,7 @@ bc-sw-engineer-java-participant/
         └── labN/             ← Lab guide + Windows/macOS how-tos
 ```
 
-**No `solution/` folders** are published here. Complete each lab yourself. Slide decks and instructor notes are provided separately by your instructor.
+**No `solution/` folders** are published here. Complete each lab yourself. Shareable PDF module decks are in [`decks/pdf/`](decks/pdf/). Editable PPTX decks and instructor notes are provided separately by your instructor.
 
 ---
 
