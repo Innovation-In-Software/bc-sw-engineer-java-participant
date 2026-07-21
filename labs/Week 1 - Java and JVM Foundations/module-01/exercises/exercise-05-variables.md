@@ -9,26 +9,23 @@
 
 Create `Variables.java` with local variables of several primitive types and one `String`; print each.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
-// Class name must match file name Variables.java
 public class Variables {
-    // Entry point — JVM starts here
     public static void main(String[] args) {
-        int age = 21;                       // whole number (32-bit)
-        long population = 8_000_000_000L;   // bigger whole number; L means long
-        double price = 19.99;               // decimal number
-        boolean enrolled = true;            // true or false only
-        char grade = 'A';                  // single character in single quotes
-        String name = "Aman";               // text (object) in double quotes
+        // TODO: declare and initialize one variable of each type below
+        int age = _____;                       // whole number — try 21
+        long population = _____;               // large whole number — use L suffix (e.g. 8_000_000_000L)
+        double price = _____;                  // decimal — try 19.99
+        boolean enrolled = _____;              // true or false
+        char grade = _____;                    // single character in single quotes — try 'A'
+        String name = _____;                   // text in double quotes — try "Aman"
 
-        System.out.println(age);            // print each value on its own line
-        System.out.println(population);
-        System.out.println(price);
-        System.out.println(enrolled);
-        System.out.println(grade);
-        System.out.println(name);
+        // TODO: print each variable on its own line (six println calls)
+        _____
     }
 }
 ```
@@ -50,7 +47,7 @@ public class Variables {
 
 1. Right-click `module-01-exercises` → **New → File** (not Java Class).
 2. Name it exactly `Variables.java`.
-3. Paste the starter code above. Save (**Ctrl+S** / **⌘S**).
+3. Paste the starter, fill every `_____` / `// TODO`. Save (**Ctrl+S** / **⌘S**).
 
 Ignore any yellow *outside of the module source root* banner.
 
@@ -95,6 +92,15 @@ Aman
 ## Expected result
 
 All declared values print without compile/runtime errors.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
+| `integer number too large` on population | Use `long` with an `L` suffix: `8_000_000_000L` |
+| `unclosed character literal` | `char` uses single quotes: `'A'`, not `"A"` |
+| `cannot find symbol` on String | Capital S — `String` is a class name |
 
 ## Pass criteria
 

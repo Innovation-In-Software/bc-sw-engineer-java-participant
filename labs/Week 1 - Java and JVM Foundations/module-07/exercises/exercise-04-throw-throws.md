@@ -10,7 +10,11 @@
 Create `ThrowThrowsDemo.java` to distinguish actively throwing an exception
 from declaring that a method may propagate one.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
+
+The validation guard and file read call are scaffolded — your job is **`throw`**, **`throws`**, and the **catch blocks** in `main`.
 
 ```java
 import java.io.IOException;
@@ -20,33 +24,28 @@ import java.nio.file.Path;
 public class ThrowThrowsDemo {
     static void validateAmount(double amount) {
         if (amount <= 0) {
-            // throw creates and signals one failure immediately.
-            throw new IllegalArgumentException(
-                    "Amount must be positive");
+            // TODO: throw new IllegalArgumentException("Amount must be positive")
         }
     }
 
-    // throws declares a checked failure contract for callers.
+    // TODO: declare throws IOException on this method
     static String loadPolicy(Path path)
-            throws IOException {
+            _____ {
         return Files.readString(path);
     }
 
     public static void main(String[] args) {
         try {
             validateAmount(-10);
-        } catch (IllegalArgumentException ex) {
-            System.out.println(
-                    "Validation: " + ex.getMessage());
+        } catch (_____ ex) { // TODO: catch IllegalArgumentException
+            // TODO: print "Validation: " + ex.getMessage()
         }
 
         try {
             // Missing file forces the declared IOException path.
             loadPolicy(Path.of("missing-policy.txt"));
-        } catch (IOException ex) {
-            System.out.println(
-                    "Policy file unavailable; "
-                    + "caller handled IOException.");
+        } catch (_____ ex) { // TODO: catch IOException
+            // TODO: print "Policy file unavailable; caller handled IOException."
         }
     }
 }
@@ -67,7 +66,9 @@ Unchecked exceptions may be declared but do not need to be. Checked
 **Why:** Lab 7 account methods throw domain failures, while service methods
 often declare them for the menu boundary to handle.
 
-Create `ThrowThrowsDemo.java`.
+1. **New → File** → `ThrowThrowsDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

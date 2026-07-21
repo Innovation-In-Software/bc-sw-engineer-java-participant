@@ -11,7 +11,9 @@
 
 Create `GcObserve.java`, run it with a bounded heap and unified GC logging, and identify evidence that the JVM reclaimed temporary allocations.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class GcObserve {
@@ -20,23 +22,21 @@ public class GcObserve {
 
         for (int round = 1; round <= 20; round++) {
             // About 12.5 MB per temporary batch.
-            byte[][] batch = new byte[200][];
+            // TODO: byte[][] batch = new byte[200][];
 
             for (int i = 0; i < batch.length; i++) {
-                batch[i] = new byte[64 * 1024];
-                checksum += batch[i].length;
+                // TODO: batch[i] = new byte[64 * 1024];
+                // TODO: checksum += batch[i].length;
             }
 
             if (round % 5 == 0) {
-                System.out.println(
-                        "Completed round " + round);
+                // TODO: println "Completed round " + round
             }
 
             // On the next iteration, this batch can become unreachable.
         }
 
-        System.out.println(
-                "Allocated bytes over time: " + checksum);
+        // TODO: println "Allocated bytes over time: " + checksum
     }
 }
 ```
@@ -52,7 +52,15 @@ The program does **not** hold all 250 MB simultaneously.
 
 ## Steps
 
-### Step 1 — Compile
+### Step 1 — Create `GcObserve.java`
+
+**Why:** Lab 4 expects you to read GC log evidence from a bounded allocation pattern.
+
+1. **New → File** → `GcObserve.java`.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
+
+### Step 2 — Compile
 
 **Windows:**
 
@@ -68,7 +76,7 @@ cd ~/java-bootcamp/examples/module-04-exercises
 javac GcObserve.java
 ```
 
-### Step 2 — Run with GC logging
+### Step 3 — Run with GC logging
 
 Use the same command on Windows and macOS:
 
@@ -85,7 +93,7 @@ java -Xms16m -Xmx64m -Xlog:gc GcObserve
 | `-Xlog:gc` | Print GC events |
 | `GcObserve` | Main class; class name comes after flags |
 
-### Step 3 — Find evidence
+### Step 4 — Find evidence
 
 **Verified on Windows with JDK 21** — abbreviated excerpt:
 
@@ -107,7 +115,7 @@ Look for:
 - memory before/after an event, such as `33M->15M`
 - successful completion through round 20
 
-### Step 4 — Save a short observation
+### Step 5 — Save a short observation
 
 Add a **small excerpt**, not the entire log, to `notes.md`:
 

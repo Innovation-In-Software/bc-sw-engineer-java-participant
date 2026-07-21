@@ -9,15 +9,16 @@
 
 Write, compile, and run a minimal program that prints `Hello, JVM!`.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
-// Public class — name must match the file name Hello.java
 public class Hello {
-    // Program entry point: the JVM starts here when you run `java Hello`
+    // TODO: program entry point — JVM starts here when you run `java Hello`
     public static void main(String[] args) {
-        // Print one line of text to the console, then end the line
-        System.out.println("Hello, JVM!");
+        // TODO: print one line of text: Hello, JVM! (hint: System.out.println)
+        _____
     }
 }
 ```
@@ -49,7 +50,7 @@ Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup.
 
 1. Right-click `module-01-exercises` → **New → File** (not **Java Class**).
 2. Name it exactly `Hello.java` (include the `.java` extension).
-3. Paste the starter code above. Save (Windows: **Ctrl+S** · macOS: **⌘S**).
+3. Paste the starter, fill every `_____` / `// TODO`. Save (Windows: **Ctrl+S** · macOS: **⌘S**).
 
 **Or from Terminal:**
 
@@ -67,7 +68,7 @@ cd ~/java-bootcamp/examples/module-01-exercises
 touch Hello.java
 ```
 
-Then open `Hello.java` in the editor and paste the starter code.
+Then open `Hello.java` in the editor and paste the starter.
 
 **Expected:** `Hello.java` under `module-01-exercises`; editor shows the `Hello` class.
 
@@ -159,6 +160,15 @@ You do **not** need to memorize opcode names.
 ## Expected result
 
 Console prints `Hello, JVM!`; `Hello.class` exists.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
+| `cannot find symbol` / compile errors in `main` | Class name must match file name (`Hello.java` → `public class Hello`) |
+| `Could not find or load main class Hello` | Run `java Hello` (not `Hello.java`); compile first with `javac Hello.java` |
+| Wrong folder | `cd` to `module-01-exercises`, not `examples/HelloJava` |
 
 ## Pass criteria
 

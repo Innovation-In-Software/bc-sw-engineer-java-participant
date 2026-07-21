@@ -10,7 +10,11 @@
 Create and read a small `transactions.txt` file using `BufferedReader` in
 try-with-resources—without calling `close()` manually.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
+
+File write and the read loop are scaffolded — your job is the **try-with-resources header** and the **IOException catch**.
 
 ```java
 import java.io.BufferedReader;
@@ -27,9 +31,8 @@ public class TryWithResourcesDemo {
             Files.writeString(
                     file, "deposit 100\nwithdraw 25\n");
 
-            // Resource header creates and later closes the reader automatically.
-            try (BufferedReader reader =
-                    Files.newBufferedReader(file)) {
+            // TODO: try-with-resources — BufferedReader from Files.newBufferedReader(file)
+            try (_____ reader = _____) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     System.out.println("Read: " + line);
@@ -38,10 +41,8 @@ public class TryWithResourcesDemo {
 
             System.out.println(
                     "Reader closed automatically.");
-        } catch (IOException ex) {
-            // Checked IO failures must be handled or declared.
-            System.out.println(
-                    "File error: " + ex.getMessage());
+        } catch (_____ ex) { // TODO: catch IOException
+            // TODO: print "File error: " + ex.getMessage()
         }
     }
 }
@@ -56,7 +57,9 @@ Any resource implementing `AutoCloseable` can appear in the resource header.
 **Why:** Lab 7 reads transaction history from a file. Automatic closure prevents
 leaked readers after success or failure.
 
-Create `TryWithResourcesDemo.java`.
+1. **New → File** → `TryWithResourcesDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

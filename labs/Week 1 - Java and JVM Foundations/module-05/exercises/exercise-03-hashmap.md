@@ -9,7 +9,9 @@
 
 Create `MapDemo.java` using ISBN-like strings as keys and copy counts as values. Practice put, get, update, remove, default lookup, and entry iteration.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.HashMap;
@@ -18,36 +20,41 @@ import java.util.TreeMap;
 
 public class MapDemo {
     public static void main(String[] args) {
-        Map<String, Integer> copies = new HashMap<>();
+        // TODO: declare Map<String, Integer> copies as new HashMap<>()
+        Map<String, Integer> copies = _____;
 
-        copies.put("ISBN-JAVA", 3);
-        copies.put("ISBN-CLEAN", 2);
-        copies.put("ISBN-TEST", 4);
+        // TODO: put three ISBN → copy-count mappings
+        //   "ISBN-JAVA" -> 3, "ISBN-CLEAN" -> 2, "ISBN-TEST" -> 4
+        _____
+        _____
+        _____
 
         System.out.println(
                 "Java copies: " + copies.get("ISBN-JAVA"));
 
-        // Same key replaces its old value.
-        copies.put("ISBN-JAVA", 5);
-        copies.remove("ISBN-CLEAN");
+        // TODO: update "ISBN-JAVA" to 5 (same key replaces old value)
+        _____
+
+        // TODO: remove "ISBN-CLEAN"
+        _____
 
         System.out.println(
                 "Updated Java copies: "
                 + copies.get("ISBN-JAVA"));
         System.out.println(
                 "Missing ISBN: "
-                + copies.getOrDefault("ISBN-MISSING", 0));
+                + _____);
 
-        // HashMap entry order is unspecified.
+        // TODO: iterate entrySet — print each key -> value on its own line
         for (Map.Entry<String, Integer> entry
                 : copies.entrySet()) {
             System.out.println(
                     entry.getKey() + " -> " + entry.getValue());
         }
 
-        // Deterministic key-sorted snapshot.
+        // TODO: print deterministic key-sorted snapshot with new TreeMap<>(copies)
         System.out.println(
-                "Sorted snapshot: " + new TreeMap<>(copies));
+                "Sorted snapshot: " + _____);
     }
 }
 ```
@@ -67,7 +74,15 @@ Map keys are unique; values do not need to be unique.
 
 ## Steps
 
-### Step 1 — Compile and run
+### Step 1 — Create `MapDemo.java`
+
+**Why:** Lab 5 maps book IDs to members and tracks copy counts with `Map`.
+
+1. **New → File** → `MapDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
@@ -96,11 +111,11 @@ ISBN-JAVA -> 5
 Sorted snapshot: {ISBN-JAVA=5, ISBN-TEST=4}
 ```
 
-### Step 2 — Explain replacement
+### Step 3 — Explain replacement
 
 `put("ISBN-JAVA", 5)` does not create a duplicate key. It changes that key’s value from `3` to `5`.
 
-### Step 3 — Compare absent lookups
+### Step 4 — Compare absent lookups
 
 Temporarily print:
 
@@ -121,6 +136,7 @@ The Java count updates to `5`, the clean-code key is removed, and the sorted sna
 | Expected exact `HashMap` order | Only the `TreeMap` snapshot has sorted-key order |
 | Missing lookup causes unboxing NPE | Use `getOrDefault` or test `containsKey` |
 | Duplicate ISBN appears | A map cannot hold duplicate equal keys; `put` replaces |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
 
 ## Pass criteria
 

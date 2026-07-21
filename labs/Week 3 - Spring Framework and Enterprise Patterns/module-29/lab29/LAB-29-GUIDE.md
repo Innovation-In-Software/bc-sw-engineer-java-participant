@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-29/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `lab29-crm` with Bean Validation + `GlobalExceptionHandler` + `ErrorResponse` |
+| 2 | Automated tests for validation and not-found envelopes |
+| 3 | Successful-path evidence (`CUS-1001`, `CUS-1002`) |
+| 4 | Controlled-failure evidence (400/404/409 + envelope) |
+| 5 | Lab 14/16 unify note (and optional SOAP alignment) |
+| 6 | Run and cleanup instructions |
+| 7 | No secrets or generated build directories committed |
+
+
 ## Lab Overview
 
 This Module 29 lab unifies **Bean Validation** on request DTOs with a global `@RestControllerAdvice` that returns a consistent **`ErrorResponse`** for REST failures. Patterns from Lab 14 (DTO/validation concepts) and Lab 16 (exception hierarchy / handler ideas) become the Spring Boot contract every client — React SPA, integration test, or partner — relies on.
@@ -664,6 +679,8 @@ Keep screenshots/excerpts. Do not commit `target/`.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `lab29-crm` with Bean Validation + `GlobalExceptionHandler` + `ErrorResponse`
 * Automated tests for validation and not-found envelopes

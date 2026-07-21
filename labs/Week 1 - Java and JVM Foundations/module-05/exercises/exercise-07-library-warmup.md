@@ -15,7 +15,9 @@ Create `LibraryWarmup.java` with:
 - a `Map<String,String>` from member ID to borrowed title;
 - a checkout operation that keeps both structures consistent.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.ArrayList;
@@ -24,29 +26,33 @@ import java.util.List;
 import java.util.Map;
 
 public class LibraryWarmup {
+    // TODO: declare availableTitles as ArrayList<String>
     private final List<String> availableTitles =
-            new ArrayList<>();
+            _____;
+
+    // TODO: declare borrowedByMember as HashMap<String, String>
     private final Map<String, String> borrowedByMember =
-            new HashMap<>();
+            _____;
 
     public LibraryWarmup() {
-        availableTitles.add("Effective Java");
-        availableTitles.add("Clean Code");
+        // TODO: add "Effective Java" and "Clean Code" to availableTitles
+        _____
+        _____
     }
 
     boolean checkout(String memberId, String title) {
-        // Simplified rule: one active title per member.
-        if (borrowedByMember.containsKey(memberId)) {
+        // TODO: return false if member already has an active loan
+        if (_____) {
             return false;
         }
 
-        // remove returns false when title is unavailable.
-        if (!availableTitles.remove(title)) {
+        // TODO: return false when title is unavailable (remove returns false)
+        if (_____) {
             return false;
         }
 
-        // Update map only after list removal succeeds.
-        borrowedByMember.put(memberId, title);
+        // TODO: record the loan in borrowedByMember
+        _____;
         return true;
     }
 
@@ -89,7 +95,15 @@ The method validates first, then mutates both structures in a controlled order.
 
 ## Steps
 
-### Step 1 — Compile and run
+### Step 1 — Create `LibraryWarmup.java`
+
+**Why:** Lab 5 coordinates multiple collections around domain rules — this warm-up previews that pattern.
+
+1. **New → File** → `LibraryWarmup.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
@@ -116,7 +130,7 @@ Available: [Clean Code]
 Borrowed: {M101=Effective Java}
 ```
 
-### Step 2 — Test an unavailable title
+### Step 3 — Test an unavailable title
 
 Add before `printStatus()`:
 
@@ -128,13 +142,13 @@ System.out.println(
 
 Expected: `false`, and neither collection changes.
 
-### Step 3 — Explain mutation order
+### Step 4 — Explain mutation order
 
 Add to `notes.md`:
 
 > The map is updated only after the title was successfully removed from the available list. Updating the map first could record a loan for an unavailable title and leave inconsistent state.
 
-### Step 4 — Identify full-lab improvements
+### Step 5 — Identify full-lab improvements
 
 This warm-up intentionally simplifies the domain. Lab 5 will improve it with:
 
@@ -156,6 +170,7 @@ First checkout succeeds, the same member’s second checkout fails, and the titl
 | Missing title enters the map | Check `availableTitles.remove(title)` result |
 | Same member receives two active titles | Check `containsKey(memberId)` first |
 | Map order differs with more entries | `HashMap` order is unspecified |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
 
 ## Pass criteria
 

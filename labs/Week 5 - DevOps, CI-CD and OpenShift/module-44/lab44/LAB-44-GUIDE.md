@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-44/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `docs/release-plan.md` |
+| 2 | `docs/release-checklist.md` |
+| 3 | `docs/rollback-runbook.md` |
+| 4 | `artifact-manifest.json` |
+| 5 | Staging promotion evidence (digest + smoke) |
+| 6 | Controlled failure / NO-GO or rollback rehearsal |
+| 7 | No secrets or real customer records committed |
+
+
 ## Lab Overview
 
 This Module 44 lab turns CI success into **continuous delivery** for the **Customer Management Platform**: one immutable artifact promoted through test → staging → production with objective gates, approvals, release evidence, and rehearsed rollback. You will produce `docs/release-plan.md`, `docs/release-checklist.md`, `docs/rollback-runbook.md`, and `artifact-manifest.json`, plus staging evidence.
@@ -653,6 +668,8 @@ Leave staging on instructor-approved version. Delete temporary secret files. Kee
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `docs/release-plan.md`
 * `docs/release-checklist.md`

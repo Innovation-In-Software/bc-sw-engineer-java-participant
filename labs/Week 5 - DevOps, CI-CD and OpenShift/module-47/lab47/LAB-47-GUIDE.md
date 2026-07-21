@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-47/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `communications/incident-update.md` |
+| 2 | `communications/pull-request-description.md` |
+| 3 | `communications/stakeholder-release-email.md` |
+| 4 | `communications/peer-review.md` |
+| 5 | Release briefing notes + shared facts |
+| 6 | Consistent, secret-free packet |
+| 7 | Optional: links to Labs 43–46 evidence |
+
+
 ## Lab Overview
 
 This Module 47 lab teaches you to communicate a CRM release clearly to engineers, responders, reviewers, and business stakeholders through an **incident update**, **pull-request description**, **stakeholder email**, and **peer review**. You will produce files under `communications/` plus release briefing notes that share one consistent fact base.
@@ -664,6 +679,8 @@ Remove any accidental secret pastes. Keep the finalized packet for portfolio. No
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `communications/incident-update.md`
 * `communications/pull-request-description.md`

@@ -15,17 +15,9 @@ Create `ParallelStreamDemo.java`. Run the same stateless count with `stream`
 and `parallelStream`, verify identical results, and explain why one small timing
 run is not a benchmark.
 
-## Safe-use checklist
+## Starter (fill in the TODOs)
 
-Parallel stream operations should be:
-
-- stateless;
-- free of shared mutable counters or lists;
-- independent between elements;
-- associative when reducing;
-- large or expensive enough to justify splitting work.
-
-## Starter / reference (with line comments)
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.List;
@@ -35,15 +27,13 @@ public class ParallelStreamDemo {
         List<Employee> employees = EmployeeData.sample();
 
         long sequentialStart = System.nanoTime();
-        long sequentialCount = employees.stream()
-                .filter(employee -> employee.salary() > 60_000)
-                .count();
+        // TODO: employees.stream() + filter salary > 60_000 + count()
+        long sequentialCount = _____;
         long sequentialNanos = System.nanoTime() - sequentialStart;
 
         long parallelStart = System.nanoTime();
-        long parallelCount = employees.parallelStream()
-                .filter(employee -> employee.salary() > 60_000)
-                .count();
+        // TODO: employees.parallelStream() + same filter + count()
+        long parallelCount = _____;
         long parallelNanos = System.nanoTime() - parallelStart;
 
         System.out.println("Sequential count: " + sequentialCount);
@@ -57,6 +47,22 @@ public class ParallelStreamDemo {
 }
 ```
 
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Stateless predicate | Reads one immutable `Employee`; safe for parallel processing |
+| `count()` | Built-in reduction — do not use a shared mutable counter |
+| Timing | One tiny run is not a benchmark; counts must match first |
+
+## Safe-use checklist
+
+Parallel stream operations should be:
+
+- stateless;
+- free of shared mutable counters or lists;
+- independent between elements;
+- associative when reducing;
+- large or expensive enough to justify splitting work.
+
 ## Steps
 
 ### Step 1 — Confirm the operation is safe
@@ -67,9 +73,12 @@ processed independently.
 The predicate reads one immutable `Employee` and returns a boolean. It does not
 write shared state, so processing order cannot change the count.
 
-### Step 2 — Compile and run
+### Step 2 — Create, compile, and run
 
 **Why:** Matching counts prove correctness before anyone discusses speed.
+
+1. **New → File** → `ParallelStreamDemo.java`.
+2. Paste the starter and fill both stream pipeline `// TODO`s. Save.
 
 **Windows:**
 

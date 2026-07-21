@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-19/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Integration test class(es) for CRM create/get (`CustomerApiIT`) |
+| 2 | Selenium UI suite with Page Object(s) (`CustomerUiIT`, `CustomerFormPage`) |
+| 3 | Minimal UI surface with stable selectors |
+| 4 | Automated test output (surefire) |
+| 5 | Successful-path evidence (API + UI) for `CUS-1001` / `CUS-1002` |
+| 6 | Controlled-failure evidence (validation / not found / broken locator screenshot) |
+| 7 | Regression notes (why integration vs UI scope; CI browser strategy) |
+| 8 | Run and cleanup instructions |
+
+
 ## Lab Overview
 
 This Module 19 lab extends the **Customer Management Platform** with **HTTP integration tests** for the CRM API and a **Selenium WebDriver** UI automation suite. You treat tests as regression assets: each scenario protects a business path that must keep working after later labs change logging, Actuator, Spring IoC, and Boot.
@@ -683,6 +699,8 @@ git status
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Integration test class(es) for CRM create/get (`CustomerApiIT`)
 * Selenium UI suite with Page Object(s) (`CustomerUiIT`, `CustomerFormPage`)

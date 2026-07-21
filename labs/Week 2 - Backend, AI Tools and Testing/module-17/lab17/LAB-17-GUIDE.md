@@ -39,6 +39,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-17/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `CustomerServiceTests` with happy and negative paths |
+| 2 | Parameterized transition tests |
+| 3 | JaCoCo configuration + evidence of ≥80% on service package |
+| 4 | Copilot review notes with human acceptance **or** manual equivalent |
+| 5 | Deliberate gate-fail evidence + restore |
+| 6 | `mvn clean verify` success log |
+| 7 | README runbook + coverage notes |
+| 8 | No secrets or generated build directories committed |
+
+
 ## Lab Overview
 
 This Module 17 lab formalizes **JUnit 5** testing for the **Customer Management Platform**. You will build `CustomerServiceTests` (and supporting tests), use **parameterized tests** for status transitions, aim for **≥80% line coverage** on the service layer with JaCoCo, and optionally use **GitHub Copilot** to draft tests—with mandatory human review.
@@ -515,6 +531,8 @@ Do not commit `target/site/jacoco` unless your course policy explicitly allows i
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `CustomerServiceTests` with happy and negative paths
 * Parameterized transition tests

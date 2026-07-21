@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-34/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `lab34-crm/crm-ui` with lifted state CRUD + search |
+| 2 | Discriminated form modes; immutable updates |
+| 3 | Client validation with accessible errors |
+| 4 | Title `useEffect` with cleanup; no derived-state effects |
+| 5 | ≥8 RTL interaction tests + green build |
+| 6 | State notes + evidence screenshots |
+| 7 | README runbook |
+| 8 | No secrets or generated directories committed |
+
+
 ## Lab Overview
 
 This Module 34 lab adds **React state** to the CRM dashboard: `useState` for customers and query, controlled forms, derived filtering, immutable create/update, mutually exclusive form modes, `useEffect` for `document.title`, client validation, and interaction tests. Presentation components from Lab 33 stay props-driven; `App` becomes the single source of truth.
@@ -686,6 +702,8 @@ Do not commit `node_modules/` or `dist/`.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `lab34-crm/crm-ui` with lifted state CRUD + search
 * Discriminated form modes; immutable updates

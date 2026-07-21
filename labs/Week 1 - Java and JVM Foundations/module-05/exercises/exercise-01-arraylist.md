@@ -9,7 +9,9 @@
 
 Create `ArrayListDemo.java` and practice ordered CRUD: add, update, search, remove, index access, and iteration.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.ArrayList;
@@ -17,30 +19,33 @@ import java.util.List;
 
 public class ArrayListDemo {
     public static void main(String[] args) {
-        // Program to List interface; construct ArrayList.
-        List<String> books = new ArrayList<>();
+        // TODO: declare List<String> books as new ArrayList<>()
+        List<String> books = _____;
 
-        books.add("Java Fundamentals"); // index 0
-        books.add("Clean Code");        // index 1
-        books.add("Effective Java");    // index 2
-        books.add("Java Fundamentals"); // duplicate is allowed
+        // TODO: add four titles — include "Java Fundamentals" twice (duplicate allowed)
+        //   "Java Fundamentals", "Clean Code", "Effective Java", "Java Fundamentals"
+        _____
+        _____
+        _____
+        _____
 
-        // Replace the value at index 1.
-        books.set(1, "Clean Architecture");
+        // TODO: replace the value at index 1 with "Clean Architecture"
+        _____
 
-        boolean found =
-                books.contains("Effective Java");
+        // TODO: search — does books contain "Effective Java"?
+        boolean found = _____;
 
-        // Removes the first matching value only.
-        books.remove("Java Fundamentals");
+        // TODO: remove the first "Java Fundamentals" only (not removeIf)
+        _____
 
         System.out.println(
                 "Found Effective Java: " + found);
         System.out.println("Size: " + books.size());
 
+        // TODO: print index and title for each element
         for (int i = 0; i < books.size(); i++) {
             System.out.printf(
-                    "%d: %s%n", i, books.get(i));
+                    "%d: %s%n", i, _____);
         }
     }
 }
@@ -59,7 +64,15 @@ public class ArrayListDemo {
 
 ## Steps
 
-### Step 1 — Compile and run
+### Step 1 — Create `ArrayListDemo.java`
+
+**Why:** Lab 5 stores ordered book catalogs in `List` structures.
+
+1. **New → File** → `ArrayListDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
@@ -87,7 +100,7 @@ Size: 3
 2: Java Fundamentals
 ```
 
-### Step 2 — Trace the changes
+### Step 3 — Trace the changes
 
 Add to `notes.md`:
 
@@ -97,7 +110,7 @@ After set:   [Java Fundamentals, Clean Architecture, Effective Java, Java Fundam
 After remove:[Clean Architecture, Effective Java, Java Fundamentals]
 ```
 
-### Step 3 — Run an index failure experiment
+### Step 4 — Run an index failure experiment
 
 Temporarily add:
 
@@ -120,6 +133,7 @@ The final list has three ordered entries. One duplicate remains because only the
 | `ArrayList` cannot be found | Add both `java.util` imports |
 | Wrong item replaced | `set(1, ...)` targets the second item |
 | Both duplicate titles removed | Use `remove(value)`, not `removeIf` |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
 
 ## Pass criteria
 

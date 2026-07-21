@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-27/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `@Transactional TransferService` + controller |
+| 2 | Seeded accounts + transaction log entity |
+| 3 | Happy-path evidence (MAIN→LOYALTY + correlation) |
+| 4 | `ACC-FORCE-FAIL` rollback evidence (balances + no log) |
+| 5 | ACID explanation tied to observations |
+| 6 | Automated tests proving rollback balances |
+| 7 | AI review notes or manual equivalent |
+| 8 | README runbook; no secrets/`target/` committed |
+
+
 ## Lab Overview
 
 This Module 27 lab adds Spring **`@Transactional`** boundaries for CRM financial-account updates that must succeed or fail together. You implement a **`TransferService`** (debit + credit + log), prove automatic **rollback** with destination `ACC-FORCE-FAIL`, and map observations to **ACID** guarantees used in production ledger updates. Optional Copilot drafts require review for unsafe propagation, swallowed exceptions, and transaction-on-controller anti-patterns.
@@ -663,6 +679,8 @@ git status
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `@Transactional TransferService` + controller
 * Seeded accounts + transaction log entity

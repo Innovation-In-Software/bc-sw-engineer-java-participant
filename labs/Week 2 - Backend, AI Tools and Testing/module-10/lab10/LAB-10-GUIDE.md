@@ -38,6 +38,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-10/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `Customer` entity (`com.northstar.crm.entity.Customer`) |
+| 2 | `CustomerStatus` enum (`com.northstar.crm.entity.CustomerStatus`) |
+| 3 | `CustomerService` (`com.northstar.crm.service.CustomerService`) |
+| 4 | `Main.java` harness demonstrating `CUS-1001` and `CUS-1002` |
+| 5 | `copilot-notes/ai-review-notes.md` with entries `lab10-001`–`lab10-004` |
+| 6 | Failure-experiment notes and compile/`Main` evidence |
+| 7 | No secrets or generated `target/` committed |
+
+
 ## Lab Overview
 
 This Module 10 lab continues the **Northstar Customer Service Platform** into `lab10-crm/`, picking up the Maven project (`com.northstar:customer-service`) from Lab 9. There is still **no Spring Framework** in application code — Week 2 (Labs 8–21) stays plain Java and Maven. What is new is the tool you write that plain Java with: **GitHub Copilot**.
@@ -755,6 +770,8 @@ No containers or cloud services were started. Remove scratch prompt files that c
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `Customer` entity (`com.northstar.crm.entity.Customer`)
 * `CustomerStatus` enum (`com.northstar.crm.entity.CustomerStatus`)

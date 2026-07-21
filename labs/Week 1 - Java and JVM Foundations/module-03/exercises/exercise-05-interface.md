@@ -11,21 +11,23 @@
 
 Create a `Printable` contract, implement it in `Customer`, and invoke the method through a `Printable` reference.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
 
 ### `Printable.java`
 
 ```java
-public interface Printable {
-    // Interface method is public and abstract by default.
-    void printDetails();
+public _____ Printable {
+    // TODO: declare void printDetails() (public abstract by default in an interface)
+    _____ void printDetails();
 }
 ```
 
 ### `Customer.java`
 
 ```java
-public class Customer implements Printable {
+public class Customer _____ Printable {
     private final String id;
     private final String name;
 
@@ -36,8 +38,8 @@ public class Customer implements Printable {
 
     @Override
     public void printDetails() {
-        System.out.printf(
-                "Customer %s: %s%n", id, name);
+        // TODO: printf "Customer %s: %s%n" with id and name
+        System.out.printf(_____, id, name);
     }
 }
 ```
@@ -47,9 +49,8 @@ public class Customer implements Printable {
 ```java
 public class InterfaceDemo {
     public static void main(String[] args) {
-        // Variable knows only the Printable contract.
-        Printable printable =
-                new Customer("C101", "Aman Singh");
+        // TODO: Printable reference to new Customer("C101", "Aman Singh")
+        Printable printable = _____;
 
         printable.printDetails();
     }
@@ -69,17 +70,17 @@ public class InterfaceDemo {
 
 **Why:** The caller should be able to request “print your details” without knowing whether the object is a customer or account.
 
-Create `Printable.java` and add the starter interface.
+Create `Printable.java`. Paste the starter. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Create the implementation
 
 **Why:** An implementing class decides how its own details should be displayed.
 
-Create `Customer.java`, add `implements Printable`, and implement `printDetails()`.
+Create `Customer.java`, add `implements Printable`, and implement `printDetails()`. Fill every blank. Save.
 
 ### Step 3 — Create and run the demo
 
-Create `InterfaceDemo.java`.
+Create `InterfaceDemo.java`. Fill the blank. Save.
 
 **Windows:**
 
@@ -123,6 +124,7 @@ The customer’s implementation runs even though the variable is declared as `Pr
 
 | Problem | Fix |
 | ------- | --- |
+| `illegal start of expression` near `_____` | Use `interface`, `implements`, format string, and `new Customer(...)` |
 | Interface method has weaker access | Implementation must be `public` |
 | `cannot find symbol Printable` | Compile `Printable.java` with the other files |
 | Method does not override | Match `void printDetails()` exactly |

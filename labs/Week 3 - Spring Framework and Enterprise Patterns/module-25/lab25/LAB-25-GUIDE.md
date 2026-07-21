@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-25/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Layered Controller → Service → Repository source |
+| 2 | Seeded in-memory repo with `CUS-1001` / `CUS-1002` |
+| 3 | HTTP evidence + duplicate/not-found failures |
+| 4 | `CustomerServiceTest` output |
+| 5 | AI review notes (`lab25-001`) or manual equivalent |
+| 6 | Layering / JPA readiness notes |
+| 7 | Dual green `mvn test` |
+| 8 | No secrets or `target/` committed |
+
+
 ## Lab Overview
 
 This Module 25 lab formalizes **Controller → Service → Repository** for Customer in the CRM Boot app. Controllers stay thin HTTP adapters; services own lifecycle and uniqueness rules; repositories own persistence access. An in-memory Spring Data–style repository is acceptable now; later labs swap persistence without rewriting the service contract. Optional Copilot drafts are welcome only with mandatory human review.
@@ -682,6 +698,8 @@ git status
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Layered Controller → Service → Repository source
 * Seeded in-memory repo with `CUS-1001` / `CUS-1002`

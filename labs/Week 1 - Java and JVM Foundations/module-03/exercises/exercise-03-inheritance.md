@@ -11,19 +11,23 @@
 
 Create `SavingsAccount` and `CurrentAccount` subclasses. Override account type in both; override withdrawal in current accounts to apply a fee. Demonstrate runtime polymorphism with `Account[]`.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
 
 ### `SavingsAccount.java`
 
 ```java
-public class SavingsAccount extends Account {
+public class SavingsAccount _____ Account {
     public SavingsAccount(double initialBalance) {
-        super(initialBalance);  // call Account constructor
+        // TODO: call parent constructor with initialBalance
+        _____;
     }
 
     @Override
     public String getAccountType() {
-        return "Savings";
+        // TODO: return "Savings"
+        return _____;
     }
 }
 ```
@@ -40,8 +44,8 @@ public class CurrentAccount extends Account {
 
     @Override
     public boolean withdraw(double amount) {
-        // Reuse Account validation and balance update.
-        return super.withdraw(amount + WITHDRAWAL_FEE);
+        // TODO: reuse parent validation — withdraw amount + WITHDRAWAL_FEE
+        return _____;
     }
 
     @Override
@@ -56,10 +60,10 @@ public class CurrentAccount extends Account {
 ```java
 public class InheritanceDemo {
     public static void main(String[] args) {
-        // Base-type array can hold either subclass.
+        // TODO: base-type array holding SavingsAccount(100) and CurrentAccount(100)
         Account[] accounts = {
-            new SavingsAccount(100.00),
-            new CurrentAccount(100.00)
+            _____,
+            _____
         };
 
         for (Account account : accounts) {
@@ -107,7 +111,7 @@ CurrentAccount.java
 InheritanceDemo.java
 ```
 
-Paste the starter code and save.
+Paste the starter skeletons. Fill every `_____` / `// TODO`. Save.
 
 ### Step 3 — Compile
 
@@ -160,6 +164,7 @@ One `Account[]` holds both subclasses. The same `withdraw(20)` call produces dif
 
 | Problem | Fix |
 | ------- | --- |
+| `illegal start of expression` near `_____` | Replace blanks with `extends`, `super(...)`, `super.withdraw(...)`, etc. |
 | `constructor Account... cannot be applied` | Add `super(initialBalance)` |
 | `method does not override` | Match parent name, parameters, and return type exactly |
 | Both balances are `80.00` | Confirm `CurrentAccount` overrides `withdraw` |

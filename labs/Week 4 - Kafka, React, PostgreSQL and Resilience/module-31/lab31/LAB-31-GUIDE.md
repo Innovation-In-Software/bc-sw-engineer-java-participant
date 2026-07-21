@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-31/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Spring Kafka publisher + listener for CRM events |
+| 2 | Idempotent processing evidence |
+| 3 | Retry + DLT configuration with proof |
+| 4 | Integration test output (EmbeddedKafka or Testcontainers) |
+| 5 | Successful Amina/Ravi path evidence |
+| 6 | Controlled poison-message / duplicate evidence |
+| 7 | Runbook + DLT naming notes |
+| 8 | No secrets committed |
+
+
 ## Lab Overview
 
 This Module 31 lab integrates **Spring Kafka** into the **Customer Management Platform**: `KafkaTemplate` publish after customer operations, typed `@KafkaListener` consumers, JSON configuration, **idempotent** processing, retry classification, and **dead-letter (DLT)** recovery — verified with Embedded Kafka or Testcontainers.
@@ -664,6 +680,8 @@ git status
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Spring Kafka publisher + listener for CRM events
 * Idempotent processing evidence

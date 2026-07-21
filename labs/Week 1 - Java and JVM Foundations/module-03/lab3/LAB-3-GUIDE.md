@@ -42,6 +42,19 @@
 5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 6. Capture evidence under `notes/screenshots/lab-3/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable | Where / what |
+| - | ----------- | ------------ |
+| 1 | Full source | `examples/Lab3-BankingSystem/src/com/academy/bank/` |
+| 2 | Screenshots | `notes/screenshots/lab-3/` — customer create, savings create, deposit, withdraw, polymorphic display, exit |
+| 3 | UML class diagram | Mermaid or image covering your types + `BankService` / `Main` |
+| 4 | Short design note | SOLID + inheritance/polymorphism in your own words |
+| 5 | Compile/run commands | Documented `javac -d out` / `java -cp out com.academy.bank.Main` |
+
+
 ## Module 3 exercises you must already have completed
 
 Lab 3 assumes you already practiced these design skills in `examples/module-03-exercises/`. Do **not** treat Steps 3–6 as your first time seeing encapsulation, inheritance, abstract classes, or interfaces.
@@ -893,6 +906,8 @@ Delete `out/` anytime; keep sources under `examples/Lab3-BankingSystem/` for evi
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Full source under `java-bootcamp/examples/Lab3-BankingSystem/src/com/academy/bank/`
 * Screenshots: customer create, savings create, deposit, withdraw, polymorphic display, exit

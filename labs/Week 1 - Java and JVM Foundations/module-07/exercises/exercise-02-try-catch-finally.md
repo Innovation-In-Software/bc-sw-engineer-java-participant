@@ -10,7 +10,11 @@
 Create `FinallyDemo.java` and compare successful and failed transfer paths.
 Confirm cleanup runs after both.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
+
+The `throw` that simulates failure is already in the `try` block — your job is the **catch** and **finally** cleanup.
 
 ```java
 public class FinallyDemo {
@@ -24,14 +28,10 @@ public class FinallyDemo {
                         "Transfer service unavailable");
             }
             System.out.println("Transfer completed.");
-        } catch (IllegalStateException ex) {
-            // Handle the failure without terminating main.
-            System.out.println(
-                    "Handled: " + ex.getMessage());
+        } catch (_____ ex) { // TODO: catch IllegalStateException
+            // TODO: print "Handled: " + ex.getMessage()
         } finally {
-            // Cleanup runs after success and after handled failure.
-            System.out.println(
-                    "Cleanup: release transfer session.");
+            // TODO: print "Cleanup: release transfer session."
         }
     }
 
@@ -65,7 +65,9 @@ terminated.
 **Why:** ATM menu operations need cleanup and recovery after both success and
 failure.
 
-Create `FinallyDemo.java` from the starter.
+1. **New → File** → `FinallyDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

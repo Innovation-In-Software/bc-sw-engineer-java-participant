@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-49/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Backend source changes for the interaction vertical slice |
+| 2 | Database migration for interaction persistence |
+| 3 | Versioned event contract (`CustomerInteractionRecordedV1` or equivalent) |
+| 4 | Unit and integration tests (HTTP, persistence, messaging) |
+| 5 | `docs/backend-demo.md` reproduction runbook |
+| 6 | Baseline and final validation results (`mvn clean verify`) |
+| 7 | One controlled failure-path result (invalid input or not-found) |
+| 8 | Concise setup and reproduction guide cross-links |
+
+
 ## Lab Overview
 
 This Module 49 lab implements or extends the CRM **Spring Boot + Kafka vertical slice** for recording customer interactions: validated REST APIs, transaction-safe persistence, versioned events, resilient consumption, and automated tests—producing `docs/backend-demo.md` evidence for the defense.
@@ -620,6 +636,8 @@ Do not commit `target/` or broker data directories. Keep `docs/backend-demo.md` 
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Backend source changes for the interaction vertical slice
 * Database migration for interaction persistence

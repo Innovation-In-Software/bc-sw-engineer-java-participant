@@ -13,7 +13,11 @@
 Log operational context and the exception stack trace while showing the user a
 short, safe message.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
+
+The `throw` inside the `try` is scaffolded — your job is the **LOGGER.log** call and the **user-safe message** in the catch.
 
 ```java
 import java.util.logging.Level;
@@ -32,17 +36,11 @@ public class LoggingWarmup {
             throw new IllegalStateException(
                     "Withdrawal service unavailable");
         } catch (IllegalStateException ex) {
-            // Pass the exception as the third argument to keep the stack trace.
-            LOGGER.log(
-                    Level.SEVERE,
-                    "Withdrawal failed accountId="
-                            + accountId,
-                    ex);
+            // TODO: LOGGER.log(Level.SEVERE, "Withdrawal failed accountId=" + accountId, ex)
+            //   pass ex as the third argument to keep the stack trace
 
-            // Users get a short message without internal diagnostics.
-            System.out.println(
-                    "User message: Withdrawal "
-                    + "could not be completed.");
+            // TODO: print user-safe message:
+            //   "User message: Withdrawal could not be completed."
         }
     }
 }
@@ -65,7 +63,9 @@ numbers, or personal data.
 **Why:** Lab 7 must keep diagnostic evidence without exposing internals to the
 ATM user.
 
-Create `LoggingWarmup.java`.
+1. **New → File** → `LoggingWarmup.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

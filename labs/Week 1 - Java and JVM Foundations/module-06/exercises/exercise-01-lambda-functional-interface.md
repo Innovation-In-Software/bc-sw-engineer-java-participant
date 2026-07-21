@@ -14,23 +14,13 @@ Create a five-employee dataset, declare a custom functional interface with one
 abstract method, and implement the same salary rule with an anonymous class and
 a lambda.
 
-## Key vocabulary
+## Starter (fill in the TODOs)
 
-| Term | Easy meaning |
-| ---- | ------------ |
-| Functional interface | An interface with exactly one abstract method |
-| Lambda | A short implementation of that one method |
-| Parameter | Input on the left side of `->` |
-| Expression body | Value or action on the right side of `->` |
-| Effectively final | A captured local value that is not reassigned |
+Paste each file below, then replace every `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished files.
 
-## Starter / reference (with line comments)
-
-Create `Employee.java`:
+Create `Employee.java` (complete scaffolding — copy as-is):
 
 ```java
-// A record is an immutable data carrier. Java generates the constructor
-// and accessor methods: id(), name(), department(), and salary().
 public record Employee(
         int id,
         String name,
@@ -39,18 +29,16 @@ public record Employee(
 }
 ```
 
-Create `EmployeeData.java`:
+Create `EmployeeData.java` (complete scaffolding — copy as-is):
 
 ```java
 import java.util.List;
 
 public final class EmployeeData {
-    // Utility classes do not need instances.
     private EmployeeData() {
     }
 
     public static List<Employee> sample() {
-        // List.of returns an unmodifiable list, which is ideal for read-only exercises.
         return List.of(
                 new Employee(1, "Alice", "HR", 72_000),
                 new Employee(2, "Bob", "IT", 65_000),
@@ -66,8 +54,8 @@ Create `SalaryCheck.java`:
 ```java
 @FunctionalInterface
 public interface SalaryCheck {
-    // One abstract method makes this interface compatible with a lambda.
-    boolean test(Employee employee);
+    // TODO: declare one abstract method that takes an Employee and returns boolean
+    _____
 }
 ```
 
@@ -78,16 +66,16 @@ public class LambdaDemo {
     public static void main(String[] args) {
         Employee alice = EmployeeData.sample().get(0);
 
-        // Anonymous class: explicit implementation object.
+        // TODO: anonymous class implementing SalaryCheck — salary > 60_000
         SalaryCheck anonymous = new SalaryCheck() {
             @Override
             public boolean test(Employee employee) {
-                return employee.salary() > 60_000;
+                return _____;
             }
         };
 
-        // Lambda: same SalaryCheck contract and same result.
-        SalaryCheck lambda = employee -> employee.salary() > 60_000;
+        // TODO: lambda with the same SalaryCheck contract and same result
+        SalaryCheck lambda = _____;
 
         System.out.println("Employee: " + alice.name());
         System.out.println("Anonymous result: " + anonymous.test(alice));
@@ -96,6 +84,14 @@ public class LambdaDemo {
 }
 ```
 
+| Term | Easy meaning |
+| ---- | ------------ |
+| Functional interface | An interface with exactly one abstract method |
+| Lambda | A short implementation of that one method |
+| Parameter | Input on the left side of `->` |
+| Expression body | Value or action on the right side of `->` |
+| Effectively final | A captured local value that is not reassigned |
+
 ## Steps
 
 ### Step 1 — Create the shared model and dataset
@@ -103,18 +99,22 @@ public class LambdaDemo {
 **Why:** Every later exercise should answer a new stream question against the
 same known data instead of redefining inconsistent employees.
 
-Create `Employee.java` and `EmployeeData.java` exactly as shown.
+1. **New → File** → `Employee.java` and `EmployeeData.java`.
+2. Paste the scaffolding exactly as shown. Save both files.
 
 ### Step 2 — Create the functional contract
 
 **Why:** The lambda's target type tells Java the parameter and return types.
 
-Create `SalaryCheck.java`. Keep exactly one abstract method.
+1. Create `SalaryCheck.java`.
+2. Fill the `// TODO` — keep exactly one abstract method named `test`.
 
 ### Step 3 — Compare both implementations
 
-Create `LambdaDemo.java`. Read the anonymous class first, then identify the
-same parameter, condition, and boolean result in the lambda.
+**Why:** Reading the anonymous class first makes the lambda easier to recognize.
+
+1. Create `LambdaDemo.java`.
+2. Fill every `_____` / `// TODO`. Save.
 
 ### Step 4 — Compile and run
 

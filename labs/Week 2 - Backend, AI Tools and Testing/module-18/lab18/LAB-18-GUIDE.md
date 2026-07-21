@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-18/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `CustomerServiceMockitoTest` with stubbing, verify, and ArgumentCaptor |
+| 2 | `CustomerServiceBddMockTest` (BDDMockito style) |
+| 3 | Evidence that not-found never calls `save` |
+| 4 | Optional Copilot review notes (`lab18-001`) or manual equivalent |
+| 5 | Full `mvn test` success log (two consecutive runs preferred) |
+| 6 | Isolation policy in project README / `docs/isolation-policy.md` |
+| 7 | No secrets or generated build directories committed |
+
+
 ## Lab Overview
 
 This Module 18 lab isolates **Customer Management Platform** service unit tests with **Mockito**: mock `CustomerRepository` (and optionally collaborator services), **verify interactions**, and use **ArgumentCaptor** / **BDDMockito** style stubs. You keep JUnit 5 from Lab 17 and stop relying on the real in-memory map for service-layer unit tests.
@@ -667,6 +682,8 @@ Do not commit `target/`. Keep review notes and isolation policy.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `CustomerServiceMockitoTest` with stubbing, verify, and ArgumentCaptor
 * `CustomerServiceBddMockTest` (BDDMockito style)

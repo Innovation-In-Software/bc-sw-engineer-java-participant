@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-52/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `defense/final-presentation.pdf` (or instructor-approved slide export) |
+| 2 | `defense/demo-script.md` |
+| 3 | `defense/evidence-index.md` |
+| 4 | `defense/technical-q-and-a.md` |
+| 5 | `defense/retrospective.md` |
+| 6 | `defense/self-assessment.md` |
+| 7 | Baseline/demo validation notes (health, smoke, or fallback) |
+| 8 | One controlled failure-path demo beat result |
+
+
 ## Lab Overview
 
 This Module 52 lab is the Week 6 **final defense**: rehearse and deliver a business-to-technology narrative, a deterministic live demo, evidence-backed technical Q&A, a blameless retrospective, and a rubric-based self-assessment—packaged for the review panel and portfolio.
@@ -618,6 +634,8 @@ Capstone grading should weigh evidence linked from `defense/evidence-index.md` o
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `defense/final-presentation.pdf` (or instructor-approved slide export)
 * `defense/demo-script.md`

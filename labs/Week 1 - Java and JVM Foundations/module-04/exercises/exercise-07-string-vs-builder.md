@@ -9,7 +9,9 @@
 
 Create `StringBuilderComparison.java` and compare repeated immutable `String` concatenation with mutable `StringBuilder`.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class StringBuilderComparison {
@@ -18,39 +20,24 @@ public class StringBuilderComparison {
     static String withString() {
         String result = "";
         for (int i = 0; i < ITERATIONS; i++) {
-            // Each update creates another String result.
-            result += "x";
+            // TODO: result += "x";  (each update creates another String)
         }
         return result;
     }
 
     static String withBuilder() {
         // Initial capacity avoids repeated buffer growth.
-        StringBuilder result =
-                new StringBuilder(ITERATIONS);
+        // TODO: StringBuilder result = new StringBuilder(ITERATIONS);
         for (int i = 0; i < ITERATIONS; i++) {
-            result.append('x');
+            // TODO: result.append('x');
         }
-        return result.toString();
+        // TODO: return result.toString();
     }
 
     public static void main(String[] args) {
-        long start = System.nanoTime();
-        String stringResult = withString();
-        long stringNanos = System.nanoTime() - start;
-
-        start = System.nanoTime();
-        String builderResult = withBuilder();
-        long builderNanos = System.nanoTime() - start;
-
-        System.out.printf(
-                "String: %d chars, %.3f ms%n",
-                stringResult.length(),
-                stringNanos / 1_000_000.0);
-        System.out.printf(
-                "StringBuilder: %d chars, %.3f ms%n",
-                builderResult.length(),
-                builderNanos / 1_000_000.0);
+        // TODO: time withString() with System.nanoTime()
+        // TODO: time withBuilder() with System.nanoTime()
+        // TODO: printf both lengths and ms (stringNanos / 1_000_000.0)
     }
 }
 ```
@@ -66,7 +53,15 @@ public class StringBuilderComparison {
 
 ## Steps
 
-### Step 1 — Compile and run
+### Step 1 — Create `StringBuilderComparison.java`
+
+**Why:** Lab 4 compares allocation patterns — repeated `String` concatenation is a common source of temporary garbage.
+
+1. **New → File** → `StringBuilderComparison.java`.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
@@ -93,7 +88,7 @@ StringBuilder: 50000 chars, 1.865 ms
 
 Your times will differ. Both lengths must be `50000`; that confirms equivalent work.
 
-### Step 2 — Run three times
+### Step 3 — Run three times
 
 **Why:** One timing is noisy because of JIT compilation, GC, CPU load, and other processes.
 
@@ -109,7 +104,7 @@ Record:
 
 Describe the repeated trend instead of claiming one exact benchmark result.
 
-### Step 3 — Explain correct use
+### Step 4 — Explain correct use
 
 Add to `notes.md`:
 

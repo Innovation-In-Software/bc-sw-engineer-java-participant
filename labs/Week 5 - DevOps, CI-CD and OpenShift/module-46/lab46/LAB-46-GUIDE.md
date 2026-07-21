@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-46/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Kafka error-handler configuration (retry + DLT) |
+| 2 | DLT inspection evidence |
+| 3 | `docs/kafka-dashboard.md` |
+| 4 | `docs/dlt-replay-runbook.md` |
+| 5 | Failure and recovery tests |
+| 6 | Metrics/lag evidence |
+| 7 | No secrets or real customer PII committed |
+
+
 ## Lab Overview
 
 This Module 46 lab makes CRM Kafka consumers **diagnosable and failure-tolerant** using bounded retries, a dead-letter topic (DLT), idempotent handling, consumer-lag monitoring, and actionable Micrometer metrics. You will configure Spring Kafka error handling, capture DLT inspection evidence, document a dashboard, write `docs/dlt-replay-runbook.md`, and add failure/recovery tests.
@@ -653,6 +668,8 @@ Purge lab DLT messages if shared brokers require it. Keep sanitized screenshots.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Kafka error-handler configuration (retry + DLT)
 * DLT inspection evidence

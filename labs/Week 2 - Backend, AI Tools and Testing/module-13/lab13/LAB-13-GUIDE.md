@@ -39,6 +39,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-13/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `contracts/customer.xsd` and `contracts/CustomerService.wsdl` |
+| 2 | Sample SOAP envelopes for CreateCustomer, UpdateCustomer, GetCustomer |
+| 3 | Fault samples (not-found + validation) |
+| 4 | `docs/operation-matrix.md` and `docs/soap-design-notes.md` |
+| 5 | Partner handoff checklist in README |
+| 6 | Controlled-failure evidence (broken schemaLocation) |
+| 7 | Architecture note: contracts NOW vs Spring-WS Lab 24 vs React/Kafka/PostgreSQL LATER |
+| 8 | Design decisions (document/literal, correlation placement) |
+
+
 ## Lab Overview
 
 This Module 13 lab designs a **contract-first** SOAP interface for the Northstar Customer Management Platform: an XML Schema (`customer.xsd`), a WSDL (`CustomerService.wsdl`), and sample SOAP 1.1 request/response envelopes for **CreateCustomer**, **UpdateCustomer**, and **GetCustomer**.
@@ -768,6 +784,8 @@ No Docker stack. Keep contracts and samples. **Keep `lab13-crm`**—Lab 24 imple
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `contracts/customer.xsd` and `contracts/CustomerService.wsdl`
 * Sample SOAP envelopes for CreateCustomer, UpdateCustomer, GetCustomer

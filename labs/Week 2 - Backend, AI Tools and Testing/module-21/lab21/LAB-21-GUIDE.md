@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-21/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Actuator health (liveness/readiness) evidence |
+| 2 | Micrometer metrics for CRM create/get |
+| 3 | Automated `ActuatorIT` output |
+| 4 | Successful-path evidence with `CUS-1001` / `CUS-1002` |
+| 5 | Controlled-failure evidence (readiness down / create failure counter) |
+| 6 | `docs/monitoring-report.md` |
+| 7 | Production exposure restrictions documented |
+| 8 | No secrets or generated build directories committed |
+
+
 ## Lab Overview
 
 This Module 21 lab extends the **Customer Management Platform** with **Spring Boot Actuator** health and **Micrometer** metrics. You expose health endpoints, separate **readiness** from **liveness**, and add counters/timers for CRM create/get so operators can see whether the service is alive, ready for traffic, and processing customer operations.
@@ -643,6 +659,8 @@ git status
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Actuator health (liveness/readiness) evidence
 * Micrometer metrics for CRM create/get

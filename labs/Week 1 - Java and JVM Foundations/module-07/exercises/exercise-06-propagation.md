@@ -12,25 +12,28 @@
 Trace a checked exception from account layer → service layer → menu layer →
 `main`, catching it only at the recovery boundary.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
+
+Each layer's call chain is scaffolded — your job is the **`throw`** at the bottom, **`throws`** on intermediate methods, and the **catch** only in `main`.
 
 ```java
 public class PropagationDemo {
     static void accountLayer()
-            throws InsufficientFundsException {
+            _____ { // TODO: throws InsufficientFundsException
         // Deepest layer creates the domain failure.
-        throw new InsufficientFundsException(
-                100.00, 150.00);
+        // TODO: throw new InsufficientFundsException(100.00, 150.00)
     }
 
     static void serviceLayer()
-            throws InsufficientFundsException {
+            _____ { // TODO: throws InsufficientFundsException
         // No recovery here, so declare and let it propagate.
         accountLayer();
     }
 
     static void menuLayer()
-            throws InsufficientFundsException {
+            _____ { // TODO: throws InsufficientFundsException
         // Still no recovery action; keep the contract.
         serviceLayer();
     }
@@ -38,11 +41,9 @@ public class PropagationDemo {
     public static void main(String[] args) {
         try {
             menuLayer();
-        } catch (InsufficientFundsException ex) {
-            // UI/main boundary can show a safe message and keep diagnostics.
-            System.out.println(
-                    "Caught at main: " + ex.getMessage());
-            ex.printStackTrace(System.out);
+        } catch (_____ ex) { // TODO: catch InsufficientFundsException
+            // TODO: print "Caught at main: " + ex.getMessage()
+            // TODO: ex.printStackTrace(System.out)
         }
     }
 }
@@ -65,7 +66,9 @@ flowchart LR
 **Why:** Lab 7 catches ATM failures at the menu boundary, not in every helper
 method.
 
-Create `PropagationDemo.java` next to `InsufficientFundsException.java`.
+1. **New → File** → `PropagationDemo.java` next to `InsufficientFundsException.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

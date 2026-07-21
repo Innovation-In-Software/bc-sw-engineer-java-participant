@@ -27,26 +27,29 @@ This method has two reasons to change:
 1. the bank changes its interest formula;
 2. the UI changes how interest is displayed.
 
-## After — starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished file.
 
 ```java
 public class SolidDemo {
     // Business calculation: returns data; does not print.
     static double calculateInterest(
             double balance, double ratePercent) {
-        return balance * ratePercent / 100.0;
+        // TODO: return balance * ratePercent / 100.0 (no System.out here)
+        return _____;
     }
 
     // Presentation: formats a value; does not calculate it.
     static void printInterest(double interest) {
-        System.out.printf(
-                "Interest earned: %.2f%n", interest);
+        // TODO: printf "Interest earned: %.2f%n"
+        System.out.printf(_____, interest);
     }
 
     public static void main(String[] args) {
-        double interest =
-                calculateInterest(10_000, 5);
-        printInterest(interest);
+        // TODO: calculate interest for 10_000 at 5%, then print it
+        double interest = _____;
+        _____;
     }
 }
 ```
@@ -76,7 +79,7 @@ the output format changes. These are separate responsibilities.
 
 **Why:** Returning the calculated value makes the business logic reusable and independently testable.
 
-Create `SolidDemo.java`, paste the “After” version, and save.
+Create `SolidDemo.java`. Paste the starter. Fill every `_____` / `// TODO`. Save.
 
 ### Step 3 — Compile and run
 
@@ -131,6 +134,7 @@ The program prints `500.00`; calculation has no `System.out`, and display code d
 
 | Problem | Fix |
 | ------- | --- |
+| `illegal start of expression` near `_____` | Replace blanks with formula, format string, and method calls |
 | Interest prints `50000.00` | Divide percentage by `100.0` |
 | Calculation still prints | Return `double`; print only in `printInterest` |
 | `main` repeats the formula | Call `calculateInterest` instead |

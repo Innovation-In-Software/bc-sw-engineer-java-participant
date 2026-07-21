@@ -10,6 +10,8 @@
 > **Gate for Lab 7:** All **eight** exercises must be Pass.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).
 > Keep practice separate from the graded lab (`examples/Lab7-ATMSystem/`).
+> Each exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and Windows / macOS commands.
+> Replace every `_____` and `// TODO` with your own code, then compile and run.
 > Exercises deliberately trigger failures, but every expected failure is caught so the JVM continues.
 
 ## Already covered — do not redo
@@ -54,8 +56,10 @@ cd examples/module-07-exercises
 
 1. Right-click `module-07-exercises` → **New → File**.
 2. Enter the complete filename, such as `CommonExceptionsDemo.java`.
-3. Paste the starter and save (**Ctrl+S** / **⌘S**).
+3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**).
 4. Compile and run from the IntelliJ **Terminal**.
+
+**How the starter works:** scaffolding (imports, exception triggers, method signatures) is given; the learning parts are blanks marked `_____` or `// TODO`. Risky statements that cause exceptions stay visible as hints — you supply the catch blocks, `throw`/`throws`, and recovery logic. Your finished file must compile — blanks are not valid Java.
 
 | Avoid | Why |
 | ----- | --- |

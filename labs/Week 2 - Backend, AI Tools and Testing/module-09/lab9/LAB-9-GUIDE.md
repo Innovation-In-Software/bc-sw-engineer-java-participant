@@ -37,6 +37,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-9/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Completed Lab 9 `pom.xml` with dependencies, plugins, profiles |
+| 2 | `PlaceholderTest` and layered sources from Lab 8 |
+| 3 | `docs/lifecycle-evidence.md` covering each lifecycle command |
+| 4 | `docs/dependency-tree.txt` (annotated) |
+| 5 | `target/customer-service.jar` evidence (listing + `java -jar` run)—screenshot/log, not necessarily the binary in Git |
+| 6 | Controlled-failure evidence (bad version / failing test) |
+| 7 | Architecture note: build-time NOW vs React/Kafka/PostgreSQL LATER |
+| 8 | README with run/cleanup and `mvn -B verify` CI note |
+
+
 ## Lab Overview
 
 This Module 9 lab turns the Lab 8 CRM skeleton into a **build-managed** Maven project: full `pom.xml` coordinates, Spring and JUnit **placeholders**, dependency scopes, plugins, profiles (`dev` / `test` / `prod`), and a disciplined walk through every major lifecycle phase from `validate` to `install`.
@@ -826,6 +842,8 @@ Keep sources, `docs/lifecycle-evidence.md`, `docs/dependency-tree.txt`, and note
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 Students should submit:
 

@@ -41,6 +41,21 @@
 5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 6. Capture evidence under `notes/screenshots/lab-6/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable | Where / what |
+| - | ----------- | ------------ |
+| 1 | Full source | `examples/…/src/com/academy/analytics/` — `Employee`, `EmployeeData`, `EmployeeService`, `ReportService`, `Main` |
+| 2 | Screenshots | `notes/screenshots/lab-6/` — menu, filters/groups, **Dashboard** |
+| 3 | Stream operations table | Completed table of stream ops you used |
+| 4 | LMS / README notes | Overview, streams, functional interfaces, lambdas, compile/run, sample dashboard, learnings |
+| 5 | Reflection answers | `notes/lab6-answers.md` |
+
+Optional: labeled bonuses; git repo. Do not submit secrets or a verbatim instructor `solution/`.
+
+
 ## Core path first (menu options 1–9)
 
 **Complete options 1–9 before any bonuses.** That is the graded CORE path:
@@ -1412,23 +1427,14 @@ Keep `.java` sources, stream notes, and evidence screenshots. Do not delete GitH
 
 ## Expected Deliverables
 
-Students should submit:
+Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
-* Complete Java project with all source files under `src/com/academy/analytics/`
-* Source code for: `Employee`, `EmployeeData`, `EmployeeService`, `ReportService`, `Main`
-* Screenshots of the running application (menu, filters/groups, **Dashboard**)
-* Completed **stream operations table**
-* README / LMS notes containing:
-  * Project overview
-  * Stream operations implemented
-  * Functional interfaces used
-  * Example lambda expressions / method references
-  * How to compile and run (`javac -d out ...` / `java -cp out com.academy.analytics.Main`)
-  * Sample dashboard output
-  * Observations and learnings
-* Answers to reflection questions in `../../notes/lab6-answers.md` (from project; or `~/java-bootcamp/notes/lab6-answers.md`)
-* Optional: labeled bonuses
-* Git repository (optional)
+* **Sources** under `src/com/academy/analytics/`: `Employee`, `EmployeeData`, `EmployeeService`, `ReportService`, `Main`
+* **Screenshots:** menu, filters/groups, Dashboard
+* **Stream operations table** (completed)
+* **LMS / README notes:** overview; stream ops; functional interfaces; sample lambdas/method refs; compile/run (`javac -d out` / `java -cp out com.academy.analytics.Main`); sample dashboard; observations
+* **Answers** in `notes/lab6-answers.md`
+* Optional: labeled bonuses; git repository
 
 Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your own work.
 

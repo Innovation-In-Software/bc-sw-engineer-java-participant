@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-45/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `infra/terraform/*.tf` (structured, pinned providers) |
+| 2 | `terraform.tfvars.example` |
+| 3 | `infra/ansible/site.yml` |
+| 4 | `inventory.example.yml` |
+| 5 | `docs/ai-iac-review.md` with human corrections and validation evidence |
+| 6 | Plan / lint evidence (or approved substitute) |
+| 7 | No secrets, state files, or real customer data committed |
+
+
 ## Lab Overview
 
 This Module 45 lab uses an AI coding assistant to draft **Terraform** and **Ansible** infrastructure sketches for the **Customer Management Platform**, then validates, threat-models, corrects, and documents every generated decision. You will produce `infra/terraform/*.tf`, `terraform.tfvars.example`, `infra/ansible/site.yml`, `inventory.example.yml`, and `docs/ai-iac-review.md`.
@@ -678,6 +693,8 @@ Delete any local state created accidentally. Keep sanitized plan excerpts.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `infra/terraform/*.tf` (structured, pinned providers)
 * `terraform.tfvars.example`

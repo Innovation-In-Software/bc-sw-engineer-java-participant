@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-48/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `docs/architecture/context.md` (C4 context + product outcome) |
+| 2 | `docs/architecture/container.md` (containers + data flow) |
+| 3 | `docs/nfrs.md` (measurable NFRs) |
+| 4 | `docs/adrs/` (≥5 ADRs: DB, messaging, consistency, auth, deploy) |
+| 5 | `docs/backlog.md` (prioritized vertical stories including interaction recording) |
+| 6 | `docs/risk-register.md` (scored risks with mitigations) |
+| 7 | `docs/team-plan.md` (owners, milestones, critical path) |
+| 8 | Baseline note if platform code already exists |
+
+
 ## Lab Overview
 
 This Module 48 lab turns the Enterprise CRM brief into an **executable architecture and delivery plan**. You produce C4 context and container views, measurable NFRs, ADRs, a prioritized vertical backlog, ownership milestones, and a scored risk register—so Labs 49–52 implement against decisions rather than improvisation.
@@ -636,6 +652,8 @@ Stop any exploratory containers started while sketching. Keep sanitized planning
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `docs/architecture/context.md` (C4 context + product outcome)
 * `docs/architecture/container.md` (containers + data flow)

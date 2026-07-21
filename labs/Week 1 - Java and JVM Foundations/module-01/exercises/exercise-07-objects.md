@@ -9,29 +9,28 @@
 
 Create `Person.java` with fields, a constructor, and a method; instantiate in `main`.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class Person {
-    // Fields (instance data) — each Person object has its own copy
-    String name;
-    int age;
+    // TODO: declare two instance fields — String name and int age
+    _____
 
-    // Constructor — runs when you write new Person(...)
+    // TODO: constructor — assign parameters to fields using this.name / this.age
     public Person(String name, int age) {
-        this.name = name;                   // this.name = field; name = parameter
-        this.age = age;
+        _____
     }
 
-    // Instance method — uses this object’s fields
+    // TODO: print "<name> is <age> years old" using the fields
     public void display() {
-        System.out.println(name + " is " + age + " years old");
+        _____
     }
 
     public static void main(String[] args) {
-        // Create one Person on the heap; person holds a reference (on the stack)
-        Person person = new Person("Aman", 21);
-        person.display();                   // call method on that object
+        // TODO: create a Person with name "Aman" and age 21, then call display()
+        _____
     }
 }
 ```
@@ -50,7 +49,7 @@ public class Person {
 **Why:** Objects group data + behavior; this is the core OOP starting point.
 
 1. Create `Person.java` with **New → File** under `module-01-exercises`.
-2. Paste the starter (or equivalent) and save.
+2. Paste the starter, fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -86,6 +85,15 @@ Aman is 21 years old
 ## Expected result
 
 Object prints; fields live on the heap and the reference on the stack.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
+| Fields stay null / zero | Constructor must assign `this.name = name` and `this.age = age` |
+| `cannot find symbol` on `display()` | Call on the object: `person.display();` — not `Person.display()` unless static |
+| Class/file name mismatch | File must be `Person.java` with `public class Person` |
 
 ## Pass criteria
 

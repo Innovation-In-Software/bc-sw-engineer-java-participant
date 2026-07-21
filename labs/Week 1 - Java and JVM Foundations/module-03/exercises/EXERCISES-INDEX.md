@@ -11,6 +11,9 @@
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice sources separate from the graded lab (`examples/Lab3-BankingSystem/`).  
 > Exercises 2–5 build on the same small banking model, so work in order.  
+> Each coding exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and Windows / macOS commands.  
+> Replace every `_____` and `// TODO` with your own code, then compile and run.  
+> Exercises 1 and 8 are written/design work (no Java starter).  
 > **Lab 3 assumes** you can already apply encapsulation, inheritance, abstract types, interfaces, SOLID spot-checks, and mini UML — Lab 3 packages them into a banking menu app, not first teaching.
 
 ## Already covered — do not redo
@@ -57,12 +60,18 @@ pwd
 
 Stay in this folder for every exercise below.
 
-### How to create files in IntelliJ
+### How to create each `.java` file (IntelliJ)
 
-1. Right-click `module-03-exercises` → **New → File**.
-2. Enter the complete filename, such as `Account.java` or `notes.md`.
-3. Paste or write the content and save (**Ctrl+S** / **⌘S**).
-4. Compile and run Java files from the IntelliJ **Terminal**.
+**Use this only** (same pattern as Module 2):
+
+1. Right-click `module-03-exercises` → **New → File**
+2. Type the full name including extension, e.g. `Account.java` or `notes.md`
+3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**)
+4. Compile and run from the IntelliJ **Terminal** with `javac` / `java`
+
+**How the starter works:** scaffolding (constructors, prompts, method signatures) is given; the learning parts are blanks marked `_____` or `// TODO`. Your finished file must compile — blanks are not valid Java.
+
+**Do not:**
 
 | Avoid | Why |
 | ----- | --- |

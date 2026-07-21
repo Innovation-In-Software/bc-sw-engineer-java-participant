@@ -13,7 +13,9 @@
 For each remaining SOLID principle, write one short justification and prove LSP
 with a working `FrozenAccount` that runs inside the existing polymorphic loop.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
 
 ### `FrozenAccount.java`
 
@@ -26,31 +28,39 @@ public class FrozenAccount extends Account {
 
     @Override
     public boolean withdraw(double amount) {
-        // Frozen accounts refuse every withdrawal but still honor the boolean contract.
-        return false;
+        // TODO: refuse every withdrawal; return false (do not call super.withdraw)
+        return _____;
     }
 
     @Override
     public String getAccountType() {
-        return "Frozen";
+        // TODO: return "Frozen"
+        return _____;
     }
 }
 ```
 
 ### Update in `InheritanceDemo.java`
 
-```java
-Account[] accounts = {
-    new SavingsAccount(100.00),
-    new CurrentAccount(100.00),
-    new FrozenAccount(100.00) // same loop, no special-casing
-};
+Replace the array and loop from Exercise 3 with:
 
-for (Account account : accounts) {
-    // Runtime type chooses the overridden withdraw/getAccountType.
-    boolean ok = account.withdraw(20.00);
-    System.out.printf("%s withdraw=%s balance=%.2f%n",
-            account.getAccountType(), ok, account.getBalance());
+```java
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        // TODO: add FrozenAccount(100) — same loop, no special-casing
+        Account[] accounts = {
+            new SavingsAccount(100.00),
+            new CurrentAccount(100.00),
+            _____
+        };
+
+        for (Account account : accounts) {
+            // TODO: capture withdraw result; print type, ok flag, and balance
+            boolean ok = account.withdraw(20.00);
+            System.out.printf("%s withdraw=%s balance=%.2f%n",
+                    account.getAccountType(), _____, account.getBalance());
+        }
+    }
 }
 ```
 
@@ -103,11 +113,13 @@ Write one sentence explaining why the base type makes later swaps easier.
 **Why:** A third account type proves extension without rewriting existing
 subclasses.
 
-Paste the starter and save.
+Paste the starter. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Update and run `InheritanceDemo`
 
 **Why:** Polymorphism only counts if the same loop handles the new type safely.
+
+Update `InheritanceDemo.java` with the starter loop above. Fill every blank. Save.
 
 **Windows:**
 
@@ -155,6 +167,7 @@ and you have one written sentence for each remaining SOLID principle.
 
 | Problem | Fix |
 | ------- | --- |
+| `illegal start of expression` near `_____` | Use `false`, `"Frozen"`, `new FrozenAccount(100.00)`, and `ok` in printf |
 | `Account` constructor not found | Keep Exercise 2's `Account(double)` constructor public/protected |
 | Compile error on `extends Account` | Compile `Account.java` in the same command |
 | Frozen account balance decreases | `withdraw` must return `false` without calling `super.withdraw` |

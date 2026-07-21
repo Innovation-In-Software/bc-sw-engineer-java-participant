@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-24/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `CustomerEndpoint` with four SOAP operations |
+| 2 | `customer.xsd` + live-generated WSDL |
+| 3 | JAXB generation + `CustomerSoapMapper` |
+| 4 | SOAP fault mapping to business exceptions |
+| 5 | Working UsernameToken interceptor (lab secret) |
+| 6 | `requests/` sample XML + fault cases |
+| 7 | `CustomerEndpointTest` green twice |
+| 8 | Evidence that REST and SOAP share `CustomerService` |
+
+
 ## Lab Overview
 
 This Module 24 lab extends the **Northstar Customer Service Platform** with a contract-first **Spring Web Services** SOAP endpoint beside the Lab 23 REST API. You author `customer.xsd`, generate JAXB types, implement `CustomerEndpoint`, serve a live WSDL, map business faults, and add a minimal WS-Security **UsernameToken** — all while delegating to the same `CustomerService` so protocol never forks business rules.
@@ -661,6 +677,8 @@ Do not commit `target/` or real secrets. Keep `requests/` samples with **lab** c
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `CustomerEndpoint` with four SOAP operations
 * `customer.xsd` + live-generated WSDL

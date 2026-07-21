@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-30/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `compose.yaml` KRaft broker definition |
+| 2 | Topics created (events + DLQ) with describe evidence |
+| 3 | Versioned event JSON samples (Amina/Ravi) |
+| 4 | CLI produce/consume evidence with keys/partitions/offsets |
+| 5 | Java producer with acks=all + idempotence |
+| 6 | Competing vs independent group evidence + lag describe |
+| 7 | `docs/kafka-notes.md` runbook + production checklist |
+| 8 | No secrets or generated junk committed |
+
+
 ## Lab Overview
 
 This Module 30 lab introduces **event-driven architecture** for the **Customer Management Platform** using a local **Kafka KRaft** broker: versioned topics, partitions, keyed CRM events, producers, consumers, offsets, consumer groups, lag, and a DLQ topic for Lab 31 recovery practice.
@@ -648,6 +664,8 @@ git status
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `compose.yaml` KRaft broker definition
 * Topics created (events + DLQ) with describe evidence

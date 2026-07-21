@@ -12,7 +12,9 @@
 Create `FilterSalaryDemo.java` and use `filter` to select employees whose
 salary is greater than 60,000 without changing the source list.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.List;
@@ -21,24 +23,29 @@ public class FilterSalaryDemo {
     public static void main(String[] args) {
         List<Employee> employees = EmployeeData.sample();
 
-        // stream() reads the collection as a pipeline source.
-        // filter keeps only employees for which the predicate returns true.
-        // toList is the terminal operation that executes the pipeline.
+        // TODO: stream pipeline — filter salary > 60_000, collect to List<Employee>
         List<Employee> highEarners = employees.stream()
-                .filter(employee -> employee.salary() > 60_000)
-                .toList();
+                // TODO: .filter(...)
+                // TODO: .toList()
+                ;
 
         System.out.println("Employees above 60000:");
         highEarners.forEach(employee ->
                 System.out.printf("%s - %.0f%n",
                         employee.name(), employee.salary()));
 
-        // The original source still contains all five employees.
         System.out.println("Source size: " + employees.size());
         System.out.println("Filtered size: " + highEarners.size());
     }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Source | `employees.stream()` reads the collection |
+| Intermediate operation | `filter` — lazy until a terminal operation runs |
+| Terminal operation | `toList()` executes the pipeline and returns a new list |
+| Predicate | Boolean test such as `employee -> employee.salary() > 60_000` |
 
 ## Steps
 
@@ -57,8 +64,11 @@ Write `keep` or `discard` beside:
 
 ### Step 2 — Create `FilterSalaryDemo.java`
 
-Paste the starter code. Identify the source, intermediate operation, and
-terminal operation in comments.
+**Why:** `filter` is the first stream intermediate operation in this module.
+
+1. **New → File** → `FilterSalaryDemo.java`.
+2. Paste the starter.
+3. Fill the stream chain `// TODO`s. Save.
 
 ### Step 3 — Compile and run
 

@@ -10,13 +10,9 @@
 Create `SalaryExtremesDemo.java`. Use one salary comparator with `max` and
 `min`, then handle each potentially empty result explicitly.
 
-## Key idea
+## Starter (fill in the TODOs)
 
-`max` and `min` return `Optional<Employee>` because an empty list has no
-highest or lowest employee. `orElseThrow()` converts the optional result into
-an `Employee` when this known sample is non-empty.
-
-## Starter / reference (with line comments)
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Comparator;
@@ -26,18 +22,20 @@ public class SalaryExtremesDemo {
     public static void main(String[] args) {
         List<Employee> employees = EmployeeData.sample();
 
-        // One comparator defines ascending salary order.
-        Comparator<Employee> bySalary =
-                Comparator.comparingDouble(Employee::salary);
+        // TODO: Comparator ascending by salary (hint: Comparator.comparingDouble(Employee::salary))
+        Comparator<Employee> bySalary = _____;
 
-        // max/min are terminal reductions and may have no result for empty input.
+        // TODO: stream + max(bySalary) + orElseThrow()
         Employee highest = employees.stream()
-                .max(bySalary)
-                .orElseThrow();
+                // TODO: .max(bySalary)
+                // TODO: .orElseThrow()
+                ;
 
+        // TODO: stream + min(bySalary) + orElseThrow()
         Employee lowest = employees.stream()
-                .min(bySalary)
-                .orElseThrow();
+                // TODO: .min(bySalary)
+                // TODO: .orElseThrow()
+                ;
 
         System.out.printf("Highest: %s - %.0f%n",
                 highest.name(), highest.salary());
@@ -46,6 +44,12 @@ public class SalaryExtremesDemo {
     }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| `max` / `min` | Terminal reductions that pick one element using a comparator |
+| `Optional<Employee>` | Result may be empty when the source list has no elements |
+| `orElseThrow()` | Safe here because the sample list is non-empty |
 
 ## Steps
 
@@ -57,10 +61,13 @@ before the code runs.
 List the employees in ascending salary order. The first should be the `min`
 result and the last should be the `max` result.
 
-### Step 2 — Compile and run
+### Step 2 — Create, compile, and run
 
 **Why:** One shared comparator proves `min` and `max` are opposite ends of the
 same ordering.
+
+1. **New → File** → `SalaryExtremesDemo.java`.
+2. Paste the starter and fill every `_____` / `// TODO`. Save.
 
 **Windows:**
 

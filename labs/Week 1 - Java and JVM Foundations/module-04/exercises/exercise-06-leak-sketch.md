@@ -11,7 +11,9 @@
 
 Create `RetentionDemo.java`, observe a static collection retaining objects, then clear the collection and explain why those objects become GC-eligible.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.ArrayList;
@@ -19,14 +21,12 @@ import java.util.List;
 
 public class RetentionDemo {
     // Static field is reachable from the loaded class (a GC root path).
-    private static final List<byte[]> CACHE =
-            new ArrayList<>();
+    // TODO: private static final List<byte[]> CACHE = new ArrayList<>();
 
     static long usedMb() {
         Runtime runtime = Runtime.getRuntime();
-        long usedBytes =
-                runtime.totalMemory() - runtime.freeMemory();
-        return usedBytes / (1024 * 1024);
+        // TODO: long usedBytes = runtime.totalMemory() - runtime.freeMemory();
+        // TODO: return usedBytes / (1024 * 1024);
     }
 
     public static void main(String[] args)
@@ -35,7 +35,7 @@ public class RetentionDemo {
 
         // Bounded: 10,000 × 1 KB ≈ 10 MB payload.
         for (int i = 0; i < 10_000; i++) {
-            CACHE.add(new byte[1024]);
+            // TODO: CACHE.add(new byte[1024]);
         }
 
         System.out.println(
@@ -44,9 +44,9 @@ public class RetentionDemo {
                 "After allocation: " + usedMb() + " MB");
 
         // Remove the strong references held by the list.
-        CACHE.clear();
-        System.gc();       // request, not a guarantee
-        Thread.sleep(200); // observation aid, not synchronization with GC
+        // TODO: CACHE.clear();
+        // TODO: System.gc();       request, not a guarantee
+        // TODO: Thread.sleep(200); observation aid, not synchronization with GC
 
         System.out.println(
                 "After clear (approx): " + usedMb() + " MB");
@@ -78,7 +78,15 @@ Java has automatic memory management, but GC reclaims only **unreachable** objec
 
 ## Steps
 
-### Step 1 — Compile and run with a bounded heap
+### Step 1 — Create `RetentionDemo.java`
+
+**Why:** Lab 4 discusses retention paths — you must recognize when a static root prevents collection.
+
+1. **New → File** → `RetentionDemo.java`.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
+
+### Step 2 — Compile and run with a bounded heap
 
 **Windows:**
 
@@ -107,7 +115,7 @@ After clear (approx): 1 MB
 
 Your memory numbers can differ substantially. The guaranteed value is the bounded list size (`10000`), not a particular MB reading.
 
-### Step 2 — Identify the retaining path
+### Step 3 — Identify the retaining path
 
 Write in `notes.md`:
 
@@ -118,7 +126,7 @@ loaded RetentionDemo class
   → byte[] objects
 ```
 
-### Step 3 — Record the root cause and fix
+### Step 4 — Record the root cause and fix
 
 ```markdown
 Root cause: a long-lived static collection retained strong references after

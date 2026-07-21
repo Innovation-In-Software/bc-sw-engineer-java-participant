@@ -38,6 +38,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-14/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `CustomerRequestDTO`, `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` |
+| 2 | Automated validation test output |
+| 3 | Successful-path evidence (`CUS-1001` / `CUS-1002`) |
+| 4 | Controlled-failure evidence (invalid email / blank fields + correlation) |
+| 5 | Architecture note: entity vs DTO boundary |
+| 6 | README run/cleanup + design decisions |
+| 7 | No secrets or `target/` committed |
+
+
 ## Lab Overview
 
 This Module 14 lab extends the **Northstar Customer Management Platform** with a clear **API contract boundary**: request and response DTOs, Jakarta Bean Validation on inbound payloads, and mapping that returns DTOs **without** exposing the `Customer` entity over the API.
@@ -749,6 +764,8 @@ No containers required. Keep DTOs/mapper/facade and tests. **Keep `lab14-crm`** 
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `CustomerRequestDTO`, `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade`
 * Automated validation test output

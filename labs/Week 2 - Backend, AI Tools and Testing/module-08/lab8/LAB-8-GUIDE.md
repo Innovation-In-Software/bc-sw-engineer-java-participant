@@ -37,6 +37,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-8/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Completed Lab 8 Maven skeleton (`lab8-crm` or `customer-management-platform`) |
+| 2 | All layer packages with stub classes plus `Main` |
+| 3 | `docs/CODING-STANDARDS.md` and `docs/layer-flow.md` |
+| 4 | Project `LAB-8-GUIDE.md` with compile/run and design decisions |
+| 5 | Successful `mvn clean compile` evidence (+ `Main` output) |
+| 6 | Controlled-failure evidence (broken layer import and/or missing POM experiment) |
+| 7 | Architecture / data-flow diagram showing NOW vs LATER |
+| 8 | Answers to reflection / concepts in `notes/lab8-answers.md` |
+
+
 ## Lab Overview
 
 This Module 8 lab starts the **Customer Management Platform (CRM)** for **Northstar** by creating a clean **Maven Java skeleton**: standard directory layout, layered packages, compile-ready stub classes, and a short coding-standards document the rest of the bootcamp will follow.
@@ -1025,6 +1041,8 @@ Remove any temporary secrets from the environment where practical. Keep `docs/`,
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 Students should submit:
 

@@ -11,7 +11,9 @@
 
 Create `SortedMapDemo.java`, store book prices in a `HashMap`, then build a `TreeMap` from it and compare iteration order.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.HashMap;
@@ -20,20 +22,25 @@ import java.util.TreeMap;
 
 public class SortedMapDemo {
     public static void main(String[] args) {
-        Map<String, Double> prices = new HashMap<>();
-        prices.put("The Hobbit", 12.99);
-        prices.put("Dune", 15.50);
-        prices.put("Annihilation", 9.99);
+        // TODO: declare Map<String, Double> prices as new HashMap<>()
+        Map<String, Double> prices = _____;
 
-        // HashMap order is unspecified.
+        // TODO: put three title → price mappings
+        //   "The Hobbit" -> 12.99, "Dune" -> 15.50, "Annihilation" -> 9.99
+        _____
+        _____
+        _____
+
+        // TODO: print HashMap key order (unspecified — may vary between runs)
         System.out.println("HashMap order: " + prices.keySet());
 
-        // TreeMap sorts keys in natural (alphabetical) order.
-        Map<String, Double> sortedPrices = new TreeMap<>(prices);
+        // TODO: create TreeMap<String, Double> sortedPrices from prices
+        Map<String, Double> sortedPrices = _____;
         System.out.println("TreeMap order: " + sortedPrices.keySet());
 
-        // A TreeMap also gives you the smallest and largest key directly.
-        TreeMap<String, Double> tree = new TreeMap<>(prices);
+        // TODO: declare TreeMap<String, Double> tree from prices
+        //   (TreeMap type needed for firstKey / lastKey)
+        TreeMap<String, Double> tree = _____;
         System.out.println("First title: " + tree.firstKey());
         System.out.println("Last title: " + tree.lastKey());
     }
@@ -53,7 +60,11 @@ public class SortedMapDemo {
 
 ### Step 1 — Create `SortedMapDemo.java`
 
-Paste the starter code and save.
+**Why:** Lab 5 reports need sorted keys for readable output.
+
+1. **New → File** → `SortedMapDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -100,6 +111,7 @@ Add to `notes.md`:
 | ------- | --- |
 | `cannot find symbol firstKey` | Declare the variable as `TreeMap<String, Double>`, not the `Map` interface, to use `TreeMap`-only methods |
 | Both maps print the same order | Not a bug — with only 3 short keys this can coincidentally happen; trust the guarantee, not one run's output |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
 
 ## Pass criteria
 

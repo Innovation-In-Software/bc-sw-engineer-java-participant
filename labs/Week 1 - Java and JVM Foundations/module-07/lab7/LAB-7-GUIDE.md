@@ -41,6 +41,22 @@
 5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 6. Capture evidence under `notes/screenshots/lab-7/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable | Where / what |
+| - | ----------- | ------------ |
+| 1 | Full source | `examples/…/src/com/academy/atm/` — `Account`, `Transaction`, `ATMService`, `LoggerUtil`, `Main`, four custom exceptions |
+| 2 | Input file | `transactions.txt` (or equivalent) |
+| 3 | Log evidence | Snippet/screenshot of `logs/application.log` ERROR lines |
+| 4 | Screenshots | Successful **and** failed transactions (menu still alive) |
+| 5 | LMS / README notes | Overview, exception hierarchy, logging, compile/run, sample output, lessons |
+| 6 | Reflection answers | `notes/lab7-answers.md` |
+
+Optional: labeled bonuses. Do not submit secrets or a verbatim instructor `solution/`.
+
+
 ## Module 7 exercises you must already have completed
 
 Lab 7 assumes you already practiced exception skills in `examples/module-07-exercises/`. Do **not** treat Steps 2–12 as your first time with custom exceptions, `throw`/`throws`, or try-with-resources.
@@ -1379,24 +1395,15 @@ Keep `.java` sources, `transactions.txt`, notes, and evidence screenshots. Do no
 
 ## Expected Deliverables
 
-Students should submit:
+Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
-* Complete Java project with all source files under `src/com/academy/atm/`
-* Source code for: `Account`, `Transaction`, `ATMService`, `LoggerUtil`, `Main`, and all four custom exceptions
-* `transactions.txt` (or equivalent historical input file)
-* Evidence of `logs/application.log` (snippet or screenshot of ERROR lines)
-* Screenshots of successful **and** failed transactions (menu still alive)
-* README / LMS notes containing:
-  * Project overview
-  * Exception hierarchy
-  * Custom exceptions implemented
-  * Logging strategy
-  * How to compile and run (from project root)
-  * Sample output
-  * Lessons learned
-* Answers to reflection questions in `../../notes/lab7-answers.md` (from project; or `~/java-bootcamp/notes/lab7-answers.md`)
-* Optional: labeled bonuses (rollback, daily error report, timing, summary)
-* Git repository (optional)
+* **Sources** under `src/com/academy/atm/`: `Account`, `Transaction`, `ATMService`, `LoggerUtil`, `Main`, and all four custom exceptions
+* **`transactions.txt`** (or equivalent historical input file)
+* **Log evidence:** snippet or screenshot of `logs/application.log` ERROR lines
+* **Screenshots:** successful **and** failed transactions (menu still alive)
+* **LMS / README notes:** overview; exception hierarchy; custom exceptions; logging strategy; compile/run from project root; sample output; lessons learned
+* **Answers** in `notes/lab7-answers.md`
+* Optional: labeled bonuses; git repository
 
 Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your own work.
 

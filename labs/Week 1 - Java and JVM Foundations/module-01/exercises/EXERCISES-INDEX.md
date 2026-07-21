@@ -9,7 +9,8 @@
 > **When:** Complete these exercises **after the module slides** (and instructor demo) and **before** the graded lab.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice sources separate from the graded lab (`examples/jvm-compilation-lab/`).  
-> Each exercise includes **line comments in starter code**, a short **why** for each step, and plain-English meanings for commands / bytecode.  
+> Each exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and plain-English meanings for commands / bytecode.  
+> Replace every `_____` and `// TODO` with your own code, then compile and run.  
 > **Lab 1 assumes** you can already compile/run, use `-verbose:class`, sketch stack vs heap, and read `javap -c` from these eight exercises — Lab 1 Steps 2–8 are graded consolidation, not first teaching.
 
 ## Workspace
@@ -52,8 +53,10 @@ Stay in this folder for every exercise below (or `cd` back before each compile/r
 
 1. Right-click `module-01-exercises` → **New → File**
 2. Type the full name including extension, e.g. `Hello.java` or `Variables.java`
-3. Paste the code → save (**Ctrl+S** / **⌘S**)
+3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**)
 4. Compile and run from the IntelliJ **Terminal** with `javac` / `java` (commands in each exercise)
+
+**How the starter works:** scaffolding (class shell, prompts, method signatures) is given; the learning parts are blanks marked `_____` or `// TODO`. Your finished file must compile — blanks are not valid Java.
 
 **Do not** rely on these for the exercises folder (they often fail or mislead):
 

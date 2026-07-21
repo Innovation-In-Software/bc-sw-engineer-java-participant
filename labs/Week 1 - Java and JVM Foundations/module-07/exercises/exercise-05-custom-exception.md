@@ -10,22 +10,25 @@
 Model insufficient balance as a meaningful checked domain exception. Preserve
 balance and requested amount as structured context.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste each skeleton, then replace every `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished files.
+
+Create **three** files. The demo's `withdraw(150.00)` call is scaffolded — your job is the **exception class**, the **throw** in `Account`, and the **catch** in the demo.
 
 ### `InsufficientFundsException.java`
 
 ```java
 public class InsufficientFundsException
-        extends Exception { // checked because it extends Exception
+        extends _____ { // TODO: extend Exception (checked)
     private final double balance;
     private final double requested;
 
     public InsufficientFundsException(
             double balance, double requested) {
-        // Message carries domain context for logs and UI boundaries.
-        super(("Insufficient funds: balance=%.2f, "
-                + "requested=%.2f")
-                .formatted(balance, requested));
+        // TODO: call super with formatted message:
+        //   "Insufficient funds: balance=%.2f, requested=%.2f"
+        super(_____);
         this.balance = balance;
         this.requested = requested;
     }
@@ -54,8 +57,7 @@ public class Account {
             throws InsufficientFundsException {
         // Validate before mutating state.
         if (amount > balance) {
-            throw new InsufficientFundsException(
-                    balance, amount);
+            // TODO: throw new InsufficientFundsException(balance, amount)
         }
         balance -= amount;
     }
@@ -75,10 +77,9 @@ public class CustomExceptionDemo {
 
         try {
             account.withdraw(150.00);
-        } catch (InsufficientFundsException ex) {
-            System.out.println(ex.getMessage());
-            System.out.printf("Short by: %.2f%n",
-                    ex.getRequested() - ex.getBalance());
+        } catch (_____ ex) { // TODO: catch InsufficientFundsException
+            // TODO: print ex.getMessage()
+            // TODO: print shortfall with printf — ex.getRequested() - ex.getBalance()
         }
 
         // Failed withdrawal must leave the original balance unchanged.
@@ -95,8 +96,9 @@ public class CustomExceptionDemo {
 **Why:** Lab 7 uses custom checked exceptions for domain rules such as
 insufficient funds and invalid PIN.
 
-Create `InsufficientFundsException.java`, `Account.java`, and
-`CustomExceptionDemo.java`.
+1. **New → File** → `InsufficientFundsException.java`, `Account.java`, `CustomExceptionDemo.java`.
+2. Paste each starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

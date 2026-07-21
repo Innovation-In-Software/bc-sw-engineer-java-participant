@@ -40,6 +40,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-12/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Refactored `CustomerService` with clear methods and typed storage |
+| 2 | Frozen before snapshot and `docs/smells.md` + `docs/before-after.md` |
+| 3 | Passing `CustomerServiceTest` (or equivalent) |
+| 4 | AI review notes or explicit manual-review substitute |
+| 5 | Standards checklist + controlled-failure evidence |
+| 6 | Architecture note: in-memory NOW vs React/Kafka/PostgreSQL LATER |
+| 7 | README run/cleanup + short SOLID applied/deferred decisions |
+| 8 | No secrets or generated dependency directories committed |
+
+
 ## Lab Overview
 
 This Module 12 lab improves a **deliberately poor** CRM `CustomerService` using Northstar coding standards: smell detection, renaming, method extraction, and SOLID-inspired cleanup. Optional GitHub Copilot suggestions are welcome **only** with written human review—the same discipline Labs 10–11 introduced.
@@ -705,6 +721,8 @@ Keep `CustomerService.before.java.txt` and docs evidence. Remove temporary crede
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Refactored `CustomerService` with clear methods and typed storage
 * Frozen before snapshot and `docs/smells.md` + `docs/before-after.md`

@@ -42,6 +42,20 @@
 5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 6. Capture evidence under `notes/screenshots/lab-4/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable | Where / what |
+| - | ----------- | ------------ |
+| 1 | Core demos (source) | `examples/Lab4-MemoryManagement/` — stack/heap, lifecycle, GC, leak, performance demos |
+| 2 | Screenshots | `notes/screenshots/lab-4/` — memory/GC runs; `-Xlog:gc` snippet; performance table |
+| 3 | Short answers | `notes/lab4-answers.md` (reflection questions) |
+| 4 | LMS overview | Tools used + leak cause/fix in your own words |
+
+Do **not** submit heap dumps (`.hprof`), secrets, or a verbatim instructor `solution/`.
+
+
 ## Module 4 exercises you must already have completed
 
 Lab 4 assumes you already practiced these runtime skills in `examples/module-04-exercises/`. Do **not** treat Steps 3–8 as your first time seeing stack/heap, lifecycle, GC logs, or retention.
@@ -806,7 +820,7 @@ Record pass/fail briefly in `../../notes/lab4-answers.md` (from project; or `~/j
 
 ---
 
-## Security, Cleanup, and Deliverables
+## Security and Cleanup
 
 **Security:** Never commit `.hprof` or paste dump contents (PII risk). Keep OOM runs short with tiny `-Xmx`. Prefer fixing retention over sprinkling `System.gc()` in production-style code.
 
@@ -822,7 +836,21 @@ rm -f /tmp/lab4-heap.hprof
 
 Keep `.java` sources and notes. Leave [`solution/`](solution/) intact.
 
-**Deliverables:** core demos; memory/GC screenshots; `-Xlog:gc` snippet; performance table; `../../notes/lab4-answers.md` (from project; or `~/java-bootcamp/notes/lab4-answers.md`); LMS overview (tools + leak cause/fix). No dumps, secrets, or verbatim solution copies.
+See [Expected Deliverables](#expected-deliverables) below for the submit list.
+
+
+---
+
+## Expected Deliverables
+
+Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+
+* **Sources** under `java-bootcamp/examples/Lab4-MemoryManagement/` (core demos)
+* **Screenshots** under `notes/screenshots/lab-4/`: memory/GC runs, `-Xlog:gc` snippet, performance table
+* **Answers** in `notes/lab4-answers.md` (reflection questions)
+* **LMS overview:** tools used + leak cause/fix (your own words)
+
+Do not submit heap dumps (`.hprof`), secrets, or a verbatim instructor [`solution/`](solution/).
 
 ---
 

@@ -9,7 +9,9 @@
 
 Create `SetDemo.java`, prove duplicate rejection with `add`’s return value, and create a sorted `TreeSet` view.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.HashSet;
@@ -18,29 +20,33 @@ import java.util.TreeSet;
 
 public class SetDemo {
     public static void main(String[] args) {
-        Set<String> categories = new HashSet<>();
+        // TODO: create HashSet<String> categories
+        Set<String> categories = _____;
 
+        // TODO: add "Java" and print whether the set changed (add returns boolean)
         System.out.println(
                 "Added Java first time: "
-                + categories.add("Java"));
+                + _____);
 
-        categories.add("Testing");
-        categories.add("Databases");
+        // TODO: add "Testing" and "Databases"
+        _____
+        _____
 
+        // TODO: try adding "Java" again — print whether the set changed
         System.out.println(
                 "Added Java second time: "
-                + categories.add("Java"));
+                + _____);
 
         System.out.println(
                 "Unique count: " + categories.size());
         System.out.println(
                 "Contains Testing: "
-                + categories.contains("Testing"));
+                + _____);
 
-        // HashSet order is unspecified; TreeSet sorts.
+        // TODO: print sorted view using new TreeSet<>(categories)
         System.out.println(
                 "Sorted view: "
-                + new TreeSet<>(categories));
+                + _____);
     }
 }
 ```
@@ -61,7 +67,15 @@ public class SetDemo {
 
 ## Steps
 
-### Step 1 — Compile and run
+### Step 1 — Create `SetDemo.java`
+
+**Why:** Lab 5 tracks unique book IDs and categories with `Set`.
+
+1. **New → File** → `SetDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
@@ -89,7 +103,7 @@ Contains Testing: true
 Sorted view: [Databases, Java, Testing]
 ```
 
-### Step 2 — Explain what is deterministic
+### Step 3 — Explain what is deterministic
 
 These are deterministic:
 
@@ -99,7 +113,7 @@ These are deterministic:
 
 Raw `HashSet` iteration order is **not** a contract and may vary by JDK or run.
 
-### Step 3 — Connect to custom objects
+### Step 4 — Connect to custom objects
 
 Add to `notes.md`:
 
@@ -116,6 +130,7 @@ The set contains three unique categories; the duplicate add returns `false`; `Tr
 | Expected insertion order from `HashSet` | Use `LinkedHashSet` only when insertion order is required |
 | Expected sorted `HashSet` | Create a `TreeSet` view |
 | Duplicate count is `4` | Ensure both values are exactly `"Java"` |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
 
 ## Pass criteria
 

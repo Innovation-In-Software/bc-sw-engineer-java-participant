@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-38/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `database/performance/01`–`05` SQL scripts |
+| 2 | ≥50k load with documented skew + preserved CRM fixtures |
+| 3 | Baseline and after-index `DBMS_XPLAN` evidence |
+| 4 | Sargable date rewrite comparison |
+| 5 | Join strategy notes (selective vs broad) |
+| 6 | Deterministic OFFSET + keyset paging demos |
+| 7 | Index challenge cycle with retained-index justification |
+| 8 | `report.md` with plan hash, buffers, median time, write cost |
+
+
 ## Lab Overview
 
 This Module 38 lab teaches **evidence-based PostgreSQL tuning** for the **Customer Management Platform**: generate volume, gather statistics, capture **actual** plans with `DBMS_XPLAN`, create selective indexes, rewrite non-sargable predicates, compare join strategies, implement deterministic and **keyset** paging, and write a tuning report that another engineer can reproduce.
@@ -686,6 +702,8 @@ Do not commit PostgreSQL password files, datapump dumps, or full plan HTML expor
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `database/performance/01`–`05` SQL scripts
 * ≥50k load with documented skew + preserved CRM fixtures

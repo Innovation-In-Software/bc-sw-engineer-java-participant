@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-35/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Typed `ApiError` / `http` / `customersApi` with abortable loads |
+| 2 | Distinct loading/empty/data/error UX |
+| 3 | Create/update with correlation + duplicate-submit guard |
+| 4 | Backend 400 field mapping |
+| 5 | Spring CORS allowlist + evil Origin evidence |
+| 6 | Response-class tests + green build |
+| 7 | Integration notes + screenshots |
+| 8 | README runbook (Spring + Vite) |
+
+
 ## Lab Overview
 
 This Module 35 lab connects the React CRM SPA to the **Spring Boot** customer API: typed `fetch`, normalized `ApiError`, loading/empty/error UX, `AbortController` cancellation, duplicate-submit prevention, backend field-error mapping, restricted CORS, and failure-class tests. In-memory Lab 34 state becomes a cache of server records.
@@ -658,6 +674,8 @@ Do not commit `node_modules/`, `dist/`, or secret `.env`.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Typed `ApiError` / `http` / `customersApi` with abortable loads
 * Distinct loading/empty/data/error UX

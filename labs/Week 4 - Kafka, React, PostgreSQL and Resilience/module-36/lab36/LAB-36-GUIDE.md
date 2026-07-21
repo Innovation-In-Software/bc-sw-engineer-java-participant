@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-36/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Threat model document |
+| 2 | Auth state + in-memory token store |
+| 3 | Origin-scoped Authorization on CRM calls |
+| 4 | Login + ProtectedRoute + 401/403/logout behavior |
+| 5 | XSS proof test; CSRF evidence or N/A rationale |
+| 6 | CSP/security headers evidence |
+| 7 | Abuse tests + green build |
+| 8 | Redacted screenshots + README runbook |
+
+
 ## Lab Overview
 
 This Module 36 lab hardens the CRM SPA: threat model, authentication state, **in-memory** access tokens (not `localStorage`), origin-restricted `Authorization` headers, login UX, route guards as UX-only, 401 vs 403 handling, logout, XSS-safe rendering, cookie-mode CSRF notes, CSP/security headers, and abuse-case tests. Backend authorization remains the source of truth.
@@ -669,6 +685,8 @@ Do not commit tokens, `.env` secrets, `node_modules/`, or `dist/`.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Threat model document
 * Auth state + in-memory token store

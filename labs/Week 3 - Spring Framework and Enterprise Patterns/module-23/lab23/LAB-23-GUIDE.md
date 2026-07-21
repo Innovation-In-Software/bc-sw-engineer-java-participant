@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-23/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Initializr-style `pom.xml` with web + actuator + test |
+| 2 | `CrmApplication` + `application.yml` + profile teasers |
+| 3 | `/api/customers` evidence for `CUS-1001` / `CUS-1002` / `lab-request-001` |
+| 4 | Actuator health verification |
+| 5 | Automated context-load and API IT; dual `mvn test` green |
+| 6 | Autoconfig vs ownership notes |
+| 7 | Controlled-failure evidence |
+| 8 | README runbook + cleanup |
+
+
 ## Lab Overview
 
 This Module 23 lab builds the first **Customer Management Platform** Spring Boot application in the Initializr style: starters, `application.yml`, an embedded server, REST `/api/customers`, Actuator health, and a `CrmApplication` entry point. You see how auto-configuration reduces boilerplate while you still own domain rules, validation, and exposure policy.
@@ -738,6 +754,8 @@ Do not commit `target/`. Keep curl transcripts and notes.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Initializr-style `pom.xml` with web + actuator + test
 * `CrmApplication` + `application.yml` + profile teasers

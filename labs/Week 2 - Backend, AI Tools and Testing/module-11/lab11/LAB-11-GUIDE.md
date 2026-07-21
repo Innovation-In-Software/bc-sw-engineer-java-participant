@@ -39,6 +39,19 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-11/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `CustomerTest`, `CustomerServiceTest`, `CustomerNotifierMockTest` |
+| 2 | `CustomerNotifier` + refactored `CustomerService` (`validateCustomerId`, notifier hook) |
+| 3 | `copilot-notes/ai-test-refactor-notes.md` entries `lab11-001`–`lab11-004` |
+| 4 | Failure-experiment evidence and green `mvn clean test` output |
+| 5 | No secrets or `target/` committed |
+
+
 ## Lab Overview
 
 This Module 11 lab continues the **Northstar Customer Service Platform** from `lab10-crm/` into `lab11-crm/`. You still write **plain Java with Maven — no Spring Framework** anywhere in Week 2. What’s new is using GitHub Copilot for two jobs: **generating a first exploratory test class** for Lab 10’s domain/service code, and **generating refactoring suggestions** that clean that code up.
@@ -825,6 +838,8 @@ No containers started. Keep notes and sources. **Keep `lab11-crm`** for Lab 12+ 
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `CustomerTest`, `CustomerServiceTest`, `CustomerNotifierMockTest`
 * `CustomerNotifier` + refactored `CustomerService` (`validateCustomerId`, notifier hook)

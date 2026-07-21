@@ -14,7 +14,11 @@ Implement two of the six error-handling strategies — **Retry** and
 **Fallback / Default** — around a flaky operation, and explain when you would
 reach for the other four.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
+
+The flaky `fetchBalance()` method is complete — your job is the **retry catch** and the **fallback return**.
 
 ```java
 import java.util.Random;
@@ -36,18 +40,13 @@ public class StrategyDemo {
         for (int attempt = 1; attempt <= maxAttempts; attempt++) {
             try {
                 return fetchBalance();
-            } catch (IllegalStateException ex) {
-                System.out.println(
-                        "Attempt " + attempt
-                        + " failed: " + ex.getMessage());
-                if (attempt == maxAttempts) {
-                    System.out.println(
-                            "Retries exhausted, falling back to default.");
-                }
+            } catch (_____ ex) { // TODO: catch IllegalStateException
+                // TODO: print "Attempt " + attempt + " failed: " + ex.getMessage()
+                // TODO: if attempt == maxAttempts, print "Retries exhausted, falling back to default."
             }
         }
         // Strategy 2: Fallback / Default — safe value after retries fail.
-        return 0;
+        return _____; // TODO: return 0
     }
 
     public static void main(String[] args) {
@@ -75,7 +74,9 @@ public class StrategyDemo {
 **Why:** Catching alone is not a strategy. Lab 7 and later services need clear
 recovery choices.
 
-Create `StrategyDemo.java`.
+1. **New → File** → `StrategyDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

@@ -9,7 +9,9 @@
 
 Create `IteratorDemo.java` and safely remove matching titles through the active `Iterator`.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.ArrayList;
@@ -18,21 +20,19 @@ import java.util.List;
 
 public class IteratorDemo {
     public static void main(String[] args) {
-        List<String> titles = new ArrayList<>(List.of(
-                "Java 21",
-                "Deprecated Java 8 Notes",
-                "Clean Code",
-                "Deprecated API Guide"
-        ));
+        // TODO: wrap List.of(...) in new ArrayList<>(...) so removal is allowed
+        List<String> titles = _____;
 
-        Iterator<String> iterator = titles.iterator();
+        // TODO: obtain an Iterator<String> from titles
+        Iterator<String> iterator = _____;
 
-        while (iterator.hasNext()) {
+        // TODO: loop while iterator.hasNext()
+        while (_____) {
             String title = iterator.next();
 
             if (title.startsWith("Deprecated")) {
-                // Remove the element most recently returned by next().
-                iterator.remove();
+                // TODO: remove through the iterator (not titles.remove)
+                _____;
             }
         }
 
@@ -62,7 +62,15 @@ flowchart LR
 
 ## Steps
 
-### Step 1 — Compile and run
+### Step 1 — Create `IteratorDemo.java`
+
+**Why:** Lab 5 removes items during iteration; the iterator protocol prevents concurrent-modification errors.
+
+1. **New → File** → `IteratorDemo.java`.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
@@ -86,7 +94,7 @@ java IteratorDemo
 Remaining: [Java 21, Clean Code]
 ```
 
-### Step 2 — Run the failure experiment
+### Step 3 — Run the failure experiment
 
 Replace:
 
@@ -104,7 +112,7 @@ Run again. A `ConcurrentModificationException` is expected because the list is s
 
 Restore `iterator.remove()` before continuing.
 
-### Step 3 — Know the simpler alternative
+### Step 4 — Know the simpler alternative
 
 For this specific condition, Java also supports:
 
@@ -126,6 +134,7 @@ Both deprecated titles are removed without `ConcurrentModificationException`.
 | `UnsupportedOperationException` | Wrap `List.of(...)` in `new ArrayList<>(...)` |
 | `IllegalStateException` from remove | Call `next()` before each `iterator.remove()` |
 | Concurrent modification | Remove through the iterator, not the list |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
 
 ## Pass criteria
 

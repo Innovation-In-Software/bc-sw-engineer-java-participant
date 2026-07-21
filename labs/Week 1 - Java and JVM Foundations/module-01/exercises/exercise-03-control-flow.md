@@ -9,45 +9,32 @@
 
 Create `ControlFlow.java` using `if`, `for`, `while`, and `switch` with simple examples.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class ControlFlow {
     public static void main(String[] args) {
         int number = 4;
 
-        // if: choose one path based on a true/false test
-        if (number % 2 == 0) {              // % is remainder; 0 means even
-            System.out.println("even");
-        } else {
-            System.out.println("odd");
-        }
+        // TODO: if / else — print "even" when number is even, "odd" otherwise
+        //   hint: number % 2 == 0 means even
+        _____
 
-        // for: repeat a known number of times (1 through 5)
-        for (int i = 1; i <= 5; i++) {
-            System.out.println(i);
-        }
+        // TODO: for loop — print 1 through 5 (one number per line)
+        //   hint: for (int i = 1; i <= 5; i++) { ... }
+        _____
 
-        // while: repeat while a condition stays true
+        // TODO: while loop — countdown from 3 to 1
+        //   print "countdown " + count each time; decrease count so the loop ends
         int count = 3;
-        while (count > 0) {
-            System.out.println("countdown " + count);
-            count--;                        // decrease so the loop can end
-        }
+        _____
 
-        // switch: pick a label from a fixed set of cases
+        // TODO: switch on day (value 2) — case 1 -> Monday, case 2 -> Tuesday
+        //   default -> "Other day"; remember break after each case
         int day = 2;
-        switch (day) {
-            case 1:
-                System.out.println("Monday");
-                break;                      // leave the switch (don’t fall through)
-            case 2:
-                System.out.println("Tuesday");
-                break;
-            default:
-                System.out.println("Other day");
-                break;
-        }
+        _____
     }
 }
 ```
@@ -66,7 +53,7 @@ public class ControlFlow {
 **Why:** Real programs branch and repeat; these four structures are the basics.
 
 1. Create `ControlFlow.java` with **New → File** under `module-01-exercises`.
-2. Paste the starter (or equivalent) and save.
+2. Paste the starter, fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -111,6 +98,15 @@ Tuesday
 ## Expected result
 
 All four control structures run and print clear output.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
+| Infinite loop on countdown | Decrease `count` inside the `while` body (`count--`) |
+| Wrong day or fall-through in `switch` | Add `break;` after each `case` (except when you intend fall-through) |
+| Always prints `odd` | Check `% 2 == 0` for even — `%` is remainder, not division |
 
 ## Pass criteria
 

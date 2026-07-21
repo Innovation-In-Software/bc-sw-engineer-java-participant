@@ -38,6 +38,20 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-16/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `ErrorResponse`, `BusinessException`, `GlobalExceptionHandler` |
+| 2 | Facade integration returning consistent Fail payloads |
+| 3 | Evidence JSON for 400, 404, and 409 with `lab-request-001` |
+| 4 | `GlobalExceptionHandlerTest` output |
+| 5 | README / notes on status-code choices |
+| 6 | No secrets, stack traces in client samples, or `target/` committed |
+
+
 ## Lab Overview
 
 This Module 16 lab extends the **Customer Management Platform** with a consistent **API error model**: `BusinessException`, `ErrorResponse`, and a `GlobalExceptionHandler` that maps validation failures and not-found cases to one payload shape, always carrying a **correlation ID**.
@@ -659,6 +673,8 @@ No containers required. **Keep `lab16-crm`**—Labs 17–18 test behavior; Week 
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `ErrorResponse`, `BusinessException`, `GlobalExceptionHandler`
 * Facade integration returning consistent Fail payloads

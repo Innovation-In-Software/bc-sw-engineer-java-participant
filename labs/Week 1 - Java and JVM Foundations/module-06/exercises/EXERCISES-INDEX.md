@@ -10,6 +10,8 @@
 > **Gate for Lab 6:** Exercises **1–7** must be Pass. Exercise 8 is recommended parallel bonus.
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).
 > Keep practice separate from the graded lab (`examples/Lab6-EmployeeAnalytics/`).
+> Each exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and Windows / macOS commands.
+> Replace every `_____` and `// TODO` with your own code, then compile and run.
 > Exercises 2–7 reuse the five-employee dataset created in Exercise 1, so work in order.
 
 ## Already covered — do not redo
@@ -66,16 +68,22 @@ pwd
 
 Stay in this folder for all eight exercises.
 
-### IntelliJ file creation
+### How to create each `.java` file (IntelliJ)
 
 1. Right-click `module-06-exercises` → **New → File**.
 2. Enter the complete filename, such as `Employee.java`.
-3. Paste the starter code and save (**Ctrl+S** / **⌘S**).
-4. Compile and run from the IntelliJ Terminal.
+3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**).
+4. Compile and run from the IntelliJ Terminal with `javac` / `java`.
 
-Ignore the yellow *outside of the module source root* banner. Do not mark the
-hyphenated exercises folder as Sources Root and do not click
-**Move to source root**.
+**How the starter works:** scaffolding (shared `Employee` / `EmployeeData` dataset, imports, print loops) is given; the learning parts are blanks marked `_____` or `// TODO`. Stream pipelines are left for you to compose — filter, map, collect, min/max, grouping, and parallel count. Your finished file must compile — blanks are not valid Java.
+
+**Do not:**
+
+| Avoid | Why |
+| ----- | --- |
+| **New → Java Class** | Often missing on hyphenated folders |
+| Mark `examples` as **Sources Root** | Conflicts with Lab 0 `HelloJava/src` |
+| Click **Move to source root** on the yellow banner | Moves the file into Lab 0 — ignore the banner; use Terminal `javac` / `java` |
 
 ## Exercise index
 

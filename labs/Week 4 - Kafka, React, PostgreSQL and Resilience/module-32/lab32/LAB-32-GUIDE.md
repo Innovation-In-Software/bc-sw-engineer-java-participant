@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-32/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Resilience4j Retry + CircuitBreaker + TimeLimiter on account profile reads |
+| 2 | `AccountSummary.unavailable` truthful fallback |
+| 3 | WireMock stubs for 503 / slow / OK on `CUS-1001` |
+| 4 | Actuator observation evidence |
+| 5 | `AccountProfileResilienceTest` output (OPEN, timeout, recovery) |
+| 6 | Notes forbidding unsafe write retries / false success |
+| 7 | Run and cleanup instructions |
+| 8 | No secrets committed |
+
+
 ## Lab Overview
 
 This Module 32 lab protects **outbound** CRM calls to an account-profile dependency with **Resilience4j**: **Retry**, **CircuitBreaker**, **TimeLimiter**, truthful degraded read fallbacks (`AccountSummary.unavailable`), Actuator observation, and **deterministic WireMock** tests.
@@ -646,6 +662,8 @@ No Docker required for WireMock tests; if you started Lab 30 Kafka for combined 
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Resilience4j Retry + CircuitBreaker + TimeLimiter on account profile reads
 * `AccountSummary.unavailable` truthful fallback

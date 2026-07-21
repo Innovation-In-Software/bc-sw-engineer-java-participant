@@ -38,6 +38,20 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-15/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `CustomerService` + `DefaultCustomerService` |
+| 2 | `CustomerValidator` with status-transition rules |
+| 3 | `CustomerRepository` + in-memory impl (Map not leaked) |
+| 4 | Evidence: activate `CUS-1002`; failed illegal transition; validator tests |
+| 5 | README / notes with transition table and wiring |
+| 6 | No secrets or `target/` committed |
+
+
 ## Lab Overview
 
 This Module 15 lab extends the **Customer Management Platform** with a deliberate **service layer**: `CustomerService` (interface + implementation), `CustomerValidator` for business rules, and status-transition rules such as `PROSPECT → ACTIVE`—without leaking persistence details through the API.
@@ -697,6 +711,8 @@ No containers required. **Keep `lab15-crm`**—Lab 16 expands exceptions on thes
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `CustomerService` + `DefaultCustomerService`
 * `CustomerValidator` with status-transition rules

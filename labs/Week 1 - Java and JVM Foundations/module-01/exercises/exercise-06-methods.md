@@ -9,27 +9,30 @@
 
 Create `Methods.java` with at least two methods that take parameters and return a value; call them from `main`.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class Methods {
-    // Entry point — call other methods from here
     public static void main(String[] args) {
-        int sum = add(10, 20);              // call add; store returned int
-        System.out.println(sum);            // expect 30
+        // TODO: call add(10, 20) and store the result; print it (expect 30)
+        int sum = _____;
+        System.out.println(sum);
 
-        String message = greet("Aman");     // call greet; store returned String
-        System.out.println(message);        // expect Hello, Aman!
+        // TODO: call greet("Aman") and store the result; print it (expect Hello, Aman!)
+        String message = _____;
+        System.out.println(message);
     }
 
-    // Takes two ints (parameters a, b); returns their sum
+    // TODO: return the sum of two ints
     public static int add(int a, int b) {
-        return a + b;                       // send result back to the caller
+        _____
     }
 
-    // Takes a String name; returns a greeting String
+    // TODO: return a greeting String — "Hello, " + name + "!"
     public static String greet(String name) {
-        return "Hello, " + name + "!";      // + joins text pieces
+        _____
     }
 }
 ```
@@ -49,8 +52,7 @@ public class Methods {
 **Why:** Methods let you reuse logic and pass data in/out.
 
 1. Create `Methods.java` with **New → File** (not Java Class) under `module-01-exercises`.
-2. Paste the starter code (or write your own with the same ideas).
-3. Save.
+2. Paste the starter, fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -87,6 +89,15 @@ Hello, Aman!
 ## Expected result
 
 Method results print; you can explain stack frames for the calls.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
+| `missing return statement` | Every non-void method must `return` a value on every path |
+| `cannot find symbol` on method call | Method must be `static` to call from `static main` without an object |
+| Wrong greeting format | Use `"Hello, " + name + "!"` — `+` joins strings |
 
 ## Pass criteria
 

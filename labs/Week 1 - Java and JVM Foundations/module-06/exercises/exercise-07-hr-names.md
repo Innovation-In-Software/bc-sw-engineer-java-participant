@@ -10,27 +10,34 @@
 Create `HrNamesDemo.java`. Compose `filter`, `map`, `sorted`, and `toList` to
 produce an alphabetized list of names for employees in HR.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.List;
 
 public class HrNamesDemo {
     public static void main(String[] args) {
+        // TODO: compose filter → map → sorted → toList
         List<String> hrNames = EmployeeData.sample().stream()
-                // Keep only HR employees while elements are still Employee objects.
-                .filter(employee -> employee.department().equals("HR"))
-                // Transform Employee elements into String names.
-                .map(Employee::name)
-                // Sort the String elements alphabetically.
-                .sorted()
-                // Execute the pipeline and retain the result.
-                .toList();
+                // TODO: .filter(employee -> employee.department().equals("HR"))
+                // TODO: .map(Employee::name)
+                // TODO: .sorted()
+                // TODO: .toList()
+                ;
 
         System.out.println("HR names: " + hrNames);
     }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Operation order | Filter while elements are still `Employee`; map to `String` afterward |
+| `filter` | Keeps only HR employees |
+| `sorted` | Alphabetizes the `String` names after mapping |
+| `toList` | Terminal operation that executes the pipeline |
 
 ## Steps
 
@@ -48,7 +55,12 @@ sorted: Stream<String>   -> Stream<String>
 toList: Stream<String>   -> List<String>
 ```
 
-### Step 2 — Compile and run
+### Step 2 — Create, compile, and run
+
+**Why:** This exercise combines every intermediate operation from Exercises 2–6.
+
+1. **New → File** → `HrNamesDemo.java`.
+2. Paste the starter and fill every pipeline `// TODO`. Save.
 
 **Windows:**
 

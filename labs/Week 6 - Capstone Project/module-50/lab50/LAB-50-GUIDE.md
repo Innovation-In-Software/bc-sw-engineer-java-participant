@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-50/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | React components for search, profile, timeline, interaction form |
+| 2 | Typed API client |
+| 3 | JPA mapping changes as required |
+| 4 | PostgreSQL migration scripts |
+| 5 | Component and UI/E2E tests |
+| 6 | Baseline and final validation results |
+| 7 | One controlled failure-path result (invalid input or outage) |
+| 8 | Concise setup and reproduction guide (`docs/frontend-persistence-demo.md`) |
+
+
 ## Lab Overview
 
 This Module 50 lab completes a usable **React CRM journey** backed by **Spring Data JPA and PostgreSQL**, proving validation, persistence, loading/error states, accessibility, and end-to-end UI→database flow for the same fixtures Labs 48–49 planned and implemented.
@@ -624,6 +640,8 @@ Remove temporary plaintext env files. Keep sanitized screenshots and demo.md.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * React components for search, profile, timeline, interaction form
 * Typed API client

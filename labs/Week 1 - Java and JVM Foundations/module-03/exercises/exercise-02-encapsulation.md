@@ -11,14 +11,16 @@
 
 Create `Account.java` with private balance state and validated operations. Create `EncapsulationDemo.java` to prove valid operations succeed and an invalid withdrawal is rejected.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
 
 ### `Account.java`
 
 ```java
 public class Account {
-    // Hidden state: outside code cannot write account.balance directly
-    private double balance;
+    // TODO: hide balance from outside code (private field)
+    _____ double balance;
 
     public Account(double initialBalance) {
         if (initialBalance < 0) {
@@ -29,7 +31,8 @@ public class Account {
     }
 
     public void deposit(double amount) {
-        if (amount <= 0) {
+        // TODO: reject non-positive amounts (print message, return early)
+        if (_____) {
             System.out.println(
                     "Deposit rejected: amount must be positive.");
             return;
@@ -38,7 +41,8 @@ public class Account {
     }
 
     public boolean withdraw(double amount) {
-        if (amount <= 0 || amount > balance) {
+        // TODO: reject if amount <= 0 OR amount > balance
+        if (_____) {
             System.out.println("Withdrawal rejected.");
             return false;
         }
@@ -46,9 +50,9 @@ public class Account {
         return true;
     }
 
-    // Read-only access: callers can inspect, but not assign, the balance
-    public double getBalance() {
-        return balance;
+    // TODO: read-only accessor — return balance (double getBalance())
+    public _____ getBalance() {
+        return _____;
     }
 
     // Exercise 3 will override this method
@@ -97,7 +101,7 @@ module-03-exercises/
   EncapsulationDemo.java
 ```
 
-Paste the starter code and save.
+Paste the starter skeletons. Fill every `_____` / `// TODO` in `Account.java`. Save.
 
 ### Step 2 — Compile both classes
 
@@ -156,6 +160,7 @@ Valid operations change the balance; the oversized withdrawal does not. Outside 
 
 | Problem | Fix |
 | ------- | --- |
+| `illegal start of expression` near `_____` | Replace every blank with real Java (`private`, conditions, return type, etc.) |
 | `class Account is public, should be declared...` | File must be exactly `Account.java` |
 | Final balance is `-380.00` | Validate before subtracting |
 | Demo cannot access balance | Use `getBalance()`; do not make balance public |

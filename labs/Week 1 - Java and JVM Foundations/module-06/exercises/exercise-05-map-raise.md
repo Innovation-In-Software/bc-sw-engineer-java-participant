@@ -10,7 +10,9 @@
 Create `RaiseDemo.java`. Transform every salary into a proposed value that is
 10% higher while proving that the immutable source employees are unchanged.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.List;
@@ -19,10 +21,11 @@ public class RaiseDemo {
     public static void main(String[] args) {
         List<Employee> employees = EmployeeData.sample();
 
-        // map converts each Employee into one Double proposed salary.
+        // TODO: stream pipeline — map each salary to salary * 1.10, collect to List<Double>
         List<Double> proposedSalaries = employees.stream()
-                .map(employee -> employee.salary() * 1.10)
-                .toList();
+                // TODO: .map(employee -> employee.salary() * 1.10)
+                // TODO: .toList()
+                ;
 
         System.out.println("Proposed salaries:");
         for (int i = 0; i < employees.size(); i++) {
@@ -32,12 +35,17 @@ public class RaiseDemo {
                     employee.name(), employee.salary(), proposed);
         }
 
-        // Records and the source list were not mutated by map.
         System.out.printf("Alice original salary: %.2f%n",
                 employees.get(0).salary());
     }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| `map` | Transforms each element — here `Employee` → proposed `Double` salary |
+| Non-mutation | `map` produces a new list; immutable `Employee` records stay unchanged |
+| `1.10` | Multiply by 1.10 for a 10% raise (not `10`) |
 
 ## Steps
 
@@ -52,6 +60,11 @@ Calculate Alice's proposed salary:
 ```
 
 ### Step 2 — Create, compile, and run
+
+**Why:** This exercise proves `map` transforms values without mutating source objects.
+
+1. **New → File** → `RaiseDemo.java`.
+2. Paste the starter and fill the stream chain `// TODO`s. Save.
 
 **Windows:**
 

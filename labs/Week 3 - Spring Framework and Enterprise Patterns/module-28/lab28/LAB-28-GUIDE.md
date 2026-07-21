@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-28/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `lab28-crm` with SecurityFilterChain, JWT login, AGENT/ADMIN roles |
+| 2 | MockMvc (or WebTestClient) evidence for 401/403/200 |
+| 3 | Successful-path evidence (login + `CUS-1001` with AGENT) |
+| 4 | Controlled-failure evidence (401/403) |
+| 5 | Auth-flow notes or diagram in `docs/security-notes.md` |
+| 6 | Production IdP / secret-rotation checklist |
+| 7 | Run and cleanup instructions |
+| 8 | No secrets or generated build directories committed |
+
+
 ## Lab Overview
 
 This Module 28 lab adds **Spring Security** to the **Customer Management Platform**: JWT-based login, a `SecurityFilterChain` that protects APIs by default, CRM roles `AGENT` and `ADMIN`, and **MockMvc** (or WebTestClient) proofs for **401** and **403**.
@@ -660,6 +676,8 @@ Do not commit `.env`, tokens, or `target/`. Keep redacted screenshots under `not
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `lab28-crm` with SecurityFilterChain, JWT login, AGENT/ADMIN roles
 * MockMvc (or WebTestClient) evidence for 401/403/200

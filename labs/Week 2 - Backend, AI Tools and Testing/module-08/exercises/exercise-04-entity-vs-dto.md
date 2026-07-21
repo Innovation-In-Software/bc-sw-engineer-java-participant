@@ -19,27 +19,39 @@ mini-src/com/northstar/crm/
     └── CustomerResponse.java
 ```
 
+## Starter (fill in the TODOs)
+
+Create the directories and files from the tree above. Paste each skeleton, then replace every `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished files.
+
 ### `entity/Customer.java`
 
 ```java
 package com.northstar.crm.entity;
 
 public class Customer {
-    private final String id;
-    private final String name;
-    private final String status;
+    // TODO: declare three final String fields — id, name, status
+    private final String _____;
+    private final String _____;
+    private final String _____;
 
     public Customer(String id, String name, String status) {
-        this.id = id;
-        this.name = name;
-        this.status = status;
+        // TODO: assign each parameter to its matching field (this._____)
+        this._____ = id;
+        this._____ = name;
+        this._____ = status;
     }
 
-    public String getId() { return id; }
-    public String getName() { return name; }
-    public String getStatus() { return status; }
+    // TODO: add three getters — getId(), getName(), getStatus()
+    public String getId() { return _____; }
+    public String getName() { return _____; }
+    public String getStatus() { return _____; }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Entity | Internal customer identity and state (includes generated `id` and `status`) |
+| `final` fields | Set once in the constructor; object does not mutate afterward |
 
 ### `dto/CustomerRequest.java`
 
@@ -47,18 +59,23 @@ public class Customer {
 package com.northstar.crm.dto;
 
 public class CustomerRequest {
-    private final String name;
-    private final String email;
+    // TODO: boundary input fields only — name and email (no id, no status)
+    private final String _____;
+    private final String _____;
 
     public CustomerRequest(String name, String email) {
-        this.name = name;
-        this.email = email;
+        this._____ = name;
+        this._____ = email;
     }
 
-    public String getName() { return name; }
-    public String getEmail() { return email; }
+    public String getName() { return _____; }
+    public String getEmail() { return _____; }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Request DTO | What the caller sends in — name and email only |
 
 ### `dto/CustomerResponse.java`
 
@@ -77,11 +94,16 @@ public class CustomerResponse {
         this.status = status;
     }
 
+    // TODO: return a single-line summary — id + " | " + name + " | " + status
     public String summary() {
-        return id + " | " + name + " | " + status;
+        return _____;
     }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Response DTO | Safe outward view — includes `id` and `status`, but no internal-only fields |
 
 ### `StructureDemo.java`
 
@@ -94,16 +116,18 @@ import com.northstar.crm.entity.Customer;
 
 public class StructureDemo {
     public static void main(String[] args) {
+        // TODO: create a CustomerRequest with name "Amina Khan" and email "amina@example.test"
         CustomerRequest request =
-                new CustomerRequest(
-                        "Amina Khan", "amina@example.test");
+                new CustomerRequest(_____, _____);
 
+        // TODO: build a Customer entity — id "CUS-1001", name from request, status "ACTIVE"
         Customer entity =
                 new Customer(
-                        "CUS-1001",
+                        _____,
                         request.getName(),
-                        "ACTIVE");
+                        _____);
 
+        // TODO: map entity fields into a CustomerResponse
         CustomerResponse response =
                 new CustomerResponse(
                         entity.getId(),
@@ -115,11 +139,20 @@ public class StructureDemo {
 }
 ```
 
+| Idea | Easy meaning |
+| ---- | ------------ |
+| Manual mapping | Demo wires request → entity → response to show layer boundaries |
+
 ## Steps
 
-### Step 1 — Create directories/files
+### Step 1 — Create directories and files
 
-Use IntelliJ **New → Directory** and **New → File**, following the tree exactly.
+**Why:** Package folders must match `package` declarations exactly.
+
+1. Under `module-08-exercises`, create `mini-src/com/northstar/crm/entity/` and `mini-src/com/northstar/crm/dto/`.
+2. **New → File** for each `.java` file in the tree.
+3. Paste the matching starter skeleton.
+4. Fill every `_____` / `// TODO`. Save each file.
 
 ### Step 2 — Compile
 
@@ -162,6 +195,15 @@ The demo manually maps objects only to illustrate boundaries. Real behavior arri
 ## Failure experiment
 
 Change `Customer.java` package to `com.northstar.crm.dto` without moving the file/imports. Compilation should fail. Restore it.
+
+## If it fails
+
+| Problem | Fix |
+| ------- | --- |
+| `illegal start of expression` near `_____` | Replace every blank with real Java |
+| `package ... does not match expected package` | File path must match the `package` line |
+| `cannot find symbol` on imports | Check folder names (`entity`, `dto`) and package declarations |
+| Wrong output | Confirm entity status is `"ACTIVE"` and id is `"CUS-1001"` |
 
 ## Pass criteria
 

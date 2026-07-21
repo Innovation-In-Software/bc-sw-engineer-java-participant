@@ -41,6 +41,20 @@
 5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 6. Capture evidence under `notes/screenshots/lab-5/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable | Where / what |
+| - | ----------- | ------------ |
+| 1 | Full source | `examples/Lab5-LibraryManagement/src/com/academy/library/` |
+| 2 | Screenshots | `notes/screenshots/lab-5/` — menu + sample session (add/register/borrow/return/reports) |
+| 3 | Collection mapping notes | Which field uses List / Set / Map and why |
+| 4 | LMS write-up | Compile/run commands (`javac -d out` / `java -cp out com.academy.library.Main`) |
+
+Optional bonuses: history, top borrowed, export, multi-sort. Do not submit a verbatim instructor `solution/`.
+
+
 ## Module 5 exercises you must already have completed
 
 Lab 5 assumes you already practiced these collection skills in `examples/module-05-exercises/`. Do **not** treat Steps 5–11 as your first time choosing List/Set/Map or coordinating borrow state.
@@ -777,7 +791,7 @@ Record pass/fail in `../../notes/lab5-answers.md` (from project; or `~/java-boot
 
 ---
 
-## Security, Cleanup, and Deliverables
+## Security and Cleanup
 
 **Security:** Training console only—no auth; data is in-memory. Do not paste real PII or secrets into notes/screenshots.
 
@@ -792,7 +806,21 @@ rm -f library-report.txt
 
 Keep sources and evidence. Leave [`solution/`](solution/) intact.
 
-**Deliverables:** `src/com/academy/library/*`; menu + sample-session screenshots; notes mapping each field to List/Set/Map; LMS write-up with compile/run commands. Optional bonuses (history, top borrowed, export, multi-sort). No verbatim solution copies.
+See [Expected Deliverables](#expected-deliverables) below for the submit list.
+
+
+---
+
+## Expected Deliverables
+
+Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+
+* **Sources** under `java-bootcamp/examples/Lab5-LibraryManagement/src/com/academy/library/`
+* **Screenshots** under `notes/screenshots/lab-5/`: menu + sample session
+* **Notes** mapping each field to List / Set / Map
+* **LMS write-up** with compile/run commands
+
+Optional bonuses (history, top borrowed, export, multi-sort). Do not submit a verbatim instructor [`solution/`](solution/).
 
 ---
 

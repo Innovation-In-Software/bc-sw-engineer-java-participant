@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-40/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Threat checklist + OWASP mapping notes |
+| 2 | Dependency-Check profile, reports (sanitized), triage CSV |
+| 3 | Focused SAST notes with code locations |
+| 4 | Security regression test + remediation evidence |
+| 5 | Before/after scan comparison for the fixed finding |
+| 6 | `docs/security-assessment.md` with residual risks owned |
+| 7 | Baseline and final `verify` results |
+| 8 | No secrets or real customer records |
+
+
 ## Lab Overview
 
 This Module 40 lab turns the CRM into a **defensible security gate**: map OWASP-relevant attack surfaces, run **OWASP Dependency-Check**, triage CVEs, perform focused **manual SAST**, reproduce one confirmed issue, remediate with the smallest safe fix, re-scan and regression-test, and publish `docs/security-assessment.md`.
@@ -650,6 +666,8 @@ Do not commit live credentials rotated during the lab without scrubbing history 
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Threat checklist + OWASP mapping notes
 * Dependency-Check profile, reports (sanitized), triage CSV

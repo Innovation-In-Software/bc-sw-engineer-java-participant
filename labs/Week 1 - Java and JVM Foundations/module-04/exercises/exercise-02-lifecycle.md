@@ -9,7 +9,9 @@
 
 Create one object with two references. Remove references one at a time and explain when the object becomes **eligible** for garbage collection.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class ObjectLifecycleDemo {
@@ -23,20 +25,20 @@ public class ObjectLifecycleDemo {
 
     public static void main(String[] args) {
         Person first = new Person("Aman"); // create + reference
-        Person alias = first;              // second reference, same object
+        // TODO: Person alias = first;  (second reference, same object)
 
         System.out.println(
                 "Same object: " + (first == alias));
 
-        first = null; // object remains reachable through alias
+        // TODO: first = null;  (object remains reachable through alias)
         System.out.println(
                 "Still reachable through alias: " + alias.name);
 
-        alias = null; // no strong references remain
+        // TODO: alias = null;  (no strong references remain)
         System.out.println(
                 "No strong references remain; object is GC-eligible.");
 
-        System.gc();  // request only; JVM may ignore or delay it
+        // TODO: System.gc();  request only; JVM may ignore or delay it
         System.out.println("GC requested, not guaranteed.");
     }
 }
@@ -60,7 +62,15 @@ flowchart LR
 
 ## Steps
 
-### Step 1 — Create, compile, and run
+### Step 1 — Create `ObjectLifecycleDemo.java`
+
+**Why:** Lab 4 builds on reachability — you must know when an object is collectible vs merely unreferenced from one variable.
+
+1. **New → File** → `ObjectLifecycleDemo.java`.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
@@ -87,13 +97,13 @@ No strong references remain; object is GC-eligible.
 GC requested, not guaranteed.
 ```
 
-### Step 2 — Explain `==`
+### Step 3 — Explain `==`
 
 **Why:** For object references, `==` checks whether both references point to the same object.
 
 `first == alias` is `true`; no second `Person` was created.
 
-### Step 3 — Write the lifecycle note
+### Step 4 — Write the lifecycle note
 
 Add to `notes.md`:
 

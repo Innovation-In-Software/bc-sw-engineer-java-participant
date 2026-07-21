@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-42/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `k8s/configmap.yaml`, `deployment.yaml`, `service.yaml`, `route.yaml` or `ingress.yaml` |
+| 2 | Secret handling documented (`secret.example.yaml` without values) |
+| 3 | Probe configuration with distinct startup/ready/live |
+| 4 | Rollout success evidence + rollback rehearsal evidence |
+| 5 | CRM smoke evidence (`CUS-1001`, correlation) |
+| 6 | `docs/deployment-runbook.md` |
+| 7 | No kubeconfig, tokens, or Secret data in Git |
+
+
 ## Lab Overview
 
 This Module 42 lab deploys the CRM **declaratively**: Deployment, Service, ConfigMap, Secret references, resource requests/limits, distinct **startup / readiness / liveness** probes, **Traefik Ingress**, rollout observation, smoke test with CRM fixtures, and a practiced **rollback**.
@@ -741,6 +756,8 @@ Remove local kubeconfig copies and plaintext password files from the jump host.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `k8s/configmap.yaml`, `deployment.yaml`, `service.yaml`, `route.yaml` or `ingress.yaml`
 * Secret handling documented (`secret.example.yaml` without values)

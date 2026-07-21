@@ -9,7 +9,9 @@
 
 Create `StackHeapDemo.java`, run it, then trace which values belong to method stack frames and which object lives on the heap.
 
-## Starter / reference
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class StackHeapDemo {
@@ -17,26 +19,25 @@ public class StackHeapDemo {
         String name;
 
         Person(String name) {
-            this.name = name;
+            // TODO: assign the name parameter to this.name
         }
     }
 
     static void printPerson(Person person) {
         // Local primitive in the printPerson stack frame
-        int nameLength = person.name.length();
-        System.out.printf("%s has %d letters.%n",
-                person.name, nameLength);
+        // TODO: int nameLength = person.name.length();
+        // TODO: printf "%s has %d letters.%n" with person.name and nameLength
     }
 
     public static void main(String[] args) {
         // Primitive value belongs to main's frame
-        int count = 1;
+        // TODO: int count = 1;
 
         // Reference is local; new Person object is on the heap
-        Person person = new Person("Aman");
+        // TODO: Person person = new Person("Aman");
 
-        printPerson(person);
-        System.out.println("Count: " + count);
+        // TODO: call printPerson(person);
+        // TODO: println "Count: " + count
     }
 }
 ```
@@ -69,13 +70,22 @@ flowchart LR
 
 ## Steps
 
-### Step 1 — Create and compile
+### Step 1 — Create `StackHeapDemo.java`
+
+**Why:** Lab 4 assumes you can already distinguish stack locals from heap objects.
+
+1. **New → File** → `StackHeapDemo.java`.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
+
+### Step 2 — Compile and run
 
 **Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-04-exercises
 javac StackHeapDemo.java
+java StackHeapDemo
 ```
 
 **macOS:**
@@ -83,11 +93,6 @@ javac StackHeapDemo.java
 ```bash
 cd ~/java-bootcamp/examples/module-04-exercises
 javac StackHeapDemo.java
-```
-
-### Step 2 — Run
-
-```text
 java StackHeapDemo
 ```
 

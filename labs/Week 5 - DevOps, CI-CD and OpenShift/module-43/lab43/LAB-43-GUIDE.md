@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-43/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `.github/workflows/ci.yml` with PR / main / tag behavior |
+| 2 | Test reports (Surefire/Failsafe) evidence |
+| 3 | Security / scan report evidence (or documented residual risk) |
+| 4 | JAR and SHA-256 checksum tied to commit |
+| 5 | `docs/ci-runbook.md` with policy, rerun, and troubleshooting |
+| 6 | Controlled failure-path result then restore |
+| 7 | No secrets or real customer records in Git |
+
+
 ## Lab Overview
 
 This Module 43 lab gives the **Customer Management Platform** a reviewable **GitHub Actions** workflow: verify, scan, package once, protect secrets, and document how peers re-run CI. You will produce `.github/workflows/ci.yml`, publish Surefire/Failsafe (and scan) reports, pass an immutable JAR + SHA-256 between isolated steps, and write `docs/ci-runbook.md`.
@@ -727,6 +742,8 @@ Delete temporary plaintext secret files. Keep sanitized screenshots. Do not comm
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `.github/workflows/ci.yml` with PR / main / tag behavior
 * Test reports (Surefire/Failsafe) evidence

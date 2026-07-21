@@ -10,13 +10,9 @@
 Create `DepartmentCountDemo.java`. Group employees by department, count each
 group, and print the report in deterministic alphabetical key order.
 
-## Key idea
+## Starter (fill in the TODOs)
 
-`groupingBy` chooses the group key. Its downstream collector decides what each
-group stores. Here, `counting()` stores a `Long` count instead of a list of
-employees.
-
-## Starter / reference (with line comments)
+Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Map;
@@ -25,11 +21,9 @@ import java.util.stream.Collectors;
 
 public class DepartmentCountDemo {
     public static void main(String[] args) {
+        // TODO: stream + collect groupingBy(Employee::department, Collectors.counting())
         Map<String, Long> counts = EmployeeData.sample().stream()
-                // Group key: department; group result: number of employees.
-                .collect(Collectors.groupingBy(
-                        Employee::department,
-                        Collectors.counting()));
+                .collect(_____);
 
         // TreeMap gives the report a stable alphabetical order.
         Map<String, Long> sortedCounts = new TreeMap<>(counts);
@@ -39,6 +33,12 @@ public class DepartmentCountDemo {
     }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| `groupingBy` | Chooses the group key — here `Employee::department` |
+| `Collectors.counting()` | Downstream collector that stores a `Long` count per group |
+| `TreeMap` | Sorts keys alphabetically for deterministic output |
 
 ## Steps
 
@@ -58,6 +58,9 @@ IT      -> Bob, Evan
 ### Step 2 — Create, compile, and run
 
 **Why:** The collector chooses the group key and the count result type.
+
+1. **New → File** → `DepartmentCountDemo.java`.
+2. Paste the starter and fill the `collect(...)` `// TODO`. Save.
 
 **Windows:**
 

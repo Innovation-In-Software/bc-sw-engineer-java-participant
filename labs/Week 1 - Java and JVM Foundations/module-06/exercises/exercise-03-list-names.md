@@ -12,7 +12,9 @@
 Create `NamesDemo.java`. Transform each `Employee` into a `String` name with
 `map`, collect the names, and print them with a method reference.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.List;
@@ -21,17 +23,23 @@ public class NamesDemo {
     public static void main(String[] args) {
         List<Employee> employees = EmployeeData.sample();
 
-        // map changes the element type: Employee -> String.
-        // Employee::name is equivalent to employee -> employee.name().
+        // TODO: stream pipeline — map each Employee to its name, collect to List<String>
         List<String> names = employees.stream()
-                .map(Employee::name)
-                .toList();
+                // TODO: .map(Employee::name)  (or equivalent lambda)
+                // TODO: .toList()
+                ;
 
         System.out.println("Employee names:");
         names.forEach(System.out::println);
     }
 }
 ```
+
+| Idea | Easy meaning |
+| ---- | ------------ |
+| `map` | Produces one output value for each input — here `Employee` → `String` |
+| Method reference | `Employee::name` is equivalent to `employee -> employee.name()` |
+| Type change | After `map`, the stream holds `String` elements, not `Employee` |
 
 ## Steps
 
@@ -50,6 +58,11 @@ Final result: List<String>
 ```
 
 ### Step 2 — Create, compile, and run
+
+**Why:** `map` is the core transformation operation for stream pipelines.
+
+1. **New → File** → `NamesDemo.java`.
+2. Paste the starter and fill every `// TODO`. Save.
 
 **Windows:**
 
@@ -80,13 +93,7 @@ Evan
 
 ### Step 3 — Replace the method reference
 
-Temporarily replace:
-
-```java
-.map(Employee::name)
-```
-
-with:
+Temporarily replace `Employee::name` with:
 
 ```java
 .map(employee -> employee.name())

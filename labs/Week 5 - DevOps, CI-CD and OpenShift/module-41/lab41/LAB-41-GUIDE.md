@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-41/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `Dockerfile` (multi-stage, non-root, health) |
+| 2 | `.dockerignore` + `.env.example` |
+| 3 | Image build evidence (id/size/user) + digest notes |
+| 4 | Readiness + CRM smoke evidence (`CUS-1001`) |
+| 5 | Graceful stop + dependency failure evidence |
+| 6 | `docs/container-runbook.md` (registry flow included) |
+| 7 | No secrets in Git or image layers |
+
+
 ## Lab Overview
 
 This Module 41 lab packages the CRM backend as a **small, reproducible, non-root** container image: multi-stage Maven build, hardened JRE runtime, runtime configuration via env, meaningful health checks, resource limits, log hygiene, graceful shutdown, and a `docs/container-runbook.md` another engineer can follow.
@@ -665,6 +680,8 @@ Keep Dockerfile and runbook; delete plaintext env files from shared hosts.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `Dockerfile` (multi-stage, non-root, health)
 * `.dockerignore` + `.env.example`

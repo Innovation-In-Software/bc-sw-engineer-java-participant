@@ -10,6 +10,8 @@
 > **Gate for Lab 5:** All **seven** exercises must be Pass.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice separate from the graded lab (`examples/Lab5-LibraryManagement/`).  
+> Each coding exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and Windows / macOS commands.  
+> Replace every `_____` and `// TODO` with your own code, then compile and run.  
 > `HashSet` and `HashMap` iteration order is unspecified; do not grade exact printed order.
 
 ## Already covered — do not redo
@@ -68,9 +70,24 @@ cd examples/module-05-exercises
 pwd
 ```
 
-### IntelliJ file creation
+### How to create each `.java` file (IntelliJ)
 
-Use **New → File**, enter the complete `.java` filename, save, and compile from the IntelliJ Terminal. Ignore the yellow *outside of module source root* banner. Do not mark the hyphenated exercises folder as Sources Root.
+**Use this only** (same pattern as Module 2):
+
+1. Right-click `module-05-exercises` → **New → File**
+2. Type the full name including extension, e.g. `ArrayListDemo.java`
+3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**)
+4. Compile and run from the IntelliJ **Terminal** with `javac` / `java`
+
+**How the starter works:** scaffolding (imports, prompts, method signatures) is given; the learning parts are blanks marked `_____` or `// TODO`. Your finished file must compile — blanks are not valid Java.
+
+**Do not:**
+
+| Avoid | Why |
+| ----- | --- |
+| **New → Java Class** | Often missing on hyphenated folders |
+| Mark `examples` as **Sources Root** | Conflicts with Lab 0 `HelloJava/src` |
+| Click **Move to source root** on the yellow banner | Moves the file into Lab 0 — ignore the banner; use Terminal `javac` / `java` |
 
 ## Exercise index
 

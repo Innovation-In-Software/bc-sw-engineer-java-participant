@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-20/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `logback-spring.xml` (or equivalent) structured pattern |
+| 2 | `CorrelationFilter` with MDC lifecycle |
+| 3 | CustomerService/controller logging without PII |
+| 4 | Automated `CustomerLoggingIT` output |
+| 5 | Successful-path evidence (`CUS-1001` / `CUS-1002` / `lab-request-001`) |
+| 6 | Controlled-failure evidence (WARN/ERROR samples) |
+| 7 | `docs/logging.md` contract |
+| 8 | Run and cleanup instructions |
+
+
 ## Lab Overview
 
 This Module 20 lab extends the **Customer Management Platform** with **SLF4J** and **Logback** structured logging for customer operations. You introduce correlation IDs, consistent message patterns, and safe field selection so support can trace create/get flows without logging personally identifiable information (PII).
@@ -638,6 +654,8 @@ Preserve Lab 19 IT/UI suites when practical; logging changes should not require 
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `logback-spring.xml` (or equivalent) structured pattern
 * `CorrelationFilter` with MDC lifecycle

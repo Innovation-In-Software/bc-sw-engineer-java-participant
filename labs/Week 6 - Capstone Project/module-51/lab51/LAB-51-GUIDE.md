@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-51/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Spring Security changes and authorization tests |
+| 2 | Pipeline definition |
+| 3 | Dockerfile and image digest record |
+| 4 | Deployment manifests (k3s) |
+| 5 | Security and deployment evidence (scans, smoke, rollback) |
+| 6 | Baseline and final validation results |
+| 7 | One controlled failure-path result (401/403 or failed rollout→rollback) |
+| 8 | Concise setup and reproduction guide |
+
+
 ## Lab Overview
 
 This Module 51 lab makes the CRM **releasable**: harden JWT authorization, protect secrets and headers, enforce gated CI/CD, publish immutable containers, deploy with health probes, run smoke tests (including unauthorized paths), and prove rollback. Treat this as the Week 6 release gate, not an optional polish pass.
@@ -612,6 +628,8 @@ Keep sanitized reports; remove plaintext secrets.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Spring Security changes and authorization tests
 * Pipeline definition

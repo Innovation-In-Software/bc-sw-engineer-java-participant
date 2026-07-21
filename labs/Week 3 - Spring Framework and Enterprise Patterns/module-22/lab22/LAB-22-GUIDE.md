@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-22/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | `CustomerService`, `CustomerRepository`, `NotificationService` as Spring beans |
+| 2 | Constructor injection throughout the CRM graph |
+| 3 | Lifecycle evidence for `CustomerService` |
+| 4 | Unit + Spring tests |
+| 5 | `docs/dependency-graph.md` |
+| 6 | Successful-path evidence (`CUS-1001`, `CUS-1002`, `lab-request-001`) |
+| 7 | Controlled-failure evidence (missing bean / validation) |
+| 8 | Run and cleanup instructions |
+
+
 ## Lab Overview
 
 This Module 22 lab extends the **Customer Management Platform** by replacing manual `new` wiring with **Spring Inversion of Control (IoC)** and **dependency injection**. You model CRM collaborators as Spring beans, prefer **constructor injection**, apply stereotype annotations, observe bean lifecycle callbacks on `CustomerService`, and document `docs/dependency-graph.md`.
@@ -644,6 +660,8 @@ git status
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * `CustomerService`, `CustomerRepository`, `NotificationService` as Spring beans
 * Constructor injection throughout the CRM graph

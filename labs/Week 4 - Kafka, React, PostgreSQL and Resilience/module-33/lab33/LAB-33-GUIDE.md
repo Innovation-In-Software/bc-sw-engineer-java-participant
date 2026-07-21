@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-33/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Vite React-TS `crm-ui` under `lab33-crm` |
+| 2 | Typed models + seed fixtures Amina / Ravi |
+| 3 | `StatusBadge`, `CustomerCard`, `CustomerList`, `CustomerForm`, layout shells |
+| 4 | Empty / loading / error presentation components |
+| 5 | RTL behavior tests green |
+| 6 | `npm run build` success |
+| 7 | Component notes + evidence screenshots |
+| 8 | README runbook |
+
+
 ## Lab Overview
 
 This Module 33 lab introduces the **Customer Management Platform** React client: typed models, accessible presentational components, composition with stable list keys, and React Testing Library behavior tests. You will scaffold with Vite, build `StatusBadge` / `CustomerCard` / `CustomerList` / `CustomerForm`, compose a dashboard shell, and prove visible behavior with Vitest.
@@ -683,6 +699,8 @@ Do not commit `node_modules/` or `dist/`. Keep notes screenshots.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Vite React-TS `crm-ui` under `lab33-crm`
 * Typed models + seed fixtures Amina / Ravi

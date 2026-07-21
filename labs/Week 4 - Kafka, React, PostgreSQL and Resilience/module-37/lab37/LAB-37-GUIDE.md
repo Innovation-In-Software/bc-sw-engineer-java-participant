@@ -24,6 +24,22 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-37/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | ER notes/diagram with cardinalities and identifier rules |
+| 2 | PostgreSQL Docker runtime with persistent volume |
+| 3 | `CRM_APP` least-privilege user script |
+| 4 | Full DDL for CUSTOMER, ACCOUNT, ADDRESS, HISTORY + indexes |
+| 5 | Seed script for Amina/Ravi (+ history correlation) |
+| 6 | Negative verification script with ORA evidence |
+| 7 | Drop/recreate proof |
+| 8 | Design decisions + screenshots |
+
+
 ## Lab Overview
 
 This Module 37 lab designs and implements the **PostgreSQL** CRM schema: ER cardinalities, stable identifiers, PostgreSQL in Docker, least-privileged `CRM_APP` user, DDL for `CUSTOMER` / `ACCOUNT` / `ADDRESS` / `CUSTOMER_STATUS_HISTORY`, named constraints, money/timestamp types, FK indexes, seed data for Amina and Ravi, negative constraint tests, and dependency-ordered cleanup scripts.
@@ -755,6 +771,8 @@ Remove lab passwords from shell history where practical. Recheck `git status`.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * ER notes/diagram with cardinalities and identifier rules
 * PostgreSQL Docker runtime with persistent volume

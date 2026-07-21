@@ -24,6 +24,21 @@
 4. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 5. Capture evidence under `notes/screenshots/lab-39/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable |
+| - | ----------- |
+| 1 | Spring Boot app with PostgreSQL JPA + Flyway `V1` |
+| 2 | `CustomerEntity` / `AccountEntity` with correct types and `@Version` |
+| 3 | Repositories, transactional service, bounded paging controller |
+| 4 | Exception handler mapping duplicate + optimistic conflicts to 409 |
+| 5 | `CustomerRepositoryIT` + `mvn clean verify` success evidence |
+| 6 | `.env.example` + README runbook |
+| 7 | Concepts notes; no secrets committed |
+
+
 ## Lab Overview
 
 This Module 39 lab wires the **Customer Management Platform** to PostgreSQL with **Spring Data JPA**: Flyway-managed schema, accurate entity mappings, focused repositories, transactional DTO services, deterministic paging, optimistic locking, safe conflict translation, and PostgreSQL-backed integration tests.
@@ -734,6 +749,8 @@ Do not commit `.env`, wallets, or `target/`.
 ---
 
 ## Expected Deliverables
+
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
 
 * Spring Boot app with PostgreSQL JPA + Flyway `V1`
 * `CustomerEntity` / `AccountEntity` with correct types and `@Version`
