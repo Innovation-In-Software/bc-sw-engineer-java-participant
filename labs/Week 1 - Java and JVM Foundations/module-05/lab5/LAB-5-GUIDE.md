@@ -18,6 +18,18 @@
 
 > **Hard gate — pre-lab exercises:** Complete **all seven** Module 5 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 5 is graded consolidation in a **separate** packaged project (`examples/Lab5-LibraryManagement/`), not a replacement for the flat exercises folder (`examples/module-05-exercises/`).
 
+**Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
+
+| Role | Path |
+| ---- | ---- |
+| IntelliJ opens | `%USERPROFILE%\java-bootcamp` (SDK / language level **21**) |
+| Pre-lab exercises | `examples\module-05-exercises\` (flat files — must exist before graded work) |
+| This lab project | `examples\Lab5-LibraryManagement\` with `src\com\academy\library\` |
+| Compile / run | Named `javac -d out` on the seven sources → `java -cp out com.academy.library.Main` |
+| Smoke-test output | Add `101` → register `1` → borrow → reports `Borrowed : 1` / popular `Programming` → `Thank You` |
+
+**If it fails (Windows PowerShell):** Prefer naming each `.java` file in the `javac` line (as in [LAB-5-WINDOWS.md](LAB-5-WINDOWS.md)); do not rely on `*.java` globs. Mark `examples\Lab5-LibraryManagement\src` as Sources Root — not `module-05-exercises`.
+
 ---
 
 ## How to follow this lab
@@ -482,8 +494,27 @@ Use `Scanner.nextLine()`, parse `int`, `switch` to service methods. Choice `11` 
 
 **Do this:** From project root `Lab5-LibraryManagement`:
 
+**Windows PowerShell** (name each source file — do not rely on `*.java` globs):
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\Lab5-LibraryManagement
+Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
+javac -d out `
+  src\com\academy\library\Book.java `
+  src\com\academy\library\BookComparator.java `
+  src\com\academy\library\BorrowRecord.java `
+  src\com\academy\library\Member.java `
+  src\com\academy\library\ReportService.java `
+  src\com\academy\library\LibraryService.java `
+  src\com\academy\library\Main.java
+java -cp out com.academy.library.Main
+```
+
+**macOS / Linux:**
+
 ```bash
 cd "$HOME/java-bootcamp/examples/Lab5-LibraryManagement"
+rm -rf out
 javac -d out src/com/academy/library/*.java
 java -cp out com.academy.library.Main
 ```
@@ -494,16 +525,9 @@ java -cp out com.academy.library.Main
 
 **If it fails:**
 
-* `package does not exist` → folders under `src/com/academy/library` must exist  
+* `package does not exist` / empty glob → on Windows PowerShell name each `.java` file (see [LAB-5-WINDOWS.md](LAB-5-WINDOWS.md)); folders under `src/com/academy/library` must exist  
 * `Could not find or load main class` → use `-cp out` and fully qualified name  
 * Stale code → delete `out` and recompile
-
-Windows PowerShell cleanup:
-
-```powershell
-Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
-javac -d out src/com/academy/library/*.java
-```
 
 ---
 

@@ -10,6 +10,8 @@
 **Full lab steps:** [LAB-3-GUIDE.md](LAB-3-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-3-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: create `examples\Lab3-BankingSystem`, compile with **named** `.java` files (eight sources under `src\com\academy\bank`), run `java -cp out com.academy.bank.Main`. Sample session (`C101` / savings `10000`@`5%` → deposit `2000` → withdraw `3000` → display balance `9000` / interest `450` → exit `Thank You`) succeeded; Current fee path (`withdraw 100` + fee `10` → balance `4890`) also verified. Class files land under `out\com\academy\bank\`.
+
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-03-exercises`
 
 ## Prerequisites (Windows)
@@ -100,3 +102,23 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | `javac -d out` / `java -cp out com.academy.bank.Main` succeed in the IntelliJ terminal | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-3/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+From `examples\Lab3-BankingSystem` in the IntelliJ Terminal (PowerShell):
+
+```powershell
+Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
+javac -d out `
+  src\com\academy\bank\Printable.java `
+  src\com\academy\bank\Customer.java `
+  src\com\academy\bank\Account.java `
+  src\com\academy\bank\SavingsAccount.java `
+  src\com\academy\bank\CurrentAccount.java `
+  src\com\academy\bank\Transaction.java `
+  src\com\academy\bank\BankService.java `
+  src\com\academy\bank\Main.java
+java -cp out com.academy.bank.Main
+```
+
+**Verified result (Temurin 21.0.11):** eight `.class` files under `out\com\academy\bank\`; sample walkthrough ends at savings balance `9000` with interest `450`; Current withdrawal applies `calculateCharges()` fee. Do **not** skip Module 3 Exercises 1–8 — if `examples\module-03-exercises` is empty, finish [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) before treating Lab 3 as complete.

@@ -18,6 +18,18 @@
 
 > **Hard gate — pre-lab exercises:** Complete **Exercises 1–7** under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. **Exercise 8** (`parallelStream` bonus) is recommended stretch work — bring those notes if you completed it. Lab 6 is graded consolidation in a **separate** packaged project (`examples/Lab6-EmployeeAnalytics/`), not a replacement for the flat exercises folder (`examples/module-06-exercises/`).
 
+**Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
+
+| Role | Path |
+| ---- | ---- |
+| IntelliJ opens | `%USERPROFILE%\java-bootcamp` (SDK / language level **21**) |
+| Pre-lab exercises | `examples\module-06-exercises\` (flat files — must exist before graded work) |
+| This lab project | `examples\Lab6-EmployeeAnalytics\` with `src\com\academy\analytics\` |
+| Compile / run | Named `javac -d out` on the five sources → `java -cp out com.academy.analytics.Main` |
+| Smoke-test output | Menu 1 (25 rows) → 8 dashboard Average Salary **100680** → 9 `Thank You` |
+
+**If it fails (Windows PowerShell):** Prefer naming each `.java` file in the `javac` line (as in [LAB-6-WINDOWS.md](LAB-6-WINDOWS.md)); do not rely on `*.java` globs. Mark `examples\Lab6-EmployeeAnalytics\src` as Sources Root — not `module-06-exercises`.
+
 ---
 
 ## How to follow this lab
@@ -1142,8 +1154,25 @@ You may add options 10–21 for demos/bonuses as in [`solution/`](solution/) —
 
 **Do this:**
 
+**Windows PowerShell** (name each source file — do not rely on `*.java` globs):
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\Lab6-EmployeeAnalytics
+Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
+javac -d out `
+  src\com\academy\analytics\Employee.java `
+  src\com\academy\analytics\EmployeeData.java `
+  src\com\academy\analytics\EmployeeService.java `
+  src\com\academy\analytics\ReportService.java `
+  src\com\academy\analytics\Main.java
+java -cp out com.academy.analytics.Main
+```
+
+**macOS / Linux:**
+
 ```bash
-cd ~/java-bootcamp/examples/Lab6-EmployeeAnalytics   # or %USERPROFILE%\java-bootcamp\examples\Lab6-EmployeeAnalytics
+cd ~/java-bootcamp/examples/Lab6-EmployeeAnalytics
+rm -rf out
 javac -d out src/com/academy/analytics/*.java
 java -cp out com.academy.analytics.Main
 ```
@@ -1165,7 +1194,7 @@ Or in IntelliJ: open the project, set SDK 21, run `com.academy.analytics.Main` (
 Employee Analytics Dashboard
 =============================
 Employees : 25
-Average Salary : 99720
+Average Salary : 100680
 Highest Salary : 165000
 Lowest Salary : 48000
 Departments : 5
@@ -1549,7 +1578,7 @@ This lab bridges **Module 6 exercises** (after Lab 5) to graded stream analytics
 
 **Before students open this guide:** confirm exercise checkpoint Pass (lambda, filter, map, min/max/Optional, grouping, composed HR pipeline). Lab 6 pacing assumes those skills already exist on the five-employee dataset.
 
-* **Reference solution:** Full implementation including demo menu options 10–20 and bonus option 21 is in [`solution/`](solution/) under `Lab6-EmployeeAnalytics/` (`com.academy.analytics`). Guide learners to finish **CORE menu 1–9 + dashboard** before revealing bonus collectors. Dashboard expected: 25 employees, avg 99720, max 165000, min 48000, 5 departments, John Smith top performer, IT highest-paid dept, 23 active / 2 inactive.
+* **Reference solution:** Full implementation including demo menu options 10–20 and bonus option 21 is in [`solution/`](solution/) under `Lab6-EmployeeAnalytics/` (`com.academy.analytics`). Guide learners to finish **CORE menu 1–9 + dashboard** before revealing bonus collectors. Dashboard expected: 25 employees, avg **100680**, max 165000, min 48000, 5 departments, John Smith top performer, IT highest-paid dept, 23 active / 2 inactive.
 * **API fidelity:** Align teaching with solution signatures—`EmployeeService(List<Employee>)` defensive copy; `ReportService(EmployeeService)`; `EmployeeData.createSampleEmployees()` with 25 rows; messages and dashboard field names as above; `isActive()` boolean getter for method references.
 * **Common pitfalls:** Skipping exercises; reusing a Stream instance; calling `.get()` on empty Optional; confusing `filter` vs `map`; sorting without `.reversed()` for “top” lists; putting all pipelines in `Main`; forgetting `-d out`/`-cp out`; mixing `module-06-exercises/` flat files with packaged lab commands; inconsistent department string casing in seeds.
 * **Classpath / IDE:** Demo wrong compile without `-d out` so Step 19 sticks. Dual IDE on laptop: IntelliJ Community primary, VS Code optional — [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md). Keep streams pedagogy; CRM endpoints start Lab 8+. Score screenshots + operations table + intermediate-vs-terminal explanation. Core path fits ~75 min Day 5; bonuses are stretch.

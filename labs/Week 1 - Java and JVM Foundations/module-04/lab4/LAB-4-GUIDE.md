@@ -18,6 +18,19 @@
 
 > **Hard gate — pre-lab exercises:** Complete **all seven** Module 4 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 4 is graded consolidation in a **separate** flat folder (`examples/Lab4-MemoryManagement/`), not a replacement for the exercises folder (`examples/module-04-exercises/`).
 
+**Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
+
+| Role | Path |
+| ---- | ---- |
+| IntelliJ opens | `%USERPROFILE%\java-bootcamp` (SDK / language level **21**) |
+| Pre-lab exercises | `examples\module-04-exercises\` (flat files — must exist before graded work) |
+| This lab folder | `examples\Lab4-MemoryManagement\` (flat `.java` — **no** Sources Root / packages) |
+| Compile | Named `javac` of the nine core demos in that folder |
+| Useful VM flags | `-Xms16m -Xmx64m -Xlog:gc` for `GarbageCollectionDemo`; `-Xms128m -Xmx512m` for `PerformanceTest` |
+| Smoke-test themes | Nested stack frames; heap identity hashes; GC reclaim after null; G1 log lines; leak rise / fix drop; weak `get()` → `null` |
+
+**If it fails (Windows PowerShell):** Name each `.java` file in the `javac` line (see [LAB-4-WINDOWS.md](LAB-4-WINDOWS.md)). Do **not** mark this folder as Sources Root (unlike Labs 2–3). If `OutOfMemoryError` on GC demo, raise `-Xmx` temporarily or close heavy apps.
+
 ---
 
 ## How to follow this lab
@@ -450,6 +463,12 @@ java -Xlog:gc GarbageCollectionDemo
 
 ```bash
 java -Xlog:gc GarbageCollectionDemo
+```
+
+**Windows PowerShell tip (verified clearer GC lines with a small heap):**
+
+```powershell
+java -Xms16m -Xmx64m -Xlog:gc GarbageCollectionDemo
 ```
 
 Save a short snippet into `../../notes/lab4-gc-snippet.txt` (from project; or `~/java-bootcamp/notes/lab4-gc-snippet.txt`) (a few lines are enough).

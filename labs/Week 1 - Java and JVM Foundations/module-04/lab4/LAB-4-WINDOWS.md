@@ -10,6 +10,8 @@
 **Full lab steps:** [LAB-4-GUIDE.md](LAB-4-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-4-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Flat folder `examples\Lab4-MemoryManagement` (no `src/` / `out/`). Named `javac` of the nine core demos succeeded. Smoke results: `StackExample` nested frames; `HeapExample` identity hashes; `ObjectLifecycle` reachability; `GarbageCollectionDemo` with `-Xms16m -Xmx64m` dropped used memory after GC (~24 MB → ~1 MB); `-Xlog:gc` showed `Using G1` + pause lines; `MemoryLeakDemo leak` used memory rose (2 → 377 MB at 1M); `fix` recovered (~191 MB → ~1 MB); `WeakReferenceDemo` returned `null` after GC; `PerformanceTest` table ran with `-Xms128m -Xmx512m`.
+
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-04-exercises`
 
 ## Prerequisites (Windows)
@@ -95,3 +97,26 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Flat `javac` / `java` commands succeed in the IntelliJ terminal | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-4/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+From `examples\Lab4-MemoryManagement` in the IntelliJ Terminal (PowerShell):
+
+```powershell
+javac `
+  Person.java MemoryMonitor.java StackExample.java HeapExample.java `
+  ObjectLifecycle.java GarbageCollectionDemo.java MemoryLeakDemo.java `
+  WeakReferenceDemo.java PerformanceTest.java
+
+java StackExample
+java HeapExample
+java ObjectLifecycle
+java -Xms16m -Xmx64m GarbageCollectionDemo
+java -Xms16m -Xmx64m -Xlog:gc GarbageCollectionDemo
+java MemoryLeakDemo leak    # Ctrl+C after a few "Added …" lines if needed
+java MemoryLeakDemo fix
+java WeakReferenceDemo
+java -Xms128m -Xmx512m PerformanceTest
+```
+
+**Verified result (Temurin 21.0.11):** all nine core classes compile; GC demo reclaim works under a small heap; G1 appears in `-Xlog:gc`; leak used-memory rises while `fix` drops after `clear()` + GC. Do **not** skip Module 4 Exercises 1–7 — if `examples\module-04-exercises` is empty, finish [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) first. Do **not** commit `.hprof` dumps.

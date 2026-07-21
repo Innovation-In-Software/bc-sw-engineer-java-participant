@@ -10,6 +10,8 @@
 **Full lab steps:** [LAB-6-GUIDE.md](LAB-6-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-6-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\Lab6-EmployeeAnalytics` with `src\com\academy\analytics\`. Named `javac -d out` of the five sources succeeded. CORE path (1 → 2 → 3 → 8 → 9) matched dashboard: Employees `25`, Average Salary `100680`, Highest `165000`, Lowest `48000`, Departments `5`, Top Performer John Smith, Highest Paid Dept IT, Active `23` / Inactive `2`, then `Thank You`.
+
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-06-exercises`
 
 ## Prerequisites (Windows)
@@ -47,16 +49,24 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-# Lab 0 layout: evidence at workspace root; code under examples\
+Get-ChildItem examples\module-06-exercises -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path notes\screenshots\lab-6 | Out-Null
+New-Item -ItemType Directory -Force -Path examples\Lab6-EmployeeAnalytics\src\com\academy\analytics | Out-Null
 cd examples\Lab6-EmployeeAnalytics
 ```
 
 ### Commands this lab typically uses
 
+From `examples\Lab6-EmployeeAnalytics` (PowerShell — name files explicitly; avoid relying on `*.java` globs):
+
 ```powershell
-New-Item -ItemType Directory -Force -Path out | Out-Null
-javac -d out src/com/academy/analytics/*.java
+Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
+javac -d out `
+  src\com\academy\analytics\Employee.java `
+  src\com\academy\analytics\EmployeeData.java `
+  src\com\academy\analytics\EmployeeService.java `
+  src\com\academy\analytics\ReportService.java `
+  src\com\academy\analytics\Main.java
 java -cp out com.academy.analytics.Main
 ```
 
@@ -88,3 +98,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-6/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+**Verified result (Temurin 21.0.11):** five `.class` files under `out\com\academy\analytics\`; CORE walkthrough prints 25 employees and dashboard Average Salary **100680** (seed total `2517000` / 25). Do **not** skip Module 6 Exercises 1–7 — if `examples\module-06-exercises` is empty, finish [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) first. Mark `examples\Lab6-EmployeeAnalytics\src` as Sources Root.

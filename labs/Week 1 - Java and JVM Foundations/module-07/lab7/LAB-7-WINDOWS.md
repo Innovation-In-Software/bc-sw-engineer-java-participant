@@ -10,6 +10,8 @@
 **Full lab steps:** [LAB-7-GUIDE.md](LAB-7-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-7-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\Lab7-ATMSystem` with `src\com\academy\atm\` + `transactions.txt` + `logs\`. Named `javac -d out` of the nine sources succeeded. **Must run `java` from the project root.** Sample: login `1001`/`1234` → withdraw `20000` → `Insufficient Balance` (menu continues) → deposit `-100` rejected → deposit `1000` → balance `12000` → mini statement reads file → exit `Thank You`; `logs\application.log` contains ERROR/INFO lines.
+
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-07-exercises`
 
 ## Prerequisites (Windows)
@@ -47,18 +49,30 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-# Lab 0 layout: evidence at workspace root; code under examples\
+Get-ChildItem examples\module-07-exercises -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path notes\screenshots\lab-7 | Out-Null
+New-Item -ItemType Directory -Force -Path examples\Lab7-ATMSystem\src\com\academy\atm, examples\Lab7-ATMSystem\logs | Out-Null
 cd examples\Lab7-ATMSystem
 ```
 
 ### Commands this lab typically uses
 
+From `examples\Lab7-ATMSystem` (PowerShell — name files explicitly; avoid relying on `*.java` globs). **Always `cd` here before `java`** so `transactions.txt` and `logs/` resolve:
+
 ```powershell
-New-Item -ItemType Directory -Force -Path out, logs | Out-Null
-javac -d out src/com/academy/atm/*.java
-# Must run from project root so transactions.txt and logs/ resolve
+Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
+javac -d out `
+  src\com\academy\atm\InvalidAmountException.java `
+  src\com\academy\atm\InsufficientFundsException.java `
+  src\com\academy\atm\InvalidPinException.java `
+  src\com\academy\atm\AccountNotFoundException.java `
+  src\com\academy\atm\Transaction.java `
+  src\com\academy\atm\Account.java `
+  src\com\academy\atm\LoggerUtil.java `
+  src\com\academy\atm\ATMService.java `
+  src\com\academy\atm\Main.java
 java -cp out com.academy.atm.Main
+Get-Content logs\application.log -Tail 40
 ```
 
 ## Run configurations (IntelliJ)
@@ -89,3 +103,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-7/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+**Verified result (Temurin 21.0.11):** nine `.class` files under `out\com\academy\atm\`; login → over-withdraw → invalid deposit → successful deposit `12000` → mini statement (session + `transactions.txt`) → `Thank You`; `logs\application.log` records `InsufficientFundsException` / `InvalidAmountException`. Do **not** skip Module 7 Exercises 1–8 — if `examples\module-07-exercises` is empty, finish [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) first. Mark `src` as Sources Root; set IntelliJ Run working directory to `examples/Lab7-ATMSystem`.

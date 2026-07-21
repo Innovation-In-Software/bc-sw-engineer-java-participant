@@ -19,6 +19,18 @@
 
 > **Hard gate — pre-lab exercises:** Complete **all eight** Module 3 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 3 is graded consolidation in a **separate** packaged project (`examples/Lab3-BankingSystem/`), not a replacement for the flat exercises folder (`examples/module-03-exercises/`).
 
+**Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
+
+| Role | Path |
+| ---- | ---- |
+| IntelliJ opens | `%USERPROFILE%\java-bootcamp` (SDK / language level **21**) |
+| Pre-lab exercises | `examples\module-03-exercises\` (flat files — must exist before graded work) |
+| This lab project | `examples\Lab3-BankingSystem\` with `src\com\academy\bank\` |
+| Compile / run (from `Lab3-BankingSystem`) | Named `javac -d out` on the eight sources → `java -cp out com.academy.bank.Main` |
+| Smoke-test output | Menu → `C101` → savings `10001` → deposit `2000` → withdraw `3000` → display `9000` / interest `450` → `Thank You` |
+
+**If it fails (Windows PowerShell):** Prefer naming each `.java` file in the `javac` line (as in [LAB-3-WINDOWS.md](LAB-3-WINDOWS.md)); do not rely on `*.java` globs. Mark `examples\Lab3-BankingSystem\src` as Sources Root — not `module-03-exercises`.
+
 ---
 
 ## How to follow this lab
@@ -691,20 +703,23 @@ Print the menu headers exactly (or very close) to the sample so screenshots matc
 
 **Do this:** From `Lab3-BankingSystem`:
 
-```bash
-javac -d out src/com/academy/bank/*.java
-java -cp out com.academy.bank.Main
-```
-
-**Windows PowerShell clean rebuild:**
+**Windows PowerShell** (name each source file — do not rely on `*.java` globs):
 
 ```powershell
 Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
-javac -d out src/com/academy/bank/*.java
+javac -d out `
+  src\com\academy\bank\Printable.java `
+  src\com\academy\bank\Customer.java `
+  src\com\academy\bank\Account.java `
+  src\com\academy\bank\SavingsAccount.java `
+  src\com\academy\bank\CurrentAccount.java `
+  src\com\academy\bank\Transaction.java `
+  src\com\academy\bank\BankService.java `
+  src\com\academy\bank\Main.java
 java -cp out com.academy.bank.Main
 ```
 
-**macOS / Linux clean rebuild:**
+**macOS / Linux:**
 
 ```bash
 rm -rf out
@@ -735,8 +750,8 @@ Choice :
 
 | Symptom | Fix |
 | ------- | --- |
-| file not found | `cd` to project root containing `src` |
-| cannot find symbol across classes | compile `*.java` together (wildcard), not one file alone |
+| file not found / empty glob | On Windows PowerShell, name each `.java` file (see [LAB-3-WINDOWS.md](LAB-3-WINDOWS.md)); `cd` to project root containing `src` |
+| cannot find symbol across classes | compile all eight sources together, not one file alone |
 | main class not found | `java -cp out com.academy.bank.Main` |
 | IntelliJ red packages | Mark `src` as Sources Root |
 

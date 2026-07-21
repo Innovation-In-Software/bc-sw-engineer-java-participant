@@ -10,6 +10,8 @@
 **Full lab steps:** [LAB-5-GUIDE.md](LAB-5-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-5-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\Lab5-LibraryManagement` with `src\com\academy\library\`. Named `javac -d out` of the seven sources succeeded. Sample session (add `101` / `Java Fundamentals` → register member `1` / `John` → borrow → reports `Borrowed : 1` / `Available : 0` / popular `Programming` → exit `Thank You`) matched the guide. Extended paths verified: return, four-style display, performance table (menu 14).
+
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-05-exercises`
 
 ## Prerequisites (Windows)
@@ -47,16 +49,26 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-# Lab 0 layout: evidence at workspace root; code under examples\
+Get-ChildItem examples\module-05-exercises -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path notes\screenshots\lab-5 | Out-Null
+New-Item -ItemType Directory -Force -Path examples\Lab5-LibraryManagement\src\com\academy\library | Out-Null
 cd examples\Lab5-LibraryManagement
 ```
 
 ### Commands this lab typically uses
 
+From `examples\Lab5-LibraryManagement` (PowerShell — name files explicitly; avoid relying on `*.java` globs):
+
 ```powershell
-New-Item -ItemType Directory -Force -Path out | Out-Null
-javac -d out src/com/academy/library/*.java
+Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
+javac -d out `
+  src\com\academy\library\Book.java `
+  src\com\academy\library\BookComparator.java `
+  src\com\academy\library\BorrowRecord.java `
+  src\com\academy\library\Member.java `
+  src\com\academy\library\ReportService.java `
+  src\com\academy\library\LibraryService.java `
+  src\com\academy\library\Main.java
 java -cp out com.academy.library.Main
 ```
 
@@ -88,3 +100,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-5/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+**Verified result (Temurin 21.0.11):** seven `.class` files under `out\com\academy\library\`; sample Add → Register → Borrow → Reports → Exit matches guide themes; return restores Available; display shows four iteration styles; menu 14 prints ArrayList vs LinkedList timings. Do **not** skip Module 5 Exercises 1–7 — if `examples\module-05-exercises` is empty, finish [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) first. Mark `examples\Lab5-LibraryManagement\src` as Sources Root.
