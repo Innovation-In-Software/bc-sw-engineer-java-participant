@@ -11,26 +11,28 @@
 
 Create `MethodsDemo.java` with a `square` method that takes an `int` and returns its square, plus a second, overloaded `square` that takes a `double`.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 public class MethodsDemo {
-    // Takes an int parameter; returns an int
+    // TODO: method that takes an int and returns n * n
     public static int square(int n) {
-        return n * n;
+        // return _____;
     }
 
-    // Overload: same method name, different parameter type
+    // TODO: overload — same name, double parameter, return n * n as double
     public static double square(double n) {
-        return n * n;
+        // return _____;
     }
 
     public static void main(String[] args) {
-        int intResult = square(4);          // calls the int version
-        double doubleResult = square(2.5);  // calls the double version — compiler picks by argument type
-
-        System.out.println("square(4) = " + intResult);
-        System.out.println("square(2.5) = " + doubleResult);
+        // TODO: call both overloads and print the results
+        // int intResult = square(4);
+        // double doubleResult = square(2.5);
+        // System.out.println("square(4) = " + intResult);
+        // System.out.println("square(2.5) = " + doubleResult);
     }
 }
 ```
@@ -48,7 +50,8 @@ public class MethodsDemo {
 **Why:** Lab 2's student menu app calls named methods for each menu option instead of one giant `main`.
 
 1. **New → File** → `MethodsDemo.java`.
-2. Paste the starter. Save.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -85,6 +88,7 @@ Both calls print the correct square, and the program compiles even though two me
 | ------- | --- |
 | `error: square(int) is already defined` | The two overloads must differ in parameter **type**, not just variable name |
 | Wrong result for the `double` call | Confirm you called `square(2.5)`, not `square((int) 2.5)` |
+| `missing return statement` | Each `square` method must `return` a value |
 
 ## Pass criteria
 

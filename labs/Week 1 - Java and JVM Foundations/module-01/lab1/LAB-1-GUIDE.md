@@ -29,6 +29,19 @@
 5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
 6. Capture evidence under `notes/screenshots/lab-1/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
 
+## What you'll submit (read this first)
+
+Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+
+| # | Deliverable | Where / what |
+| - | ----------- | ------------ |
+| 1 | Four source files | `examples/jvm-compilation-lab/` → `HelloWorld.java`, `Calculator.java`, `Employee.java`, `MemoryDemo.java` |
+| 2 | Screenshots | `notes/screenshots/lab-1/` — JDK 21 versions, `javac` + `.class` listing, run output for all four classes, `javap -c` (HelloWorld min.; Calculator recommended), class-loading (`-verbose:class` or `-Xlog:class+load`), optional `PrintFlagsFinal` |
+| 3 | Short answers (7) | `javac` / bytecode / WORA / JVM role / heap vs stack / class loading — see deliverables list |
+| 4 | Personal GitHub | Private repo `java-bootcamp` (Step 0) with Lab 1 sources pushed (Step 12); `.gitignore` excludes screenshots, `*.class`, secrets |
+
+Optional (extra credit / instructor ask): failure-experiment log, Security and Production Review notes, Checkpoint A–C notes.
+
 ### Smooth path — how Lab 1 is performed in class
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21):**
@@ -1366,40 +1379,14 @@ After grading, you may keep `.class` files locally; they are not sacred—source
 
 ## Expected Deliverables
 
-Submit according to your LMS or instructor dropbox:
+Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above — detail here for grading.
 
-### 1. Source code files
-
-* `HelloWorld.java`
-* `Calculator.java`
-* `Employee.java`
-* `MemoryDemo.java`
-
-### 2. Screenshots / terminal evidence
-
-* Java / javac version check (JDK 21)
-* Successful compilation (`javac` + listing of `.class` files)
-* Program execution outputs for all four entry points
-* `javap -c` bytecode output (HelloWorld minimum; Calculator recommended)
-* Class loading output (`-verbose:class` or `-Xlog:class+load`)
-* (Recommended) filtered `PrintFlagsFinal` lines
-
-### 3. Short lab report answers
-
-* What does `javac` do?
-* What is bytecode?
-* Why is bytecode platform-independent?
-* What is the role of the JVM?
-* Where are objects stored?
-* Where are method calls / frames stored?
-* What happens when a class is loaded?
+* **Sources** under `java-bootcamp/examples/jvm-compilation-lab/`: `HelloWorld.java`, `Calculator.java`, `Employee.java`, `MemoryDemo.java`
+* **Screenshots** under `notes/screenshots/lab-1/`: JDK 21 (`java` / `javac` versions); `javac` + `.class` listing; run output for all four entry points; `javap -c` (HelloWorld minimum; Calculator recommended); class loading (`-verbose:class` or `-Xlog:class+load`); recommended filtered `PrintFlagsFinal`
+* **Short answers (3–7 sentences each, or bullet notes):** What does `javac` do? What is bytecode? Why is bytecode platform-independent? What is the role of the JVM? Where are objects stored? Where are method calls / frames stored? What happens when a class is loaded?
+* **Personal GitHub:** private repo `java-bootcamp` (Step 0) with Lab 1 sources pushed (Step 12); `.gitignore` excludes `notes/screenshots/`, `*.class`, `out/`, secrets
 
 Optional: failure-experiment log (min. three); Security and Production Review answers; Checkpoint A–C notes.
-
-### 4. Personal GitHub repo
-
-* Private repo named `java-bootcamp` (Step 0) with Lab 1 sources pushed (Step 12)
-* `.gitignore` excludes `notes/screenshots/`, `*.class`, `out/`, secrets
 
 ---
 

@@ -11,36 +11,37 @@
 
 Create `LoopsDemo.java` that prints a multiplication table with `for`, counts down with `while`, and shows a menu prompt at least once with `do-while`.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;
 
 public class LoopsDemo {
     public static void main(String[] args) {
-        // for: use when you know the number of repetitions up front
+        // TODO: for loop — print multiplication table for 5 (5 x 1 = 5 … 5 x 5 = 25)
         System.out.println("Multiplication table for 5:");
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("5 x " + i + " = " + (5 * i));
-        }
+        // for (_____) {
+        //     System.out.println(...);
+        // }
 
-        // while: use when repetition depends on a condition, checked before each pass
+        // TODO: while loop — countdown from 3 to 1 (remember to change count each pass)
         int count = 3;
-        while (count > 0) {
-            System.out.println("Countdown: " + count);
-            count--;                        // must move toward false, or this loops forever
-        }
+        // while (_____) {
+        //     ...
+        // }
 
-        // do-while: body runs once before the condition is checked
+        // TODO: do-while — prompt until the user types something other than "menu"
         Scanner scanner = new Scanner(System.in);
         String choice;
-        do {
-            System.out.print("Type 'menu' to see it again, anything else to quit: ");
-            choice = scanner.nextLine();
-            if (choice.equals("menu")) {
-                System.out.println("1) Add  2) Withdraw  3) Exit");
-            }
-        } while (choice.equals("menu"));
+        // do {
+        //     System.out.print("Type 'menu' to see it again, anything else to quit: ");
+        //     choice = scanner.nextLine();
+        //     if (choice.equals("menu")) {
+        //         System.out.println("1) Add  2) Withdraw  3) Exit");
+        //     }
+        // } while (_____);
 
         scanner.close();
     }
@@ -60,7 +61,8 @@ public class LoopsDemo {
 **Why:** Lab 2's student menu repeats until the user chooses to exit — same idea as this `do-while` toy. The graded Lab 2 menu uses `while (true)` + Exit choice (either form is fine for “repeat until done”).
 
 1. **New → File** → `LoopsDemo.java`.
-2. Paste the starter. Save.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
 
 ### Step 2 — Compile and run
 

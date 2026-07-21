@@ -11,7 +11,9 @@
 
 Create `PersonalProfile.java` that reads name, age, city, and hobby, then prints a simple two-column table with `printf` width specifiers.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;
@@ -21,25 +23,28 @@ public class PersonalProfile {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Name: ");
-        String name = scanner.nextLine();
+        // TODO: read name
+        String name = _____;
 
         System.out.print("Age: ");
-        String age = scanner.nextLine();    // keep as String for simple table demo
+        // TODO: read age as String (simple table demo — no parse required)
+        String age = _____;
 
         System.out.print("City: ");
-        String city = scanner.nextLine();
+        // TODO: read city
+        String city = _____;
 
         System.out.print("Hobby: ");
-        String hobby = scanner.nextLine();
+        // TODO: read hobby
+        String hobby = _____;
 
         System.out.println();
-        // %-12s = left-align in a 12-character field; %-20s = 20-character field
-        System.out.printf("%-12s | %-20s%n", "Field", "Value");
-        System.out.println("-------------|---------------");
-        System.out.printf("%-12s | %-20s%n", "Name", name);
-        System.out.printf("%-12s | %-20s%n", "Age", age);
-        System.out.printf("%-12s | %-20s%n", "City", city);
-        System.out.printf("%-12s | %-20s%n", "Hobby", hobby);
+        // TODO: print a two-column table with printf width specifiers
+        //   header: Field | Value  using %-12s and %-20s
+        //   separator line
+        //   four rows: Name, Age, City, Hobby
+        // System.out.printf("%-12s | %-20s%n", "Field", "Value");
+        // ...
 
         scanner.close();
     }
@@ -59,7 +64,8 @@ public class PersonalProfile {
 **Why:** Lab 2 display menu uses the same column-alignment trick for student rows.
 
 1. **New → File** → `PersonalProfile.java`.
-2. Paste the starter. Save.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -105,6 +111,7 @@ A readable two-column profile table with aligned fields.
 | ------- | --- |
 | Columns look ragged | Use the same width for every row (`%-12s`, `%-20s`) |
 | Want numeric age | You may parse with `Integer.parseInt` — not required for this bonus |
+| `illegal start of expression` near `_____` | Replace every blank with real Java |
 
 ## Pass criteria
 

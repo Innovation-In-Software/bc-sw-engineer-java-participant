@@ -11,7 +11,9 @@
 
 Create `Calculator.java` that reads two numbers and prints sum, difference, product, and quotient (use `double` so division keeps decimals).
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;
@@ -21,15 +23,18 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("First number: ");
-        double a = Double.parseDouble(scanner.nextLine());
+        // TODO: read the first number as a double (hint: Double.parseDouble(scanner.nextLine()))
+        double a = _____;
 
         System.out.print("Second number: ");
-        double b = Double.parseDouble(scanner.nextLine());
+        // TODO: read the second number as a double
+        double b = _____;
 
-        System.out.printf("Sum: %.2f%n", a + b);          // addition
-        System.out.printf("Difference: %.2f%n", a - b);   // subtraction
-        System.out.printf("Product: %.2f%n", a * b);      // multiplication
-        System.out.printf("Quotient: %.2f%n", a / b);     // division (double ÷ double)
+        // TODO: print Sum, Difference, Product, and Quotient using printf with %.2f
+        // System.out.printf("Sum: %.2f%n", _____);
+        // System.out.printf("Difference: %.2f%n", _____);
+        // System.out.printf("Product: %.2f%n", _____);
+        // System.out.printf("Quotient: %.2f%n", _____);
 
         scanner.close();
     }
@@ -50,7 +55,8 @@ public class Calculator {
 **Why:** Warm up arithmetic you will reuse in bill totals and Lab 2 averages.
 
 1. **New → File** → `Calculator.java`.
-2. Paste the starter. Save.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -91,6 +97,7 @@ Four labeled results print for your two inputs.
 | ------- | --- |
 | Quotient is `0` or truncated | Use `double` (not `int`) for both numbers |
 | Crash on second input empty | Type a number and press Enter each time |
+| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
 
 ## Pass criteria
 

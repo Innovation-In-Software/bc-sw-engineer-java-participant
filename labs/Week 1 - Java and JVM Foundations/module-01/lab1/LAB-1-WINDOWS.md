@@ -150,6 +150,8 @@ git push -u origin main
 
 Save screenshots under `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-1` (Lab 0 workspace layout). Capture IntelliJ (project tree + Run/Terminal) on Windows. Redact passwords, tokens, and kubeconfig contents.
 
+**Full submit list:** see **What you'll submit** and **Expected Deliverables** in [LAB-1-GUIDE.md](LAB-1-GUIDE.md).
+
 **Minimum Terminal captures:** `java HelloWorld`, `java Calculator`, `javap -c Calculator`, `java Employee`, one `-verbose:class` snippet, `java MemoryDemo`.
 
 ## If it fails (Windows)

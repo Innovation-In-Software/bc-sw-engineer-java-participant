@@ -11,31 +11,37 @@
 
 Create `PersonalDetails.java` that prompts for name (`String`), age (`int`), and city (`String`), then prints a formatted greeting.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;   // Scanner lives in java.util — must import it
 
 public class PersonalDetails {
     public static void main(String[] args) {
-        // One Scanner reading from the keyboard (System.in)
-        Scanner scanner = new Scanner(System.in);
+        // TODO: create a Scanner reading from System.in
+        Scanner scanner = _____;
 
-        System.out.print("Enter your name: ");   // print = no newline after prompt
-        String name = scanner.nextLine();        // read whole line as text
+        System.out.print("Enter your name: ");
+        // TODO: read the whole line as a String
+        String name = _____;
 
         System.out.print("Enter your age: ");
-        int age = scanner.nextInt();             // read an int; leaves '\n' in the buffer
-        scanner.nextLine();                      // consume that leftover newline (important!)
+        // TODO: read an int with nextInt()
+        int age = _____;
+        // TODO: consume the leftover newline after nextInt() (critical!)
+        // scanner._____;
 
         System.out.print("Enter your city: ");
-        String city = scanner.nextLine();        // now reads the city, not an empty line
+        // TODO: read the city with nextLine()
+        String city = _____;
 
-        // %s = string, %d = int, %n = platform newline
-        System.out.printf("Hello, %s! You are %d years old and live in %s.%n",
-                name, age, city);
+        // TODO: print a greeting with printf — %s for strings, %d for age, %n for newline
+        // System.out.printf("Hello, %s! You are %d years old and live in %s.%n",
+        //         name, age, city);
 
-        scanner.close();                         // good habit when you own the Scanner
+        scanner.close();
     }
 }
 ```
@@ -56,7 +62,7 @@ public class PersonalDetails {
 
 1. Right-click `module-02-exercises` → **New → File** (not Java Class).
 2. Name it exactly `PersonalDetails.java`.
-3. Paste the starter code above. Save (**Ctrl+S** / **⌘S**).
+3. Paste the starter, fill every `_____` / `// TODO`. Save (**Ctrl+S** / **⌘S**).
 
 Ignore any yellow *outside of the module source root* banner.
 
@@ -95,7 +101,7 @@ Hello, Aman! You are 21 years old and live in Toronto.
 
 **Why:** Lab 2 warns about mixing `nextInt()` / `nextDouble()` with `nextLine()`.
 
-Temporarily **delete** the `scanner.nextLine();` line after `nextInt()`, recompile, and run again. After you enter age, the city prompt often appears to skip — the leftover `\n` is read as an empty city.
+Temporarily **delete** the extra `nextLine()` after `nextInt()`, recompile, and run again. After you enter age, the city prompt often appears to skip — the leftover `\n` is read as an empty city.
 
 ## Expected result
 
@@ -108,6 +114,7 @@ Program prompts for three values and greets with all three.
 | City skipped / empty | Add `scanner.nextLine()` after `nextInt()` |
 | `InputMismatchException` | Age must be a whole number (e.g. `21`, not `twenty`) |
 | `cannot find symbol Scanner` | Add `import java.util.Scanner;` at the top |
+| `illegal start of expression` near `_____` | Replace every blank with real Java |
 
 ## Pass criteria
 

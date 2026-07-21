@@ -11,7 +11,9 @@
 
 Create `ProductInfo.java` that reads product name, quantity (`int`), and price (`double`), then prints the details.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;
@@ -21,17 +23,19 @@ public class ProductInfo {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Product name: ");
-        String name = scanner.nextLine();   // text may include spaces
+        // TODO: read product name (may include spaces)
+        String name = _____;
 
         System.out.print("Quantity: ");
-        // Read a full line, then convert — avoids nextInt leftover-newline issues
-        int qty = Integer.parseInt(scanner.nextLine());
+        // TODO: read a full line, then parse to int (Integer.parseInt)
+        int qty = _____;
 
         System.out.print("Price: ");
-        double price = Double.parseDouble(scanner.nextLine());
+        // TODO: read a full line, then parse to double (Double.parseDouble)
+        double price = _____;
 
-        // %.2f = show two digits after the decimal (money-style)
-        System.out.printf("Product: %s | Qty: %d | Price: %.2f%n", name, qty, price);
+        // TODO: print with printf — %s name, %d qty, %.2f price
+        // System.out.printf("Product: %s | Qty: %d | Price: %.2f%n", _____, _____, _____);
 
         scanner.close();
     }
@@ -52,7 +56,8 @@ public class ProductInfo {
 **Why:** Lab 2 will ask for quantities and marks — same parse pattern.
 
 1. **New → File** → `ProductInfo.java` under `module-02-exercises`.
-2. Paste the starter. Save.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -91,6 +96,7 @@ Product name, quantity, and price print correctly (price with two decimals).
 | ------- | --- |
 | `NumberFormatException` | Quantity/price must be numeric (`3`, `59.99`) — no letters |
 | Wrong price formatting | Use `%.2f` in `printf` |
+| `illegal start of expression` near `_____` | Replace every blank with real Java |
 
 ## Pass criteria
 

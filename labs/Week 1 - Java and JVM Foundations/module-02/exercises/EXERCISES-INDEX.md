@@ -10,7 +10,8 @@
 > **Core gate for Lab 2:** Exercises **1–7** must be Pass. Exercises **8–9** are challenge/bonus (strongly recommended before Lab display/`printf` steps).  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
 > Keep practice sources separate from the graded lab (`examples/Lab2-JavaSyntax/`).  
-> Each exercise includes **starter code with line comments**, a short **why** for each step, and Windows / macOS commands.  
+> Each exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and Windows / macOS commands.  
+> Replace every `_____` and `// TODO` with your own code, then compile and run.  
 > **Lab 2 assumes** you can already use arithmetic, decisions, loops, methods, `Scanner`+parse, and `printf` from these exercises — Lab 2 packages them into a menu app, not first teaching.
 
 ## Already covered — do not redo
@@ -64,8 +65,10 @@ Stay in this folder for every exercise below (or `cd` back before each compile/r
 
 1. Right-click `module-02-exercises` → **New → File**
 2. Type the full name including extension, e.g. `PersonalDetails.java`
-3. Paste the starter code → save (**Ctrl+S** / **⌘S**)
+3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**)
 4. Compile and run from the IntelliJ **Terminal** with `javac` / `java`
+
+**How the starter works:** scaffolding (imports, prompts, method signatures) is given; the learning parts are blanks marked `_____` or `// TODO`. Your finished file must compile — blanks are not valid Java.
 
 **Do not:**
 

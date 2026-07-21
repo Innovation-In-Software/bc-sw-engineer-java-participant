@@ -11,7 +11,9 @@
 
 Create `CircleArea.java` that reads a radius (`double`) and prints the area using `Math.PI`, formatted to 2 decimal places.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;
@@ -21,12 +23,14 @@ public class CircleArea {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Radius: ");
-        double r = Double.parseDouble(scanner.nextLine());
+        // TODO: read radius as a double (nextLine + Double.parseDouble)
+        double r = _____;
 
-        // Area of a circle: π × r²
-        double area = Math.PI * r * r;
+        // TODO: area = π × r²  (use Math.PI)
+        double area = _____;
 
-        System.out.printf("Area: %.2f%n", area);   // %.2f → two decimal places
+        // TODO: print area with two decimal places (printf %.2f)
+        // System.out.printf(...);
 
         scanner.close();
     }
@@ -46,7 +50,8 @@ public class CircleArea {
 **Why:** Practice library constants + formatted output before Lab 2’s student table.
 
 1. **New → File** → `CircleArea.java`.
-2. Paste the starter. Save.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
@@ -85,6 +90,7 @@ Area matches π × r × r and prints with two decimals.
 | ------- | --- |
 | `cannot find symbol PI` | Use `Math.PI` (capital `PI`) — no import needed |
 | Many decimal places | Use `printf` with `%.2f`, not bare `println(area)` |
+| `illegal start of expression` near `_____` | Replace every blank with real Java |
 
 ## Pass criteria
 

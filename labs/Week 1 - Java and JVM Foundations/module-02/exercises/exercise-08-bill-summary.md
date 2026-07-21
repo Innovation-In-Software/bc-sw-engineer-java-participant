@@ -11,7 +11,9 @@
 
 Create `BillSummary.java` that reads product name, quantity, and unit price; computes total, 10% discount, and final amount; prints a short bill with `%.2f`.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;
@@ -21,26 +23,25 @@ public class BillSummary {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Product name: ");
-        String name = scanner.nextLine();
+        // TODO: read name
+        String name = _____;
 
         System.out.print("Quantity: ");
-        int qty = Integer.parseInt(scanner.nextLine());
+        // TODO: read qty (nextLine + Integer.parseInt)
+        int qty = _____;
 
         System.out.print("Unit price: ");
-        double price = Double.parseDouble(scanner.nextLine());
+        // TODO: read price (nextLine + Double.parseDouble)
+        double price = _____;
 
-        double total = qty * price;           // before discount
-        double discount = total * 0.10;       // 10% off
-        double finalAmount = total - discount;
+        // TODO: compute total, 10% discount, and final amount
+        double total = _____;           // qty * price
+        double discount = _____;        // 10% of total
+        double finalAmount = _____;     // total - discount
 
         System.out.println("--- Bill Summary ---");
-        System.out.printf("Product: %s%n", name);
-        System.out.printf("Quantity: %d%n", qty);
-        System.out.printf("Unit price: %.2f%n", price);
-        System.out.printf("Total: %.2f%n", total);
-        // %% prints a literal % character inside printf
-        System.out.printf("Discount (10%%): %.2f%n", discount);
-        System.out.printf("Final amount: %.2f%n", finalAmount);
+        // TODO: print Product, Quantity, Unit price, Total, Discount (10%), Final amount
+        // hints: %.2f for money; use 10%% in the format string to print a literal %
 
         scanner.close();
     }
@@ -61,7 +62,8 @@ public class BillSummary {
 **Why:** Multi-step calculation + clean money formatting — same habits as Lab 2 averages / tables.
 
 1. **New → File** → `BillSummary.java`.
-2. Paste the starter (or write it yourself from the formulas). Save.
+2. Paste the starter.
+3. Fill every `_____` / `// TODO` (use the formulas table). Save.
 
 ### Step 2 — Compile and run
 
@@ -108,6 +110,7 @@ Bill shows total, discount, and final amount with two decimal places.
 | ------- | --- |
 | `Discount (10%)` looks wrong / missing `%` | Use `10%%` inside the format string |
 | Final amount off | Confirm `discount = total * 0.10` then `total - discount` |
+| `illegal start of expression` near `_____` | Replace every blank with real Java |
 
 ## Pass criteria
 

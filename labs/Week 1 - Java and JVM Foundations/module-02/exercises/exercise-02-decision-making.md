@@ -11,7 +11,9 @@
 
 Create `DecisionDemo.java` that reads a numeric score and prints a letter grade with `if`/`else if`/`else`, then reads a day number (1–7) and prints its name with `switch`.
 
-## Starter / reference (with line comments)
+## Starter (fill in the TODOs)
+
+Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
 ```java
 import java.util.Scanner;
@@ -23,31 +25,19 @@ public class DecisionDemo {
         System.out.print("Score (0-100): ");
         int score = Integer.parseInt(scanner.nextLine());
 
-        // if / else if / else: first matching branch wins, rest are skipped
-        if (score >= 90) {
-            System.out.println("Grade: A");
-        } else if (score >= 80) {
-            System.out.println("Grade: B");
-        } else if (score >= 70) {
-            System.out.println("Grade: C");
-        } else {
-            System.out.println("Grade: F");
-        }
+        // TODO: if / else if / else — print Grade: A/B/C/F
+        //   A: score >= 90
+        //   B: score >= 80
+        //   C: score >= 70
+        //   F: otherwise
+        //   (branch order matters — first true wins)
 
         System.out.print("Day number (1-7): ");
         int day = Integer.parseInt(scanner.nextLine());
 
-        // switch: jump straight to the matching case, no chained comparisons
-        switch (day) {
-            case 1 -> System.out.println("Monday");
-            case 2 -> System.out.println("Tuesday");
-            case 3 -> System.out.println("Wednesday");
-            case 4 -> System.out.println("Thursday");
-            case 5 -> System.out.println("Friday");
-            case 6 -> System.out.println("Saturday");
-            case 7 -> System.out.println("Sunday");
-            default -> System.out.println("Not a valid day");
-        }
+        // TODO: switch on day — print Monday..Sunday for 1..7
+        //   use arrow form: case 1 -> System.out.println("Monday");
+        //   default -> System.out.println("Not a valid day");
 
         scanner.close();
     }
@@ -67,7 +57,8 @@ public class DecisionDemo {
 **Why:** Every menu and validation check in Lab 2 branches with `if` or `switch`.
 
 1. **New → File** → `DecisionDemo.java`.
-2. Paste the starter. Save.
+2. Paste the starter.
+3. Fill every `// TODO`. Save.
 
 ### Step 2 — Compile and run
 
