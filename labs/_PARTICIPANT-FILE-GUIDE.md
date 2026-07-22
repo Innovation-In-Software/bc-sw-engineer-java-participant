@@ -44,6 +44,8 @@ Open the module’s **`README.md`** first when it exists (Week 1 Modules 1–7) 
 | This course clone (`bc-sw-engineer-java-participant`) | Handouts / lab guides — **read** / follow steps |
 | Your private `java-bootcamp` on GitHub | **Your** code — created in Lab 1 Step 0 |
 
+**New to IntelliJ or Git?** Start with **[IntelliJ + GitHub — beginner guide](INTELLIJ-AND-GITHUB-BEGINNER-README.md)** (open project, run Java, commit, push), then come back here for which lab file to open.
+
 **Smooth day-of habit:** IntelliJ stays on `java-bootcamp` (code under `examples/`). Keep this participant clone open in a browser tab or second window for README → exercises → OS how-to → GUIDE. Do not write graded sources inside the course clone’s `labs/` tree.
 
 ### Module 1 example

@@ -18,9 +18,10 @@ Early-career developers build full-stack enterprise Java skills — from JVM fou
 
 1. Read **[Final Lab Environment Setup](labs/FINAL-SETUP-README.md)** — shared host, Postgres / Kafka / k3s / GHCR  
 2. Read **[Participant Setup README](labs/PARTICIPANT-SETUP-README.md)** — what you install on the laptop vs what the instructor provides  
-3. Skim Week 1 **[IDE conventions](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)** — **IntelliJ IDEA Community** (primary) and **VS Code** (optional)  
-4. Complete **[Lab 0 — Development Environment Setup](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** on **your laptop** ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md))  
-5. Use the **[Lab Index](labs/LABS-INDEX.md)** for Labs 1–52  
+3. New to IDEs / Git? Read **[IntelliJ + GitHub — beginner guide](labs/INTELLIJ-AND-GITHUB-BEGINNER-README.md)** — open projects, run Java, commit and push  
+4. Skim Week 1 **[IDE conventions](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)** — **IntelliJ IDEA Community** (primary) and **VS Code** (optional)  
+5. Complete **[Lab 0 — Development Environment Setup](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** on **your laptop** ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md))  
+6. Use the **[Lab Index](labs/LABS-INDEX.md)** for Labs 1–52  
 
 **All labs run from your laptop.** Credentials and kubeconfigs are handed out by the instructor — they are **not** stored in this Git repository.
 
