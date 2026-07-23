@@ -23,17 +23,29 @@ Ask in order:
 
 ### Step 1 — Copy the scenario table
 
+Create `collection-choices.md` and paste this worksheet. Fill **Interface** first (from the decision questions), then **Implementation**, then a short **Why** that names the property that drove the choice (order, uniqueness, key lookup, or sorted iteration).
+
 ```markdown
 # Collection choices
 
-| Scenario | Interface | Implementation | Why |
-| -------- | --------- | -------------- | --- |
-| Ordered catalog; duplicate titles allowed | | | |
-| Unique registered book IDs | | | |
-| Book ID → current borrower ID | | | |
-| Alphabetically sorted categories | | | |
-| Category → count, sorted by category | | | |
-| Checkout history in event order | | | |
+| # | Scenario | Need (order / unique / key→value / sorted) | Interface | Implementation | Why |
+| - | -------- | ------------------------------------------ | --------- | -------------- | --- |
+| 1 | Ordered catalog; duplicate titles allowed | | `_____` | `_____` | |
+| 2 | Unique registered book IDs | | `_____` | `_____` | |
+| 3 | Book ID → current borrower ID | | `_____` | `_____` | |
+| 4 | Alphabetically sorted categories | | `_____` | `_____` | |
+| 5 | Category → count, sorted by category | | `_____` | `_____` | |
+| 6 | Checkout history in event order | | `_____` | `_____` | |
+```
+
+**How to fill one row (example shape — do not copy the answer yet):**
+
+```text
+#3  Book ID → borrower
+    Need: key → value
+    Interface: Map<String, String>
+    Implementation: HashMap<>
+    Why: lookup borrower by book ID
 ```
 
 ### Step 2 — Complete it before reading the reference
@@ -42,14 +54,14 @@ Ask in order:
 
 ### Step 3 — Check against the reference
 
-| Scenario | Interface | Implementation | Why |
-| -------- | --------- | -------------- | --- |
-| Ordered catalog; duplicate titles allowed | `List<Book>` | `ArrayList<>` | Indexed ordered sequence |
-| Unique registered book IDs | `Set<String>` | `HashSet<>` | Fast average membership; no duplicates |
-| Book ID → current borrower ID | `Map<String,String>` | `HashMap<>` | Direct key lookup |
-| Alphabetically sorted categories | `Set<String>` | `TreeSet<>` | Unique and naturally sorted |
-| Category → count, sorted by category | `Map<String,Integer>` | `TreeMap<>` | Key-value data with sorted keys |
-| Checkout history in event order | `List<BorrowRecord>` | `ArrayList<>` | Append and iterate in event order |
+| # | Scenario | Interface | Implementation | Why |
+| - | -------- | --------- | -------------- | --- |
+| 1 | Ordered catalog; duplicate titles allowed | `List<Book>` | `ArrayList<>` | Indexed sequence; duplicates OK |
+| 2 | Unique registered book IDs | `Set<String>` | `HashSet<>` | No duplicates; fast membership |
+| 3 | Book ID → current borrower ID | `Map<String, String>` | `HashMap<>` | Direct key → value lookup |
+| 4 | Alphabetically sorted categories | `Set<String>` | `TreeSet<>` | Unique values; natural sort order |
+| 5 | Category → count, sorted by category | `Map<String, Integer>` | `TreeMap<>` | Key → value with sorted keys |
+| 6 | Checkout history in event order | `List<BorrowRecord>` | `ArrayList<>` | Append + iterate in insertion order |
 
 ### Step 4 — Handle ambiguous requirements
 
