@@ -24,6 +24,8 @@ public class MapDemo {
         Map<String, Integer> copies = _____;
 
         // TODO: put three ISBN → copy-count mappings
+        //   key = String ISBN, value = Integer count
+        //   copies.put("ISBN-JAVA", 3);   // NOT put(3, "ISBN-JAVA")
         //   "ISBN-JAVA" -> 3, "ISBN-CLEAN" -> 2, "ISBN-TEST" -> 4
         _____
         _____
@@ -41,6 +43,8 @@ public class MapDemo {
         System.out.println(
                 "Updated Java copies: "
                 + copies.get("ISBN-JAVA"));
+        // TODO: Missing ISBN blank — use getOrDefault so absent keys print 0, not null
+        //   copies.getOrDefault("ISBN-MISSING", 0)
         System.out.println(
                 "Missing ISBN: "
                 + _____);
@@ -63,12 +67,13 @@ public class MapDemo {
 
 | Operation | Result |
 | --------- | ------ |
-| `put(newKey, value)` | Adds mapping |
-| `put(existingKey, value)` | Replaces old value |
+| `put(key, value)` | **Adds** if key is new; **updates** if key already exists |
 | `get(key)` | Value, or `null` if absent |
-| `getOrDefault(key, default)` | Value or supplied fallback |
+| `getOrDefault(key, default)` | Value, or your fallback when the key is absent |
 | `remove(key)` | Removes mapping |
 | `entrySet()` | Key-value entries for iteration |
+
+**Type order matters:** `Map<String, Integer>` means `put(String key, Integer value)` — ISBN first, count second.
 
 Map keys are unique; values do not need to be unique.
 
@@ -115,15 +120,47 @@ Sorted snapshot: {ISBN-JAVA=5, ISBN-TEST=4}
 
 `put("ISBN-JAVA", 5)` does not create a duplicate key. It changes that key’s value from `3` to `5`.
 
-### Step 4 — Compare absent lookups
+### Step 4 — Fill the “Missing ISBN” blank (`get` vs `getOrDefault`)
 
-Temporarily print:
+**Why this trips people up:** `get` and `getOrDefault` look similar, but they behave differently when the key is **not** in the map.
+
+| Call | Key missing? | What prints |
+| ---- | ------------ | ----------- |
+| `copies.get("ISBN-MISSING")` | yes | `null` |
+| `copies.getOrDefault("ISBN-MISSING", 0)` | yes | `0` |
+| `copies.get("ISBN-JAVA")` | no (key exists) | `5` (the real value) |
+
+**Do this:**
+
+1. In the starter blank for `Missing ISBN:`, put:
 
 ```java
-System.out.println(copies.get("ISBN-MISSING"));
+copies.getOrDefault("ISBN-MISSING", 0)
 ```
 
-It prints `null`; `getOrDefault(..., 0)` prints `0`. Remove the temporary line afterward.
+so the line becomes:
+
+```java
+System.out.println(
+        "Missing ISBN: "
+        + copies.getOrDefault("ISBN-MISSING", 0));
+```
+
+2. Optionally, for learning only, temporarily add:
+
+```java
+System.out.println(copies.get("ISBN-MISSING")); // prints null
+```
+
+then **delete** that temporary line before you finish.
+
+**Expected line in the program output:**
+
+```text
+Missing ISBN: 0
+```
+
+Not `Missing ISBN: null`.
 
 ## Expected result
 
@@ -133,6 +170,8 @@ The Java count updates to `5`, the clean-code key is removed, and the sorted sna
 
 | Problem | Fix |
 | ------- | --- |
+| `incompatible types: int cannot be converted to String` | Arguments are swapped — use `put("ISBN-JAVA", 3)`, not `put(3, "ISBN-JAVA")` |
+| `Missing ISBN: null` | Blank used `get`; switch to `getOrDefault(..., 0)` |
 | Expected exact `HashMap` order | Only the `TreeMap` snapshot has sorted-key order |
 | Missing lookup causes unboxing NPE | Use `getOrDefault` or test `containsKey` |
 | Duplicate ISBN appears | A map cannot hold duplicate equal keys; `put` replaces |
