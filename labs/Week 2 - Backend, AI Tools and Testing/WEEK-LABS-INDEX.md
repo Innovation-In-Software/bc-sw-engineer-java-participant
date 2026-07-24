@@ -1,5 +1,7 @@
 # Week 2 - Backend, AI Tools and Testing — Lab Guides
 
+**Clone handouts · commit in your own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../CLONE-AND-OWN-REPO-GUIDE.md)
+
 **Range:** lab8–lab21  
 **Theme:** Maven, Copilot, SOAP/services, testing, logging, observability
 

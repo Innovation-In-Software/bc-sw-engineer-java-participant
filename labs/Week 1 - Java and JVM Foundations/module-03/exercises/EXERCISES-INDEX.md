@@ -1,6 +1,6 @@
 # Module 3 — Pre-Lab Exercises
 
-> **Start here for Module 3:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md)
+> **Start here for Module 3:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 3 — Object-Oriented Programming in Java  
 **Source:** Module 3 slides: Lab Overview / Lab Tasks (Object-Oriented Design)  

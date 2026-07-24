@@ -1,5 +1,7 @@
 # Week 3 - Spring Framework and Enterprise Patterns — Lab Guides
 
+**Clone handouts · commit in your own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../CLONE-AND-OWN-REPO-GUIDE.md)
+
 **Range:** lab22–lab29  
 **Theme:** Spring IoC, Boot, WS, layers, profiles, transactions, security, validation
 

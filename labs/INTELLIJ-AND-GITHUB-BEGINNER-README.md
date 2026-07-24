@@ -8,6 +8,7 @@ This page is a **plain-language map**. Detailed install steps stay in Lab 0; the
 
 | Related guide | Use it when… |
 | ------------- | ------------ |
+| **[Clone + own repo](CLONE-AND-OWN-REPO-GUIDE.md)** | **Authoritative** clone handouts + create/commit/push your private `java-bootcamp` |
 | **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** ([Windows](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md)) | Install IntelliJ, JDK 21, Maven, Git, and set Git identity |
 | **[Lab 1 Step 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-01/lab1/LAB-1-GUIDE.md)** | Create the private `java-bootcamp` repo and first push |
 | **[IDE conventions](Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)** | Paths, SDK 21, terminal habits for every Week 1 lab |
@@ -32,6 +33,8 @@ You do **not** need to memorize Git theory. Learn the four commands at the end o
 ---
 
 ## 2. Two folders — do not mix them
+
+**Full clone + own-repo guide:** **[CLONE-AND-OWN-REPO-GUIDE.md](CLONE-AND-OWN-REPO-GUIDE.md)**
 
 | Folder | What it is | What you do there |
 | ------ | ---------- | ----------------- |

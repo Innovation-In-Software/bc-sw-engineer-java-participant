@@ -1,5 +1,7 @@
 # WEEK 6 — ENTERPRISE CAPSTONE DOCUMENT
 
+**Clone handouts · commit in your own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../CLONE-AND-OWN-REPO-GUIDE.md)
+
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code  
 **OS guides:** each `module-NN/labN/` has `LAB-N-WINDOWS.md` and `LAB-N-MACOS.md`.
 

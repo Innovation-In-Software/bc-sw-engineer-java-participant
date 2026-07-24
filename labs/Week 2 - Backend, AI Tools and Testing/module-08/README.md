@@ -1,5 +1,7 @@
 # Module 8 — Start here
 
+**Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
+
 **Topic:** Java Project Structure and Modularization
 
 | Step | Open this |

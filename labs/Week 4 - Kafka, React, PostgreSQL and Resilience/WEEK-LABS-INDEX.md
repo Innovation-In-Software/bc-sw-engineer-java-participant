@@ -1,5 +1,7 @@
 # Week 4 - Kafka, React, PostgreSQL and Resilience — Lab Guides
 
+**Clone handouts · commit in your own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../CLONE-AND-OWN-REPO-GUIDE.md)
+
 **Range:** lab30–lab39  
 **Theme:** Kafka, Resilience4j, React, PostgreSQL, JPA
 

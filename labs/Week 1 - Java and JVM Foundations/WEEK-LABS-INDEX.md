@@ -3,7 +3,7 @@
 **Range:** lab0–lab7  
 **Theme:** JVM, syntax, OOP, memory, collections, streams, exceptions  
 
-**Confused which file to open?** Start with **[Which file do I open?](../_PARTICIPANT-FILE-GUIDE.md)** — then open each module’s **`README.md`**.
+**Confused which file to open?** Start with **[Clone + own repo](../CLONE-AND-OWN-REPO-GUIDE.md)** · **[Which file do I open?](../_PARTICIPANT-FILE-GUIDE.md)** — then open each module’s **`README.md`**.
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code  
 **OS guides:** each `module-NN/labN/` has `LAB-N-WINDOWS.md` and `LAB-N-MACOS.md`.

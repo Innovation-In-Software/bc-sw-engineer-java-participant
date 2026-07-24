@@ -1,7 +1,7 @@
 # Week 1 — Pre-Lab Exercises (by module)
 
 **Rule:** After the module **slides**, open that module’s **`README.md`**, then **`exercises/EXERCISES-INDEX.md`**, then the lab.  
-See also: [Which file do I open?](../_PARTICIPANT-FILE-GUIDE.md)
+See also: [Which file do I open?](../_PARTICIPANT-FILE-GUIDE.md) · [Clone + own repo](../CLONE-AND-OWN-REPO-GUIDE.md)
 
 | Module | Start here | Exercises | Then lab |
 | ------ | ---------- | --------- | -------- |

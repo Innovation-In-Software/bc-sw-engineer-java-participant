@@ -2,6 +2,7 @@
 
 Hands-on lab guides for the Java Software Engineer Bootcamp.
 
+**Participants — clone handouts + commit in your own repo?** → **[CLONE-AND-OWN-REPO-GUIDE.md](CLONE-AND-OWN-REPO-GUIDE.md)**  
 **Participants — which file when?** → **[_PARTICIPANT-FILE-GUIDE.md](_PARTICIPANT-FILE-GUIDE.md)**  
 For Week 1 Modules 1–7, also open **`module-NN/README.md`** first (Start here).
 
@@ -32,6 +33,7 @@ Every lab lives under its module folder as `module-NN/labN/` and includes:
 
 | Guide | Purpose |
 | ----- | ------- |
+| [**Clone + own repo**](CLONE-AND-OWN-REPO-GUIDE.md) | Clone course handouts; commit/push only to your private `java-bootcamp` |
 | [**Which file do I open?**](_PARTICIPANT-FILE-GUIDE.md) | Participant sequence + what to ignore |
 | [**45-minute timed path**](_STARTER-PATH.md) | Starter templates vs full GUIDE path |
 | [**Final Lab Environment Setup**](FINAL-SETUP-README.md) | **Authoritative final setup** — shared host Postgres 17, Kafka 4.0, k3s, GHCR |
@@ -48,6 +50,7 @@ Every lab lives under its module folder as `module-NN/labN/` and includes:
 labs/
 ├── LABS-INDEX.md                     ← You are here
 ├── README.md                          ← GitHub pointer
+├── CLONE-AND-OWN-REPO-GUIDE.md        ← Clone handouts · commit in your own repo
 ├── FINAL-SETUP-README.md              ← Final cohort lab environment (read this)
 ├── PARTICIPANT-SETUP-README.md
 ├── SETUP-INSTRUCTIONS.md

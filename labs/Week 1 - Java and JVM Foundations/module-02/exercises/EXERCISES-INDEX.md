@@ -1,6 +1,6 @@
 # Module 2 — Pre-Lab Exercises
 
-> **Start here for Module 2:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md)
+> **Start here for Module 2:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 2 — Java Syntax and Core Constructs  
 **Source:** Module 2 slides: Lab Overview / Lab Tasks (Java Syntax and I/O)  

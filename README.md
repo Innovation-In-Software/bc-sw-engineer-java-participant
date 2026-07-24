@@ -16,12 +16,13 @@ Early-career developers build full-stack enterprise Java skills — from JVM fou
 
 ## Start here
 
-1. Read **[Final Lab Environment Setup](labs/FINAL-SETUP-README.md)** — shared host, Postgres / Kafka / k3s / GHCR  
-2. Read **[Participant Setup README](labs/PARTICIPANT-SETUP-README.md)** — what you install on the laptop vs what the instructor provides  
-3. New to IDEs / Git? Read **[IntelliJ + GitHub — beginner guide](labs/INTELLIJ-AND-GITHUB-BEGINNER-README.md)** — open projects, run Java, commit and push  
-4. Skim Week 1 **[IDE conventions](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)** — **IntelliJ IDEA Community** (primary) and **VS Code** (optional)  
-5. Complete **[Lab 0 — Development Environment Setup](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** on **your laptop** ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md))  
-6. Use the **[Lab Index](labs/LABS-INDEX.md)** for Labs 1–52  
+1. Read **[Clone the course repo · Commit in your own repo](labs/CLONE-AND-OWN-REPO-GUIDE.md)** — clone handouts once; commit/push only to **your** private `java-bootcamp`  
+2. Read **[Final Lab Environment Setup](labs/FINAL-SETUP-README.md)** — shared host, Postgres / Kafka / k3s / GHCR  
+3. Read **[Participant Setup README](labs/PARTICIPANT-SETUP-README.md)** — what you install on the laptop vs what the instructor provides  
+4. New to IDEs / Git? Read **[IntelliJ + GitHub — beginner guide](labs/INTELLIJ-AND-GITHUB-BEGINNER-README.md)** — open projects, run Java, commit and push  
+5. Skim Week 1 **[IDE conventions](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)** — **IntelliJ IDEA Community** (primary) and **VS Code** (optional)  
+6. Complete **[Lab 0 — Development Environment Setup](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** on **your laptop** ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md))  
+7. Use the **[Lab Index](labs/LABS-INDEX.md)** for Labs 1–52  
 
 **All labs run from your laptop.** Credentials and kubeconfigs are handed out by the instructor — they are **not** stored in this Git repository.
 
@@ -35,6 +36,7 @@ bc-sw-engineer-java-participant/
 ├── labs/                     ← Lab guides and setup docs (no solution/ folders)
 │   ├── FINAL-SETUP-README.md
 │   ├── PARTICIPANT-SETUP-README.md
+│   ├── CLONE-AND-OWN-REPO-GUIDE.md
 │   ├── SETUP-INSTRUCTIONS.md
 │   ├── TECHNOLOGY-STACK-GUIDE.md
 │   └── Week N - …/module-NN/
@@ -128,16 +130,19 @@ Reachability requires the **class IP allowlist** (or instructor VPN). Never comm
 
 ## Clone and navigate
 
+**Full walkthrough (two repos, first push, everyday commit):** **[labs/CLONE-AND-OWN-REPO-GUIDE.md](labs/CLONE-AND-OWN-REPO-GUIDE.md)**
+
 ```bash
 git clone https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant.git
 cd bc-sw-engineer-java-participant
 ```
 
-1. Open [`labs/FINAL-SETUP-README.md`](labs/FINAL-SETUP-README.md)  
-2. Read [`labs/_PARTICIPANT-FILE-GUIDE.md`](labs/_PARTICIPANT-FILE-GUIDE.md) once (which file when)  
-3. Complete Lab 0 ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md)) — includes Git identity  
-4. Work under `~/java-bootcamp` or `%USERPROFILE%\java-bootcamp`  
-5. For each later module: open `module-NN/README.md` (Week 1) → exercises → one OS how-to → `LAB-N-GUIDE.md`. **Lab 1 Step 0** creates your private `java-bootcamp` GitHub repo.
+1. Open [`labs/CLONE-AND-OWN-REPO-GUIDE.md`](labs/CLONE-AND-OWN-REPO-GUIDE.md) — handouts clone vs your private `java-bootcamp`  
+2. Open [`labs/FINAL-SETUP-README.md`](labs/FINAL-SETUP-README.md)  
+3. Read [`labs/_PARTICIPANT-FILE-GUIDE.md`](labs/_PARTICIPANT-FILE-GUIDE.md) once (which file when)  
+4. Complete Lab 0 ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md)) — includes Git identity  
+5. Work under `~/java-bootcamp` or `%USERPROFILE%\java-bootcamp`  
+6. For each later module: open `module-NN/README.md` (Week 1) → exercises → one OS how-to → `LAB-N-GUIDE.md`. **Lab 1 Step 0** creates your private `java-bootcamp` GitHub repo — then commit/push there after every exercise pack and lab.
 
 Do not treat `labs/.../solution/` as your working project unless a lab says otherwise.
 

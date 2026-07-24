@@ -1,6 +1,6 @@
 # Module 6 — Pre-Lab Exercises
 
-> **Start here for Module 6:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md)
+> **Start here for Module 6:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 6 — Streams and Functional Programming  
 **Source:** Module 6 slides: Lab Overview (Streams and Lambdas)  

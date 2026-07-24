@@ -2,7 +2,7 @@
 
 **Topic:** Streams and Functional Programming  
 
-Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md)
+Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md) · [Clone + own repo](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 ---
 

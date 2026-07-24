@@ -8,6 +8,7 @@ This README explains **the whole setup you need** to participate successfully: w
 
 | Related guide | Use it when you need… |
 | ------------- | --------------------- |
+| **[Clone + own repo](CLONE-AND-OWN-REPO-GUIDE.md)** | Clone course handouts; create/commit/push **your** private `java-bootcamp` |
 | **[Which file do I open?](_PARTICIPANT-FILE-GUIDE.md)** | Sequence per module — GUIDE vs WINDOWS vs exercises vs solution |
 | **[IntelliJ + GitHub — beginner guide](INTELLIJ-AND-GITHUB-BEGINNER-README.md)** | First time in IntelliJ: run Java, commit, and push to GitHub |
 | **[Final Lab Environment Setup](FINAL-SETUP-README.md)** | **Authoritative** final setup: shared host, Postgres / Kafka / k3s / GHCR |

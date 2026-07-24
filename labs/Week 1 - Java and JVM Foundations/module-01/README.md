@@ -3,7 +3,7 @@
 **Topic:** JVM Architecture and Runtime Model  
 **Do not open every file in this folder.** Follow this order only.
 
-Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md)
+Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md) · [Clone + own repo](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 ---
 

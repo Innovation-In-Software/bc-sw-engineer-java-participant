@@ -1,5 +1,7 @@
 # Week 5 - DevOps, CI-CD and OpenShift — Lab Guides
 
+**Clone handouts · commit in your own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../CLONE-AND-OWN-REPO-GUIDE.md)
+
 **Range:** lab40–lab47  
 **Theme:** AppSec, Docker, Kubernetes (**k3s** for this cohort), CI/CD, IaC, Kafka ops, communication  
 

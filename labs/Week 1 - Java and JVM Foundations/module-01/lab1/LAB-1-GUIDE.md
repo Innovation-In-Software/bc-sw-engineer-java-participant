@@ -362,6 +362,8 @@ Complete each step in order. Prefer the **IDE integrated terminal**. Opening the
 
 **Why:** Course handouts live in the instructor/participant clone. **Your** code under `java-bootcamp` (including the Module 1 exercises you already finished) needs its **own** private GitHub repo. Lab 0 only set Git identity; this is the first create + first commit for *your* workspace.
 
+**Clear participant walkthrough (clone handouts + own repo):** **[CLONE-AND-OWN-REPO-GUIDE.md](../../../CLONE-AND-OWN-REPO-GUIDE.md)**
+
 You keep **two** Git things separate:
 
 | Repo | What it is |

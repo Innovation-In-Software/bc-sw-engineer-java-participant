@@ -2,7 +2,7 @@
 
 **Topic:** Exception Handling and Error Management  
 
-Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md)
+Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md) · [Clone + own repo](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 ---
 

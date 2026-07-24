@@ -1,6 +1,6 @@
 # Module 7 — Pre-Lab Exercises
 
-> **Start here for Module 7:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md)
+> **Start here for Module 7:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 7 — Exception Handling and Error Management  
 **Source:** Module 7 slides: Lab Overview (Exception Handling)  

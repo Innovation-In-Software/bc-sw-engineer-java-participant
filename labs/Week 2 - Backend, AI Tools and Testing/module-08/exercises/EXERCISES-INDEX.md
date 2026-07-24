@@ -1,6 +1,6 @@
 # Module 8 — Pre-Lab Exercises
 
-> **Start here for Module 8:** [`../README.md`](../README.md)
+> **Start here for Module 8:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 8 — Java Project Structure and Modularization  
 **Next:** [`../lab8/LAB-8-WINDOWS.md`](../lab8/LAB-8-WINDOWS.md) or [`../lab8/LAB-8-MACOS.md`](../lab8/LAB-8-MACOS.md) → [`../lab8/LAB-8-GUIDE.md`](../lab8/LAB-8-GUIDE.md)
