@@ -131,9 +131,9 @@ Both methods produce 50,000 characters. Across repeated runs, `StringBuilder` sh
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Both output lengths equal `50000` | Pass / Fail |
-| 2 | You recorded three timing runs | Pass / Fail |
-| 3 | You can explain immutability and temporary allocation | Pass / Fail |
+| 1 | Both output lengths equal `50000` | Pass |
+| 2 | You recorded three timing runs | Pass |
+| 3 | You can explain immutability and temporary allocation | Pass |
 
 ---
 

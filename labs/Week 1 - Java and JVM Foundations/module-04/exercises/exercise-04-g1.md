@@ -97,6 +97,6 @@ The JVM starts successfully, prints `Using G1`, and the bounded allocation progr
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Log explicitly says `Using G1` | Pass / Fail |
-| 2 | Program still completes under the bounded heap | Pass / Fail |
-| 3 | You can explain why exact pause duration is not guaranteed | Pass / Fail |
+| 1 | Log explicitly says `Using G1` | Pass |
+| 2 | Program still completes under the bounded heap | Pass |
+| 3 | You can explain why exact pause duration is not guaranteed | Pass |

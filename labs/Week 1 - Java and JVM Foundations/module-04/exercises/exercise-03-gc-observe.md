@@ -134,6 +134,6 @@ The program reaches round 20, reports `262144000` allocated bytes over time, and
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Program completes under `-Xmx64m` | Pass / Fail |
-| 2 | You captured one GC event and one completion line | Pass / Fail |
-| 3 | You can explain “allocated over time” vs “simultaneously live” | Pass / Fail |
+| 1 | Program completes under `-Xmx64m` | Pass |
+| 2 | You captured one GC event and one completion line | Pass |
+| 3 | You can explain “allocated over time” vs “simultaneously live” | Pass |

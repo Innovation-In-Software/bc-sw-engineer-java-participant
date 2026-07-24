@@ -98,6 +98,6 @@ The JVM starts successfully, prints `Using The Z Garbage Collector`, and the bou
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Log explicitly says `Using The Z Garbage Collector` | Pass / Fail |
-| 2 | Program still completes under the bounded heap | Pass / Fail |
-| 3 | You can name one difference between the G1 and ZGC log output | Pass / Fail |
+| 1 | Log explicitly says `Using The Z Garbage Collector` | Pass |
+| 2 | Program still completes under the bounded heap | Pass |
+| 3 | You can name one difference between the G1 and ZGC log output | Pass |

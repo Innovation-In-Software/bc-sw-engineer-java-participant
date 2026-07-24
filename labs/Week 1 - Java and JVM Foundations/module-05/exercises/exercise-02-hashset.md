@@ -121,6 +121,6 @@ The set contains three unique categories; the duplicate add returns `false`; `Tr
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Duplicate add returns `false`; size remains `3` | Pass / Fail |
-| 2 | Sorted view is `[Databases, Java, Testing]` | Pass / Fail |
-| 3 | You do not rely on `HashSet` iteration order | Pass / Fail |
+| 1 | Duplicate add returns `false`; size remains `3` | Pass |
+| 2 | Sorted view is `[Databases, Java, Testing]` | Pass |
+| 3 | You do not rely on `HashSet` iteration order | Pass |

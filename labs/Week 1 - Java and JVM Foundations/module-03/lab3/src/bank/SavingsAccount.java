@@ -17,10 +17,11 @@ public class SavingsAccount extends Account implements Printable {
 
     @Override
     void displayAccount() {
-        System.out.println("Account Type: " + getAccountType());
+        System.out.println(getAccountType() + " Account");
         System.out.println("Account Number: " + getAccountNumber());
+        System.out.println("Customer : " + getCustomer().getName());
         System.out.println("Balance: " + getBalance());
-        System.out.println("Interest Rate: " + interestRate);
+        System.out.println("Interest Rate: " + interestRate + "%");
         System.out.println("Interest: " + calculateInterest());
     }
 

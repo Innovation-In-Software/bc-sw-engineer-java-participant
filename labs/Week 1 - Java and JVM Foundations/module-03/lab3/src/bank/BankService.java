@@ -25,17 +25,18 @@ public class BankService {
     }
 
     public void createCustomer() {
-        int id = -1;
+        String id = "";
         String name = "";
         String email = "";
         String phone = "";
         while (true) {
-            System.out.print("Enter Customer ID: ");
+            System.out.print("Customer ID: ");
             String input = scanner.nextLine().trim();
-            id = readPositiveInt(input);
-            if (id <= 0) {
+            if (input.isEmpty()) {
+                System.out.println("Invalid Customer ID. Try Again.");
                 continue;
             }
+            id = input;
             if (findCustomer(id)) {
                 System.out.println("Customer with that ID already exists. Try a different number.");
                 continue;
@@ -44,7 +45,7 @@ public class BankService {
         }
 
         while (true) {
-            System.out.print("Enter customer name: ");
+            System.out.print("Name: ");
             String input = scanner.nextLine().trim();
             if (input.isEmpty()) {
                 System.out.println("Invalid name. Try again.");
@@ -55,7 +56,7 @@ public class BankService {
         }
 
         while (true) {
-            System.out.print("Enter customer email: ");
+            System.out.print("Email: ");
             String input = scanner.nextLine().trim();
             if (input.isEmpty()) {
                 System.out.println("Invalid email. Try again.");
@@ -66,7 +67,7 @@ public class BankService {
         }
 
         while (true) {
-            System.out.print("Enter customer phone number: ");
+            System.out.print("Phone: ");
             String input = scanner.nextLine().trim();
             if (input.isEmpty()) {
                 System.out.println("Invalid phone number. Try again.");
@@ -84,12 +85,13 @@ public class BankService {
     public void createSavings() {
         Customer customer = null;
         while (true) {
-            System.out.print("Enter Customer ID to create Savings Account: ");
+            System.out.print("Customer ID: ");
             String input = scanner.nextLine().trim();
-            int id = readPositiveInt(input);
-            if (id <= 0) {
+            if (input.isEmpty()) {
+                System.out.println("Invalid Customer ID. Try again.");
                 continue;
             }
+            String id = input;
             customer = readExistingCustomer(id);
             if (customer == null) {
                 System.out.println("Customer could not be found. Try again.");
@@ -100,7 +102,7 @@ public class BankService {
         double balance = -1;
         double interestRate= -1;
         while (true) {
-            System.out.print("Customer found!\nEnter initial account balance: ");
+            System.out.print("Initial Balance: ");
             String input = scanner.nextLine().trim();
             balance = readPositiveDouble(input);
             if (balance < 0) {
@@ -110,11 +112,11 @@ public class BankService {
         }
 
         while (true) {
-            System.out.print("Enter interest rate: ");
+            System.out.print("Interest Rate (%): ");
             String input = scanner.nextLine().trim();
             interestRate = readPositiveDouble(input);
-            if (interestRate < 0 || interestRate > 1) {
-                System.out.println("Interest rate must be between 0-1. Try again.");
+            if (interestRate < 0 || interestRate > 100) {
+                System.out.println("Interest rate must be between 0-100. Try again.");
                 continue;
             }
             break;
@@ -125,18 +127,21 @@ public class BankService {
         accounts[accountCount++] = savings;
 
         System.out.println("...\nSavings Account Created.");
-        savings.displayAccount();
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: " + balance);
+        System.out.println("Interest Rate: " + interestRate + "%");
     }
 
     public void createCurrent() {
         Customer customer = null;
         while (true) {
-            System.out.print("Enter Customer ID to create an account: ");
+            System.out.print("Customer ID: ");
             String input = scanner.nextLine().trim();
-            int id = readPositiveInt(input);
-            if (id <= 0) {
+            if (input.isEmpty()) {
+                System.out.println("Invalid Customer ID. Try again.");
                 continue;
             }
+            String id = input;
             customer = readExistingCustomer(id);
             if (customer == null) {
                 System.out.println("Customer could not be found. Try again.");
@@ -147,7 +152,7 @@ public class BankService {
         double balance = -1;
         double fee= -1;
         while (true) {
-            System.out.print("Customer found!\nEnter initial account balance: ");
+            System.out.print("Initial Balance: ");
             String input = scanner.nextLine().trim();
             balance = readPositiveDouble(input);
             if (balance < 0) {
@@ -157,7 +162,7 @@ public class BankService {
         }
 
         while (true) {
-            System.out.print("Enter transaction fee: ");
+            System.out.print("Transaction Fee: ");
             String input = scanner.nextLine().trim();
             fee = readPositiveDouble(input);
             if (fee <= 0) {
@@ -177,7 +182,7 @@ public class BankService {
     public void deposit() {
         Account account = null;
         while (true) {
-            System.out.print("Enter account number to deposit: ");
+            System.out.print("Account Number: ");
             String input = scanner.nextLine().trim();
             if (input.isEmpty()) {
                 System.out.println("Invalid account number. Try again.");
@@ -194,7 +199,7 @@ public class BankService {
 
         double amount = -1;
         while (true) {
-            System.out.print("Enter amount to be deposited: ");
+            System.out.print("Deposit Amount: ");
             String input = scanner.nextLine().trim();
             amount = readPositiveDouble(input);
             if (amount <= 0) {
@@ -204,13 +209,13 @@ public class BankService {
             break;
         }
         account.deposit(amount);
-        System.out.println("...\nDeposit Complete.\nBalance Updated : " + account.getBalance());
+        System.out.println("Balance Updated : " + account.getBalance());
     }
 
     public void withdraw() {
         Account account = null;
         while (true) {
-            System.out.print("Enter account number to withdraw: ");
+            System.out.print("Account Number: ");
             String input = scanner.nextLine().trim();
             if (input.isEmpty()) {
                 System.out.println("Invalid account number. Try again.");
@@ -226,7 +231,7 @@ public class BankService {
 
         double amount = -1;
         while (true) {
-            System.out.print("Enter amount to be withdrawn: ");
+            System.out.print("Withdraw: ");
             String input = scanner.nextLine().trim();
             amount = readPositiveDouble(input);
             if (amount <= 0 || amount + account.calculateCharges() > account.getBalance()) {
@@ -236,7 +241,6 @@ public class BankService {
             break;
         }
         account.withdraw(amount);
-        System.out.println("...\nWithdraw complete.");
         if (account.getAccountType().equals("Current")) {
             System.out.println("Transaction Fee : " + account.calculateCharges());
         }
@@ -246,25 +250,22 @@ public class BankService {
 
     public void displayAccounts() {
         for (int i = 0; i < accountCount; i++) {
-            System.out.println("----------------------------------");
             accounts[i].displayAccount();
         }
-        System.out.println("----------------------------------");
     }
 
     public void displayCustomers() {
+        System.out.println();
         for (int i = 0; i < customerCount; i++) {
-            System.out.println("----------------------------------");
             customers[i].printDetails();
         }
-        System.out.println("----------------------------------");
     }
 
     // Returns true if customer with id is found,
     // false otherwise
-    private boolean findCustomer(int id) {
+    private boolean findCustomer(String id) {
         for (int i = 0; i < customerCount; i++) {
-            if (id == customers[i].getCustomerId()) {
+            if (customers[i].getCustomerId().equals(id)) {
                 return true;
             }
         }
@@ -309,9 +310,9 @@ public class BankService {
         return id;
     }
 
-    private Customer readExistingCustomer(int id) {
+    private Customer readExistingCustomer(String id) {
         for (Customer c : customers) {
-            if (c.getCustomerId() == id) {
+            if (c.getCustomerId().equals(id)) {
                 return c;
             }
         }

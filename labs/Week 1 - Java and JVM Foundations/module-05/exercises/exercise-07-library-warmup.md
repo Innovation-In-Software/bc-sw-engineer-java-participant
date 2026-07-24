@@ -161,10 +161,10 @@ First checkout succeeds, the same member’s second checkout fails, and the titl
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | First checkout is `true`; duplicate member checkout is `false` | Pass / Fail |
-| 2 | Final list and map match verified output | Pass / Fail |
-| 3 | Unavailable-title test leaves state unchanged | Pass / Fail |
-| 4 | You can state the checkout invariant | Pass / Fail |
+| 1 | First checkout is `true`; duplicate member checkout is `false` | Pass |
+| 2 | Final list and map match verified output | Pass |
+| 3 | Unavailable-title test leaves state unchanged | Pass |
+| 4 | You can state the checkout invariant | Pass |
 
 ---
 

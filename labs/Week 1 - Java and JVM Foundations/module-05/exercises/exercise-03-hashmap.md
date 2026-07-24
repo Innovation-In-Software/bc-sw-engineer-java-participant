@@ -125,7 +125,7 @@ The Java count updates to `5`, the clean-code key is removed, and the sorted sna
 ## Pass criteria
 
 | # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Java count changes from `3` to `5` | Pass / Fail |
-| 2 | Missing ISBN safely reports `0` | Pass / Fail |
-| 3 | You can explain key uniqueness and unspecified order | Pass / Fail |
+| - | ------- | ---- |
+| 1 | Java count changes from `3` to `5` | Pass |
+| 2 | Missing ISBN safely reports `0` | Pass |
+| 3 | You can explain key uniqueness and unspecified order | Pass |

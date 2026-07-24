@@ -145,7 +145,7 @@ The list reaches exactly 10,000 entries, memory usage rises approximately, and c
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Program safely retains exactly 10,000 objects | Pass / Fail |
-| 2 | You trace the static-field retaining path | Pass / Fail |
-| 3 | You explain why GC cannot free reachable objects | Pass / Fail |
-| 4 | You name at least one bounded-cache fix | Pass / Fail |
+| 1 | Program safely retains exactly 10,000 objects | Pass |
+| 2 | You trace the static-field retaining path | Pass |
+| 3 | You explain why GC cannot free reachable objects | Pass |
+| 4 | You name at least one bounded-cache fix | Pass |

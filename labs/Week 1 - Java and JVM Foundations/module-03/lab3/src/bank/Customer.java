@@ -1,20 +1,20 @@
 package bank;
 
 public class Customer implements Printable {
-    private int customerId;
+    private String customerId;
     private String name;
     private String email;
     private String phone;
 
-    public Customer(int customerId, String name, String email, String phone) {
+    public Customer(String customerId, String name, String email, String phone) {
         this.customerId = customerId;
         this.name = name;
         this.email = email;
         this.phone = phone;
     }
 
-    public int getCustomerId() { return this.customerId; }
-    public void setCustomerId(int customerId) { this.customerId = customerId; }
+    public String getCustomerId() { return this.customerId; }
+    public void setCustomerId(String customerId) { this.customerId = customerId; }
 
     public String getName() { return this.name; }
     public void setName(String name) { this.name = name; }

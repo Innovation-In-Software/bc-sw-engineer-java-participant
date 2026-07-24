@@ -79,6 +79,6 @@ Six choices match the domain requirement, and every explanation mentions the rel
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | All six scenarios have interface + implementation | Pass / Fail |
-| 2 | Choices account for order, uniqueness, or key lookup | Pass / Fail |
-| 3 | You can explain when linked or sorted variants matter | Pass / Fail |
+| 1 | All six scenarios have interface + implementation | Pass |
+| 2 | Choices account for order, uniqueness, or key lookup | Pass |
+| 3 | You can explain when linked or sorted variants matter | Pass |

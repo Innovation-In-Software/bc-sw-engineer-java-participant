@@ -11,13 +11,14 @@ class CurrentAccount extends Account implements Printable {
     @Override
     public boolean withdraw(double amount) {
         // Reuse Account validation and balance update.
-        return super.withdraw(amount + transactionFee);
+        return super.withdraw(amount);
     }
 
     @Override
     void displayAccount() {
-        System.out.println("Account Type: " + getAccountType());
+        System.out.println(getAccountType() + " Account");
         System.out.println("Account Number: " + getAccountNumber());
+        System.out.println("Customer: " + getCustomer().getName());
         System.out.println("Balance: " + getBalance());
         System.out.println("Transaction Fee: " + transactionFee);
     }
