@@ -3,6 +3,8 @@
 **Range:** lab0–lab7  
 **Theme:** JVM, syntax, OOP, memory, collections, streams, exceptions  
 
+**Beginner-first manual:** [WEEK-1-BEGINNER-HANDS-ON-MANUAL.md](WEEK-1-BEGINNER-HANDS-ON-MANUAL.md) expands every lab and exercise with exact beginner steps, complete exercise solution code references, commands, expected outputs, checkpoints, common mistakes, and troubleshooting.
+
 **Confused which file to open?** Start with **[Clone + own repo](../CLONE-AND-OWN-REPO-GUIDE.md)** · **[Which file do I open?](../_PARTICIPANT-FILE-GUIDE.md)** — then open each module’s **`README.md`**.
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code  

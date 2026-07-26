@@ -1,5 +1,7 @@
 # Week 1 — Pre-Lab Exercises (by module)
 
+**New to Java?** Use the [Week 1 Beginner Hands-On Manual](WEEK-1-BEGINNER-HANDS-ON-MANUAL.md) for detailed numbered steps, complete code references, commands, expected outputs, checkpoints, mistakes, and troubleshooting for every exercise.
+
 **Rule:** After the module **slides**, open that module’s **`README.md`**, then **`exercises/EXERCISES-INDEX.md`**, then the lab.  
 See also: [Which file do I open?](../_PARTICIPANT-FILE-GUIDE.md) · [Clone + own repo](../CLONE-AND-OWN-REPO-GUIDE.md)
 
