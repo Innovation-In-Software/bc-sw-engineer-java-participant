@@ -106,7 +106,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-22\lab22"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab22-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab22-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab22-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -118,7 +118,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-22/lab22"
 mkdir -p "$HOME/java-bootcamp/examples/lab22-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab22-crm/"
 cd "$HOME/java-bootcamp/examples/lab22-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -126,7 +126,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -138,6 +138,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
@@ -372,7 +373,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-23\lab23"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab23-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab23-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab23-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -384,7 +385,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-23/lab23"
 mkdir -p "$HOME/java-bootcamp/examples/lab23-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab23-crm/"
 cd "$HOME/java-bootcamp/examples/lab23-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -392,7 +393,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -404,6 +405,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
@@ -625,7 +627,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-24\lab24"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab24-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab24-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab24-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -637,7 +639,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-24/lab24"
 mkdir -p "$HOME/java-bootcamp/examples/lab24-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab24-crm/"
 cd "$HOME/java-bootcamp/examples/lab24-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -645,7 +647,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -657,6 +659,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
@@ -890,7 +893,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-25\lab25"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab25-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab25-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab25-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -902,7 +905,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-25/lab25"
 mkdir -p "$HOME/java-bootcamp/examples/lab25-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab25-crm/"
 cd "$HOME/java-bootcamp/examples/lab25-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -910,7 +913,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -922,6 +925,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
@@ -1146,7 +1150,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-26\lab26"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab26-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab26-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab26-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -1158,7 +1162,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-26/lab26"
 mkdir -p "$HOME/java-bootcamp/examples/lab26-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab26-crm/"
 cd "$HOME/java-bootcamp/examples/lab26-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -1166,7 +1170,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -1178,6 +1182,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
@@ -1407,7 +1412,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-27\lab27"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab27-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab27-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab27-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -1419,7 +1424,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-27/lab27"
 mkdir -p "$HOME/java-bootcamp/examples/lab27-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab27-crm/"
 cd "$HOME/java-bootcamp/examples/lab27-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -1427,7 +1432,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -1439,6 +1444,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
@@ -1674,7 +1680,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-28\lab28"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab28-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab28-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab28-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -1686,7 +1692,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-28/lab28"
 mkdir -p "$HOME/java-bootcamp/examples/lab28-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab28-crm/"
 cd "$HOME/java-bootcamp/examples/lab28-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -1694,7 +1700,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -1706,6 +1712,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
@@ -1937,7 +1944,7 @@ cd "labs\Week 3 - Spring Framework and Enterprise Patterns\module-29\lab29"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab29-crm" | Out-Null
 Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab29-crm\"
 cd "$env:USERPROFILE\java-bootcamp\examples\lab29-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 macOS or Linux terminal:
@@ -1949,7 +1956,7 @@ cd "labs/Week 3 - Spring Framework and Enterprise Patterns/module-29/lab29"
 mkdir -p "$HOME/java-bootcamp/examples/lab29-crm"
 cp -R starter/. "$HOME/java-bootcamp/examples/lab29-crm/"
 cd "$HOME/java-bootcamp/examples/lab29-crm"
-mvn -B test
+mvn -B -DskipTests package
 ```
 
 What the commands do:
@@ -1957,7 +1964,7 @@ What the commands do:
 - `cd` changes the folder where commands run.
 - `New-Item` or `mkdir -p` creates the learner project folder if it does not already exist.
 - `Copy-Item` or `cp -R` copies the starter files into the learner's own workspace.
-- `mvn -B test` asks Maven to compile the project and run tests in non-interactive mode.
+- `mvn -B -DskipTests package` asks Maven to compile and package the starter without running TODO tests yet.
 
 Expected command output:
 
@@ -1969,6 +1976,7 @@ How to verify success:
 
 - The terminal prompt returns without an error.
 - Maven shows `BUILD SUCCESS`.
+- Some labs include TODO tests that fail until you complete the lab. You will run `mvn -B test` after the TODOs are finished.
 - A `target` folder may appear. This is generated build output and should not be committed.
 
 #### Step 2: Open the project in your editor
