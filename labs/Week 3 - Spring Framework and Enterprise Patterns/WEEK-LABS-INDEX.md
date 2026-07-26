@@ -5,6 +5,9 @@
 **Range:** lab22–lab29  
 **Theme:** Spring IoC, Boot, WS, layers, profiles, transactions, security, validation
 
+**Recommended first stop:** [Week 3 Beginner Hands-On Lab Manual](WEEK-3-BEGINNER-LAB-MANUAL.md)  
+Use this expanded manual when learners need fully sequential instructions, expected outputs, checkpoints, common mistakes, and troubleshooting.
+
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code  
 **OS guides:** each `module-NN/labN/` has `LAB-N-WINDOWS.md` and `LAB-N-MACOS.md`.
 
