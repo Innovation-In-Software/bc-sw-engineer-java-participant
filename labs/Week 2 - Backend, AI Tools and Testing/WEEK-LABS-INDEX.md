@@ -5,6 +5,8 @@
 **Range:** lab8–lab21  
 **Theme:** Maven, Copilot, SOAP/services, testing, logging, observability
 
+**Beginner-first manual:** [WEEK-2-BEGINNER-LAB-MANUAL.md](WEEK-2-BEGINNER-LAB-MANUAL.md) reviews Lab 8 through Lab 21 plus Module 8 exercises with clearer objectives, exact learner actions, commands, expected outputs, checkpoints, common mistakes, troubleshooting, and continuity between labs.
+
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code  
 **OS guides:** each `module-NN/labN/` has `LAB-N-WINDOWS.md` and `LAB-N-MACOS.md`.
 
