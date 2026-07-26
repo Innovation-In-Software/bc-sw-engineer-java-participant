@@ -21,8 +21,9 @@ Paths and compile/run: [`_IDE-CONVENTIONS.md`](_IDE-CONVENTIONS.md).
 2. After slides → **`exercises/EXERCISES-INDEX.md`**  
 3. Pick **one** OS how-to → **`LAB-N-WINDOWS.md`** *or* **`LAB-N-MACOS.md`**  
 4. **In class (~45 min):** `labN/starter/README.md` → copy templates → fill TODOs → smoke test ([`_STARTER-PATH.md`](../_STARTER-PATH.md))  
-5. **Homework / depth:** every Step in **`LAB-N-GUIDE.md`**  
-6. Skip `INSTRUCTOR-DEMO.md` and `solution/` unless told
+5. **Kahoot (Modules 1–7):** instructor-led quiz after the lab checkpoint; join at [kahoot.it](https://kahoot.it)  
+6. **Homework / depth:** every Step in **`LAB-N-GUIDE.md`**  
+7. Skip `INSTRUCTOR-DEMO.md` and `solution/` unless told
 
 **Lab 0:** start with the [45-minute checklist](module-00/lab0/starter/README.md), then the OS how-to ([Windows](module-00/lab0/LAB-0-WINDOWS.md) · [macOS](module-00/lab0/LAB-0-MACOS.md)).
 

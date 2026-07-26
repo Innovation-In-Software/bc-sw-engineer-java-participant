@@ -13,6 +13,8 @@ For Week 1 Modules 1–7, also open **`module-NN/README.md`** first (Start here)
 
 Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculum/) with the **same week and `module-NN` names**.
 
+**Kahoot knowledge checks (Modules 1–39 / Weeks 1–4):** instructors import Excel banks from the authoring `curriculum/Week N …/kahoot/` folders; participants join with the classroom PIN at [kahoot.it](https://kahoot.it). Index: [`../curriculum/CURRICULUM-INDEX.md`](../curriculum/CURRICULUM-INDEX.md#kahoot-quizzes).
+
 ## How to use these labs
 
 1. Start from **[PARTICIPANT-SETUP-README.md](PARTICIPANT-SETUP-README.md)** and **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md)** (or macOS) — prefer the [Lab 0 starter checklist](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/starter/README.md) for the 45-minute block.

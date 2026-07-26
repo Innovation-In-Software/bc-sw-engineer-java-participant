@@ -47,6 +47,10 @@ bc-sw-engineer-java-participant/
 
 **No `solution/` folders** are published here. Complete each lab yourself. Slide PDFs are under [`slides/`](slides/). Editable PPTX decks and instructor notes are provided separately by your instructor.
 
+### Kahoot knowledge checks
+
+Your instructor runs a **Kahoot** after many module labs (Modules **1–39**, Weeks 1–4). Join with the on-screen PIN at [kahoot.it](https://kahoot.it). Quiz Excel files are instructor-only and are not in this participant repo.
+
 ---
 
 ## Program overview
