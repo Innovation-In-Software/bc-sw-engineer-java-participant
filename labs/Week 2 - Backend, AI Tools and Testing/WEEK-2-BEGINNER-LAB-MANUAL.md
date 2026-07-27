@@ -2,7 +2,7 @@
 
 **Audience:** learners who completed Week 1 and are moving into backend project structure, Maven, AI-assisted coding, SOAP contracts, testing, logging, and observability.
 
-**Review scope:** Lab 8 through Lab 21, the Module 8 pre-lab exercises, every Week 2 lab guide, every Week 2 starter README, and related starter docs/configuration/code assets.
+**Review scope:** Lab 8 through Lab 21, the Module 8 and Module 9 pre-lab exercises, every Week 2 lab guide, every Week 2 starter README, and related starter docs/configuration/code assets.
 
 ## Lab Objective
 
@@ -223,6 +223,60 @@ Before continuing, confirm:
 
 Lab 8 adds a clean Maven-style Northstar CRM skeleton with layered packages and plain Java stubs. The learner should now be ready for the next lab in the Week 2 CRM sequence.
 
+## Module 9 Pre-Lab Exercises
+
+### Lab Objective
+
+These six exercises prepare learners for Lab 9 by introducing POM coordinates, dependency scopes, lifecycle phases, a mini Maven build, profiles, and dependency-tree / CI verify habits.
+
+### Step-by-Step Instructions
+
+1. Open `module-09/exercises/EXERCISES-INDEX.md`.
+2. Create `%USERPROFILE%\java-bootcamp\examples\module-09-exercises` on Windows or `~/java-bootcamp/examples/module-09-exercises` on macOS.
+3. Complete exercises 1 through 6 in order.
+4. Keep Exercise 4 under `mini-maven/` and run `mvn -q test` then `mvn -q package` from that folder.
+5. Do not write Spring Boot apps, JPA entities, Kafka clients, or React UI in these exercises.
+
+### Exercise Overview
+
+| Exercise | What learner completes | Verification |
+| -------- | ---------------------- | ------------ |
+| `exercise-01-pom-coordinates.md` | Exercise 1 — Read POM Coordinates: Create `pom-coordinates-notes.md` and explain GAV + packaging. | Five coordinate answers match; SNAPSHOT meaning is clear. |
+| `exercise-02-dependency-scopes.md` | Exercise 2 — Choose Dependency Scopes: Assign `compile` / `test` / `runtime` / `provided`. | JUnit is `test`; wrong default-scope case is explained. |
+| `exercise-03-lifecycle.md` | Exercise 3 — Walk the Maven Lifecycle: Map intents to phases from validate through install. | Order is correct; CI `mvn -B verify` habit is stated. |
+| `exercise-04-mini-pom.md` | Exercise 4 — Fill a Mini POM: TODO starter builds `build-demo.jar` with one JUnit test. | `mvn test` / `package` succeed; jar prints the banner. |
+| `exercise-05-profiles.md` | Exercise 5 — Activate Build Profiles: Explain `dev` default vs `-Pprod`. | Activation answers match; secrets stay out of POM. |
+| `exercise-06-dependency-tree.md` | Exercise 6 — Read a Dependency Tree: Direct vs transitive; document `mvn -B verify`. | Tree notes include `:test` JUnit and CI verify sentence. |
+
+### Commands
+
+Run from `java-bootcamp/examples/module-09-exercises/mini-maven`:
+
+```powershell
+mvn -q test
+mvn -q package
+java -jar target\build-demo.jar
+```
+
+Expected output: one green test; console prints `BuildDemo ready for Lab 9`.
+
+### Checkpoint
+
+- Exercise 1 states the Northstar GAV correctly.
+- Exercise 2 keeps JUnit on `test` scope.
+- Exercise 3 orders validate → compile → test → package → verify → install.
+- Exercise 4 packages and runs `build-demo.jar`.
+- Exercise 5 keeps `dev` as the laptop default.
+- Exercise 6 documents `mvn -B verify` before Lab 9.
+
+### Common Mistakes and Troubleshooting
+
+| Problem | Likely Cause | Fix |
+| ------- | ------------ | --- |
+| Exercise 4 fails on JUnit | Missing `<scope>test</scope>` or test file in wrong folder | Put test under `src/test/java` and set scope `test` |
+| No main manifest attribute | Blank `mainClass` | Set `com.northstar.crm.BuildDemo` |
+| Later tech in answers | Learner jumped ahead | Remove Boot/JPA/Kafka/React; Module 9 is build reasoning |
+
 ## Lab 9: Maven Build and Dependencies — Northstar CRM Build Lab
 
 ### Lab Objective
@@ -237,9 +291,11 @@ In this lab, the learner completes Maven lifecycle, dependencies, scopes, plugin
 
 ### Prerequisites
 
-- Complete Lab 8 before starting Lab 9.
+- Complete Lab 8 and the Module 9 pre-lab exercises before starting Lab 9.
 - Confirm `java -version` shows 21.x.
 - Confirm `mvn -version` works.
+- Read `labs/Week 2 - Backend, AI Tools and Testing/module-09/README.md`.
+- Read `labs/Week 2 - Backend, AI Tools and Testing/module-09/exercises/EXERCISES-INDEX.md`.
 - Read `labs/Week 2 - Backend, AI Tools and Testing/module-09/lab9/LAB-9-GUIDE.md`.
 - Read `labs/Week 2 - Backend, AI Tools and Testing/module-09/lab9/starter/README.md`.
 
@@ -1862,7 +1918,7 @@ Lab 21 adds Actuator health probes, readiness, liveness, and Micrometer metrics.
 ## Final Quality Check
 
 - Lab 8 through Lab 21 have been reviewed.
-- Module 8 exercises are included.
+- Module 8 and Module 9 exercises are included.
 - Commands include where to run them and how to verify success.
 - Expected outputs are stated without inventing unrealistic values.
 - Common beginner errors are called out for each lab.

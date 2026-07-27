@@ -12,7 +12,7 @@
 | Windows | [LAB-9-WINDOWS.md](LAB-9-WINDOWS.md) |
 | macOS | [LAB-9-MACOS.md](LAB-9-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`). Complete the [Module 9 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -192,8 +192,9 @@ flowchart TD
 
 ## Prerequisites
 
-Complete the [Labs Setup Instructions](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and [Lab 8](../../module-08/lab8/LAB-8-GUIDE.md) before this lab. Confirm:
+Complete the [Labs Setup Instructions](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), [Module 9 pre-lab exercises](../exercises/EXERCISES-INDEX.md), and [Lab 8](../../module-08/lab8/LAB-8-GUIDE.md) before this lab. Confirm:
 
+* Module 9 exercises 1–6 complete (mini POM builds under `examples/module-09-exercises/mini-maven`)
 * Lab 8 skeleton (`lab8-crm/`) with packages `controller/service/repository/entity/dto/config/exception`
 * **JDK 21**; **Maven 3.9+**; Git; internet access for Maven Central
 * IntelliJ IDEA Community (primary; optional VS Code) with `~/java-bootcamp` open

@@ -5,7 +5,7 @@
 **Range:** lab8–lab21  
 **Theme:** Maven, Copilot, SOAP/services, testing, logging, observability
 
-**Beginner-first manual:** [WEEK-2-BEGINNER-LAB-MANUAL.md](WEEK-2-BEGINNER-LAB-MANUAL.md) reviews Lab 8 through Lab 21 plus Module 8 exercises with clearer objectives, exact learner actions, commands, expected outputs, checkpoints, common mistakes, troubleshooting, and continuity between labs.
+**Beginner-first manual:** [WEEK-2-BEGINNER-LAB-MANUAL.md](WEEK-2-BEGINNER-LAB-MANUAL.md) reviews Lab 8 through Lab 21 plus Module 8–9 exercises with clearer objectives, exact learner actions, commands, expected outputs, checkpoints, common mistakes, troubleshooting, and continuity between labs.
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code  
 **OS guides:** each `module-NN/labN/` has `LAB-N-WINDOWS.md` and `LAB-N-MACOS.md`.
@@ -19,7 +19,7 @@ Parent index: [labs/LABS-INDEX.md](../LABS-INDEX.md) · Setup: [SETUP-INSTRUCTIO
 | Lab | Guide |
 | --- | ----- |
 | [lab8](module-08/README.md) | [Start](module-08/README.md) · [Exercises](module-08/exercises/EXERCISES-INDEX.md) · [Lab guide](module-08/lab8/LAB-8-GUIDE.md) |
-| [lab9](module-09/lab9/LAB-9-GUIDE.md) | [Open guide](module-09/lab9/LAB-9-GUIDE.md) |
+| [lab9](module-09/README.md) | [Start](module-09/README.md) · [Exercises](module-09/exercises/EXERCISES-INDEX.md) · [Lab guide](module-09/lab9/LAB-9-GUIDE.md) |
 | [lab10](module-10/lab10/LAB-10-GUIDE.md) | [Open guide](module-10/lab10/LAB-10-GUIDE.md) |
 | [lab11](module-11/lab11/LAB-11-GUIDE.md) | [Open guide](module-11/lab11/LAB-11-GUIDE.md) |
 | [lab12](module-12/lab12/LAB-12-GUIDE.md) | [Open guide](module-12/lab12/LAB-12-GUIDE.md) |

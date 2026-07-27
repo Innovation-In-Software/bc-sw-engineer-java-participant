@@ -9,6 +9,7 @@ For Week 1 Modules 1–7, also open **`module-NN/README.md`** first (Start here)
 - **Lab 0** — pre-course environment setup (`module-00/lab0`) — **timed path:** [`starter/README.md`](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/starter/README.md); full install: **OS how-to** (`LAB-0-WINDOWS.md` or `LAB-0-MACOS.md`)
 - **Labs 1–52** — one lab per module under `module-NN/labN`, **grouped by week** — in class use **`labN/starter/`** (~45 min); see **[_STARTER-PATH.md](_STARTER-PATH.md)**
 - **Week 1 exercises** — `module-01`…`07/exercises/` (after slides, before the lab)
+- **Week 2 exercises (Modules 8–9)** — `module-08`…`09/exercises/` (after slides, before the lab)
 - **Capstone 48–52** — starters are a **session block**; multi-day build/defense stays on the full GUIDE path
 
 Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculum/) with the **same week and `module-NN` names**.
@@ -19,7 +20,7 @@ Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculu
 
 1. Start from **[PARTICIPANT-SETUP-README.md](PARTICIPANT-SETUP-README.md)** and **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md)** (or macOS) — prefer the [Lab 0 starter checklist](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/starter/README.md) for the 45-minute block.
 2. Read **[_PARTICIPANT-FILE-GUIDE.md](_PARTICIPANT-FILE-GUIDE.md)** and **[_STARTER-PATH.md](_STARTER-PATH.md)** once so you know GUIDE vs WINDOWS vs starter timed path.
-3. For each later module: open **`module-NN/README.md`** (Week 1) → exercises (if any) → **one** OS how-to → **`starter/README.md`** (in class) → **`LAB-N-GUIDE.md`** (full path / homework).
+3. For each later module: open **`module-NN/README.md`** (Week 1; also Modules 8–9) → exercises (if any) → **one** OS how-to → **`starter/README.md`** (in class) → **`LAB-N-GUIDE.md`** (full path / homework).
 4. Follow **How to follow this lab** at the top of each GUIDE: timed path first in class, then Step → Expected → next step on the full path.
 5. Mark **Pass criteria** tables in your own notes (**Pass** / **Fail**). GitHub file view cannot tick checkboxes.
 6. Keep code under `~/java-bootcamp/examples/` (Windows: `%USERPROFILE%\java-bootcamp\examples`). Capture evidence under workspace-root `notes/screenshots/` (Lab 0) or `notes/screenshots/lab-N/` (Labs 1–52). Do not create a top-level `labs/` folder inside `java-bootcamp`.
@@ -93,22 +94,22 @@ labs/
 
 ### Week 2 — Backend, AI Tools and Testing
 
-| Lab | Module | Module Title | Lab Title |
-| --- | ------ | ------------ | --------- |
-| [lab8](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-08/lab8/LAB-8-GUIDE.md) | 8 | Java Project Structure and Modularization | Project Structure and Organization |
-| [lab9](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-09/lab9/LAB-9-GUIDE.md) | 9 | Build and Dependency Management with Maven | Maven Build and Dependencies |
-| [lab10](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-10/lab10/LAB-10-GUIDE.md) | 10 | GitHub Copilot Fundamentals for Java Developers | AI-Assisted Code Generation |
-| [lab11](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-11/lab11/LAB-11-GUIDE.md) | 11 | GitHub Copilot for Testing and Refactoring | AI-Assisted Test Generation |
-| [lab12](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-12/lab12/LAB-12-GUIDE.md) | 12 | Java Coding Standards and Best Practices | Coding Standards and Refactoring |
-| [lab13](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-13/lab13/LAB-13-GUIDE.md) | 13 | SOAP API Design with Java | SOAP API Design |
-| [lab14](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-14/lab14/LAB-14-GUIDE.md) | 14 | DTOs, Validation and API Contracts | DTOs and Validation |
-| [lab15](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-15/lab15/LAB-15-GUIDE.md) | 15 | Business Logic and Service Layer Design | Service Layer Design |
-| [lab16](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-16/lab16/LAB-16-GUIDE.md) | 16 | Exception Handling in Distributed APIs | API Exception Handling |
-| [lab17](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-17/lab17/LAB-17-GUIDE.md) | 17 | JUnit Testing Fundamentals | JUnit Testing with AI Assistance |
-| [lab18](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-18/lab18/LAB-18-GUIDE.md) | 18 | Mockito for Test Isolation | Mockito and Mocking with AI Assistance |
-| [lab19](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-19/lab19/LAB-19-GUIDE.md) | 19 | Integration Testing and UI Test Automation | Integration and UI Testing with Selenium |
-| [lab20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/lab20/LAB-20-GUIDE.md) | 20 | Logging Frameworks and Diagnostics | Structured Logging |
-| [lab21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/lab21/LAB-21-GUIDE.md) | 21 | API Observability and Monitoring | Observability and Monitoring |
+| Lab | Module | Module Title | Pre-lab exercises | Lab Title |
+| --- | ------ | ------------ | ----------------- | --------- |
+| [lab8](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-08/README.md) | 8 | Java Project Structure and Modularization | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-08/exercises/) | Project Structure and Organization |
+| [lab9](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-09/README.md) | 9 | Build and Dependency Management with Maven | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-09/exercises/) | Maven Build and Dependencies |
+| [lab10](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-10/lab10/LAB-10-GUIDE.md) | 10 | GitHub Copilot Fundamentals for Java Developers | — | AI-Assisted Code Generation |
+| [lab11](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-11/lab11/LAB-11-GUIDE.md) | 11 | GitHub Copilot for Testing and Refactoring | — | AI-Assisted Test Generation |
+| [lab12](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-12/lab12/LAB-12-GUIDE.md) | 12 | Java Coding Standards and Best Practices | — | Coding Standards and Refactoring |
+| [lab13](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-13/lab13/LAB-13-GUIDE.md) | 13 | SOAP API Design with Java | — | SOAP API Design |
+| [lab14](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-14/lab14/LAB-14-GUIDE.md) | 14 | DTOs, Validation and API Contracts | — | DTOs and Validation |
+| [lab15](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-15/lab15/LAB-15-GUIDE.md) | 15 | Business Logic and Service Layer Design | — | Service Layer Design |
+| [lab16](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-16/lab16/LAB-16-GUIDE.md) | 16 | Exception Handling in Distributed APIs | — | API Exception Handling |
+| [lab17](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-17/lab17/LAB-17-GUIDE.md) | 17 | JUnit Testing Fundamentals | — | JUnit Testing with AI Assistance |
+| [lab18](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-18/lab18/LAB-18-GUIDE.md) | 18 | Mockito for Test Isolation | — | Mockito and Mocking with AI Assistance |
+| [lab19](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-19/lab19/LAB-19-GUIDE.md) | 19 | Integration Testing and UI Test Automation | — | Integration and UI Testing with Selenium |
+| [lab20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/lab20/LAB-20-GUIDE.md) | 20 | Logging Frameworks and Diagnostics | — | Structured Logging |
+| [lab21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/lab21/LAB-21-GUIDE.md) | 21 | API Observability and Monitoring | — | Observability and Monitoring |
 
 ### Week 3 — Spring Framework and Enterprise Patterns
 
