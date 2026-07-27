@@ -42,10 +42,10 @@ bc-sw-engineer-java-participant/
 │   └── Week N - …/module-NN/
 │       ├── exercises/        ← Week 1 pre-lab practice (when present)
 │       └── labN/             ← Lab guide + Windows/macOS how-tos
-└── slides/                   ← Student-facing module slide PDFs
+└── decks/pdf/                ← Student-facing module slide PDFs
 ```
 
-**No `solution/` folders** are published here. Complete each lab yourself. Slide PDFs are under [`slides/`](slides/). Editable PPTX decks and instructor notes are provided separately by your instructor.
+**No `solution/` folders** are published here. Complete each lab yourself. Slide PDFs are under [`decks/pdf/`](decks/pdf/). Editable PPTX decks and instructor notes are provided separately by your instructor.
 
 ### Kahoot knowledge checks
 
