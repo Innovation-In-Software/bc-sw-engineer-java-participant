@@ -45,6 +45,18 @@ This document is the **capstone master document** for Modules 48–52 and Labs 4
 | Release | 51 | [Lab 51](module-51/lab51/LAB-51-GUIDE.md) | Security, pipeline, containers, k3s deploy |
 | Defend | 52 | [Lab 52](module-52/lab52/LAB-52-GUIDE.md) | Live demo, Q&A, retrospective, rubric score |
 
+### Pre-lab exercises (Modules 48–52)
+
+Complete each module’s warm-up exercises after the slides and before the lab:
+
+| Module | Start | Exercises | Lab |
+| ------ | ----- | --------- | --- |
+| 48 | [README](module-48/README.md) | [exercises](module-48/exercises/EXERCISES-INDEX.md) | [Lab 48](module-48/lab48/LAB-48-GUIDE.md) |
+| 49 | [README](module-49/README.md) | [exercises](module-49/exercises/EXERCISES-INDEX.md) | [Lab 49](module-49/lab49/LAB-49-GUIDE.md) |
+| 50 | [README](module-50/README.md) | [exercises](module-50/exercises/EXERCISES-INDEX.md) | [Lab 50](module-50/lab50/LAB-50-GUIDE.md) |
+| 51 | [README](module-51/README.md) | [exercises](module-51/exercises/EXERCISES-INDEX.md) | [Lab 51](module-51/lab51/LAB-51-GUIDE.md) |
+| 52 | [README](module-52/README.md) | [exercises](module-52/exercises/EXERCISES-INDEX.md) | [Lab 52](module-52/lab52/LAB-52-GUIDE.md) |
+
 ---
 
 ## Week learning outcomes

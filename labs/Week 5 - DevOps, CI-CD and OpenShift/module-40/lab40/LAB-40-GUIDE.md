@@ -12,7 +12,7 @@
 | Windows | [LAB-40-WINDOWS.md](LAB-40-WINDOWS.md) |
 | macOS | [LAB-40-MACOS.md](LAB-40-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (OWASP Dependency-Check via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Complete the [Module 40 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (OWASP Dependency-Check via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 ---
 

@@ -12,7 +12,7 @@
 | Windows | [LAB-47-WINDOWS.md](LAB-47-WINDOWS.md) |
 | macOS | [LAB-47-MACOS.md](LAB-47-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). This is primarily a **documentation / communication** lab in **IntelliJ IDEA Community** (or optional VS Code) under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`). Keep prior CRM evidence nearby.
+> **Environment reminder:** Complete the [Module 47 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). This is primarily a **documentation / communication** lab in **IntelliJ IDEA Community** (or optional VS Code) under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`). Keep prior CRM evidence nearby.
 
 ---
 

@@ -19,11 +19,11 @@ Parent index: [labs/LABS-INDEX.md](../LABS-INDEX.md) · Setup: [SETUP-INSTRUCTIO
 
 | Lab | Guide |
 | --- | ----- |
-| [lab22](module-22/lab22/LAB-22-GUIDE.md) | [Open guide](module-22/lab22/LAB-22-GUIDE.md) |
-| [lab23](module-23/lab23/LAB-23-GUIDE.md) | [Open guide](module-23/lab23/LAB-23-GUIDE.md) |
-| [lab24](module-24/lab24/LAB-24-GUIDE.md) | [Open guide](module-24/lab24/LAB-24-GUIDE.md) |
-| [lab25](module-25/lab25/LAB-25-GUIDE.md) | [Open guide](module-25/lab25/LAB-25-GUIDE.md) |
-| [lab26](module-26/lab26/LAB-26-GUIDE.md) | [Open guide](module-26/lab26/LAB-26-GUIDE.md) |
-| [lab27](module-27/lab27/LAB-27-GUIDE.md) | [Open guide](module-27/lab27/LAB-27-GUIDE.md) |
-| [lab28](module-28/lab28/LAB-28-GUIDE.md) | [Open guide](module-28/lab28/LAB-28-GUIDE.md) |
-| [lab29](module-29/lab29/LAB-29-GUIDE.md) | [Open guide](module-29/lab29/LAB-29-GUIDE.md) |
+| [lab22](module-22/README.md) | [Start](module-22/README.md) · [Exercises](module-22/exercises/EXERCISES-INDEX.md) · [Lab guide](module-22/lab22/LAB-22-GUIDE.md) |
+| [lab23](module-23/README.md) | [Start](module-23/README.md) · [Exercises](module-23/exercises/EXERCISES-INDEX.md) · [Lab guide](module-23/lab23/LAB-23-GUIDE.md) |
+| [lab24](module-24/README.md) | [Start](module-24/README.md) · [Exercises](module-24/exercises/EXERCISES-INDEX.md) · [Lab guide](module-24/lab24/LAB-24-GUIDE.md) |
+| [lab25](module-25/README.md) | [Start](module-25/README.md) · [Exercises](module-25/exercises/EXERCISES-INDEX.md) · [Lab guide](module-25/lab25/LAB-25-GUIDE.md) |
+| [lab26](module-26/README.md) | [Start](module-26/README.md) · [Exercises](module-26/exercises/EXERCISES-INDEX.md) · [Lab guide](module-26/lab26/LAB-26-GUIDE.md) |
+| [lab27](module-27/README.md) | [Start](module-27/README.md) · [Exercises](module-27/exercises/EXERCISES-INDEX.md) · [Lab guide](module-27/lab27/LAB-27-GUIDE.md) |
+| [lab28](module-28/README.md) | [Start](module-28/README.md) · [Exercises](module-28/exercises/EXERCISES-INDEX.md) · [Lab guide](module-28/lab28/LAB-28-GUIDE.md) |
+| [lab29](module-29/README.md) | [Start](module-29/README.md) · [Exercises](module-29/exercises/EXERCISES-INDEX.md) · [Lab guide](module-29/lab29/LAB-29-GUIDE.md) |

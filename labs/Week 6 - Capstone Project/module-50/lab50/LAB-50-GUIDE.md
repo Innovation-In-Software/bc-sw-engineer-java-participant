@@ -12,7 +12,7 @@
 | Windows | [LAB-50-WINDOWS.md](LAB-50-WINDOWS.md) |
 | macOS | [LAB-50-MACOS.md](LAB-50-MACOS.md) |
 
-> **Environment reminder:** Finish Labs 0 and 49. Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, **Node.js 22+**, and instructor **shared PostgreSQL**. Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
+> **Environment reminder:** Complete the [Module 50 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish Labs 0 and 49. Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, **Node.js 22+**, and instructor **shared PostgreSQL**. Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
 
 ---
 

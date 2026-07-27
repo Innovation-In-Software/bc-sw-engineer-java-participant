@@ -12,7 +12,7 @@
 | Windows | [LAB-41-WINDOWS.md](LAB-41-WINDOWS.md) |
 | macOS | [LAB-41-MACOS.md](LAB-41-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21**, **Maven 3.9+**, and **Docker** (image builds). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Complete the [Module 41 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21**, **Maven 3.9+**, and **Docker** (image builds). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 ---
 

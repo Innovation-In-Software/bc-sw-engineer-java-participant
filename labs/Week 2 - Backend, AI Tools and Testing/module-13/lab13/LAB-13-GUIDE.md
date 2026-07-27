@@ -12,7 +12,7 @@
 | Windows | [LAB-13-WINDOWS.md](LAB-13-WINDOWS.md) |
 | macOS | [LAB-13-MACOS.md](LAB-13-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Complete the [Module 13 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9 available but unused):**
 

@@ -9,7 +9,7 @@ For Week 1 Modules 1–7, also open **`module-NN/README.md`** first (Start here)
 - **Lab 0** — pre-course environment setup (`module-00/lab0`) — **timed path:** [`starter/README.md`](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/starter/README.md); full install: **OS how-to** (`LAB-0-WINDOWS.md` or `LAB-0-MACOS.md`)
 - **Labs 1–52** — one lab per module under `module-NN/labN`, **grouped by week** — in class use **`labN/starter/`** (~45 min); see **[_STARTER-PATH.md](_STARTER-PATH.md)**
 - **Week 1 exercises** — `module-01`…`07/exercises/` (after slides, before the lab)
-- **Week 2 exercises (Modules 8–9)** — `module-08`…`09/exercises/` (after slides, before the lab)
+- **Week 2–6 exercises (Modules 8–52)** — each `module-NN/exercises/` (after slides, before the lab)
 - **Capstone 48–52** — starters are a **session block**; multi-day build/defense stays on the full GUIDE path
 
 Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculum/) with the **same week and `module-NN` names**.
@@ -20,7 +20,7 @@ Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculu
 
 1. Start from **[PARTICIPANT-SETUP-README.md](PARTICIPANT-SETUP-README.md)** and **[Lab 0](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md)** (or macOS) — prefer the [Lab 0 starter checklist](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/starter/README.md) for the 45-minute block.
 2. Read **[_PARTICIPANT-FILE-GUIDE.md](_PARTICIPANT-FILE-GUIDE.md)** and **[_STARTER-PATH.md](_STARTER-PATH.md)** once so you know GUIDE vs WINDOWS vs starter timed path.
-3. For each later module: open **`module-NN/README.md`** (Week 1; also Modules 8–9) → exercises (if any) → **one** OS how-to → **`starter/README.md`** (in class) → **`LAB-N-GUIDE.md`** (full path / homework).
+3. For each later module: open **`module-NN/README.md`** (Week 1 and Modules 8–52) → exercises (if any) → **one** OS how-to → **`starter/README.md`** (in class) → **`LAB-N-GUIDE.md`** (full path / homework).
 4. Follow **How to follow this lab** at the top of each GUIDE: timed path first in class, then Step → Expected → next step on the full path.
 5. Mark **Pass criteria** tables in your own notes (**Pass** / **Fail**). GitHub file view cannot tick checkboxes.
 6. Keep code under `~/java-bootcamp/examples/` (Windows: `%USERPROFILE%\java-bootcamp\examples`). Capture evidence under workspace-root `notes/screenshots/` (Lab 0) or `notes/screenshots/lab-N/` (Labs 1–52). Do not create a top-level `labs/` folder inside `java-bootcamp`.
@@ -98,81 +98,68 @@ labs/
 | --- | ------ | ------------ | ----------------- | --------- |
 | [lab8](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-08/README.md) | 8 | Java Project Structure and Modularization | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-08/exercises/) | Project Structure and Organization |
 | [lab9](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-09/README.md) | 9 | Build and Dependency Management with Maven | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-09/exercises/) | Maven Build and Dependencies |
-| [lab10](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-10/lab10/LAB-10-GUIDE.md) | 10 | GitHub Copilot Fundamentals for Java Developers | — | AI-Assisted Code Generation |
-| [lab11](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-11/lab11/LAB-11-GUIDE.md) | 11 | GitHub Copilot for Testing and Refactoring | — | AI-Assisted Test Generation |
-| [lab12](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-12/lab12/LAB-12-GUIDE.md) | 12 | Java Coding Standards and Best Practices | — | Coding Standards and Refactoring |
-| [lab13](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-13/lab13/LAB-13-GUIDE.md) | 13 | SOAP API Design with Java | — | SOAP API Design |
-| [lab14](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-14/lab14/LAB-14-GUIDE.md) | 14 | DTOs, Validation and API Contracts | — | DTOs and Validation |
-| [lab15](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-15/lab15/LAB-15-GUIDE.md) | 15 | Business Logic and Service Layer Design | — | Service Layer Design |
-| [lab16](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-16/lab16/LAB-16-GUIDE.md) | 16 | Exception Handling in Distributed APIs | — | API Exception Handling |
-| [lab17](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-17/lab17/LAB-17-GUIDE.md) | 17 | JUnit Testing Fundamentals | — | JUnit Testing with AI Assistance |
-| [lab18](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-18/lab18/LAB-18-GUIDE.md) | 18 | Mockito for Test Isolation | — | Mockito and Mocking with AI Assistance |
-| [lab19](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-19/lab19/LAB-19-GUIDE.md) | 19 | Integration Testing and UI Test Automation | — | Integration and UI Testing with Selenium |
-| [lab20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/lab20/LAB-20-GUIDE.md) | 20 | Logging Frameworks and Diagnostics | — | Structured Logging |
-| [lab21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/lab21/LAB-21-GUIDE.md) | 21 | API Observability and Monitoring | — | Observability and Monitoring |
+| [lab10](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-10/README.md) | 10 | GitHub Copilot Fundamentals for Java Developers | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-10/exercises/) | AI-Assisted Code Generation |
+| [lab11](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-11/README.md) | 11 | GitHub Copilot for Testing and Refactoring | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-11/exercises/) | AI-Assisted Test Generation |
+| [lab12](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-12/README.md) | 12 | Java Coding Standards and Best Practices | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-12/exercises/) | Coding Standards and Refactoring |
+| [lab13](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-13/README.md) | 13 | SOAP API Design with Java | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-13/exercises/) | SOAP API Design |
+| [lab14](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-14/README.md) | 14 | DTOs, Validation and API Contracts | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-14/exercises/) | DTOs and Validation |
+| [lab15](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-15/README.md) | 15 | Business Logic and Service Layer Design | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-15/exercises/) | Service Layer Design |
+| [lab16](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-16/README.md) | 16 | Exception Handling in Distributed APIs | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-16/exercises/) | API Exception Handling |
+| [lab17](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-17/README.md) | 17 | JUnit Testing Fundamentals | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-17/exercises/) | JUnit Testing with AI Assistance |
+| [lab18](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-18/README.md) | 18 | Mockito for Test Isolation | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-18/exercises/) | Mockito and Mocking with AI Assistance |
+| [lab19](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-19/README.md) | 19 | Integration Testing and UI Test Automation | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-19/exercises/) | Integration and UI Testing with Selenium |
+| [lab20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/README.md) | 20 | Logging Frameworks and Diagnostics | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/exercises/) | Structured Logging |
+| [lab21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/README.md) | 21 | API Observability and Monitoring | [exercises](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/exercises/) | Observability and Monitoring |
 
 ### Week 3 — Spring Framework and Enterprise Patterns
 
-| Lab | Module | Module Title | Lab Title |
-| --- | ------ | ------------ | --------- |
-| [lab22](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-22/lab22/LAB-22-GUIDE.md) | 22 | Spring Core and Inversion of Control (IoC) | Spring IoC and Dependency Injection |
-| [lab23](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-23/lab23/LAB-23-GUIDE.md) | 23 | Spring Boot Auto-Configuration | Spring Boot Setup and Auto-Configuration |
-| [lab24](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-24/lab24/LAB-24-GUIDE.md) | 24 | SOAP Web Services with Spring WS | Spring-WS SOAP Endpoint Development |
-| [lab25](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-25/lab25/LAB-25-GUIDE.md) | 25 | Service and Repository Layers | Service and Repository Layers with AI Assistance |
-| [lab26](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-26/lab26/LAB-26-GUIDE.md) | 26 | Spring Profiles and Configuration | Spring Profiles and Configuration |
-| [lab27](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-27/lab27/LAB-27-GUIDE.md) | 27 | Transaction Management | Transaction Management with AI Assistance |
-| [lab28](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-28/lab28/LAB-28-GUIDE.md) | 28 | Spring Security Fundamentals | Spring Security Basics |
-| [lab29](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-29/lab29/LAB-29-GUIDE.md) | 29 | Validation and Global Exception Handling | Validation and Exception Handling |
+| Lab | Module | Module Title | Pre-lab exercises | Lab Title |
+| --- | ------ | ------------ | ----------------- | --------- |
+| [lab22](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-22/README.md) | 22 | Spring Core and Inversion of Control (IoC) | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-22/exercises/) | Spring IoC and Dependency Injection |
+| [lab23](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-23/README.md) | 23 | Spring Boot Auto-Configuration | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-23/exercises/) | Spring Boot Setup and Auto-Configuration |
+| [lab24](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-24/README.md) | 24 | SOAP Web Services with Spring WS | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-24/exercises/) | Spring-WS SOAP Endpoint Development |
+| [lab25](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-25/README.md) | 25 | Service and Repository Layers | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-25/exercises/) | Service and Repository Layers with AI Assistance |
+| [lab26](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-26/README.md) | 26 | Spring Profiles and Configuration | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-26/exercises/) | Spring Profiles and Configuration |
+| [lab27](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-27/README.md) | 27 | Transaction Management | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-27/exercises/) | Transaction Management with AI Assistance |
+| [lab28](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-28/README.md) | 28 | Spring Security Fundamentals | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-28/exercises/) | Spring Security Basics |
+| [lab29](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-29/README.md) | 29 | Validation and Global Exception Handling | [exercises](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/module-29/exercises/) | Validation and Exception Handling |
 
 ### Week 4 — Kafka, React, PostgreSQL and Resilience
 
-| Lab | Module | Module Title | Lab Title |
-| --- | ------ | ------------ | --------- |
-| [lab30](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/lab30/LAB-30-GUIDE.md) | 30 | Event-Driven Architecture with Kafka | Event-Driven Architecture with Kafka |
-| [lab31](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/lab31/LAB-31-GUIDE.md) | 31 | Kafka Integration with Spring Boot | Kafka Integration |
-| [lab32](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-32/lab32/LAB-32-GUIDE.md) | 32 | Resilience and Fault Tolerance | Resilience and Fault Tolerance |
-| [lab33](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-33/lab33/LAB-33-GUIDE.md) | 33 | React Component Development | React Component Development |
-| [lab34](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-34/lab34/LAB-34-GUIDE.md) | 34 | State and Event Management | State and Event Management |
-| [lab35](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-35/lab35/LAB-35-GUIDE.md) | 35 | Frontend and API Integration | Frontend and API Integration |
-| [lab36](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-36/lab36/LAB-36-GUIDE.md) | 36 | Frontend Security | Frontend Security |
-| [lab37](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-37/lab37/LAB-37-GUIDE.md) | 37 | PostgreSQL Design | PostgreSQL Design |
-| [lab38](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-38/lab38/LAB-38-GUIDE.md) | 38 | SQL and Query Performance | SQL and Query Performance |
-| [lab39](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-39/lab39/LAB-39-GUIDE.md) | 39 | Spring Data JPA and PostgreSQL | Spring Data JPA and PostgreSQL |
+| Lab | Module | Module Title | Pre-lab exercises | Lab Title |
+| --- | ------ | ------------ | ----------------- | --------- |
+| [lab30](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/README.md) | 30 | Event-Driven Architecture with Kafka | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/exercises/) | Event-Driven Architecture with Kafka |
+| [lab31](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/README.md) | 31 | Kafka Integration with Spring Boot | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/exercises/) | Kafka Integration |
+| [lab32](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-32/README.md) | 32 | Resilience and Fault Tolerance | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-32/exercises/) | Resilience and Fault Tolerance |
+| [lab33](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-33/README.md) | 33 | React Component Development | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-33/exercises/) | React Component Development |
+| [lab34](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-34/README.md) | 34 | State and Event Management | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-34/exercises/) | State and Event Management |
+| [lab35](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-35/README.md) | 35 | Frontend and API Integration | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-35/exercises/) | Frontend and API Integration |
+| [lab36](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-36/README.md) | 36 | Frontend Security | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-36/exercises/) | Frontend Security |
+| [lab37](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-37/README.md) | 37 | PostgreSQL Design | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-37/exercises/) | PostgreSQL Design |
+| [lab38](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-38/README.md) | 38 | SQL and Query Performance | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-38/exercises/) | SQL and Query Performance |
+| [lab39](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-39/README.md) | 39 | Spring Data JPA and PostgreSQL | [exercises](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-39/exercises/) | Spring Data JPA and PostgreSQL |
 
 ### Week 5 — DevOps, CI/CD and Kubernetes (k3s)
 
-| Lab | Module | Module Title | Lab Title |
-| --- | ------ | ------------ | --------- |
-| [lab40](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-40/lab40/LAB-40-GUIDE.md) | 40 | Application Security Testing | Application Security Testing |
-| [lab41](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-41/lab41/LAB-41-GUIDE.md) | 41 | Containerization with Docker | Containerization |
-| [lab42](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-42/lab42/LAB-42-GUIDE.md) | 42 | Kubernetes (k3s) Deployment | Kubernetes (k3s) Deployment |
-| [lab43](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-43/lab43/LAB-43-GUIDE.md) | 43 | GitHub Actions and CI/CD Integration | GitHub CI/CD Pipeline |
-| [lab44](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-44/lab44/LAB-44-GUIDE.md) | 44 | Continuous Delivery and Release Management | Continuous Delivery Pipeline |
-| [lab45](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-45/lab45/LAB-45-GUIDE.md) | 45 | Infrastructure as Code with Terraform and Ansible | Infrastructure as Code with AI Assistance |
-| [lab46](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-46/lab46/LAB-46-GUIDE.md) | 46 | Kafka Resilience and Observability | Kafka Resilience and Observability |
-| [lab47](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-47/lab47/LAB-47-GUIDE.md) | 47 | Professional Communication and Collaboration | Professional Communication and Collaboration |
+| Lab | Module | Module Title | Pre-lab exercises | Lab Title |
+| --- | ------ | ------------ | ----------------- | --------- |
+| [lab40](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-40/README.md) | 40 | Application Security Testing | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-40/exercises/) | Application Security Testing |
+| [lab41](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-41/README.md) | 41 | Containerization with Docker | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-41/exercises/) | Containerization |
+| [lab42](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-42/README.md) | 42 | Kubernetes (k3s) Deployment | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-42/exercises/) | Kubernetes (k3s) Deployment |
+| [lab43](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-43/README.md) | 43 | GitHub Actions and CI/CD Integration | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-43/exercises/) | GitHub CI/CD Pipeline |
+| [lab44](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-44/README.md) | 44 | Continuous Delivery and Release Management | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-44/exercises/) | Continuous Delivery Pipeline |
+| [lab45](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-45/README.md) | 45 | Infrastructure as Code with Terraform and Ansible | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-45/exercises/) | Infrastructure as Code with AI Assistance |
+| [lab46](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-46/README.md) | 46 | Kafka Resilience and Observability | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-46/exercises/) | Kafka Resilience and Observability |
+| [lab47](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-47/README.md) | 47 | Professional Communication and Collaboration | [exercises](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-47/exercises/) | Professional Communication and Collaboration |
 
 ### Week 6 — Capstone Project
 
 **Master document:** [Week 6 Capstone index](Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md) · [Brief DOCX](../Java_Software_Engineer_Capstone.docx) · [Rubric DOCX](../Java_Software_Engineer_Capstone_Rubric.docx) · [Markdown brief](Week%206%20-%20Capstone%20Project/CAPSTONE-BRIEF-AND-RUBRIC.md)
 
-| Lab | Module | Module Title | Lab Title |
-| --- | ------ | ------------ | --------- |
-| [lab48](Week%206%20-%20Capstone%20Project/module-48/lab48/LAB-48-GUIDE.md) | 48 | Capstone Planning and Architecture | Capstone Planning and Architecture |
-| [lab49](Week%206%20-%20Capstone%20Project/module-49/lab49/LAB-49-GUIDE.md) | 49 | Capstone Backend and Messaging | Capstone Backend and Messaging |
-| [lab50](Week%206%20-%20Capstone%20Project/module-50/lab50/LAB-50-GUIDE.md) | 50 | Capstone Frontend and Persistence | Capstone Frontend and Persistence |
-| [lab51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) | 51 | Capstone Security, CI/CD and Deployment | Capstone Delivery and Deployment |
-| [lab52](Week%206%20-%20Capstone%20Project/module-52/lab52/LAB-52-GUIDE.md) | 52 | Capstone Final Defense and Retrospective | Capstone Final Defense |
-
----
-
-## Quick path reference
-
-| Labs | Path under `labs/` |
-| ---- | ------------------ |
-| 0–7 | `Week 1 - Java and JVM Foundations/module-NN/labN/` |
-| 8–21 | `Week 2 - Backend, AI Tools and Testing/module-NN/labN/` |
-| 22–29 | `Week 3 - Spring Framework and Enterprise Patterns/module-NN/labN/` |
-| 30–39 | `Week 4 - Kafka, React, PostgreSQL and Resilience/module-NN/labN/` |
-| 40–47 | `Week 5 - DevOps, CI-CD and OpenShift/module-NN/labN/` |
-| 48–52 | `Week 6 - Capstone Project/module-NN/labN/` |
+| Lab | Module | Module Title | Pre-lab exercises | Lab Title |
+| --- | ------ | ------------ | ----------------- | --------- |
+| [lab48](Week%206%20-%20Capstone%20Project/module-48/README.md) | 48 | Capstone Planning and Architecture | [exercises](Week%206%20-%20Capstone%20Project/module-48/exercises/) | Capstone Planning and Architecture |
+| [lab49](Week%206%20-%20Capstone%20Project/module-49/README.md) | 49 | Capstone Backend and Messaging | [exercises](Week%206%20-%20Capstone%20Project/module-49/exercises/) | Capstone Backend and Messaging |
+| [lab50](Week%206%20-%20Capstone%20Project/module-50/README.md) | 50 | Capstone Frontend and Persistence | [exercises](Week%206%20-%20Capstone%20Project/module-50/exercises/) | Capstone Frontend and Persistence |
+| [lab51](Week%206%20-%20Capstone%20Project/module-51/README.md) | 51 | Capstone Security, CI/CD and Deployment | [exercises](Week%206%20-%20Capstone%20Project/module-51/exercises/) | Capstone Delivery and Deployment |
+| [lab52](Week%206%20-%20Capstone%20Project/module-52/README.md) | 52 | Capstone Final Defense and Retrospective | [exercises](Week%206%20-%20Capstone%20Project/module-52/exercises/) | Capstone Final Defense |

@@ -12,7 +12,7 @@
 | Windows | [LAB-52-WINDOWS.md](LAB-52-WINDOWS.md) |
 | macOS | [LAB-52-MACOS.md](LAB-52-MACOS.md) |
 
-> **Environment reminder:** Finish Labs 48–51 evidence first. Demo lab: **desktop IntelliJ IDEA Community (primary; optional VS Code)** on your laptop plus your team's running CRM demo path (API/UI/DB/events as built). Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
+> **Environment reminder:** Complete the [Module 52 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish Labs 48–51 evidence first. Demo lab: **desktop IntelliJ IDEA Community (primary; optional VS Code)** on your laptop plus your team's running CRM demo path (API/UI/DB/events as built). Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
 
 ---
 

@@ -16,13 +16,13 @@ Parent index: [labs/LABS-INDEX.md](../LABS-INDEX.md) · Setup: [SETUP-INSTRUCTIO
 
 | Lab | Guide |
 | --- | ----- |
-| [lab30](module-30/lab30/LAB-30-GUIDE.md) | [Open guide](module-30/lab30/LAB-30-GUIDE.md) |
-| [lab31](module-31/lab31/LAB-31-GUIDE.md) | [Open guide](module-31/lab31/LAB-31-GUIDE.md) |
-| [lab32](module-32/lab32/LAB-32-GUIDE.md) | [Open guide](module-32/lab32/LAB-32-GUIDE.md) |
-| [lab33](module-33/lab33/LAB-33-GUIDE.md) | [Open guide](module-33/lab33/LAB-33-GUIDE.md) |
-| [lab34](module-34/lab34/LAB-34-GUIDE.md) | [Open guide](module-34/lab34/LAB-34-GUIDE.md) |
-| [lab35](module-35/lab35/LAB-35-GUIDE.md) | [Open guide](module-35/lab35/LAB-35-GUIDE.md) |
-| [lab36](module-36/lab36/LAB-36-GUIDE.md) | [Open guide](module-36/lab36/LAB-36-GUIDE.md) |
-| [lab37](module-37/lab37/LAB-37-GUIDE.md) | [Open guide](module-37/lab37/LAB-37-GUIDE.md) |
-| [lab38](module-38/lab38/LAB-38-GUIDE.md) | [Open guide](module-38/lab38/LAB-38-GUIDE.md) |
-| [lab39](module-39/lab39/LAB-39-GUIDE.md) | [Open guide](module-39/lab39/LAB-39-GUIDE.md) |
+| [lab30](module-30/README.md) | [Start](module-30/README.md) · [Exercises](module-30/exercises/EXERCISES-INDEX.md) · [Lab guide](module-30/lab30/LAB-30-GUIDE.md) |
+| [lab31](module-31/README.md) | [Start](module-31/README.md) · [Exercises](module-31/exercises/EXERCISES-INDEX.md) · [Lab guide](module-31/lab31/LAB-31-GUIDE.md) |
+| [lab32](module-32/README.md) | [Start](module-32/README.md) · [Exercises](module-32/exercises/EXERCISES-INDEX.md) · [Lab guide](module-32/lab32/LAB-32-GUIDE.md) |
+| [lab33](module-33/README.md) | [Start](module-33/README.md) · [Exercises](module-33/exercises/EXERCISES-INDEX.md) · [Lab guide](module-33/lab33/LAB-33-GUIDE.md) |
+| [lab34](module-34/README.md) | [Start](module-34/README.md) · [Exercises](module-34/exercises/EXERCISES-INDEX.md) · [Lab guide](module-34/lab34/LAB-34-GUIDE.md) |
+| [lab35](module-35/README.md) | [Start](module-35/README.md) · [Exercises](module-35/exercises/EXERCISES-INDEX.md) · [Lab guide](module-35/lab35/LAB-35-GUIDE.md) |
+| [lab36](module-36/README.md) | [Start](module-36/README.md) · [Exercises](module-36/exercises/EXERCISES-INDEX.md) · [Lab guide](module-36/lab36/LAB-36-GUIDE.md) |
+| [lab37](module-37/README.md) | [Start](module-37/README.md) · [Exercises](module-37/exercises/EXERCISES-INDEX.md) · [Lab guide](module-37/lab37/LAB-37-GUIDE.md) |
+| [lab38](module-38/README.md) | [Start](module-38/README.md) · [Exercises](module-38/exercises/EXERCISES-INDEX.md) · [Lab guide](module-38/lab38/LAB-38-GUIDE.md) |
+| [lab39](module-39/README.md) | [Start](module-39/README.md) · [Exercises](module-39/exercises/EXERCISES-INDEX.md) · [Lab guide](module-39/lab39/LAB-39-GUIDE.md) |

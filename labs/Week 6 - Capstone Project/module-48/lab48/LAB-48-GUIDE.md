@@ -12,7 +12,7 @@
 | Windows | [LAB-48-WINDOWS.md](LAB-48-WINDOWS.md) |
 | macOS | [LAB-48-MACOS.md](LAB-48-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Planning lab: **desktop IntelliJ IDEA Community (primary; optional VS Code)** on your laptop under `~/java-bootcamp/examples/customer-management-platform/` (or `lab48-crm/`). No cluster or database required for Lab 48 (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Complete the [Module 48 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Planning lab: **desktop IntelliJ IDEA Community (primary; optional VS Code)** on your laptop under `~/java-bootcamp/examples/customer-management-platform/` (or `lab48-crm/`). No cluster or database required for Lab 48 (Windows: `%USERPROFILE%\java-bootcamp`).
 
 ---
 

@@ -12,7 +12,7 @@
 | Windows | [LAB-51-WINDOWS.md](LAB-51-WINDOWS.md) |
 | macOS | [LAB-51-MACOS.md](LAB-51-MACOS.md) |
 
-> **Environment reminder:** Finish Labs 0 and 48–50. Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, **GitHub Actions**, **Docker**, and instructor **k3s** (`kubectl`). Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
+> **Environment reminder:** Complete the [Module 51 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish Labs 0 and 48–50. Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, **GitHub Actions**, **Docker**, and instructor **k3s** (`kubectl`). Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
 
 ---
 
