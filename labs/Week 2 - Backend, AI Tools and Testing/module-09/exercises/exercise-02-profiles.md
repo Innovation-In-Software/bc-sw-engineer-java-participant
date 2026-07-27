@@ -1,4 +1,4 @@
-# Exercise 5 — Activate Build Profiles
+# Exercise 2 — Activate Build Profiles
 
 **Module 9** · Analysis exercise · [setup](EXERCISES-INDEX.md)
 

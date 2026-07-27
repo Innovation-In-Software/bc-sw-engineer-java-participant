@@ -6,7 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises 1–6 in order |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (coordinates → profiles → lifecycle → scopes → dependency tree → mini POM) |
 | 2 | OS guide → [`lab9/LAB-9-WINDOWS.md`](lab9/LAB-9-WINDOWS.md) or [`lab9/LAB-9-MACOS.md`](lab9/LAB-9-MACOS.md) |
 | 3 | Full lab → [`lab9/LAB-9-GUIDE.md`](lab9/LAB-9-GUIDE.md) |
 

@@ -1,4 +1,4 @@
-# Exercise 2 — Choose Dependency Scopes
+# Exercise 4 — Choose Dependency Scopes
 
 **Module 9** · Analysis exercise · [setup](EXERCISES-INDEX.md)
 

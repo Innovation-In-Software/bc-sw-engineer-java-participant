@@ -12,7 +12,9 @@
 | Windows | [LAB-9-WINDOWS.md](LAB-9-WINDOWS.md) |
 | macOS | [LAB-9-MACOS.md](LAB-9-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`). Complete the [Module 9 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).  
+> **Pre-lab exercises:** Complete [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) **in order 1→6** (same sequence as the Module 9 slides) before this lab:  
+> 1. POM coordinates · 2. Profiles · 3. Lifecycle · 4. Dependency scopes · 5. Dependency tree · 6. Mini POM (TODO starter).
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 

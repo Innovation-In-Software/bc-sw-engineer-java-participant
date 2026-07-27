@@ -1,4 +1,4 @@
-# Exercise 6 — Read a Dependency Tree
+# Exercise 5 — Read a Dependency Tree
 
 **Module 9** · Analysis + CI habit exercise · [setup](EXERCISES-INDEX.md)
 
@@ -37,9 +37,9 @@ com.northstar:build-demo:jar:0.1.0-SNAPSHOT
 | `junit-jupiter` | Direct (you declared it) | `test` |
 | `junit-jupiter-params` | Transitive (comes with Jupiter) | `test` |
 
-### Step 3 — Run the real command (after Exercise 4)
+### Step 3 — Classify from the sample now; run Maven after Exercise 6
 
-From `mini-maven/`:
+Use the sample tree above for your notes. After you finish **Exercise 6** (mini POM), re-run from `mini-maven/`:
 
 ```bash
 mvn -q dependency:tree

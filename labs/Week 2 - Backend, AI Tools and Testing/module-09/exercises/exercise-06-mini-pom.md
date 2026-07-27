@@ -1,4 +1,4 @@
-# Exercise 4 — Fill a Mini POM
+# Exercise 6 — Fill a Mini POM
 
 **Module 9** · Small Maven exercise · [setup](EXERCISES-INDEX.md)
 

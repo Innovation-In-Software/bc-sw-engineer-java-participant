@@ -6,6 +6,7 @@
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven 3.9+ · IntelliJ  
 **Full lab steps:** [LAB-9-GUIDE.md](LAB-9-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-9-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 **Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab8-crm` → `examples\lab9-crm`, expanded POM (Spring/JUnit placeholders, Surefire, jar `Main-Class`, `dev`/`test`/`prod` profiles). Lifecycle `validate`→`install` and `mvn -B verify` → **BUILD SUCCESS**; `PlaceholderTest` Tests run: **1**; `java -jar target\customer-service.jar` prints the CRM skeleton banner; default profile **`dev`**.

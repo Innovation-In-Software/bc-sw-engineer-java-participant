@@ -5,10 +5,10 @@
 **Module:** 9 — Build and Dependency Management with Maven  
 **Next:** [`../lab9/LAB-9-WINDOWS.md`](../lab9/LAB-9-WINDOWS.md) or [`../lab9/LAB-9-MACOS.md`](../lab9/LAB-9-MACOS.md) → [`../lab9/LAB-9-GUIDE.md`](../lab9/LAB-9-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 9.  
+> Complete these exercises **in order (1→6)** as they appear in the Module 9 slides, then start Lab 9.  
 > Use JDK 21 and Maven 3.9+.  
 > These exercises design and test small build pieces; Lab 9 expands the full CRM `pom.xml` and lifecycle evidence.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `<!-- TODO -->` with your own values, then run Maven.
+> Exercise 6 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `<!-- TODO -->` with your own values, then run Maven.
 
 ## Scope boundary — do not build later technology yet
 
@@ -25,7 +25,7 @@
 | Item | Windows | macOS |
 | ---- | ------- | ----- |
 | Exercises folder | `%USERPROFILE%\java-bootcamp\examples\module-09-exercises` | `~/java-bootcamp/examples/module-09-exercises` |
-| Mini Maven project (Exercise 4) | `mini-maven\` | `mini-maven/` |
+| Mini Maven project (Exercise 6) | `mini-maven\` | `mini-maven/` |
 
 ### Setup
 
@@ -51,9 +51,9 @@ mvn -version
 
 **Expected:** Java 21 and Maven 3.9+ are available. If not, return to Lab 0 before continuing.
 
-### How the Exercise 4 starter works
+### How the Exercise 6 starter works
 
-1. Create the `mini-maven/` tree (see [`exercise-04-mini-pom.md`](exercise-04-mini-pom.md)).
+1. Create the `mini-maven/` tree (see [`exercise-06-mini-pom.md`](exercise-06-mini-pom.md)).
 2. Paste each skeleton → fill every `_____` / `<!-- TODO -->` → save.
 3. From `mini-maven/`, run `mvn -q test` then `mvn -q package`.
 
@@ -61,13 +61,15 @@ Scaffolding (coordinates, plugin names, class names) is given; the learning part
 
 ## Exercise index
 
+Complete in this sequence (matches Module 9 slide order):
+
 | # | Exercise | New build skill | File |
 | - | -------- | --------------- | ---- |
 | 1 | Read POM Coordinates | `groupId`, `artifactId`, `version`, packaging | [`exercise-01-pom-coordinates.md`](exercise-01-pom-coordinates.md) |
-| 2 | Choose Dependency Scopes | `compile`, `test`, `runtime`, `provided` | [`exercise-02-dependency-scopes.md`](exercise-02-dependency-scopes.md) |
+| 2 | Activate Build Profiles | `dev` / `prod`, `-P`, activeByDefault | [`exercise-02-profiles.md`](exercise-02-profiles.md) |
 | 3 | Walk the Maven Lifecycle | validate → install (and when to avoid deploy) | [`exercise-03-lifecycle.md`](exercise-03-lifecycle.md) |
-| 4 | Fill a Mini POM | TODO starter: coords, JUnit test scope, plugins | [`exercise-04-mini-pom.md`](exercise-04-mini-pom.md) |
-| 5 | Activate Build Profiles | `dev` / `prod`, `-P`, activeByDefault | [`exercise-05-profiles.md`](exercise-05-profiles.md) |
-| 6 | Read a Dependency Tree | Direct vs transitive; CI `mvn -B verify` | [`exercise-06-dependency-tree.md`](exercise-06-dependency-tree.md) |
+| 4 | Choose Dependency Scopes | `compile`, `test`, `runtime`, `provided` | [`exercise-04-dependency-scopes.md`](exercise-04-dependency-scopes.md) |
+| 5 | Read a Dependency Tree | Direct vs transitive; CI `mvn -B verify` | [`exercise-05-dependency-tree.md`](exercise-05-dependency-tree.md) |
+| 6 | Fill a Mini POM | TODO starter: coords, JUnit test scope, plugins | [`exercise-06-mini-pom.md`](exercise-06-mini-pom.md) |
 
 Keep all work separate from `examples/lab9-crm`; that project begins in the full lab.
