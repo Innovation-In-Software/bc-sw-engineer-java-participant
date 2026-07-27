@@ -138,11 +138,11 @@ state that the exercise demonstrates correctness—not a performance win.
 ## Pass criteria
 
 | # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Sequential and parallel counts both equal 4 | Pass / Fail |
-| 2 | You ran the comparison five times | Pass / Fail |
-| 3 | You did not claim one tiny run proves performance | Pass / Fail |
-| 4 | You can explain why a shared mutable counter is unsafe | Pass / Fail |
+| - | ------- |------|
+| 1 | Sequential and parallel counts both equal 4 | Pass |
+| 2 | You ran the comparison five times | Pass |
+| 3 | You did not claim one tiny run proves performance | Pass |
+| 4 | You can explain why a shared mutable counter is unsafe | Pass |
 
 ---
 

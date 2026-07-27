@@ -49,11 +49,11 @@ each input before running the code.
 
 Write `keep` or `discard` beside:
 
-- Alice — 72,000
-- Bob — 65,000
-- Charlie — 80,000
-- Diana — 90,000
-- Evan — 55,000
+- Alice — 72,000    `keep`
+- Bob — 65,000      `keep`
+- Charlie — 80,000  `keep`
+- Diana — 90,000    `keep`
+- Evan — 55,000     `discard`
 
 ### Step 2 — Create `FilterSalaryDemo.java`
 
@@ -117,7 +117,7 @@ and the original source list still contains five employees.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Exactly four employees print at the 60,000 threshold | Pass / Fail |
-| 2 | Evan does not appear in the filtered output | Pass / Fail |
-| 3 | Source size remains 5 and filtered size is 4 | Pass / Fail |
-| 4 | You can explain why `filter` is an intermediate operation | Pass / Fail |
+| 1 | Exactly four employees print at the 60,000 threshold | Pass |
+| 2 | Evan does not appear in the filtered output | Pass |
+| 3 | Source size remains 5 and filtered size is 4 | Pass |
+| 4 | You can explain why `filter` is an intermediate operation | Pass |

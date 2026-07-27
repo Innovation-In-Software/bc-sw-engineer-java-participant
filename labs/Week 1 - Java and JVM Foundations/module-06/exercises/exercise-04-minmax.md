@@ -124,8 +124,8 @@ You can explain why the terminal operations return `Optional<Employee>`.
 ## Pass criteria
 
 | # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Highest output is Diana — 90000 | Pass / Fail |
-| 2 | Lowest output is Evan — 55000 | Pass / Fail |
-| 3 | The same comparator is reused for both reductions | Pass / Fail |
-| 4 | You can explain the purpose of `Optional` here | Pass / Fail |
+| - | ------- | -------- |
+| 1 | Highest output is Diana — 90000 | Pass |
+| 2 | Lowest output is Evan — 55000 | Pass |
+| 3 | The same comparator is reused for both reductions | Pass |
+| 4 | You can explain the purpose of `Optional` here | Pass |

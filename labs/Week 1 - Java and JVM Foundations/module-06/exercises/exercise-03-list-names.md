@@ -122,7 +122,7 @@ versions give the same result.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | All five names print in source order | Pass / Fail |
-| 2 | Lambda and method-reference versions match | Pass / Fail |
-| 3 | Uppercase transformation works | Pass / Fail |
-| 4 | You can explain the `Employee` → `String` type change | Pass / Fail |
+| 1 | All five names print in source order | Pass |
+| 2 | Lambda and method-reference versions match | Pass |
+| 3 | Uppercase transformation works | Pass |
+| 4 | You can explain the `Employee` → `String` type change | Pass |

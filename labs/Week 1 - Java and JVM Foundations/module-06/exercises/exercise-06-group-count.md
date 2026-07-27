@@ -125,7 +125,7 @@ The report prints Finance 1, HR 2, and IT 2 in alphabetical department order.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Finance, HR, and IT counts are 1, 2, and 2 | Pass / Fail |
-| 2 | Output is deterministic and alphabetical | Pass / Fail |
-| 3 | Adding Fatima changes only Finance to 2 | Pass / Fail |
-| 4 | You can explain grouping key versus downstream collector | Pass / Fail |
+| 1 | Finance, HR, and IT counts are 1, 2, and 2 | Pass |
+| 2 | Output is deterministic and alphabetical | Pass |
+| 3 | Adding Fatima changes only Finance to 2 | Pass |
+| 4 | You can explain grouping key versus downstream collector | Pass |

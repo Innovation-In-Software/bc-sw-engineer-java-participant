@@ -111,7 +111,7 @@ higher, and Alice's original salary remains 72,000.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Alice's proposed salary is 79200.00 | Pass / Fail |
-| 2 | All five proposals are correct | Pass / Fail |
-| 3 | Alice's original salary remains 72000.00 | Pass / Fail |
-| 4 | You can explain why this is a transformation, not mutation | Pass / Fail |
+| 1 | Alice's proposed salary is 79200.00 | Pass |
+| 2 | All five proposals are correct | Pass |
+| 3 | Alice's original salary remains 72000.00 | Pass |
+| 4 | You can explain why this is a transformation, not mutation | Pass |

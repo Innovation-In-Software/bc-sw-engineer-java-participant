@@ -1,0 +1,21 @@
+| Operation / API | Used?  | Where (method / menu)                                                        | Notes                                                                                   |
+| --------------- |:------:|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| Lambda `forEach` | &check | `demonstrateLambdas()` (extra)                                               | names/salaries/departments                                                              |
+| `Predicate` |    &check    | `demonstrateFunctionalInterfaces()` (extra)                                  | `highEarner`                                                                            |
+| `Function` |    &check    | `demonstrateFunctionalInterfaces()` (extra)                                  | `employeeSummary`                                                                       |
+| `Consumer` |    &check    | `demonstrateFunctionalInterfaces()` (extra)                                  | `printRating`                                                                           |
+| `Supplier` |    &check    | `demonstrateFunctionalInterfaces()` (extra)                                  | `topSample`                                                                             |
+| `filter` |    &check    | menu 4/6/7 and several `demonstrate` / `display` methods                     | single (Step 8) and chained (Step 9)                                                    |
+| `map` |     &check   | `demonstarteMapping`, `displayDistinctDepartments`, `displayReductions`      | name/salary/department projections                                                      |
+| `sorted` |  &check      | menu 4/5/8, `demonstrateSorting`, `displayTopAndNextSalaries`                | salary/name/experience/rating                                                           |
+| `distinct` |   &check     | `displayDistinctDepartments`, dashboard department count                     | unique departments                                                                      |
+| `limit` / `skip` |   &check     | `displayTopAndNextSalaries`, `getTopSalaries`, several `demonstrate` methods | top-5 / next-5 pattern                                                                  |
+| `count` |   &check     | `displayCounts`, dashboard (active/department counts)                        |                                                                                         |
+| `reduce` |    &check    | `displayReductions`                                                          | `Double::max` / `Double::min`                                                           |
+| `collect(toList/toSet)` |   &check     | `demonstrateCollectors`, `getTopSalaries` / `getTopPerformers` (`.toList()`) |                                                                                         |
+| `groupingBy` |    &check    | menu 2/6, `demonstrateCollectors`, `findDepartmentWithHighestAverageSalary`  | department maps                                                                         |
+| `partitioningBy` |     &check   | menu 3 --> `displayPartitionedEmployees`                                     | salary > 100k split                                                                     |
+| `summarizingDouble` |    &check    | menu 3/6/8                                                                   | `displaySummaryStatistics`, `getDepartmentStatistics`, dashboard                        |
+| `Optional` (`max` / `ifPresent`) |  &check      | menu 5/8                                                                     | `findHighestPaidEmployee`, `findTopPerformer`, `findDepartmentWithHighestAverageSalary` |
+| Method references |     &check   | throughout                                                                   | `Emplyee::getName`, `Employee::getSalary`, `Employee::isActive`, `System.out::println`  |
+| Dashboard composed report |     &check   | menu 8                                                                       | `ReportService.displayDashboard()`                                                       |

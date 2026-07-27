@@ -110,10 +110,10 @@ The final list contains only Alice and Charlie in alphabetical order.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Output is exactly `[Alice, Charlie]` | Pass / Fail |
-| 2 | The pipeline contains filter, map, sorted, and toList | Pass / Fail |
-| 3 | Case-insensitive test works | Pass / Fail |
-| 4 | You can trace the element type after each operation | Pass / Fail |
+| 1 | Output is exactly `[Alice, Charlie]` | Pass |
+| 2 | The pipeline contains filter, map, sorted, and toList | Pass |
+| 3 | Case-insensitive test works | Pass |
+| 4 | You can trace the element type after each operation | Pass |
 
 ---
 

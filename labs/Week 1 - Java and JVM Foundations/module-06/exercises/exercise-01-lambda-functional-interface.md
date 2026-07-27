@@ -168,7 +168,7 @@ _Mark each row **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | All four files compile and `LambdaDemo` runs | Pass / Fail |
-| 2 | Both implementations return `true` at 60,000 | Pass / Fail |
-| 3 | Both implementations return `false` at 75,000 | Pass / Fail |
-| 4 | You can explain what `employee -> ...` means | Pass / Fail |
+| 1 | All four files compile and `LambdaDemo` runs | Pass |
+| 2 | Both implementations return `true` at 60,000 | Pass |
+| 3 | Both implementations return `false` at 75,000 | Pass |
+| 4 | You can explain what `employee -> ...` means | Pass |
