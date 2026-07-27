@@ -1,4 +1,4 @@
-# Exercise 6 — Trace a Customer Request
+# Exercise 5 — Trace a Customer Request
 
 **Module 8** · Documentation exercise · then start [`../lab8/LAB-8-GUIDE.md`](../lab8/LAB-8-GUIDE.md)
 

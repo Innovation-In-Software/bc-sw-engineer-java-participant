@@ -1,4 +1,4 @@
-# Exercise 5 — Check Dependency Direction
+# Exercise 6 — Check Dependency Direction
 
 **Module 8** · Architecture exercise · [setup](EXERCISES-INDEX.md)
 

@@ -1,4 +1,4 @@
-# Exercise 3 — Assign Layer Responsibilities
+# Exercise 4 — Assign Layer Responsibilities
 
 **Module 8** · Analysis exercise · [setup](EXERCISES-INDEX.md)
 

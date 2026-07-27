@@ -1,4 +1,4 @@
-# Exercise 4 — Separate Entity and DTO
+# Exercise 3 — Separate Entity and DTO
 
 **Module 8** · Small compile exercise · [setup](EXERCISES-INDEX.md)
 
