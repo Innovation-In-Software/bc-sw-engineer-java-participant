@@ -6,6 +6,7 @@
 **Shell:** macOS Terminal (zsh)  
 **Stack hint:** JDK 21 · Maven 3.9+ · IntelliJ  
 **Full lab steps:** [LAB-12-GUIDE.md](LAB-12-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [Windows guide](LAB-12-WINDOWS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 ## Prerequisites (macOS)

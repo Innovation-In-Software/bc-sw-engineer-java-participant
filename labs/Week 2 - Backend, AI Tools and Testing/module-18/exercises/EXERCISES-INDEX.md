@@ -5,7 +5,7 @@
 **Module:** 18 — Mockito for Test Isolation  
 **Next:** [`../lab18/LAB-18-WINDOWS.md`](../lab18/LAB-18-WINDOWS.md) or [`../lab18/LAB-18-MACOS.md`](../lab18/LAB-18-MACOS.md) → [`../lab18/LAB-18-GUIDE.md`](../lab18/LAB-18-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 18.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 18.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 18 builds the full graded deliverable.  
 > Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Stub vs Verify | Mockito vocabulary | [`exercise-01-stub-vs-verify.md`](exercise-01-stub-vs-verify.md) |
-| 2 | When to Keep Real Validator | Partial isolation judgment | [`exercise-02-keep-real-validator.md`](exercise-02-keep-real-validator.md) |
-| 3 | Mockito Anti-Patterns | Reject bad AI mocks | [`exercise-03-anti-patterns.md`](exercise-03-anti-patterns.md) |
-| 4 | Fill Activate Interaction Sequence TODOs | Interaction testing | [`exercise-04-fill-activate-interaction-todos.md`](exercise-04-fill-activate-interaction-todos.md) |
-| 5 | ArgumentCaptor Preview | Captor usage sketch | [`exercise-05-argumentcaptor-preview.md`](exercise-05-argumentcaptor-preview.md) |
-| 6 | Lab 18 Prep Checklist | Pre-lab self-check | [`exercise-06-lab18-prep-checklist.md`](exercise-06-lab18-prep-checklist.md) |
-
-Keep all work separate from `examples/lab18-crm` (or the lab’s named project folder); that project begins in the full lab.
+| 1 | When to Keep Real Validator | Architecture exercise | [`exercise-01-keep-real-validator.md`](exercise-01-keep-real-validator.md) |
+| 2 | Stub vs Verify | Analysis exercise | [`exercise-02-stub-vs-verify.md`](exercise-02-stub-vs-verify.md) |
+| 3 | ArgumentCaptor Preview | Documentation exercise | [`exercise-03-argumentcaptor-preview.md`](exercise-03-argumentcaptor-preview.md) |
+| 4 | Fill Activate Interaction Sequence TODOs | Hands-on exercise | [`exercise-04-fill-activate-interaction-todos.md`](exercise-04-fill-activate-interaction-todos.md) |
+| 5 | Mockito Anti-Patterns | Analysis exercise | [`exercise-05-anti-patterns.md`](exercise-05-anti-patterns.md) |
+| 6 | Lab 18 Prep Checklist | Documentation exercise | [`exercise-06-lab18-prep-checklist.md`](exercise-06-lab18-prep-checklist.md) |

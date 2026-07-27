@@ -5,10 +5,10 @@
 **Module:** 13 — SOAP API Design with Java  
 **Next:** [`../lab13/LAB-13-WINDOWS.md`](../lab13/LAB-13-WINDOWS.md) or [`../lab13/LAB-13-MACOS.md`](../lab13/LAB-13-MACOS.md) → [`../lab13/LAB-13-GUIDE.md`](../lab13/LAB-13-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 13.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 13.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 13 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 1 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Contract-First Mindset | WSDL/XSD before code | [`exercise-01-contract-first.md`](exercise-01-contract-first.md) |
-| 2 | Java to XSD Map | Type mapping | [`exercise-02-java-xsd-map.md`](exercise-02-java-xsd-map.md) |
-| 3 | Operation Matrix | SOAP operation design | [`exercise-03-operation-matrix.md`](exercise-03-operation-matrix.md) |
-| 4 | Fill Fault Envelope TODOs | SOAP fault sketch | [`exercise-04-fill-fault-envelope-todos.md`](exercise-04-fill-fault-envelope-todos.md) |
-| 5 | Placeholder Endpoint Honesty | Scope SOAP hosting | [`exercise-05-placeholder-endpoint-honesty.md`](exercise-05-placeholder-endpoint-honesty.md) |
-| 6 | Lab 13 Prep Checklist | Pre-lab self-check | [`exercise-06-lab13-prep-checklist.md`](exercise-06-lab13-prep-checklist.md) |
-
-Keep all work separate from `examples/lab13-crm` (or the lab’s named project folder); that project begins in the full lab.
+| 1 | Fill Fault Envelope TODOs | Hands-on exercise | [`exercise-01-fill-fault-envelope-todos.md`](exercise-01-fill-fault-envelope-todos.md) |
+| 2 | Operation Matrix | Architecture exercise | [`exercise-02-operation-matrix.md`](exercise-02-operation-matrix.md) |
+| 3 | Java to XSD Map | Documentation exercise | [`exercise-03-java-xsd-map.md`](exercise-03-java-xsd-map.md) |
+| 4 | Contract-First Mindset | Analysis exercise | [`exercise-04-contract-first.md`](exercise-04-contract-first.md) |
+| 5 | Placeholder Endpoint Honesty | Documentation exercise | [`exercise-05-placeholder-endpoint-honesty.md`](exercise-05-placeholder-endpoint-honesty.md) |
+| 6 | Lab 13 Prep Checklist | Documentation exercise | [`exercise-06-lab13-prep-checklist.md`](exercise-06-lab13-prep-checklist.md) |

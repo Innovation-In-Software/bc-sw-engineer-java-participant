@@ -5,7 +5,7 @@
 **Module:** 21 — API Observability and Monitoring  
 **Next:** [`../lab21/LAB-21-WINDOWS.md`](../lab21/LAB-21-WINDOWS.md) or [`../lab21/LAB-21-MACOS.md`](../lab21/LAB-21-MACOS.md) → [`../lab21/LAB-21-GUIDE.md`](../lab21/LAB-21-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 21.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 21.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 21 builds the full graded deliverable.  
 > Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Liveness vs Readiness | Probe semantics | [`exercise-01-liveness-vs-readiness.md`](exercise-01-liveness-vs-readiness.md) |
-| 2 | Cardinality Anti-Patterns | Metric label design | [`exercise-02-cardinality-antipatterns.md`](exercise-02-cardinality-antipatterns.md) |
-| 3 | Actuator Allow-List | Exposure control | [`exercise-03-actuator-allowlist.md`](exercise-03-actuator-allowlist.md) |
-| 4 | Fill Metric Sketch TODOs | Metric and alert design | [`exercise-04-fill-metric-sketch-todos.md`](exercise-04-fill-metric-sketch-todos.md) |
-| 5 | Alert from create_failure_total | Alert design | [`exercise-05-alert-from-failure-total.md`](exercise-05-alert-from-failure-total.md) |
-| 6 | Lab 21 Prep Checklist | Pre-lab self-check | [`exercise-06-lab21-prep-checklist.md`](exercise-06-lab21-prep-checklist.md) |
-
-Keep all work separate from `examples/lab21-crm` (or the lab’s named project folder); that project begins in the full lab.
+| 1 | Cardinality Anti-Patterns | Analysis exercise | [`exercise-01-cardinality-antipatterns.md`](exercise-01-cardinality-antipatterns.md) |
+| 2 | Actuator Allow-List | Documentation exercise | [`exercise-02-actuator-allowlist.md`](exercise-02-actuator-allowlist.md) |
+| 3 | Liveness vs Readiness | Analysis exercise | [`exercise-03-liveness-vs-readiness.md`](exercise-03-liveness-vs-readiness.md) |
+| 4 | Fill Metric Sketch TODOs | Hands-on exercise | [`exercise-04-fill-metric-sketch-todos.md`](exercise-04-fill-metric-sketch-todos.md) |
+| 5 | Alert from create_failure_total | Documentation exercise | [`exercise-05-alert-from-failure-total.md`](exercise-05-alert-from-failure-total.md) |
+| 6 | Lab 21 Prep Checklist | Documentation exercise | [`exercise-06-lab21-prep-checklist.md`](exercise-06-lab21-prep-checklist.md) |

@@ -5,7 +5,7 @@
 **Module:** 16 — Exception Handling in Distributed APIs  
 **Next:** [`../lab16/LAB-16-WINDOWS.md`](../lab16/LAB-16-WINDOWS.md) or [`../lab16/LAB-16-MACOS.md`](../lab16/LAB-16-MACOS.md) → [`../lab16/LAB-16-GUIDE.md`](../lab16/LAB-16-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 16.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 16.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 16 builds the full graded deliverable.  
 > Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Failure to Status Map | Error taxonomy | [`exercise-01-failure-status-map.md`](exercise-01-failure-status-map.md) |
-| 2 | ErrorResponse JSON Draft | Error body contract | [`exercise-02-errorresponse-json.md`](exercise-02-errorresponse-json.md) |
-| 3 | Catch Order | Exception handling order | [`exercise-03-catch-order.md`](exercise-03-catch-order.md) |
-| 4 | Fill Message Hygiene TODOs | Safe client messages | [`exercise-04-fill-message-hygiene-todos.md`](exercise-04-fill-message-hygiene-todos.md) |
-| 5 | Correlation on Every Error | Distributed tracing habit | [`exercise-05-correlation-always.md`](exercise-05-correlation-always.md) |
-| 6 | Lab 16 Prep Checklist | Pre-lab self-check | [`exercise-06-lab16-prep-checklist.md`](exercise-06-lab16-prep-checklist.md) |
-
-Keep all work separate from `examples/lab16-crm` (or the lab’s named project folder); that project begins in the full lab.
+| 1 | Catch Order | Architecture exercise | [`exercise-01-catch-order.md`](exercise-01-catch-order.md) |
+| 2 | ErrorResponse JSON Draft | Documentation exercise | [`exercise-02-errorresponse-json.md`](exercise-02-errorresponse-json.md) |
+| 3 | Failure to Status Map | Analysis exercise | [`exercise-03-failure-status-map.md`](exercise-03-failure-status-map.md) |
+| 4 | Fill Message Hygiene TODOs | Hands-on exercise | [`exercise-04-fill-message-hygiene-todos.md`](exercise-04-fill-message-hygiene-todos.md) |
+| 5 | Correlation on Every Error | Documentation exercise | [`exercise-05-correlation-always.md`](exercise-05-correlation-always.md) |
+| 6 | Lab 16 Prep Checklist | Documentation exercise | [`exercise-06-lab16-prep-checklist.md`](exercise-06-lab16-prep-checklist.md) |

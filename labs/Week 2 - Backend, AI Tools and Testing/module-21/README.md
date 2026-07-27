@@ -6,7 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises 1–6 in order |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (see EXERCISES-INDEX)|
 | 2 | OS guide → [`lab21/LAB-21-WINDOWS.md`](lab21/LAB-21-WINDOWS.md) or [`lab21/LAB-21-MACOS.md`](lab21/LAB-21-MACOS.md) |
 | 3 | Full lab → [`lab21/LAB-21-GUIDE.md`](lab21/LAB-21-GUIDE.md) |
 

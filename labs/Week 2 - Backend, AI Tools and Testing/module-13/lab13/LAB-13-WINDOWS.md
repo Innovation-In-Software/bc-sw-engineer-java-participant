@@ -6,6 +6,7 @@
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven 3.9+ · IntelliJ  
 **Full lab steps:** [LAB-13-GUIDE.md](LAB-13-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-13-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 **Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11**. Created `examples\lab13-crm` with `contracts\customer.xsd`, `contracts\CustomerService.wsdl` (document/literal; ops Create/Update/Get; placeholder `http://localhost:8080/ws`), eight sample envelopes (CUS-1001 / CUS-1002 / `lab-request-001` + two faults), and docs. PowerShell `[xml]` load → **10/10 well-formed**. Port **8080** was **not** listening (expected — design-only; Lab 24 hosts Spring-WS). No Maven build required for this lab.

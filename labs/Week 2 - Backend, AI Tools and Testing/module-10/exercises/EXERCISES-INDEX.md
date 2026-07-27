@@ -5,7 +5,7 @@
 **Module:** 10 — GitHub Copilot Fundamentals for Java Developers  
 **Next:** [`../lab10/LAB-10-WINDOWS.md`](../lab10/LAB-10-WINDOWS.md) or [`../lab10/LAB-10-MACOS.md`](../lab10/LAB-10-MACOS.md) → [`../lab10/LAB-10-GUIDE.md`](../lab10/LAB-10-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 10.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 10.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 10 builds the full graded deliverable.  
 > Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Weak vs Strong Prompts | Prompt quality for Java CRM | [`exercise-01-weak-vs-strong-prompts.md`](exercise-01-weak-vs-strong-prompts.md) |
-| 2 | Phantom Annotation Hunt | Detect invented AI APIs | [`exercise-02-phantom-annotation-hunt.md`](exercise-02-phantom-annotation-hunt.md) |
-| 3 | Customer Sketch for Amina | Domain sketch before AI | [`exercise-03-customer-sketch.md`](exercise-03-customer-sketch.md) |
-| 4 | Fill Review-Log TODOs | Accept/reject discipline | [`exercise-04-fill-review-log-todos.md`](exercise-04-fill-review-log-todos.md) |
-| 5 | JDK 21 / Maven Habit | Toolchain readiness | [`exercise-05-jdk-maven-habit.md`](exercise-05-jdk-maven-habit.md) |
-| 6 | Lab 10 Prep Checklist | Pre-lab self-check | [`exercise-06-lab10-prep-checklist.md`](exercise-06-lab10-prep-checklist.md) |
-
-Keep all work separate from `examples/lab10-crm` (or the lab’s named project folder); that project begins in the full lab.
+| 1 | Weak vs Strong Prompts | Analysis exercise | [`exercise-01-weak-vs-strong-prompts.md`](exercise-01-weak-vs-strong-prompts.md) |
+| 2 | Customer Sketch for Amina | Architecture exercise | [`exercise-02-customer-sketch.md`](exercise-02-customer-sketch.md) |
+| 3 | Phantom Annotation Hunt | Analysis exercise | [`exercise-03-phantom-annotation-hunt.md`](exercise-03-phantom-annotation-hunt.md) |
+| 4 | Fill Review-Log TODOs | Hands-on exercise | [`exercise-04-fill-review-log-todos.md`](exercise-04-fill-review-log-todos.md) |
+| 5 | JDK 21 / Maven Habit | Documentation exercise | [`exercise-05-jdk-maven-habit.md`](exercise-05-jdk-maven-habit.md) |
+| 6 | Lab 10 Prep Checklist | Documentation exercise | [`exercise-06-lab10-prep-checklist.md`](exercise-06-lab10-prep-checklist.md) |

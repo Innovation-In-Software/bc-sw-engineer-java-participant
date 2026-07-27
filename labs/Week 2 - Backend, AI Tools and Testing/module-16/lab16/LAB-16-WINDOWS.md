@@ -6,6 +6,7 @@
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven 3.9+ · IntelliJ  
 **Full lab steps:** [LAB-16-GUIDE.md](LAB-16-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-16-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 **Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab15-crm` → `examples\lab16-crm`; added `ErrorResponse` / `BusinessException` factories / `GlobalExceptionHandler` / `ApiResult`; facade returns Ok/Fail; service throws typed business exceptions. `mvn -B clean test` → **Tests run: 21**, Failures: 0 · **BUILD SUCCESS**. Main prints 400/404/409 JSON with `lab-request-001` and leaves `CUS-1001` ACTIVE after illegal transition.

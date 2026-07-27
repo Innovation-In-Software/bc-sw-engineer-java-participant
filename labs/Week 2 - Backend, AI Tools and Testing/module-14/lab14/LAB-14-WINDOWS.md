@@ -6,6 +6,7 @@
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven 3.9+ · IntelliJ  
 **Full lab steps:** [LAB-14-GUIDE.md](LAB-14-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-14-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 **Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab12-crm` → `examples\lab14-crm`; added Jakarta Validation **3.1.0**, Hibernate Validator **8.0.2.Final**, Expressly **5.0.0**; implemented `CustomerRequestDTO` / `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` (wired to Lab 12 `createCustomer`/`getCustomer`). `mvn -B clean test` → **Tests run: 13**, Failures: 0 · **BUILD SUCCESS**. Main (with Maven runtime classpath) prints response DTOs for Amina/Ravi and rejects invalid email / unknown id with `lab-request-001`.

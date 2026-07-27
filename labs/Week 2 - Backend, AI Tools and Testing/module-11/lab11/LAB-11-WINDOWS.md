@@ -6,6 +6,7 @@
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven 3.9+ · IntelliJ  
 **Full lab steps:** [LAB-11-GUIDE.md](LAB-11-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-11-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 **Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab10-crm` → `examples\lab11-crm`; added Mockito (`mockito-core` + `mockito-junit-jupiter` **5.11.0**, test scope); extracted `CustomerNotifier` + `validateCustomerId`; tests `CustomerTest` / `CustomerServiceTest` / `CustomerNotifierMockTest`; notes `copilot-notes\ai-test-refactor-notes.md`. `mvn -q clean test` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS** (twice, deterministic). `Main` still shows `CUS-1001` ACTIVE + `CUS-1002` PROSPECT → ACTIVE. JDK 21 may log Byte Buddy dynamic-agent warnings during Mockito — ignore if Surefire is green.

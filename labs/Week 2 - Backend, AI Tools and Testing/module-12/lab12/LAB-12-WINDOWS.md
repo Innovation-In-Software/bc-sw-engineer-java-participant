@@ -6,6 +6,7 @@
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven 3.9+ · IntelliJ  
 **Full lab steps:** [LAB-12-GUIDE.md](LAB-12-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-12-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 **Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab11-crm` → `examples\lab12-crm`; froze messy `doStuff` baseline as `CustomerService.before.java.txt`; refactored to `createCustomer` / `getCustomer` / `updateStatus` with `Map<String,Customer>`, exception + `lab-request-001` correlation messages, and validation helpers. Evidence under `docs\` (smells, before-after, AI review, standards checklist). `mvn -B clean test` and `mvn -B verify` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS**. `Main` demo prints create/get/update plus duplicate/unknown failures with correlation ID.
