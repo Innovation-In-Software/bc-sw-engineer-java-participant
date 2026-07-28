@@ -97,8 +97,8 @@ One document contains success/failure flows, object transformations, and a truth
 ## Pass criteria
 
 | # | Confirm | Notes |
-| - | ------- | ----- |
-| 1 | Success flow includes all three layers | Pass / Fail |
-| 2 | Failure stops before repository | Pass / Fail |
-| 3 | Request/entity/response transformations are identified | Pass / Fail |
-| 4 | No premature Spring/JPA implementation appears | Pass / Fail |
+| - | ------- | ---- |
+| 1 | Success flow includes all three layers | Pass |
+| 2 | Failure stops before repository | Pass |
+| 3 | Request/entity/response transformations are identified | Pass |
+| 4 | No premature Spring/JPA implementation appears | Pass |

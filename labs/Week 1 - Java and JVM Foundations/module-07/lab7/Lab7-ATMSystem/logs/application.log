@@ -1,0 +1,61 @@
+2026-07-28 12:44:48 INFO Login successful for account 1001
+2026-07-28 12:47:41 ERROR Requested 20000.0 Balance 11000.0
+InsufficientFundsException Transaction Failed. Insufficient Account Balance.
+[com.academy.atm.Account.withdraw(Account.java:38), com.academy.atm.ATMService.lambda$withdraw$1(ATMService.java:180), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.withdraw(ATMService.java:177), com.academy.atm.Main.main(Main.java:33)]
+2026-07-28 12:48:08 ERROR Amount must be greater than zero.
+InvalidAmountException Amount must be greater than zero.
+[com.academy.atm.Account.deposit(Account.java:28), com.academy.atm.ATMService.lambda$deposit$0(ATMService.java:169), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.deposit(ATMService.java:166), com.academy.atm.Main.main(Main.java:32)]
+2026-07-28 12:48:20 INFO Deposit completed successfully | Execution Time: 96962923452434 ms
+2026-07-28 12:48:25 INFO Logout for account 1001
+2026-07-28 12:50:19 INFO Login successful for account 1001
+2026-07-28 12:50:21 ERROR Invalid numeric input during Withdraw
+InputMismatchException Invalid numeric input.
+[com.academy.atm.ATMService.readAmount(ATMService.java:110), com.academy.atm.ATMService.lambda$withdraw$1(ATMService.java:179), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.withdraw(ATMService.java:177), com.academy.atm.Main.main(Main.java:35)]
+2026-07-28 12:50:29 INFO Logout for account 1001
+2026-07-28 12:50:37 INFO Login successful for account 1001
+2026-07-28 12:50:43 ERROR Requested 20000.0 Balance 11000.0
+InsufficientFundsException Transaction Failed. Insufficient Account Balance.
+[com.academy.atm.Account.withdraw(Account.java:38), com.academy.atm.ATMService.lambda$withdraw$1(ATMService.java:180), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.withdraw(ATMService.java:177), com.academy.atm.Main.main(Main.java:35)]
+2026-07-28 12:50:48 ERROR Amount must be greater than zero.
+InvalidAmountException Amount must be greater than zero.
+[com.academy.atm.Account.deposit(Account.java:28), com.academy.atm.ATMService.lambda$deposit$0(ATMService.java:169), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.deposit(ATMService.java:166), com.academy.atm.Main.main(Main.java:34)]
+2026-07-28 12:50:54 INFO Deposit completed successfully | Execution Time: 97116498358964 ms
+2026-07-28 12:50:55 INFO Logout for account 1001
+2026-07-28 12:52:22 ERROR Invalid menu option: abc
+NumberFormatException For input string: "abc"
+[java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67), java.base/java.lang.Integer.parseInt(Integer.java:662), java.base/java.lang.Integer.parseInt(Integer.java:778), com.academy.atm.Main.main(Main.java:23)]
+2026-07-28 12:52:40 INFO Login successful for account 1001
+2026-07-28 12:52:46 INFO Balance Inquiry completed successfully | Execution Time: 97228896237509 ms
+2026-07-28 12:52:58 ERROR Requested 20000.0 Balance 11000.0
+InsufficientFundsException Transaction Failed. Insufficient Account Balance.
+[com.academy.atm.Account.withdraw(Account.java:38), com.academy.atm.ATMService.lambda$withdraw$1(ATMService.java:180), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.withdraw(ATMService.java:177), com.academy.atm.Main.main(Main.java:35)]
+2026-07-28 12:53:07 ERROR Amount must be greater than zero.
+InvalidAmountException Amount must be greater than zero.
+[com.academy.atm.Account.deposit(Account.java:28), com.academy.atm.ATMService.lambda$deposit$0(ATMService.java:169), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.deposit(ATMService.java:166), com.academy.atm.Main.main(Main.java:34)]
+2026-07-28 12:53:17 ERROR Invalid numeric input during Deposit
+InputMismatchException Invalid numeric input.
+[com.academy.atm.ATMService.readAmount(ATMService.java:110), com.academy.atm.ATMService.lambda$deposit$0(ATMService.java:168), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.deposit(ATMService.java:166), com.academy.atm.Main.main(Main.java:34)]
+2026-07-28 12:53:34 INFO Deposit completed successfully | Execution Time: 97276587321298 ms
+2026-07-28 12:53:39 INFO Mini Statement completed successfully | Execution Time: 97282156989249 ms
+2026-07-28 12:54:15 ERROR NullPointerException demonstration
+NullPointerException Cannot invoke "com.academy.atm.Account.getBalance()" because "<local1>" is null
+[com.academy.atm.ATMService.demonstrateUncheckedExceptions(ATMService.java:252), com.academy.atm.Main.main(Main.java:45)]
+2026-07-28 12:54:15 ERROR ArithmeticException demonstration
+ArithmeticException / by zero
+[com.academy.atm.ATMService.demonstrateUncheckedExceptions(ATMService.java:259), com.academy.atm.Main.main(Main.java:45)]
+2026-07-28 12:54:15 ERROR ArrayIndexOutOfBoundsException demonstration
+ArrayIndexOutOfBoundsException Index 10 out of bounds for length 3
+[com.academy.atm.ATMService.demonstrateUncheckedExceptions(ATMService.java:268), com.academy.atm.Main.main(Main.java:45)]
+2026-07-28 12:54:48 INFO Logout for account 1001
+2026-07-28 12:54:56 ERROR Account not found: 9999
+AccountNotFoundException Account not found: 9999
+[com.academy.atm.ATMService.findAccount(ATMService.java:40), com.academy.atm.ATMService.login(ATMService.java:60), com.academy.atm.Main.main(Main.java:33)]
+2026-07-28 12:55:02 INFO Login successful for account 1001
+2026-07-28 12:55:05 INFO Logout for account 1001
+2026-07-28 12:55:55 INFO Login successful for account 1001
+2026-07-28 12:56:09 INFO Transfer completed successfully | Execution Time: 97431711517430 ms
+2026-07-28 12:56:33 INFO Transfer rollback completed for accounts 1001 and 1002
+2026-07-28 12:56:33 ERROR Requested 20000.0 Balance 10000.0
+InsufficientFundsException Transaction Failed. Insufficient Account Balance.
+[com.academy.atm.Account.withdraw(Account.java:38), com.academy.atm.ATMService.lambda$transferFunds$3(ATMService.java:207), com.academy.atm.ATMService.executeTransaction(ATMService.java:131), com.academy.atm.ATMService.transferFunds(ATMService.java:195), com.academy.atm.Main.main(Main.java:37)]
+2026-07-28 12:56:39 INFO Logout for account 1001

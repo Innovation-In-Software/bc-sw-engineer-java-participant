@@ -146,10 +146,10 @@ remains concise.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Log includes severity, operation, demo account ID, and exception | Pass / Fail |
-| 2 | User message contains no stack trace | Pass / Fail |
-| 3 | Catch block is not empty | Pass / Fail |
-| 4 | You can name data that must never be logged | Pass / Fail |
+| 1 | Log includes severity, operation, demo account ID, and exception | Pass |
+| 2 | User message contains no stack trace | Pass |
+| 3 | Catch block is not empty | Pass |
+| 4 | You can name data that must never be logged | Pass |
 
 ---
 

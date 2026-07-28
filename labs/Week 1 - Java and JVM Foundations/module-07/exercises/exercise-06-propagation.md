@@ -133,6 +133,6 @@ to the catching boundary.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Catch occurs only in `main` | Pass / Fail |
-| 2 | Trace includes all four methods | Pass / Fail |
-| 3 | You can explain stack unwinding and catch boundaries | Pass / Fail |
+| 1 | Catch occurs only in `main` | Pass |
+| 2 | Trace includes all four methods | Pass |
+| 3 | You can explain stack unwinding and catch boundaries | Pass |

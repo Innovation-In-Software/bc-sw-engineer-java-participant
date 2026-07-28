@@ -128,6 +128,6 @@ Both failures are handled, and you can point to `throw` in a body versus
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Both verified messages print | Pass / Fail |
-| 2 | Compiler experiment proves checked handling | Pass / Fail |
-| 3 | You can explain `throw` vs `throws` | Pass / Fail |
+| 1 | Both verified messages print | Pass |
+| 2 | Compiler experiment proves checked handling | Pass |
+| 3 | You can explain `throw` vs `throws` | Pass |

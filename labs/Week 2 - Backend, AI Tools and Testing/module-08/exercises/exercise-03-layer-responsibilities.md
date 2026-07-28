@@ -82,6 +82,6 @@ Every responsibility has one primary home, and the repaired flow follows control
 
 | # | Confirm | Notes |
 | - | ------- | ----- |
-| 1 | Seven tasks assigned correctly | Pass / Fail |
-| 2 | God-controller flow repaired | Pass / Fail |
-| 3 | You explain at least two benefits of boundaries | Pass / Fail |
+| 1 | Seven tasks assigned correctly | Pass |
+| 2 | God-controller flow repaired | Pass |
+| 3 | You explain at least two benefits of boundaries | Pass |

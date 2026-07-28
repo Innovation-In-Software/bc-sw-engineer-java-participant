@@ -167,6 +167,6 @@ Change `Customer.java` package to `com.northstar.crm.dto` without moving the fil
 
 | # | Confirm | Notes |
 | - | ------- | ----- |
-| 1 | Package tree matches declarations | Pass / Fail |
-| 2 | Compile and run output matches expected | Pass / Fail |
-| 3 | You explain entity vs request/response DTO | Pass / Fail |
+| 1 | Package tree matches declarations | Pass |
+| 2 | Compile and run output matches expected | Pass |
+| 3 | You explain entity vs request/response DTO | Pass |

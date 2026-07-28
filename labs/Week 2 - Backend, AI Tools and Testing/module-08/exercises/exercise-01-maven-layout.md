@@ -86,7 +86,7 @@ Every file is assigned to the correct Maven location, and you can distinguish so
 ## Pass criteria
 
 | # | Confirm | Notes |
-| - | ------- | ----- |
-| 1 | Six files classified correctly | Pass / Fail |
-| 2 | You explain why `target/` is ignored | Pass / Fail |
-| 3 | You state that resources must not contain committed secrets | Pass / Fail |
+| - | ------- | ---- |
+| 1 | Six files classified correctly | Pass |
+| 2 | You explain why `target/` is ignored | Pass |
+| 3 | You state that resources must not contain committed secrets | Pass |

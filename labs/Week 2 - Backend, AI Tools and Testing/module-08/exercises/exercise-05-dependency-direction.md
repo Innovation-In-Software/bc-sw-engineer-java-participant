@@ -82,6 +82,6 @@ You identify inward flow, two clear violations, one context-sensitive dependency
 
 | # | Confirm | Notes |
 | - | ------- | ----- |
-| 1 | Seven dependencies classified | Pass / Fail |
-| 2 | Cycle is repaired | Pass / Fail |
-| 3 | Architecture rule is written | Pass / Fail |
+| 1 | Seven dependencies classified | Pass |
+| 2 | Cycle is repaired | Pass |
+| 3 | Architecture rule is written | Pass |

@@ -157,6 +157,6 @@ failed withdrawal does not mutate balance.
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Output reports shortfall `50.00` | Pass / Fail |
-| 2 | Balance remains `100.00` | Pass / Fail |
-| 3 | Caller enforces catch-or-declare | Pass / Fail |
+| 1 | Output reports shortfall `50.00` | Pass |
+| 2 | Balance remains `100.00` | Pass |
+| 3 | Caller enforces catch-or-declare | Pass |
