@@ -36,7 +36,7 @@ It closes resources autmatically after the block exits. This removes the need fo
 **7. When should throws be used?**\
 `throws` should be used when a method could possibly throw an exception during its execution. If this were to happen, it would propagate up to the calling methods until it reaches a `catch` or the top of the call stack.\
 **8. Why is logging important in enterprise applications?**\
-
+Logging is important for a number of reasons. First, for development and debugging, keeping detailed logs with specific exception handling allows you to keep a durable record of past errors and operations. This also allows the developer to gather insight into the way the code is running without showing unnecessary details to the user such as a stack trace.\
 **9. What happens if an exception is not handled?**\
 It keeps propagating up through the callings methods until it finds a `catch` block that handles the exception, or reaches the top of the call stack. If it is not caught, the JVM prints the stack trace and thread, terminating the program. In this lab, `executeTransaction` has a final `catch` for general exceptions to avoid this.\
 **10. How does proper exception handling improve software reliability?**\
