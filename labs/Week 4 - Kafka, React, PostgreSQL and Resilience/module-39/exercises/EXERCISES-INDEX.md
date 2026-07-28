@@ -5,10 +5,10 @@
 **Module:** 39 — Spring Data JPA and PostgreSQL  
 **Next:** [`../lab39/LAB-39-WINDOWS.md`](../lab39/LAB-39-WINDOWS.md) or [`../lab39/LAB-39-MACOS.md`](../lab39/LAB-39-MACOS.md) → [`../lab39/LAB-39-GUIDE.md`](../lab39/LAB-39-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 39.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 39.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 39 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 3 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
 | 1 | Entity Mapping | Map tables to entities | [`exercise-01-entity-mapping.md`](exercise-01-entity-mapping.md) |
-| 2 | Flyway Plan | Plan versioned migrations | [`exercise-02-flyway-plan.md`](exercise-02-flyway-plan.md) |
-| 3 | Repository Sketch | Design Spring Data methods | [`exercise-03-repository-sketch.md`](exercise-03-repository-sketch.md) |
-| 4 | Fill JPA TODOs | Complete entity/repo blanks | [`exercise-04-fill-jpa-todos.md`](exercise-04-fill-jpa-todos.md) |
-| 5 | Paging and Locking Notes | Plan Pageable and @Version use | [`exercise-05-paging-locking.md`](exercise-05-paging-locking.md) |
+| 2 | Repository Sketch | Design Spring Data methods | [`exercise-02-repository-sketch.md`](exercise-02-repository-sketch.md) |
+| 3 | Fill JPA TODOs | Complete entity/repo blanks | [`exercise-03-fill-jpa-todos.md`](exercise-03-fill-jpa-todos.md) |
+| 4 | Paging and Locking Notes | Plan Pageable and @Version use | [`exercise-04-paging-locking.md`](exercise-04-paging-locking.md) |
+| 5 | Flyway Plan | Plan versioned migrations | [`exercise-05-flyway-plan.md`](exercise-05-flyway-plan.md) |
 | 6 | Lab 39 Readiness | Pre-lab self-check | [`exercise-06-lab39-readiness.md`](exercise-06-lab39-readiness.md) |
-
-Keep all work separate from `examples/lab39-crm` (or the lab’s named project folder); that project begins in the full lab.

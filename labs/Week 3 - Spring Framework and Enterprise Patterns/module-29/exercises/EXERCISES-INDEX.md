@@ -5,10 +5,10 @@
 **Module:** 29 — Validation and Global Exception Handling  
 **Next:** [`../lab29/LAB-29-WINDOWS.md`](../lab29/LAB-29-WINDOWS.md) or [`../lab29/LAB-29-MACOS.md`](../lab29/LAB-29-MACOS.md) → [`../lab29/LAB-29-GUIDE.md`](../lab29/LAB-29-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 29.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 29.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 29 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 2 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
 | 1 | DTO Constraint Plan | Choose Bean Validation annotations | [`exercise-01-dto-constraints.md`](exercise-01-dto-constraints.md) |
-| 2 | ErrorResponse Envelope | Design a stable error JSON shape | [`exercise-02-error-envelope.md`](exercise-02-error-envelope.md) |
-| 3 | Exception to Status Map | Map domain exceptions to HTTP codes | [`exercise-03-exception-status-map.md`](exercise-03-exception-status-map.md) |
-| 4 | GlobalExceptionHandler TODOs | Fill handler method blanks | [`exercise-04-handler-todos.md`](exercise-04-handler-todos.md) |
-| 5 | MockMvc Body Assertions Plan | Assert status and envelope fields | [`exercise-05-mockmvc-body-assertions.md`](exercise-05-mockmvc-body-assertions.md) |
-| 6 | Lab 29 Readiness Checklist | Unify Labs 14/16 ideas into Boot | [`exercise-06-lab29-readiness.md`](exercise-06-lab29-readiness.md) |
-
-Keep all work separate from `examples/lab29-crm` (or the lab’s named project folder); that project begins in the full lab.
+| 2 | GlobalExceptionHandler TODOs | Fill handler method blanks | [`exercise-02-handler-todos.md`](exercise-02-handler-todos.md) |
+| 3 | ErrorResponse Envelope | Design a stable error JSON shape | [`exercise-03-error-envelope.md`](exercise-03-error-envelope.md) |
+| 4 | Exception to Status Map | Map domain exceptions to HTTP codes | [`exercise-04-exception-status-map.md`](exercise-04-exception-status-map.md) |
+| 5 | Lab 29 Readiness Checklist | Unify Labs 14/16 ideas into Boot | [`exercise-05-lab29-readiness.md`](exercise-05-lab29-readiness.md) |
+| 6 | MockMvc Body Assertions Plan | Assert status and envelope fields | [`exercise-06-mockmvc-body-assertions.md`](exercise-06-mockmvc-body-assertions.md) |

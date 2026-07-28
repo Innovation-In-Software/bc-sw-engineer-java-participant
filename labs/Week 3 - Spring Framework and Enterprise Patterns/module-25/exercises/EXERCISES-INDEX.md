@@ -5,10 +5,10 @@
 **Module:** 25 — Service and Repository Layers  
 **Next:** [`../lab25/LAB-25-WINDOWS.md`](../lab25/LAB-25-WINDOWS.md) or [`../lab25/LAB-25-MACOS.md`](../lab25/LAB-25-MACOS.md) → [`../lab25/LAB-25-GUIDE.md`](../lab25/LAB-25-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 25.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 25.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 25 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 3 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
 | 1 | Layer Boundary Quiz | Assign work to controller/service/repository | [`exercise-01-layer-boundaries.md`](exercise-01-layer-boundaries.md) |
 | 2 | Package Sketch | Name packages for layered CRM | [`exercise-02-package-sketch.md`](exercise-02-package-sketch.md) |
-| 3 | AI Review Policy | Reject unsafe Copilot layering suggestions | [`exercise-03-ai-review-policy.md`](exercise-03-ai-review-policy.md) |
-| 4 | Service Layer Skeleton (TODOs) | Fill service/repository TODOs in plain Java | [`exercise-04-service-todo-skeleton.md`](exercise-04-service-todo-skeleton.md) |
+| 3 | Service Layer Skeleton (TODOs) | Fill service/repository TODOs in plain Java | [`exercise-03-service-todo-skeleton.md`](exercise-03-service-todo-skeleton.md) |
+| 4 | AI Review Policy | Reject unsafe Copilot layering suggestions | [`exercise-04-ai-review-policy.md`](exercise-04-ai-review-policy.md) |
 | 5 | Service Test Plan | Plan unit tests with a fake repository | [`exercise-05-test-plan.md`](exercise-05-test-plan.md) |
 | 6 | Lab 25 Readiness Checklist | Confirm Boot CRM baseline for layering | [`exercise-06-lab25-readiness.md`](exercise-06-lab25-readiness.md) |
-
-Keep all work separate from `examples/lab25-crm` (or the lab’s named project folder); that project begins in the full lab.

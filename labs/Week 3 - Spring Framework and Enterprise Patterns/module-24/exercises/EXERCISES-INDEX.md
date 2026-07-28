@@ -5,10 +5,10 @@
 **Module:** 24 — SOAP Web Services with Spring WS  
 **Next:** [`../lab24/LAB-24-WINDOWS.md`](../lab24/LAB-24-WINDOWS.md) or [`../lab24/LAB-24-MACOS.md`](../lab24/LAB-24-MACOS.md) → [`../lab24/LAB-24-GUIDE.md`](../lab24/LAB-24-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 24.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 24.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 24 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 3 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
 | 1 | Contract-First Recall | Restate XSD as source of truth | [`exercise-01-contract-first-recall.md`](exercise-01-contract-first-recall.md) |
 | 2 | SOAP Operation Map | Map SOAP ops to service methods | [`exercise-02-operation-map.md`](exercise-02-operation-map.md) |
-| 3 | SOAP Fault Versus REST Error | Contrast fault envelopes with JSON errors | [`exercise-03-fault-vs-rest.md`](exercise-03-fault-vs-rest.md) |
-| 4 | PayloadRoot Skeleton (TODOs) | Fill `@Endpoint` / `@PayloadRoot` blanks | [`exercise-04-payloadroot-skeleton.md`](exercise-04-payloadroot-skeleton.md) |
+| 3 | PayloadRoot Skeleton (TODOs) | Fill `@Endpoint` / `@PayloadRoot` blanks | [`exercise-03-payloadroot-skeleton.md`](exercise-03-payloadroot-skeleton.md) |
+| 4 | SOAP Fault Versus REST Error | Contrast fault envelopes with JSON errors | [`exercise-04-fault-vs-rest.md`](exercise-04-fault-vs-rest.md) |
 | 5 | UsernameToken Plan | Plan message-level lab security | [`exercise-05-usernametoken-plan.md`](exercise-05-usernametoken-plan.md) |
 | 6 | Lab 24 Readiness Checklist | Confirm Boot CRM exists before SOAP | [`exercise-06-lab24-readiness.md`](exercise-06-lab24-readiness.md) |
-
-Keep all work separate from `examples/lab24-crm` (or the lab’s named project folder); that project begins in the full lab.

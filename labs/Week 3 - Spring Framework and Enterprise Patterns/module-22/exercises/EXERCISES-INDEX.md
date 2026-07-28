@@ -5,10 +5,10 @@
 **Module:** 22 — Spring Core and Inversion of Control (IoC)  
 **Next:** [`../lab22/LAB-22-WINDOWS.md`](../lab22/LAB-22-WINDOWS.md) or [`../lab22/LAB-22-MACOS.md`](../lab22/LAB-22-MACOS.md) → [`../lab22/LAB-22-GUIDE.md`](../lab22/LAB-22-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 22.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 22.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 22 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 5 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
 | 1 | IoC Versus Manual Wiring | Contrast IoC with `new` coupling | [`exercise-01-ioc-vs-new.md`](exercise-01-ioc-vs-new.md) |
-| 2 | Stereotype Annotation Map | Assign Spring stereotypes to CRM types | [`exercise-02-stereotype-map.md`](exercise-02-stereotype-map.md) |
-| 3 | Constructor Injection Preference | Prefer constructor DI over field `@Autowired` | [`exercise-03-constructor-injection.md`](exercise-03-constructor-injection.md) |
-| 4 | Bean Graph Skeleton (TODOs) | Fill constructor-injection TODOs in a tiny sketch | [`exercise-04-bean-graph-skeleton.md`](exercise-04-bean-graph-skeleton.md) |
-| 5 | Bean Lifecycle Callbacks | Predict `@PostConstruct` / `@PreDestroy` evidence | [`exercise-05-lifecycle-notes.md`](exercise-05-lifecycle-notes.md) |
+| 2 | Constructor Injection Preference | Prefer constructor DI over field `@Autowired` | [`exercise-02-constructor-injection.md`](exercise-02-constructor-injection.md) |
+| 3 | Bean Lifecycle Callbacks | Predict `@PostConstruct` / `@PreDestroy` evidence | [`exercise-03-lifecycle-notes.md`](exercise-03-lifecycle-notes.md) |
+| 4 | Stereotype Annotation Map | Assign Spring stereotypes to CRM types | [`exercise-04-stereotype-map.md`](exercise-04-stereotype-map.md) |
+| 5 | Bean Graph Skeleton (TODOs) | Fill constructor-injection TODOs in a tiny sketch | [`exercise-05-bean-graph-skeleton.md`](exercise-05-bean-graph-skeleton.md) |
 | 6 | Lab 22 Readiness Checklist | Prepare workspace for the timed Lab 22 path | [`exercise-06-lab22-readiness.md`](exercise-06-lab22-readiness.md) |
-
-Keep all work separate from `examples/lab22-crm` (or the lab’s named project folder); that project begins in the full lab.

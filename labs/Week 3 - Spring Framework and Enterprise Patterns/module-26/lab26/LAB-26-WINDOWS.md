@@ -6,6 +6,7 @@
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven 3.9+ · Spring Boot 3.x · IntelliJ  
 **Full lab steps:** [LAB-26-GUIDE.md](LAB-26-GUIDE.md)  
+**Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-26-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
 ## Prerequisites (Windows)

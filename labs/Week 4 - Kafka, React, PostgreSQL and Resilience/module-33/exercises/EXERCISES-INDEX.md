@@ -5,10 +5,10 @@
 **Module:** 33 — React Component Development  
 **Next:** [`../lab33/LAB-33-WINDOWS.md`](../lab33/LAB-33-WINDOWS.md) or [`../lab33/LAB-33-MACOS.md`](../lab33/LAB-33-MACOS.md) → [`../lab33/LAB-33-GUIDE.md`](../lab33/LAB-33-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 33.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 33.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 33 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 1 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Component Inventory | Break UI into components | [`exercise-01-component-inventory.md`](exercise-01-component-inventory.md) |
-| 2 | Props Sketch | Design props contracts | [`exercise-02-props-sketch.md`](exercise-02-props-sketch.md) |
+| 1 | Fill Component TODOs | Complete JSX/prop blanks | [`exercise-01-fill-react-component-todos.md`](exercise-01-fill-react-component-todos.md) |
+| 2 | Component Inventory | Break UI into components | [`exercise-02-component-inventory.md`](exercise-02-component-inventory.md) |
 | 3 | JSX on Paper | Sketch JSX trees | [`exercise-03-jsx-paper.md`](exercise-03-jsx-paper.md) |
-| 4 | Fill Component TODOs | Complete JSX/prop blanks | [`exercise-04-fill-react-component-todos.md`](exercise-04-fill-react-component-todos.md) |
+| 4 | Props Sketch | Design props contracts | [`exercise-04-props-sketch.md`](exercise-04-props-sketch.md) |
 | 5 | A11y Checklist | Plan accessible CRM UI | [`exercise-05-a11y-checklist.md`](exercise-05-a11y-checklist.md) |
 | 6 | Lab 33 Readiness | Pre-lab self-check | [`exercise-06-lab33-readiness.md`](exercise-06-lab33-readiness.md) |
-
-Keep all work separate from `examples/lab33-crm` (or the lab’s named project folder); that project begins in the full lab.

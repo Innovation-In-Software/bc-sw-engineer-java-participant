@@ -5,10 +5,10 @@
 **Module:** 34 — State and Event Management  
 **Next:** [`../lab34/LAB-34-WINDOWS.md`](../lab34/LAB-34-WINDOWS.md) or [`../lab34/LAB-34-MACOS.md`](../lab34/LAB-34-MACOS.md) → [`../lab34/LAB-34-GUIDE.md`](../lab34/LAB-34-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 34.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 34.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 34 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 1 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Props vs State | Choose state ownership | [`exercise-01-props-vs-state.md`](exercise-01-props-vs-state.md) |
-| 2 | Controlled Form Sketch | Design controlled inputs | [`exercise-02-controlled-form.md`](exercise-02-controlled-form.md) |
-| 3 | Validation Messages | Plan client validation copy | [`exercise-03-validation-messages.md`](exercise-03-validation-messages.md) |
-| 4 | Fill useState TODOs | Complete React state blanks | [`exercise-04-fill-usestate-todos.md`](exercise-04-fill-usestate-todos.md) |
-| 5 | Event Handler Map | Map DOM events to updates | [`exercise-05-event-handler-map.md`](exercise-05-event-handler-map.md) |
+| 1 | Fill useState TODOs | Complete React state blanks | [`exercise-01-fill-usestate-todos.md`](exercise-01-fill-usestate-todos.md) |
+| 2 | Event Handler Map | Map DOM events to updates | [`exercise-02-event-handler-map.md`](exercise-02-event-handler-map.md) |
+| 3 | Controlled Form Sketch | Design controlled inputs | [`exercise-03-controlled-form.md`](exercise-03-controlled-form.md) |
+| 4 | Validation Messages | Plan client validation copy | [`exercise-04-validation-messages.md`](exercise-04-validation-messages.md) |
+| 5 | Props vs State | Choose state ownership | [`exercise-05-props-vs-state.md`](exercise-05-props-vs-state.md) |
 | 6 | Lab 34 Readiness | Pre-lab self-check | [`exercise-06-lab34-readiness.md`](exercise-06-lab34-readiness.md) |
-
-Keep all work separate from `examples/lab34-crm` (or the lab’s named project folder); that project begins in the full lab.

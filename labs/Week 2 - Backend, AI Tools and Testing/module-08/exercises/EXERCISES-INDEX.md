@@ -62,6 +62,8 @@ Scaffolding (packages, imports, class names) is given; the learning parts are bl
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 Complete in this sequence (matches Module 8 slide order):
 
 | # | Exercise | New structural skill | File |

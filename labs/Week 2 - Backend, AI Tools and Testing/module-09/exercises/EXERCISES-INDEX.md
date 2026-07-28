@@ -61,6 +61,8 @@ Scaffolding (coordinates, plugin names, class names) is given; the learning part
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 Complete in this sequence (matches Module 9 slide order):
 
 | # | Exercise | New build skill | File |

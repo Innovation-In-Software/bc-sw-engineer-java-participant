@@ -5,10 +5,10 @@
 **Module:** 26 — Spring Profiles and Configuration  
 **Next:** [`../lab26/LAB-26-WINDOWS.md`](../lab26/LAB-26-WINDOWS.md) or [`../lab26/LAB-26-MACOS.md`](../lab26/LAB-26-MACOS.md) → [`../lab26/LAB-26-GUIDE.md`](../lab26/LAB-26-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 26.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 26.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 26 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 2 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
 | 1 | Profile Purposes | State why each profile exists | [`exercise-01-profile-purposes.md`](exercise-01-profile-purposes.md) |
-| 2 | Property Override Order | Rank Spring property sources | [`exercise-02-override-order.md`](exercise-02-override-order.md) |
+| 2 | Profile YAML TODOs | Fill profile YAML blanks safely | [`exercise-02-profile-yaml-todos.md`](exercise-02-profile-yaml-todos.md) |
 | 3 | ConfigurationProperties Sketch | Plan typed config binding | [`exercise-03-config-properties-sketch.md`](exercise-03-config-properties-sketch.md) |
-| 4 | Profile YAML TODOs | Fill profile YAML blanks safely | [`exercise-04-profile-yaml-todos.md`](exercise-04-profile-yaml-todos.md) |
+| 4 | Property Override Order | Rank Spring property sources | [`exercise-04-override-order.md`](exercise-04-override-order.md) |
 | 5 | Activation Command Drill | Write profile activation commands | [`exercise-05-activation-drill.md`](exercise-05-activation-drill.md) |
 | 6 | Lab 26 Readiness Checklist | Confirm layered CRM before config lab | [`exercise-06-lab26-readiness.md`](exercise-06-lab26-readiness.md) |
-
-Keep all work separate from `examples/lab26-crm` (or the lab’s named project folder); that project begins in the full lab.

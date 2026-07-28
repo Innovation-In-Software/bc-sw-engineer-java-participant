@@ -5,10 +5,10 @@
 **Module:** 35 — Frontend and API Integration  
 **Next:** [`../lab35/LAB-35-WINDOWS.md`](../lab35/LAB-35-WINDOWS.md) or [`../lab35/LAB-35-MACOS.md`](../lab35/LAB-35-MACOS.md) → [`../lab35/LAB-35-GUIDE.md`](../lab35/LAB-35-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 35.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 35.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 35 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 5 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
-| 1 | Endpoint Map | Map UI to REST | [`exercise-01-endpoint-map.md`](exercise-01-endpoint-map.md) |
+| 1 | Error UX Copy | Write API error UX | [`exercise-01-error-ux.md`](exercise-01-error-ux.md) |
 | 2 | Fetch Flow | Design async UI states | [`exercise-02-fetch-flow.md`](exercise-02-fetch-flow.md) |
 | 3 | CORS and Headers | Plan browser↔API concerns | [`exercise-03-cors-and-headers.md`](exercise-03-cors-and-headers.md) |
-| 4 | Fill Fetch TODOs | Complete typed fetch blanks | [`exercise-04-fill-fetch-todos.md`](exercise-04-fill-fetch-todos.md) |
-| 5 | Error UX Copy | Write API error UX | [`exercise-05-error-ux.md`](exercise-05-error-ux.md) |
+| 4 | Endpoint Map | Map UI to REST | [`exercise-04-endpoint-map.md`](exercise-04-endpoint-map.md) |
+| 5 | Fill Fetch TODOs | Complete typed fetch blanks | [`exercise-05-fill-fetch-todos.md`](exercise-05-fill-fetch-todos.md) |
 | 6 | Lab 35 Readiness | Pre-lab self-check | [`exercise-06-lab35-readiness.md`](exercise-06-lab35-readiness.md) |
-
-Keep all work separate from `examples/lab35-crm` (or the lab’s named project folder); that project begins in the full lab.

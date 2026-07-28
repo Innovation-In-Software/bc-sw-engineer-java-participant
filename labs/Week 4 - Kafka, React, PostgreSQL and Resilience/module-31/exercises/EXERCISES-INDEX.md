@@ -5,10 +5,10 @@
 **Module:** 31 — Kafka Integration with Spring Boot  
 **Next:** [`../lab31/LAB-31-WINDOWS.md`](../lab31/LAB-31-WINDOWS.md) or [`../lab31/LAB-31-MACOS.md`](../lab31/LAB-31-MACOS.md) → [`../lab31/LAB-31-GUIDE.md`](../lab31/LAB-31-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 31.  
+> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 31.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 31 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Exercise 3 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
 
 ## Scope boundary — do not build later technology yet
 
@@ -51,13 +51,13 @@ java -version
 
 ## Exercise index
 
+Complete in this sequence (matches Module slide order):
+
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
 | 1 | Spring Kafka Roles | Map Spring types to Kafka roles | [`exercise-01-spring-kafka-roles.md`](exercise-01-spring-kafka-roles.md) |
 | 2 | Listener Sketch | Design listener contracts | [`exercise-02-listener-sketch.md`](exercise-02-listener-sketch.md) |
-| 3 | Idempotency Plan | Plan duplicate-safe consumers | [`exercise-03-idempotency-plan.md`](exercise-03-idempotency-plan.md) |
-| 4 | Fill Spring Kafka TODOs | Complete config and code blanks | [`exercise-04-fill-spring-kafka-todos.md`](exercise-04-fill-spring-kafka-todos.md) |
-| 5 | Error and DLT Notes | Document failure handling intent | [`exercise-05-error-dlt-notes.md`](exercise-05-error-dlt-notes.md) |
+| 3 | Fill Spring Kafka TODOs | Complete config and code blanks | [`exercise-03-fill-spring-kafka-todos.md`](exercise-03-fill-spring-kafka-todos.md) |
+| 4 | Error and DLT Notes | Document failure handling intent | [`exercise-04-error-dlt-notes.md`](exercise-04-error-dlt-notes.md) |
+| 5 | Idempotency Plan | Plan duplicate-safe consumers | [`exercise-05-idempotency-plan.md`](exercise-05-idempotency-plan.md) |
 | 6 | Lab 31 Readiness | Pre-lab self-check | [`exercise-06-lab31-readiness.md`](exercise-06-lab31-readiness.md) |
-
-Keep all work separate from `examples/lab31-crm` (or the lab’s named project folder); that project begins in the full lab.

@@ -5,7 +5,7 @@
 **Module:** 37 — PostgreSQL Design  
 **Next:** [`../lab37/LAB-37-WINDOWS.md`](../lab37/LAB-37-WINDOWS.md) or [`../lab37/LAB-37-MACOS.md`](../lab37/LAB-37-MACOS.md) → [`../lab37/LAB-37-GUIDE.md`](../lab37/LAB-37-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 37.  
+> Complete these exercises **in order (1→6)** as they appear in the Module 37 slides, then start Lab 37.  
 > Use JDK 21 and the tools this module requires.  
 > These exercises design and test small pieces; Lab 37 builds the full graded deliverable.  
 > Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
@@ -50,6 +50,8 @@ java -version
 **Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
 
 ## Exercise index
+
+Complete in this sequence (matches Module slide order):
 
 | # | Exercise | New skill | File |
 | --- | --- | --- | --- |
