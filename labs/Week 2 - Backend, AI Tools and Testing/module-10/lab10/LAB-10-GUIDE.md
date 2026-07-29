@@ -419,7 +419,7 @@ public class Customer {
 }
 ```
 
-**Watch for this common Copilot mistake:** “entity” often triggers `@Entity`, `@Id`, `@Column` from `jakarta.persistence` / `javax.persistence`. **This project has no JPA in `pom.xml` and no Spring until Lab 22.** Reject those annotations—this is the review discipline Step 7 formalizes.
+**Watch for this common Copilot mistake:** “entity” often triggers `@Entity`, `@Id`, `@Column` from `jakarta.persistence` / `javax.persistence`, and a numeric **`Long id`**. **This project has no JPA in `pom.xml` and no Spring until Lab 22.** Reject those annotations and keep identity as **`String customerId`** (`"CUS-1001"` style)—this is the review discipline Step 7 formalizes. A leftover `Long` here breaks Lab 11 tests with `String cannot be converted to Long`.
 
 ```bash
 mvn -q compile

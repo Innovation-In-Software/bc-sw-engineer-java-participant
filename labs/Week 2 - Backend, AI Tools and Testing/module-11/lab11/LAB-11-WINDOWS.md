@@ -63,6 +63,8 @@ mvn -q -DskipTests compile
 java -cp target\classes com.northstar.crm.Main
 ```
 
+**If Step 2 fails with `String cannot be converted to Long`:** Lab 10 Copilot often typed `customerId` as `Long` or added a `Long id`. Fix `Customer.java` so identity is `String customerId` (values like `"CUS-1001"`), matching the Lab 10 guide POJO — then re-run `mvn -q clean test -Dtest=CustomerTest`. See [LAB-11-GUIDE.md](LAB-11-GUIDE.md) Step 2.
+
 ## Run configurations (IntelliJ)
 
 1. Open the class with `public static void main` (or use the Spring Boot run config when the lab uses Spring).

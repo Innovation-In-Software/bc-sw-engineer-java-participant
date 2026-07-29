@@ -10,7 +10,7 @@
 
 **In class (~45 min):** open each lab’s `starter/README.md` → copy templates → fill TODOs → smoke test. Full GUIDE steps = homework. See [`_STARTER-PATH.md`](../_STARTER-PATH.md).
 
-**Kahoot:** Modules 30–39 — instructor imports `Kahoot_Module_N.xlsx` from the authoring `curriculum/…/kahoot/` folder; students join at [kahoot.it](https://kahoot.it).
+**Kahoot:** Modules 30–39 — instructor imports `Kahoot_Module_N.xlsx` from the authoring `kahoot/week-N/` folder; students join at [kahoot.it](https://kahoot.it).
 
 Parent index: [labs/LABS-INDEX.md](../LABS-INDEX.md) · Setup: [SETUP-INSTRUCTIONS.md](../SETUP-INSTRUCTIONS.md)
 

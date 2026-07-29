@@ -14,7 +14,7 @@ For Week 1 Modules 1–7, also open **`module-NN/README.md`** first (Start here)
 
 Instructor curriculum twins (slide PNGs) live in [`../curriculum/`](../curriculum/) with the **same week and `module-NN` names**.
 
-**Kahoot knowledge checks (Modules 1–39 / Weeks 1–4):** instructors import Excel banks from the authoring `curriculum/Week N …/kahoot/` folders; participants join with the classroom PIN at [kahoot.it](https://kahoot.it). Index: [`../curriculum/CURRICULUM-INDEX.md`](../curriculum/CURRICULUM-INDEX.md#kahoot-quizzes).
+**Kahoot knowledge checks (Modules 1–39 / Weeks 1–4):** instructors import Excel banks from [`../kahoot/`](../kahoot/README.md) (`week-1` … `week-4`); participants join with the classroom PIN at [kahoot.it](https://kahoot.it).
 
 ## How to use these labs
 

@@ -365,6 +365,15 @@ mvn -q test -Dtest=CustomerTest
 
 **If it fails:** Reject JUnit 4 (`org.junit.Test`, `@RunWith`). Fix constructor argument order to match Lab 10 `Customer`. Ensure path is `src/test/java/...`.
 
+**Common compile error — `String cannot be converted to Long`:** Copilot often invents a JPA-style `Long id` (or types `customerId` as `Long`). Lab 10/11 identity is a **`String customerId`** like `"CUS-1001"` — not a numeric `Long`. Open `Customer.java` and confirm:
+
+- field is `private String customerId;` (no `Long id`)
+- constructor first arg is `String customerId`
+- getters/setters use `String`
+- no `@Entity` / `@Id` / `jakarta.persistence` imports
+
+Then align `CustomerTest` with that constructor (pass `"CUS-1001"`, not `1L`). Re-run `mvn -q clean test -Dtest=CustomerTest`.
+
 ---
 
 ### Step 3 — Generate tests for `CustomerService`
