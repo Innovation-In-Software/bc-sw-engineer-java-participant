@@ -4,7 +4,7 @@
 
 ## Goal
 
-Create `pom-coordinates-notes.md` and explain how Maven names a project so teammates and CI resolve the same artifact.
+Create `notes/pom-coordinates-notes.md` and explain how Maven names a project so teammates and CI resolve the same artifact.
 
 ## Coordinate map
 

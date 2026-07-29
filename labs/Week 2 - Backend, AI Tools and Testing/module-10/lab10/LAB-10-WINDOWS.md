@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-10-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab9-crm` → `examples\lab10-crm`; added `CustomerStatus`, fleshed-out `Customer` (no JPA), in-memory `CustomerService`, `Main` harness, and `copilot-notes\ai-review-notes.md` (`lab10-001`–`lab10-004`). `mvn -q clean compile` → **BUILD SUCCESS**; `java -cp target\classes com.northstar.crm.Main` prints both sample customers, PROSPECT filter for `CUS-1002`, then ACTIVE after `updateStatus`. Blank/duplicate/unknown ID rules verified. Controllers left as Lab 8/9 stubs with thin UOE methods on the service so Maven still compiles.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab9-crm` → `examples\lab10-crm`; added `CustomerStatus`, fleshed-out `Customer` (no JPA), in-memory `CustomerService`, `Main` harness, and `copilot-notes\ai-review-notes.md` (`lab10-001`–`lab10-004`). `mvn clean compile` → **BUILD SUCCESS**; `java -cp target\classes com.northstar.crm.Main` prints both sample customers, PROSPECT filter for `CUS-1002`, then ACTIVE after `updateStatus`. Blank/duplicate/unknown ID rules verified. Controllers left as Lab 8/9 stubs with thin UOE methods on the service so Maven still compiles.
 
 ## Prerequisites (Windows)
 
@@ -57,7 +57,7 @@ cd examples\lab10-crm
 cd $env:USERPROFILE\java-bootcamp\examples
 Copy-Item -Recurse lab9-crm lab10-crm   # once
 cd lab10-crm
-mvn -q clean compile
+mvn clean compile
 java -cp target\classes com.northstar.crm.Main
 ```
 

@@ -56,13 +56,18 @@ cd lab9-crm
 From `examples\lab9-crm` in the IntelliJ Terminal (PowerShell):
 
 ```powershell
-mvn -q validate
-mvn -q test
-mvn -q clean package
+# First-time / evidence runs — full logs (no -q)
+mvn validate
+mvn test
+mvn clean package
 java -jar target\customer-service.jar
 mvn -B verify
 mvn dependency:tree
 mvn help:active-profiles
+
+# Optional quieter rebuild later (hides Surefire detail — do not use with dependency:tree)
+# mvn -q test
+# mvn -q clean package
 ```
 
 ## Run configurations (IntelliJ)

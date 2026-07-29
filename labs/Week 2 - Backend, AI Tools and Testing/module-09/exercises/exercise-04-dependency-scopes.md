@@ -4,7 +4,7 @@
 
 ## Goal
 
-Create `dependency-scopes-notes.md` and assign the correct Maven scope so libraries land on the right classpath.
+Create `notes/dependency-scopes-notes.md` and assign the correct Maven scope so libraries land on the right classpath.
 
 ## Scope map
 

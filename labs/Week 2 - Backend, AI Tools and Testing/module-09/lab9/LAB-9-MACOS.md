@@ -51,9 +51,17 @@ cd examples/lab9-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+```bash
+# First-time / evidence runs — full logs
+mvn validate
+mvn test
+mvn clean package
+java -jar target/customer-service.jar
+mvn -B verify
+mvn dependency:tree
+
+# Optional quieter rebuild later (do not use -q with dependency:tree)
+# mvn -q -DskipTests package
 ```
 
 ## Run configurations (IntelliJ)

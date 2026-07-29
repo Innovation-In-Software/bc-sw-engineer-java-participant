@@ -13,7 +13,7 @@
 | macOS | [LAB-9-MACOS.md](LAB-9-MACOS.md) |
 
 > **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).  
-> **Pre-lab exercises:** Complete [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) **in order 1→6** (same sequence as the Module 9 slides) before this lab:  
+> **Pre-lab exercises:** Complete [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) **in order 1→6** before this lab (all notes filenames are listed in that index — you do not need the slides for naming):  
 > 1. POM coordinates · 2. Profiles · 3. Lifecycle · 4. Dependency scopes · 5. Dependency tree · 6. Mini POM (TODO starter).
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
@@ -23,9 +23,18 @@
 | IntelliJ opens | `%USERPROFILE%\java-bootcamp` (SDK / language level **21**) |
 | Prerequisite | `examples\lab8-crm\` must already compile |
 | This lab project | `examples\lab9-crm\` (copy of Lab 8 + expanded `pom.xml`) |
-| Compile / test / package | `mvn -q test` · `mvn -q clean package` · `java -jar target\customer-service.jar` |
-| CI preview | `mvn -B verify` |
+| Compile / test / package (first time — readable logs) | `mvn test` · `mvn clean package` · `java -jar target\customer-service.jar` |
+| Quieter rebuild (optional) | `mvn -q test` · `mvn -q clean package` — **`-q` hides most output**; do not use it when you need to read Surefire or a dependency tree |
+| CI preview | `mvn -B verify` (`-B` = batch / non-interactive) |
 | Smoke-test output | JAR Main banner + Surefire `Tests run: 1` + default profile `dev` |
+
+**Maven flags cheat sheet**
+
+| Flag | Meaning | Use when |
+| ---- | ------- | -------- |
+| *(none)* | Full logs | Learning, capturing evidence, reading `dependency:tree` |
+| `-q` | Quiet | You already know it works and want less scroll |
+| `-B` | Batch | CI-style `mvn -B verify` |
 
 **If it fails (Windows PowerShell):** Copy with `Copy-Item -Recurse lab8-crm lab9-crm` from `examples\`. Open `lab9-crm\pom.xml` in IntelliJ for Maven import. First dependency download can be slow — wait for Central.
 
@@ -526,7 +535,7 @@ $ mvn install
 
 **Why:** Transitive dependency surprises cause classpath hell. Reading the tree is a core enterprise skill.
 
-**Do this:**
+**Do this** (no `-q` — the tree **is** the output you need):
 
 ```bash
 mvn dependency:tree | tee docs/dependency-tree.txt
@@ -534,23 +543,32 @@ mvn dependency:tree | tee docs/dependency-tree.txt
 mvn dependency:tree -Dincludes=org.springframework* | tee -a docs/dependency-tree.txt
 ```
 
-Annotate the top of `docs/dependency-tree.txt` with comments:
+**How to read the symbols** (same legend as Exercise 5):
+
+| Symbol | Meaning |
+| ------ | ------- |
+| `+-` | Node has another sibling after it at this indent level |
+| `\-` | Last child at this indent level |
+| `\|` | Guide line under a parent |
+| Indent under a `+-` / `\-` line | Usually a **transitive** dependency |
+
+Annotate the top of `docs/dependency-tree.txt` with short comments (bullets, not essays):
 
 1. Which dependencies are **direct** vs **transitive**
 2. Why `junit-jupiter` must remain `test` (must not look like a production runtime dependency)
+3. One example of a `+-` line and one `\-` line from your capture
 
 **Expected theme:**
 
 ```text
 com.northstar:customer-service:jar:0.1.0-SNAPSHOT
-+- org.springframework:spring-context:jar:6.2.3:compile
-|  +- org.springframework:spring-aop:jar:...:compile
-|  \- ... (transitive)
-\- org.junit.jupiter:junit-jupiter:jar:5.11.4:test
++- org.springframework:spring-context:jar:6.2.3:compile   ← DIRECT; +- = more siblings follow
+|  +- org.springframework:spring-aop:jar:...:compile      ← TRANSITIVE under spring-context
+|  \- ... (more transitive; \- = last under this parent)
+\- org.junit.jupiter:junit-jupiter:jar:5.11.4:test        ← DIRECT (test scope)
 ```
 
-**If it fails:** Plugin not found → ensure network; `dependency:tree` is from `maven-dependency-plugin` (usually auto-resolved). Empty tree → dependencies missing from POM (return to Step 3).
-
+**If it fails:** Plugin not found → ensure network; `dependency:tree` is from `maven-dependency-plugin` (usually auto-resolved). Empty tree → dependencies missing from POM (return to Step 3). Used `-q` by mistake → re-run **without** `-q`.
 ---
 
 ### Step 7 — Add `dev`, `test`, and `prod` profiles

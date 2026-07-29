@@ -53,7 +53,7 @@ cd examples/lab10-crm
 
 ```text
 mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+mvn -DskipTests package   # when the lab says so
 ```
 
 ## Run configurations (IntelliJ)

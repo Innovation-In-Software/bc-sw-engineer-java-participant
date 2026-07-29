@@ -34,7 +34,7 @@ Full GUIDE: [`../LAB-10-GUIDE.md`](../LAB-10-GUIDE.md)
 ## Smoke test
 
 ```bash
-mvn -q clean compile
+mvn clean compile
 java -cp target/classes com.northstar.crm.Main
 ```
 

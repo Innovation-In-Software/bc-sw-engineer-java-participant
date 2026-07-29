@@ -1,37 +1,64 @@
 # Exercise 2 — Customer Sketch for Amina
 
-**Module 10** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 10** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Hand-sketch fields for CUS-1001 before asking Copilot to generate code.
+Create `notes/customer-sketch-notes.md` with hand-sketched fields for CUS-1001 before asking Copilot to generate code.
+
+## Deliverable
+
+| Item | Path (under `examples/module-10-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-02-customer-sketch.md` (this file in the course repo) |
+| Your notes file | `notes/customer-sketch-notes.md` |
 
 ## Steps
 
-### Step 1 — Fields
+### Step 1 — Create the notes file
 
-On paper: `customerId`, `fullName`, `status` for Amina Khan ACTIVE.
+Create `notes/customer-sketch-notes.md`.
 
-### Step 2 — Ravi row
+### Step 2 — Fields (Amina)
+
+Record: `customerId`, `fullName`, `status` for Amina Khan ACTIVE (`CUS-1001`).
+
+### Step 3 — Ravi row
 
 Add a second row: `CUS-1002` Ravi Singh PROSPECT — same shape, different values.
 
-### Step 3 — Correlation note
+### Step 4 — Correlation note
 
-One line: request correlation `lab-request-001` belongs in logs/headers later, not as a Customer field.
+One line: request correlation `lab-request-001` belongs in logs/headers later, **not** as a Customer field.
 
-### Step 4 — Prep boundary
+### Step 5 — Prep boundary
 
 Mark: *Sketch only — do not complete full Lab 10 AI generation path yet.*
 
+Example shape:
+
+```markdown
+# Customer sketch
+
+| customerId | fullName   | status   |
+| ---------- | ---------- | -------- |
+| CUS-1001   | Amina Khan | ACTIVE   |
+| CUS-1002   | Ravi Singh | PROSPECT |
+
+Correlation `lab-request-001`: logs/headers only — not a Customer field.
+
+Boundary: sketch only — pre-lab.
+```
+
 ## Expected result
 
-Two fixture rows and a correlation placement note ready for the lab.
+Two fixture rows and a correlation placement note in `notes/customer-sketch-notes.md`.
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Amina and Ravi rows correct | Pass / Fail |
-| 2 | Correlation not stored as a Customer field | Pass / Fail |
-| 3 | Explicit pre-lab boundary written | Pass / Fail |
+| 1 | File exists at `notes/customer-sketch-notes.md` | Pass / Fail |
+| 2 | Amina and Ravi rows correct | Pass / Fail |
+| 3 | Correlation not stored as a Customer field | Pass / Fail |
+| 4 | Explicit pre-lab boundary written | Pass / Fail |

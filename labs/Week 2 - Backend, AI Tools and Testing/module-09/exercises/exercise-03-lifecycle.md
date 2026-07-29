@@ -4,7 +4,7 @@
 
 ## Goal
 
-Create `lifecycle-notes.md` mapping each major phase to what it proves for Northstar CRM.
+Create `notes/lifecycle-notes.md` mapping each major phase to what it proves for Northstar CRM.
 
 ## Lifecycle (default)
 

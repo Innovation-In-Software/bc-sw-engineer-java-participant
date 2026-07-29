@@ -4,7 +4,7 @@
 
 ## Goal
 
-Create `profiles-notes.md` explaining how `dev` and `prod` profiles keep laptop settings from silently becoming production settings.
+Create `notes/profiles-notes.md` explaining how `dev` and `prod` profiles keep laptop settings from silently becoming production settings.
 
 ## Profile map
 

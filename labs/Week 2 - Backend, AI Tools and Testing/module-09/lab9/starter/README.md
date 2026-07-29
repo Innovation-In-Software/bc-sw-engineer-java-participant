@@ -34,8 +34,8 @@ Full GUIDE: [`../LAB-9-GUIDE.md`](../LAB-9-GUIDE.md)
 ## Smoke test
 
 ```bash
-mvn -B -q clean verify
-mvn -q package
+mvn -B clean verify
+mvn package
 java -jar target/customer-service.jar
 ```
 

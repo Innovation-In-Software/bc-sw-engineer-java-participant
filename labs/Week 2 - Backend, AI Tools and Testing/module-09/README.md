@@ -6,10 +6,23 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (coordinates → profiles → lifecycle → scopes → dependency tree → mini POM) |
+| 1 | [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md) — exercises **1→6** (coordinates → profiles → lifecycle → scopes → dependency tree → mini POM). All notes filenames are listed there — no need to dig through slides. |
 | 2 | OS guide → [`lab9/LAB-9-WINDOWS.md`](lab9/LAB-9-WINDOWS.md) or [`lab9/LAB-9-MACOS.md`](lab9/LAB-9-MACOS.md) |
 | 3 | Full lab → [`lab9/LAB-9-GUIDE.md`](lab9/LAB-9-GUIDE.md) |
 
 The pre-lab exercises teach POM coordinates, scopes, lifecycle, plugins, profiles, and dependency trees. The full lab expands Lab 8 into a build-managed `lab9-crm` project.
+
+**Notes filenames (under `examples/module-09-exercises/`):**
+
+| # | Your file |
+| - | --------- |
+| 1 | `notes/pom-coordinates-notes.md` |
+| 2 | `notes/profiles-notes.md` |
+| 3 | `notes/lifecycle-notes.md` |
+| 4 | `notes/dependency-scopes-notes.md` |
+| 5 | `notes/dependency-tree-notes.md` |
+| 6 | `notes/mini-maven-notes.md` |
+
+**Maven tip:** Prefer full `mvn test` / `mvn dependency:tree` while learning. Use `-q` only for quieter rebuilds; never with `dependency:tree`.
 
 Do not write `@SpringBootApplication`, JPA entities, Kafka clients, or React UI in Module 9.

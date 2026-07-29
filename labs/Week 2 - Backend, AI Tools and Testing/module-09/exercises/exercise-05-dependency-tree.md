@@ -1,10 +1,37 @@
 # Exercise 5 — Read a Dependency Tree
 
-**Module 9** · Analysis + CI habit exercise · [setup](EXERCISES-INDEX.md)
+**Module 9** · Analysis + CI habit exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Create `dependency-tree-notes.md` distinguishing direct vs transitive dependencies and recording why CI prefers `mvn -B verify`.
+Create `notes/dependency-tree-notes.md` distinguishing direct vs transitive dependencies and recording why CI prefers `mvn -B verify`.
+
+## Deliverable
+
+| Item | Path (under `examples/module-09-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | this file in the course repo |
+| Your notes file | `notes/dependency-tree-notes.md` |
+
+## How to read Maven tree symbols
+
+Maven draws a text tree. The symbols are **not** typos:
+
+| Symbol | Meaning |
+| ------ | ------- |
+| `+-` | “This node has a sibling after it” (more dependencies follow at this level) |
+| `\-` | “This is the **last** child at this level” (backslash + hyphen) |
+| `\|` | Vertical guide line connecting a parent to deeper children |
+| `\|  +-` / `\|  \-` | A **child** (usually transitive) under the parent above |
+
+```text
+com.northstar:build-demo:jar:0.1.0-SNAPSHOT          ← your project (root)
++- org.junit.jupiter:junit-jupiter:jar:5.11.4:test   ← DIRECT (you declared it); +- means more siblings may follow
+|  \- org.junit.jupiter:junit-jupiter-params:...:test ← TRANSITIVE (pulled by Jupiter); \- = last child under Jupiter
+\- (optional other direct dependency)                ← another DIRECT sibling of junit-jupiter
+```
+
+**Tip:** Read left → right: `groupId:artifactId:type:version:scope`. The last segment (`:test`, `:compile`) is the scope.
 
 ## Sample tree (study only)
 
@@ -12,7 +39,6 @@ Create `dependency-tree-notes.md` distinguishing direct vs transitive dependenci
 com.northstar:build-demo:jar:0.1.0-SNAPSHOT
 +- org.junit.jupiter:junit-jupiter:jar:5.11.4:test
 |  \- org.junit.jupiter:junit-jupiter-params:jar:5.11.4:test
-\- (no production compile dependencies in the mini project)
 ```
 
 | Term | Meaning |
@@ -21,9 +47,19 @@ com.northstar:build-demo:jar:0.1.0-SNAPSHOT
 | Transitive dependency | Pulled in because a direct dependency needs it |
 | Scope column (`:test`) | Where that artifact is visible |
 
+## Maven flags (read before you run)
+
+| Flag | What it does | When to use |
+| ---- | ------------ | ----------- |
+| *(none)* | Shows full Maven + plugin output | **Default for learning** — use this when you need to *read* the tree or test results |
+| `-q` | Quiet — hides most log lines | Only when you already know the command works and just want a quieter rebuild |
+| `-B` | Batch / non-interactive | CI-style runs (`mvn -B verify`) |
+
+**Do not use `-q` with `dependency:tree`.** Quiet mode can hide the tree you are supposed to inspect.
+
 ## Steps
 
-### Step 1 — Classify rows
+### Step 1 — Classify rows (from the sample)
 
 | Artifact | Direct or transitive? | Scope shown |
 | -------- | --------------------- | ----------- |
@@ -42,39 +78,37 @@ com.northstar:build-demo:jar:0.1.0-SNAPSHOT
 Use the sample tree above for your notes. After you finish **Exercise 6** (mini POM), re-run from `mini-maven/`:
 
 ```bash
-mvn -q dependency:tree
+# No -q — you need to see the tree on screen
+mvn dependency:tree
 ```
 
 Optional (saves a file for Lab 9 practice):
 
 ```bash
-mvn -q dependency:tree -DoutputFile=dependency-tree.txt
+mvn dependency:tree -DoutputFile=dependency-tree.txt
 ```
 
-Paste or summarize the tree into `dependency-tree-notes.md`. Confirm JUnit appears with `:test`.
+Paste or summarize the tree into `notes/dependency-tree-notes.md`. Confirm JUnit appears with `:test`. Circle or label one `+-` line and one `\-` line in your notes.
 
-### Step 4 — CI command habit
+### Step 4 — CI command habit (short)
 
-Answer in notes:
+In the same notes file, copy these three lines (no essay required):
 
-| Question | Answer |
-| -------- | ------ |
-| What does `-B` mean? | Batch mode — less interactive prompts, friendlier for CI logs |
-| Why `verify` instead of casual `install` on every push? | Proves package + checks without writing into every agent’s `~/.m2` unless the pipeline intentionally installs |
-| Preferred CI-style command for this bootcamp | `mvn -B verify` |
-
-Write one sentence you could put in a README:
-
-> Teammates and CI should reproduce the build with `mvn -B verify`.
+```text
+-B = batch mode (CI-friendly)
+verify = compile + test + package checks without casually installing to every laptop ~/.m2
+CI habit for this bootcamp: mvn -B verify
+```
 
 ## Expected result
 
-You can label direct vs transitive rows, spot `:test` scope in the tree, and document the CI verify habit before Lab 9’s full evidence pack.
+You can label direct vs transitive rows, explain `+-` vs `\-`, spot `:test` scope, and know the CI verify habit—before Lab 9’s full evidence pack.
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | - | ------- | ----- |
 | 1 | Direct vs transitive for Jupiter rows is correct | Pass / Fail |
-| 2 | You ran or explained `mvn dependency:tree` | Pass / Fail |
-| 3 | Notes include `mvn -B verify` as the CI habit | Pass / Fail |
+| 2 | Notes explain `+-` vs `\-` in one short line each | Pass / Fail |
+| 3 | You ran `mvn dependency:tree` **without** `-q` (or explained why) | Pass / Fail |
+| 4 | Notes include `mvn -B verify` as the CI habit | Pass / Fail |
