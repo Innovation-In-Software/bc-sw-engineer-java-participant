@@ -5,10 +5,22 @@
 **Module:** 34 — State and Event Management  
 **Next:** [`../lab34/LAB-34-WINDOWS.md`](../lab34/LAB-34-WINDOWS.md) or [`../lab34/LAB-34-MACOS.md`](../lab34/LAB-34-MACOS.md) → [`../lab34/LAB-34-GUIDE.md`](../lab34/LAB-34-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 34.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 34 builds the full graded deliverable.  
-> Exercise 1 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 34.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-34-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 34 is the graded consolidation. Do **not** finish Lab 34 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab34-todos.md` | Fill useState TODOs |
+| 2 | `notes/lab34-event-handler-map.md` | Event Handler Map |
+| 3 | `notes/lab34-controlled-form.md` | Controlled Form Sketch |
+| 4 | `notes/lab34-validation-messages.md` | Validation Messages |
+| 5 | `notes/lab34-state.md` | Props vs State |
+| 6 | `notes/lab34-prep-checklist.md` | Lab 34 Readiness |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-34-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-34-exercises\notes | Out-Null
 cd examples\module-34-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-34-exercises
+mkdir -p examples/module-34-exercises/notes
 cd examples/module-34-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 34 uses its own `examples/lab34-*/` (or module lab folder) project.
 
 ## Exercise index
 
 Complete in this sequence (matches Module slide order):
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Fill useState TODOs | Complete React state blanks | [`exercise-01-fill-usestate-todos.md`](exercise-01-fill-usestate-todos.md) |
-| 2 | Event Handler Map | Map DOM events to updates | [`exercise-02-event-handler-map.md`](exercise-02-event-handler-map.md) |
-| 3 | Controlled Form Sketch | Design controlled inputs | [`exercise-03-controlled-form.md`](exercise-03-controlled-form.md) |
-| 4 | Validation Messages | Plan client validation copy | [`exercise-04-validation-messages.md`](exercise-04-validation-messages.md) |
-| 5 | Props vs State | Choose state ownership | [`exercise-05-props-vs-state.md`](exercise-05-props-vs-state.md) |
-| 6 | Lab 34 Readiness | Pre-lab self-check | [`exercise-06-lab34-readiness.md`](exercise-06-lab34-readiness.md) |
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Fill useState TODOs | Hands-on exercise | `notes/lab34-todos.md` | [`exercise-01-fill-usestate-todos.md`](exercise-01-fill-usestate-todos.md) |
+| 2 | Event Handler Map | Documentation exercise | `notes/lab34-event-handler-map.md` | [`exercise-02-event-handler-map.md`](exercise-02-event-handler-map.md) |
+| 3 | Controlled Form Sketch | Architecture exercise | `notes/lab34-controlled-form.md` | [`exercise-03-controlled-form.md`](exercise-03-controlled-form.md) |
+| 4 | Validation Messages | Documentation exercise | `notes/lab34-validation-messages.md` | [`exercise-04-validation-messages.md`](exercise-04-validation-messages.md) |
+| 5 | Props vs State | Analysis exercise | `notes/lab34-state.md` | [`exercise-05-props-vs-state.md`](exercise-05-props-vs-state.md) |
+| 6 | Lab 34 Readiness | Analysis exercise | `notes/lab34-prep-checklist.md` | [`exercise-06-lab34-readiness.md`](exercise-06-lab34-readiness.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 34 OS guide.

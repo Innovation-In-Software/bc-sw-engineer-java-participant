@@ -64,7 +64,7 @@ This Module 34 lab adds **React state** to the CRM dashboard: `useState` for cus
 
 **Purpose.** Leadership freezes an in-browser CRUD contract before API wiring (Lab 35): list/search/create/edit must be immutable, modes must not overlap (create vs edit), and derived filter results must not live in duplicate state. Effects are for external sync only—not for maintaining filtered arrays.
 
-**What you build (exercise).** Copy `lab33-crm` → `lab34-crm`; lift customers, query, mode, draft, and errors into `App`; control search; derive `visible`; implement create/update/cancel immutably; validate before save; sync title with `useEffect`; write RTL flow tests for create/edit/cancel/search; document state decisions.
+**What you build (this lab).** Copy `lab33-crm` → `lab34-crm`; lift customers, query, mode, draft, and errors into `App`; control search; derive `visible`; implement create/update/cancel immutably; validate before save; sync title with `useEffect`; write RTL flow tests for create/edit/cancel/search; document state decisions.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab34-crm/crm-ui/` you can create, edit, cancel, and filter Amina/Ravi without mutating arrays in place; title updates with visible count; `npm run test -- --run` (≥8 tests) and `npm run build` are green twice.
 

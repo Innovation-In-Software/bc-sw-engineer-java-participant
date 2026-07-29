@@ -66,7 +66,7 @@ This Module 50 lab completes a usable **React CRM journey** backed by **Spring D
 
 **Purpose.** The backend vertical slice exists, but agents still need an accessible search, profile, timeline, and interaction form with durable PostgreSQL storage. A UI that “looks done” without DB proof or a11y basics fails the capstone.
 
-**What you build (exercise).** Choose the end-to-end journey; complete PostgreSQL schema migrations; review JPA mappings; create a typed API client; build accessible forms; handle loading/empty/error/unauthorized states; verify UI→API→DB durability; automate component tests and one Selenium (or agreed E2E) critical path.
+**What you build (this lab).** Choose the end-to-end journey; complete PostgreSQL schema migrations; review JPA mappings; create a typed API client; build accessible forms; handle loading/empty/error/unauthorized states; verify UI→API→DB durability; automate component tests and one Selenium (or agreed E2E) critical path.
 
 **What success looks like.** Under the capstone frontend+backend, an agent can search Amina (`CUS-1001`), open profile/timeline, record an interaction with `lab-request-001`, see it on the timeline, and prove the row in PostgreSQL after restart. Lint/test/build and backend verify are green; a11y basics pass keyboard review.
 

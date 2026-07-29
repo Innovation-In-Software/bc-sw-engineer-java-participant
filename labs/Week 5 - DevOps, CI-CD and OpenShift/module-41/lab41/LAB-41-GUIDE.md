@@ -1,7 +1,7 @@
 # Lab 41: Containerize the Spring Boot CRM — Multi-Stage Dockerfile, Non-Root, Health
 
 **Module:** 41 — Containerize the Spring Boot CRM  
-**Lab folder:** `labs/Week 5 - DevOps, CI-CD and k3s/lab41/`  
+**Lab folder:** `labs/Week 5 - DevOps, CI-CD and OpenShift/module-41/lab41/`  
 **Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
@@ -65,7 +65,7 @@ This Module 41 lab packages the CRM backend as a **small, reproducible, non-root
 
 **No registry push of `:latest`-only root images with passwords in layers.**
 
-**What you build (exercise).** Branch `lab41-crm`; add `.dockerignore` and multi-stage `Dockerfile`; build `crm-api:lab41`; inspect user/layers/digest; run with `.env.example`-driven runtime config and memory limits; verify readiness and create/retrieve synthetic Amina; test graceful stop and bad dependency URL behavior; document registry tagging/digest pinning (auth outside Git).
+**What you build (this lab).** Branch `lab41-crm`; add `.dockerignore` and multi-stage `Dockerfile`; build `crm-api:lab41`; inspect user/layers/digest; run with `.env.example`-driven runtime config and memory limits; verify readiness and create/retrieve synthetic Amina; test graceful stop and bad dependency URL behavior; document registry tagging/digest pinning (auth outside Git).
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab41-crm/` the image runs as UID `10001`, readiness returns success, CRM fixtures work with correlation `lab-request-001`, and the runbook lists exact `docker build` / `run` / `stop` commands with digest evidence.
 

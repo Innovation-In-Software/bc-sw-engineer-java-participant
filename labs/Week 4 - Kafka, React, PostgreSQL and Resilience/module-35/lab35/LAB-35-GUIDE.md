@@ -64,7 +64,7 @@ This Module 35 lab connects the React CRM SPA to the **Spring Boot** customer AP
 
 **Purpose.** Leadership freezes a browser↔API contract before frontend security (Lab 36): every request goes through one HTTP helper, every non-2xx becomes `ApiError`, obsolete loads abort cleanly, and CORS allows only the Vite origin. SOAP/XML bridges—if present—stay behind Spring; the browser speaks JSON only.
 
-**What you build (exercise).** Copy to `lab35-crm`; document REST (or SOAP-bridge) shapes with curl; add `VITE_CRM_API_URL`; implement `ApiError` + `http.request` + `customersApi`; load with abortable effects; render request states; map HTTP 400 fields; prevent double POST; restrict Spring CORS; mock 200/400/500/network/abort tests; probe evil Origin.
+**What you build (this lab).** Copy to `lab35-crm`; document REST (or SOAP-bridge) shapes with curl; add `VITE_CRM_API_URL`; implement `ApiError` + `http.request` + `customersApi`; load with abortable effects; render request states; map HTTP 400 fields; prevent double POST; restrict Spring CORS; mock 200/400/500/network/abort tests; probe evil Origin.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab35-crm/` React lists Amina/Ravi from Spring, create/update round-trip, CORS denies hostile origins, tests cover response classes, and two consecutive `npm test` / Spring builds stay green.
 

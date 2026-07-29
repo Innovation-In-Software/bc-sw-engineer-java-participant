@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (see EXERCISES-INDEX) |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab25-*.md` files) |
 | 2 | OS guide → [`lab25/LAB-25-WINDOWS.md`](lab25/LAB-25-WINDOWS.md) or [`lab25/LAB-25-MACOS.md`](lab25/LAB-25-MACOS.md) |
 | 3 | Full lab → [`lab25/LAB-25-GUIDE.md`](lab25/LAB-25-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Service and Repository Layers with AI Assistance**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-25-exercises/notes/`. Lab 25 is the graded project (see lab guide paths). Do not merge the two paths.

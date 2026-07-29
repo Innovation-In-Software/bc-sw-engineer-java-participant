@@ -1,18 +1,30 @@
 # Exercise 4 — PayloadRoot Skeleton (TODOs)
 
-**Module 24** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 24** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a pseudocode endpoint skeleton showing delegation to CustomerService.
+Create `notes/lab24-payloadroot-skeleton.md` — complete a pseudocode endpoint skeleton showing delegation to CustomerService.
+
+## Deliverable
+
+| Item | Path (under `examples/module-24-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-payloadroot-skeleton.md` (this file in the course repo) |
+| Your notes file | `notes/lab24-payloadroot-skeleton.md` |
 
 ## Steps
 
-### Step 1 — Create sketch
+### Step 1 — Create the notes file
 
-Create `notes/CustomerEndpointSketch.java` (sketch only).
+From `examples/module-24-exercises/`, create `notes/` if needed, then create `notes/lab24-payloadroot-skeleton.md`.
 
-### Step 2 — Fill TODOs
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 24 — PayloadRoot Skeleton (TODOs)
+
+## Step 2 — Fill TODOs
 
 ```java
 // TODO annotations — replace blanks
@@ -35,23 +47,31 @@ public class CustomerEndpoint {
 ```
 Hints: class annotation `@Endpoint`; localPart `GetCustomerRequest`; method `get`.
 
-### Step 3 — Self-check
+## Step 3 — Self-check
 
 Confirm no business rules live inside the endpoint beyond mapping/delegation.
 
-### Step 4 — Reflect
+## Step 4 — Reflect
 
 Write: UsernameToken interceptor is Lab 24 work — not completed in pre-lab.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Endpoint sketch blanks filled; delegation rule clear.
+Endpoint sketch blanks filled; delegation rule clear in `notes/lab24-payloadroot-skeleton.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab24-payloadroot-skeleton.md` |
 | Putting uniqueness rules in endpoint | Keep rules in CustomerService |
 | Using `@RestController` for SOAP | Spring-WS uses `@Endpoint` |
 
@@ -59,6 +79,7 @@ Endpoint sketch blanks filled; delegation rule clear.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | `@Endpoint` and GetCustomer localPart filled | Pass / Fail |
-| 2 | Service `get` delegation present | Pass / Fail |
-| 3 | No rule logic invented in the endpoint | Pass / Fail |
+| 1 | File exists at `notes/lab24-payloadroot-skeleton.md` | Pass / Fail |
+| 2 | `@Endpoint` and GetCustomer localPart filled | Pass / Fail |
+| 3 | Service `get` delegation present | Pass / Fail |
+| 4 | No rule logic invented in the endpoint | Pass / Fail |

@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises 1–6 in order |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab43-*.md` files) |
 | 2 | OS guide → [`lab43/LAB-43-WINDOWS.md`](lab43/LAB-43-WINDOWS.md) or [`lab43/LAB-43-MACOS.md`](lab43/LAB-43-MACOS.md) |
 | 3 | Full lab → [`lab43/LAB-43-GUIDE.md`](lab43/LAB-43-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **GitHub CI/CD Pipeline**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-43-exercises/notes/`. Lab 43 is the graded project (see lab guide paths). Do not merge the two paths.

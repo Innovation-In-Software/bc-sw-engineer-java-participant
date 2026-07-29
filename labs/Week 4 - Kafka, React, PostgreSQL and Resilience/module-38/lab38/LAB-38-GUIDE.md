@@ -64,7 +64,7 @@ This Module 38 lab teaches **evidence-based PostgreSQL tuning** for the **Custom
 
 **Purpose.** Leadership freezes a performance gate before Spring Data JPA (Lab 39): no “add index because it felt slow” without before/after plans, buffer counts, and median timings. Guesswork indexes waste storage and slow writes; this lab makes you earn every retained index.
 
-**What you build (exercise).** Copy Lab 37 scripts into `lab38-crm`; generate ≥50k customers with skewed status; gather `DBMS_STATS`; baseline email lookup with `gather_plan_statistics` + `DISPLAY_CURSOR ALLSTATS LAST`; add unique email and status/created indexes; rewrite `TRUNC(created_at)` to a half-open range; compare nested loops vs hash join on customer→account; implement offset and keyset paging; challenge each index by dropping and re-measuring; publish `database/performance/report.md`.
+**What you build (this lab).** Copy Lab 37 scripts into `lab38-crm`; generate ≥50k customers with skewed status; gather `DBMS_STATS`; baseline email lookup with `gather_plan_statistics` + `DISPLAY_CURSOR ALLSTATS LAST`; add unique email and status/created indexes; rewrite `TRUNC(created_at)` to a half-open range; compare nested loops vs hash join on customer→account; implement offset and keyset paging; challenge each index by dropping and re-measuring; publish `database/performance/report.md`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab38-crm/` you have scripts `01`–`05`, a report with plan hash / buffers / median time / write cost, and you can explain why keyset paging beats deep `OFFSET` for CRM list APIs.
 

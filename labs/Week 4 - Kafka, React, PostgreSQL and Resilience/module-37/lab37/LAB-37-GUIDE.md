@@ -64,7 +64,7 @@ This Module 37 lab designs and implements the **PostgreSQL** CRM schema: ER card
 
 **Purpose.** Leadership freezes a data model gate before JPA mapping labs: public business ids (`CUS-1001`) are immutable, money uses exact decimal types, status is constrained, history is append-only, and the lab user is not DBA. Schema scripts must be repeatable after cleanup.
 
-**What you build (exercise).** Create `lab37-crm` with ER notes/diagram; run PostgreSQL with a named volume; create `CRM_APP`; author `02_schema.sql` (all four entities + indexes); seed Amina (`CUS-1001` ACTIVE with account) and Ravi (`CUS-1002` PROSPECT, no account); run negative checks with savepoints; prove drop/recreate; document design decisions.
+**What you build (this lab).** Create `lab37-crm` with ER notes/diagram; run PostgreSQL with a named volume; create `CRM_APP`; author `02_schema.sql` (all four entities + indexes); seed Amina (`CUS-1001` ACTIVE with account) and Ravi (`CUS-1002` PROSPECT, no account); run negative checks with savepoints; prove drop/recreate; document design decisions.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab37-crm/` PostgreSQL crm database / assigned schema is ready, tables exist with named constraints, seeds verify, invalid status/duplicate email/orphan FK fail with constraint/SQLSTATE errors, cleanup recreates cleanly, and passwords stay out of Git.
 

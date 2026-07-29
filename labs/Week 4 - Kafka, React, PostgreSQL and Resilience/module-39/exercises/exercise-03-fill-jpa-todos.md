@@ -1,14 +1,30 @@
 # Exercise 2 — Fill JPA TODOs
 
-**Module 39** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 39** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Fill TODOs in JPA entity and repository pseudocode.
+Create `notes/lab39-todos.md` — fill TODOs in JPA entity and repository pseudocode.
+
+## Deliverable
+
+| Item | Path (under `examples/module-39-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-fill-jpa-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab39-todos.md` |
 
 ## Steps
 
-### Step 1 — Paste
+### Step 1 — Create the notes file
+
+From `examples/module-39-exercises/`, create `notes/` if needed, then create `notes/lab39-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 39 — Fill JPA TODOs
+
+## Step 1 — Paste
 
 Create `notes/lab39-todos.md`:
 
@@ -36,27 +52,35 @@ spring.jpa.hibernate.ddl-auto: _____
 spring.flyway.enabled: _____
 ```
 
-### Step 2 — Fill
+## Step 2 — Fill
 
 Suggested: `customerId`, `fullName`, `version`, `Pageable`, `jdbc:postgresql://localhost:5432/northstar`, `validate` (or `none`), `true`.
 
-### Step 3 — Usage TODO
+## Step 3 — Usage TODO
 
 `// TODO: service.load("CUS-1001") → Optional<CustomerEntity> for Amina`
 
-### Step 4 — Locking note
+## Step 4 — Locking note
 
 Write: concurrent updates to Ravi's status bump `@Version` or fail with optimistic lock exception.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled JPA/Flyway pseudocode with optimistic lock note.
+Filled JPA/Flyway pseudocode with optimistic lock note in `notes/lab39-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab39-todos.md` |
 | ddl-auto=create in shared DB | Prefer Flyway + validate/none |
 | Exposing Entity as REST body forever | Prefer DTOs at the API boundary |
 
@@ -64,6 +88,7 @@ Filled JPA/Flyway pseudocode with optimistic lock note.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Entity blanks filled | Pass / Fail |
-| 2 | Datasource/Flyway blanks filled | Pass / Fail |
-| 3 | Version semantics noted | Pass / Fail |
+| 1 | File exists at `notes/lab39-todos.md` | Pass / Fail |
+| 2 | Entity blanks filled | Pass / Fail |
+| 3 | Datasource/Flyway blanks filled | Pass / Fail |
+| 4 | Version semantics noted | Pass / Fail |

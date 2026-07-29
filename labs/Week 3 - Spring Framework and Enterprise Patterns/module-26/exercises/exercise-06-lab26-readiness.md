@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 26 Readiness Checklist
 
-**Module 26** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 26** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Ready `lab26-crm` path and secret hygiene before Lab 26.
+Create `notes/lab26-readiness.md` — confirm prior notes exist and you are ready for Lab 26 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-26-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab26-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab26-readiness.md` |
 
 ## Steps
 
-### Step 1 — Depends on
+### Step 1 — Create the notes file
 
-Note Lab 25 layering in `notes/lab26-readiness.md`.
+From `examples/module-26-exercises/`, create `notes/` if needed, then create `notes/lab26-readiness.md`.
 
-### Step 2 — Path
+### Step 2 — Paste and complete this template
 
-Write `examples/lab26-crm`.
+```markdown
+# Lab 26 prep checklist
 
-### Step 3 — Hygiene
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/profiles.md | _____ |
+| notes/lab26-profile-yaml-todos.md | _____ |
+| notes/northstar-props.md | _____ |
+| notes/override-order.md | _____ |
+| notes/activation-commands.md | _____ |
 
-Confirm `.gitignore` will cover `.env` and `target/`.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Defer
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 26 now.
 
-Transactions and security wait for Labs 27–28.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness checklist emphasizes secrets hygiene.
+Readiness checklist emphasizes secrets hygiene in `notes/lab26-readiness.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab26-readiness.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 26 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Lab 25 dependency noted | Pass / Fail |
-| 2 | Path written | Pass / Fail |
-| 3 | `.env` / `target` hygiene stated | Pass / Fail |
+| 1 | File exists at `notes/lab26-readiness.md` | Pass / Fail |
+| 2 | Lab 25 dependency noted | Pass / Fail |
+| 3 | Path written | Pass / Fail |
+| 4 | `.env` / `target` hygiene stated | Pass / Fail |

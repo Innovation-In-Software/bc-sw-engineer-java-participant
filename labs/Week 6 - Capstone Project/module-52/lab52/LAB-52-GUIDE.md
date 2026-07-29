@@ -66,7 +66,7 @@ This Module 52 lab is the Week 6 **final defense**: rehearse and deliver a busin
 
 **Purpose.** Panels assess whether the CRM runs **and** whether the team understands business value, architecture, security, data, messaging, delivery, operations, limitations, and recovery. A lucky happy-path click-through without evidence index fails professional defense standards.
 
-**What you build (exercise).** Inventory evidence; design presentation story; write timed demo script using Amina/Ravi fixtures; prepare demo recovery (screenshots/API fallback); rehearse Q&A cards; deliver and capture feedback; run retrospective with owned actions; score self-assessment against rubric and archive secret-free artifacts.
+**What you build (this lab).** Inventory evidence; design presentation story; write timed demo script using Amina/Ravi fixtures; prepare demo recovery (screenshots/API fallback); rehearse Q&A cards; deliver and capture feedback; run retrospective with owned actions; score self-assessment against rubric and archive secret-free artifacts.
 
 **What success looks like.** Under `defense/`, you have `final-presentation.pdf` (or instructor-approved slides), `demo-script.md`, `evidence-index.md`, `technical-q-and-a.md`, `retrospective.md`, and `self-assessment.md`. Live (or transparent fallback) demo proves UI→API→DB→event for `CUS-1001` with `lab-request-001`, plus security deny path and release digest citation.
 

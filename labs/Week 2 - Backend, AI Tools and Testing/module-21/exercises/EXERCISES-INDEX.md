@@ -5,10 +5,22 @@
 **Module:** 21 — API Observability and Monitoring  
 **Next:** [`../lab21/LAB-21-WINDOWS.md`](../lab21/LAB-21-WINDOWS.md) or [`../lab21/LAB-21-MACOS.md`](../lab21/LAB-21-MACOS.md) → [`../lab21/LAB-21-GUIDE.md`](../lab21/LAB-21-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 21.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 21 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 21.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-21-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 21 is the graded consolidation. Do **not** finish Lab 21 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab21-cardinality-antipatterns.md` | Cardinality Anti-Patterns |
+| 2 | `notes/lab21-actuator-allowlist.md` | Actuator Allow-List |
+| 3 | `notes/lab21-prep-checklist.md` | Liveness vs Readiness |
+| 4 | `notes/lab21-metric-sketch-todos.md` | Fill Metric Sketch TODOs |
+| 5 | `notes/lab21-alert-runbook.md` | Alert from create_failure_total |
+| 6 | `notes/lab21-prep-checklist.md` | Lab 21 Prep Checklist |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-21-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-21-exercises\notes | Out-Null
 cd examples\module-21-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-21-exercises
+mkdir -p examples/module-21-exercises/notes
 cd examples/module-21-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 21 uses its own `examples/lab21-*/` (or module lab folder) project.
 
 ## Exercise index
 
 Complete in this sequence (matches Module slide order):
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Cardinality Anti-Patterns | Analysis exercise | [`exercise-01-cardinality-antipatterns.md`](exercise-01-cardinality-antipatterns.md) |
-| 2 | Actuator Allow-List | Documentation exercise | [`exercise-02-actuator-allowlist.md`](exercise-02-actuator-allowlist.md) |
-| 3 | Liveness vs Readiness | Analysis exercise | [`exercise-03-liveness-vs-readiness.md`](exercise-03-liveness-vs-readiness.md) |
-| 4 | Fill Metric Sketch TODOs | Hands-on exercise | [`exercise-04-fill-metric-sketch-todos.md`](exercise-04-fill-metric-sketch-todos.md) |
-| 5 | Alert from create_failure_total | Documentation exercise | [`exercise-05-alert-from-failure-total.md`](exercise-05-alert-from-failure-total.md) |
-| 6 | Lab 21 Prep Checklist | Documentation exercise | [`exercise-06-lab21-prep-checklist.md`](exercise-06-lab21-prep-checklist.md) |
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Cardinality Anti-Patterns | Analysis exercise | `notes/lab21-cardinality-antipatterns.md` | [`exercise-01-cardinality-antipatterns.md`](exercise-01-cardinality-antipatterns.md) |
+| 2 | Actuator Allow-List | Documentation exercise | `notes/lab21-actuator-allowlist.md` | [`exercise-02-actuator-allowlist.md`](exercise-02-actuator-allowlist.md) |
+| 3 | Liveness vs Readiness | Analysis exercise | `notes/lab21-prep-checklist.md` | [`exercise-03-liveness-vs-readiness.md`](exercise-03-liveness-vs-readiness.md) |
+| 4 | Fill Metric Sketch TODOs | Hands-on exercise | `notes/lab21-metric-sketch-todos.md` | [`exercise-04-fill-metric-sketch-todos.md`](exercise-04-fill-metric-sketch-todos.md) |
+| 5 | Alert from create_failure_total | Documentation exercise | `notes/lab21-alert-runbook.md` | [`exercise-05-alert-from-failure-total.md`](exercise-05-alert-from-failure-total.md) |
+| 6 | Lab 21 Prep Checklist | Documentation exercise | `notes/lab21-prep-checklist.md` | [`exercise-06-lab21-prep-checklist.md`](exercise-06-lab21-prep-checklist.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 21 OS guide.

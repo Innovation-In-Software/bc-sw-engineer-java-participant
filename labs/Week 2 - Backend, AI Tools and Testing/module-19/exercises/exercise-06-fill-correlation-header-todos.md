@@ -1,16 +1,30 @@
 # Exercise 6 — Fill Correlation Header TODOs
 
-**Module 19** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 19** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete fill-in blanks for correlation headers in integration tests.
+Create `notes/lab19-correlation-header-todos.md` — complete fill-in blanks for correlation headers in integration tests.
+
+## Deliverable
+
+| Item | Path (under `examples/module-19-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-fill-correlation-header-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab19-correlation-header-todos.md` |
 
 ## Steps
 
-### Step 1 — Copy TODOs
+### Step 1 — Create the notes file
 
-Create `notes/lab19-correlation-todos.md` and paste:
+From `examples/module-19-exercises/`, create `notes/` if needed, then create `notes/lab19-correlation-header-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 19 — Fill Correlation Header TODOs
+
+## Step 1 — Copy TODOs
 
 Header name: _____
 Header value for lab: _____
@@ -19,27 +33,35 @@ UI journey logs correlation? _____
 Flake mitigation idea: _____
 Actuator in this pre-lab? _____
 
-### Step 2 — Fill blanks
+## Step 2 — Fill blanks
 
 Fill X-Correlation-Id, lab-request-001, yes, yes/optional, explicit waits/testid stability, and no for Actuator.
 
-### Step 3 — CI note
+## Step 3 — CI note
 
 Write: *CI agents need browser driver management; expect flake without waits.*
 
-### Step 4 — Self-check
+## Step 4 — Self-check
 
 Confirm Actuator blank is no (Lab 21).
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled correlation/flake TODOs with Actuator deferred.
+Filled correlation/flake TODOs with Actuator deferred in `notes/lab19-correlation-header-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab19-correlation-header-todos.md` |
 | Hard sleeps only | Prefer explicit waits + stable testids |
 | Skipping correlation on IT | Attach lab-request-001 on API calls |
 
@@ -47,6 +69,7 @@ Filled correlation/flake TODOs with Actuator deferred.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | All _____ replaced | Pass / Fail |
-| 2 | CI flake note present | Pass / Fail |
-| 3 | Actuator deferred | Pass / Fail |
+| 1 | File exists at `notes/lab19-correlation-header-todos.md` | Pass / Fail |
+| 2 | All _____ replaced | Pass / Fail |
+| 3 | CI flake note present | Pass / Fail |
+| 4 | Actuator deferred | Pass / Fail |

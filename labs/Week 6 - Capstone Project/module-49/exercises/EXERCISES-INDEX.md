@@ -5,10 +5,22 @@
 **Module:** 49 — Capstone Backend and Messaging  
 **Next:** [`../lab49/LAB-49-WINDOWS.md`](../lab49/LAB-49-WINDOWS.md) or [`../lab49/LAB-49-MACOS.md`](../lab49/LAB-49-MACOS.md) → [`../lab49/LAB-49-GUIDE.md`](../lab49/LAB-49-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 49.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 49 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 49.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-49-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 49 is the graded consolidation. Do **not** finish Lab 49 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab49-slice-selection.md` | Select Backend Vertical Slice |
+| 2 | `notes/lab49-layer-checklist.md` | Controller-Service-Repository Checklist |
+| 3 | `notes/lab49-event-contract.md` | Sketch Event Contract |
+| 4 | `notes/lab49-test-matrix-todos.md` | Fill Test Matrix TODOs |
+| 5 | `notes/lab49-backend-demo-outline.md` | Outline Backend Demo Notes |
+| 6 | `notes/lab49-definition-of-done.md` | Backend Slice DoD |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-49-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-49-exercises\notes | Out-Null
 cd examples\module-49-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-49-exercises
+mkdir -p examples/module-49-exercises/notes
 cd examples/module-49-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 49 uses its own `examples/lab49-*/` (or module lab folder) project.
 
 ## Exercise index
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Select Backend Vertical Slice | Scope control | [`exercise-01-slice-selection.md`](exercise-01-slice-selection.md) |
-| 2 | Controller-Service-Repository Checklist | Layering discipline | [`exercise-02-layer-checklist.md`](exercise-02-layer-checklist.md) |
-| 3 | Sketch Event Contract | Messaging contract design | [`exercise-03-event-contract.md`](exercise-03-event-contract.md) |
-| 4 | Fill Test Matrix TODOs | Hands-on test planning | [`exercise-04-test-matrix-todos.md`](exercise-04-test-matrix-todos.md) |
-| 5 | Outline Backend Demo Notes | Reproduction documentation | [`exercise-05-backend-demo-outline.md`](exercise-05-backend-demo-outline.md) |
-| 6 | Backend Slice DoD | Evidence gate | [`exercise-06-definition-of-done.md`](exercise-06-definition-of-done.md) |
+Complete in this sequence (matches Module slide order):
 
-Keep all work separate from `examples/lab49-crm` (or the lab’s named project folder); that project begins in the full lab.
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Select Backend Vertical Slice | Architecture exercise | `notes/lab49-slice-selection.md` | [`exercise-01-slice-selection.md`](exercise-01-slice-selection.md) |
+| 2 | Controller-Service-Repository Checklist | Documentation exercise | `notes/lab49-layer-checklist.md` | [`exercise-02-layer-checklist.md`](exercise-02-layer-checklist.md) |
+| 3 | Sketch Event Contract | Analysis exercise | `notes/lab49-event-contract.md` | [`exercise-03-event-contract.md`](exercise-03-event-contract.md) |
+| 4 | Fill Test Matrix TODOs | Hands-on exercise | `notes/lab49-test-matrix-todos.md` | [`exercise-04-test-matrix-todos.md`](exercise-04-test-matrix-todos.md) |
+| 5 | Outline Backend Demo Notes | Documentation exercise | `notes/lab49-backend-demo-outline.md` | [`exercise-05-backend-demo-outline.md`](exercise-05-backend-demo-outline.md) |
+| 6 | Backend Slice DoD | Analysis exercise | `notes/lab49-definition-of-done.md` | [`exercise-06-definition-of-done.md`](exercise-06-definition-of-done.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 49 OS guide.

@@ -65,7 +65,7 @@ This Module 23 lab builds the first **Customer Management Platform** Spring Boot
 
 **Purpose.** Leadership needs a single Boot process that peers can start with `mvn spring-boot:run`, hit create/get for Amina and Ravi, and smoke-check with `/actuator/health`. Profiles appear only as a teaser; Lab 26 deepens environment-specific config and secrets.
 
-**What you build (exercise).** Scaffold `lab23-crm` (Initializr or hand-authored parent); pin `web` + `actuator` + `test`; write `CrmApplication` and YAML; implement in-memory customer create/get with correlation `lab-request-001`; verify health; add `dev`/`prod` profile teasers; automate context-load and HTTP IT; document what Boot auto-configured versus what you still design.
+**What you build (this lab).** Scaffold `lab23-crm` (Initializr or hand-authored parent); pin `web` + `actuator` + `test`; write `CrmApplication` and YAML; implement in-memory customer create/get with correlation `lab-request-001`; verify health; add `dev`/`prod` profile teasers; automate context-load and HTTP IT; document what Boot auto-configured versus what you still design.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab23-crm/` the app starts on 8080, `POST`/`GET` work for `CUS-1001`/`CUS-1002`, health returns `UP`, `mvn test` is green twice, and you can name three auto-config gifts and three ownership items.
 

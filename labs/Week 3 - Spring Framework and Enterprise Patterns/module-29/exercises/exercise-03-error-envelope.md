@@ -1,10 +1,28 @@
 # Exercise 4 — ErrorResponse Envelope
 
-**Module 29** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 29** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Specify `ErrorResponse` fields clients can rely on.
+Create `notes/error-envelope.md` — specify `ErrorResponse` fields clients can rely on.
+
+## Deliverable
+
+| Item | Path (under `examples/module-29-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-error-envelope.md` (this file in the course repo) |
+| Your notes file | `notes/error-envelope.md` |
+
+## Steps
+
+### Step 1 — Create the notes file
+
+From `examples/module-29-exercises/`, create `notes/` if needed, then create `notes/error-envelope.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 29 — ErrorResponse Envelope
 
 ## Reference
 
@@ -18,32 +36,47 @@ Specify `ErrorResponse` fields clients can rely on.
 | correlationId | e.g. lab-request-001 |
 | violations | Optional field errors |
 
-## Steps
-
-### Step 1 — Sketch JSON
+## Step 1 — Sketch JSON
 
 In `notes/error-envelope.md`, sketch a 400 validation example including `correlationId: lab-request-001`.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Ensure required fields from the table appear.
 
-### Step 3 — 404 example
+## Step 3 — 404 example
 
 Sketch envelope for `CUS-9999` not-found.
 
-### Step 4 — Safety
+## Step 4 — Safety
 
 No stack traces or SQL in `message`.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-400 and 404 envelope sketches exist.
+400 and 404 envelope sketches exist in `notes/error-envelope.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/error-envelope.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 29 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Validation example includes violations/correlation | Pass / Fail |
-| 2 | 404 example present | Pass / Fail |
-| 3 | No stack traces | Pass / Fail |
+| 1 | File exists at `notes/error-envelope.md` | Pass / Fail |
+| 2 | Validation example includes violations/correlation | Pass / Fail |
+| 3 | 404 example present | Pass / Fail |
+| 4 | No stack traces | Pass / Fail |

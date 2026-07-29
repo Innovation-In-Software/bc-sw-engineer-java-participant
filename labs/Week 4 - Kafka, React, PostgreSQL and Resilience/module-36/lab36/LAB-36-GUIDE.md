@@ -64,7 +64,7 @@ This Module 36 lab hardens the CRM SPA: threat model, authentication state, **in
 
 **Purpose.** Leadership freezes a browser security gate before PostgreSQL persistence labs expand data exposure: route guards are not authorization; tokens never hit persistent web storage in this exercise; XSS payloads in customer names must render as text; CSRF applies when cookie sessions are used; CSP/headers are configured at server/gateway.
 
-**What you build (exercise).** Copy to `lab36-crm`; write `docs/security-decisions.md`; implement `AuthContext` + in-memory `tokenStore`; attach bearer only to CRM API origin; build safe login; add `ProtectedRoute`; distinguish 401/403; complete logout; prove XSS with RTL; document CSRF for cookie mode; add CSP/headers evidence; run abuse tests.
+**What you build (this lab).** Copy to `lab36-crm`; write `docs/security-decisions.md`; implement `AuthContext` + in-memory `tokenStore`; attach bearer only to CRM API origin; build safe login; add `ProtectedRoute`; distinguish 401/403; complete logout; prove XSS with RTL; document CSRF for cookie mode; add CSP/headers evidence; run abuse tests.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab36-crm/` anonymous users redirect, authenticated calls send bearer only to the API origin, storage has no token, XSS test passes, CSRF missing-token evidence exists for cookie mode (or N/A with rationale for bearer-only), headers present, abuse tests green.
 

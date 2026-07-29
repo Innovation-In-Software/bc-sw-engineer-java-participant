@@ -5,10 +5,22 @@
 **Module:** 35 — Frontend and API Integration  
 **Next:** [`../lab35/LAB-35-WINDOWS.md`](../lab35/LAB-35-WINDOWS.md) or [`../lab35/LAB-35-MACOS.md`](../lab35/LAB-35-MACOS.md) → [`../lab35/LAB-35-GUIDE.md`](../lab35/LAB-35-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 35.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 35 builds the full graded deliverable.  
-> Exercise 5 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 35.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-35-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 35 is the graded consolidation. Do **not** finish Lab 35 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab35-error-ux.md` | Error UX Copy |
+| 2 | `notes/lab35-fetch-flow.md` | Fetch Flow |
+| 3 | `notes/lab35-cors-and-headers.md` | CORS and Headers |
+| 4 | `notes/lab35-api.md` | Endpoint Map |
+| 5 | `notes/lab35-todos.md` | Fill Fetch TODOs |
+| 6 | `notes/lab35-prep-checklist.md` | Lab 35 Readiness |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-35-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-35-exercises\notes | Out-Null
 cd examples\module-35-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-35-exercises
+mkdir -p examples/module-35-exercises/notes
 cd examples/module-35-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 35 uses its own `examples/lab35-*/` (or module lab folder) project.
 
 ## Exercise index
 
 Complete in this sequence (matches Module slide order):
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Error UX Copy | Write API error UX | [`exercise-01-error-ux.md`](exercise-01-error-ux.md) |
-| 2 | Fetch Flow | Design async UI states | [`exercise-02-fetch-flow.md`](exercise-02-fetch-flow.md) |
-| 3 | CORS and Headers | Plan browser↔API concerns | [`exercise-03-cors-and-headers.md`](exercise-03-cors-and-headers.md) |
-| 4 | Endpoint Map | Map UI to REST | [`exercise-04-endpoint-map.md`](exercise-04-endpoint-map.md) |
-| 5 | Fill Fetch TODOs | Complete typed fetch blanks | [`exercise-05-fill-fetch-todos.md`](exercise-05-fill-fetch-todos.md) |
-| 6 | Lab 35 Readiness | Pre-lab self-check | [`exercise-06-lab35-readiness.md`](exercise-06-lab35-readiness.md) |
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Error UX Copy | Documentation exercise | `notes/lab35-error-ux.md` | [`exercise-01-error-ux.md`](exercise-01-error-ux.md) |
+| 2 | Fetch Flow | Architecture exercise | `notes/lab35-fetch-flow.md` | [`exercise-02-fetch-flow.md`](exercise-02-fetch-flow.md) |
+| 3 | CORS and Headers | Documentation exercise | `notes/lab35-cors-and-headers.md` | [`exercise-03-cors-and-headers.md`](exercise-03-cors-and-headers.md) |
+| 4 | Endpoint Map | Analysis exercise | `notes/lab35-api.md` | [`exercise-04-endpoint-map.md`](exercise-04-endpoint-map.md) |
+| 5 | Fill Fetch TODOs | Hands-on exercise | `notes/lab35-todos.md` | [`exercise-05-fill-fetch-todos.md`](exercise-05-fill-fetch-todos.md) |
+| 6 | Lab 35 Readiness | Analysis exercise | `notes/lab35-prep-checklist.md` | [`exercise-06-lab35-readiness.md`](exercise-06-lab35-readiness.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 35 OS guide.

@@ -65,7 +65,7 @@ This Module 42 lab deploys the CRM **declaratively**: Deployment, Service, Confi
 
 **No “it works on my laptop Docker” as the production definition of done without manifests, probes, and a verified rollback.**
 
-**What you build (exercise).** Create `lab42-crm` manifests under `k8s/`; apply ConfigMap + Secret reference pattern; Deployment with non-root, resources, and three probes; ClusterIP Service; Ingress with TLS redirect; deploy and diagnose; smoke health + customer API with `CUS-1001` / `lab-request-001`; rehearse bad revision and `rollout undo`; write `docs/deployment-runbook.md`.
+**What you build (this lab).** Create `lab42-crm` manifests under `k8s/`; apply ConfigMap + Secret reference pattern; Deployment with non-root, resources, and three probes; ClusterIP Service; Ingress with TLS redirect; deploy and diagnose; smoke health + customer API with `CUS-1001` / `lab-request-001`; rehearse bad revision and `rollout undo`; write `docs/deployment-runbook.md`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab42-crm/` (or platform `k8s/`) a peer can `kubectl apply -f k8s/`, wait for rollout, hit the Ingress, and roll back—using digest-pinned images and no secrets in Git.
 

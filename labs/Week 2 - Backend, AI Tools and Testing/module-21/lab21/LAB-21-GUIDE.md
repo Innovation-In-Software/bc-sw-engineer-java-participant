@@ -64,7 +64,7 @@ This Module 21 lab extends the **Customer Management Platform** with **Spring Bo
 
 **Purpose.** Structured logs (Lab 20) explain individual requests; operators also need aggregates and probe semantics. Leadership freezes: liveness ≠ readiness; create/get metrics move when `CUS-1001` / `CUS-1002` traffic runs; **never** tag metrics with customer names or correlation IDs (cardinality); local Actuator exposure is **not** a production recommendation.
 
-**What you build (exercise).** Copy to `lab21-crm`; add Actuator; configure health/metrics exposure for local lab; curl liveness/readiness; add `CrmReadinessIndicator` with a lab-only toggle; register `CustomerMetrics`; drive traffic with `lab-request-001`; automate `ActuatorIT`; write `docs/monitoring-report.md`.
+**What you build (this lab).** Copy to `lab21-crm`; add Actuator; configure health/metrics exposure for local lab; curl liveness/readiness; add `CrmReadinessIndicator` with a lab-only toggle; register `CustomerMetrics`; drive traffic with `lab-request-001`; automate `ActuatorIT`; write `docs/monitoring-report.md`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab21-crm/` readiness can go OUT_OF_SERVICE while liveness stays UP; create success counters increase after POST; monitoring report lists metrics, alert idea, and production exposure restrictions.
 

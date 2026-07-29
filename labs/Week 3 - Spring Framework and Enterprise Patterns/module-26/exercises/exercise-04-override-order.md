@@ -1,10 +1,28 @@
 # Exercise 2 — Property Override Order
 
-**Module 26** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 26** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Order CLI, env, profile YAML, and base YAML by precedence.
+Create `notes/override-order.md` — order CLI, env, profile YAML, and base YAML by precedence.
+
+## Deliverable
+
+| Item | Path (under `examples/module-26-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-override-order.md` (this file in the course repo) |
+| Your notes file | `notes/override-order.md` |
+
+## Steps
+
+### Step 1 — Create the notes file
+
+From `examples/module-26-exercises/`, create `notes/` if needed, then create `notes/override-order.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 26 — Property Override Order
 
 ## Reference
 
@@ -15,32 +33,47 @@ Order CLI, env, profile YAML, and base YAML by precedence.
 | 3 | Profile-specific YAML |
 | 4 | Base `application.yml` |
 
-## Steps
-
-### Step 1 — Rank
+## Step 1 — Rank
 
 In `notes/override-order.md`, number the four sources highest→lowest.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Compare to the reference table; correct mistakes.
 
-### Step 3 — Activation pair
+## Step 3 — Activation pair
 
 Write example activations: `-Dspring.profiles.active=dev` and `SPRING_PROFILES_ACTIVE=prod`.
 
-### Step 4 — Measurement plan
+## Step 4 — Measurement plan
 
 Lab 26 asks for measured override evidence — note you will capture it in lab, not here.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Correct precedence and activation examples recorded.
+Correct precedence and activation examples recorded in `notes/override-order.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/override-order.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 26 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Order matches reference | Pass / Fail |
-| 2 | Both activation styles listed | Pass / Fail |
-| 3 | Lab measurement deferred explicitly | Pass / Fail |
+| 1 | File exists at `notes/override-order.md` | Pass / Fail |
+| 2 | Order matches reference | Pass / Fail |
+| 3 | Both activation styles listed | Pass / Fail |
+| 4 | Lab measurement deferred explicitly | Pass / Fail |

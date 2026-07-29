@@ -64,7 +64,7 @@ This Module 31 lab integrates **Spring Kafka** into the **Customer Management Pl
 
 **Purpose.** Lab 30 proved the broker. Leadership now requires the CRM service itself to emit and consume versioned customer events without losing notifications on poison messages or double-processing replays.
 
-**What you build (exercise).** Copy to `lab31-crm`; add `spring-kafka` (+ test); externalize bootstrap/topic names and trusted packages; define immutable `CustomerEvent`; publish with `KafkaTemplate` keyed by `customerId`; write `@KafkaListener` validating key↔payload; add `ProcessedEventStore` idempotency; configure `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` with non-retryable contract errors; write an integration test that awaits a handled event.
+**What you build (this lab).** Copy to `lab31-crm`; add `spring-kafka` (+ test); externalize bootstrap/topic names and trusted packages; define immutable `CustomerEvent`; publish with `KafkaTemplate` keyed by `customerId`; write `@KafkaListener` validating key↔payload; add `ProcessedEventStore` idempotency; configure `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` with non-retryable contract errors; write an integration test that awaits a handled event.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab31-crm/` creating/updating Amina publishes to `crm.customer-events.v1`, the listener handles once, replays are ignored, poison messages land on DLT after bounded retries, and `mvn test` is green twice.
 

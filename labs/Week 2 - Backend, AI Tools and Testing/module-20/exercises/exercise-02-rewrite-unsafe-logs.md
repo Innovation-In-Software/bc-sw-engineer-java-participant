@@ -1,37 +1,66 @@
 # Exercise 2 — Rewrite Unsafe Logs
 
-**Module 20** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 20** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Turn unsafe Customer logs into id+status+correlation lines.
+Create `notes/lab20-safe-logs.md` — turn unsafe Customer logs into id+status+correlation lines.
+
+## Deliverable
+
+| Item | Path (under `examples/module-20-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-02-rewrite-unsafe-logs.md` (this file in the course repo) |
+| Your notes file | `notes/lab20-safe-logs.md` |
 
 ## Steps
 
-### Step 1 — Unsafe
+### Step 1 — Create the notes file
+
+From `examples/module-20-exercises/`, create `notes/` if needed, then create `notes/lab20-safe-logs.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 20 — Rewrite Unsafe Logs
+
+## Step 1 — Unsafe
 
 Example bad: log full Customer toString including email/phone if present.
 
-### Step 2 — Safe
+## Step 2 — Safe
 
 Rewrite: customerId=CUS-1001 status=ACTIVE correlation=lab-request-001.
 
-### Step 3 — Ravi line
+## Step 3 — Ravi line
 
 Write a safe activate start line for CUS-1002 PROSPECT.
 
-### Step 4 — Capture
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
 
-Save under `notes/lab20-safe-logs.md`. Pre-lab only.
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Before/after log lines using Northstar fixtures safely.
+Before/after log lines using Northstar fixtures safely in `notes/lab20-safe-logs.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab20-safe-logs.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 20 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Unsafe example named | Pass / Fail |
-| 2 | Safe Amina line written | Pass / Fail |
-| 3 | Safe Ravi line written | Pass / Fail |
+| 1 | File exists at `notes/lab20-safe-logs.md` | Pass / Fail |
+| 2 | Unsafe example named | Pass / Fail |
+| 3 | Safe Amina line written | Pass / Fail |
+| 4 | Safe Ravi line written | Pass / Fail |

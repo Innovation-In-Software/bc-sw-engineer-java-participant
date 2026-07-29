@@ -1,14 +1,30 @@
 # Exercise 4 — Fill DDL TODOs
 
-**Module 37** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 37** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Fill blanks in CREATE TABLE drafts (offline SQL-on-paper).
+Create `notes/lab37-ddl-todos.md` — fill blanks in CREATE TABLE drafts (offline SQL-on-paper).
+
+## Deliverable
+
+| Item | Path (under `examples/module-37-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-fill-ddl-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab37-ddl-todos.md` |
 
 ## Steps
 
-### Step 1 — Paste
+### Step 1 — Create the notes file
+
+From `examples/module-37-exercises/`, create `notes/` if needed, then create `notes/lab37-ddl-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 37 — Fill DDL TODOs
+
+## Step 1 — Paste
 
 Create `notes/lab37-todos.sql`:
 
@@ -34,27 +50,35 @@ INSERT INTO customer (customer_id, full_name, status) VALUES
   ('CUS-1002', '_____', 'ACTIVE');
 ```
 
-### Step 2 — Fill
+## Step 2 — Fill
 
 Suggested: `TEXT` or `VARCHAR(200)`, `now()`, `'ACTIVE','SUSPENDED'`, `customer_id`, `Amina Khan`, `Ravi Singh`.
 
-### Step 3 — Verify intent
+## Step 3 — Verify intent
 
 Add commented TODO: `-- TODO Lab 37: run 04_verify.sql after apply (in lab)`.
 
-### Step 4 — Dialect
+## Step 4 — Dialect
 
 Confirm no Oracle `NUMBER` / `CASCADE CONSTRAINTS PURGE` in your draft.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Completed paper DDL + seed for Amina/Ravi without executing it.
+Completed paper DDL + seed for Amina/Ravi without executing it in `notes/lab37-ddl-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab37-ddl-todos.md` |
 | Using Oracle NUMBER for IDs | Use BIGINT / IDENTITY or VARCHAR business keys |
 | Missing FK on account.customer_id | Add REFERENCES customer(customer_id) |
 
@@ -62,6 +86,7 @@ Completed paper DDL + seed for Amina/Ravi without executing it.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | All blanks filled | Pass / Fail |
-| 2 | Seeds use CUS-1001/1002 | Pass / Fail |
-| 3 | PostgreSQL dialect check done | Pass / Fail |
+| 1 | File exists at `notes/lab37-ddl-todos.md` | Pass / Fail |
+| 2 | All blanks filled | Pass / Fail |
+| 3 | Seeds use CUS-1001/1002 | Pass / Fail |
+| 4 | PostgreSQL dialect check done | Pass / Fail |

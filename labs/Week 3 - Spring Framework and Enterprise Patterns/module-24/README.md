@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (see EXERCISES-INDEX) |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab24-*.md` files) |
 | 2 | OS guide → [`lab24/LAB-24-WINDOWS.md`](lab24/LAB-24-WINDOWS.md) or [`lab24/LAB-24-MACOS.md`](lab24/LAB-24-MACOS.md) |
 | 3 | Full lab → [`lab24/LAB-24-GUIDE.md`](lab24/LAB-24-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Spring-WS SOAP Endpoint Development**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-24-exercises/notes/`. Lab 24 is the graded project (see lab guide paths). Do not merge the two paths.

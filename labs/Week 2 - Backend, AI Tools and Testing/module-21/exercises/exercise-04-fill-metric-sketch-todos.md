@@ -1,16 +1,30 @@
 # Exercise 4 — Fill Metric Sketch TODOs
 
-**Module 21** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 21** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete fill-in blanks for metrics and an alert on create_failure_total.
+Create `notes/lab21-metric-sketch-todos.md` — complete fill-in blanks for metrics and an alert on create_failure_total.
+
+## Deliverable
+
+| Item | Path (under `examples/module-21-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-fill-metric-sketch-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab21-metric-sketch-todos.md` |
 
 ## Steps
 
-### Step 1 — Copy TODOs
+### Step 1 — Create the notes file
 
-Create `notes/lab21-metric-todos.md` and paste:
+From `examples/module-21-exercises/`, create `notes/` if needed, then create `notes/lab21-metric-sketch-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 21 — Fill Metric Sketch TODOs
+
+## Step 1 — Copy TODOs
 
 Success counter: _____
 Failure counter: _____
@@ -19,27 +33,35 @@ Alert name: _____
 Alert when create_failure_total rises above: _____
 First responder action: _____
 
-### Step 2 — Fill blanks
+## Step 2 — Fill blanks
 
 Fill create_success_total, create_failure_total, customerId (forbidden), CrmCreateFailuresHigh, a numeric threshold you choose, and check logs for lab-request-001.
 
-### Step 3 — Alert narrative
+## Step 3 — Alert narrative
 
 Write: page on sustained create_failure_total; correlate with recent CUS-1001/CUS-1002 traffic via logs, not metric labels.
 
-### Step 4 — Self-check
+## Step 4 — Self-check
 
 Confirm failure counter blank is create_failure_total.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled metric/alert TODOs anchored on create_failure_total.
+Filled metric/alert TODOs anchored on create_failure_total in `notes/lab21-metric-sketch-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab21-metric-sketch-todos.md` |
 | Alerting on customerId label cardinality | Alert on aggregated failure_total |
 | No runbook action | Always name first log/query step |
 
@@ -47,6 +69,7 @@ Filled metric/alert TODOs anchored on create_failure_total.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | All _____ replaced | Pass / Fail |
-| 2 | create_failure_total used | Pass / Fail |
-| 3 | Responder action named | Pass / Fail |
+| 1 | File exists at `notes/lab21-metric-sketch-todos.md` | Pass / Fail |
+| 2 | All _____ replaced | Pass / Fail |
+| 3 | create_failure_total used | Pass / Fail |
+| 4 | Responder action named | Pass / Fail |

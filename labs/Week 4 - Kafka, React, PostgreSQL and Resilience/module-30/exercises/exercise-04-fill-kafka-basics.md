@@ -1,43 +1,65 @@
 # Exercise 4 — Fill Kafka Basics TODOs
 
-**Module 30** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 30** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete fill-in blanks for topic, partition, offset, and consumer group.
+Create `notes/lab30-kafka-todos.md` — complete fill-in blanks for topic, partition, offset, and consumer group.
+
+## Deliverable
+
+| Item | Path (under `examples/module-30-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-fill-kafka-basics.md` (this file in the course repo) |
+| Your notes file | `notes/lab30-kafka-todos.md` |
 
 ## Steps
 
-### Step 1 — Copy the quiz
+### Step 1 — Create the notes file
 
-Create `notes/lab30-kafka-todos.md` and paste:
+From `examples/module-30-exercises/`, create `notes/` if needed, then create `notes/lab30-kafka-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 30 — Fill Kafka Basics TODOs
+
+## Step 1 — Copy the quiz
 
 1. A _____ is a named stream of records.
 2. A _____ is an ordered subset of a topic; offsets are per partition.
 3. The _____ is the consumer's position in a partition.
 4. Consumers in the same _____ compete for partitions; different groups each get a copy.
 
-### Step 2 — Fill blanks
+## Step 2 — Fill blanks
 
 Replace each `_____` with: topic / partition / offset / consumer group (one each).
 
-### Step 3 — CRM example
+## Step 3 — CRM example
 
 Add one line: group `crm-notifications` shares partitions; group `crm-audit` reads all `CUS-1001`/`CUS-1002` events independently.
 
-### Step 4 — Self-check
+## Step 4 — Self-check
 
 Compare to Step 2 answer key in your head: topic, partition, offset, consumer group.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Four blanks filled correctly with a CRM group example sentence.
+Four blanks filled correctly with a CRM group example sentence in `notes/lab30-kafka-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab30-kafka-todos.md` |
 | Confusing partition with consumer group | Partition = ordered log slice; group = load-sharing unit |
 | Thinking offset is global per topic | Offsets are per partition (and tracked per group) |
 
@@ -45,6 +67,7 @@ Four blanks filled correctly with a CRM group example sentence.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | All four terms filled | Pass / Fail |
-| 2 | CRM competing vs independent groups noted | Pass / Fail |
-| 3 | File saved under notes/ | Pass / Fail |
+| 1 | File exists at `notes/lab30-kafka-todos.md` | Pass / Fail |
+| 2 | All four terms filled | Pass / Fail |
+| 3 | CRM competing vs independent groups noted | Pass / Fail |
+| 4 | File saved under notes/ | Pass / Fail |

@@ -76,7 +76,7 @@ This Module 15 lab extends the **Customer Management Platform** with a deliberat
 
 **Purpose.** Bean Validation (Lab 14) checks *shape*. Business rules check *meaning*: duplicate IDs/emails, who may become ACTIVE, and which transitions are illegal. Those rules belong in one place so Labs 17–18 can unit-test them and Lab 22+ can inject the same constructors with Spring.
 
-**What you build (exercise).** Copy `lab14-crm` → `lab15-crm`; introduce `CustomerRepository` + in-memory impl (Map private); define `CustomerService` / `DefaultCustomerService`; implement `CustomerValidator` transitions; activate `CUS-1002`; reject `ACTIVE → PROSPECT` with `lab-request-001`; prove no Map/SQL leak; document the transition table.
+**What you build (this lab).** Copy `lab14-crm` → `lab15-crm`; introduce `CustomerRepository` + in-memory impl (Map private); define `CustomerService` / `DefaultCustomerService`; implement `CustomerValidator` transitions; activate `CUS-1002`; reject `ACTIVE → PROSPECT` with `lab-request-001`; prove no Map/SQL leak; document the transition table.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab15-crm/` Main activates Ravi to ACTIVE, illegal transitions leave Amina ACTIVE, validator tests pass, and grep shows no `HashMap` in the service package.
 

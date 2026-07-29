@@ -64,7 +64,7 @@ This Module 20 lab extends the **Customer Management Platform** with **SLF4J** a
 
 **Purpose.** Labs 17–19 prove behavior with tests; operators still cannot search “what happened to request X” without structure. Leadership freezes: every CRM request carries `X-Correlation-Id` into MDC; logs include `customerId` and `op` where known; **never** full name, email, phone, address, or account numbers in log messages or MDC.
 
-**What you build (exercise).** Copy to `lab20-crm`; confirm Logback binding; configure `logback-spring.xml` structured pattern; add `CorrelationFilter` with MDC clear in `finally`; instrument `CustomerService` create/get; WARN at controller validation without dumping payloads; exercise Amina/Ravi traces; assert with `CustomerLoggingIT`; document the logging contract.
+**What you build (this lab).** Copy to `lab20-crm`; confirm Logback binding; configure `logback-spring.xml` structured pattern; add `CorrelationFilter` with MDC clear in `finally`; instrument `CustomerService` create/get; WARN at controller validation without dumping payloads; exercise Amina/Ravi traces; assert with `CustomerLoggingIT`; document the logging contract.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab20-crm/` a create of `CUS-1001` with `lab-request-001` produces console lines with `corr=` / `cust=` / `op=` and **zero** occurrences of “Amina” or emails; automated IT enforces that; forbidden-field list matches samples.
 

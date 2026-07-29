@@ -370,7 +370,7 @@ Confirm this single brief before Week 6 delivery (or at program kickoff).
 | Labs [48](module-48/lab48/LAB-48-GUIDE.md)–[52](module-52/lab52/LAB-52-GUIDE.md) | Day-to-day student lab guides |
 | [SETUP-INSTRUCTIONS.md](../SETUP-INSTRUCTIONS.md) | Environment and tool verification |
 | [TECHNOLOGY-STACK-GUIDE.md](../TECHNOLOGY-STACK-GUIDE.md) | Technology rationale for learners |
-| Curriculum slides folder | [Week 6 - Capstone Project](../../Week%206%20-%20Capstone%20Project/) (outline + module slide text) |
+| Curriculum slides folder | [Week 6 - Capstone Project](../../curriculum/Week%206%20-%20Capstone%20Project/) (outline + module slide text) |
 
 ---
 

@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises 1–6 in order |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab42-*.md` files) |
 | 2 | OS guide → [`lab42/LAB-42-WINDOWS.md`](lab42/LAB-42-WINDOWS.md) or [`lab42/LAB-42-MACOS.md`](lab42/LAB-42-MACOS.md) |
 | 3 | Full lab → [`lab42/LAB-42-GUIDE.md`](lab42/LAB-42-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Kubernetes (k3s) Deployment**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-42-exercises/notes/`. Lab 42 is the graded project (see lab guide paths). Do not merge the two paths.

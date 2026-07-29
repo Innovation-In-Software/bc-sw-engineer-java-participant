@@ -5,10 +5,22 @@
 **Module:** 41 — Containerization with Docker  
 **Next:** [`../lab41/LAB-41-WINDOWS.md`](../lab41/LAB-41-WINDOWS.md) or [`../lab41/LAB-41-MACOS.md`](../lab41/LAB-41-MACOS.md) → [`../lab41/LAB-41-GUIDE.md`](../lab41/LAB-41-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 41.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 41 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 41.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-41-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 41 is the graded consolidation. Do **not** finish Lab 41 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab41-multistage-sketch.md` | Sketch Multi-Stage Build |
+| 2 | `notes/lab41-dockerignore-env.md` | Plan .dockerignore and Env |
+| 3 | `notes/lab41-health-resources.md` | Health and Resource Checklist |
+| 4 | `notes/lab41-dockerfile-todos.md` | Fill Dockerfile TODO Skeleton |
+| 5 | `notes/lab41-digest-discipline.md` | Digest vs Latest |
+| 6 | `notes/lab41-smoke-plan.md` | Plan Container Smoke |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-41-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-41-exercises\notes | Out-Null
 cd examples\module-41-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-41-exercises
+mkdir -p examples/module-41-exercises/notes
 cd examples/module-41-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 41 uses its own `examples/lab41-*/` (or module lab folder) project.
 
 ## Exercise index
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Sketch Multi-Stage Build | Dockerfile stages | [`exercise-01-multistage-sketch.md`](exercise-01-multistage-sketch.md) |
-| 2 | Plan .dockerignore and Env | Image hygiene | [`exercise-02-dockerignore-env.md`](exercise-02-dockerignore-env.md) |
-| 3 | Health and Resource Checklist | Operability planning | [`exercise-03-health-resources.md`](exercise-03-health-resources.md) |
-| 4 | Fill Dockerfile TODO Skeleton | Hands-on Dockerfile draft | [`exercise-04-dockerfile-todos.md`](exercise-04-dockerfile-todos.md) |
-| 5 | Digest vs Latest | Image identity | [`exercise-05-digest-discipline.md`](exercise-05-digest-discipline.md) |
-| 6 | Plan Container Smoke | CRM smoke design | [`exercise-06-smoke-plan.md`](exercise-06-smoke-plan.md) |
+Complete in this sequence (matches Module slide order):
 
-Keep all work separate from `examples/lab41-crm` (or the lab’s named project folder); that project begins in the full lab.
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Sketch Multi-Stage Build | Architecture exercise | `notes/lab41-multistage-sketch.md` | [`exercise-01-multistage-sketch.md`](exercise-01-multistage-sketch.md) |
+| 2 | Plan .dockerignore and Env | Documentation exercise | `notes/lab41-dockerignore-env.md` | [`exercise-02-dockerignore-env.md`](exercise-02-dockerignore-env.md) |
+| 3 | Health and Resource Checklist | Analysis exercise | `notes/lab41-health-resources.md` | [`exercise-03-health-resources.md`](exercise-03-health-resources.md) |
+| 4 | Fill Dockerfile TODO Skeleton | Hands-on exercise | `notes/lab41-dockerfile-todos.md` | [`exercise-04-dockerfile-todos.md`](exercise-04-dockerfile-todos.md) |
+| 5 | Digest vs Latest | Analysis exercise | `notes/lab41-digest-discipline.md` | [`exercise-05-digest-discipline.md`](exercise-05-digest-discipline.md) |
+| 6 | Plan Container Smoke | Documentation exercise | `notes/lab41-smoke-plan.md` | [`exercise-06-smoke-plan.md`](exercise-06-smoke-plan.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 41 OS guide.

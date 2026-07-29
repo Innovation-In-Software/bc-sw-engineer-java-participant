@@ -1,37 +1,70 @@
 # Exercise 5 — Service Test Plan
 
-**Module 25** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 25** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-List three service tests Lab 25 should prove.
+Create `notes/service-test-plan.md` — list three service tests Lab 25 should prove.
+
+## Deliverable
+
+| Item | Path (under `examples/module-25-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-05-test-plan.md` (this file in the course repo) |
+| Your notes file | `notes/service-test-plan.md` |
 
 ## Steps
 
-### Step 1 — Cases
+### Step 1 — Create the notes file
+
+From `examples/module-25-exercises/`, create `notes/` if needed, then create `notes/service-test-plan.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 25 — Service Test Plan
+
+## Step 1 — Cases
 
 In `notes/service-test-plan.md`: get seeded Amina; duplicate create fails; missing id fails; optional PROSPECT→ACTIVE.
 
-### Step 2 — Fake vs in-memory
+## Step 2 — Fake vs in-memory
 
 State either a fake repo or the in-memory impl is acceptable for unit tests.
 
-### Step 3 — Dual green
+## Step 3 — Dual green
 
 Lab expects `mvn test` green twice — note that as a lab habit, not pre-lab work.
 
-### Step 4 — Boundary
+## Step 4 — Boundary
 
 Do not write the full JUnit class here.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Test plan lists core service cases without full JUnit.
+Test plan lists core service cases without full JUnit in `notes/service-test-plan.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/service-test-plan.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 25 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | At least three cases listed | Pass / Fail |
-| 2 | Fake/in-memory option stated | Pass / Fail |
-| 3 | Full JUnit deferred | Pass / Fail |
+| 1 | File exists at `notes/service-test-plan.md` | Pass / Fail |
+| 2 | At least three cases listed | Pass / Fail |
+| 3 | Fake/in-memory option stated | Pass / Fail |
+| 4 | Full JUnit deferred | Pass / Fail |

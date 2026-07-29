@@ -1,37 +1,65 @@
 # Exercise 6 — Release Readiness Scorecard
 
-**Module 51** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 51** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Score readiness categories Pass/Fail as planning targets.
+Create `notes/lab51-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 51 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-51-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-release-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab51-prep-checklist.md` |
 
 ## Steps
 
-### Step 1 — Categories
+### Step 1 — Create the notes file
 
-Authz negatives, pipeline SAST, digest pin, deploy manifests, smoke, rollback, secrets hygiene.
+From `examples/module-51-exercises/`, create `notes/` if needed, then create `notes/lab51-prep-checklist.md`.
 
-### Step 2 — Honest baseline
+### Step 2 — Paste and complete this template
 
-Mark current pre-lab status (likely Fail/Pending)—not fake Pass.
+```markdown
+# Lab 51 prep checklist
 
-### Step 3 — Owners
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab51-threat-checklist.md | _____ |
+| notes/lab51-rbac-negative-plan.md | _____ |
+| notes/lab51-pipeline-gates.md | _____ |
+| notes/lab51-deploy-evidence-todos.md | _____ |
+| notes/lab51-rollback-smoke.md | _____ |
 
-Assign a teammate owner per Fail/Pending row.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Save
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 51 now.
 
-Save `lab51-readiness-scorecard.md`.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Honest readiness scorecard with owners.
+Honest readiness scorecard with owners in `notes/lab51-prep-checklist.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
+| No file / wrong name | Must be `notes/lab51-prep-checklist.md` |
 | Shipping on :latest | Pin digest |
 | Green build with skipped SAST | Keep the gate |
 
@@ -39,6 +67,7 @@ Honest readiness scorecard with owners.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Categories listed | Pass / Fail |
-| 2 | No fake Pass on undone work | Pass / Fail |
-| 3 | Owners assigned | Pass / Fail |
+| 1 | File exists at `notes/lab51-prep-checklist.md` | Pass / Fail |
+| 2 | Categories listed | Pass / Fail |
+| 3 | No fake Pass on undone work | Pass / Fail |
+| 4 | Owners assigned | Pass / Fail |

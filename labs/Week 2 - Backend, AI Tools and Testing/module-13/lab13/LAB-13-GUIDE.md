@@ -79,7 +79,7 @@ This Module 13 lab designs a **contract-first** SOAP interface for the Northstar
 
 **Purpose.** Partners integrate to published contracts, not to Java method signatures. Before Lab 24 spends time on Spring-WS, architects must freeze what XML is legal, which operations exist, and what faults mean. Contract drift later becomes expensive partner breakage.
 
-**What you build (exercise).** Project `lab13-crm` with `contracts/customer.xsd`, `contracts/CustomerService.wsdl`, `samples/` envelopes (success + faults), and docs (`operation-matrix.md`, `soap-design-notes.md`). Namespace `http://northstar.com/crm/customer`. Samples use `CUS-1001` / `CUS-1002` and correlation `lab-request-001`.
+**What you build (this lab).** Project `lab13-crm` with `contracts/customer.xsd`, `contracts/CustomerService.wsdl`, `samples/` envelopes (success + faults), and docs (`operation-matrix.md`, `soap-design-notes.md`). Namespace `http://northstar.com/crm/customer`. Samples use `CUS-1001` / `CUS-1002` and correlation `lab-request-001`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab13-crm/` a partner (or grader) can open the WSDL, understand three operations, copy sample envelopes into SoapUI, and see that `http://localhost:8080/ws` is a **placeholder**—not a live server in this lab.
 

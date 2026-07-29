@@ -65,7 +65,7 @@ This Module 24 lab extends the **Northstar Customer Service Platform** with a co
 
 **Purpose.** A partner billing platform still speaks SOAP. Leadership freezes: expose Lab 13’s customer contract over Spring-WS, backed by Lab 23’s service layer, with inspectable WSDL and message-level UsernameToken — without duplicating validation inside the endpoint.
 
-**What you build (exercise).** Copy to `lab24-crm`; add Spring-WS + jaxb2 plugin; author XSD; configure `MessageDispatcherServlet` + `DefaultWsdl11Definition`; map JAXB ↔ domain; implement `@Endpoint` / `@PayloadRoot`; SOAP fault mapping; UsernameToken interceptor; raw XML `curl` + `MockWebServiceClient` tests; evidence with correlation `lab24-001`.
+**What you build (this lab).** Copy to `lab24-crm`; add Spring-WS + jaxb2 plugin; author XSD; configure `MessageDispatcherServlet` + `DefaultWsdl11Definition`; map JAXB ↔ domain; implement `@Endpoint` / `@PayloadRoot`; SOAP fault mapping; UsernameToken interceptor; raw XML `curl` + `MockWebServiceClient` tests; evidence with correlation `lab24-001`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab24-crm/` WSDL lists four operations, secured get of `CUS-1001` succeeds, missing security and not-found faults are distinct, REST still works against the same service, and `mvn test` is green twice.
 

@@ -64,7 +64,7 @@ This Module 29 lab unifies **Bean Validation** on request DTOs with a global `@R
 
 **Purpose.** Invalid payloads must fail at the API boundary with clear messages — never as stack-trace HTML. Missing customers such as a typo of `CUS-1001` must return a not-found envelope React can render. Duplicate creates and illegal lifecycle transitions use domain exceptions handled globally with predictable HTTP statuses.
 
-**What you build (exercise).** Copy to `lab29-crm`; add `spring-boot-starter-validation`; define `ErrorResponse` (+ field violations); annotate `CustomerRequest` / `StatusUpdateRequest`; enable `@Valid` on controllers; implement `GlobalExceptionHandler` for validation, not-found, duplicate, illegal transition, and safe 500 fallback; prove with curl using `lab-request-001`; write MockMvc tests asserting status **and** body shape; optionally note SOAP/WS fault alignment.
+**What you build (this lab).** Copy to `lab29-crm`; add `spring-boot-starter-validation`; define `ErrorResponse` (+ field violations); annotate `CustomerRequest` / `StatusUpdateRequest`; enable `@Valid` on controllers; implement `GlobalExceptionHandler` for validation, not-found, duplicate, illegal transition, and safe 500 fallback; prove with curl using `lab-request-001`; write MockMvc tests asserting status **and** body shape; optionally note SOAP/WS fault alignment.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab29-crm/` invalid POSTs return 400 with violations, `CUS-9999` returns 404 envelopes, duplicate `CUS-1001` returns 409, happy GETs for Amina/Ravi still 200, and `mvn test` stays green twice.
 

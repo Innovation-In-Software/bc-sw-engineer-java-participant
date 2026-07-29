@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (see EXERCISES-INDEX) |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab26-*.md` files) |
 | 2 | OS guide → [`lab26/LAB-26-WINDOWS.md`](lab26/LAB-26-WINDOWS.md) or [`lab26/LAB-26-MACOS.md`](lab26/LAB-26-MACOS.md) |
 | 3 | Full lab → [`lab26/LAB-26-GUIDE.md`](lab26/LAB-26-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Spring Profiles and Configuration**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-26-exercises/notes/`. Lab 26 is the graded project (see lab guide paths). Do not merge the two paths.

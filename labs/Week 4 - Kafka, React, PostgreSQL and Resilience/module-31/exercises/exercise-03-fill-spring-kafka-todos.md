@@ -1,14 +1,30 @@
 # Exercise 5 — Fill Spring Kafka TODOs
 
-**Module 31** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 31** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Fill TODOs in a tiny Spring Kafka pseudocode snippet.
+Create `notes/lab31-todos.md` — fill TODOs in a tiny Spring Kafka pseudocode snippet.
+
+## Deliverable
+
+| Item | Path (under `examples/module-31-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-fill-spring-kafka-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab31-todos.md` |
 
 ## Steps
 
-### Step 1 — Paste snippet
+### Step 1 — Create the notes file
+
+From `examples/module-31-exercises/`, create `notes/` if needed, then create `notes/lab31-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 31 — Fill Spring Kafka TODOs
+
+## Step 1 — Paste snippet
 
 Create `notes/lab31-todos.md`:
 
@@ -29,27 +45,35 @@ class CustomerEventPublisher {
 void onEvent(String payload) { /* TODO: parse + idempotent handle */ }
 ```
 
-### Step 2 — Fill blanks
+## Step 2 — Fill blanks
 
 Fill with: `localhost:9092` (or instructor bootstrap), `crm-notifications`, `crm.customer-events.v1` (twice).
 
-### Step 3 — Key reminder
+## Step 3 — Key reminder
 
 Add a comment: key argument must be `CUS-1001` / `CUS-1002`, not a random UUID.
 
-### Step 4 — DLT blank
+## Step 4 — DLT blank
 
 Add one line TODO: `// TODO Lab 31: route poison messages to crm.customer-events.v1.dlq`.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Pseudocode with topic/bootstrap/group filled and key/DLT reminders.
+Pseudocode with topic/bootstrap/group filled and key/DLT reminders in `notes/lab31-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab31-todos.md` |
 | Using null key on send | Always pass customerId as the Kafka key |
 | Same groupId for notifications and audit | Use distinct groups for independent consumption |
 
@@ -57,6 +81,7 @@ Pseudocode with topic/bootstrap/group filled and key/DLT reminders.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | All _____ replaced | Pass / Fail |
-| 2 | Customer ID key comment present | Pass / Fail |
-| 3 | DLT TODO line present | Pass / Fail |
+| 1 | File exists at `notes/lab31-todos.md` | Pass / Fail |
+| 2 | All _____ replaced | Pass / Fail |
+| 3 | Customer ID key comment present | Pass / Fail |
+| 4 | DLT TODO line present | Pass / Fail |

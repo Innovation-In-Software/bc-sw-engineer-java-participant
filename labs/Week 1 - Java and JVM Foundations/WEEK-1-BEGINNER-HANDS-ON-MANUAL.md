@@ -119,7 +119,7 @@ Hello Java Bootcamp!
 
 ### Objective
 
-This Module 1 lab is the **graded consolidation** after Module 1 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced compile/run, WORA, class loading, methods, objects, and `javap` in `module-01-exercises/`. Here you repeat the JVM story with **new graded class names**, deeper evidence, heap stress (`MemoryDemo`), JVM flags, and your personal GitHub workspace.
+This Module 1 lab is the **graded consolidation** after Module 1 slides and [Exercises 1–8](module-01/exercises/EXERCISES-INDEX.md). You already practiced compile/run, WORA, class loading, methods, objects, and `javap` in `module-01-exercises/`. Here you repeat the JVM story with **new graded class names**, deeper evidence, heap stress (`MemoryDemo`), JVM flags, and your personal GitHub workspace.
 
 ### Prerequisites
 
@@ -964,7 +964,7 @@ Capture evidence for grading from your IDE terminal and Explorer / Project view.
 
 ### Objective
 
-This Module 2 lab is the **graded consolidation** after Module 2 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md) (plus 8–9 when done). You already practiced arithmetic, decisions, loops, methods, `Scanner`, parsing, and `printf` in `module-02-exercises/`. Here you assemble those skills into a **menu-driven Student Management console** with packages and a clear model/manager/`Main` split.
+This Module 2 lab is the **graded consolidation** after Module 2 slides and [Exercises 1–7](module-02/exercises/EXERCISES-INDEX.md) (plus 8–9 when done). You already practiced arithmetic, decisions, loops, methods, `Scanner`, parsing, and `printf` in `module-02-exercises/`. Here you assemble those skills into a **menu-driven Student Management console** with packages and a clear model/manager/`Main` split.
 
 ### Prerequisites
 
@@ -2043,7 +2043,7 @@ The lab program compiles, runs, and matches the lab guide's sample outputs.
 
 ### Objective
 
-This Module 3 lab is the **graded consolidation** after Module 3 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced domain modeling, encapsulation, inheritance, abstraction, interfaces, SOLID spot-checks, and mini UML in `module-03-exercises/`. Here you assemble those skills into a **menu-driven Banking Management System** with packages and a clear model / service / `Main` split.
+This Module 3 lab is the **graded consolidation** after Module 3 slides and [Exercises 1–8](module-03/exercises/EXERCISES-INDEX.md). You already practiced domain modeling, encapsulation, inheritance, abstraction, interfaces, SOLID spot-checks, and mini UML in `module-03-exercises/`. Here you assemble those skills into a **menu-driven Banking Management System** with packages and a clear model / service / `Main` split.
 
 ### Prerequisites
 
@@ -3072,7 +3072,7 @@ The lab program compiles, runs, and matches the lab guide's sample outputs.
 
 ### Objective
 
-This Module 4 lab is the **graded consolidation** after Module 4 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md). You already practiced stack/heap, lifecycle, GC observation, G1/ZGC flags, retention, and StringBuilder cost in `module-04-exercises/`. Here you assemble those skills into a **shared-monitor demo suite** with leak/fix, weak references, performance table, and optional laptop tools.
+This Module 4 lab is the **graded consolidation** after Module 4 slides and [Exercises 1–7](module-04/exercises/EXERCISES-INDEX.md). You already practiced stack/heap, lifecycle, GC observation, G1/ZGC flags, retention, and StringBuilder cost in `module-04-exercises/`. Here you assemble those skills into a **shared-monitor demo suite** with leak/fix, weak references, performance table, and optional laptop tools.
 
 ### Prerequisites
 
@@ -3912,7 +3912,7 @@ Build and verify the Module 4 lab project.
 
 ### Objective
 
-This Module 5 lab is the **graded consolidation** after Module 5 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md). You already practiced List, Set, Map, TreeMap, safe iteration, collection choice, and a library warm-up in `module-05-exercises/`. Here you assemble those skills into a **Library Management System** console with packages, domain types, and a full staff menu.
+This Module 5 lab is the **graded consolidation** after Module 5 slides and [Exercises 1–7](module-05/exercises/EXERCISES-INDEX.md). You already practiced List, Set, Map, TreeMap, safe iteration, collection choice, and a library warm-up in `module-05-exercises/`. Here you assemble those skills into a **Library Management System** console with packages, domain types, and a full staff menu.
 
 ### Prerequisites
 
@@ -4792,7 +4792,7 @@ Build and verify the Module 5 lab project.
 
 ### Objective
 
-This Module 6 lab is the **graded consolidation** after Module 6 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md) (Exercise 8 parallel bonus recommended). You already practiced lambdas, filter/map/sort, min/max, grouping, and composed pipelines on a small flat dataset. Here you assemble those skills into an **Employee Analytics System** with 25 employees, a service layer, dashboard, and menu.
+This Module 6 lab is the **graded consolidation** after Module 6 slides and [Exercises 1–7](module-06/exercises/EXERCISES-INDEX.md) (Exercise 8 parallel bonus recommended). You already practiced lambdas, filter/map/sort, min/max, grouping, and composed pipelines on a small flat dataset. Here you assemble those skills into an **Employee Analytics System** with 25 employees, a service layer, dashboard, and menu.
 
 ### Prerequisites
 
@@ -6020,7 +6020,7 @@ Build and verify the Module 6 lab project.
 
 ### Objective
 
-This Module 7 lab is the **graded consolidation** after Module 7 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced catching common exceptions, `try-catch-finally`, try-with-resources, `throw`/`throws`, custom exceptions, propagation, retry/fallback, and logging in `module-07-exercises/`. Here you assemble those skills into a fault-tolerant **ATM Banking System**.
+This Module 7 lab is the **graded consolidation** after Module 7 slides and [Exercises 1–8](module-07/exercises/EXERCISES-INDEX.md). You already practiced catching common exceptions, `try-catch-finally`, try-with-resources, `throw`/`throws`, custom exceptions, propagation, retry/fallback, and logging in `module-07-exercises/`. Here you assemble those skills into a fault-tolerant **ATM Banking System**.
 
 ### Prerequisites
 

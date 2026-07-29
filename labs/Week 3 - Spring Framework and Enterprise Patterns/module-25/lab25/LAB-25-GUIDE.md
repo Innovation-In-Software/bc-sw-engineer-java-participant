@@ -65,7 +65,7 @@ This Module 25 lab formalizes **Controller → Service → Repository** for Cust
 
 **Purpose.** Leadership freezes package seams before transactions (Lab 27), profiles/secrets (Lab 26), and security (Lab 28): no controller may import or call a map/store directly, and AI suggestions that place `ResponseEntity` or HTTP types in the service are rejected.
 
-**What you build (exercise).** Copy prior Boot CRM to `lab25-crm`; define `CustomerRepository`; implement `InMemoryCustomerRepository` seeded with `CUS-1001`/`CUS-1002`; put rules in `CustomerService`; thin `CustomerController`; create/list paths; service unit tests with fake/real in-memory repo; AI review log `lab25-001`; dual green `mvn test`.
+**What you build (this lab).** Copy prior Boot CRM to `lab25-crm`; define `CustomerRepository`; implement `InMemoryCustomerRepository` seeded with `CUS-1001`/`CUS-1002`; put rules in `CustomerService`; thin `CustomerController`; create/list paths; service unit tests with fake/real in-memory repo; AI review log `lab25-001`; dual green `mvn test`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab25-crm/` GET Amina/Ravi works, duplicates/not-found fail in the service, controller has **zero** repository imports, AI review notes exist (or manual N/A), and tests pass twice.
 

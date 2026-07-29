@@ -1,37 +1,70 @@
 # Exercise 4 — Fill ci.yml TODOs
 
-**Module 43** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 43** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a workflow skeleton with blanks (do not require a passing remote run).
+Create `notes/lab43-workflow-todos.md` — complete a workflow skeleton with blanks (do not require a passing remote run).
+
+## Deliverable
+
+| Item | Path (under `examples/module-43-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-workflow-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab43-workflow-todos.md` |
 
 ## Steps
 
-### Step 1 — Skeleton
+### Step 1 — Create the notes file
+
+From `examples/module-43-exercises/`, create `notes/` if needed, then create `notes/lab43-workflow-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 43 — Fill ci.yml TODOs
+
+## Step 1 — Skeleton
 
 Create notes `ci.yml.skeleton` with blanks for `java-version`, verify command, artifact paths, and package `if:` condition.
 
-### Step 2 — Fill
+## Step 2 — Fill
 
 Fill blanks using Temurin 21 and `./mvnw -B clean verify` / package-once pattern.
 
-### Step 3 — Secrets comment
+## Step 3 — Secrets comment
 
 Add a YAML comment: `# secrets via GitHub Actions secrets — never hardcode`.
 
-### Step 4 — Scope
+## Step 4 — Scope
 
 State that pushing and greening the workflow is Lab 43, not this exercise.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled workflow skeleton ready for Lab 43.
+Filled workflow skeleton ready for Lab 43 in `notes/lab43-workflow-todos.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab43-workflow-todos.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 43 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Blanks filled for Java/verify/package | Pass / Fail |
-| 2 | Secrets comment present | Pass / Fail |
-| 3 | Pre-lab scope stated | Pass / Fail |
+| 1 | File exists at `notes/lab43-workflow-todos.md` | Pass / Fail |
+| 2 | Blanks filled for Java/verify/package | Pass / Fail |
+| 3 | Secrets comment present | Pass / Fail |
+| 4 | Pre-lab scope stated | Pass / Fail |

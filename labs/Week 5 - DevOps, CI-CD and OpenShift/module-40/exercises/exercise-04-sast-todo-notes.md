@@ -1,14 +1,30 @@
 # Exercise 4 — Fill SAST Path TODOs
 
-**Module 40** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 40** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a fill-in checklist for one request-to-sink path (pre-lab notes only).
+Create `notes/lab40-sast-todo-notes.md` — complete a fill-in checklist for one request-to-sink path (pre-lab notes only).
+
+## Deliverable
+
+| Item | Path (under `examples/module-40-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-sast-todo-notes.md` (this file in the course repo) |
+| Your notes file | `notes/lab40-sast-todo-notes.md` |
 
 ## Steps
 
-### Step 1 — Copy template
+### Step 1 — Create the notes file
+
+From `examples/module-40-exercises/`, create `notes/` if needed, then create `notes/lab40-sast-todo-notes.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 40 — Fill SAST Path TODOs
+
+## Step 1 — Copy template
 
 In notes, create `sast-path-todo.md` with blanks:
 ```
@@ -19,26 +35,43 @@ Customer fixture used: _____
 Risk if missing check: _____
 ```
 
-### Step 2 — Fill for customer read
+## Step 2 — Fill for customer read
 
 Fill blanks for `GET /api/customers/{id}` using `CUS-1001`. Authz must mention role/object-level check TODOs.
 
-### Step 3 — Second path
+## Step 3 — Second path
 
 Duplicate the template for a write path (update interaction or status) involving `CUS-1002`.
 
-### Step 4 — Self-check
+## Step 4 — Self-check
 
 Ensure no passwords, tokens, or real PII appear. Mark items still `_____` that Lab 40 will prove with code.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Two filled SAST path notes with remaining blanks only where Lab 40 code proof is required.
+Two filled SAST path notes with remaining blanks only where Lab 40 code proof is required in `notes/lab40-sast-todo-notes.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab40-sast-todo-notes.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 40 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Template filled for read and write paths | Pass / Fail |
-| 2 | Fixtures CUS-1001/CUS-1002 used | Pass / Fail |
-| 3 | No secrets in notes | Pass / Fail |
+| 1 | File exists at `notes/lab40-sast-todo-notes.md` | Pass / Fail |
+| 2 | Template filled for read and write paths | Pass / Fail |
+| 3 | Fixtures CUS-1001/CUS-1002 used | Pass / Fail |
+| 4 | No secrets in notes | Pass / Fail |

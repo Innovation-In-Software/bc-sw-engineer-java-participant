@@ -5,10 +5,22 @@
 **Module:** 46 — Kafka Resilience and Observability  
 **Next:** [`../lab46/LAB-46-WINDOWS.md`](../lab46/LAB-46-WINDOWS.md) or [`../lab46/LAB-46-MACOS.md`](../lab46/LAB-46-MACOS.md) → [`../lab46/LAB-46-GUIDE.md`](../lab46/LAB-46-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 46.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 46 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 46.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-46-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 46 is the graded consolidation. Do **not** finish Lab 46 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab46-failure-taxonomy.md` | Classify Consumer Failures |
+| 2 | `notes/lab46-dlt-policy.md` | Draft DLT Policy |
+| 3 | `notes/lab46-idempotency-sketch.md` | Sketch Idempotent Handling |
+| 4 | `notes/lab46-metrics-todos.md` | Fill Metrics/Alert TODOs |
+| 5 | `notes/lab46-replay-runbook.md` | Outline DLT Replay Runbook |
+| 6 | `notes/lab46-watch-window.md` | Tie Observability to Release Watch |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-46-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-46-exercises\notes | Out-Null
 cd examples\module-46-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-46-exercises
+mkdir -p examples/module-46-exercises/notes
 cd examples/module-46-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 46 uses its own `examples/lab46-*/` (or module lab folder) project.
 
 ## Exercise index
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Classify Consumer Failures | Failure mode analysis | [`exercise-01-failure-taxonomy.md`](exercise-01-failure-taxonomy.md) |
-| 2 | Draft DLT Policy | Dead-letter design | [`exercise-02-dlt-policy.md`](exercise-02-dlt-policy.md) |
-| 3 | Sketch Idempotent Handling | Exactly-once side effects thinking | [`exercise-03-idempotency-sketch.md`](exercise-03-idempotency-sketch.md) |
-| 4 | Fill Metrics/Alert TODOs | Hands-on observability checklist | [`exercise-04-metrics-todos.md`](exercise-04-metrics-todos.md) |
-| 5 | Outline DLT Replay Runbook | Safe recovery procedure | [`exercise-05-replay-runbook.md`](exercise-05-replay-runbook.md) |
-| 6 | Tie Observability to Release Watch | Ops + release linkage | [`exercise-06-watch-window.md`](exercise-06-watch-window.md) |
+Complete in this sequence (matches Module slide order):
 
-Keep all work separate from `examples/lab46-crm` (or the lab’s named project folder); that project begins in the full lab.
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Classify Consumer Failures | Analysis exercise | `notes/lab46-failure-taxonomy.md` | [`exercise-01-failure-taxonomy.md`](exercise-01-failure-taxonomy.md) |
+| 2 | Draft DLT Policy | Architecture exercise | `notes/lab46-dlt-policy.md` | [`exercise-02-dlt-policy.md`](exercise-02-dlt-policy.md) |
+| 3 | Sketch Idempotent Handling | Documentation exercise | `notes/lab46-idempotency-sketch.md` | [`exercise-03-idempotency-sketch.md`](exercise-03-idempotency-sketch.md) |
+| 4 | Fill Metrics/Alert TODOs | Hands-on exercise | `notes/lab46-metrics-todos.md` | [`exercise-04-metrics-todos.md`](exercise-04-metrics-todos.md) |
+| 5 | Outline DLT Replay Runbook | Documentation exercise | `notes/lab46-replay-runbook.md` | [`exercise-05-replay-runbook.md`](exercise-05-replay-runbook.md) |
+| 6 | Tie Observability to Release Watch | Analysis exercise | `notes/lab46-watch-window.md` | [`exercise-06-watch-window.md`](exercise-06-watch-window.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 46 OS guide.

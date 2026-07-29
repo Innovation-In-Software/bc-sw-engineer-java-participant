@@ -1,18 +1,30 @@
 # Exercise 4 — JWT Login TODOs
 
-**Module 28** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 28** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a JWT login/filter sketch with TODOs (no real secret values).
+Create `notes/lab28-jwt-login-todos.md` — complete a JWT login/filter sketch with TODOs (no real secret values).
+
+## Deliverable
+
+| Item | Path (under `examples/module-28-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-jwt-login-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab28-jwt-login-todos.md` |
 
 ## Steps
 
-### Step 1 — Create sketch
+### Step 1 — Create the notes file
 
-Create `notes/JwtSecuritySketch.java`.
+From `examples/module-28-exercises/`, create `notes/` if needed, then create `notes/lab28-jwt-login-todos.md`.
 
-### Step 2 — Fill TODOs
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 28 — JWT Login TODOs
+
+## Step 2 — Fill TODOs
 
 ```java
 class AuthController {
@@ -37,23 +49,31 @@ class JwtAuthenticationFilter {
 ```
 Hints: `issue`/`createToken` method name per your notes; return `token`; prefix `"Bearer "`.
 
-### Step 3 — Secret hygiene
+## Step 3 — Secret hygiene
 
 In `.env.example` style notes, write `JWT_SECRET=_____` placeholder only — never a real production secret.
 
-### Step 4 — Reflect
+## Step 4 — Reflect
 
 Soap UsernameToken from Lab 24 is separate from REST JWT — do not conflate them.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-JWT sketch blanks and secret placeholder completed.
+JWT sketch blanks and secret placeholder completed in `notes/lab28-jwt-login-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab28-jwt-login-todos.md` |
 | Hard-coding signing key in Git | Use env placeholder / local secret |
 | Using correlation id as password | Use real auth credentials / tokens |
 
@@ -61,6 +81,7 @@ JWT sketch blanks and secret placeholder completed.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Login token return filled | Pass / Fail |
-| 2 | Bearer prefix filled | Pass / Fail |
-| 3 | No real JWT secret committed | Pass / Fail |
+| 1 | File exists at `notes/lab28-jwt-login-todos.md` | Pass / Fail |
+| 2 | Login token return filled | Pass / Fail |
+| 3 | Bearer prefix filled | Pass / Fail |
+| 4 | No real JWT secret committed | Pass / Fail |

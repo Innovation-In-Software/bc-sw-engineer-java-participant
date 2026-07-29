@@ -5,10 +5,22 @@
 **Module:** 37 — PostgreSQL Design  
 **Next:** [`../lab37/LAB-37-WINDOWS.md`](../lab37/LAB-37-WINDOWS.md) or [`../lab37/LAB-37-MACOS.md`](../lab37/LAB-37-MACOS.md) → [`../lab37/LAB-37-GUIDE.md`](../lab37/LAB-37-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the Module 37 slides, then start Lab 37.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 37 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 37.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-37-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 37 is the graded consolidation. Do **not** finish Lab 37 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab37-design.md` | CRM Entities |
+| 2 | `notes/lab37-er-sketch.md` | ER Sketch |
+| 3 | `notes/lab37-constraints.md` | Constraints Checklist |
+| 4 | `notes/lab37-ddl-todos.md` | Fill DDL TODOs |
+| 5 | `notes/lab37-seed-and-verify-plan.md` | Seed and Verify Plan |
+| 6 | `notes/lab37-prep-checklist.md` | Lab 37 Readiness |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-37-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-37-exercises\notes | Out-Null
 cd examples\module-37-exercises
 java -version
 ```
@@ -42,24 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-37-exercises
+mkdir -p examples/module-37-exercises/notes
 cd examples/module-37-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 37 uses its own `examples/lab37-*/` (or module lab folder) project.
 
 ## Exercise index
 
 Complete in this sequence (matches Module slide order):
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | CRM Entities | Identify persistent entities | [`exercise-01-entities.md`](exercise-01-entities.md) |
-| 2 | ER Sketch | Model relationships | [`exercise-02-er-sketch.md`](exercise-02-er-sketch.md) |
-| 3 | Constraints Checklist | Choose integrity constraints | [`exercise-03-constraints.md`](exercise-03-constraints.md) |
-| 4 | Fill DDL TODOs | Complete paper PostgreSQL DDL | [`exercise-04-fill-ddl-todos.md`](exercise-04-fill-ddl-todos.md) |
-| 5 | Seed and Verify Plan | Plan seed/verify scripts | [`exercise-05-seed-and-verify-plan.md`](exercise-05-seed-and-verify-plan.md) |
-| 6 | Lab 37 Readiness | Pre-lab self-check | [`exercise-06-lab37-readiness.md`](exercise-06-lab37-readiness.md) |
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | CRM Entities | Analysis exercise | `notes/lab37-design.md` | [`exercise-01-entities.md`](exercise-01-entities.md) |
+| 2 | ER Sketch | Architecture exercise | `notes/lab37-er-sketch.md` | [`exercise-02-er-sketch.md`](exercise-02-er-sketch.md) |
+| 3 | Constraints Checklist | Documentation exercise | `notes/lab37-constraints.md` | [`exercise-03-constraints.md`](exercise-03-constraints.md) |
+| 4 | Fill DDL TODOs | Hands-on exercise | `notes/lab37-ddl-todos.md` | [`exercise-04-fill-ddl-todos.md`](exercise-04-fill-ddl-todos.md) |
+| 5 | Seed and Verify Plan | Documentation exercise | `notes/lab37-seed-and-verify-plan.md` | [`exercise-05-seed-and-verify-plan.md`](exercise-05-seed-and-verify-plan.md) |
+| 6 | Lab 37 Readiness | Analysis exercise | `notes/lab37-prep-checklist.md` | [`exercise-06-lab37-readiness.md`](exercise-06-lab37-readiness.md) |
 
-Keep all work separate from `examples/lab37-crm` (or the lab’s named project folder); that project begins in the full lab.
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 37 OS guide.

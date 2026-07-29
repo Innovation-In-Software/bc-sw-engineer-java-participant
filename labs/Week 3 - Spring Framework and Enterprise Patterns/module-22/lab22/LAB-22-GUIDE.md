@@ -65,7 +65,7 @@ This Module 22 lab extends the **Customer Management Platform** by replacing man
 
 **Purpose.** Prior labs may still construct repositories/services with `new` in places. Leadership freezes: application components are Spring beans; `CustomerService` receives collaborators through a single constructor with `final` fields; no field-`@Autowired` as primary pattern; no `new` of Spring-managed collaborators inside services; graph documented for review.
 
-**What you build (exercise).** Copy to `lab22-crm`; ensure Boot scaffold/`CrmApplication`; keep domain types plain; declare `@Repository` / `@Service` beans; refactor `CustomerService` to constructor DI; wire `@RestController`; add `@PostConstruct`/`@PreDestroy`; prove unit test with fakes **and** `@SpringBootTest` IT; write dependency graph.
+**What you build (this lab).** Copy to `lab22-crm`; ensure Boot scaffold/`CrmApplication`; keep domain types plain; declare `@Repository` / `@Service` beans; refactor `CustomerService` to constructor DI; wire `@RestController`; add `@PostConstruct`/`@PreDestroy`; prove unit test with fakes **and** `@SpringBootTest` IT; write dependency graph.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab22-crm/` the app starts without missing-bean errors; POST/GET `CUS-1001` works with correlation `lab-request-001`; pure unit test constructs service without Spring; `dependency-graph.md` matches constructors; init/destroy logs appear once per context.
 

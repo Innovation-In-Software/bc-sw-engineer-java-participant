@@ -1,37 +1,70 @@
 # Exercise 3 — Event Envelope Sketch
 
-**Module 30** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 30** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Draft paper JSON for Amina Created and Ravi StatusChanged events.
+Create `notes/lab30-envelope-sketch.md` — draft paper JSON for Amina Created and Ravi StatusChanged events.
+
+## Deliverable
+
+| Item | Path (under `examples/module-30-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-envelope-sketch.md` (this file in the course repo) |
+| Your notes file | `notes/lab30-envelope-sketch.md` |
 
 ## Steps
 
-### Step 1 — Headers
+### Step 1 — Create the notes file
+
+From `examples/module-30-exercises/`, create `notes/` if needed, then create `notes/lab30-envelope-sketch.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 30 — Event Envelope Sketch
+
+## Step 1 — Headers
 
 List envelope fields you will use: `eventType`, `eventVersion`, `occurredAt`, `correlationId`, `customerId`, `payload`.
 
-### Step 2 — Amina sample
+## Step 2 — Amina sample
 
-On paper, sketch `CustomerCreated` for `CUS-1001` Amina Khan with `correlationId=lab-request-001`.
+in this notes file., sketch `CustomerCreated` for `CUS-1001` Amina Khan with `correlationId=lab-request-001`.
 
-### Step 3 — Ravi sample
+## Step 3 — Ravi sample
 
 Sketch `CustomerStatusChanged` for `CUS-1002` Ravi Singh (`ACTIVE` → `SUSPENDED` or similar).
 
-### Step 4 — Compatibility note
+## Step 4 — Compatibility note
 
 Write one rule: consumers must ignore unknown payload fields (forward compatible).
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Two sketched envelopes using Northstar fixtures and shared field names.
+Two sketched envelopes using Northstar fixtures and shared field names in `notes/lab30-envelope-sketch.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab30-envelope-sketch.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 30 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Both event types sketched | Pass / Fail |
-| 2 | customerId and correlationId present | Pass / Fail |
-| 3 | Forward-compat rule written | Pass / Fail |
+| 1 | File exists at `notes/lab30-envelope-sketch.md` | Pass / Fail |
+| 2 | Both event types sketched | Pass / Fail |
+| 3 | customerId and correlationId present | Pass / Fail |
+| 4 | Forward-compat rule written | Pass / Fail |

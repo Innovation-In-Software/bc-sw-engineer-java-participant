@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 15 Prep Checklist
 
-**Module 15** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 15** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm service-layer prep without completing Lab 15.
+Create `notes/lab15-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 15 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-15-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab15-prep-checklist.md` (this file in the course repo) |
+| Your notes file | `notes/lab15-prep-checklist.md` |
 
 ## Steps
 
-### Step 1 — Artifacts
+### Step 1 — Create the notes file
 
-Confirm diagram, matrix, interface sketch, activate TODOs exist.
+From `examples/module-15-exercises/`, create `notes/` if needed, then create `notes/lab15-prep-checklist.md`.
 
-### Step 2 — Fixtures
+### Step 2 — Paste and complete this template
 
-Recall Ravi PROSPECT→ACTIVE and Amina already ACTIVE.
+```markdown
+# Lab 15 prep checklist
 
-### Step 3 — Boundary
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab15-layers.md | _____ |
+| notes/lab15-repo-boundary.md | _____ |
+| notes/lab15-transition-matrix.md | _____ |
+| notes/lab15-interface-ctor-sketch.md | _____ |
+| notes/lab15-activate-ravi-todos.md | _____ |
 
-Write: *Pre-lab only — prepare for lab; do not complete full Lab 15.*
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Pass/Fail
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 15 now.
 
-Pass if repo boundary note exists; else revisit exercise 5.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness checklist with pre-lab-only scope.
+Readiness checklist with pre-lab-only scope in `notes/lab15-prep-checklist.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab15-prep-checklist.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 15 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Artifacts confirmed | Pass / Fail |
-| 2 | Fixtures correct | Pass / Fail |
-| 3 | Pre-lab-only statement present | Pass / Fail |
+| 1 | File exists at `notes/lab15-prep-checklist.md` | Pass / Fail |
+| 2 | Artifacts confirmed | Pass / Fail |
+| 3 | Fixtures correct | Pass / Fail |
+| 4 | Pre-lab-only statement present | Pass / Fail |

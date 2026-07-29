@@ -1,10 +1,28 @@
 # Exercise 1 — Classify Consumer Failures
 
-**Module 46** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 46** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Categorize why CRM consumer processing fails.
+Create `notes/lab46-failure-taxonomy.md` — categorize why CRM consumer processing fails.
+
+## Deliverable
+
+| Item | Path (under `examples/module-46-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-01-failure-taxonomy.md` (this file in the course repo) |
+| Your notes file | `notes/lab46-failure-taxonomy.md` |
+
+## Steps
+
+### Step 1 — Create the notes file
+
+From `examples/module-46-exercises/`, create `notes/` if needed, then create `notes/lab46-failure-taxonomy.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 46 — Classify Consumer Failures
 
 ## Reference
 
@@ -15,32 +33,43 @@ Categorize why CRM consumer processing fails.
 | Transient DB | Bounded retry then DLT |
 | Poison forever-retry | Forbidden pattern |
 
-## Steps
-
-### Step 1 — Categories
+## Step 1 — Categories
 
 List: validation, deserialization, timeout, DB, authz—with one CRM example each.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Poison messages must not block the partition forever while lag grows unnoticed.
 
-### Step 3 — User impact
+## Step 3 — User impact
 
 Map one failure to stale profile data for `CUS-1001` or stuck status for `CUS-1002`.
 
-### Step 4 — Save
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
 
-Write `kafka-failure-taxonomy.md`.
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Failure taxonomy with CRM user impact.
+Failure taxonomy with CRM user impact in `notes/lab46-failure-taxonomy.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab46-failure-taxonomy.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 46 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Five categories listed | Pass / Fail |
-| 2 | User impact mapped | Pass / Fail |
-| 3 | Notes saved | Pass / Fail |
+| 1 | File exists at `notes/lab46-failure-taxonomy.md` | Pass / Fail |
+| 2 | Five categories listed | Pass / Fail |
+| 3 | User impact mapped | Pass / Fail |
+| 4 | Notes saved | Pass / Fail |

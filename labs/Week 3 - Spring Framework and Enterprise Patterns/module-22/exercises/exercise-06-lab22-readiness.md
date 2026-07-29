@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 22 Readiness Checklist
 
-**Module 22** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 22** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm JDK/Maven and list starter paths before opening Lab 22.
+Create `notes/lab22-readiness.md` — confirm prior notes exist and you are ready for Lab 22 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-22-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab22-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab22-readiness.md` |
 
 ## Steps
 
-### Step 1 — Tool check
+### Step 1 — Create the notes file
 
-Run `java -version` and `mvn -version`. Record JDK 21 and Maven 3.9+ in `notes/lab22-readiness.md`.
+From `examples/module-22-exercises/`, create `notes/` if needed, then create `notes/lab22-readiness.md`.
 
-### Step 2 — Paths
+### Step 2 — Paste and complete this template
 
-Write the copy target you will use in lab: `%USERPROFILE%\java-bootcamp\examples\lab22-crm` (Windows) or `~/java-bootcamp/examples/lab22-crm` (macOS).
+```markdown
+# Lab 22 prep checklist
 
-### Step 3 — Deliverables preview
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/ioc-vs-new.md | _____ |
+| notes/constructor-di.md | _____ |
+| notes/lab22-lifecycle-notes.md | _____ |
+| notes/stereotype-map.md | _____ |
+| notes/bean-graph-sketch.md | _____ |
 
-List four Lab 22 deliverables you will **not** finish in pre-lab: stereotype beans, constructor DI, dependency-graph.md, Spring tests.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Evidence folder
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 22 now.
 
-Create `notes/screenshots/lab-22/` placeholder note for later screenshots.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness note proves tools and paths without completing Lab 22.
+Readiness note proves tools and paths without completing Lab 22 in `notes/lab22-readiness.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab22-readiness.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 22 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Java 21 and Maven versions recorded | Pass / Fail |
-| 2 | lab22-crm path is written | Pass / Fail |
-| 3 | Clear statement that full lab is not done yet | Pass / Fail |
+| 1 | File exists at `notes/lab22-readiness.md` | Pass / Fail |
+| 2 | Java 21 and Maven versions recorded | Pass / Fail |
+| 3 | lab22-crm path is written | Pass / Fail |
+| 4 | Clear statement that full lab is not done yet | Pass / Fail |

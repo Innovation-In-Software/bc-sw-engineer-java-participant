@@ -65,7 +65,7 @@ This Module 26 lab externalizes **environment-aware configuration** for the Cust
 
 **Purpose.** Incidents from `dev` settings leaking into production (H2 console open, blank DB password in YAML, verbose SQL in prod) are unacceptable. Leadership freezes: running config depends on *where* the app is deployed; `prod` credentials arrive only via environment variables; missing required prod properties **fail fast** at startup.
 
-**What you build (exercise).** Copy to `lab26-crm`; inventory then replace properties with YAML; author three profile files; activate via `-D` and `SPRING_PROFILES_ACTIVE`; demonstrate CLI > env > profile YAML > base YAML precedence; add `NorthstarIntegrationProperties`; `.env.example` only; evidence with fixtures still callable under `dev`; dual green tests under `test`.
+**What you build (this lab).** Copy to `lab26-crm`; inventory then replace properties with YAML; author three profile files; activate via `-D` and `SPRING_PROFILES_ACTIVE`; demonstrate CLI > env > profile YAML > base YAML precedence; add `NorthstarIntegrationProperties`; `.env.example` only; evidence with fixtures still callable under `dev`; dual green tests under `test`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab26-crm/` `dev` starts with H2-friendly settings, `prod` refuses to start without `DB_USERNAME`/`DB_PASSWORD`/`NORTHSTAR_API_KEY`, override-order evidence is recorded, no real secrets are staged, and `CUS-1001` still works under `dev`.
 

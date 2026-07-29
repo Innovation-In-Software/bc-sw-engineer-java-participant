@@ -1,37 +1,70 @@
 # Exercise 2 — Mapper No-Leak Rule
 
-**Module 14** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 14** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Sketch toDto/toEntity rules that keep internals out of API responses.
+Create `notes/lab14-mapper-no-leak.md` — sketch toDto/toEntity rules that keep internals out of API responses.
+
+## Deliverable
+
+| Item | Path (under `examples/module-14-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-02-mapper-no-leak.md` (this file in the course repo) |
+| Your notes file | `notes/lab14-mapper-no-leak.md` |
 
 ## Steps
 
-### Step 1 — toDto
+### Step 1 — Create the notes file
+
+From `examples/module-14-exercises/`, create `notes/` if needed, then create `notes/lab14-mapper-no-leak.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 14 — Mapper No-Leak Rule
+
+## Step 1 — toDto
 
 Map only id, fullName, status for CUS-1001 responses.
 
-### Step 2 — Forbidden
+## Step 2 — Forbidden
 
 List forbidden: password hashes, internal risk scores, raw SQL ids if different.
 
-### Step 3 — Activate DTO
+## Step 3 — Activate DTO
 
 Activate request carries customerId only (+ correlation header outside body).
 
-### Step 4 — Prep boundary
+## Step 4 — Prep boundary
 
 Write: *DTOs before deep service rules — Lab 15 owns transitions.*
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Mapper rules with Lab 15 boundary stated.
+Mapper rules with Lab 15 boundary stated in `notes/lab14-mapper-no-leak.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab14-mapper-no-leak.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 14 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | toDto fields listed | Pass / Fail |
-| 2 | Forbidden fields listed | Pass / Fail |
-| 3 | Lab 15 deferral noted | Pass / Fail |
+| 1 | File exists at `notes/lab14-mapper-no-leak.md` | Pass / Fail |
+| 2 | toDto fields listed | Pass / Fail |
+| 3 | Forbidden fields listed | Pass / Fail |
+| 4 | Lab 15 deferral noted | Pass / Fail |

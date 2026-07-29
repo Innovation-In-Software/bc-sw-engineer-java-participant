@@ -63,7 +63,7 @@ This Module 18 lab isolates **Customer Management Platform** service unit tests 
 
 **Purpose.** Lab 17 proved `DefaultCustomerService` behavior against a real `InMemoryCustomerRepository`. That couples “service rule” failures to HashMap details. Leadership now wants **true unit tests**: stub the repository, verify `find`/`save`/`exists` interactions, and prove not-found and illegal paths never call `save`. Optional Copilot may draft mock setups—every stub and verification must be human-reviewed.
 
-**What you build (exercise).** Copy to `lab18-crm`; add Mockito test-scoped deps; write `CustomerServiceMockitoTest` with stubs, `verify`, `never()`, and `ArgumentCaptor`; add `CustomerServiceBddMockTest` with BDDMockito `given`/`then`/`should`; keep Lab 17 real-repo tests if useful; document the isolation policy; run `mvn clean test` green twice.
+**What you build (this lab).** Copy to `lab18-crm`; add Mockito test-scoped deps; write `CustomerServiceMockitoTest` with stubs, `verify`, `never()`, and `ArgumentCaptor`; add `CustomerServiceBddMockTest` with BDDMockito `given`/`then`/`should`; keep Lab 17 real-repo tests if useful; document the isolation policy; run `mvn clean test` green twice.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab18-crm/` you can show activate-Ravi with a stubbed repo, prove `CUS-9999` never saves, capture Amina’s entity on add, explain BDD style as syntax not magic, and state which suites use mocks vs real in-memory.
 

@@ -1,7 +1,7 @@
 # Lab 44: Continuous Delivery and Environment Promotion — Northstar Release Path
 
 **Module:** 44 — Continuous Delivery and Environment Promotion  
-**Lab folder:** `labs/Week 5 - DevOps, CI-CD and k3s/lab44/`  
+**Lab folder:** `labs/Week 5 - DevOps, CI-CD and OpenShift/module-44/lab44/`  
 **Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
@@ -63,7 +63,7 @@ This Module 44 lab turns CI success into **continuous delivery** for the **Custo
 
 **Purpose.** Leadership freezes a release rule: the binary (or image) that passed staging gates is **exactly** what production receives—identified by digest/checksum, not by the mutable tag `latest`. Environment configuration stays outside the artifact. Rollback names a known-good digest and a verification check. A demo deploy without a manifest is not credit-worthy.
 
-**What you build (exercise).** Copy to `lab44-crm`; map the release flow; freeze immutable identity (semver + commit + JAR SHA-256 / image digest); separate environment config and secrets; define objective promotion gates; plan expand-before-contract DB compatibility; rehearse staging promotion with smoke checks (fixtures `CUS-1001` / `CUS-1002`, correlation `lab-request-001`); practice rollback; complete the release record and go/no-go evidence.
+**What you build (this lab).** Copy to `lab44-crm`; map the release flow; freeze immutable identity (semver + commit + JAR SHA-256 / image digest); separate environment config and secrets; define objective promotion gates; plan expand-before-contract DB compatibility; rehearse staging promotion with smoke checks (fixtures `CUS-1001` / `CUS-1002`, correlation `lab-request-001`); practice rollback; complete the release record and go/no-go evidence.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab44-crm/` a peer can follow the release plan, verify the manifest digests match staging and the intended prod candidate, walk the rollback runbook against a known-good digest, and see staging smoke results for Amina/Ravi without secrets in Git.
 

@@ -1,10 +1,28 @@
 # Exercise 5 — Stereotype Annotation Map
 
-**Module 22** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 22** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Map each Northstar CRM type to `@Service`, `@Repository`, `@RestController`, or plain domain.
+Create `notes/stereotype-map.md` — map each Northstar CRM type to `@Service`, `@Repository`, `@RestController`, or plain domain.
+
+## Deliverable
+
+| Item | Path (under `examples/module-22-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-stereotype-map.md` (this file in the course repo) |
+| Your notes file | `notes/stereotype-map.md` |
+
+## Steps
+
+### Step 1 — Create the notes file
+
+From `examples/module-22-exercises/`, create `notes/` if needed, then create `notes/stereotype-map.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 22 — Stereotype Annotation Map
 
 ## Reference
 
@@ -16,33 +34,48 @@ Map each Northstar CRM type to `@Service`, `@Repository`, `@RestController`, or 
 | Customer (model) | Plain Java — no Spring unless required |
 | NotificationService | `@Service` |
 
-## Steps
-
-### Step 1 — Fill the blank table
+## Step 1 — Fill the blank table
 
 Create `notes/stereotype-map.md` with columns Type | Annotation | Why.
 Fill for: `CustomerService`, `CustomerRepository` interface, `InMemoryCustomerRepository`, `CustomerController`, `Customer`, `NotificationService`.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Compare against the reference table. Domain `Customer` stays free of Spring.
 
-### Step 3 — Singleton caution
+## Step 3 — Singleton caution
 
 Write two sentences: default Spring beans are singletons; mutable instance fields on `CustomerService` are dangerous for concurrent requests.
 
-### Step 4 — Lab prep
+## Step 4 — Lab prep
 
 Note that Lab 22 requires `docs/dependency-graph.md` naming these beans — you only sketch names here.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Stereotype map matches Spring roles; domain model stays plain.
+Stereotype map matches Spring roles; domain model stays plain in `notes/stereotype-map.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/stereotype-map.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 22 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Service/repository/controller annotations are correct | Pass / Fail |
-| 2 | `Customer` is marked as plain domain | Pass / Fail |
-| 3 | Singleton caution is written | Pass / Fail |
+| 1 | File exists at `notes/stereotype-map.md` | Pass / Fail |
+| 2 | Service/repository/controller annotations are correct | Pass / Fail |
+| 3 | `Customer` is marked as plain domain | Pass / Fail |
+| 4 | Singleton caution is written | Pass / Fail |

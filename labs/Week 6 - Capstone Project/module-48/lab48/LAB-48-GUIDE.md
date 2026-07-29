@@ -66,7 +66,7 @@ This Module 48 lab turns the Enterprise CRM brief into an **executable architect
 
 **Purpose.** Leadership will not fund disconnected demos. Reviewers need traceability from business outcomes → architecture choices → stories → tests → deployment → operations. Ambiguous “fast/scalable” language, missing trust boundaries, and undocumented risks are acceptance-blockers for the Week 6 defense.
 
-**What you build (exercise).** Clarify product outcome and exclusions; draw C4 context and containers (React, Spring Boot, PostgreSQL, Kafka, IdP, observability); define domain/contracts; write measurable NFRs; create a prioritized vertical backlog (include interaction recording for Amina/Ravi fixtures); author ADRs for database, messaging, auth, deployment, and consistency; assign owners and score risks with triggers/mitigations/contingencies.
+**What you build (this lab).** Clarify product outcome and exclusions; draw C4 context and containers (React, Spring Boot, PostgreSQL, Kafka, IdP, observability); define domain/contracts; write measurable NFRs; create a prioritized vertical backlog (include interaction recording for Amina/Ravi fixtures); author ADRs for database, messaging, auth, deployment, and consistency; assign owners and score risks with triggers/mitigations/contingencies.
 
 **What success looks like.** Under your capstone docs tree, a peer can open `context.md`, `container.md`, `nfrs.md`, `adrs/`, `backlog.md`, and `risk-register.md` and reproduce the intended Week 6 plan without Slack archaeology. Fixture IDs `CUS-1001` / `CUS-1002` / `lab-request-001` appear in demo stories and acceptance criteria.
 

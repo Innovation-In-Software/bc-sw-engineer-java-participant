@@ -1,18 +1,34 @@
 # Exercise 4 — Service Layer Skeleton (TODOs)
 
-**Module 25** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 25** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a tiny layered demo that rejects duplicate `CUS-1001` creates.
+Create `notes/lab25-service-todo-skeleton.md` — complete a tiny layered demo that rejects duplicate `CUS-1001` creates.
+
+## Deliverable
+
+| Item | Path (under `examples/module-25-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-service-todo-skeleton.md` (this file in the course repo) |
+| Your notes file | `notes/lab25-service-todo-skeleton.md` |
 
 ## Steps
 
-### Step 1 — Files
+### Step 1 — Create the notes file
+
+From `examples/module-25-exercises/`, create `notes/` if needed, then create `notes/lab25-service-todo-skeleton.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 25 — Service Layer Skeleton (TODOs)
+
+## Step 1 — Files
 
 Under `module-25-exercises/mini-src/com/northstar/crm/`, create `CustomerRepository.java`, `InMemoryCustomerRepository.java`, `CustomerService.java`, `LayerDemo.java`.
 
-### Step 2 — Fill TODOs
+## Step 2 — Fill TODOs
 
 ```java
 package com.northstar.crm;
@@ -59,7 +75,7 @@ public class LayerDemo {
 }
 ```
 
-### Step 3 — Compile and run
+## Step 3 — Compile and run
 
 ```text
 javac -d mini-out mini-src/com/northstar/crm/*.java
@@ -67,19 +83,27 @@ java -cp mini-out com.northstar.crm.LayerDemo
 ```
 Expected: `duplicate blocked`
 
-### Step 4 — Reflect
+## Step 4 — Reflect
 
 Note: HTTP/controller is intentionally absent — that is Lab 25 starter work.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Demo prints `duplicate blocked` after filling blanks.
+Demo prints `duplicate blocked` after filling blanks in `notes/lab25-service-todo-skeleton.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab25-service-todo-skeleton.md` |
 | Saving without exists check | Service must reject duplicates |
 | Using ResponseEntity in service | Keep HTTP types in controllers (lab) |
 
@@ -87,6 +111,7 @@ Demo prints `duplicate blocked` after filling blanks.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Seed and exists TODOs completed | Pass / Fail |
-| 2 | Expected console output | Pass / Fail |
-| 3 | Reflection notes HTTP is deferred | Pass / Fail |
+| 1 | File exists at `notes/lab25-service-todo-skeleton.md` | Pass / Fail |
+| 2 | Seed and exists TODOs completed | Pass / Fail |
+| 3 | Expected console output | Pass / Fail |
+| 4 | Reflection notes HTTP is deferred | Pass / Fail |

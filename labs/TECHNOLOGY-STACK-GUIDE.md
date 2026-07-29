@@ -277,7 +277,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | SLF4J/Logback for structured logging with correlation IDs. Spring Actuator exposes `/health`, metrics, and diagnostics. |
 | **Why learn it** | When production fails at 2 AM, logs and health endpoints are the first diagnostic tools. |
-| **In this bootcamp** | [Lab 20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/lab20/LAB-20-GUIDE.md) adds logging. [Lab 21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/lab21/LAB-21-GUIDE.md) wires Actuator — preparation for [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/LAB-46-GUIDE.md) and capstone ops. |
+| **In this bootcamp** | [Lab 20](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-20/lab20/LAB-20-GUIDE.md) adds logging. [Lab 21](Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/module-21/lab21/LAB-21-GUIDE.md) wires Actuator — preparation for [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-46/lab46/LAB-46-GUIDE.md) and capstone ops. |
 | **Industry use** | SRE, DevOps, and on-call engineering. |
 
 ---
@@ -333,7 +333,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Kafka streams events across topics and partitions. Spring Kafka provides `KafkaTemplate` and `@KafkaListener`. |
 | **Why learn it** | Modern systems use events for orders, notifications, audit trails, and service decoupling. |
-| **In this bootcamp** | [Lab 30](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/lab30/LAB-30-GUIDE.md) designs flows. [Lab 31](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/lab31/LAB-31-GUIDE.md) integrates with Boot. [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/LAB-46-GUIDE.md) adds monitoring and DLQs. |
+| **In this bootcamp** | [Lab 30](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/lab30/LAB-30-GUIDE.md) designs flows. [Lab 31](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/lab31/LAB-31-GUIDE.md) integrates with Boot. [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-46/lab46/LAB-46-GUIDE.md) adds monitoring and DLQs. |
 | **Industry use** | Banks, telcos, Netflix-scale data pipelines. |
 
 ---
@@ -385,7 +385,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Static scans find vulnerabilities — SQL injection, secrets, insecure dependencies — before deployment. |
 | **Why learn it** | Finding flaws in CI is cheaper than remediating breaches. |
-| **In this bootcamp** | [Lab 40](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab40/LAB-40-GUIDE.md) integrates scanning. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) runs SAST/DAST in capstone delivery. |
+| **In this bootcamp** | [Lab 40](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-40/lab40/LAB-40-GUIDE.md) integrates scanning. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) runs SAST/DAST in capstone delivery. |
 | **Industry use** | Regulated industries and secure-SDLC programmes. |
 
 ---
@@ -396,7 +396,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Docker packages apps into portable images via `Dockerfile`. Images run identically anywhere. |
 | **Why learn it** | Every cloud deployment starts with a container image. |
-| **In this bootcamp** | [Lab 41](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab41/LAB-41-GUIDE.md) containerises backend and frontend. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) ships capstone containers. |
+| **In this bootcamp** | [Lab 41](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-41/lab41/LAB-41-GUIDE.md) containerises backend and frontend. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) ships capstone containers. |
 | **Industry use** | Universal format for Kubernetes deployments. |
 
 ---
@@ -407,7 +407,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Kubernetes orchestrates containers — scaling, health checks, rolling updates. **This cohort** uses **k3s** with **Traefik** Ingress (not k3s). |
 | **Why learn it** | Enterprise Java runs on clusters, not individual servers. |
-| **In this bootcamp** | [Lab 42](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab42/LAB-42-GUIDE.md) deploys with **`kubectl`** into your namespace. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) is the production-style target. Prefer Ingress over “k3s Route” wording. See [FINAL-SETUP-README.md](FINAL-SETUP-README.md). |
+| **In this bootcamp** | [Lab 42](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-42/lab42/LAB-42-GUIDE.md) deploys with **`kubectl`** into your namespace. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) is the production-style target. Prefer Ingress over “k3s Route” wording. See [FINAL-SETUP-README.md](FINAL-SETUP-README.md). |
 | **Industry use** | Finance, telecom, government cloud-native platforms. |
 
 ---
@@ -418,7 +418,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | GitHub Actions automates build-test-deploy. CD promotes artefacts across environments. Terraform provisions infrastructure; Ansible configures and deploys. |
 | **Why learn it** | Modern teams ship through pipelines. IaC makes infrastructure repeatable and auditable. |
-| **In this bootcamp** | [Labs 43–44](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab43/LAB-43-GUIDE.md) build the pipeline. [Lab 45](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab45/LAB-45-GUIDE.md) provisions infra. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) wires full delivery. |
+| **In this bootcamp** | [Labs 43–44](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-43/lab43/LAB-43-GUIDE.md) build the pipeline. [Lab 45](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-45/lab45/LAB-45-GUIDE.md) provisions infra. [Lab 51](Week%206%20-%20Capstone%20Project/module-51/lab51/LAB-51-GUIDE.md) wires full delivery. |
 | **Industry use** | Atlassian, AWS, Azure, and hybrid-cloud DevOps. |
 
 ---
@@ -429,7 +429,7 @@ Covers syntax, OOP, collections, streams, and exceptions.
 | --- | --- |
 | **What it is** | Consumer-lag alerts, dead-letter queues, and schema evolution keep Kafka healthy. Agile ceremonies and clear communication align teams. |
 | **Why learn it** | Production Kafka needs observability. Soft skills get architecture approved and code merged. |
-| **In this bootcamp** | [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab46/LAB-46-GUIDE.md) monitors Kafka. [Lab 47](Week%205%20-%20DevOps,%20CI-CD%20and%20k3s/lab47/LAB-47-GUIDE.md) prepares for stand-ups, reviews, and [Lab 52](Week%206%20-%20Capstone%20Project/module-52/lab52/LAB-52-GUIDE.md) defense. |
+| **In this bootcamp** | [Lab 46](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-46/lab46/LAB-46-GUIDE.md) monitors Kafka. [Lab 47](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/module-47/lab47/LAB-47-GUIDE.md) prepares for stand-ups, reviews, and [Lab 52](Week%206%20-%20Capstone%20Project/module-52/lab52/LAB-52-GUIDE.md) defense. |
 | **Industry use** | Platform engineering and every professional dev role. |
 
 ---

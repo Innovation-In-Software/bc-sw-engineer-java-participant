@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (see EXERCISES-INDEX) |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab23-*.md` files) |
 | 2 | OS guide → [`lab23/LAB-23-WINDOWS.md`](lab23/LAB-23-WINDOWS.md) or [`lab23/LAB-23-MACOS.md`](lab23/LAB-23-MACOS.md) |
 | 3 | Full lab → [`lab23/LAB-23-GUIDE.md`](lab23/LAB-23-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Spring Boot Setup and Auto-Configuration**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-23-exercises/notes/`. Lab 23 is the graded project (see lab guide paths). Do not merge the two paths.

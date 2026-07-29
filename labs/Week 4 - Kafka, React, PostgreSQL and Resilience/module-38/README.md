@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (1 Access Patterns → 2 Index Tradeoffs → 3 Fill SQL/Index TODOs → 4 EXPLAIN Checklist → 5 Sargability → 6 Lab 38 Readiness) |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab38-*.md` files) |
 | 2 | OS guide → [`lab38/LAB-38-WINDOWS.md`](lab38/LAB-38-WINDOWS.md) or [`lab38/LAB-38-MACOS.md`](lab38/LAB-38-MACOS.md) |
 | 3 | Full lab → [`lab38/LAB-38-GUIDE.md`](lab38/LAB-38-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **SQL and Query Performance**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-38-exercises/notes/`. Lab 38 is the graded project (see lab guide paths). Do not merge the two paths.

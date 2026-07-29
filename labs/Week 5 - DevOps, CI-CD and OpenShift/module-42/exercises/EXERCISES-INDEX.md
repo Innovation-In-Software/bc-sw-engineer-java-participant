@@ -5,10 +5,22 @@
 **Module:** 42 — Kubernetes (k3s) Deployment  
 **Next:** [`../lab42/LAB-42-WINDOWS.md`](../lab42/LAB-42-WINDOWS.md) or [`../lab42/LAB-42-MACOS.md`](../lab42/LAB-42-MACOS.md) → [`../lab42/LAB-42-GUIDE.md`](../lab42/LAB-42-GUIDE.md)
 
-> Complete these exercises after the slides and before Lab 42.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 42 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 42.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-42-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 42 is the graded consolidation. Do **not** finish Lab 42 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab42-manifest-map.md` | Map k3s Manifests |
+| 2 | `notes/lab42-config-vs-secret.md` | ConfigMap vs Secret Split |
+| 3 | `notes/lab42-probe-design.md` | Design Three Probes |
+| 4 | `notes/lab42-yaml-todos.md` | Fill Deployment YAML TODOs |
+| 5 | `notes/lab42-rollout-rollback.md` | Rollout and Rollback Checklist |
+| 6 | `notes/lab42-runbook-outline.md` | Outline Deployment Runbook |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-42-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-42-exercises\notes | Out-Null
 cd examples\module-42-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-42-exercises
+mkdir -p examples/module-42-exercises/notes
 cd examples/module-42-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 42 uses its own `examples/lab42-*/` (or module lab folder) project.
 
 ## Exercise index
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Map k3s Manifests | Workload object mapping | [`exercise-01-manifest-map.md`](exercise-01-manifest-map.md) |
-| 2 | ConfigMap vs Secret Split | Configuration hygiene | [`exercise-02-config-vs-secret.md`](exercise-02-config-vs-secret.md) |
-| 3 | Design Three Probes | Probe semantics | [`exercise-03-probe-design.md`](exercise-03-probe-design.md) |
-| 4 | Fill Deployment YAML TODOs | Hands-on manifest draft | [`exercise-04-yaml-todos.md`](exercise-04-yaml-todos.md) |
-| 5 | Rollout and Rollback Checklist | Release recovery planning | [`exercise-05-rollout-rollback.md`](exercise-05-rollout-rollback.md) |
-| 6 | Outline Deployment Runbook | Ops documentation | [`exercise-06-runbook-outline.md`](exercise-06-runbook-outline.md) |
+Complete in this sequence (matches Module slide order):
 
-Keep all work separate from `examples/lab42-crm` (or the lab’s named project folder); that project begins in the full lab.
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Map k3s Manifests | Architecture exercise | `notes/lab42-manifest-map.md` | [`exercise-01-manifest-map.md`](exercise-01-manifest-map.md) |
+| 2 | ConfigMap vs Secret Split | Analysis exercise | `notes/lab42-config-vs-secret.md` | [`exercise-02-config-vs-secret.md`](exercise-02-config-vs-secret.md) |
+| 3 | Design Three Probes | Documentation exercise | `notes/lab42-probe-design.md` | [`exercise-03-probe-design.md`](exercise-03-probe-design.md) |
+| 4 | Fill Deployment YAML TODOs | Hands-on exercise | `notes/lab42-yaml-todos.md` | [`exercise-04-yaml-todos.md`](exercise-04-yaml-todos.md) |
+| 5 | Rollout and Rollback Checklist | Documentation exercise | `notes/lab42-rollout-rollback.md` | [`exercise-05-rollout-rollback.md`](exercise-05-rollout-rollback.md) |
+| 6 | Outline Deployment Runbook | Analysis exercise | `notes/lab42-runbook-outline.md` | [`exercise-06-runbook-outline.md`](exercise-06-runbook-outline.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 42 OS guide.

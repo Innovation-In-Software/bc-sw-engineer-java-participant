@@ -1,14 +1,30 @@
 # Exercise 4 — Fill SQL/Index TODOs
 
-**Module 38** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 38** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Fill TODOs in baseline vs optimized SQL and index DDL (on paper).
+Create `notes/lab38-sql-index-todos.md` — fill TODOs in baseline vs optimized SQL and index DDL (on paper).
+
+## Deliverable
+
+| Item | Path (under `examples/module-38-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-fill-sql-index-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab38-sql-index-todos.md` |
 
 ## Steps
 
-### Step 1 — Paste
+### Step 1 — Create the notes file
+
+From `examples/module-38-exercises/`, create `notes/` if needed, then create `notes/lab38-sql-index-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 38 — Fill SQL/Index TODOs
+
+## Step 1 — Paste
 
 Create `notes/lab38-todos.sql`:
 
@@ -33,27 +49,35 @@ ORDER BY customer_id
 LIMIT _____ OFFSET _____;
 ```
 
-### Step 2 — Fill
+## Step 2 — Fill
 
 Suggested: `lower`, `'CUS-1001'`, `idx_customer_status`, `idx_account_customer`, `20`, `0`.
 
-### Step 3 — Keyset note
+## Step 3 — Keyset note
 
 TODO comment: `-- TODO: prefer keyset pagination (WHERE customer_id > :last) for deep pages`.
 
-### Step 4 — No run
+## Step 4 — No run
 
 Do not execute against Postgres in pre-lab; Lab 38 will measure.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled baseline/optimized SQL and index names on paper.
+Filled baseline/optimized SQL and index names on paper in `notes/lab38-sql-index-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab38-sql-index-todos.md` |
 | Indexing every column 'just in case' | Index for measured access patterns |
 | Using OFFSET for huge pages only | Consider keyset pagination |
 
@@ -61,6 +85,7 @@ Filled baseline/optimized SQL and index names on paper.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Blanks filled | Pass / Fail |
-| 2 | Keyset TODO present | Pass / Fail |
-| 3 | No-run confirmation | Pass / Fail |
+| 1 | File exists at `notes/lab38-sql-index-todos.md` | Pass / Fail |
+| 2 | Blanks filled | Pass / Fail |
+| 3 | Keyset TODO present | Pass / Fail |
+| 4 | No-run confirmation | Pass / Fail |

@@ -63,7 +63,7 @@ This Module 47 lab teaches you to communicate a CRM release clearly to engineers
 
 **Purpose.** Leadership freezes a communication rule: during CRM 1.4 (example) release stress, different audiences need different depth—but never contradictory facts. Blame, invented root cause, and leaked credentials are unacceptable. Clarity under time pressure is a deliverable equal to code.
 
-**What you build (exercise).** Create `lab47-crm` docs workspace; collect shared facts from prior labs; define audience and purpose; write incident update; write technical follow-up; draft PR description; draft stakeholder email; run peer review with concrete rewrites; finalize the packet (dates, links, secrecy scrub). Optionally verify CRM still builds with `mvn -q test`.
+**What you build (this lab).** Create `lab47-crm` docs workspace; collect shared facts from prior labs; define audience and purpose; write incident update; write technical follow-up; draft PR description; draft stakeholder email; run peer review with concrete rewrites; finalize the packet (dates, links, secrecy scrub). Optionally verify CRM still builds with `mvn -q test`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab47-crm/` a peer can read all four communication artifacts, confirm they agree on severity/impact/next update, find no secrets, and reuse fixture language consistently (`CUS-1001` Amina, `CUS-1002` Ravi, `lab-request-001`).
 

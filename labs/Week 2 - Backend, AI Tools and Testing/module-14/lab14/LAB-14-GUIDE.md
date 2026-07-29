@@ -77,7 +77,7 @@ This Module 14 lab extends the **Northstar Customer Management Platform** with a
 
 **Purpose.** Accepting the entity as the public shape couples callers to internal fields, makes validation ad hoc, and risks leaking persistence-only data. DTOs + Bean Validation push the trust boundary to the edge—before business rules or storage run.
 
-**What you build (exercise).** Copy forward to `lab14-crm`; add Validation API + Hibernate Validator; create `CustomerRequestDTO` / `CustomerResponseDTO`; implement `CustomerMapper`; validate in `CustomerApiFacade` with correlation `lab-request-001`; prove happy path with `CUS-1001` / `CUS-1002`; reject invalid email/blank name in tests; document the contract in README.
+**What you build (this lab).** Copy forward to `lab14-crm`; add Validation API + Hibernate Validator; create `CustomerRequestDTO` / `CustomerResponseDTO`; implement `CustomerMapper`; validate in `CustomerApiFacade` with correlation `lab-request-001`; prove happy path with `CUS-1001` / `CUS-1002`; reject invalid email/blank name in tests; document the contract in README.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab14-crm/` you run green validation tests, a facade create/get demo that returns response DTOs only, and evidence that invalid payloads never reach `CustomerService.addCustomer`.
 

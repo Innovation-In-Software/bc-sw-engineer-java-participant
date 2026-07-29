@@ -64,7 +64,7 @@ This Module 33 lab introduces the **Customer Management Platform** React client:
 
 **Purpose.** Before state management (Lab 34) and API integration (Lab 35), leadership freezes the UI contract: every customer surface must be typed, composable, and accessible. Color-only status, index keys, and class-name tests are rejected. Presentation components stay props-driven so Lab 34 can lift state without rewriting markup.
 
-**What you build (exercise).** Create `lab33-crm/crm-ui` with Vite React-TS; define `Customer` / `CustomerStatus` / `CustomerDraft`; implement `StatusBadge`, `CustomerCard`, `CustomerList`, empty/loading/error shells, and labeled `CustomerForm`; compose `App` with fixtures `CUS-1001` / `CUS-1002`; write RTL tests that query by role; document a11y and key decisions.
+**What you build (this lab).** Create `lab33-crm/crm-ui` with Vite React-TS; define `Customer` / `CustomerStatus` / `CustomerDraft`; implement `StatusBadge`, `CustomerCard`, `CustomerList`, empty/loading/error shells, and labeled `CustomerForm`; compose `App` with fixtures `CUS-1001` / `CUS-1002`; write RTL tests that query by role; document a11y and key decisions.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab33-crm/crm-ui/` the dashboard renders Amina and Ravi, empty state works, form labels are queryable, `npm run test -- --run` and `npm run build` are green, and you can explain why `customerId` is the list key.
 

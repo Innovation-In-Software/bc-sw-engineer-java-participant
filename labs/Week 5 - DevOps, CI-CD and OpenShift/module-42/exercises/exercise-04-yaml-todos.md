@@ -1,14 +1,30 @@
 # Exercise 4 — Fill Deployment YAML TODOs
 
-**Module 42** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 42** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a Deployment skeleton with blanks (pre-lab only).
+Create `notes/lab42-yaml-todos.md` — complete a Deployment skeleton with blanks (pre-lab only).
+
+## Deliverable
+
+| Item | Path (under `examples/module-42-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-yaml-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab42-yaml-todos.md` |
 
 ## Steps
 
-### Step 1 — Skeleton
+### Step 1 — Create the notes file
+
+From `examples/module-42-exercises/`, create `notes/` if needed, then create `notes/lab42-yaml-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 42 — Fill Deployment YAML TODOs
+
+## Step 1 — Skeleton
 
 In notes, draft:
 ```yaml
@@ -31,26 +47,43 @@ spec:
             port: _____
 ```
 
-### Step 2 — Fill
+## Step 2 — Fill
 
 Fill replicas, non-root, image digest placeholder, port, readiness path.
 
-### Step 3 — Resources block
+## Step 3 — Resources block
 
 Add `resources.requests/limits` placeholders for CPU/memory.
 
-### Step 4 — Do not apply
+## Step 4 — Do not apply
 
 Explicitly note: do not `kubectl apply` as completion of this exercise.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled Deployment skeleton with apply deferred to Lab 42.
+Filled Deployment skeleton with apply deferred to Lab 42 in `notes/lab42-yaml-todos.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab42-yaml-todos.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 42 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Skeleton blanks filled | Pass / Fail |
-| 2 | Resources placeholders present | Pass / Fail |
-| 3 | No apply claimed | Pass / Fail |
+| 1 | File exists at `notes/lab42-yaml-todos.md` | Pass / Fail |
+| 2 | Skeleton blanks filled | Pass / Fail |
+| 3 | Resources placeholders present | Pass / Fail |
+| 4 | No apply claimed | Pass / Fail |

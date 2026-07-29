@@ -1,18 +1,30 @@
 # Exercise 4 — Profile YAML TODOs
 
-**Module 26** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 26** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a YAML sketch distinguishing `dev` vs `prod` without secrets.
+Create `notes/lab26-profile-yaml-todos.md` — complete a YAML sketch distinguishing `dev` vs `prod` without secrets.
+
+## Deliverable
+
+| Item | Path (under `examples/module-26-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-02-profile-yaml-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab26-profile-yaml-todos.md` |
 
 ## Steps
 
-### Step 1 — Create sketch files
+### Step 1 — Create the notes file
 
-Create `notes/application.yml`, `notes/application-dev.yml`, `notes/application-prod.yml`.
+From `examples/module-26-exercises/`, create `notes/` if needed, then create `notes/lab26-profile-yaml-todos.md`.
 
-### Step 2 — Fill TODOs
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 26 — Profile YAML TODOs
+
+## Step 2 — Fill TODOs
 
 **application.yml**
 ```yaml
@@ -42,23 +54,30 @@ northstar:
 ```
 Hints: name `northstar-crm`, port `8080`, debug logging `DEBUG`, prod default placeholder `CHANGE_ME` or empty with fail-fast elsewhere.
 
-### Step 3 — Self-check
+## Step 3 — Self-check
 
 Confirm prod file has no literal password strings.
 
-### Step 4 — Reflect
+## Step 4 — Reflect
 
 Correlation for lab evidence: `lab26-001` (or `lab-request-001`).
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-YAML sketches filled; prod stays secret-free.
+YAML sketches filled; prod stays secret-free in `notes/lab26-profile-yaml-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
 | Password in application-prod.yml | Use env var placeholders only |
 | Same config for all profiles | Split dev/test/prod files |
 
@@ -66,6 +85,7 @@ YAML sketches filled; prod stays secret-free.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Base name/port filled | Pass / Fail |
-| 2 | Dev logging set | Pass / Fail |
-| 3 | Prod has no real secrets | Pass / Fail |
+| 1 | File exists at `notes/lab26-profile-yaml-todos.md` | Pass / Fail |
+| 2 | Base name/port filled | Pass / Fail |
+| 3 | Dev logging set | Pass / Fail |
+| 4 | Prod has no real secrets | Pass / Fail |

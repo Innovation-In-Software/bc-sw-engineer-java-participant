@@ -154,7 +154,7 @@ labs/
 
 ### Week 6 — Capstone Project
 
-**Master document:** [Week 6 Capstone index](Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md) · [Brief DOCX](../Java_Software_Engineer_Capstone.docx) · [Rubric DOCX](../Java_Software_Engineer_Capstone_Rubric.docx) · [Markdown brief](Week%206%20-%20Capstone%20Project/CAPSTONE-BRIEF-AND-RUBRIC.md)
+**Master document:** [Week 6 Capstone index](Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md) · [Brief DOCX](Week%206%20-%20Capstone%20Project/Java_Software_Engineer_Capstone.docx) · [Rubric DOCX](Week%206%20-%20Capstone%20Project/Java_Software_Engineer_Capstone_Rubric.docx) · [Markdown brief](Week%206%20-%20Capstone%20Project/CAPSTONE-BRIEF-AND-RUBRIC.md)
 
 | Lab | Module | Module Title | Pre-lab exercises | Lab Title |
 | --- | ------ | ------------ | ----------------- | --------- |

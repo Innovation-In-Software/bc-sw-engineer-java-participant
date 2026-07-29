@@ -1,14 +1,30 @@
 # Exercise 2 — Fill Component TODOs
 
-**Module 33** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 33** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Fill TODOs in a CustomerCard pseudocode component.
+Create `notes/lab33-todos.md` — fill TODOs in a CustomerCard pseudocode component.
+
+## Deliverable
+
+| Item | Path (under `examples/module-33-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-01-fill-react-component-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab33-todos.md` |
 
 ## Steps
 
-### Step 1 — Paste
+### Step 1 — Create the notes file
+
+From `examples/module-33-exercises/`, create `notes/` if needed, then create `notes/lab33-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 33 — Fill Component TODOs
+
+## Step 1 — Paste
 
 Create `notes/lab33-todos.md`:
 
@@ -31,27 +47,35 @@ export function CustomerCard({ customerId, name, status, onSelect }: CustomerCar
 }
 ```
 
-### Step 2 — Fill
+## Step 2 — Fill
 
 Fill with: `'ACTIVE' | 'SUSPENDED'`, `` `${name} (${customerId})` ``, `name`, `customerId`.
 
-### Step 3 — Sample usage
+## Step 3 — Sample usage
 
 Add usage TODO filled: `<CustomerCard customerId="CUS-1001" name="Amina Khan" status="ACTIVE" onSelect={...} />`.
 
-### Step 4 — A11y note
+## Step 4 — A11y note
 
 Write: button has visible text; avoid icon-only without aria-label.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled TSX stub with Amina usage and a11y note.
+Filled TSX stub with Amina usage and a11y note in `notes/lab33-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab33-todos.md` |
 | Using array index as key | Use stable customerId |
 | Div soup with click handlers and no button | Prefer semantic button for actions |
 
@@ -59,6 +83,7 @@ Filled TSX stub with Amina usage and a11y note.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | All blanks filled | Pass / Fail |
-| 2 | Amina usage present | Pass / Fail |
-| 3 | A11y note written | Pass / Fail |
+| 1 | File exists at `notes/lab33-todos.md` | Pass / Fail |
+| 2 | All blanks filled | Pass / Fail |
+| 3 | Amina usage present | Pass / Fail |
+| 4 | A11y note written | Pass / Fail |

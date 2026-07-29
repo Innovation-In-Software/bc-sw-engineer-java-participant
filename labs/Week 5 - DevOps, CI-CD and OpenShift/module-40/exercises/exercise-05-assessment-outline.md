@@ -1,37 +1,70 @@
 # Exercise 5 — Outline Security Assessment
 
-**Module 40** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 40** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Outline `docs/security-assessment.md` sections peers will expect.
+Create `notes/lab40-assessment-outline.md` — outline `docs/security-assessment.md` sections peers will expect.
+
+## Deliverable
+
+| Item | Path (under `examples/module-40-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-05-assessment-outline.md` (this file in the course repo) |
+| Your notes file | `notes/lab40-assessment-outline.md` |
 
 ## Steps
 
-### Step 1 — Sections
+### Step 1 — Create the notes file
+
+From `examples/module-40-exercises/`, create `notes/` if needed, then create `notes/lab40-assessment-outline.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 40 — Outline Security Assessment
+
+## Step 1 — Sections
 
 List: scope, tools, findings summary, remediations planned, residual risks, evidence index.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Residual risk row must include: risk, severity, owner, due date, mitigating control.
 
-### Step 3 — Evidence index draft
+## Step 3 — Evidence index draft
 
 Map claim → artifact path placeholders (Dependency-Check HTML, triage CSV, regression test name).
 
-### Step 4 — Scope honesty
+## Step 4 — Scope honesty
 
 Add a one-line note: pre-lab outline only; full remediation/re-scan is Lab 40 timed/full path.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Assessment outline with residual-risk and evidence placeholders.
+Assessment outline with residual-risk and evidence placeholders in `notes/lab40-assessment-outline.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab40-assessment-outline.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 40 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Six sections present | Pass / Fail |
-| 2 | Residual risk fields complete in template | Pass / Fail |
-| 3 | Pre-lab scope stated | Pass / Fail |
+| 1 | File exists at `notes/lab40-assessment-outline.md` | Pass / Fail |
+| 2 | Six sections present | Pass / Fail |
+| 3 | Residual risk fields complete in template | Pass / Fail |
+| 4 | Pre-lab scope stated | Pass / Fail |

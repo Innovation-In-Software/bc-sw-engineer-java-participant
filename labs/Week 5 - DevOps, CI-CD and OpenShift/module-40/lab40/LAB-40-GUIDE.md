@@ -64,7 +64,7 @@ This Module 40 lab turns the CRM into a **defensible security gate**: map OWASP-
 
 **Purpose.** Leadership freezes a release gate before containers (Lab 41): scanners alone are not enough. Every confirmed finding needs severity rationale, evidence, and either a fix, a time-bounded acceptance with owner, or a documented false positive—never silent suppressions.
 
-**What you build (exercise).** Branch `lab40-crm` from Lab 39; define scope and threat checklist; add Dependency-Check Maven profile (HTML+JSON, CVSS fail threshold); run and triage findings; perform SAST on request→sink paths and object-level authz; write a failing regression test; remediate; re-scan; complete `security-assessment.md` + `security-findings.csv`.
+**What you build (this lab).** Branch `lab40-crm` from Lab 39; define scope and threat checklist; add Dependency-Check Maven profile (HTML+JSON, CVSS fail threshold); run and triage findings; perform SAST on request→sink paths and object-level authz; write a failing regression test; remediate; re-scan; complete `security-assessment.md` + `security-findings.csv`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab40-crm/` (or platform `backend/` if integrating) you have before/after scan evidence, one verified remediation, a green functional regression, and an assessment a peer can reproduce without verbal hand-waving.
 

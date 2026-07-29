@@ -1,37 +1,66 @@
 # Exercise 1 — Expressive Test Names
 
-**Module 17** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 17** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Propose three method names that encode fixture and outcome.
+Create `notes/lab17-test-names.md` — propose three method names that encode fixture and outcome.
+
+## Deliverable
+
+| Item | Path (under `examples/module-17-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-01-test-names.md` (this file in the course repo) |
+| Your notes file | `notes/lab17-test-names.md` |
 
 ## Steps
 
-### Step 1 — Pattern
+### Step 1 — Create the notes file
+
+From `examples/module-17-exercises/`, create `notes/` if needed, then create `notes/lab17-test-names.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 17 — Expressive Test Names
+
+## Step 1 — Pattern
 
 Use methodName_state_expectedOutcome style.
 
-### Step 2 — Examples
+## Step 2 — Examples
 
 Write names for Amina already ACTIVE reject, Ravi PROSPECT activate success, CUS-9999 not found.
 
-### Step 3 — Anti-name
+## Step 3 — Anti-name
 
 Reject names like `test1` / `testActivate`.
 
-### Step 4 — Capture
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
 
-Save under `notes/lab17-test-names.md`. Pre-lab only — no Mockito depth.
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Three expressive names plus an anti-pattern note.
+Three expressive names plus an anti-pattern note in `notes/lab17-test-names.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab17-test-names.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 17 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Three good names | Pass / Fail |
-| 2 | Fixtures reflected | Pass / Fail |
-| 3 | Anti-name rejected | Pass / Fail |
+| 1 | File exists at `notes/lab17-test-names.md` | Pass / Fail |
+| 2 | Three good names | Pass / Fail |
+| 3 | Fixtures reflected | Pass / Fail |
+| 4 | Anti-name rejected | Pass / Fail |

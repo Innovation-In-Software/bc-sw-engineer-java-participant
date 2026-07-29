@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 25 Readiness Checklist
 
-**Module 25** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 25** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Prepare `lab25-crm` path and scope boundary before the timed lab.
+Create `notes/lab25-readiness.md` — confirm prior notes exist and you are ready for Lab 25 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-25-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab25-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab25-readiness.md` |
 
 ## Steps
 
-### Step 1 — Path
+### Step 1 — Create the notes file
 
-Write `examples/lab25-crm` in `notes/lab25-readiness.md`.
+From `examples/module-25-exercises/`, create `notes/` if needed, then create `notes/lab25-readiness.md`.
 
-### Step 2 — Depends on
+### Step 2 — Paste and complete this template
 
-Labs 23–24 Boot (+ optional SOAP) should already run.
+```markdown
+# Lab 25 prep checklist
 
-### Step 3 — Evidence
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/layers.md | _____ |
+| notes/package-tree.md | _____ |
+| notes/lab25-service-todo-skeleton.md | _____ |
+| notes/ai-review-policy.md | _____ |
+| notes/service-test-plan.md | _____ |
 
-Plan screenshots under `notes/screenshots/lab-25/`.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Defer
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 25 now.
 
-Defer transactions, security, and Bean Validation polish to Labs 27–29.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness checklist keeps Lab 25 focused on layering.
+Readiness checklist keeps Lab 25 focused on layering in `notes/lab25-readiness.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab25-readiness.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 25 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Path written | Pass / Fail |
-| 2 | Dependencies named | Pass / Fail |
-| 3 | Later labs deferred | Pass / Fail |
+| 1 | File exists at `notes/lab25-readiness.md` | Pass / Fail |
+| 2 | Path written | Pass / Fail |
+| 3 | Dependencies named | Pass / Fail |
+| 4 | Later labs deferred | Pass / Fail |

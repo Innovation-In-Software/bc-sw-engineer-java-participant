@@ -1,37 +1,70 @@
 # Exercise 3 — JSX on Paper
 
-**Module 33** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 33** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Hand-write JSX structure for a two-row customer list.
+Create `notes/lab33-jsx-paper.md` — hand-write JSX structure for a two-row customer list.
+
+## Deliverable
+
+| Item | Path (under `examples/module-33-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-jsx-paper.md` (this file in the course repo) |
+| Your notes file | `notes/lab33-jsx-paper.md` |
 
 ## Steps
 
-### Step 1 — Tree
+### Step 1 — Create the notes file
+
+From `examples/module-33-exercises/`, create `notes/` if needed, then create `notes/lab33-jsx-paper.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 33 — JSX on Paper
+
+## Step 1 — Tree
 
 Sketch `<CustomerList>` containing two `<CustomerCard>` nodes.
 
-### Step 2 — Keys
+## Step 2 — Keys
 
 Write why `key={customerId}` should be `CUS-1001`, not array index.
 
-### Step 3 — Badge
+## Step 3 — Badge
 
 Nest `<StatusBadge status="ACTIVE" />` inside Amina's card.
 
-### Step 4 — No runtime
+## Step 4 — No runtime
 
 Do not create a Vite app in this exercise.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Paper JSX tree with correct keys and nested badge.
+Paper JSX tree with correct keys and nested badge in `notes/lab33-jsx-paper.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab33-jsx-paper.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 33 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Two cards sketched | Pass / Fail |
-| 2 | Key rationale written | Pass / Fail |
-| 3 | StatusBadge nested | Pass / Fail |
+| 1 | File exists at `notes/lab33-jsx-paper.md` | Pass / Fail |
+| 2 | Two cards sketched | Pass / Fail |
+| 3 | Key rationale written | Pass / Fail |
+| 4 | StatusBadge nested | Pass / Fail |

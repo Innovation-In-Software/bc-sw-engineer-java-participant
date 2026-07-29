@@ -65,7 +65,7 @@ This Module 28 lab adds **Spring Security** to the **Customer Management Platfor
 
 **Purpose.** Leadership will not expose customer APIs on the open network. Unauthenticated callers must be rejected; agents may work Amina/Ravi records within policy; admins may perform elevated operations you define (for example admin listing or forced status overrides). Authn/authz must be automated so new routes do not silently ship open.
 
-**What you build (exercise).** Copy forward into `lab28-crm`; add `spring-boot-starter-security` and a JWT library; configure a stateless `SecurityFilterChain`; implement `JwtService`, filter, in-memory lab users, and `/api/auth/login`; protect `/api/customers/**` for `AGENT`/`ADMIN` and `/api/admin/**` for `ADMIN` only; prove login + Bearer access to `CUS-1001`; write MockMvc 401/403/200 matrix tests; document IdP / key-rotation production notes.
+**What you build (this lab).** Copy forward into `lab28-crm`; add `spring-boot-starter-security` and a JWT library; configure a stateless `SecurityFilterChain`; implement `JwtService`, filter, in-memory lab users, and `/api/auth/login`; protect `/api/customers/**` for `AGENT`/`ADMIN` and `/api/admin/**` for `ADMIN` only; prove login + Bearer access to `CUS-1001`; write MockMvc 401/403/200 matrix tests; document IdP / key-rotation production notes.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab28-crm/` the app starts, login issues a JWT, missing/bad tokens return **401**, agent on admin routes returns **403**, agent/admin customer reads succeed for fixtures, and `mvn test` stays green twice in a row.
 

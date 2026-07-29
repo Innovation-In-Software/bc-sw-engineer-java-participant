@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 37 Readiness
 
-**Module 37** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 37** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm ER + DDL drafts are ready for the PostgreSQL lab starter.
+Create `notes/lab37-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 37 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-37-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab37-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab37-prep-checklist.md` |
 
 ## Steps
 
-### Step 1 — Deliverables preview
+### Step 1 — Create the notes file
 
-schema SQL, seed SQL, er-diagram, design-decisions notes.
+From `examples/module-37-exercises/`, create `notes/` if needed, then create `notes/lab37-prep-checklist.md`.
 
-### Step 2 — Env reminder
+### Step 2 — Paste and complete this template
 
-Credentials stay in `.env` locally — never commit.
+```markdown
+# Lab 37 prep checklist
 
-### Step 3 — Next labs
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab37-design.md | _____ |
+| notes/lab37-er-sketch.md | _____ |
+| notes/lab37-constraints.md | _____ |
+| notes/lab37-ddl-todos.md | _____ |
+| notes/lab37-seed-and-verify-plan.md | _____ |
 
-Lab 38 performance; Lab 39 JPA mapping.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Pass mark
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 37 now.
 
-Pass if DDL TODOs filled.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness checklist spanning design artifacts and secrets hygiene.
+Readiness checklist spanning design artifacts and secrets hygiene in `notes/lab37-prep-checklist.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab37-prep-checklist.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 37 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Artifacts listed | Pass / Fail |
-| 2 | Secrets rule stated | Pass / Fail |
-| 3 | Pass/Fail marked | Pass / Fail |
+| 1 | File exists at `notes/lab37-prep-checklist.md` | Pass / Fail |
+| 2 | Artifacts listed | Pass / Fail |
+| 3 | Secrets rule stated | Pass / Fail |
+| 4 | Pass/Fail marked | Pass / Fail |

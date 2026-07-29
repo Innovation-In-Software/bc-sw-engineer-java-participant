@@ -1,14 +1,30 @@
 # Exercise 4 — Fill Route Guard TODOs
 
-**Module 36** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 36** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Fill TODOs for a RequireAuth wrapper protecting CRM routes.
+Create `notes/lab36-todos.md` — fill TODOs for a RequireAuth wrapper protecting CRM routes.
+
+## Deliverable
+
+| Item | Path (under `examples/module-36-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-05-fill-guard-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab36-todos.md` |
 
 ## Steps
 
-### Step 1 — Paste
+### Step 1 — Create the notes file
+
+From `examples/module-36-exercises/`, create `notes/` if needed, then create `notes/lab36-todos.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 36 — Fill Route Guard TODOs
+
+## Step 1 — Paste
 
 Create `notes/lab36-todos.md`:
 
@@ -25,27 +41,35 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 // TODO: never log full token; log correlation lab-request-001 instead
 ```
 
-### Step 2 — Fill
+## Step 2 — Fill
 
 Suggested: `getAccessToken()`, `"/login"`, `<>{children}</>`, `lab-token-001` (fake).
 
-### Step 3 — Role note
+## Step 3 — Role note
 
 Optional TODO: `// TODO: hide AdminMenu unless role===ADMIN` (UI only).
 
-### Step 4 — Backend reminder
+## Step 4 — Backend reminder
 
 Write: Spring Security still must reject unauthorized API calls for CUS data.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Filled guard stub with Bearer TODO and backend reminder.
+Filled guard stub with Bearer TODO and backend reminder in `notes/lab36-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab36-todos.md` |
 | Trusting only frontend redirects | Enforce authz on every API call |
 | Putting real JWTs in markdown notes committed to git | Use fake lab tokens only |
 
@@ -53,6 +77,7 @@ Filled guard stub with Bearer TODO and backend reminder.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Blanks filled | Pass / Fail |
-| 2 | Token logging avoided | Pass / Fail |
-| 3 | Backend enforcement note | Pass / Fail |
+| 1 | File exists at `notes/lab36-todos.md` | Pass / Fail |
+| 2 | Blanks filled | Pass / Fail |
+| 3 | Token logging avoided | Pass / Fail |
+| 4 | Backend enforcement note | Pass / Fail |

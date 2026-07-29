@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 23 Readiness Checklist
 
-**Module 23** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 23** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Ready the workspace for Initializr-style Lab 23 without completing it.
+Create `notes/lab23-readiness.md` — confirm prior notes exist and you are ready for Lab 23 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-23-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab23-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab23-readiness.md` |
 
 ## Steps
 
-### Step 1 — Versions
+### Step 1 — Create the notes file
 
-Record JDK 21 and Maven 3.9+ in `notes/lab23-readiness.md`.
+From `examples/module-23-exercises/`, create `notes/` if needed, then create `notes/lab23-readiness.md`.
 
-### Step 2 — Copy path
+### Step 2 — Paste and complete this template
 
-Write target `examples/lab23-crm` under `java-bootcamp`.
+```markdown
+# Lab 23 prep checklist
 
-### Step 3 — Depends on
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/autoconfig-ownership.md | _____ |
+| notes/starters.md | _____ |
+| notes/health-sketch.md | _____ |
+| notes/lab23-application-yml-sketch.md | _____ |
+| notes/rest-smoke-plan.md | _____ |
 
-Note Lab 22 constructor-DI habits should already be understood.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Not yet
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 23 now.
 
-List: SOAP WSDL, JWT login, `@Transactional` — out of Lab 23 timed path.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness checklist separates Lab 23 from later modules.
+Readiness checklist separates Lab 23 from later modules in `notes/lab23-readiness.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab23-readiness.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 23 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Versions recorded | Pass / Fail |
-| 2 | lab23-crm path written | Pass / Fail |
-| 3 | Later tech explicitly deferred | Pass / Fail |
+| 1 | File exists at `notes/lab23-readiness.md` | Pass / Fail |
+| 2 | Versions recorded | Pass / Fail |
+| 3 | lab23-crm path written | Pass / Fail |
+| 4 | Later tech explicitly deferred | Pass / Fail |

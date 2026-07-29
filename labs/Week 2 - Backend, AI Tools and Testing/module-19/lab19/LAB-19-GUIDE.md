@@ -64,7 +64,7 @@ This Module 19 lab extends the **Customer Management Platform** with **HTTP inte
 
 **Purpose.** Unit isolation (Lab 18) does not prove HTTP headers, status codes, or browser-visible create/get. Leadership freezes a regression mindset: green `CustomerApiIT` + `CustomerUiIT` before and after deliberate non-functional edits; stable fixtures; explicit waits—no blind sleeps; failure screenshots when locators break.
 
-**What you build (exercise).** Copy to `lab19-crm`; add Spring Web + Selenium 4.x + WebDriverManager; expose create/get API with `X-Correlation-Id`; write `CustomerApiIT`; add minimal `customers.html` with `data-testid` hooks; build Page Object `CustomerFormPage` + `CustomerUiIT`; add negative UI/API cases; run regression twice and archive surefire/screenshot evidence.
+**What you build (this lab).** Copy to `lab19-crm`; add Spring Web + Selenium 4.x + WebDriverManager; expose create/get API with `X-Correlation-Id`; write `CustomerApiIT`; add minimal `customers.html` with `data-testid` hooks; build Page Object `CustomerFormPage` + `CustomerUiIT`; add negative UI/API cases; run regression twice and archive surefire/screenshot evidence.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab19-crm/` `CustomerApiIT` creates/gets `CUS-1001` with correlation echo, UI suite saves Amina via Page Object, blank-name fails visibly, and you can reproduce a broken-locator screenshot then restore green.
 

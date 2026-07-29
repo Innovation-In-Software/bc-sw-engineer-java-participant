@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises 1–6 in order |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab49-*.md` files) |
 | 2 | OS guide → [`lab49/LAB-49-WINDOWS.md`](lab49/LAB-49-WINDOWS.md) or [`lab49/LAB-49-MACOS.md`](lab49/LAB-49-MACOS.md) |
 | 3 | Full lab → [`lab49/LAB-49-GUIDE.md`](lab49/LAB-49-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Capstone Backend and Messaging**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-49-exercises/notes/`. Lab 49 is the graded project (see lab guide paths). Do not merge the two paths.

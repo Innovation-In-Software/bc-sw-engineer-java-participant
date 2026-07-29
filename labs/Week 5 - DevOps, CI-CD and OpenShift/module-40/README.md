@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises 1–6 in order |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab40-*.md` files) |
 | 2 | OS guide → [`lab40/LAB-40-WINDOWS.md`](lab40/LAB-40-WINDOWS.md) or [`lab40/LAB-40-MACOS.md`](lab40/LAB-40-MACOS.md) |
 | 3 | Full lab → [`lab40/LAB-40-GUIDE.md`](lab40/LAB-40-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Application Security Testing**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-40-exercises/notes/`. Lab 40 is the graded project (see lab guide paths). Do not merge the two paths.

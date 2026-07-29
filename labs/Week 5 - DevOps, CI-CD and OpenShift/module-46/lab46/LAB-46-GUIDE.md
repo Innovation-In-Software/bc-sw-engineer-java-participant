@@ -63,7 +63,7 @@ This Module 46 lab makes CRM Kafka consumers **diagnosable and failure-tolerant*
 
 **Purpose.** Leadership freezes an events rule: a malformed customer event must not block the partition forever while lag grows unnoticed. Poison messages go to a DLT with diagnostics; handlers are idempotent so replay does not double-apply side effects; operators have lag and DLT growth signals with runbooks. Silent infinite retry is a failing grade.
 
-**What you build (exercise).** Copy to `lab46-crm`; map event flows; define failure policy; configure `DefaultErrorHandler` + `DeadLetterPublishingRecoverer`; preserve correlation/diagnostic headers; make handling idempotent; expose metrics (processed/failed/retried/DLT, latency, lag); document alerts/dashboard; practice safe replay; write tests and `docs/dlt-replay-runbook.md`.
+**What you build (this lab).** Copy to `lab46-crm`; map event flows; define failure policy; configure `DefaultErrorHandler` + `DeadLetterPublishingRecoverer`; preserve correlation/diagnostic headers; make handling idempotent; expose metrics (processed/failed/retried/DLT, latency, lag); document alerts/dashboard; practice safe replay; write tests and `docs/dlt-replay-runbook.md`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab46-crm/` you can force a poison event related to CRM identity, see it land on the DLT with correlation metadata, prove lag/metrics move, and demonstrate a dry-run or limited replay that does not duplicate side effects for `CUS-1001` / `CUS-1002`.
 

@@ -66,7 +66,7 @@ This Module 51 lab makes the CRM **releasable**: harden JWT authorization, prote
 
 **Purpose.** Feature-complete is not release-complete. Leadership freezes merge/promote until access control, delivery automation, image provenance, protected configuration, operational signals, and recovery are evidenced together.
 
-**What you build (exercise).** Threat-model the release; secure HTTP endpoints (JWT resource server, deny-by-default); harden CORS/CSRF/logging/actuators; run security gates (tests, dependency/secret/image scans); multi-stage non-root image with digest; delivery pipeline stages; deploy + verify probes/logs/metrics/Kafka lag; rehearse previous-digest rollback.
+**What you build (this lab).** Threat-model the release; secure HTTP endpoints (JWT resource server, deny-by-default); harden CORS/CSRF/logging/actuators; run security gates (tests, dependency/secret/image scans); multi-stage non-root image with digest; delivery pipeline stages; deploy + verify probes/logs/metrics/Kafka lag; rehearse previous-digest rollback.
 
 **What success looks like.** Pipeline builds a digest-tagged image; cluster rollout healthy; authenticated smoke works for search/`CUS-1001`; anonymous API calls get 401; wrong role gets 403; rollback to previous digest verified; `docs/security-deploy-demo.md` (or reports pack) reproduces the release story.
 

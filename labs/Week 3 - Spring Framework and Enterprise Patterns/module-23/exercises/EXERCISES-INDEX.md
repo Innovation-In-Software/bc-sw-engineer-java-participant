@@ -5,10 +5,22 @@
 **Module:** 23 — Spring Boot Auto-Configuration  
 **Next:** [`../lab23/LAB-23-WINDOWS.md`](../lab23/LAB-23-WINDOWS.md) or [`../lab23/LAB-23-MACOS.md`](../lab23/LAB-23-MACOS.md) → [`../lab23/LAB-23-GUIDE.md`](../lab23/LAB-23-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 23.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 23 builds the full graded deliverable.  
-> Exercise 2 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 23.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-23-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 23 is the graded consolidation. Do **not** finish Lab 23 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/autoconfig-ownership.md` | Auto-Config Versus Ownership |
+| 2 | `notes/starters.md` | Boot Starters Inventory |
+| 3 | `notes/health-sketch.md` | CrmApplication Stub (TODOs) |
+| 4 | `notes/lab23-application-yml-sketch.md` | application.yml Sketch |
+| 5 | `notes/rest-smoke-plan.md` | REST Smoke Plan |
+| 6 | `notes/lab23-readiness.md` | Lab 23 Readiness Checklist |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-23-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-23-exercises\notes | Out-Null
 cd examples\module-23-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-23-exercises
+mkdir -p examples/module-23-exercises/notes
 cd examples/module-23-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 23 uses its own `examples/lab23-*/` (or module lab folder) project.
 
 ## Exercise index
 
 Complete in this sequence (matches Module slide order):
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | Auto-Config Versus Ownership | Distinguish Boot gifts from design work | [`exercise-01-autoconfig-vs-ownership.md`](exercise-01-autoconfig-vs-ownership.md) |
-| 2 | Boot Starters Inventory | Name what each starter contributes | [`exercise-02-starters-inventory.md`](exercise-02-starters-inventory.md) |
-| 3 | CrmApplication Stub (TODOs) | Complete a minimal Boot entry-point sketch | [`exercise-03-crm-application-stub.md`](exercise-03-crm-application-stub.md) |
-| 4 | application.yml Sketch | Draft minimal Boot YAML keys | [`exercise-04-application-yml-sketch.md`](exercise-04-application-yml-sketch.md) |
-| 5 | REST Smoke Plan | Plan create/get evidence for CRM fixtures | [`exercise-05-rest-smoke-plan.md`](exercise-05-rest-smoke-plan.md) |
-| 6 | Lab 23 Readiness Checklist | Confirm tools and lab23-crm path | [`exercise-06-lab23-readiness.md`](exercise-06-lab23-readiness.md) |
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | Auto-Config Versus Ownership | Documentation exercise | `notes/autoconfig-ownership.md` | [`exercise-01-autoconfig-vs-ownership.md`](exercise-01-autoconfig-vs-ownership.md) |
+| 2 | Boot Starters Inventory | Analysis exercise | `notes/starters.md` | [`exercise-02-starters-inventory.md`](exercise-02-starters-inventory.md) |
+| 3 | CrmApplication Stub (TODOs) | Hands-on exercise | `notes/health-sketch.md` | [`exercise-03-crm-application-stub.md`](exercise-03-crm-application-stub.md) |
+| 4 | application.yml Sketch | Architecture exercise | `notes/lab23-application-yml-sketch.md` | [`exercise-04-application-yml-sketch.md`](exercise-04-application-yml-sketch.md) |
+| 5 | REST Smoke Plan | Analysis exercise | `notes/rest-smoke-plan.md` | [`exercise-05-rest-smoke-plan.md`](exercise-05-rest-smoke-plan.md) |
+| 6 | Lab 23 Readiness Checklist | Documentation exercise | `notes/lab23-readiness.md` | [`exercise-06-lab23-readiness.md`](exercise-06-lab23-readiness.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 23 OS guide.

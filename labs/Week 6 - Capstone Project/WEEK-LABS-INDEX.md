@@ -18,7 +18,7 @@ This document is the **capstone master document** for Modules 48–52 and Labs 4
 | **Capstone project brief (DOCX, company-shareable)** | [Java_Software_Engineer_Capstone.docx](Java_Software_Engineer_Capstone.docx) |
 | **Capstone evaluation rubric (DOCX)** | [Java_Software_Engineer_Capstone_Rubric.docx](Java_Software_Engineer_Capstone_Rubric.docx) |
 | Capstone brief + rubric (Markdown) | [CAPSTONE-BRIEF-AND-RUBRIC.md](CAPSTONE-BRIEF-AND-RUBRIC.md) |
-| Slide outline | [slides_outline.md](../../Week%206%20-%20Capstone%20Project/slides_outline.md) |
+| Slide outline | [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) |
 | Labs index | [labs/LABS-INDEX.md](../LABS-INDEX.md) |
 | Setup (Weeks 1–6) | [labs/SETUP-INSTRUCTIONS.md](../SETUP-INSTRUCTIONS.md) |
 | Technology stack | [labs/TECHNOLOGY-STACK-GUIDE.md](../TECHNOLOGY-STACK-GUIDE.md) |
@@ -204,7 +204,7 @@ Most delivery failures start with unclear scope and undocumented decisions. Team
 ### Module narrative (slides)
 
 Requirements → architecture → backlog → risks → documentation → lab deliverables  
-See [slides_outline.md](../../Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~1–34) and [Module 48 slide text](../../Week%206%20-%20Capstone%20Project/Module%2048%20-%20Capstone%20Architecture%20and%20Planning/SLIDE-TEXT-README.md).
+See [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~1–34) and [Module 48 slide text](../../curriculum/Week%206%20-%20Capstone%20Project/module-48/SLIDE-TEXT-README.md).
 
 ---
 
@@ -236,7 +236,7 @@ Enterprise CRM features must persist reliably, expose a clear API contract, publ
 ### Module narrative (slides)
 
 API design → Kafka events → JWT/RBAC review → testing → quality checklist → lab  
-See [slides_outline.md](../../Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~35–62) and [Module 49 slide text](../../Week%206%20-%20Capstone%20Project/Module%2049%20-%20Capstone%20Build%20-%20Backend%20and%20Messaging/SLIDE-TEXT-README.md).
+See [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~35–62) and [Module 49 slide text](../../curriculum/Week%206%20-%20Capstone%20Project/module-49/SLIDE-TEXT-README.md).
 
 ---
 
@@ -268,7 +268,7 @@ Agents need an accessible UI journey—search, profile, timeline, interaction fo
 ### Module narrative (slides)
 
 React review → screens → API integration → PostgreSQL/JPA → UI testing → lab  
-See [slides_outline.md](../../Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~63–88) and [Module 50 slide text](../../Week%206%20-%20Capstone%20Project/Module%2050%20-%20Capstone%20Build%20-%20Frontend%20and%20Persistence/SLIDE-TEXT-README.md).
+See [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~63–88) and [Module 50 slide text](../../curriculum/Week%206%20-%20Capstone%20Project/module-50/SLIDE-TEXT-README.md).
 
 ---
 
@@ -300,7 +300,7 @@ Feature-complete is not release-ready. Access control, delivery automation, imag
 ### Module narrative (slides)
 
 Threat model → secure endpoints → SAST/DAST → Docker → pipeline → k3s → smoke/rollback → lab  
-See [slides_outline.md](../../Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~89–119) and [Module 51 slide text](../../Week%206%20-%20Capstone%20Project/Module%2051%20-%20Capstone%20Security,%20CI-CD%20and%20Deployment/SLIDE-TEXT-README.md).
+See [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~89–119) and [Module 51 slide text](../../curriculum/Week%206%20-%20Capstone%20Project/module-51/SLIDE-TEXT-README.md).
 
 ---
 
@@ -332,7 +332,7 @@ Enterprise engineers must communicate value, architecture, trade-offs, and limit
 ### Module narrative (slides)
 
 Presentation structure → live walkthrough → review-board Q&A → evaluation → retrospective → program wrap-up  
-See [slides_outline.md](../../Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~120–168) and [Module 52 slide text](../../Week%206%20-%20Capstone%20Project/Module%2052%20-%20Capstone%20Final%20Defense%20and%20Retrospective/SLIDE-TEXT-README.md).
+See [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~120–168) and [Module 52 slide text](../../curriculum/Week%206%20-%20Capstone%20Project/module-52/SLIDE-TEXT-README.md).
 
 ---
 
@@ -445,7 +445,7 @@ Adapt to cohort size; every member should touch implementation and evidence.
 ### Instructors
 
 1. Use this README for week orientation and assessment framing.
-2. Teach from module slide assets / [slides_outline.md](../../Week%206%20-%20Capstone%20Project/slides_outline.md).
+2. Teach from module slide assets / [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md).
 3. Run hands-on work from Labs [48](module-48/lab48/LAB-48-GUIDE.md)–[52](module-52/lab52/LAB-52-GUIDE.md) (see [labs index](../LABS-INDEX.md)); each lab is evidence-gated.
 4. Score using the shared rubric; require claim → artifact linkage in Lab 52.
 
@@ -462,11 +462,11 @@ Adapt to cohort size; every member should touch implementation and evidence.
 
 | Module | Folder |
 | ------ | ------ |
-| 48 | [Module 48 - Capstone Architecture and Planning](../../Week%206%20-%20Capstone%20Project/Module%2048%20-%20Capstone%20Architecture%20and%20Planning/) |
-| 49 | [Module 49 - Capstone Build - Backend and Messaging](../../Week%206%20-%20Capstone%20Project/Module%2049%20-%20Capstone%20Build%20-%20Backend%20and%20Messaging/) |
-| 50 | [Module 50 - Capstone Build - Frontend and Persistence](../../Week%206%20-%20Capstone%20Project/Module%2050%20-%20Capstone%20Build%20-%20Frontend%20and%20Persistence/) |
-| 51 | [Module 51 - Capstone Security, CI-CD and Deployment](../../Week%206%20-%20Capstone%20Project/Module%2051%20-%20Capstone%20Security,%20CI-CD%20and%20Deployment/) |
-| 52 | [Module 52 - Capstone Final Defense and Retrospective](../../Week%206%20-%20Capstone%20Project/Module%2052%20-%20Capstone%20Final%20Defense%20and%20Retrospective/) |
+| 48 | [Module 48 - Capstone Architecture and Planning](../../curriculum/Week%206%20-%20Capstone%20Project/module-48/) |
+| 49 | [Module 49 - Capstone Build - Backend and Messaging](../../curriculum/Week%206%20-%20Capstone%20Project/module-49/) |
+| 50 | [Module 50 - Capstone Build - Frontend and Persistence](../../curriculum/Week%206%20-%20Capstone%20Project/module-50/) |
+| 51 | [Module 51 - Capstone Security, CI-CD and Deployment](../../curriculum/Week%206%20-%20Capstone%20Project/module-51/) |
+| 52 | [Module 52 - Capstone Final Defense and Retrospective](../../curriculum/Week%206%20-%20Capstone%20Project/module-52/) |
 
 ---
 

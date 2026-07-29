@@ -64,7 +64,7 @@ This Module 30 lab introduces **event-driven architecture** for the **Customer M
 
 **Purpose.** After HTTP APIs (Labs 25–29), Northstar needs asynchronous fan-out for notifications and audit without coupling every consumer to the Customer service JVM. Leadership freezes topic names and keying strategy before Spring Kafka wiring (Lab 31).
 
-**What you build (exercise).** Create `lab30-crm` with Compose KRaft broker; create `crm.customer-events.v1` (3 partitions) and `crm.customer-events.v1.dlq`; write versioned `CustomerCreated` / `CustomerStatusChanged` envelopes for Amina/Ravi; publish and consume keyed records via CLI; write a Java `KafkaProducer` with acks=all / idempotence; compare competing vs independent consumer groups; inspect lag and restart recovery; document replay/idempotency notes.
+**What you build (this lab).** Create `lab30-crm` with Compose KRaft broker; create `crm.customer-events.v1` (3 partitions) and `crm.customer-events.v1.dlq`; write versioned `CustomerCreated` / `CustomerStatusChanged` envelopes for Amina/Ravi; publish and consume keyed records via CLI; write a Java `KafkaProducer` with acks=all / idempotence; compare competing vs independent consumer groups; inspect lag and restart recovery; document replay/idempotency notes.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab30-crm/` the broker is up, both topics exist, keyed events for `CUS-1001`/`CUS-1002` round-trip with visible partitions/offsets, group `crm-notifications` shares partitions while `crm-audit` gets all records, and lag returns to 0 after catch-up.
 

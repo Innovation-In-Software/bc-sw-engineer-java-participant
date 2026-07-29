@@ -80,7 +80,7 @@ This Module 12 lab improves a **deliberately poor** CRM `CustomerService` using 
 
 **Purpose.** Readable services are a prerequisite for Lab 13 SOAP contracts and later Spring/JPA work. Messy code hides identity bugs (`==` on strings), silent `null` returns, and “magic” update paths that support cannot explain. Lab 12 forces a measurable before → after improvement with evidence.
 
-**What you build (exercise).** Scaffold `lab12-crm` with a messy baseline (`doStuff`), freeze `CustomerService.before.java.txt`, catalog ≥8 smells, add characterization tests, refactor to a clean API (`createCustomer` / `getCustomer` / `updateStatus`), fix equality/exceptions/correlation logging, optionally review one Copilot suggestion, and ship a before/after evidence pack.
+**What you build (this lab).** Scaffold `lab12-crm` with a messy baseline (`doStuff`), freeze `CustomerService.before.java.txt`, catalog ≥8 smells, add characterization tests, refactor to a clean API (`createCustomer` / `getCustomer` / `updateStatus`), fix equality/exceptions/correlation logging, optionally review one Copilot suggestion, and ship a before/after evidence pack.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab12-crm/` you run green tests for `CUS-1001` / `CUS-1002`, unknown/duplicate IDs throw clearly, no `doStuff` remains, and docs map each smell to a fix.
 

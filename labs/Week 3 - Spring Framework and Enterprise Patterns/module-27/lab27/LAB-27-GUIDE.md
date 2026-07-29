@@ -65,7 +65,7 @@ This Module 27 lab adds Spring **`@Transactional`** boundaries for CRM financial
 
 **Purpose.** Partial money movement destroys finance trust. Leadership freezes: multi-account updates run inside one service transaction; forced mid-transfer failure leaves balances unchanged and writes no success log; students explain ACID with curl/SQL evidence — not slogans.
 
-**What you build (exercise).** Copy forward to `lab27-crm`; add JPA + H2 (preferred); seed Amina/Ravi accounts; implement repositories + `TransactionLog`; `@Transactional TransferService`; HTTP transfer endpoint; rollback demo via `ACC-FORCE-FAIL`; ACID README table; automated rollback tests; AI review notes; dual green `mvn test`.
+**What you build (this lab).** Copy forward to `lab27-crm`; add JPA + H2 (preferred); seed Amina/Ravi accounts; implement repositories + `TransactionLog`; `@Transactional TransferService`; HTTP transfer endpoint; rollback demo via `ACC-FORCE-FAIL`; ACID README table; automated rollback tests; AI review notes; dual green `mvn test`.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab27-crm/` happy transfer MAIN→LOYALTY updates both balances + log; forced fail leaves MAIN unchanged and no log row; tests assert balances after failure; ACID table cites evidence; no secrets in Git.
 

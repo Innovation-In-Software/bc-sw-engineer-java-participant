@@ -79,7 +79,7 @@ This Module 17 lab formalizes **JUnit 5** testing for the **Customer Management 
 
 **Purpose.** Leadership freezes a quality gate before Mockito (Lab 18) and Spring: no merge of `DefaultCustomerService` changes without JUnit evidence and ≥80% line coverage on `com.northstar.crm.service`. Coverage without meaningful asserts is not enough—reject false-confidence tests.
 
-**What you build (exercise).** Copy to `lab17-crm`; pin Surefire + JaCoCo check; write happy and negative service tests; add parameterized legal/illegal transitions; optional Copilot draft + review log `lab17-001`; run `mvn clean verify` until the 80% gate passes; deliberately fail then restore the gate; document the runbook.
+**What you build (this lab).** Copy to `lab17-crm`; pin Surefire + JaCoCo check; write happy and negative service tests; add parameterized legal/illegal transitions; optional Copilot draft + review log `lab17-001`; run `mvn clean verify` until the 80% gate passes; deliberately fail then restore the gate; document the runbook.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab17-crm/` two consecutive `mvn test` runs are green and deterministic, JaCoCo HTML shows service ≥80%, and you can point to the branch that got you over the line.
 

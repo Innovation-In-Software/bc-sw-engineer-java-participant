@@ -5,10 +5,22 @@
 **Module:** 18 — Mockito for Test Isolation  
 **Next:** [`../lab18/LAB-18-WINDOWS.md`](../lab18/LAB-18-WINDOWS.md) or [`../lab18/LAB-18-MACOS.md`](../lab18/LAB-18-MACOS.md) → [`../lab18/LAB-18-GUIDE.md`](../lab18/LAB-18-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the slides, then and before Lab 18.  
-> Use JDK 21 and the tools this module requires.  
-> These exercises design and test small pieces; Lab 18 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` / `<!-- TODO -->` before moving on.
+> Complete these exercises **in order** after the slides and **before** Lab 18.  
+> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-18-exercises/` — these are **notes files**, not the graded lab project.  
+> Lab 18 is the graded consolidation. Do **not** finish Lab 18 during pre-lab.
+
+## What you produce (all exercises)
+
+| # | Your deliverable file | Type |
+| - | --------------------- | ---- |
+| 1 | `notes/lab18-keep-real-validator.md` | When to Keep Real Validator |
+| 2 | `notes/lab18-stub-verify.md` | Stub vs Verify |
+| 3 | `notes/lab18-argumentcaptor-preview.md` | ArgumentCaptor Preview |
+| 4 | `notes/lab18-activate-interaction-todos.md` | Fill Activate Interaction Sequence TODOs |
+| 5 | `notes/lab18-anti-patterns.md` | Mockito Anti-Patterns |
+| 6 | `notes/lab18-prep-checklist.md` | Lab 18 Prep Checklist |
+
+Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
 
 ## Scope boundary — do not build later technology yet
 
@@ -33,7 +45,7 @@
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-New-Item -ItemType Directory -Force -Path examples\module-18-exercises | Out-Null
+New-Item -ItemType Directory -Force -Path examples\module-18-exercises\notes | Out-Null
 cd examples\module-18-exercises
 java -version
 ```
@@ -42,22 +54,26 @@ java -version
 
 ```bash
 cd ~/java-bootcamp
-mkdir -p examples/module-18-exercises
+mkdir -p examples/module-18-exercises/notes
 cd examples/module-18-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available (and any module-specific tools named in the exercises). If not, return to Lab 0 / setup before continuing.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 18 uses its own `examples/lab18-*/` (or module lab folder) project.
 
 ## Exercise index
 
 Complete in this sequence (matches Module slide order):
 
-| # | Exercise | New skill | File |
-| --- | --- | --- | --- |
-| 1 | When to Keep Real Validator | Architecture exercise | [`exercise-01-keep-real-validator.md`](exercise-01-keep-real-validator.md) |
-| 2 | Stub vs Verify | Analysis exercise | [`exercise-02-stub-vs-verify.md`](exercise-02-stub-vs-verify.md) |
-| 3 | ArgumentCaptor Preview | Documentation exercise | [`exercise-03-argumentcaptor-preview.md`](exercise-03-argumentcaptor-preview.md) |
-| 4 | Fill Activate Interaction Sequence TODOs | Hands-on exercise | [`exercise-04-fill-activate-interaction-todos.md`](exercise-04-fill-activate-interaction-todos.md) |
-| 5 | Mockito Anti-Patterns | Analysis exercise | [`exercise-05-anti-patterns.md`](exercise-05-anti-patterns.md) |
-| 6 | Lab 18 Prep Checklist | Documentation exercise | [`exercise-06-lab18-prep-checklist.md`](exercise-06-lab18-prep-checklist.md) |
+| # | Exercise | New skill | Deliverable | File |
+| --- | --- | --- | --- | --- |
+| 1 | When to Keep Real Validator | Architecture exercise | `notes/lab18-keep-real-validator.md` | [`exercise-01-keep-real-validator.md`](exercise-01-keep-real-validator.md) |
+| 2 | Stub vs Verify | Analysis exercise | `notes/lab18-stub-verify.md` | [`exercise-02-stub-vs-verify.md`](exercise-02-stub-vs-verify.md) |
+| 3 | ArgumentCaptor Preview | Documentation exercise | `notes/lab18-argumentcaptor-preview.md` | [`exercise-03-argumentcaptor-preview.md`](exercise-03-argumentcaptor-preview.md) |
+| 4 | Fill Activate Interaction Sequence TODOs | Hands-on exercise | `notes/lab18-activate-interaction-todos.md` | [`exercise-04-fill-activate-interaction-todos.md`](exercise-04-fill-activate-interaction-todos.md) |
+| 5 | Mockito Anti-Patterns | Analysis exercise | `notes/lab18-anti-patterns.md` | [`exercise-05-anti-patterns.md`](exercise-05-anti-patterns.md) |
+| 6 | Lab 18 Prep Checklist | Documentation exercise | `notes/lab18-prep-checklist.md` | [`exercise-06-lab18-prep-checklist.md`](exercise-06-lab18-prep-checklist.md) |
+
+## Done when
+
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 18 OS guide.

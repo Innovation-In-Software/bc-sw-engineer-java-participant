@@ -1,18 +1,30 @@
 # Exercise 3 — GlobalExceptionHandler TODOs
 
-**Module 29** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 29** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a handler sketch that builds ErrorResponse for validation and not-found.
+Create `notes/lab29-handler-todos.md` — complete a handler sketch that builds ErrorResponse for validation and not-found.
+
+## Deliverable
+
+| Item | Path (under `examples/module-29-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-02-handler-todos.md` (this file in the course repo) |
+| Your notes file | `notes/lab29-handler-todos.md` |
 
 ## Steps
 
-### Step 1 — Create sketch
+### Step 1 — Create the notes file
 
-Create `notes/GlobalExceptionHandlerSketch.java`.
+From `examples/module-29-exercises/`, create `notes/` if needed, then create `notes/lab29-handler-todos.md`.
 
-### Step 2 — Fill TODOs
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 29 — GlobalExceptionHandler TODOs
+
+## Step 2 — Fill TODOs
 
 ```java
 @_____
@@ -34,23 +46,31 @@ public class GlobalExceptionHandler {
 ```
 Hints: `@RestControllerAdvice`; `BAD_REQUEST`; correlation `"lab-request-001"`; `NOT_FOUND`.
 
-### Step 3 — Controller reminder
+## Step 3 — Controller reminder
 
 Controllers need `@Valid` on `@RequestBody` — write that reminder in notes.
 
-### Step 4 — Reflect
+## Step 4 — Reflect
 
 Happy GETs for `CUS-1001` / `CUS-1002` must still return 200 after handlers exist.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Handler sketch blanks filled; `@Valid` reminder written.
+Handler sketch blanks filled; `@Valid` reminder written in `notes/lab29-handler-todos.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/lab29-handler-todos.md` |
 | Returning ex.getMessage() with SQL | Use safe, stable messages |
 | Forgetting `@Valid` | Without it, Bean Validation never runs |
 
@@ -58,6 +78,7 @@ Handler sketch blanks filled; `@Valid` reminder written.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | `@RestControllerAdvice` and statuses filled | Pass / Fail |
-| 2 | `@Valid` reminder present | Pass / Fail |
-| 3 | Happy-path 200 called out | Pass / Fail |
+| 1 | File exists at `notes/lab29-handler-todos.md` | Pass / Fail |
+| 2 | `@RestControllerAdvice` and statuses filled | Pass / Fail |
+| 3 | `@Valid` reminder present | Pass / Fail |
+| 4 | Happy-path 200 called out | Pass / Fail |

@@ -63,7 +63,7 @@ This Module 45 lab uses an AI coding assistant to draft **Terraform** and **Ansi
 
 **Purpose.** Leadership freezes an IaC rule: AI may accelerate scaffolding, but humans remain accountable for exposure, cost, state security, and idempotence. Syntactically valid Terraform that opens a public database still fails the lab. Planned apply without reading the plan fails the lab. Undocumented AI acceptance fails the lab.
 
-**What you build (exercise).** Copy to `lab45-crm`; define an infrastructure contract (env, region, network, runtime, DB, tags, cost limits, forbidden public exposure); draft with constrained prompts; review Terraform structure; secure sensitive variables and remote-state narrative; run `fmt` / `init` / `validate` / `plan`; draft idempotent Ansible; prove syntax/lint and second-run no-change where authorized; write a complete AI review record (`docs/ai-iac-review.md`).
+**What you build (this lab).** Copy to `lab45-crm`; define an infrastructure contract (env, region, network, runtime, DB, tags, cost limits, forbidden public exposure); draft with constrained prompts; review Terraform structure; secure sensitive variables and remote-state narrative; run `fmt` / `init` / `validate` / `plan`; draft idempotent Ansible; prove syntax/lint and second-run no-change where authorized; write a complete AI review record (`docs/ai-iac-review.md`).
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab45-crm/` a peer can read the contract, reproduce format/validate/plan (or instructor-safe substitute), run Ansible syntax/lint, and see at least one AI suggestion rejected or hardened with rationale—tied to CRM environments that will host APIs for fixtures `CUS-1001` / `CUS-1002` (app data stays out of IaC).
 

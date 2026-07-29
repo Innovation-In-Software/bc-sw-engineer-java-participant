@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 36 Readiness
 
-**Module 36** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 36** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm security decisions are written before coding guards.
+Create `notes/lab36-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 36 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-36-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab36-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab36-prep-checklist.md` |
 
 ## Steps
 
-### Step 1 — Decision log
+### Step 1 — Create the notes file
 
-List: storage choice, guard redirect target, XSS rule.
+From `examples/module-36-exercises/`, create `notes/` if needed, then create `notes/lab36-prep-checklist.md`.
 
-### Step 2 — Evidence preview
+### Step 2 — Paste and complete this template
 
-Future: unauthenticated visit redirects to login; XSS test string safe.
+```markdown
+# Lab 36 prep checklist
 
-### Step 3 — No real IdP
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab36-security.md | _____ |
+| notes/lab36-token-storage.md | _____ |
+| notes/lab36-xss-csp.md | _____ |
+| notes/lab36-csrf-notes.md | _____ |
+| notes/lab36-todos.md | _____ |
 
-Pre-lab does not require Okta/Auth0 configuration.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Pass mark
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 36 now.
 
-Pass if guard TODOs filled.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Decision log and Pass/Fail readiness.
+Decision log and Pass/Fail readiness in `notes/lab36-prep-checklist.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab36-prep-checklist.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 36 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Three decisions listed | Pass / Fail |
-| 2 | IdP deferred | Pass / Fail |
-| 3 | Pass/Fail marked | Pass / Fail |
+| 1 | File exists at `notes/lab36-prep-checklist.md` | Pass / Fail |
+| 2 | Three decisions listed | Pass / Fail |
+| 3 | IdP deferred | Pass / Fail |
+| 4 | Pass/Fail marked | Pass / Fail |

@@ -1,10 +1,28 @@
 # Exercise 1 — Map CRM Attack Surfaces
 
-**Module 40** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 40** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-List Northstar CRM surfaces that matter before scanners run.
+Create `notes/lab40-owasp-surface-map.md` — list Northstar CRM surfaces that matter before scanners run.
+
+## Deliverable
+
+| Item | Path (under `examples/module-40-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-01-owasp-surface-map.md` (this file in the course repo) |
+| Your notes file | `notes/lab40-owasp-surface-map.md` |
+
+## Steps
+
+### Step 1 — Create the notes file
+
+From `examples/module-40-exercises/`, create `notes/` if needed, then create `notes/lab40-owasp-surface-map.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 40 — Map CRM Attack Surfaces
 
 ## Reference
 
@@ -16,32 +34,35 @@ List Northstar CRM surfaces that matter before scanners run.
 | application.yml secrets | Security misconfiguration | DB password in Git |
 | Actuator endpoints | Security misconfiguration | Unprotected /env |
 
-## Steps
-
-### Step 1 — Inventory touchpoints
+## Step 1 — Inventory touchpoints
 
 In notes, list at least five surfaces for the Spring CRM that serves agents looking up `CUS-1001` (Amina Khan) and `CUS-1002` (Ravi Singh): HTTP APIs, JWT/RBAC, SQL/JPA, file/log sinks, and (later) Kafka. Mark which hold PII vs IDs.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Compare your list to OWASP themes: injection, broken access control, security misconfiguration, vulnerable components, logging/monitoring failures.
 
-### Step 3 — Rank top three
+## Step 3 — Rank top three
 
 Pick the three highest-risk surfaces for a release gate before containers. Write one sentence of business impact per item.
 
-### Step 4 — Capture evidence note
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
 
-Save as `threat-surface-draft.md`. Use only synthetic fixtures and correlation `lab-request-001`.
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-A ranked surface map exists with OWASP themes and no real customer data.
+A ranked surface map exists with OWASP themes and no real customer data in `notes/lab40-owasp-surface-map.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
+| No file / wrong name | Must be `notes/lab40-owasp-surface-map.md` |
 | Scanning without a surface map | Map trust boundaries first |
 | Using real emails in notes | Use @example.test fixtures |
 
@@ -49,6 +70,7 @@ A ranked surface map exists with OWASP themes and no real customer data.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | At least five surfaces listed | Pass / Fail |
-| 2 | Top three ranked with business impact | Pass / Fail |
-| 3 | Synthetic fixtures only | Pass / Fail |
+| 1 | File exists at `notes/lab40-owasp-surface-map.md` | Pass / Fail |
+| 2 | At least five surfaces listed | Pass / Fail |
+| 3 | Top three ranked with business impact | Pass / Fail |
+| 4 | Synthetic fixtures only | Pass / Fail |

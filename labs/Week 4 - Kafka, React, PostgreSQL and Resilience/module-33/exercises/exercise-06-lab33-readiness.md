@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 33 Readiness
 
-**Module 33** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 33** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm component contracts are ready before the Vite starter.
+Create `notes/lab33-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 33 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-33-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab33-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab33-prep-checklist.md` |
 
 ## Steps
 
-### Step 1 — Folder plan
+### Step 1 — Create the notes file
 
-Note future path idea: `crm-ui/src/components/`.
+From `examples/module-33-exercises/`, create `notes/` if needed, then create `notes/lab33-prep-checklist.md`.
 
-### Step 2 — Evidence
+### Step 2 — Paste and complete this template
 
-Future screenshot: list showing Amina + Ravi cards (lab, not now).
+```markdown
+# Lab 33 prep checklist
 
-### Step 3 — Boundary
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab33-todos.md | _____ |
+| notes/lab33-components.md | _____ |
+| notes/lab33-jsx-paper.md | _____ |
+| notes/lab33-props-sketch.md | _____ |
+| notes/lab33-a11y-checklist.md | _____ |
 
-Confirm no `npm install` required for this pre-lab.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Pass mark
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 33 now.
 
-Pass if props + TODOs notes exist.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness note with folder plan and Pass/Fail.
+Readiness note with folder plan and Pass/Fail in `notes/lab33-prep-checklist.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab33-prep-checklist.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 33 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Folder plan written | Pass / Fail |
-| 2 | No-npm confirmation | Pass / Fail |
-| 3 | Pass/Fail marked | Pass / Fail |
+| 1 | File exists at `notes/lab33-prep-checklist.md` | Pass / Fail |
+| 2 | Folder plan written | Pass / Fail |
+| 3 | No-npm confirmation | Pass / Fail |
+| 4 | Pass/Fail marked | Pass / Fail |

@@ -1,37 +1,70 @@
 # Exercise 3 — Rollback Evidence Plan
 
-**Module 27** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 27** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Document what must remain unchanged after forced failure.
+Create `notes/rollback-plan.md` — document what must remain unchanged after forced failure.
+
+## Deliverable
+
+| Item | Path (under `examples/module-27-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-03-rollback-plan.md` (this file in the course repo) |
+| Your notes file | `notes/rollback-plan.md` |
 
 ## Steps
 
-### Step 1 — Happy path
+### Step 1 — Create the notes file
+
+From `examples/module-27-exercises/`, create `notes/` if needed, then create `notes/rollback-plan.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 27 — Rollback Evidence Plan
+
+## Step 1 — Happy path
 
 In `notes/rollback-plan.md`: MAIN→LOYALTY updates both balances and writes a log.
 
-### Step 2 — Force fail
+## Step 2 — Force fail
 
 Transfer to `ACC-FORCE-FAIL`: MAIN balance unchanged; no success log row.
 
-### Step 3 — Test idea
+## Step 3 — Test idea
 
 Automated test asserts balances after failure — plan only.
 
-### Step 4 — AI caution
+## Step 4 — AI caution
 
 Reject AI drafts that catch Exception and swallow it inside `@Transactional` methods.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Rollback evidence plan and AI caution recorded.
+Rollback evidence plan and AI caution recorded in `notes/rollback-plan.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/rollback-plan.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 27 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Happy and fail paths contrasted | Pass / Fail |
-| 2 | No-log-on-fail stated | Pass / Fail |
-| 3 | Swallowed-exception reject rule written | Pass / Fail |
+| 1 | File exists at `notes/rollback-plan.md` | Pass / Fail |
+| 2 | Happy and fail paths contrasted | Pass / Fail |
+| 3 | No-log-on-fail stated | Pass / Fail |
+| 4 | Swallowed-exception reject rule written | Pass / Fail |

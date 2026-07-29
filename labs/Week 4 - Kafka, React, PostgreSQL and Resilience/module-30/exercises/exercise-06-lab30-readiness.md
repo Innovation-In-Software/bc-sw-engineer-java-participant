@@ -1,37 +1,73 @@
 # Exercise 6 — Lab 30 Readiness
 
-**Module 30** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 30** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm you know what evidence Lab 30 will ask for without starting Kafka.
+Create `notes/lab30-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 30 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-30-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab30-readiness.md` (this file in the course repo) |
+| Your notes file | `notes/lab30-prep-checklist.md` |
 
 ## Steps
 
-### Step 1 — Deliverable skim
+### Step 1 — Create the notes file
 
-From the Lab 30 guide header, list four deliverables (topics, samples, producer, notes).
+From `examples/module-30-exercises/`, create `notes/` if needed, then create `notes/lab30-prep-checklist.md`.
 
-### Step 2 — Fixture recall
+### Step 2 — Paste and complete this template
 
-Write `CUS-1001` Amina, `CUS-1002` Ravi, `lab-request-001` from memory.
+```markdown
+# Lab 30 prep checklist
 
-### Step 3 — Path plan
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab30-prelab-eda.md | _____ |
+| notes/lab30-topic-map.md | _____ |
+| notes/lab30-envelope-sketch.md | _____ |
+| notes/lab30-kafka-todos.md | _____ |
+| notes/lab30-producer-checklist.md | _____ |
 
-Note target folder idea: `java-bootcamp/examples/lab30-crm` (do not create yet if you prefer).
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Pass/Fail preview
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 30 now.
 
-Write Pass if your notes cover topics+keys+envelopes; else Fail and revisit exercises 2–4.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-A readiness checklist with fixtures memorized and deliverables named.
+A readiness checklist with fixtures memorized and deliverables named in `notes/lab30-prep-checklist.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab30-prep-checklist.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 30 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Four deliverables listed | Pass / Fail |
-| 2 | Fixtures correct | Pass / Fail |
-| 3 | Pass/Fail self-mark written | Pass / Fail |
+| 1 | File exists at `notes/lab30-prep-checklist.md` | Pass / Fail |
+| 2 | Four deliverables listed | Pass / Fail |
+| 3 | Fixtures correct | Pass / Fail |
+| 4 | Pass/Fail self-mark written | Pass / Fail |

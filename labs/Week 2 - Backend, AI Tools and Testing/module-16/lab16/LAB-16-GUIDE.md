@@ -76,7 +76,7 @@ This Module 16 lab extends the **Customer Management Platform** with a consisten
 
 **Purpose.** Support cannot triage CRM failures when every layer throws different unstructured exceptions. A stable error document lets React (later) and SoapUI partners display field errors, distinguish 404 from 409, and paste `lab-request-001` into logs.
 
-**What you build (exercise).** Copy `lab15-crm` → `lab16-crm`; implement `ErrorResponse` + `BusinessException` factories; build `GlobalExceptionHandler`; integrate into `CustomerApiFacade` (`ApiResult`); demo 400 / 404 / 409 JSON with correlation; add `GlobalExceptionHandlerTest`; document status-code choices.
+**What you build (this lab).** Copy `lab15-crm` → `lab16-crm`; implement `ErrorResponse` + `BusinessException` factories; build `GlobalExceptionHandler`; integrate into `CustomerApiFacade` (`ApiResult`); demo 400 / 404 / 409 JSON with correlation; add `GlobalExceptionHandlerTest`; document status-code choices.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab16-crm/` every failure path prints the same JSON fields (`timestamp`, `status`, `error`, `message`, `correlationId`, `errors`), never a stack trace to the “API” channel, and tests lock handler mapping.
 

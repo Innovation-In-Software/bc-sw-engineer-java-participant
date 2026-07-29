@@ -1,18 +1,30 @@
 # Exercise 3 — Bean Graph Skeleton (TODOs)
 
-**Module 22** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 22** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete a plain-Java skeleton that mimics constructor DI for CRM collaborators (no Spring runtime yet).
+Create `notes/bean-graph-sketch.md` — complete a plain-Java skeleton that mimics constructor DI for CRM collaborators (no Spring runtime yet).
+
+## Deliverable
+
+| Item | Path (under `examples/module-22-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-05-bean-graph-skeleton.md` (this file in the course repo) |
+| Your notes file | `notes/bean-graph-sketch.md` |
 
 ## Steps
 
-### Step 1 — Create files
+### Step 1 — Create the notes file
 
-Under `module-22-exercises/mini-src/com/northstar/crm/`, create `CustomerRepository.java`, `InMemoryCustomerRepository.java`, `CustomerService.java`, and `IocDemo.java`.
+From `examples/module-22-exercises/`, create `notes/` if needed, then create `notes/bean-graph-sketch.md`.
 
-### Step 2 — Fill TODOs
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 22 — Bean Graph Skeleton (TODOs)
+
+## Step 2 — Fill TODOs
 
 Paste and complete:
 
@@ -53,7 +65,7 @@ public class IocDemo {
 }
 ```
 
-### Step 3 — Compile and run
+## Step 3 — Compile and run
 
 From `module-22-exercises`:
 
@@ -64,19 +76,27 @@ java -cp mini-out com.northstar.crm.IocDemo
 
 Expected: `CUS-1001 | Amina Khan`
 
-### Step 4 — Reflect
+## Step 4 — Reflect
 
 In `notes/bean-graph-sketch.md`, draw arrows: `IocDemo` → `CustomerService` → `CustomerRepository`. Note: Lab 22 lets Spring create this graph.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Demo prints `CUS-1001 | Amina Khan` after filling blanks.
+Demo prints `CUS-1001 | Amina Khan` after filling blanks in `notes/bean-graph-sketch.md`.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
+| No file / wrong name | Must be `notes/bean-graph-sketch.md` |
 | Leaving `_____` in source | Blanks are not valid Java — replace them |
 | `new` inside CustomerService | Inject via constructor parameter instead |
 
@@ -84,6 +104,7 @@ Demo prints `CUS-1001 | Amina Khan` after filling blanks.
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Every `_____` / TODO is replaced | Pass / Fail |
-| 2 | Compile and run succeed with expected output | Pass / Fail |
-| 3 | Notes show the dependency arrow | Pass / Fail |
+| 1 | File exists at `notes/bean-graph-sketch.md` | Pass / Fail |
+| 2 | Every `_____` / TODO is replaced | Pass / Fail |
+| 3 | Compile and run succeed with expected output | Pass / Fail |
+| 4 | Notes show the dependency arrow | Pass / Fail |

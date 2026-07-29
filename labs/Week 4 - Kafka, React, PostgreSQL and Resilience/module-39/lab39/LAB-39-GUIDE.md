@@ -63,7 +63,7 @@ This Module 39 lab wires the **Customer Management Platform** to PostgreSQL with
 
 **Purpose.** Leadership freezes a persistence gate before security testing (Lab 40) and containers (Lab 41): Hibernate must **validate** schema (not `create-drop`), Open Session in View stays **off**, money uses `BigDecimal`, and duplicate / optimistic conflicts return controlled HTTP **409** without leaking `SQLSTATE/` text.
 
-**What you build (exercise).** Copy forward into `lab39-crm`; start PostgreSQL; add JPA + postgresql + Flyway PostgreSQL; configure env-based datasource; author `V1__crm_schema.sql` (aligned with Lab 37/38); map `CustomerEntity` / `AccountEntity` with `@Version`; build repositories and transactional service; bound paging with sort allow-list + ID tie-breaker; map integrity/optimistic failures; run `CustomerRepositoryIT` (Testcontainers optional) until `mvn clean verify` is green.
+**What you build (this lab).** Copy forward into `lab39-crm`; start PostgreSQL; add JPA + postgresql + Flyway PostgreSQL; configure env-based datasource; author `V1__crm_schema.sql` (aligned with Lab 37/38); map `CustomerEntity` / `AccountEntity` with `@Version`; build repositories and transactional service; bound paging with sort allow-list + ID tie-breaker; map integrity/optimistic failures; run `CustomerRepositoryIT` (Testcontainers optional) until `mvn clean verify` is green.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab39-crm/` you can create Amina (`CUS-1001`), activate paths for Ravi (`CUS-1002`), page ACTIVE customers stably, get 409 on duplicate email and optimistic conflict, and show IT evidence against PostgreSQL—not H2 pretending to be PostgreSQL.
 

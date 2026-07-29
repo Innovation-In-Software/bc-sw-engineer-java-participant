@@ -1,37 +1,70 @@
 # Exercise 2 — ConfigMap vs Secret Split
 
-**Module 42** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 42** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Classify CRM settings into ConfigMap vs Secret.
+Create `notes/lab42-config-vs-secret.md` — classify CRM settings into ConfigMap vs Secret.
+
+## Deliverable
+
+| Item | Path (under `examples/module-42-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-02-config-vs-secret.md` (this file in the course repo) |
+| Your notes file | `notes/lab42-config-vs-secret.md` |
 
 ## Steps
 
-### Step 1 — Sort list
+### Step 1 — Create the notes file
+
+From `examples/module-42-exercises/`, create `notes/` if needed, then create `notes/lab42-config-vs-secret.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 42 — ConfigMap vs Secret Split
+
+## Step 1 — Sort list
 
 Sort: datasource URL host, DB password, Kafka bootstrap, JWT issuer URI, log level, feature flags.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Secret data is created out-of-band; Git only gets `secret.example.yaml` without values.
 
-### Step 3 — CRM fixtures
+## Step 3 — CRM fixtures
 
 Confirm `CUS-1001`/`CUS-1002` are app fixtures, not K8s config keys.
 
-### Step 4 — Write table
+## Step 4 — Write table
 
 Save a two-column table in notes.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-Config vs Secret classification table saved.
+Config vs Secret classification table saved in `notes/lab42-config-vs-secret.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab42-config-vs-secret.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 42 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Every setting classified | Pass / Fail |
-| 2 | secret.example pattern stated | Pass / Fail |
-| 3 | Fixtures not in ConfigMap | Pass / Fail |
+| 1 | File exists at `notes/lab42-config-vs-secret.md` | Pass / Fail |
+| 2 | Every setting classified | Pass / Fail |
+| 3 | secret.example pattern stated | Pass / Fail |
+| 4 | Fixtures not in ConfigMap | Pass / Fail |

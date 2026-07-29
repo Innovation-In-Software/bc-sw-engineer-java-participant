@@ -63,7 +63,7 @@ This Module 43 lab gives the **Customer Management Platform** a reviewable **Git
 
 **Purpose.** Leadership freezes a delivery rule: pull requests get fast feedback; `main` and version tags get stronger gates; deployment credentials never live in Git; the JAR verified in CI is the JAR promoted later—not a silently rebuilt binary. A green demo without evidence is not enough.
 
-**What you build (exercise).** Copy or branch into `lab43-crm`; define pipeline policy for PR / main / tags; pin Maven image or Wrapper; cache `~/.m2`; run `clean verify` without skipping tests; add quality gates (dependency scan / available SAST); package once with checksum and commit identity; configure branch behavior and secured variables; force one safe test failure, restore, and document the runbook.
+**What you build (this lab).** Copy or branch into `lab43-crm`; define pipeline policy for PR / main / tags; pin Maven image or Wrapper; cache `~/.m2`; run `clean verify` without skipping tests; add quality gates (dependency scan / available SAST); package once with checksum and commit identity; configure branch behavior and secured variables; force one safe test failure, restore, and document the runbook.
 
 **What success looks like.** Under `~/java-bootcamp/examples/lab43-crm/` a peer can open `.github/workflows/ci.yml` + `docs/ci-runbook.md`, understand which steps deploy, where secrets live, how to re-run a failed verify step, and locate a JAR checksum tied to a commit—using fixtures `CUS-1001` / `CUS-1002` / correlation `lab-request-001` only as synthetic CRM identity in any smoke evidence.
 

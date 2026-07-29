@@ -1,37 +1,73 @@
 # Exercise 5 — Lab 19 Prep Checklist
 
-**Module 19** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 19** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm IT/UI prep without completing Lab 19 or Actuator work.
+Create `notes/lab19-correlation-header-todos.md` — confirm prior notes exist and you are ready for Lab 19 without finishing it now.
+
+## Deliverable
+
+| Item | Path (under `examples/module-19-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-05-lab19-prep-checklist.md` (this file in the course repo) |
+| Your notes file | `notes/lab19-correlation-header-todos.md` |
 
 ## Steps
 
-### Step 1 — Artifacts
+### Step 1 — Create the notes file
 
-Confirm pyramid, page object, locators, correlation TODOs, flake note exist.
+From `examples/module-19-exercises/`, create `notes/` if needed, then create `notes/lab19-prep-checklist.md`.
 
-### Step 2 — Boundary
+### Step 2 — Paste and complete this template
 
-Write: *Pre-lab only — no Actuator; prepare for Lab 19.*
+```markdown
+# Lab 19 prep checklist
 
-### Step 3 — Fixtures
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab19-pyramid.md | _____ |
+| notes/lab19-locators.md | _____ |
+| notes/lab19-page-object.md | _____ |
+| notes/lab19-flake-ci.md | _____ |
+| notes/lab19-correlation-header-todos.md | _____ |
 
-Recall Amina ACTIVE and Ravi PROSPECT for UI stories.
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
 
-### Step 4 — Pass/Fail
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 19 now.
 
-Pass if all artifacts exist; else revisit gaps.
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness with Actuator explicitly out of scope.
+Readiness with Actuator explicitly out of scope in `notes/lab19-prep-checklist.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab19-prep-checklist.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 19 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Artifacts confirmed | Pass / Fail |
-| 2 | No-Actuator statement | Pass / Fail |
-| 3 | Pass/Fail marked | Pass / Fail |
+| 1 | File exists at `notes/lab19-prep-checklist.md` | Pass / Fail |
+| 2 | Artifacts confirmed | Pass / Fail |
+| 3 | No-Actuator statement | Pass / Fail |
+| 4 | Pass/Fail marked | Pass / Fail |

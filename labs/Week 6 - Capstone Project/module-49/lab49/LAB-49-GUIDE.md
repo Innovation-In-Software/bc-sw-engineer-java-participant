@@ -66,7 +66,7 @@ This Module 49 lab implements or extends the CRM **Spring Boot + Kafka vertical 
 
 **Purpose.** Service agents must record interactions that persist reliably, return a clear API contract, publish a traceable event, and tolerate duplicate or failed consumption. A green demo without tests, correlation IDs, or failure-path evidence does not pass capstone quality.
 
-**What you build (exercise).** Select a Lab 48 backlog story (e.g. CAP-12); create domain/DTOs with Bean Validation; JPA persistence + migration; transactional application service; REST endpoint with Problem Details; Kafka publisher with versioned event; resilient consumer (dedupe, retries, DLT); unit/MVC/JPA/Kafka tests; document the demo runbook.
+**What you build (this lab).** Select a Lab 48 backlog story (e.g. CAP-12); create domain/DTOs with Bean Validation; JPA persistence + migration; transactional application service; REST endpoint with Problem Details; Kafka publisher with versioned event; resilient consumer (dedupe, retries, DLT); unit/MVC/JPA/Kafka tests; document the demo runbook.
 
 **What success looks like.** Under the capstone backend, `./mvnw -B clean verify` (or `mvn`) is green twice; `POST` interaction for `CUS-1001` with `lab-request-001` returns 201; row exists; event appears on the topic; negatives return Problem Details; `docs/backend-demo.md` lets a peer reproduce the slice.
 

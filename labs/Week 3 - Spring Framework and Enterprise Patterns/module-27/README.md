@@ -6,8 +6,8 @@
 
 | Step | Open this |
 | ---- | --------- |
-| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises 1–6 in order |
+| 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab27-*.md` files) |
 | 2 | OS guide → [`lab27/LAB-27-WINDOWS.md`](lab27/LAB-27-WINDOWS.md) or [`lab27/LAB-27-MACOS.md`](lab27/LAB-27-MACOS.md) |
 | 3 | Full lab → [`lab27/LAB-27-GUIDE.md`](lab27/LAB-27-GUIDE.md) |
 
-The pre-lab exercises warm up the skills for **Transaction Management with AI Assistance**. The full lab is the graded consolidation.
+**Pre-lab vs lab:** Pre-lab exercises are markdown notes under `examples/module-27-exercises/notes/`. Lab 27 is the graded project (see lab guide paths). Do not merge the two paths.

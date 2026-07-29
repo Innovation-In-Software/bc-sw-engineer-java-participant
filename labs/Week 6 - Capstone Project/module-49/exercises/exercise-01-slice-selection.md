@@ -1,37 +1,70 @@
 # Exercise 1 — Select Backend Vertical Slice
 
-**Module 49** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 49** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Pick one coherent backend slice for capstone build day.
+Create `notes/lab49-slice-selection.md` — pick one coherent backend slice for capstone build day.
+
+## Deliverable
+
+| Item | Path (under `examples/module-49-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-01-slice-selection.md` (this file in the course repo) |
+| Your notes file | `notes/lab49-slice-selection.md` |
 
 ## Steps
 
-### Step 1 — Options
+### Step 1 — Create the notes file
+
+From `examples/module-49-exercises/`, create `notes/` if needed, then create `notes/lab49-slice-selection.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 49 — Select Backend Vertical Slice
+
+## Step 1 — Options
 
 Candidate slices: customer create/read, interaction record, status change + event.
 
-### Step 2 — Check the reference
+## Step 2 — Check the reference
 
 Slice must include API + persistence + Kafka touch if messaging is in scope.
 
-### Step 3 — Fixtures
+## Step 3 — Fixtures
 
 Define how `CUS-1001`/`CUS-1002` and `lab-request-001` appear in demos/tests.
 
-### Step 4 — Out of scope
+## Step 4 — Out of scope
 
 Explicitly list what this slice will not include.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-One selected slice with in/out scope and fixtures.
+One selected slice with in/out scope and fixtures in `notes/lab49-slice-selection.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab49-slice-selection.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 49 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Slice chosen | Pass / Fail |
-| 2 | In/out scope listed | Pass / Fail |
-| 3 | Fixtures planned | Pass / Fail |
+| 1 | File exists at `notes/lab49-slice-selection.md` | Pass / Fail |
+| 2 | Slice chosen | Pass / Fail |
+| 3 | In/out scope listed | Pass / Fail |
+| 4 | Fixtures planned | Pass / Fail |

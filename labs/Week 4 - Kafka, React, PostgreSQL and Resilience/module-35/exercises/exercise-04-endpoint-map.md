@@ -1,10 +1,28 @@
 # Exercise 5 — Endpoint Map
 
-**Module 35** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 35** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Connect dashboard actions to Spring CRM endpoints.
+Create `notes/lab35-api.md` — connect dashboard actions to Spring CRM endpoints.
+
+## Deliverable
+
+| Item | Path (under `examples/module-35-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-endpoint-map.md` (this file in the course repo) |
+| Your notes file | `notes/lab35-api.md` |
+
+## Steps
+
+### Step 1 — Create the notes file
+
+From `examples/module-35-exercises/`, create `notes/` if needed, then create `notes/lab35-api.md`.
+
+### Step 2 — Paste and complete this template
+
+```markdown
+# Lab 35 — Endpoint Map
 
 ## Reference
 
@@ -15,32 +33,43 @@ Connect dashboard actions to Spring CRM endpoints.
 | Create customer | POST /api/customers |
 | Update status | PATCH /api/customers/{id} |
 
-## Steps
-
-### Step 1 — Copy table
-
-Copy into `notes/lab35-api.md`; adjust paths if your Week 3 API differed — note the difference.
-
-### Step 2 — Ravi row
+## Step 2 — Ravi row
 
 Add GET for `CUS-1002`.
 
-### Step 3 — Status codes
+## Step 3 — Status codes
 
 List expected codes: 200, 201, 400, 404, 500.
 
-### Step 4 — JSON shape
+## Step 4 — JSON shape
 
 Sketch list item JSON: customerId, name, status.
 
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+### Step 3 — Self-check
+
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+
 ## Expected result
 
-UI↔HTTP map with status codes and a JSON sketch.
+UI↔HTTP map with status codes and a JSON sketch in `notes/lab35-api.md`.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab35-api.md` |
+| Leaving blanks or skipping steps | Complete every step before claiming Pass |
+| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 35 |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Table + Ravi row | Pass / Fail |
-| 2 | Five status codes | Pass / Fail |
-| 3 | JSON fields listed | Pass / Fail |
+| 1 | File exists at `notes/lab35-api.md` | Pass / Fail |
+| 2 | Table + Ravi row | Pass / Fail |
+| 3 | Five status codes | Pass / Fail |
+| 4 | JSON fields listed | Pass / Fail |
