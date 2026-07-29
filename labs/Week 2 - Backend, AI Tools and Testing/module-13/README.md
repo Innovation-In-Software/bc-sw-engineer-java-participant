@@ -6,6 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (SOAP / WSDL / XSD and related terms in plain language) |
 | 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab13-*.md` files) |
 | 2 | OS guide → [`lab13/LAB-13-WINDOWS.md`](lab13/LAB-13-WINDOWS.md) or [`lab13/LAB-13-MACOS.md`](lab13/LAB-13-MACOS.md) |
 | 3 | Full lab → [`lab13/LAB-13-GUIDE.md`](lab13/LAB-13-GUIDE.md) |
