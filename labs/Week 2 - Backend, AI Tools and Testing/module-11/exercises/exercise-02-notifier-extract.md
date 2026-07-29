@@ -1,37 +1,68 @@
 # Exercise 2 — Notifier Extract Plan
 
-**Module 11** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 11** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Plan extracting a notifier collaborator so tests can later isolate side effects.
+Create `notes/lab11-notifier-extract-plan.md` that plans extracting a notifier collaborator so tests can isolate side effects (matches Lab 11’s `CustomerNotifier`).
+
+## Deliverable
+
+| Item | Path (under `examples/module-11-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-02-notifier-extract.md` (this file in the course repo) |
+| Your notes file | `notes/lab11-notifier-extract-plan.md` |
 
 ## Steps
 
-### Step 1 — Smell
+### Step 1 — Create the notes file
 
-Describe inline `System.out` / email send inside activate as a testability smell.
+From `examples/module-11-exercises/`, create `notes/lab11-notifier-extract-plan.md`.
 
-### Step 2 — Extract sketch
+### Step 2 — Write these four sections
 
-Sketch interface `CustomerNotifier.notifyActivated(customerId)` on paper.
+Use this exact structure (copy headings, fill the body):
 
-### Step 3 — Why for Copilot
+**1. Smell (1–2 sentences)**  
+Inline `System.out` / email send inside `CustomerService.updateStatus` (or activate) makes unit tests slow, flaky, and hard to assert. Side effects belong on a collaborator.
 
-One sentence: stronger prompts name the collaborator so AI does not bury I/O in the service.
+**2. Interface sketch (Lab 11 shape — sketch only, do not implement yet)**
 
-### Step 4 — Defer
+```java
+public interface CustomerNotifier {
+    void notifyStatusChange(String customerId,
+                            CustomerStatus from,
+                            CustomerStatus to);
+}
+```
 
-Mark: do not implement Spring events or Kafka yet — prep sketch only.
+**3. Why this helps Copilot (one sentence)**  
+Stronger prompts name `CustomerNotifier` so AI does not bury I/O inside `CustomerService`.
+
+**4. Out of scope for this pre-lab**  
+Do **not** implement Spring events, Kafka, or email providers yet — sketch only.  
+Do **not** finish Lab 11’s Mockito test yet.
+
+### Step 3 — Self-check
+
+Method name must be `notifyStatusChange` (same as Lab 11), **not** a made-up `notifyActivated` only.
 
 ## Expected result
 
-A one-page extract plan that improves future AI test prompts.
+`notes/lab11-notifier-extract-plan.md` with smell, interface sketch, Copilot sentence, and out-of-scope note.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| No file / wrong name | Must be `notes/lab11-notifier-extract-plan.md` |
+| Inventing Spring `@EventListener` | Plain Java interface only |
+| Implementing the class now | Sketch in notes only; Lab 11 implements |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Smell named | Pass / Fail |
-| 2 | Interface sketched | Pass / Fail |
-| 3 | Out-of-scope hosting noted | Pass / Fail |
+| 1 | File exists at `notes/lab11-notifier-extract-plan.md` | Pass / Fail |
+| 2 | Smell named + `notifyStatusChange` sketched | Pass / Fail |
+| 3 | Out-of-scope (no Spring/Kafka; pre-lab only) noted | Pass / Fail |

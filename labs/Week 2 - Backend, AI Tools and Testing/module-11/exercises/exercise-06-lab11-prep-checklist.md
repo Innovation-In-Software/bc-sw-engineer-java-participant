@@ -1,37 +1,92 @@
 # Exercise 6 — Lab 11 Prep Checklist
 
-**Module 11** · Documentation exercise · [setup](EXERCISES-INDEX.md)
+**Module 11** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Confirm you are ready to practice AI test generation without finishing Lab 11 now.
+Create `notes/lab11-prep-checklist.md` confirming you are ready for Lab 11 practice — without finishing the graded lab in this pre-lab.
+
+## Deliverable
+
+| Item | Path (under `examples/module-11-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-06-lab11-prep-checklist.md` (this file in the course repo) |
+| Your notes file | `notes/lab11-prep-checklist.md` |
+
+## Required files from earlier exercises
+
+| # | Must already exist |
+| - | ------------------ |
+| 1 | `notes/lab11-aaa-template.md` (Exercise 1) |
+| 2 | `notes/lab11-notifier-extract-plan.md` (Exercise 2) |
+| 3 | `notes/lab11-prelab-asserts.md` (Exercise 3) |
+| 4 | `notes/lab11-acceptance-todos.md` (Exercise 4) |
+| 5 | `notes/lab11-coverage-gaps.md` (Exercise 5) |
 
 ## Steps
 
-### Step 1 — Recall fixtures
+### Step 1 — Create the prep checklist
 
-Write Amina ACTIVE and Ravi PROSPECT with ids from memory.
+Create `notes/lab11-prep-checklist.md` and paste:
 
-### Step 2 — Checklist present
+```markdown
+# Lab 11 prep checklist
 
-Confirm acceptance TODOs file exists from exercise 4.
+## Fixtures (from memory — then verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | _____ | _____ |
+| CUS-1002 | _____ | _____ |
 
-### Step 3 — Boundary
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab11-aaa-template.md | _____ |
+| notes/lab11-notifier-extract-plan.md | _____ |
+| notes/lab11-prelab-asserts.md | _____ |
+| notes/lab11-acceptance-todos.md | _____ |
+| notes/lab11-coverage-gaps.md | _____ |
 
-Write: *Pre-lab only — prepare for lab; do not complete full Lab 11.*
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 11 now.
 
-### Step 4 — Pass/Fail
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): _____
+```
 
-Pass if AAA + acceptance TODOs + gap map exist; else revisit 2–5.
+### Step 2 — Fill blanks
+
+Correct fixture fills:
+
+| ID | Name | Status |
+| -- | ---- | ------ |
+| `CUS-1001` | Amina Khan | `ACTIVE` |
+| `CUS-1002` | Ravi Singh | `PROSPECT` |
+
+Mark **yes** only for files that actually exist on disk. If any is **no**, go back and finish that exercise.
+
+### Step 3 — Self mark
+
+Write **Pass** only if all five files exist and fixtures are correct. Otherwise **Fail** and list which exercise numbers to revisit.
 
 ## Expected result
 
-Readiness marked with explicit pre-lab-only scope.
+`notes/lab11-prep-checklist.md` with correct fixtures, file presence checks, pre-lab-only scope, and Pass/Fail mark.
+
+## If it fails
+
+| Problem | Fix |
+| --- | --- |
+| Swapped statuses | Amina ACTIVE; Ravi PROSPECT |
+| Missing earlier notes | Re-run Exercises 1–5; create the missing `notes/lab11-*.md` files |
+| Starting Lab 11 mid-exercise | Finish this checklist first, then open Lab 11 OS guide |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | Fixtures correct | Pass / Fail |
-| 2 | Pre-lab-only statement present | Pass / Fail |
-| 3 | Pass/Fail self-mark written | Pass / Fail |
+| 1 | File exists at `notes/lab11-prep-checklist.md` | Pass / Fail |
+| 2 | Fixtures correct (Amina ACTIVE / Ravi PROSPECT) | Pass / Fail |
+| 3 | All five prior notes marked present (or Fail + revisit list) | Pass / Fail |
+| 4 | Pre-lab-only statement + overall Pass/Fail written | Pass / Fail |

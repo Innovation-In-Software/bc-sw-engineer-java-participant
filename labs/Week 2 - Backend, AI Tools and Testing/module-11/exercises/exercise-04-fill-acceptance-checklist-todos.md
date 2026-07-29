@@ -1,52 +1,82 @@
 # Exercise 4 — Fill Acceptance Checklist TODOs
 
-**Module 11** · Hands-on exercise · [setup](EXERCISES-INDEX.md)
+**Module 11** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal
 
-Complete fill-in blanks for an acceptance checklist before trusting Copilot tests.
+Create `notes/lab11-acceptance-todos.md` and complete every fill-in blank for an acceptance checklist before trusting Copilot-generated tests.
+
+## Deliverable
+
+| Item | Path (under `examples/module-11-exercises/`) |
+| ---- | --------------------------------------------- |
+| Guide | `exercises/exercise-04-fill-acceptance-checklist-todos.md` (this file in the course repo) |
+| Your notes file (starter) | `notes/lab11-acceptance-todos.md` |
 
 ## Steps
 
-### Step 1 — Copy checklist
+### Step 1 — Copy template
 
 Create `notes/lab11-acceptance-todos.md` and paste:
 
+```markdown
+# Lab 11 acceptance checklist TODOs
+
+Imagine Copilot just generated a CustomerServiceTest. Score it below.
+
 AAA structure present? _____
-Asserts use Amina/Ravi values? _____
-Trivial assertNotNull-only rejected? _____
-Correlation mention lab-request-001? _____
-Coverage gap noted for Labs 17-18? _____
-Accept / Reject: _____
+Asserts use Amina/Ravi values (CUS-1001 ACTIVE / CUS-1002 PROSPECT)? _____
+Trivial assertNotNull-only / assertTrue(true) rejected? _____
+Correlation mention lab-request-001 (notes/comments OK)? _____
+Coverage gap noted for Labs 17–18? _____
+Accept / Reject / Edit: _____
 
-### Step 2 — Fill blanks
+## Gap sentence (Labs 17–18)
+_____
 
-Replace each `_____` with yes/no or Accept/Reject as appropriate for a sample AI test.
+## One reason for Accept / Reject / Edit
+_____
+```
 
-### Step 3 — Gap sentence
+### Step 2 — Fill every blank
 
-Write one gap: *Deep Mockito verify waits for Lab 18; JaCoCo gates deepen in Lab 17.*
+Replace each `_____` with concrete values. Example (you may use your own honest scores):
 
-### Step 4 — Self-check
+| Blank | Example fill |
+| ----- | ------------ |
+| AAA structure present? | yes |
+| Asserts use Amina/Ravi values? | yes |
+| Trivial asserts rejected? | yes |
+| Correlation mention? | yes (in notes) |
+| Coverage gap noted? | yes |
+| Accept / Reject / Edit | Edit |
+| Gap sentence | Deep Mockito verify waits for Lab 18; JaCoCo / parameterized depth waits for Lab 17. |
+| One reason | Keep domain asserts; replace assertNotNull-only methods before Accept. |
 
-Ensure boundary vs Labs 17–18 appears in the filled sheet.
+### Step 3 — Self-check
+
+- Every `_____` is gone.
+- Gap sentence names **both** Lab 17 and Lab 18.
+- Decision is one of: Accept / Reject / Edit.
 
 ## Expected result
 
-A filled acceptance TODO sheet with honest 17–18 boundary.
+A filled acceptance TODO sheet at `notes/lab11-acceptance-todos.md` with an honest Labs 17–18 boundary.
 
 ## If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Problem | Fix |
-| Treating Copilot coverage as final | List gaps for Labs 17–18 |
-| Keeping assertTrue(true) | Require domain asserts on ACTIVE/PROSPECT |
+| Leaving blanks empty | Fill every `_____` before claiming prep done |
+| Treating Copilot coverage as final | Write the Labs 17–18 gap sentence |
+| Keeping assertTrue(true) as Accept | Choose Reject or Edit; require ACTIVE/PROSPECT asserts |
+| Wrong file name | Must be `notes/lab11-acceptance-todos.md` |
 
 ## Pass criteria
 
 | # | Confirm | Notes |
 | --- | --- | --- |
-| 1 | All _____ replaced | Pass / Fail |
-| 2 | 17–18 gap sentence present | Pass / Fail |
-| 3 | Accept/Reject recorded | Pass / Fail |
+| 1 | File exists at `notes/lab11-acceptance-todos.md` | Pass / Fail |
+| 2 | All `_____` replaced | Pass / Fail |
+| 3 | Labs 17–18 gap sentence present | Pass / Fail |
+| 4 | Accept / Reject / Edit recorded | Pass / Fail |
