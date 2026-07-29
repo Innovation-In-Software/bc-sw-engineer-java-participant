@@ -9,6 +9,21 @@
 
 Create `ArrayListDemo.java` and practice ordered CRUD: add, update, search, remove, index access, and iteration.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Found Effective Java: true
+Size: 3
+0: Clean Architecture
+1: Effective Java
+2: Java Fundamentals
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

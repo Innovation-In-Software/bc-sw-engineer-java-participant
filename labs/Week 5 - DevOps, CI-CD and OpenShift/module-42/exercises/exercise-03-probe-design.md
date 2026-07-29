@@ -8,10 +8,43 @@ Create `notes/lab42-probe-design.md` — differentiate startup, readiness, and l
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-probe-design.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-probe-design.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 42 — Design Three Probes
+
+## Step 1 — Definitions
+
+Write one sentence each: startup (slow boot), readiness (take traffic), liveness (restart if wedged).
+
+## Step 2 — Check the reference
+
+Do not point all three at the same shallow endpoint without thinking—readiness should reflect DB dependency where required.
+
+## Step 3 — Paths
+
+Propose Actuator paths/ports for each probe (placeholders OK).
+
+## Step 4 — Failure story
+
+Describe what agents see if readiness fails while liveness stays up.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Probe design notes with agent-visible failure story in `notes/lab42-probe-design
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab42-probe-design.md` | Pass / Fail |
-| 2 | Three probes defined | Pass / Fail |
-| 3 | Paths proposed | Pass / Fail |
-| 4 | Readiness failure impact stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab42-probe-design.md`
+- [ ] Three probes defined
+- [ ] Paths proposed
+- [ ] Readiness failure impact stated
+

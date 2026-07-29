@@ -38,6 +38,16 @@ customer-management-platform/
 | `docs` | Team-facing project documentation | Yes |
 | `target` | Generated classes, reports, JARs | No |
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Create `maven-layout-notes.md` and explain where production code, tests, configuration, documentation, and generated files belong.
+
+**Done looks like:** Every file is assigned to the correct Maven location, and you can distinguish source from generated output.
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Classify these files

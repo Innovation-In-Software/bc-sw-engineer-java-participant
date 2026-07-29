@@ -8,10 +8,43 @@ Create `notes/lab13-operation-matrix.md` — fill an in/out/fault matrix for Get
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-operation-matrix.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-operation-matrix.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 13 — Operation Matrix
+
+## Step 1 — GetCustomer
+
+In: customerId; Out: id, name, status; Fault: not found.
+
+## Step 2 — ActivateCustomer
+
+In: customerId (+ correlation header idea); Out: new status; Fault: invalid transition.
+
+## Step 3 — Happy path
+
+Note Activate on CUS-1002 Ravi PROSPECT → ACTIVE as the design happy path.
+
+## Step 4 — Prep only
+
+Write: *Design only — do not complete full Lab 13 build.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A two-operation matrix with Northstar happy path noted in `notes/lab13-operation
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab13-operation-matrix.md` | Pass / Fail |
-| 2 | Both operations have in/out/fault | Pass / Fail |
-| 3 | Ravi activate path noted | Pass / Fail |
-| 4 | Design-only boundary present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab13-operation-matrix.md`
+- [ ] Both operations have in/out/fault
+- [ ] Ravi activate path noted
+- [ ] Design-only boundary present
+

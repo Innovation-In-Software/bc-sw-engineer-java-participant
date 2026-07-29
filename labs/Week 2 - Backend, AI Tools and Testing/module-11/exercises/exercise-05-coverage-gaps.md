@@ -8,10 +8,41 @@ Create `notes/lab11-coverage-gaps.md` that names what Lab 11 prep proves versus 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-coverage-gaps.md` (this file in the course repo) |
 | Your notes file | `notes/lab11-coverage-gaps.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 11 coverage gaps map
+
+## In scope for Lab 11 (prep + lab)
+- AI-assisted happy-path / status-change test sketch
+- AAA discipline (Arrange / Act / Assert)
+- Reject trivial asserts (assertNotNull-only, assertTrue(true))
+- Extract CustomerNotifier + one Mockito verify (preview)
+
+## Deferred to Lab 17
+- Parameterized tests and stronger naming conventions
+- JaCoCo coverage narrative / gates
+
+## Deferred to Lab 18
+- stub vs verify depth
+- ArgumentCaptor and richer interaction testing
+
+## One sentence takeaway
+Lab 11 is a guided preview of AI + tests; Labs 17–18 are the formal testing curriculum.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 

@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab42-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-42/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | `docs/deployment-runbook.md` |
 | 7 | No kubeconfig, tokens, or Secret data in Git |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -204,9 +209,9 @@ Ignore kubeconfig copies, `*-secret.yaml` with data, `.env`, and TLS private key
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/deployment-runbook.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: Route → Service → Pod → app → PostgreSQL
 2. Trust boundary: cluster auth vs app authz; who can `exec`
@@ -214,10 +219,28 @@ Write 2–3 sentences each in `docs/deployment-runbook.md`:
 4. Stable image digest vs moving tag
 5. Idempotency of `kubectl apply`; when apply is not enough (Secret rotation)
 6. Why readiness gates traffic but liveness kills processes
-7. Evidence operators need (rollout history, events, logs, endpoints)
-8. Two replicas: session stickiness assumptions (prefer stateless API)
-9. ConfigMap vs Secret misuse (password in ConfigMap)
-10. What GitOps would change later without rewriting probe intent
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+cd ~/java-bootcamp/examples
+mkdir -p lab42-crm/k8s lab42-crm/docs
+mkdir -p ~/java-bootcamp/notes/screenshots/lab-42
+cd lab42-crm
+
+kubectl config current-context
+kubectl get sa,rolebinding -o name | head
+# Confirm you can pull or that instructor preloaded the image:
+kubectl run crm-pull-test --image=REGISTRY/training/crm-api:lab41 --restart=Never --command -- sleep 5
+kubectl delete pod crm-pull-test --wait=false 2>/dev/null || true
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -551,7 +574,7 @@ Optional: delete one pod and watch Service continue serving while the ReplicaSet
 
 ### Checkpoint A — Access and config
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -561,7 +584,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Workload manifests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -571,7 +594,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Exposure and proof
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -581,7 +604,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Operations hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -742,18 +765,14 @@ livenessProbe:  { httpGet: { path: /actuator/health/liveness,  port: http }, per
 
 ## Security and Production Review
 
-Answer in the runbook:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (Traffic from Route; ConfigMap data from Git)?
 2. Where are authn/authz enforced (edge + app—not Deployment alone)?
 3. Which values are sensitive—Secret vs ConfigMap?
-4. What can be retried safely (`apply`, rollout undo, pod delete)?
-5. What happens after partial failure (mixed Ready pods during rollout)?
-6. What would an operator monitor (replicas, probe fails, events, error rate)?
-7. Which local default is unacceptable (privileged, latest tag, secret in Git)?
-8. How are manifest/image contracts versioned (Git SHA + digest)?
 
 ---
+
 
 ## Cleanup
 
@@ -775,15 +794,9 @@ Remove local kubeconfig copies and plaintext password files from the jump host.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `k8s/configmap.yaml`, `deployment.yaml`, `service.yaml`, `route.yaml` or `ingress.yaml`
-* Secret handling documented (`secret.example.yaml` without values)
-* Probe configuration with distinct startup/ready/live
-* Rollout success evidence + rollback rehearsal evidence
-* CRM smoke evidence (`CUS-1001`, correlation)
-* `docs/deployment-runbook.md`
-* No kubeconfig, tokens, or Secret data in Git
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -805,44 +818,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected traffic safety (which probe)?
-2. Which failure was hardest to diagnose from events/logs?
-3. What evidence proves rollback worked?
-4. What breaks first at ten times the replica count or QPS?
-5. Which concern should move to shared platform GitOps?
-6. What must change before real customer data is used via the Route?
-7. How does this lab connect to Labs 40–41 and the CRM architecture?
-8. What metric matters most during a rolling update?
-9. (Forward look) What would NetworkPolicy / PDB change in failure modes?
+2. What evidence proves rollback worked?
+3. Which failure was hardest to diagnose from events/logs?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a PodDisruptionBudget and explain its limits.
 2. Add a NetworkPolicy for API ingress and DB egress.
 3. Use Kustomize overlays for dev vs test images.
-4. Capture readiness during rolling update (`kubectl get pods -w`).
-5. Pin the image by registry digest in the Deployment.
-6. Document blue/green vs rolling trade-offs for this CRM API.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Manifests deploy cleanly in the training namespace
-* Probes are distinct and empirically tuned enough to stay Ready
-* Service/Route expose a working CRM smoke path
-* Rollback was rehearsed and verified
-* Runbook enables peer reproduction
-* No production secret or kubeconfig is in Git
-* You can explain local Docker vs cluster differences honestly
-
----
 
 ## Instructor Notes
 

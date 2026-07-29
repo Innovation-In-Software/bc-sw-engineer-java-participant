@@ -8,10 +8,48 @@ Create `notes/lab19-correlation-header-todos.md` — complete fill-in blanks for
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-fill-correlation-header-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-correlation-header-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 19 — Fill Correlation Header TODOs
+
+## Step 1 — Copy TODOs
+
+Header name: (your note here)
+Header value for lab: (your note here)
+IT call must attach header? (your note here)
+UI journey logs correlation? (your note here)
+Flake mitigation idea: (your note here)
+Actuator in this pre-lab? (your note here)
+
+## Step 2 — Fill blanks
+
+Fill X-Correlation-Id, lab-request-001, yes, yes/optional, explicit waits/testid stability, and no for Actuator.
+
+## Step 3 — CI note
+
+Write: *CI agents need browser driver management; expect flake without waits.*
+
+## Step 4 — Self-check
+
+Confirm Actuator blank is no (Lab 21).
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Filled correlation/flake TODOs with Actuator deferred in `notes/lab19-correlatio
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab19-correlation-header-todos.md` | Pass / Fail |
-| 2 | All _____ replaced | Pass / Fail |
-| 3 | CI flake note present | Pass / Fail |
-| 4 | Actuator deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab19-correlation-header-todos.md`
+- [ ] All _____ replaced
+- [ ] CI flake note present
+- [ ] Actuator deferred
+

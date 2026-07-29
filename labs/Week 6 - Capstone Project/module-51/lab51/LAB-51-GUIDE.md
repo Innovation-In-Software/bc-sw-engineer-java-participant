@@ -37,12 +37,14 @@ Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
 
 ## How to follow this lab
 
-1. **In class (session block):** prefer [`starter/README.md`](starter/README.md) — copy starter → platform tree, fill security/deploy stubs (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / multi-day): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-51/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -59,6 +61,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | One controlled failure-path result (401/403 or failed rollout→rollback) |
 | 8 | Concise setup and reproduction guide |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -234,9 +239,9 @@ Ignore plaintext secret files, kubeconfig copies, and `*.pem` keys. Prefer platf
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/security-deploy-demo.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main release flow (commit → digest → deploy → smoke)
 2. Trust boundary: ingress TLS, JWT validation, DB credentials
@@ -244,10 +249,36 @@ Write 2–3 sentences each in `docs/security-deploy-demo.md`:
 4. Stable fixtures in smoke vs production customer data (never)
 5. Idempotency of redeploy same digest
 6. Why image digest beats floating `:latest`
-7. Evidence operators need (rollout status, probes, scan reports)
-8. Two environments: same pipeline, different secret scopes
-9. False-confidence “security” (csrf disabled without rationale)
-10. What Lab 52 will cite from this lab’s evidence index
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@Test
+void deleteCustomerRequiresManagerRole() throws Exception {
+  mvc.perform(delete("/api/customers/{id}", customerId)
+      .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
+     .andExpect(status().isForbidden());
+}
+
+@Test
+void anonymousCustomersUnauthorized() throws Exception {
+  mvc.perform(get("/api/customers"))
+     .andExpect(status().isUnauthorized());
+}
+
+@Test
+void agentCanReadCustomers() throws Exception {
+  mvc.perform(get("/api/customers").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
+     .andExpect(status().isOk());
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -329,7 +360,7 @@ Document claim → role mapping (e.g. `realm_access.roles`) in `docs/security-de
 
 Checklist to tick in demo.md:
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -442,6 +473,7 @@ Also freeze release identity for Lab 52:
 
 ```markdown
 ## Release identity
+
 - Image tag:
 - Digest:
 - Pipeline run:
@@ -460,7 +492,7 @@ Also freeze release identity for Lab 52:
 
 ### Checkpoint A — Threat model and authz
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -470,7 +502,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Harden and scan
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -480,7 +512,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Ship and verify
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -490,7 +522,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Recovery hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -563,6 +595,7 @@ Adapt paths to your Spring Boot actuator config; never probe a authenticated-onl
 ## Smoke commands + outcomes (401/403/200)
 ## Rollback commands + outcomes
 ## Residual risks / exceptions
+
 ```
 
 ---
@@ -618,18 +651,14 @@ Adapt paths to your Spring Boot actuator config; never probe a authenticated-onl
 
 ## Security and Production Review
 
-Answer in `docs/security-deploy-demo.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (tokens, headers, images, manifests)?
 2. Where are authn/authz/validation enforced (filter chain, method security)?
 3. Which values are sensitive—never in Git or CI logs?
-4. What can be retried safely (redeploy same digest; smoke GETs)?
-5. What happens after partial failure (auto rollback? manual owner?)?
-6. What would an operator monitor (5xx, lag, probe failures, CVE stream)?
-7. Which local default is unacceptable (`:latest`, root container, `permitAll`)?
-8. How are release contracts versioned with image digests and migrations?
 
 ---
+
 
 ## Cleanup
 
@@ -649,20 +678,9 @@ Keep sanitized reports; remove plaintext secrets.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Spring Security changes and authorization tests
-* Pipeline definition
-* Dockerfile and image digest record
-* Deployment manifests (k3s)
-* Security and deployment evidence (scans, smoke, rollback)
-* Baseline and final validation results
-* One controlled failure-path result (401/403 or failed rollout→rollback)
-* Concise setup and reproduction guide
-* Peer-review notes and resolved comments
-* Known limitations, residual risks, owners, and next actions
-
-Exclude real `.env` files, access tokens, database exports, private keys, kubeconfig, Terraform state, and sensitive screenshots.
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -684,44 +702,26 @@ Exclude real `.env` files, access tokens, database exports, private keys, kubeco
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness of the release gate?
-2. Which failure was hardest to diagnose (JWT, pull secret, probes)?
-3. What evidence proves the deployment is the intended digest?
-4. What breaks first at ten times release frequency?
-5. Which concern should move to shared platform CI?
-6. What must change before production customer data rides this pipeline?
-7. How does this lab connect to Labs 48–50 and Lab 52?
-8. What metric matters most on the release dashboard?
-9. (Forward look) Which rollback assumption will Lab 52 panelists attack first?
+2. What evidence proves the deployment is the intended digest?
+3. Which failure was hardest to diagnose (JWT, pull secret, probes)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a canary stage with abort thresholds.
 2. Generate and attest an SBOM with the image digest.
 3. Add NetworkPolicy and verify denied paths.
-4. Test token expiry during a request flow.
-5. Automate previous-digest rollback in the pipeline.
-6. Wire smoke that asserts `CUS-1001` appears when seed job ran.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* JWT deny-by-default is tested (401/403/200)
-* Immutable image digest is published and deployed
-* Pipeline gates include tests and security scans
-* Smoke and rollback are evidenced
-* Another student can follow the release runbook
-* Threat model maps controls to abuse cases
-* No production secret is hard-coded or committed
-
----
 
 ## Instructor Notes
 

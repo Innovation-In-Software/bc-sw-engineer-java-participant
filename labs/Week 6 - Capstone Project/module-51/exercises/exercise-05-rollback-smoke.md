@@ -8,10 +8,43 @@ Create `notes/lab51-rollback-smoke.md` — write a half-page rollback+smoke mini
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-51-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-rollback-smoke.md` (this file in the course repo) |
 | Your notes file | `notes/lab51-rollback-smoke.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 51 — Rollback and Smoke Mini-Runbook
+
+## Step 1 — Steps
+
+Detect → undo to known-good digest → wait Ready → smoke `CUS-1001` → record evidence.
+
+## Step 2 — Check the reference
+
+Rollback without verification is incomplete.
+
+## Step 3 — Timebox
+
+Add target duration placeholder and who calls the rollback.
+
+## Step 4 — Link forward
+
+Note this becomes part of Lab 52 evidence index.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Mini-runbook with verification and ownership in `notes/lab51-rollback-smoke.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab51-rollback-smoke.md` | Pass / Fail |
-| 2 | Steps include verify | Pass / Fail |
-| 3 | Owner/timebox present | Pass / Fail |
-| 4 | Lab 52 link noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab51-rollback-smoke.md`
+- [ ] Steps include verify
+- [ ] Owner/timebox present
+- [ ] Lab 52 link noted
+

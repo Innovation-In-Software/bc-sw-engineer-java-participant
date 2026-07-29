@@ -8,10 +8,39 @@ Create `notes/lab15-repo-boundary.md` — list what belongs in the repository ve
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-repo-boundary.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-repo-boundary.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 15 — Repository Boundary
+
+## Step 1 — Repo owns
+
+CRUD by id, existence checks, persistence mapping.
+
+## Step 2 — Service owns
+
+Transition matrix, notifier calls, domain exceptions.
+
+## Step 3 — Anti-pattern
+
+Anti-pattern: `repo.activateCustomer` hiding business rules.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A crisp ownership list for repo vs service in `notes/lab15-repo-boundary.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab15-repo-boundary.md` | Pass / Fail |
-| 2 | Repo responsibilities listed | Pass / Fail |
-| 3 | Service responsibilities listed | Pass / Fail |
-| 4 | Anti-pattern named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab15-repo-boundary.md`
+- [ ] Repo responsibilities listed
+- [ ] Service responsibilities listed
+- [ ] Anti-pattern named
+

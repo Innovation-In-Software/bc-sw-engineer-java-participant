@@ -8,10 +8,28 @@ Create `notes/lab33-todos.md` — fill TODOs in a CustomerCard pseudocode compon
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-33-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-fill-react-component-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab33-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 33 — Fill Component TODOs
+
+## Step 1 — Paste
+
+Create `notes/lab33-todos.md`:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -81,9 +99,10 @@ Filled TSX stub with Amina usage and a11y note in `notes/lab33-todos.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab33-todos.md` | Pass / Fail |
-| 2 | All blanks filled | Pass / Fail |
-| 3 | Amina usage present | Pass / Fail |
-| 4 | A11y note written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab33-todos.md`
+- [ ] All blanks filled
+- [ ] Amina usage present
+- [ ] A11y note written
+

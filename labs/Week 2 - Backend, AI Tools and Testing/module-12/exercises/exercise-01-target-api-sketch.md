@@ -8,10 +8,43 @@ Create `notes/lab12-target-api-sketch.md` — sketch a small CustomerService API
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-target-api-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-target-api-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 12 — Target API Sketch
+
+## Step 1 — Methods
+
+List: findById, activateProspect, maybe validateStatus — Write in this notes file.
+
+## Step 2 — Ravi path
+
+Note activateProspect(CUS-1002) moves PROSPECT → ACTIVE.
+
+## Step 3 — Keep out
+
+Explicitly exclude SOAP endpoints and Spring controllers from this sketch.
+
+## Step 4 — Prep boundary
+
+Write: *Do not complete full Lab 12 refactor in pre-lab.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A minimal target API with honest exclusions in `notes/lab12-target-api-sketch.md
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab12-target-api-sketch.md` | Pass / Fail |
-| 2 | Methods listed | Pass / Fail |
-| 3 | Ravi transition noted | Pass / Fail |
-| 4 | SOAP/Spring excluded | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab12-target-api-sketch.md`
+- [ ] Methods listed
+- [ ] Ravi transition noted
+- [ ] SOAP/Spring excluded
+

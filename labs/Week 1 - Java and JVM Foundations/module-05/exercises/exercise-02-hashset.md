@@ -9,6 +9,21 @@
 
 Create `SetDemo.java`, prove duplicate rejection with `add`’s return value, and create a sorted `TreeSet` view.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Added Java first time: true
+Added Java second time: false
+Unique count: 3
+Contains Testing: true
+Sorted view: [Databases, Java, Testing]
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

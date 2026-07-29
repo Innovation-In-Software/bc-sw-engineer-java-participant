@@ -15,6 +15,17 @@ Select the ZGC garbage collector explicitly, verify the JVM accepted it, and con
 
 ZGC is a low-latency collector designed to keep pause times very short (typically sub-millisecond) even on large heaps, by doing almost all of its work concurrently with the running application. G1 favors balanced throughput and pause goals; ZGC trades some throughput for consistently tiny pauses.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+[info][gc] Using The Z Garbage Collector
+[info][gc] GC(0) Garbage Collection (Warmup) ...
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Confirm the class exists

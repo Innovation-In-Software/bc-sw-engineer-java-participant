@@ -8,10 +8,39 @@ Create `notes/lab20-mdc-clear.md` — document why uncleared MDC corrupts the ne
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-clear-mdc-finally.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-mdc-clear.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 20 — Clear MDC Finally Drill
+
+## Step 1 — Bug story
+
+Request A sets lab-request-001; without clear, request B logs wrong correlation.
+
+## Step 2 — Fix
+
+Filter/interceptor finally clears MDC.
+
+## Step 3 — Test idea
+
+Later IT: assert MDC empty after request (conceptual).
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A clear MDC bug/fix story for thread reuse in `notes/lab20-mdc-clear.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab20-mdc-clear.md` | Pass / Fail |
-| 2 | Bug story written | Pass / Fail |
-| 3 | Finally fix named | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab20-mdc-clear.md`
+- [ ] Bug story written
+- [ ] Finally fix named
+- [ ] Notes saved
+

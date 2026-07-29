@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab32-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-32/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Run and cleanup instructions |
 | 8 | No secrets committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -206,9 +211,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/resilience-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow for an account-enriched customer read
 2. Trust boundary: CRM vs remote account service responses
@@ -216,10 +221,23 @@ Write 2–3 sentences each in `docs/resilience-notes.md`:
 4. Stable identity (`CUS-1001`) across CRM and account stubs
 5. Why GET retries can be safe and write retries are not by default
 6. Local aggressive thresholds vs production tuning
-7. Evidence: WireMock journal, CB events, correlation ID
-8. Two CRM instances: independent CB state unless shared — implications
-9. Ordering of Resilience4j aspects with `CompletableFuture` / TimeLimiter
-10. What must never appear in a fallback (false write success)
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+curl -s localhost:8080/actuator/health
+curl -s localhost:8080/actuator/circuitbreakerevents
+curl -s localhost:8080/actuator/metrics/resilience4j.circuitbreaker.calls
+mvn -q test -Dtest=AccountProfileResilienceTest
+mvn -q test -Dtest=AccountProfileResilienceTest
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -503,7 +521,7 @@ Keep this near the service code in notes:
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -513,7 +531,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Patterns configured
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -523,7 +541,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Fallback and honesty
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -533,7 +551,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Observation and tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -651,18 +669,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README / `docs/resilience-notes.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which remote/network inputs are untrusted (account JSON)?
 2. Where are authn/authz enforced for CRM vs outbound account calls (propagate tokens carefully)?
 3. Which values are sensitive on outbound headers?
-4. What can be retried safely (idempotent GETs only)?
-5. What happens after partial failure (CRM OK, accounts unavailable)?
-6. What would an operator monitor (CB state, timeout rate, fallback rate)?
-7. Which local default is unacceptable (tiny windows, endless retries, false write success)?
-8. How are degraded-response contracts versioned for React?
 
 ---
+
 
 ## Cleanup
 
@@ -681,16 +695,9 @@ No Docker required for WireMock tests; if you started Lab 30 Kafka for combined 
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Resilience4j Retry + CircuitBreaker + TimeLimiter on account profile reads
-* `AccountSummary.unavailable` truthful fallback
-* WireMock stubs for 503 / slow / OK on `CUS-1001`
-* Actuator observation evidence
-* `AccountProfileResilienceTest` output (OPEN, timeout, recovery)
-* Notes forbidding unsafe write retries / false success
-* Run and cleanup instructions
-* No secrets committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -712,44 +719,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (fallback honesty vs fail-hard)?
-2. Which failure was hardest (aspect order, TimeLimiter + Future, CB thresholds)?
-3. What evidence proves OPEN fail-fast without calling WireMock?
-4. What breaks first at ten times the outbound call rate?
-5. Which concern should move to shared infrastructure (mesh timeouts, platform CB)?
-6. What must change before real customer/account data is used?
-7. How does this lab connect to Labs 29 (errors), 30–31 (async), and the React UX?
-8. What metric or Actuator field matters most during an account outage?
-9. (Forward look) How would a bulkhead change thread isolation for this dependency?
+2. What evidence proves OPEN fail-fast without calling WireMock?
+3. Which failure was hardest (aspect order, TimeLimiter + Future, CB thresholds)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Propagate `lab-request-001` on outbound RestClient/WebClient headers.
 2. Cached-stale read with TTL as an alternative degraded strategy (document trade-offs).
 3. Separate readiness from liveness when CB is OPEN (policy choice).
-4. Micrometer dashboards/notes for retry/CB/timeout.
-5. Document rollback if a bad threshold ships (CB stuck OPEN).
-6. Prove a write path explicitly does **not** use the read fallback.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate Retry, CircuitBreaker, TimeLimiter, bounded latency, and safe fallbacks
-* Happy path and degraded path for `CUS-1001` are repeatable
-* OPEN fail-fast and timeout behaviors are evidenced
-* Another student can follow your run instructions
-* WireMock tests/build pass twice
-* No production secret is hard-coded
-* You can explain lab thresholds vs production tuning
-
----
 
 ## Instructor Notes
 

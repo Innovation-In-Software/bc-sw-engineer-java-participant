@@ -10,6 +10,8 @@
 > These exercises design and test small pieces; Lab 10 builds the full graded deliverable.  
 > Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` before moving on.
 
+> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+
 ## Everything in one place — guide file vs your notes file
 
 You do **not** need the slideshow to know what to create. For each exercise:

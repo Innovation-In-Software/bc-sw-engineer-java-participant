@@ -10,6 +10,10 @@ Build a tiny Maven project that compiles, runs one JUnit test, and packages a JA
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-09-exercises/`) |
 | ---- | --------------------------------------------- |
 | Mini project | `mini-maven/` (see tree below) |
@@ -24,6 +28,30 @@ mini-maven/
     ├── main/java/com/northstar/crm/BuildDemo.java
     └── test/java/com/northstar/crm/BuildDemoTest.java
 ```
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+package com.northstar.crm;
+
+public class BuildDemo {
+    public static void main(String[] args) {
+        // TODO: print exactly: BuildDemo ready for Lab 9
+        System.out.println("_____");
+    }
+
+    public static String greeting() {
+        return "BuildDemo ready for Lab 9";
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
 
 ## Starter (fill in the TODOs)
 

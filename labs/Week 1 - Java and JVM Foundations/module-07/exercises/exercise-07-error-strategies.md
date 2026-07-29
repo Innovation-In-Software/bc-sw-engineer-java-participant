@@ -14,6 +14,18 @@ Implement two of the six error-handling strategies — **Retry** and
 **Fallback / Default** — around a flaky operation, and explain when you would
 reach for the other four.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Attempt 1 failed: Service temporarily unavailable
+Balance shown to user: 500
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

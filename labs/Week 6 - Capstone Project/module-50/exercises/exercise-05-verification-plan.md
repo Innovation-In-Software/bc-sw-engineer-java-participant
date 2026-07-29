@@ -8,10 +8,43 @@ Create `notes/lab50-verification-plan.md` — plan component/E2E evidence withou
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-50-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-verification-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab50-verification-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 50 — UI Verification Evidence Plan
+
+## Step 1 — Cases
+
+Search hit, profile render, create interaction, error banner on API failure.
+
+## Step 2 — Tools
+
+Note assigned approach (component test and/or E2E) per instructor.
+
+## Step 3 — Screenshots
+
+Name files under `notes/screenshots/lab-50/`.
+
+## Step 4 — Data proof
+
+Include DB/API proof step after UI write.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Verification plan with evidence filenames in `notes/lab50-verification-plan.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab50-verification-plan.md` | Pass / Fail |
-| 2 | Four cases listed | Pass / Fail |
-| 3 | Evidence paths named | Pass / Fail |
-| 4 | DB/API proof included | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab50-verification-plan.md`
+- [ ] Four cases listed
+- [ ] Evidence paths named
+- [ ] DB/API proof included
+

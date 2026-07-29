@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab35-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-35/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Integration notes + screenshots |
 | 8 | README runbook (Spring + Vite) |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -205,9 +210,9 @@ If your Spring project lives elsewhere under `examples/`, document the path in R
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/api-integration-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main request flow (UI event → customersApi → Spring → UI state)
 2. Trust boundary: browser never trusted; server validates again
@@ -215,10 +220,26 @@ Write 2–3 sentences each in `docs/api-integration-notes.md`:
 4. Stable identity: server `customerId` after create
 5. Retry/idempotency: disable duplicate POST; safe GET retry
 6. Local CORS shortcut vs production allowlist/CDN origins
-7. Evidence: Network waterfalls + correlation header
-8. Two SPA tabs: abort/race behavior; last-write wins without ETags yet
-9. False confidence: swallowing errors into empty list
-10. What Lab 36 adds (tokens) without rewriting ApiError shape
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+cd ~/java-bootcamp/examples
+cp -r lab34-crm lab35-crm
+# ensure Spring is running, then:
+curl -i http://localhost:8080/api/customers
+curl -i -X POST http://localhost:8080/api/customers \
+  -H "Content-Type: application/json" \
+  -H "X-Correlation-Id: lab-request-001" \
+  -d "{\"fullName\":\"Amina Khan\",\"email\":\"amina@example.com\",\"phone\":\"+1-555-0101\",\"status\":\"ACTIVE\"}"
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -503,7 +524,7 @@ Confirm no `Access-Control-Allow-Origin: https://evil.example`. Complete [Failur
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -513,7 +534,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Client core
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -524,7 +545,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — CORS + tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -534,7 +555,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -664,18 +685,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (all browser payloads; Origin header)?
 2. Where are authn/authz/validation enforced (server validation now; auth Lab 36)?
 3. Which values are sensitive—never in `VITE_*` or repo?
-4. What can be retried safely (GET list; POST only with idempotency keys later)?
-5. What happens after partial failure (ApiError UI; no silent empty)?
-6. What would an operator monitor (API 5xx rate, CORS rejects, correlation IDs)?
-7. Which local default is unacceptable (`*` CORS, secrets in Vite env)?
-8. How are API contracts versioned with DTO changes (shared types + curl snapshots)?
 
 ---
+
 
 ## Cleanup
 
@@ -693,17 +710,9 @@ Do not commit `node_modules/`, `dist/`, or secret `.env`.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Typed `ApiError` / `http` / `customersApi` with abortable loads
-* Distinct loading/empty/data/error UX
-* Create/update with correlation + duplicate-submit guard
-* Backend 400 field mapping
-* Spring CORS allowlist + evil Origin evidence
-* Response-class tests + green build
-* Integration notes + screenshots
-* README runbook (Spring + Vite)
-* No secrets or generated directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -725,44 +734,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the request rate?
-5. Which concern should move to shared infrastructure?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 33–34 and Lab 36?
-8. What metric matters most on the CI/ops dashboard for this gate?
-9. (Forward look) Where will the bearer token attach without leaking to other origins?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Send unique `X-Correlation-Id` per request (UUID) while documenting `lab-request-001` in notes.
 2. Add ETag / `If-Match` thought experiment for concurrent edits.
 3. Centralize error → toast mapping without losing field errors.
-4. MSW (Mock Service Worker) for browser demos offline.
-5. Document rollback if CORS is widened accidentally.
-6. Measure and note p95 list latency from DevTools.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* SPA reads/writes customers through typed fetch
-* Abort, loading/error UX, and duplicate-submit guard work
-* CORS allowlist proven; evil Origin denied
-* Response-class tests and builds are green twice
-* Another student can follow Spring + Vite instructions
-* No production secret is hard-coded in Vite env
-* You can explain the Lab 36 auth attachment point
-
----
 
 ## Instructor Notes
 

@@ -8,10 +8,43 @@ Create `notes/fault-vs-rest.md` — document how business exceptions become SOAP
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-24-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fault-vs-rest.md` (this file in the course repo) |
 | Your notes file | `notes/fault-vs-rest.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 24 — SOAP Fault Versus REST Error
+
+## Step 1 — Contrast table
+
+In `notes/fault-vs-rest.md`, columns: Concern | SOAP | REST. Rows: not-found, validation, missing UsernameToken.
+
+## Step 2 — Answer sketch
+
+Not-found → SOAP fault vs HTTP 404 JSON; missing token → security fault vs 401 later on REST.
+
+## Step 3 — No stack traces
+
+Rule: partner-facing faults never include stack traces or secrets.
+
+## Step 4 — Lab 16 link
+
+Note Lab 16 exception ideas feed Lab 24 fault mapping.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Contrast table and safe-fault rule exist in `notes/fault-vs-rest.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/fault-vs-rest.md` | Pass / Fail |
-| 2 | Three concern rows filled | Pass / Fail |
-| 3 | No-stack-trace rule written | Pass / Fail |
-| 4 | Lab 16 connection noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/fault-vs-rest.md`
+- [ ] Three concern rows filled
+- [ ] No-stack-trace rule written
+- [ ] Lab 16 connection noted
+

@@ -8,10 +8,54 @@ Create `notes/constructor-di.md` — document why constructor injection with `fi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-constructor-injection.md` (this file in the course repo) |
 | Your notes file | `notes/constructor-di.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 22 — Constructor Injection Preference
+
+## Reference
+
+| Style | Verdict |
+| --- | --- |
+| Constructor + `final` | Preferred — required deps, testable |
+| Setter injection | Optional deps only |
+| Field `@Autowired` | Avoid as primary pattern |
+
+## Step 1 — Write the rule
+
+In `notes/constructor-di.md`, complete:
+
+> Northstar prefers (your note here) injection because dependencies are (your note here) and fields can be (your note here).
+
+## Step 2 — Check the reference
+
+Answer key: constructor / required (explicit) / final (immutable after construction).
+
+## Step 3 — Sketch signature
+
+Write the constructor signature only (no method bodies):
+`CustomerService(CustomerRepository repo, NotificationService notifier)`.
+
+## Step 4 — Unit-test implication
+
+One sentence: a pure unit test can `new CustomerService(fakeRepo, fakeNotifier)` without starting Spring.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -73,9 +117,10 @@ Constructor-DI rule and signature sketch are recorded in `notes/constructor-di.m
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/constructor-di.md` | Pass / Fail |
-| 2 | Fill-in sentence is correct | Pass / Fail |
-| 3 | Constructor lists both collaborators | Pass / Fail |
-| 4 | Unit-test-without-Spring point is stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/constructor-di.md`
+- [ ] Fill-in sentence is correct
+- [ ] Constructor lists both collaborators
+- [ ] Unit-test-without-Spring point is stated
+

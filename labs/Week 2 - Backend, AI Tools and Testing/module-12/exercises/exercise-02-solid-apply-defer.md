@@ -8,10 +8,39 @@ Create `notes/lab12-solid-scope.md` — choose one SOLID apply-now item and two 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-solid-apply-defer.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-solid-scope.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 12 — SOLID Apply vs Defer
+
+## Step 1 — Apply now
+
+Pick SRP: separate validation helper from persistence-shaped code in the sketch.
+
+## Step 2 — Defer
+
+Defer DIP wiring frameworks and ISP for large SOAP ports until Labs 13+.
+
+## Step 3 — Why defer
+
+One sentence: modules 10–12 stay before SOAP; do not over-architect ports.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ An apply/defer SOLID note with Week 2 honesty in `notes/lab12-solid-scope.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab12-solid-scope.md` | Pass / Fail |
-| 2 | One apply-now item | Pass / Fail |
-| 3 | Two defer items | Pass / Fail |
-| 4 | Before-SOAP rationale written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab12-solid-scope.md`
+- [ ] One apply-now item
+- [ ] Two defer items
+- [ ] Before-SOAP rationale written
+

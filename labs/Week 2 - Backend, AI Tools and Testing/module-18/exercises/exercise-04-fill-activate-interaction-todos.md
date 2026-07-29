@@ -8,10 +8,48 @@ Create `notes/lab18-activate-interaction-todos.md` — complete fill-in blanks f
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fill-activate-interaction-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-activate-interaction-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 18 — Fill Activate Interaction Sequence TODOs
+
+## Step 1 — Copy sequence
+
+1) stub findById((your note here)) → ravi PROSPECT
+2) call service.(your note here)(…)
+3) verify repo.(your note here)(customer)
+4) verify notifier.(your note here)(…)  // if present
+5) assert status (your note here)
+6) ArgumentCaptor previews status field (your note here)
+
+## Step 2 — Fill blanks
+
+Fill CUS-1002, activate, save/update, notifyActivated, ACTIVE, ACTIVE.
+
+## Step 3 — Captor preview
+
+One sentence: captors prove the saved Customer carried ACTIVE, not only that save was called.
+
+## Step 4 — Self-check
+
+Confirm step 1 id is CUS-1002 and final status ACTIVE.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Filled interaction TODOs with ArgumentCaptor preview note in `notes/lab18-activa
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab18-activate-interaction-todos.md` | Pass / Fail |
-| 2 | All _____ replaced | Pass / Fail |
-| 3 | Captor benefit sentence present | Pass / Fail |
-| 4 | Ravi path correct | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab18-activate-interaction-todos.md`
+- [ ] All _____ replaced
+- [ ] Captor benefit sentence present
+- [ ] Ravi path correct
+

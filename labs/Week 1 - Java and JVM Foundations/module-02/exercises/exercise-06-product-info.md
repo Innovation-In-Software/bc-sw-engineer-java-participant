@@ -11,6 +11,20 @@
 
 Create `ProductInfo.java` that reads product name, quantity (`int`), and price (`double`), then prints the details.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Product name: Laptop
+Quantity: 3
+Price: 59.99
+Product: Laptop | Qty: 3 | Price: 59.99
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

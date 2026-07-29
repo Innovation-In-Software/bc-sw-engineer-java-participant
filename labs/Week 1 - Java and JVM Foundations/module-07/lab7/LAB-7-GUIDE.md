@@ -49,13 +49,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class:** prefer the [45-minute timed path](#45-minute-timed-path-use-starter) with [`starter/`](starter/README.md).
-2. Confirm Lab 0 + prior Week 1 menus/packages + Module 7 Exercises 1–8 are done (checklists below).
-3. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-4. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-5. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-6. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-7. Capture evidence under `notes/screenshots/lab-7/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -297,9 +298,9 @@ Ignore build artifacts if committed later: `out/`, `*.class`. You **may** submit
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `../../notes/lab7-answers.md` (from project; or `~/java-bootcamp/notes/lab7-answers.md`) before or during the steps; revisit after Checkpoint C.
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Why are `InvalidAmountException` and friends **checked** in this lab, while `NullPointerException` is unchecked?
 2. What does `throws` on `Account.withdraw(...)` force callers to do?
@@ -307,8 +308,59 @@ Write 2–3 sentences each in `../../notes/lab7-answers.md` (from project; or `~
 4. What guarantee does `finally` give you that `catch` alone does not?
 5. Why prefer try-with-resources over `reader.close()` in a `finally` block?
 6. Why log stack traces to a file while showing short messages to the ATM user?
-7. Where should validation throw—deep in `Account` or only in `Main`? Why?
-8. How will CRM later reuse “domain exception + boundary catch + log” (without claiming CRM is done today)?
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+import java.util.InputMismatchException;
+
+@FunctionalInterface
+private interface TransactionAction {
+    void run() throws Exception;
+}
+
+private void requireLogin() throws InvalidPinException {
+    if (loggedInAccount == null) {
+        throw new InvalidPinException(
+                "Please login before performing this operation.", pinAttemptsRemaining);
+    }
+}
+
+private double readAmount(String prompt) throws InputMismatchException {
+    System.out.print(prompt);
+    String input = scanner.nextLine().trim();
+    try {
+        return Double.parseDouble(input);
+    } catch (NumberFormatException ex) {
+        throw new InputMismatchException("Invalid numeric input.");
+    }
+}
+
+private void executeTransaction(String operationName, TransactionAction action) {
+    long startTime = System.nanoTime();
+    try {
+        action.run();
+        LoggerUtil.logTransaction(operationName + " completed successfully",
+                (System.nanoTime() - startTime) / 1_000_000);
+    } catch (InputMismatchException ex) {
+        System.out.println("ERROR");
+        System.out.println("Invalid numeric input.");
+        System.out.println("Please enter a valid amount.");
+        LoggerUtil.logError("Invalid numeric input during " + operationName, ex);
+        recordFailedTransaction(operationName, ex.getMessage());
+    } catch (InvalidAmountException ex) {
+        System.out.println("ERROR");
+        System.out.println(ex.getMessage());
+        LoggerUtil.logError(ex.getMessage(), ex);
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -1221,7 +1273,7 @@ Then complete `notes/exception-hierarchy.md` and draft Reflection answers.
 
 ### Checkpoint A — Project + exceptions + model
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1232,7 +1284,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Service + Main compile
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1243,7 +1295,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Exception behavior
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1255,7 +1307,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Logging + evidence
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1411,15 +1463,7 @@ Keep `.java` sources, `transactions.txt`, notes, and evidence screenshots. Do no
 
 ## Expected Deliverables
 
-Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
-
-* **Sources** under `src/com/academy/atm/`: `Account`, `Transaction`, `ATMService`, `LoggerUtil`, `Main`, and all four custom exceptions
-* **`transactions.txt`** (or equivalent historical input file)
-* **Log evidence:** snippet or screenshot of `logs/application.log` ERROR lines
-* **Screenshots:** successful **and** failed transactions (menu still alive)
-* **LMS / README notes:** overview; exception hierarchy; custom exceptions; logging strategy; compile/run from project root; sample output; lessons learned
-* **Answers** in `notes/lab7-answers.md`
-* Optional: labeled bonuses; git repository
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
 Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your own work.
 
@@ -1445,21 +1489,16 @@ Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your 
 
 ## Reflection Questions
 
-Write short answers (3–6 sentences) in `../../notes/lab7-answers.md` (from project; or `~/java-bootcamp/notes/lab7-answers.md`):
+Write answers in `../../notes/lab7-answers.md` (from project; or `~/java-bootcamp/notes/lab7-answers.md`):
 
-1. What is the difference between checked and unchecked exceptions?
-2. Why should custom exceptions be used?
-3. What is exception propagation?
-4. What is the purpose of `finally`?
-5. Why is `try-with-resources` preferred?
-6. When should `throw` be used?
-7. When should `throws` be used?
-8. Why is logging important in enterprise applications?
-9. What happens if an exception is not handled?
-10. How does proper exception handling improve software reliability?
-11. (Forward look) How would a future CRM map domain exceptions (not found / validation) to API errors using the same boundary-catch + log pattern—without claiming CRM is implemented today?
+Write **1–3 sentence** answers (not essays):
+
+1. (Forward look) How would a future CRM map domain exceptions (not found / validation) to API errors using the same boundary-catch + log pattern—without claiming CRM is implemented today?
+2. What is the difference between checked and unchecked exceptions?
+3. Why should custom exceptions be used?
 
 ---
+
 
 ## Bonus Challenges
 
@@ -1484,37 +1523,6 @@ Enforce max 3 PIN attempts with a clear lock message for the session.
 ### Challenge 5 — Transaction Summary Report
 
 Generate a session transaction summary (total / successful / failed).
-
----
-
-## Success Criteria
-
-You have completed Lab 7 when you can:
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 0 | Module 7 Exercises 1–8 Pass criteria are complete **before** Lab Step 1 | Pass / Fail |
-| 1 | Work in `java-bootcamp/examples/Lab7-ATMSystem/` with `package com.academy.atm` | Pass / Fail |
-| 2 | Custom exceptions + login/deposit/withdraw; insufficient-funds path works | Pass / Fail |
-| 3 | Menu recovers after failures; `logs/application.log` has diagnostic entries | Pass / Fail |
-| 4 | `javac -d out` / `java -cp out com.academy.atm.Main` succeed **from project root** | Pass / Fail |
-| 5 | You can narrate throw site → catch boundary → log → return to menu | Pass / Fail |
-| 6 | Screenshots/evidence under `notes/screenshots/lab-7/` without secrets or real PINs | Pass / Fail |
-
-By the end of this lab, you should also be able to:
-
-* Design Java applications that fail gracefully instead of crashing
-* Handle checked and unchecked exceptions appropriately
-* Create and use meaningful custom exception classes
-* Apply `throw`, `throws`, `try-catch-finally`, and `try-with-resources` correctly
-* Trace exception propagation through `Main → ATMService → Account`
-* Implement centralized file logging for diagnostics
-* Keep a console ATM recoverable under bad input and business-rule failures
-* Explain how Lab 7’s exception design prepares (but does not implement) later CRM API error handling
-
-This lab bridges **Module 7 exercises** (after Labs 5–6) to graded ATM recovery evidence.
 
 ---
 

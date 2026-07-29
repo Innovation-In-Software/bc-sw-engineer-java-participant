@@ -8,10 +8,48 @@ Create `notes/lab30-topic-map.md` — freeze Northstar topic names, partitions, 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-topic-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-topic-map.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 30 — Topic and Key Map
+
+## Reference
+
+| Concept | Northstar choice |
+| --- | --- |
+| Main topic | crm.customer-events.v1 |
+| DLQ topic | crm.customer-events.v1.dlq |
+| Partitions (lab) | 3 |
+| Record key | customerId (e.g. CUS-1001) |
+
+## Step 2 — Keying reason
+
+Write why keying by `CUS-1001` / `CUS-1002` keeps a customer's events ordered within a partition.
+
+## Step 3 — Versioning
+
+Explain what the `.v1` suffix buys the team when the payload schema changes later.
+
+## Step 4 — DLQ trigger
+
+List two failure cases that should land a record in the DLQ (conceptual only).
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ A filled topic/key map plus DLQ failure examples ready for Lab 30 in `notes/lab3
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab30-topic-map.md` | Pass / Fail |
-| 2 | Main + DLQ topic names match the reference | Pass / Fail |
-| 3 | Key = customerId justified | Pass / Fail |
-| 4 | Two DLQ cases listed | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab30-topic-map.md`
+- [ ] Main + DLQ topic names match the reference
+- [ ] Key = customerId justified
+- [ ] Two DLQ cases listed
+

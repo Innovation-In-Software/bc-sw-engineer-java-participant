@@ -8,10 +8,43 @@ Create `notes/lab46-replay-runbook.md` — outline `docs/dlt-replay-runbook.md` 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-replay-runbook.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-replay-runbook.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 46 — Outline DLT Replay Runbook
+
+## Step 1 — Steps
+
+Inspect DLT → classify → dry-run → limited replay → verify projection → stop criteria.
+
+## Step 2 — Check the reference
+
+Rate-limit replay; never replay blindly into prod topics.
+
+## Step 3 — Evidence
+
+Name what screenshots prove DLT landing and successful limited replay.
+
+## Step 4 — Comms link
+
+Note Lab 47 may communicate this class of incident—keep evidence shareable.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Replay runbook outline with dry-run in `notes/lab46-replay-runbook.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab46-replay-runbook.md` | Pass / Fail |
-| 2 | Steps include dry-run | Pass / Fail |
-| 3 | Stop criteria present | Pass / Fail |
-| 4 | Evidence named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab46-replay-runbook.md`
+- [ ] Steps include dry-run
+- [ ] Stop criteria present
+- [ ] Evidence named
+

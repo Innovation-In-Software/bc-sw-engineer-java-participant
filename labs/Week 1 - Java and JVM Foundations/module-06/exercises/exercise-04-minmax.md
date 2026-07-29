@@ -10,6 +10,46 @@
 Create `SalaryExtremesDemo.java`. Use one salary comparator with `max` and
 `min`, then handle each potentially empty result explicitly.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+import java.util.Comparator;
+import java.util.List;
+
+public class SalaryExtremesDemo {
+    public static void main(String[] args) {
+        List<Employee> employees = EmployeeData.sample();
+
+        // TODO: Comparator ascending by salary (hint: Comparator.comparingDouble(Employee::salary))
+        Comparator<Employee> bySalary = _____;
+
+        // TODO: stream + max(bySalary) + orElseThrow()
+        Employee highest = employees.stream()
+                // TODO: .max(bySalary)
+                // TODO: .orElseThrow()
+                ;
+
+        // TODO: stream + min(bySalary) + orElseThrow()
+        Employee lowest = employees.stream()
+                // TODO: .min(bySalary)
+                // TODO: .orElseThrow()
+                ;
+
+        System.out.printf("Highest: %s - %.0f%n",
+                highest.name(), highest.salary());
+        System.out.printf("Lowest: %s - %.0f%n",
+                lowest.name(), lowest.salary());
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -130,9 +170,10 @@ You can explain why the terminal operations return `Optional<Employee>`.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Highest output is Diana — 90000 | Pass / Fail |
-| 2 | Lowest output is Evan — 55000 | Pass / Fail |
-| 3 | The same comparator is reused for both reductions | Pass / Fail |
-| 4 | You can explain the purpose of `Optional` here | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Highest output is Diana — 90000
+- [ ] Lowest output is Evan — 55000
+- [ ] The same comparator is reused for both reductions
+- [ ] You can explain the purpose of `Optional` here
+

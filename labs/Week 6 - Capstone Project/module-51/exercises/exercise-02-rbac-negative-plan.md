@@ -8,10 +8,53 @@ Create `notes/lab51-rbac-negative-plan.md` — design deny-by-default proofs bef
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-51-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-rbac-negative-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab51-rbac-negative-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 51 — Plan RBAC Negative Tests
+
+## Reference
+
+| Proof | Evidence idea |
+| --- | --- |
+| JWT resource server | Security tests + config snippets |
+| SAST gate | CI log / scan summary sanitized |
+| Image digest | sha256 record in manifest |
+| k3s deploy | rollout status + Ingress smoke |
+| Rollback | undo + readiness re-check |
+
+## Step 1 — Cases
+
+No token → 401; wrong role → 403; cross-customer access denied (as designed).
+
+## Step 2 — Check the reference
+
+Feature-complete is not release-ready without negative authz tests.
+
+## Step 3 — Matrix
+
+Make a small role × endpoint matrix with expected status codes.
+
+## Step 4 — Scope
+
+Plan only—implementation in Lab 51.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -72,9 +115,10 @@ RBAC negative-test matrix drafted in `notes/lab51-rbac-negative-plan.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab51-rbac-negative-plan.md` | Pass / Fail |
-| 2 | Three negative cases listed | Pass / Fail |
-| 3 | Role×endpoint matrix present | Pass / Fail |
-| 4 | Pre-lab marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab51-rbac-negative-plan.md`
+- [ ] Three negative cases listed
+- [ ] Role×endpoint matrix present
+- [ ] Pre-lab marked
+

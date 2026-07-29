@@ -8,10 +8,43 @@ Create `notes/lab43-immutable-jar.md` — explain why the JAR verified in CI mus
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-43-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-immutable-jar.md` (this file in the course repo) |
 | Your notes file | `notes/lab43-immutable-jar.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 43 — Package-Once Identity
+
+## Step 1 — Steps
+
+Outline: package once, write `SHA256SUMS`, record `GITHUB_SHA`, upload artifact.
+
+## Step 2 — Check the reference
+
+Lab 44 promotes this identity—rebuilding silently on the deploy agent breaks the chain.
+
+## Step 3 — Example lines
+
+Draft example checksum file lines (fake hashes OK) including commit id.
+
+## Step 4 — Anti-pattern
+
+Name one anti-pattern: packaging differently in deploy than in CI.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Immutable JAR identity plan linked to Lab 44 in `notes/lab43-immutable-jar.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab43-immutable-jar.md` | Pass / Fail |
-| 2 | Checksum + commit recorded | Pass / Fail |
-| 3 | Promotion link stated | Pass / Fail |
-| 4 | Anti-pattern named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab43-immutable-jar.md`
+- [ ] Checksum + commit recorded
+- [ ] Promotion link stated
+- [ ] Anti-pattern named
+

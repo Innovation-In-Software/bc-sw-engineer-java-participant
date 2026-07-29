@@ -8,10 +8,33 @@ Create `notes/customer-sketch-notes.md` with hand-sketched fields for CUS-1001 b
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-customer-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/customer-sketch-notes.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Customer sketch
+
+| customerId | fullName   | status   |
+| ---------- | ---------- | -------- |
+| CUS-1001   | Amina Khan | ACTIVE   |
+| CUS-1002   | Ravi Singh | PROSPECT |
+
+Correlation `lab-request-001`: logs/headers only — not a Customer field.
+
+Boundary: sketch only — pre-lab.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -56,9 +79,10 @@ Two fixture rows and a correlation placement note in `notes/customer-sketch-note
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/customer-sketch-notes.md` | Pass / Fail |
-| 2 | Amina and Ravi rows correct | Pass / Fail |
-| 3 | Correlation not stored as a Customer field | Pass / Fail |
-| 4 | Explicit pre-lab boundary written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/customer-sketch-notes.md`
+- [ ] Amina and Ravi rows correct
+- [ ] Correlation not stored as a Customer field
+- [ ] Explicit pre-lab boundary written
+

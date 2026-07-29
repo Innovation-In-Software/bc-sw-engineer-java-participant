@@ -8,10 +8,43 @@ Create `notes/lab36-xss-csp.md` — document XSS-safe rendering rules for custom
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-xss-csp.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-xss-csp.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 36 — XSS and CSP Notes
+
+## Step 1 — Danger
+
+If a malicious name contains `<script>...` and you use `dangerouslySetInnerHTML`, XSS can steal tokens.
+
+## Step 2 — Rule
+
+Prefer text children / React escaping; avoid HTML injection APIs.
+
+## Step 3 — CSP
+
+One sentence: CSP can reduce inline script risk (lab may only document).
+
+## Step 4 — Test idea
+
+Paper test string: `Amina <b>Khan</b>` should show angle brackets as text.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ XSS rules and a paper test string for safe rendering in `notes/lab36-xss-csp.md`
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab36-xss-csp.md` | Pass / Fail |
-| 2 | dangerouslySetInnerHTML warning | Pass / Fail |
-| 3 | Prefer-escaping rule | Pass / Fail |
-| 4 | Test string recorded | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab36-xss-csp.md`
+- [ ] dangerouslySetInnerHTML warning
+- [ ] Prefer-escaping rule
+- [ ] Test string recorded
+

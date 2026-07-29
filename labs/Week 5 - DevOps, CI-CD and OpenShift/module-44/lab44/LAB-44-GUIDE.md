@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab44-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-44/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | Controlled failure / NO-GO or rollback rehearsal |
 | 7 | No secrets or real customer records committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -211,9 +216,9 @@ Ignore `target/`, plaintext secrets, kubeconfig, and production data exports.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/release-plan.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main promotion flow (CI artifact → test → staging → prod)
 2. Trust boundary: what staging smoke proves vs what it assumes about traffic mix
@@ -221,15 +226,29 @@ Write 2–3 sentences each in `docs/release-plan.md`:
 4. Stable fixtures (`CUS-1001`) vs production sampling
 5. Idempotency of promoting the same digest twice
 6. Why immutable identity beats `latest`
-7. Evidence operators need at go/no-go
-8. Two regions / two clusters: same digest, different config
-9. False confidence: green smoke while Kafka lag explodes
-10. What Lab 45 changes (IaC) without rewriting fixture IDs
 
-Also note (short paragraph each) in the same file:
+---
 
-* **Delivery vs deployment.** Continuous delivery means the artifact is *always releasable*; continuous deployment means every green commit ships to production automatically. This lab rehearses delivery with human GO/NO-GO.
-* **Config ownership.** Who may change staging Kafka bootstrap without a new JAR? If the answer is “nobody documented,” promotion will invent secrets mid-outage.
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+set -eu
+: "${RELEASE_DIGEST:?release digest is required}"
+# Adapt resource names to instructor environment
+kubectl set image deployment/crm-api \
+  crm-api="registry.example.com/training/crm-api@${RELEASE_DIGEST}"
+kubectl rollout status deployment/crm-api --timeout=180s
+curl -fsS -H "X-Correlation-Id: lab-request-001" \
+  "${CRM_BASE_URL}/actuator/health/readiness"
+# Smoke fixtures (adapt endpoints)
+curl -fsS -H "X-Correlation-Id: lab-request-001" \
+  "${CRM_BASE_URL}/api/customers/CUS-1001"
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -311,7 +330,7 @@ sha256sum target/*.jar
 Example go/no-go fragment:
 
 ```markdown
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -412,7 +431,8 @@ export ROLLBACK_DIGEST="sha256:<prior-known-good>"
 
 ```markdown
 ## Evidence pack pass criteria
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -433,7 +453,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -443,7 +463,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core CD design
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -453,7 +473,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Gates + rehearsal
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -463,7 +483,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -515,17 +535,21 @@ curl -fsS -H "X-Correlation-Id: lab-request-001" \
 ```markdown
 # Rollback — crm-api
 ## Triggers
+
 - Readiness failing > 3m
 - Error rate above threshold
 - Kafka lag critical (see Lab 46 notes)
 ## Authority
+
 - Release commander decides; on-call executes
 ## Steps
+
 1. Confirm current digest != known-good
 2. Promote knownGoodPrevious.imageDigest
 3. Verify readiness + CUS-1001/CUS-1002 smoke
 4. Record time-to-recover
 ## Limits
+
 - If migration is not backward compatible, stop and escalate
 ```
 
@@ -534,15 +558,20 @@ curl -fsS -H "X-Correlation-Id: lab-request-001" \
 ```markdown
 # Release plan 1.4.0
 ## Flow
+
 commit → CI artifact → test → staging → prod
 ## Approvers
+
 - Staging: <role>
 - Prod: <role>
 ## Config per env
+
 - DB URL, Kafka bootstrap, base URL (secrets via secured vars)
 ## DB compatibility
+
 - Expand/contract notes:
 ## Watch window
+
 - 60 minutes: errors, latency, lag, support volume
 ```
 
@@ -587,6 +616,7 @@ git status --short
 - Staging promote time (UTC):
 - Smoke correlation: lab-request-001
 ## Results
+
 | Check | Result | Evidence |
 | ----- | ------ | -------- |
 | Digest match | PASS/FAIL | |
@@ -657,18 +687,14 @@ git status --short
 
 ## Security and Production Review
 
-Answer in `docs/release-plan.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted at promote time (human approval, registry contents)?
 2. Where are authn/authz for prod deploy enforced?
 3. Which values are sensitive in release evidence?
-4. What can be retried safely (re-promote same digest)?
-5. What happens after partial failure (staging green, prod aborted)?
-6. What would an operator monitor during the watch window?
-7. Which local default is unacceptable (`latest`, skipped smoke, secrets in manifest)?
-8. How are release contracts versioned with DTO/API changes?
 
 ---
+
 
 ## Cleanup
 
@@ -687,15 +713,9 @@ Leave staging on instructor-approved version. Delete temporary secret files. Kee
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `docs/release-plan.md`
-* `docs/release-checklist.md`
-* `docs/rollback-runbook.md`
-* `artifact-manifest.json`
-* Staging promotion evidence (digest + smoke)
-* Controlled failure / NO-GO or rollback rehearsal
-* No secrets or real customer records committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -717,44 +737,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (digest vs tag)?
-2. Which failure was hardest to diagnose?
-3. What evidence proves staging and prod candidate are the same bits?
-4. What breaks first at ten times the release frequency?
-5. Which concern should move to shared CD platform tooling?
-6. What must change before production customer data is used in smoke (spoiler: use synthetics)?
-7. How does this lab connect to Labs 43 and 45–46?
-8. What metric matters most during the post-release watch window?
-9. (Forward look) How do canaries change the checklist without changing fixtures?
+2. What evidence proves staging and prod candidate are the same bits?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add canary decision criteria (error budget / lag).
 2. Create an automated artifact-identity check script.
 3. Model expand-and-contract migration steps for one CRM schema change.
-4. Define a release SLO watch window (duration + signals).
-5. Run a tabletop no-go decision with a peer.
-6. Integrate Lab 43 pipeline tag deploy with this checklist as a required manual gate.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* One immutable artifact identity is documented and promoted by digest
-* Staging smoke proves CRM fixtures behave as expected
-* Rollback to a known-good digest is rehearsed and documented
-* GO/NO-GO is evidence-backed
-* Another student can follow plan + rollback runbook
-* Secrets remain outside Git and outside the artifact
-* No production secret is hard-coded
-
----
 
 ## Instructor Notes
 

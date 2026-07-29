@@ -8,10 +8,48 @@ Create `notes/lab16-message-hygiene-todos.md` — complete fill-in blanks for sa
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-16-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fill-message-hygiene-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab16-message-hygiene-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 16 — Fill Message Hygiene TODOs
+
+## Step 1 — Copy TODOs
+
+Safe not-found message: (your note here)
+Unsafe message anti-pattern: (your note here)
+Correlation always field: (your note here)
+Log stack trace? (your note here) (server logs yes/no)
+Return stack trace to client? (your note here)
+@ControllerAdvice live in this pre-lab? (your note here)
+
+## Step 2 — Fill blanks
+
+Fill safe message for unknown customer, unsafe SQL/PII example, `correlationId`, yes for server logs, no for client, no for live advice.
+
+## Step 3 — Correlation always
+
+Write: *Every error sketch includes lab-request-001 (or request header value).*
+
+## Step 4 — Self-check
+
+Confirm client stack-trace blank is no.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Filled hygiene TODOs with correlation-always rule in `notes/lab16-message-hygien
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab16-message-hygiene-todos.md` | Pass / Fail |
-| 2 | All _____ replaced | Pass / Fail |
-| 3 | Correlation rule written | Pass / Fail |
-| 4 | No live @ControllerAdvice claimed | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab16-message-hygiene-todos.md`
+- [ ] All _____ replaced
+- [ ] Correlation rule written
+- [ ] No live @ControllerAdvice claimed
+

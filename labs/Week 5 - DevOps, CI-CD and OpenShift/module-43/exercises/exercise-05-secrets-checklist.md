@@ -8,10 +8,43 @@ Create `notes/lab43-secrets-checklist.md` — list what may live in Git vs Actio
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-43-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-secrets-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab43-secrets-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 43 — Actions Secrets Checklist
+
+## Step 1 — Sort
+
+Sort: workflow YAML, README, registry password, kubeconfig, `.env`, scan reports.
+
+## Step 2 — Check the reference
+
+Only non-secret config in Git; credentials in Actions secrets/variables as instructed.
+
+## Step 3 — Leak response
+
+Write three steps if a secret is committed: rotate, purge history per policy, notify instructor.
+
+## Step 4 — CRM note
+
+Customer fixtures are not secrets—but real customer dumps are forbidden.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Secrets checklist with leak response in `notes/lab43-secrets-checklist.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab43-secrets-checklist.md` | Pass / Fail |
-| 2 | Items classified | Pass / Fail |
-| 3 | Leak response has three steps | Pass / Fail |
-| 4 | Fixture vs secret clarified | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab43-secrets-checklist.md`
+- [ ] Items classified
+- [ ] Leak response has three steps
+- [ ] Fixture vs secret clarified
+

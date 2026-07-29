@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab26-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-26/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -58,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Dual green tests under `test` |
 | 8 | CRM smoke under `dev` for fixtures |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -209,9 +213,9 @@ Ignore `target/`, `.env`, IDE metadata, and any file holding a real password.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/config-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Why CLI beats env, and env beats profile YAML
 2. When `.properties` vs YAML nesting pays off
@@ -219,10 +223,59 @@ Write 2–3 sentences each in `docs/config-notes.md`:
 4. Why prod passwords must never default in YAML
 5. `@Value` vs `@ConfigurationProperties` for `northstar.integration`
 6. Why missing required props fail startup instead of silent nulls
-7. Evidence: startup banner, `/actuator/env`, exit codes
-8. Link to Labs 43/45 secrets injection
-9. Why `/actuator/env` exposure differs in `prod`
-10. What Lab 27 needs from your datasource profile split
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```yaml
+# application-dev.yml
+spring:
+  datasource:
+    url: jdbc:h2:mem:crmdev;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+logging:
+  level:
+    com.northstar.crm: DEBUG
+    org.hibernate.SQL: DEBUG
+northstar:
+  integration:
+    api-key: "dev-local-key-not-secret"
+    timeout-ms: 3000
+
+# application-test.yml
+spring:
+  datasource:
+    url: jdbc:h2:mem:crmtest;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+logging:
+  level:
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -477,7 +530,7 @@ mvn -q test -Dspring.profiles.active=test
 
 ### Checkpoint A — Tooling / structure
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -487,7 +540,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Profile files
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -497,7 +550,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Activation + binding
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -507,7 +560,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -673,18 +726,14 @@ git status --short
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which config values are sensitive per profile, and where stored?
 2. Why must `application-prod.yml` avoid defaults for DB username/password?
 3. What if a real PostgreSQL password is committed — detect, rotate, scrub history policy?
-4. Which local-only settings are unacceptable in prod (H2 console, `ddl-auto: update`, verbose SQL)?
-5. How do Labs 43/45 relate to these env vars?
-6. What does `/actuator/env` expose and why restrict in prod?
-7. How do you rotate `NORTHSTAR_API_KEY` without rebuild?
-8. Blast radius if `SPRING_PROFILES_ACTIVE` unset in real deployment?
 
 ---
+
 
 ## Cleanup
 
@@ -702,17 +751,9 @@ git status --short
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `application.yml` + `dev`/`test`/`prod` profile files
-* `NorthstarIntegrationProperties` + enable config
-* `.env.example` placeholders only
-* Evidence of `-D` and env profile activation
-* Fail-fast prod startup evidence
-* Override-order notes with measurements
-* Dual green tests under `test`
-* CRM smoke under `dev` for fixtures
-* No secrets or `target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -734,44 +775,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness — YAML split or typed binding?
-2. Which failure was hardest (missing prop, wrong profile, override confusion)?
-3. What evidence proves `prod` cannot start with blank credentials?
-4. What breaks first if `dev` settings leak into `prod`?
-5. Which concern should move to a shared secrets manager?
-6. What must change before real customer data touches `prod`?
-7. How does this lab connect to Labs 25 and 27 (and 43/45)?
-8. Which `/actuator/env` or log field matters most for misconfig diagnosis?
-9. (Forward look) Which keys should Lab 27 refuse to hard-code?
+2. What evidence proves `prod` cannot start with blank credentials?
+3. Which failure was hardest (missing prop, wrong profile, override confusion)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Fourth profile `staging` mirroring prod with disposable DB.
 2. Duration converter for timeout instead of raw ms.
 3. `ApplicationContextRunner` test asserting prod fails without `DB_PASSWORD`.
-4. Optional local `.env` import with documented risk.
-5. Document Vault / AWS Secrets Manager alternative to raw env vars.
-6. Assert Actuator exposure differs between `dev` and `prod` in a test.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Override order, YAML profiles, and two activation methods are demonstrated
-* Happy path (`dev`) and fail-fast (`prod` without credentials) are repeatable
-* Another student can follow your run instructions
-* Tests pass under `test` twice
-* No production secret is hard-coded
-* You can explain local vs production trade-offs per profile
-* CRM fixtures still smoke under `dev`
-
----
 
 ## Instructor Notes
 

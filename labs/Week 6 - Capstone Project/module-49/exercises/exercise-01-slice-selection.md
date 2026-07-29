@@ -8,10 +8,43 @@ Create `notes/lab49-slice-selection.md` — pick one coherent backend slice for 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-slice-selection.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-slice-selection.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 49 — Select Backend Vertical Slice
+
+## Step 1 — Options
+
+Candidate slices: customer create/read, interaction record, status change + event.
+
+## Step 2 — Check the reference
+
+Slice must include API + persistence + Kafka touch if messaging is in scope.
+
+## Step 3 — Fixtures
+
+Define how `CUS-1001`/`CUS-1002` and `lab-request-001` appear in demos/tests.
+
+## Step 4 — Out of scope
+
+Explicitly list what this slice will not include.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ One selected slice with in/out scope and fixtures in `notes/lab49-slice-selectio
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab49-slice-selection.md` | Pass / Fail |
-| 2 | Slice chosen | Pass / Fail |
-| 3 | In/out scope listed | Pass / Fail |
-| 4 | Fixtures planned | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab49-slice-selection.md`
+- [ ] Slice chosen
+- [ ] In/out scope listed
+- [ ] Fixtures planned
+

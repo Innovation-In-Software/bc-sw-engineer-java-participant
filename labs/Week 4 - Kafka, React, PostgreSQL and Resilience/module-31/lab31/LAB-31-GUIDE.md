@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab31-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-31/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Runbook + DLT naming notes |
 | 8 | No secrets committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -216,9 +221,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/spring-kafka-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: HTTP success → publish → listen → notify
 2. Trust boundary: key/payload validation before side effects
@@ -226,10 +231,26 @@ Write 2–3 sentences each in `docs/spring-kafka-notes.md`:
 4. Stable identity: `eventId` for idempotency; `customerId` for keying
 5. Retry vs non-retryable exceptions
 6. Local EmbeddedKafka vs Docker broker vs production cluster
-7. Evidence: partition/offset logs, DLT headers, correlation ID
-8. Two app instances: shared consumer group competition
-9. Why trusted packages matter for JSON deserialization
-10. What Lab 32 adds without changing Kafka contracts
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+# Broker (Lab 30)
+docker compose -f ../lab30-crm/compose.yaml up -d   # or local compose copy
+
+cd ~/java-bootcamp/examples/lab31-crm
+mvn -q test
+mvn -q spring-boot:run
+# Create CUS-1001 / update CUS-1002 via API (JWT if Lab 28)
+# Observe: customer_event_published / customer_event_received / duplicate_event_ignored
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -522,7 +543,7 @@ Add to `docs/spring-kafka-notes.md`:
 
 ### Checkpoint A — Dependencies and config
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -532,7 +553,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Publish and listen
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -542,7 +563,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Idempotency and DLT
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -552,7 +573,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Tests and hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -670,18 +691,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README / `docs/spring-kafka-notes.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which event/network inputs are untrusted?
 2. Where are validation and authz enforced (HTTP Lab 28/29 vs Kafka ACLs later)?
 3. Which values are sensitive in payloads/logs?
-4. What can be retried safely vs must go to DLT?
-5. What happens after partial failure (DB committed, publish failed)?
-6. What would an operator monitor (lag, DLT depth, error rate)?
-7. Which local default is unacceptable (open trusted packages, in-memory idempotency alone)?
-8. How are event contracts versioned (`eventVersion`, topic `.v1`)?
 
 ---
+
 
 ## Cleanup
 
@@ -699,16 +716,9 @@ git status
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Spring Kafka publisher + listener for CRM events
-* Idempotent processing evidence
-* Retry + DLT configuration with proof
-* Integration test output (EmbeddedKafka or Testcontainers)
-* Successful Amina/Ravi path evidence
-* Controlled poison-message / duplicate evidence
-* Runbook + DLT naming notes
-* No secrets committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -730,43 +740,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (publish-after-success vs outbox)?
-2. Which failure was hardest (deserialization, DLT wiring, flaky await)?
-3. What evidence proves once-only business side effects?
-4. What breaks first at ten times the event rate?
-5. Which concern should move to shared infrastructure (Schema Registry, ACLs)?
-6. What must change before real customer data is used in events?
-7. How does this lab connect to Labs 30 and 32?
-8. What metric or log field matters most for consumer ops?
-9. (Forward look) How would transactional outbox change Step 4?
+2. What evidence proves once-only business side effects?
+3. Which failure was hardest (deserialization, DLT wiring, flaky await)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Durable idempotency table with unique `event_id`.
 2. Testcontainers Kafka instead of EmbeddedKafka.
 3. Align DLT explicitly to Lab 30 `.dlq` topic name.
-4. Metrics for publish success/fail and DLT counts.
-5. Document rollback if consumer poison loop ships.
-6. Transactional messaging / outbox sketch for DB+Kafka atomicity.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate `KafkaTemplate`, typed listeners, JSON config, retry classification, and DLT recovery
-* Happy path and duplicate/poison paths are repeatable
-* Another student can follow your run instructions
-* Tests/build pass twice
-* No production secret is hard-coded
-* You can explain at-least-once delivery vs idempotent handling
-
----
 
 ## Instructor Notes
 

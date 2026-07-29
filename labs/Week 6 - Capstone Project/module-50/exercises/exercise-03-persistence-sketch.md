@@ -8,10 +8,43 @@ Create `notes/lab50-persistence-sketch.md` — identify entities and migration n
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-50-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-persistence-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab50-persistence-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 50 — Sketch Persistence Changes
+
+## Step 1 — Entities
+
+Customer, Interaction (adapt to your schema)—key fields only.
+
+## Step 2 — Check the reference
+
+Schema changes go through migrations—not manual prod edits.
+
+## Step 3 — Query needs
+
+List queries: search by name/id, interactions by customer ordered by time.
+
+## Step 4 — Evidence
+
+Plan to prove UI write appears in PostgreSQL for `CUS-1001`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Persistence sketch with migration and proof idea in `notes/lab50-persistence-ske
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab50-persistence-sketch.md` | Pass / Fail |
-| 2 | Entities listed | Pass / Fail |
-| 3 | Migration discipline stated | Pass / Fail |
-| 4 | UI→DB proof planned | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab50-persistence-sketch.md`
+- [ ] Entities listed
+- [ ] Migration discipline stated
+- [ ] UI→DB proof planned
+

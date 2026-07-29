@@ -13,6 +13,20 @@
 Log operational context and the exception stack trace while showing the user a
 short, safe message.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+SEVERE: Withdrawal failed accountId=A-1001
+java.lang.IllegalStateException: Withdrawal service unavailable
+    at LoggingWarmup.main(...)
+User message: Withdrawal could not be completed.
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -144,14 +158,12 @@ remains concise.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Log includes severity, operation, demo account ID, and exception | Pass / Fail |
-| 2 | User message contains no stack trace | Pass / Fail |
-| 3 | Catch block is not empty | Pass / Fail |
-| 4 | You can name data that must never be logged | Pass / Fail |
+Self-check before marking Pass:
 
----
+- [ ] Log includes severity, operation, demo account ID, and exception
+- [ ] User message contains no stack trace
+- [ ] Catch block is not empty
+- [ ] You can name data that must never be logged
 
 ## Next
 

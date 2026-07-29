@@ -21,6 +21,17 @@ flowchart LR
     Exception -.-> Service
 ```
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+Higher-level request handling may call inward services and repositories.
+Domain/entity and repository packages must not import controller classes.
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Mark each dependency

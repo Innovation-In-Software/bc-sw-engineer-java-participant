@@ -8,10 +8,43 @@ Create `notes/lab17-meaningful-asserts.md` — rewrite weak asserts into status/
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-meaningful-asserts.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-meaningful-asserts.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 17 — Meaningful Asserts
+
+## Step 1 — Weak
+
+`assertNotNull(result)` after activate — label weak.
+
+## Step 2 — Strong
+
+Assert Ravi id CUS-1002 and status ACTIVE after activate.
+
+## Step 3 — Exception assert
+
+Plan `assertThrows` for activating Amina under your illegal policy.
+
+## Step 4 — Prep only
+
+Write: *Prepare for Lab 17; do not complete full suite now.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Strong assert examples including assertThrows plan in `notes/lab17-meaningful-as
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab17-meaningful-asserts.md` | Pass / Fail |
-| 2 | Weak vs strong shown | Pass / Fail |
-| 3 | assertThrows planned | Pass / Fail |
-| 4 | Pre-lab boundary present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab17-meaningful-asserts.md`
+- [ ] Weak vs strong shown
+- [ ] assertThrows planned
+- [ ] Pre-lab boundary present
+

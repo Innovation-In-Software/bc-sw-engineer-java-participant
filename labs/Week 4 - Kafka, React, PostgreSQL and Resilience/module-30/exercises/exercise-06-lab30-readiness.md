@@ -8,10 +8,46 @@ Create `notes/lab30-prep-checklist.md` — confirm prior notes exist and you are
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-lab30-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-prep-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 30 prep checklist
+
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab30-prelab-eda.md | (your note here) |
+| notes/lab30-topic-map.md | (your note here) |
+| notes/lab30-envelope-sketch.md | (your note here) |
+| notes/lab30-kafka-todos.md | (your note here) |
+| notes/lab30-producer-checklist.md | (your note here) |
+
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
+
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 30 now.
+
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): (your note here)
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -65,9 +101,10 @@ A readiness checklist with fixtures memorized and deliverables named in `notes/l
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab30-prep-checklist.md` | Pass / Fail |
-| 2 | Four deliverables listed | Pass / Fail |
-| 3 | Fixtures correct | Pass / Fail |
-| 4 | Pass/Fail self-mark written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab30-prep-checklist.md`
+- [ ] Four deliverables listed
+- [ ] Fixtures correct
+- [ ] Pass/Fail self-mark written
+

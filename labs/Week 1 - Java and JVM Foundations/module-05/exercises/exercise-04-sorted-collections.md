@@ -11,6 +11,20 @@
 
 Create `SortedMapDemo.java`, store book prices in a `HashMap`, then build a `TreeMap` from it and compare iteration order.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+HashMap order: [Dune, The Hobbit, Annihilation]
+TreeMap order: [Annihilation, Dune, The Hobbit]
+First title: Annihilation
+Last title: The Hobbit
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

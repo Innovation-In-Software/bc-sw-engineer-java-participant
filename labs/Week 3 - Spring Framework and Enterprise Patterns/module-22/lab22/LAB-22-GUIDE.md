@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab22-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-22/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -58,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Controlled-failure evidence (missing bean / validation) |
 | 8 | Run and cleanup instructions |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -207,9 +211,9 @@ Ignore build output, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/dependency-graph.md` (concepts subsection):
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: HTTP → controller bean → service bean → repository bean
 2. Trust boundary: validation still at edges; DI does not replace auth
@@ -217,10 +221,29 @@ Write 2–3 sentences each in `docs/dependency-graph.md` (concepts subsection):
 4. Stable bean identities (types/names) vs request fixture IDs
 5. Idempotent context refresh vs request-level create idempotency
 6. Local in-memory `@Repository` vs production JDBC/JPA bean
-7. Evidence: startup logs, graph doc, unit+IT surefire
-8. Two instances: each JVM has its own singleton graph
-9. Why constructor injection beats field injection for tests
-10. What breaks if someone reintroduces `new` inside `CustomerService`
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+class CustomerServiceTest {
+  @Test
+  void createUsesRepositoryAndNotifies() {
+    var repo = new InMemoryCustomerRepository();
+    var notify = mock(NotificationService.class);
+    var service = new CustomerService(repo, notify);
+    service.create(Customer.amina(), "lab-request-001");
+    assertThat(repo.findById("CUS-1001")).isPresent();
+    verify(notify).customerCreated("CUS-1001", "lab-request-001");
+  }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -516,7 +539,7 @@ Complete [Failure Experiments](#failure-experiments). Run `mvn test` twice.
 
 ### Checkpoint A — Scaffold and domain
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -526,7 +549,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Bean graph
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -536,7 +559,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Lifecycle + tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -546,7 +569,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Documentation hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -652,18 +675,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which browser, network, or API inputs are untrusted?
 2. Where are authn/authz/validation enforced (DI does not replace them)?
 3. Which values are sensitive in notification/lifecycle logs?
-4. What can be retried safely (GET; careful create)?
-5. What happens after partial failure (create saved but notify fails—document)?
-6. What would an operator monitor (startup failures, missing beans, Actuator)?
-7. Which local default is unacceptable (field injection as standard; open `beans` endpoint publicly)?
-8. How are bean/API contracts versioned when constructors change?
 
 ---
+
 
 ## Cleanup
 
@@ -680,17 +699,9 @@ git status
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `CustomerService`, `CustomerRepository`, `NotificationService` as Spring beans
-* Constructor injection throughout the CRM graph
-* Lifecycle evidence for `CustomerService`
-* Unit + Spring tests
-* `docs/dependency-graph.md`
-* Successful-path evidence (`CUS-1001`, `CUS-1002`, `lab-request-001`)
-* Controlled-failure evidence (missing bean / validation)
-* Run and cleanup instructions
-* No secrets or generated build directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -712,44 +723,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (constructor vs field injection)?
-2. Which failure was hardest to diagnose (scan issues, missing beans)?
-3. What evidence proves the graph works (unit + IT + curls)?
-4. What breaks first at ten times the bean count or request rate?
-5. Which concern should move to shared infrastructure (shared Boot starters, component scan conventions)?
-6. What must change before real customer data is used (persistence bean swap; still no PII logs)?
-7. How does this lab connect to Labs 18–21 (mocks, HTTP, logs, metrics)?
-8. What metric or bean health signal matters most after DI is complete?
-9. (Forward look) Which bean would you replace first for JDBC/JPA production persistence?
+2. What evidence proves the graph works (unit + IT + curls)?
+3. Which failure was hardest to diagnose (scan issues, missing beans)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Keep structured correlation and customer IDs in notification logs without PII names.
 2. Container-backed IT for a future JDBC repository bean.
 3. Wire readiness/liveness from Lab 21 into the same constructor-injected graph.
-4. Inject `CustomerMetrics` and time create after DI is complete.
-5. Document rollback when a bad bean configuration ships.
-6. Profile-specific `@Repository` (`inmemory` vs `jpa`) with identical service constructor.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate Spring IoC with constructor-injected CRM beans and lifecycle notes
-* Happy path and at least one failure path are repeatable
-* Pure unit tests and Spring IT both pass
-* Another student can follow your run instructions and graph doc
-* No production secret is hard-coded
-* You can explain local in-memory repositories versus production persistence beans
-* No `new` of Spring-managed collaborators remains inside `CustomerService`
-
----
 
 ## Instructor Notes
 

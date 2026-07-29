@@ -8,10 +8,43 @@ Create `notes/lab18-argumentcaptor-preview.md` — sketch ArgumentCaptor steps f
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-argumentcaptor-preview.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-argumentcaptor-preview.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 18 — ArgumentCaptor Preview
+
+## Step 1 — Declare
+
+Paper: `ArgumentCaptor<Customer> captor = ArgumentCaptor.forClass(Customer.class);`
+
+## Step 2 — Verify
+
+`verify(repo).save(captor.capture());`
+
+## Step 3 — Assert
+
+Assert captor.getValue().getStatus() is ACTIVE for Ravi.
+
+## Step 4 — Prep only
+
+Write: *Prepare for Lab 18; do not complete full Mockito lab now.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A three-step captors sketch with pre-lab boundary in `notes/lab18-argumentcaptor
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab18-argumentcaptor-preview.md` | Pass / Fail |
-| 2 | Declare/verify/assert sketched | Pass / Fail |
-| 3 | ACTIVE asserted | Pass / Fail |
-| 4 | Pre-lab boundary present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab18-argumentcaptor-preview.md`
+- [ ] Declare/verify/assert sketched
+- [ ] ACTIVE asserted
+- [ ] Pre-lab boundary present
+

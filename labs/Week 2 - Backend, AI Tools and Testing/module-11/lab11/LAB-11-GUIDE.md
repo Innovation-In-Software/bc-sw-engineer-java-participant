@@ -49,13 +49,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab11-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-11/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -69,6 +70,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 4 | Failure-experiment evidence and green `mvn clean test` output |
 | 5 | No secrets or `target/` committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -224,9 +228,9 @@ Ignore `target/`, IDE metadata, and env files with secrets.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `copilot-notes/ai-test-refactor-notes.md` (or `notes/lab11-answers.md`):
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Difference between an exploratory Copilot-generated test and a deliberately designed suite?
 2. What makes an assertion “false confidence”?
@@ -234,10 +238,59 @@ Write 2–3 sentences each in `copilot-notes/ai-test-refactor-notes.md` (or `not
 4. What is a code smell, and which Lab 10 smell is the clearest refactor candidate?
 5. Why is high coverage % not the same as meaningful coverage?
 6. What regression risk exists when refactoring without a full suite—and how do today’s tests help?
-7. When should you trust a Copilot extract-method vs verify manually?
-8. What acceptance criteria should a reviewer apply before merging an AI-generated test or refactor?
-9. Why keep JUnit/Mockito at `test` scope?
-10. How does this preview set up Labs 17–18 without replacing them?
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.northstar.crm.service;
+
+import com.northstar.crm.entity.Customer;
+import com.northstar.crm.entity.CustomerStatus;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CustomerServiceTest {
+
+    private CustomerService service;
+
+    @BeforeEach
+    void setUp() {
+        service = new CustomerService();
+    }
+
+    @Test
+    void addCustomerStoresNewCustomer() {
+        Customer amina = new Customer("CUS-1001", "Amina Khan", "amina.khan@example.com",
+                "555-0101", CustomerStatus.ACTIVE, LocalDateTime.now());
+        service.addCustomer(amina);
+        assertEquals(1, service.listAll().size());
+        assertEquals("CUS-1001", service.listAll().get(0).getCustomerId());
+    }
+
+    @Test
+    void addCustomerRejectsDuplicateId() {
+        Customer amina = new Customer("CUS-1001", "Amina Khan", "amina.khan@example.com",
+                "555-0101", CustomerStatus.ACTIVE, LocalDateTime.now());
+        service.addCustomer(amina);
+        Customer duplicate = new Customer("CUS-1001", "Someone Else", "x@example.com",
+                "555-0000", CustomerStatus.PROSPECT, LocalDateTime.now());
+        assertThrows(IllegalStateException.class, () -> service.addCustomer(duplicate));
+    }
+
+    @Test
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -708,7 +761,7 @@ git status
 
 ### Checkpoint A — Project + test deps
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -718,7 +771,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core tests green
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -728,7 +781,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Refactor + mock
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -739,7 +792,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Notes + guidelines + experiments
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -839,18 +892,14 @@ Always prefer `mvn -q clean test` before submitting. Check Surefire reports unde
 
 ## Security and Production Review
 
-Answer in README or notes:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which test data is safe to commit, and why (`CUS-1001` / `CUS-1002`)?
 2. Where is human review enforced before AI tests/refactors merge?
 3. What risk does an always-green trivial test create?
-4. What is the risk of accepting a refactor without before/after suite runs?
-5. Which values must never appear in tests or mocks?
-6. What would a tech lead audit for *meaningful* coverage?
-7. How does mocking `CustomerNotifier` reduce coupling vs concrete implementations?
-8. How do you keep an audit trail of AI-suggested vs human-verified test code?
 
 ---
+
 
 ## Cleanup
 
@@ -866,13 +915,9 @@ No containers started. Keep notes and sources. **Keep `lab11-crm`** for Lab 12+ 
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `CustomerTest`, `CustomerServiceTest`, `CustomerNotifierMockTest`
-* `CustomerNotifier` + refactored `CustomerService` (`validateCustomerId`, notifier hook)
-* `copilot-notes/ai-test-refactor-notes.md` entries `lab11-001`–`lab11-004`
-* Failure-experiment evidence and green `mvn clean test` output
-* No secrets or `target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -894,42 +939,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers in notes:
+Write **1–3 sentence** answers (not essays):
 
-1. What made a test “meaningful” vs “false confidence” here?
-2. How did extracting `CustomerNotifier` change testability?
-3. What would you tell a teammate who accepts every Copilot test unread?
-4. Which refactor suggestion did you reject, and why?
-5. How does this preview connect to Labs 17–18?
-6. Which coverage gap is acceptable now, and what would change that later?
-7. How does this lab connect to the wider Northstar CRM platform (Weeks 2–6)?
-8. What is the cost of skipping before/after test runs on a refactor in a shared codebase?
-9. (Forward look) When Spring arrives, what about today’s notifier mock pattern stays valuable?
+1. (Forward look) When Spring arrives, what about today’s notifier mock pattern stays valuable?
+2. What made a test “meaningful” vs “false confidence” here?
+3. How did extracting `CustomerNotifier` change testability?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Ask Copilot for a `@ParameterizedTest` across all four `CustomerStatus` values; evaluate adopting it yet.
 2. Add a logging `CustomerNotifier` implementation and prove service behavior is identical with either notifier.
 3. Sketch JaCoCo plugin config; record line-coverage % for `CustomerService` without chasing 100%.
-4. Identify a second smell beyond validation duplication; decide fix-now vs defer in writing.
-5. Compare Copilot’s invented test data vs shared `CUS-1001`/`CUS-1002` fixtures—why shared fixtures matter for later labs.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* `mvn -q clean test` is green with entity, service, and mock tests
-* `CustomerNotifier` is extracted, used, and verified via Mockito
-* At least one AI-generated test was rejected as false confidence and documented
-* Coverage-gap review and five-point acceptance checklist exist
-* Failure experiments are documented
-* You can explain why every accepted test and refactor is correct
-
----
 
 ## Instructor Notes
 

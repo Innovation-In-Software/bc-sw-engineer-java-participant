@@ -30,6 +30,16 @@ flowchart LR
     L --> O
 ```
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Hello, JVM!
+```
+
+Then follow **Steps** to create your own file.
+
 ## Do this
 
 **Why:** Prove you are running bytecode, not re-interpreting the `.java` file each time.

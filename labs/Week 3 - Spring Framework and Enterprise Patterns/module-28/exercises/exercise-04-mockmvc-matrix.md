@@ -8,10 +8,43 @@ Create `notes/mockmvc-matrix.md` — draft the status matrix Lab 28 tests must c
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-mockmvc-matrix.md` (this file in the course repo) |
 | Your notes file | `notes/mockmvc-matrix.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 28 — MockMvc Evidence Matrix
+
+## Step 1 — Matrix
+
+In `notes/mockmvc-matrix.md`, rows: anonymous GET customers; bad token; agent GET customer; agent GET admin; admin GET admin.
+
+## Step 2 — Expected statuses
+
+Fill expected 401/403/200 for each row.
+
+## Step 3 — Fixture
+
+Successful customer read uses `CUS-1001` Amina.
+
+## Step 4 — Boundary
+
+Do not write full MockMvc tests in pre-lab.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Status matrix prepared for Lab 28 automation in `notes/mockmvc-matrix.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/mockmvc-matrix.md` | Pass / Fail |
-| 2 | Five scenarios listed | Pass / Fail |
-| 3 | Statuses assigned | Pass / Fail |
-| 4 | CUS-1001 mentioned | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/mockmvc-matrix.md`
+- [ ] Five scenarios listed
+- [ ] Statuses assigned
+- [ ] CUS-1001 mentioned
+

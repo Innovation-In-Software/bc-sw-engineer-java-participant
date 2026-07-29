@@ -37,12 +37,14 @@ Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
 
 ## How to follow this lab
 
-1. **In class (session block):** prefer [`starter/README.md`](starter/README.md) — copy starter → platform tree, fill service TODOs, run smoke (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / multi-day): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-49/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -59,6 +61,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | One controlled failure-path result (invalid input or not-found) |
 | 8 | Concise setup and reproduction guide cross-links |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -237,9 +242,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords. If using `lab49-crm/` alo
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/backend-demo.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow under test (create interaction for `CUS-1001`, not UI)
 2. Trust boundary: what API validation proves vs what JWT Lab 51 will enforce
@@ -247,10 +252,23 @@ Write 2–3 sentences each in `docs/backend-demo.md`:
 4. Stable fixtures vs random UUIDs without seed customers
 5. Idempotency of consumer on duplicate `eventId`
 6. Why publish strategy must match Lab 48 ADR-003 (or equivalent)
-7. Evidence operators/leads need (Surefire, curl, kafka console, SQL)
-8. Two machines: same fixtures, same topic name, same verify
-9. False-confidence asserts (`assertNotNull(response)` only) vs domain asserts
-10. What Lab 50 will consume (DTO fields) without renaming fixture IDs
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+curl -i -X POST "http://localhost:8080/api/customers/$CUSTOMER_ID/interactions" \
+  -H 'Content-Type: application/json' \
+  -H "Authorization: Bearer $TOKEN" \
+  -H 'X-Correlation-ID: lab-request-001' \
+  -d '{"channel":"PHONE","summary":"Requested address update"}'
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -461,7 +479,7 @@ curl -i -X POST "http://localhost:8080/api/customers/$CUSTOMER_ID/interactions" 
 
 ### Checkpoint A — Structure and scope
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -471,7 +489,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core slice
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -481,7 +499,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Messaging + tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -491,7 +509,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -558,6 +576,7 @@ git status --short
 ## Kafka verification (topic, sample payload fields)
 ## Test commands (mvn clean verify)
 ## Known limitations / ADR references
+
 ```
 
 ### Problem Details expectation (validation)
@@ -627,18 +646,14 @@ Adapt field names to your Problem Details implementation; keep status semantics 
 
 ## Security and Production Review
 
-Answer in `docs/backend-demo.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (body, path ids, headers, Kafka payloads)?
 2. Where are authn/authz/validation enforced (validation now; JWT Lab 51)?
 3. Which values are sensitive—never in logs beyond samples?
-4. What can be retried safely (`mvn verify`, consumer with dedupe)?
-5. What happens after partial failure (txn rollback; DLT)?
-6. What would an operator monitor (consumer lag, error rate, correlation search)?
-7. Which local default is unacceptable (plaintext passwords in `application.yml` committed)?
-8. How are event contracts versioned with API/DTO changes?
 
 ---
+
 
 ## Cleanup
 
@@ -657,20 +672,9 @@ Do not commit `target/` or broker data directories. Keep `docs/backend-demo.md` 
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Backend source changes for the interaction vertical slice
-* Database migration for interaction persistence
-* Versioned event contract (`CustomerInteractionRecordedV1` or equivalent)
-* Unit and integration tests (HTTP, persistence, messaging)
-* `docs/backend-demo.md` reproduction runbook
-* Baseline and final validation results (`mvn clean verify`)
-* One controlled failure-path result (invalid input or not-found)
-* Concise setup and reproduction guide cross-links
-* Peer-review notes and resolved comments
-* Known limitations, residual risks, owners, and next actions
-
-Exclude real `.env` files, access tokens, database exports, private keys, kubeconfig, Terraform state, and sensitive screenshots.
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -692,44 +696,26 @@ Exclude real `.env` files, access tokens, database exports, private keys, kubeco
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (transaction vs publish timing)?
-2. Which failure was hardest to diagnose (Kafka, JPA, validation)?
-3. What evidence proves the slice works end-to-end?
-4. What breaks first at ten times event volume?
-5. Which concern should move to shared CI infrastructure?
-6. What must change before real customer notes are stored?
-7. How does this lab connect to Labs 48, 50, and 51?
-8. What metric matters most on the ops dashboard for this slice?
-9. (Forward look) Which DTO fields must stay stable for Lab 50 React types?
+2. What evidence proves the slice works end-to-end?
+3. Which failure was hardest to diagnose (Kafka, JPA, validation)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Implement a transactional outbox and compare to after-commit publish.
 2. Add consumer contract tests (schema/example payload).
 3. Automate duplicate event delivery assertion in IT.
-4. Add optimistic concurrency on interaction updates.
-5. Generate OpenAPI + event examples checked into `docs/`.
-6. Assert Problem Details `correlationId` equals `lab-request-001` on failures.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Interaction API persists and returns correct contracts
-* Versioned Kafka event includes correlation for `CUS-1001`
-* Consumer handles duplicates/failures safely
-* Automated verify is green and repeatable
-* Failure paths are demonstrated and documented
-* Another student can follow `docs/backend-demo.md`
-* No production secret is hard-coded
-
----
 
 ## Instructor Notes
 

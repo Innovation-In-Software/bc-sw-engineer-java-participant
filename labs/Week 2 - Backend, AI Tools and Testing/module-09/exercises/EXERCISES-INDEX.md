@@ -10,6 +10,8 @@
 > These exercises design and test small build pieces; Lab 9 expands the full CRM `pom.xml` and lifecycle evidence.  
 > Exercise 6 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `<!-- TODO -->` with your own values, then run Maven.
 
+> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+
 ## Everything in one place — guide file vs your notes file
 
 | # | Open this guide | Create / save this notes file |

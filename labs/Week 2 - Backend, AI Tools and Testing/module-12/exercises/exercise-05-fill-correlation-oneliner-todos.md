@@ -8,10 +8,47 @@ Create `notes/lab12-correlation-todos.md` — complete fill-in blanks for correl
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-fill-correlation-oneliner-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-correlation-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 12 — Fill Correlation One-Liner TODOs
+
+## Step 1 — Copy TODOs
+
+Correlation id value: (your note here)
+Log on activate entry: (your note here)
+Log on activate success for Ravi: (your note here)
+Never log field: (your note here)
+Place correlation in: (your note here) (header/MDC — pick one for now)
+
+## Step 2 — Fill blanks
+
+Fill with `lab-request-001`, short log phrases, and a PII field you must not log (e.g. raw email if present later).
+
+## Step 3 — One-liner rule
+
+Write: *Every public service entry logs correlation once.*
+
+## Step 4 — Self-check
+
+Confirm the correlation blank is exactly lab-request-001.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -66,9 +103,10 @@ Filled correlation TODOs ready for Lab 12 notes in `notes/lab12-correlation-todo
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab12-correlation-todos.md` | Pass / Fail |
-| 2 | All _____ replaced | Pass / Fail |
-| 3 | lab-request-001 present | Pass / Fail |
-| 4 | PII exclusion named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab12-correlation-todos.md`
+- [ ] All _____ replaced
+- [ ] lab-request-001 present
+- [ ] PII exclusion named
+

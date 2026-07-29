@@ -8,10 +8,43 @@ Create `notes/activation-commands.md` — produce Windows and macOS activation c
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-activation-drill.md` (this file in the course repo) |
 | Your notes file | `notes/activation-commands.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 26 — Activation Command Drill
+
+## Step 1 — -D form
+
+In `notes/activation-commands.md`, write `mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=dev` or equivalent `-Dspring.profiles.active=dev` style used in your lab guide.
+
+## Step 2 — Env form
+
+Windows: `$env:SPRING_PROFILES_ACTIVE="test"` · macOS: `export SPRING_PROFILES_ACTIVE=test`.
+
+## Step 3 — Prod caution
+
+Do not run prod profile without required env vars — expect fail-fast.
+
+## Step 4 — Boundary
+
+Do not start the full Lab 26 app in this exercise unless instructor asks.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Activation commands documented for both OS styles in `notes/activation-commands.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/activation-commands.md` | Pass / Fail |
-| 2 | `-D` example present | Pass / Fail |
-| 3 | Env-var example present | Pass / Fail |
-| 4 | Prod fail-fast caution written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/activation-commands.md`
+- [ ] `-D` example present
+- [ ] Env-var example present
+- [ ] Prod fail-fast caution written
+

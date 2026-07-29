@@ -11,6 +11,22 @@
 
 Create `GcObserve.java`, run it with a bounded heap and unified GC logging, and identify evidence that the JVM reclaimed temporary allocations.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+[info][gc] Using G1
+[info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) ...
+Completed round 5
+...
+Completed round 20
+Allocated bytes over time: 262144000
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

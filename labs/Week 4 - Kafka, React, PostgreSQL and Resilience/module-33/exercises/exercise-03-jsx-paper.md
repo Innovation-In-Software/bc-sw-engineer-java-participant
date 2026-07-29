@@ -8,10 +8,43 @@ Create `notes/lab33-jsx-paper.md` — hand-write JSX structure for a two-row cus
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-33-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-jsx-paper.md` (this file in the course repo) |
 | Your notes file | `notes/lab33-jsx-paper.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 33 — JSX on Paper
+
+## Step 1 — Tree
+
+Sketch `<CustomerList>` containing two `<CustomerCard>` nodes.
+
+## Step 2 — Keys
+
+Write why `key={customerId}` should be `CUS-1001`, not array index.
+
+## Step 3 — Badge
+
+Nest `<StatusBadge status="ACTIVE" />` inside Amina's card.
+
+## Step 4 — No runtime
+
+Do not create a Vite app in this exercise.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Paper JSX tree with correct keys and nested badge in `notes/lab33-jsx-paper.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab33-jsx-paper.md` | Pass / Fail |
-| 2 | Two cards sketched | Pass / Fail |
-| 3 | Key rationale written | Pass / Fail |
-| 4 | StatusBadge nested | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab33-jsx-paper.md`
+- [ ] Two cards sketched
+- [ ] Key rationale written
+- [ ] StatusBadge nested
+

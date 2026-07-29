@@ -8,10 +8,43 @@ Create `notes/lab51-pipeline-gates.md` — list pipeline stages required for cap
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-51-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-pipeline-gates.md` (this file in the course repo) |
 | Your notes file | `notes/lab51-pipeline-gates.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 51 — Outline Delivery Gates
+
+## Step 1 — Stages
+
+build, test, SAST/Dependency-Check, package image, (deploy as authorized).
+
+## Step 2 — Check the reference
+
+SAST gate must be able to fail the pipeline.
+
+## Step 3 — Secrets
+
+Checklist: no credentials in YAML; use Actions secrets.
+
+## Step 4 — Artifact identity
+
+Require digest/checksum recorded for promotion.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Delivery gate outline with failing SAST and digest identity in `notes/lab51-pipe
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab51-pipeline-gates.md` | Pass / Fail |
-| 2 | Stages listed | Pass / Fail |
-| 3 | Failing SAST required | Pass / Fail |
-| 4 | Digest identity required | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab51-pipeline-gates.md`
+- [ ] Stages listed
+- [ ] Failing SAST required
+- [ ] Digest identity required
+

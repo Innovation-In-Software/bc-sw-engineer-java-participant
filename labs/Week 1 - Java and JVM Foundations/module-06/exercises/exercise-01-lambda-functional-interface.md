@@ -14,6 +14,24 @@ Create a five-employee dataset, declare a custom functional interface with one
 abstract method, and implement the same salary rule with an anonymous class and
 a lambda.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+public record Employee(
+        int id,
+        String name,
+        String department,
+        double salary) {
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste each file below, then replace every `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished files.
@@ -164,11 +182,10 @@ results for both tested thresholds.
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes._
+Self-check before marking Pass:
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | All four files compile and `LambdaDemo` runs | Pass / Fail |
-| 2 | Both implementations return `true` at 60,000 | Pass / Fail |
-| 3 | Both implementations return `false` at 75,000 | Pass / Fail |
-| 4 | You can explain what `employee -> ...` means | Pass / Fail |
+- [ ] All four files compile and `LambdaDemo` runs
+- [ ] Both implementations return `true` at 60,000
+- [ ] Both implementations return `false` at 75,000
+- [ ] You can explain what `employee -> ...` means
+

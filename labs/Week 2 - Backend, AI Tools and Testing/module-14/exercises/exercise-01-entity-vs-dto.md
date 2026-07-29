@@ -8,10 +8,39 @@ Create `notes/lab14-entity-vs-dto.md` — explain why Northstar HTTP/SOAP payloa
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-entity-vs-dto.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-entity-vs-dto.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 14 — Entity vs DTO
+
+## Step 1 — Definitions
+
+Entity = persistence shape; DTO = API contract shape.
+
+## Step 2 — Leak risks
+
+List two leaks: internal flags, lazy relations, or audit columns in responses.
+
+## Step 3 — Fixture DTO fields
+
+DTO fields for Amina: customerId, fullName, status — no persistence annotations.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Clear entity/DTO split with fixture field list in `notes/lab14-entity-vs-dto.md`
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab14-entity-vs-dto.md` | Pass / Fail |
-| 2 | Definitions written | Pass / Fail |
-| 3 | Two leak risks | Pass / Fail |
-| 4 | Amina DTO fields listed | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab14-entity-vs-dto.md`
+- [ ] Definitions written
+- [ ] Two leak risks
+- [ ] Amina DTO fields listed
+

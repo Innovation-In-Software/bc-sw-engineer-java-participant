@@ -8,10 +8,52 @@ Create `notes/layers.md` — classify CRM tasks into the correct layer.
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-layer-boundaries.md` (this file in the course repo) |
 | Your notes file | `notes/layers.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 25 — Layer Boundary Quiz
+
+## Reference
+
+| Task | Layer |
+| --- | --- |
+| Parse JSON / return ResponseEntity | Controller |
+| PROSPECT → ACTIVE rule | Service |
+| Map/store lookup by id | Repository |
+| Duplicate id rejection | Service |
+
+## Step 1 — Classify
+
+In `notes/layers.md`, classify: HTTP mapping, uniqueness check, in-memory save, status transition, JSON serialization.
+
+## Step 2 — Check the reference
+
+Compare to the reference table; fix any controller-owns-rules mistakes.
+
+## Step 3 — Import rule
+
+Write: controllers must not import repository types.
+
+## Step 4 — Fixtures
+
+Seed plan: `CUS-1001` ACTIVE, `CUS-1002` PROSPECT.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -71,9 +113,10 @@ Layer classifications and import rule are correct in `notes/layers.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/layers.md` | Pass / Fail |
-| 2 | Five tasks classified correctly | Pass / Fail |
-| 3 | No-controller-repo-import rule written | Pass / Fail |
-| 4 | Fixtures named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/layers.md`
+- [ ] Five tasks classified correctly
+- [ ] No-controller-repo-import rule written
+- [ ] Fixtures named
+

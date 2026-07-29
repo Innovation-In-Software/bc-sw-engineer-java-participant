@@ -48,13 +48,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab15-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-15/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -69,6 +70,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 5 | README / notes with transition table and wiring |
 | 6 | No secrets or `target/` committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -219,9 +223,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/service-layer-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main data/request flow (facade → service → validator/repository)
 2. Trust boundary: Bean Validation (shape) vs `CustomerValidator` (meaning)
@@ -229,10 +233,59 @@ Write 2–3 sentences each in `docs/service-layer-notes.md`:
 4. Stable identity (`CUS-1001`) vs mutable status
 5. Retry/idempotency for `changeStatus` when already ACTIVE
 6. In-memory repository vs future JPA behind the same interface
-7. Correlation ID on illegal transitions for support
-8. Two JVMs = independent memory (activation races later need DB constraints)
-9. Why constructor DI beats service locators for Labs 17–18
-10. What Spring will change in wiring but not in transition tables
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.northstar.crm.service;
+
+import com.northstar.crm.entity.Customer;
+import com.northstar.crm.entity.CustomerStatus;
+import com.northstar.crm.repository.CustomerRepository;
+import java.util.List;
+import java.util.Optional;
+
+public class DefaultCustomerService implements CustomerService {
+    private final CustomerRepository repository;
+    private final CustomerValidator validator;
+
+    public DefaultCustomerService(CustomerRepository repository, CustomerValidator validator) {
+        this.repository = repository;
+        this.validator = validator;
+    }
+
+    @Override
+    public Customer addCustomer(Customer customer) {
+        validator.validateNew(customer);
+        return repository.save(customer);
+    }
+
+    @Override
+    public Optional<Customer> findById(String customerId) {
+        return repository.findById(customerId);
+    }
+
+    @Override
+    public List<Customer> listAll() {
+        return List.copyOf(repository.findAll());
+    }
+
+    @Override
+    public Customer changeStatus(String customerId, CustomerStatus newStatus, String correlationId) {
+        Customer existing = repository.findById(customerId)
+            .orElseThrow(() -> new IllegalArgumentException(
+                "customer not found [" + correlationId + "]: " + customerId));
+        validator.validateTransition(existing.getStatus(), newStatus, correlationId);
+        existing.setStatus(newStatus);
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -578,7 +631,7 @@ git status
 
 ### Checkpoint A — Repository boundary
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -588,7 +641,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Service + validator
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -598,7 +651,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Behavior proof
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -608,7 +661,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Tests + docs
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -703,18 +756,14 @@ Document whether emails are case-sensitive or lowercased before `existsByEmail`.
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (all client fields reaching the service)?
 2. Where are authn/authz/validation enforced (shape at facade; meaning in validator; auth still absent)?
 3. Which values are sensitive, and where stored?
-4. What can be retried safely (`findById`; `changeStatus` depending on your noop policy)?
-5. What happens after partial failure (no status write if validation fails)?
-6. What would an operator monitor (rejected transition counts, correlation IDs)?
-7. Which local default is unacceptable in production (in-memory; no auth)?
-8. How are transition policies versioned when product changes KYC rules?
 
 ---
+
 
 ## Cleanup
 
@@ -730,14 +779,9 @@ No containers required. **Keep `lab15-crm`**—Lab 16 expands exceptions on thes
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `CustomerService` + `DefaultCustomerService`
-* `CustomerValidator` with status-transition rules
-* `CustomerRepository` + in-memory impl (Map not leaked)
-* Evidence: activate `CUS-1002`; failed illegal transition; validator tests
-* README / notes with transition table and wiring
-* No secrets or `target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -759,44 +803,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the load (or concurrent activations)?
-5. Which concern should move to shared infrastructure?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 14 and 16–18?
-8. What metric or log field matters most for rejected transitions?
-9. (Forward look) What stays identical when Spring injects `DefaultCustomerService`?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Structured correlation + customerId on every business-rule failure object.
 2. Extract `StatusTransitionPolicy` interface for swappable rules in tests.
 3. Query method `canActivate(customerId)` without mutating state.
-4. Counters for successful vs rejected transitions.
-5. Document Spring constructor injection mapping for Lab 22+.
-6. Enforce email uniqueness case-insensitively with documented policy.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate service + validator + `PROSPECT→ACTIVE`
-* Happy path and illegal-transition failure are repeatable
-* Failed transitions leave prior status intact
-* Another student can follow your README
-* Tests/build pass
-* No production secret is hard-coded
-* You can explain why the service never exposes the repository’s Map
-
----
 
 ## Instructor Notes
 

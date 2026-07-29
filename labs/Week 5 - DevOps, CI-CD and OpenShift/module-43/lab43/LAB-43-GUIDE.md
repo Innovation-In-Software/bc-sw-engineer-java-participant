@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab43-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-43/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | Controlled failure-path result then restore |
 | 7 | No secrets or real customer records in Git |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -260,9 +265,9 @@ Ignore `target/`, IDE metadata, `.env`, tokens, passwords, and raw pipeline logs
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/ci-runbook.md` (or a short concepts section):
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main CI flow for the CRM (commit → verify → artifact → optional tag deploy)
 2. Trust boundary: what Actions proves vs what it assumes about GitHub runners and caches
@@ -270,10 +275,41 @@ Write 2–3 sentences each in `docs/ci-runbook.md` (or a short concepts section)
 4. Stable fixtures (`CUS-1001`) in tests vs random CI data that breaks flakes
 5. Idempotency of re-running a verify step on the same commit
 6. Why PR gates differ from `main` / tag gates
-7. Evidence operators need (Surefire, checksum, commit SHA)
-8. Two machines / two workflow runs: same YAML, same image pin, same gate
-9. False confidence: green pipeline that skipped tests or rebuilt on deploy
-10. What Lab 44 will change (promotion of this artifact) without changing fixture IDs
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```yaml
+  package:
+    needs: verify
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Package once + checksum
+        run: |
+          ./mvnw -B -ntp -DskipTests package
+          sha256sum target/*.jar > target/SHA256SUMS
+          echo "commit=${GITHUB_SHA}" >> target/SHA256SUMS
+          echo "run=${GITHUB_RUN_NUMBER}" >> target/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: crm-jar
+          path: |
+            target/*.jar
+            target/SHA256SUMS
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -515,7 +551,8 @@ git status --short
 
 ```markdown
 ## Definition of done
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -536,7 +573,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -546,7 +583,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core pipeline
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -556,7 +593,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Gates + secrets
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -566,7 +603,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -626,18 +663,23 @@ git status --short
 ```markdown
 # CI Runbook — lab43-crm
 ## Policy
+
 - PR: verify only
 - main: verify + checksum
 - tags v*: verify + manual deploy
 ## Re-run
+
 1. Open Actions → failed job → Re-run jobs
 2. Prefer rerun on same commit (no silent code drift)
 ## Gates
+
 - Surefire/Failsafe must be green
 - Scan threshold: <document>
 ## Secrets
+
 - Names only: CRM_REGISTRY_USER, CRM_REGISTRY_TOKEN (secured)
 ## Troubleshooting
+
 - See lab README Troubleshooting table
 ```
 
@@ -661,6 +703,7 @@ echo "Would deploy artifact for tag=${TAG} commit=${GITHUB_SHA:-local}"
 - Pipeline build URL (sanitized):
 - Java/Maven versions:
 ## Results
+
 | Check | Result | Evidence |
 | ----- | ------ | -------- |
 | Baseline verify | PASS/FAIL | |
@@ -669,6 +712,7 @@ echo "Would deploy artifact for tag=${TAG} commit=${GITHUB_SHA:-local}"
 | Forced test failure | PASS/FAIL | |
 | Restore green | PASS/FAIL | |
 ## Residual risks
+
 - Risk / owner / date:
 ```
 
@@ -732,18 +776,14 @@ echo "Would deploy artifact for tag=${TAG} commit=${GITHUB_SHA:-local}"
 
 ## Security and Production Review
 
-Answer in README or `docs/ci-runbook.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (PR branch code vs secured variables)?
 2. Where are authn/authz for deploy enforced (GitHub deployments, approvals)?
 3. Which values are sensitive—never in YAML or screenshots?
-4. What can be retried safely (verify on same commit)?
-5. What happens after partial failure (failed scan vs failed tests)?
-6. What would an operator monitor (pipeline duration, flake rate, gate fails)?
-7. Which local default is unacceptable (skipTests, plaintext tokens, `latest` image forever)?
-8. How is artifact identity versioned for Lab 44 promotion?
 
 ---
+
 
 ## Cleanup
 
@@ -761,15 +801,9 @@ Delete temporary plaintext secret files. Keep sanitized screenshots. Do not comm
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `.github/workflows/ci.yml` with PR / main / tag behavior
-* Test reports (Surefire/Failsafe) evidence
-* Security / scan report evidence (or documented residual risk)
-* JAR and SHA-256 checksum tied to commit
-* `docs/ci-runbook.md` with policy, rerun, and troubleshooting
-* Controlled failure-path result then restore
-* No secrets or real customer records in Git
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -791,44 +825,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (cache, image pin, or package-once)?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the JAR matches the commit?
-4. What breaks first at ten times the pipeline concurrency?
-5. Which concern should move to shared org pipeline templates?
-6. What must change before real customer data appears in CI logs (spoiler: don’t)?
-7. How does this lab connect to Labs 41–42 and Lab 44?
-8. What metric matters most on the CI dashboard for this gate?
-9. (Forward look) What changes when promotion becomes formal CD without changing fixtures?
+2. What evidence proves the JAR matches the commit?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Split unit and integration tests with explicit artifacts.
 2. Publish a dependency-scan report artifact on every `main` build.
 3. Publish a container image only on version tags (digest recorded).
-4. Add parallel backend and frontend check steps.
-5. Document a safe pipeline rerun policy (what is idempotent vs not).
-6. Fail PRs on JaCoCo regression if your CRM already has Lab 17 gates.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* GitHub Actions verify the CRM with caching and published reports
-* An immutable JAR + checksum + commit identity exist for promotion
-* PR / main / tag behaviors match the written policy
-* Secrets are secured and never committed
-* A controlled failure was observed and restored
-* Another student can follow `docs/ci-runbook.md`
-* No production secret or real customer PII is hard-coded
-
----
 
 ## Instructor Notes
 

@@ -19,6 +19,38 @@ mini-src/com/northstar/crm/
     └── CustomerResponse.java
 ```
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+package com.northstar.crm.entity;
+
+public class Customer {
+    // TODO: declare three final String fields — id, name, status
+    private final String _____;
+    private final String _____;
+    private final String _____;
+
+    public Customer(String id, String name, String status) {
+        // TODO: assign each parameter to its matching field (this._____)
+        this._____ = id;
+        this._____ = name;
+        this._____ = status;
+    }
+
+    // TODO: add three getters — getId(), getName(), getStatus()
+    public String getId() { return _____; }
+    public String getName() { return _____; }
+    public String getStatus() { return _____; }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Create the directories and files from the tree above. Paste each skeleton, then replace every `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished files.

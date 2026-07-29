@@ -8,10 +8,43 @@ Create `notes/lab44-staging-smoke-plan.md` — plan staging checks using Amina/R
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-staging-smoke-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-staging-smoke-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 44 — Plan Staging Smoke
+
+## Step 1 — Cases
+
+Read `CUS-1001`, optional activate path for `CUS-1002`, readiness, correlation header.
+
+## Step 2 — Evidence
+
+List screenshot names under `notes/screenshots/lab-44/`.
+
+## Step 3 — Forbidden
+
+No production data, no real emails, no secret URLs in evidence.
+
+## Step 4 — Scope
+
+Plan only—execution is Lab 44.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Staging smoke plan with evidence naming in `notes/lab44-staging-smoke-plan.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab44-staging-smoke-plan.md` | Pass / Fail |
-| 2 | Fixture cases listed | Pass / Fail |
-| 3 | Evidence paths named | Pass / Fail |
-| 4 | Forbidden items stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab44-staging-smoke-plan.md`
+- [ ] Fixture cases listed
+- [ ] Evidence paths named
+- [ ] Forbidden items stated
+

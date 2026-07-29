@@ -8,10 +8,28 @@ Create `notes/lab38-sql-index-todos.md` — fill TODOs in baseline vs optimized 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-38-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-fill-sql-index-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab38-sql-index-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 38 — Fill SQL/Index TODOs
+
+## Step 1 — Paste
+
+Create `notes/lab38-todos.sql`:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -83,9 +101,10 @@ Filled baseline/optimized SQL and index names on paper in `notes/lab38-sql-index
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab38-sql-index-todos.md` | Pass / Fail |
-| 2 | Blanks filled | Pass / Fail |
-| 3 | Keyset TODO present | Pass / Fail |
-| 4 | No-run confirmation | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab38-sql-index-todos.md`
+- [ ] Blanks filled
+- [ ] Keyset TODO present
+- [ ] No-run confirmation
+

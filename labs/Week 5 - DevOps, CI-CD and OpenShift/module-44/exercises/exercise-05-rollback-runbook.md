@@ -8,10 +8,43 @@ Create `notes/lab44-rollback-runbook.md` — outline `docs/rollback-runbook.md` 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-rollback-runbook.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-rollback-runbook.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 44 — Outline Rollback Runbook
+
+## Step 1 — Steps
+
+Detect → decide → redeploy known-good digest → verify readiness → CRM smoke → comms update.
+
+## Step 2 — Check the reference
+
+Rollback names digest Y and a verification check—not “redeploy latest”.
+
+## Step 3 — Timebox
+
+Write a target recovery time placeholder (e.g. under N minutes) and who declares SEV.
+
+## Step 4 — Kafka watch
+
+Optional one-liner: watch consumer lag after rollback (detail in Lab 46).
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Rollback runbook outline with verification in `notes/lab44-rollback-runbook.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab44-rollback-runbook.md` | Pass / Fail |
-| 2 | Steps ordered | Pass / Fail |
-| 3 | Digest-based rollback stated | Pass / Fail |
-| 4 | Verification included | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab44-rollback-runbook.md`
+- [ ] Steps ordered
+- [ ] Digest-based rollback stated
+- [ ] Verification included
+

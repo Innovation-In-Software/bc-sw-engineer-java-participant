@@ -8,10 +8,39 @@ Create `notes/lab21-alert-runbook.md` — write a mini runbook for a create_fail
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-alert-from-failure-total.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-alert-runbook.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 21 — Alert from create_failure_total
+
+## Step 1 — Signal
+
+Alert when create_failure_total rate exceeds threshold for N minutes.
+
+## Step 2 — Triage
+
+Check Actuator/health, then logs filtered by correlation examples.
+
+## Step 3 — CRM check
+
+Reproduce create for a PROSPECT-shaped payload (Ravi-like) in non-prod.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A short alert runbook tied to create_failure_total in `notes/lab21-alert-runbook
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab21-alert-runbook.md` | Pass / Fail |
-| 2 | Signal defined | Pass / Fail |
-| 3 | Triage steps listed | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab21-alert-runbook.md`
+- [ ] Signal defined
+- [ ] Triage steps listed
+- [ ] Notes saved
+

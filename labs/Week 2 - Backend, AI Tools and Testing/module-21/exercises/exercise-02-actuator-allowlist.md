@@ -8,10 +8,43 @@ Create `notes/lab21-actuator-allowlist.md` — draft which Actuator endpoints ma
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-actuator-allowlist.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-actuator-allowlist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 21 — Actuator Allow-List
+
+## Step 1 — Candidates
+
+health, info, metrics, prometheus — list in this notes file.
+
+## Step 2 — Allow-list
+
+Lab allow: health (and maybe info); lock env/beans/configprops.
+
+## Step 3 — Auth note
+
+One sentence: production metrics scrapes need network policy/auth.
+
+## Step 4 — Prep only
+
+Write: *Prepare for Lab 21; do not open all Actuator endpoints in prep.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ An Actuator allow-list with lockdown items in `notes/lab21-actuator-allowlist.md
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab21-actuator-allowlist.md` | Pass / Fail |
-| 2 | Allow items listed | Pass / Fail |
-| 3 | Lockdown items listed | Pass / Fail |
-| 4 | Auth/network note present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab21-actuator-allowlist.md`
+- [ ] Allow items listed
+- [ ] Lockdown items listed
+- [ ] Auth/network note present
+

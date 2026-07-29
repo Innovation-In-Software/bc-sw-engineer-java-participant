@@ -8,10 +8,28 @@ Create `notes/lab47-stakeholder-todos.md` — complete blanks for a business-rea
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-47-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-stakeholder-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab47-stakeholder-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 47 — Fill Stakeholder Email TODOs
+
+## Step 1 — Template
+
+Fill:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -69,9 +87,10 @@ Stakeholder email TODO sheet filled and scrubbed in `notes/lab47-stakeholder-tod
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab47-stakeholder-todos.md` | Pass / Fail |
-| 2 | All blanks filled | Pass / Fail |
-| 3 | Plain language used | Pass / Fail |
-| 4 | Consistent with fact base | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab47-stakeholder-todos.md`
+- [ ] All blanks filled
+- [ ] Plain language used
+- [ ] Consistent with fact base
+

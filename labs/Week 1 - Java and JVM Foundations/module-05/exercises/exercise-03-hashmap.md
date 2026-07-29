@@ -9,6 +9,22 @@
 
 Create `MapDemo.java` using ISBN-like strings as keys and copy counts as values. Practice put, get, update, remove, default lookup, and entry iteration.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Java copies: 3
+Updated Java copies: 5
+Missing ISBN: 0
+ISBN-TEST -> 4
+ISBN-JAVA -> 5
+Sorted snapshot: {ISBN-JAVA=5, ISBN-TEST=4}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

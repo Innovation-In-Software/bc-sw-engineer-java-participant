@@ -8,10 +8,43 @@ Create `notes/lab48-nfr-placeholders.md` — replace vague quality words with me
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-nfr-placeholders.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-nfr-placeholders.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 48 — Draft Measurable NFRs
+
+## Step 1 — Categories
+
+Security, traceability, recoverability, performance, operability—one NFR each.
+
+## Step 2 — Check the reference
+
+Each NFR needs metric + target + how you will prove it in Labs 49–52.
+
+## Step 3 — Example rewrite
+
+Rewrite “system should be fast” into a measurable statement with a placeholder number.
+
+## Step 4 — Scope
+
+Placeholders only; full NFR doc is Lab 48.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Five measurable NFR placeholders with proof ideas in `notes/lab48-nfr-placeholde
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab48-nfr-placeholders.md` | Pass / Fail |
-| 2 | Five categories covered | Pass / Fail |
-| 3 | Each has metric/target/proof | Pass / Fail |
-| 4 | Vague adjective rewritten | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab48-nfr-placeholders.md`
+- [ ] Five categories covered
+- [ ] Each has metric/target/proof
+- [ ] Vague adjective rewritten
+

@@ -8,10 +8,43 @@ Create `notes/lab36-security.md` — list frontend threats relevant to the North
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-threat-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-security.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 36 — Threat Sketch
+
+## Step 1 — Assets
+
+What attackers want: session tokens, customer PII for Amina/Ravi, admin actions.
+
+## Step 2 — Threats
+
+Name XSS, token theft, CSRF (if cookie session), open redirects.
+
+## Step 3 — UI vs API
+
+One sentence: hiding a button is not authorization — Spring must enforce.
+
+## Step 4 — Notes
+
+Save `notes/lab36-security.md`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Threat list with UI-vs-API authorization boundary in `notes/lab36-security.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab36-security.md` | Pass / Fail |
-| 2 | ≥3 threats named | Pass / Fail |
-| 3 | Authorization boundary stated | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab36-security.md`
+- [ ] ≥3 threats named
+- [ ] Authorization boundary stated
+- [ ] Notes saved
+

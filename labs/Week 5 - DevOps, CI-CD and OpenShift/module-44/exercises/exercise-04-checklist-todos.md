@@ -8,10 +8,49 @@ Create `notes/lab44-checklist-todos.md` — complete a release checklist templat
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-checklist-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-checklist-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 44 — Fill Release Checklist TODOs
+
+## Step 1 — Template
+
+Create `release-checklist-todo.md`:
+- Artifact digest: (your note here)
+- Staging smoke CUS-1001: (your note here)
+- Correlation lab-request-001: (your note here)
+- Approval recorded: (your note here)
+- Rollback digest ready: (your note here)
+- Secrets confirmed out of Git: (your note here)
+
+## Step 2 — Fill what you know
+
+Fill process fields; leave digest blanks for Lab 44 evidence.
+
+## Step 3 — Expand/contract note
+
+Add one DB expand-before-contract reminder line.
+
+## Step 4 — Scope
+
+Mark checklist as pre-lab warmup.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -68,9 +107,10 @@ Partially filled release checklist ready for Lab 44 in `notes/lab44-checklist-to
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab44-checklist-todos.md` | Pass / Fail |
-| 2 | Template created | Pass / Fail |
-| 3 | Process fields filled | Pass / Fail |
-| 4 | DB compatibility note present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab44-checklist-todos.md`
+- [ ] Template created
+- [ ] Process fields filled
+- [ ] DB compatibility note present
+

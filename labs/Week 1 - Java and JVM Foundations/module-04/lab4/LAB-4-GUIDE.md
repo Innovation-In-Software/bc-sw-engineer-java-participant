@@ -50,13 +50,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class:** prefer the [45-minute timed path](#45-minute-timed-path-use-starter) with [`starter/`](starter/README.md).
-2. Confirm Lab 0 + Module 4 Exercises 1–7 are done (checklists below). Bring your Exercise 4–5 G1/ZGC notes for the Day 4 compare checkpoint.
-3. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-4. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-5. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-6. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-7. Capture evidence under `notes/screenshots/lab-4/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -259,6 +260,31 @@ ls ~/java-bootcamp/examples/module-04-exercises
 **Expected theme:** OpenJDK / Temurin **21.x**; exercise sources present.
 
 **If it fails:** Revisit Lab 0 (`JAVA_HOME`, new terminal after PATH changes). If exercises are missing, return to [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
+
+---
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```
+===== Garbage Collection Demonstration =====
+===== JVM Memory Report: Before Allocation =====
+...
+Creating Objects...
+Objects Created : 100000
+===== JVM Memory Report: After Allocation =====
+...
+Removing strong references...
+Triggering Garbage Collection...
+Garbage Collection Completed
+===== JVM Memory Report: After GC =====
+Execution Time : ... ms
+Tip: Run with GC logging using:
+java -Xlog:gc GarbageCollectionDemo
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -712,7 +738,7 @@ Optionally skim [`solution/Lab4-MemoryManagement/`](solution/Lab4-MemoryManageme
 
 ### Checkpoint A — Workspace + shared types
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -722,7 +748,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Stack / heap / lifecycle
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -731,7 +757,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — GC + leak + weak + performance
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -742,7 +768,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Evidence hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -859,12 +885,7 @@ See [Expected Deliverables](#expected-deliverables) below for the submit list.
 
 ## Expected Deliverables
 
-Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
-
-* **Sources** under `java-bootcamp/examples/Lab4-MemoryManagement/` (core demos)
-* **Screenshots** under `notes/screenshots/lab-4/`: memory/GC runs, `-Xlog:gc` snippet, performance table
-* **Answers** in `notes/lab4-answers.md` (reflection questions)
-* **LMS overview:** tools used + leak cause/fix (your own words)
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
 Do not submit heap dumps (`.hprof`), secrets, or a verbatim instructor [`solution/`](solution/).
 
@@ -889,50 +910,26 @@ Do not submit heap dumps (`.hprof`), secrets, or a verbatim instructor [`solutio
 
 Write short answers in `../../notes/lab4-answers.md` (from project; or `~/java-bootcamp/notes/lab4-answers.md`):
 
+Write **1–3 sentence** answers (not essays):
+
 1. Stack vs Heap?
 2. Why locals on the Stack?
 3. Why objects on the Heap?
-4. When is an object GC-eligible?
-5. Does `System.gc()` guarantee collection?
-6. What caused the leak?
-7. How did clearing the list fix it?
-8. Why are WeakReferences useful?
-9. What happens when the heap is exhausted?
-10. Which laptop tool would you try first for rising heap—and why?
-11. How could a CRM unbounded cache repeat this leak?
 
 ---
+
 
 ## Bonus Challenges
 
-Align with [`solution/Lab4-MemoryManagement/`](solution/Lab4-MemoryManagement/):
+Optional — only after core deliverables pass. Pick at most one if time is short.
 
-1. **`StringMemoryComparison`** — `String +=` vs `StringBuilder` timing/memory  
-2. **`ListMemoryComparison`** — `ArrayList` vs `LinkedList` memory  
-3. **`OutOfMemoryDemo`** — `java -Xms32m -Xmx64m OutOfMemoryDemo` (catch, then stop)  
-4. Optional VisualVM/MAT on a dump under `%TEMP%` or `/tmp`, then **delete** the dump  
 
----
-
-## Success Criteria
-
-You have completed Lab 4 when you can:
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 0 | Module 4 Exercises 1–7 Pass criteria are complete **before** Lab Steps 2+ | Pass / Fail |
-| 1 | Work in `java-bootcamp/examples/Lab4-MemoryManagement/` (flat files) | Pass / Fail |
-| 2 | Stack/heap and lifecycle demos run; you can narrate reachability | Pass / Fail |
-| 3 | GC demo + `-Xlog:gc` evidence; G1/ZGC compare from Exercises 4–5 notes | Pass / Fail |
-| 4 | `MemoryLeakDemo` leak vs fix explained with evidence | Pass / Fail |
-| 5 | WeakReference and/or PerformanceTest evidence (core or extended as assigned) | Pass / Fail |
-| 6 | Screenshots/notes under `notes/screenshots/lab-4/` without heap dumps or secrets | Pass / Fail |
-
-This lab bridges **Module 4 exercises** (after Lab 0) to graded JVM memory evidence.
+1. **`StringMemoryComparison`** — `String +=` vs `StringBuilder` timing/memory
+2. **`ListMemoryComparison`** — `ArrayList` vs `LinkedList` memory
+3. **`OutOfMemoryDemo`** — `java -Xms32m -Xmx64m OutOfMemoryDemo` (catch, then stop)
 
 ---
+
 
 ## Instructor Notes
 

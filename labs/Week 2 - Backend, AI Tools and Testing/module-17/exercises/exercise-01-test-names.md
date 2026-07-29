@@ -8,10 +8,39 @@ Create `notes/lab17-test-names.md` — propose three method names that encode fi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-test-names.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-test-names.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 17 — Expressive Test Names
+
+## Step 1 — Pattern
+
+Use methodName_state_expectedOutcome style.
+
+## Step 2 — Examples
+
+Write names for Amina already ACTIVE reject, Ravi PROSPECT activate success, CUS-9999 not found.
+
+## Step 3 — Anti-name
+
+Reject names like `test1` / `testActivate`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Three expressive names plus an anti-pattern note in `notes/lab17-test-names.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab17-test-names.md` | Pass / Fail |
-| 2 | Three good names | Pass / Fail |
-| 3 | Fixtures reflected | Pass / Fail |
-| 4 | Anti-name rejected | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab17-test-names.md`
+- [ ] Three good names
+- [ ] Fixtures reflected
+- [ ] Anti-name rejected
+

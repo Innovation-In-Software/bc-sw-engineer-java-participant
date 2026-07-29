@@ -8,10 +8,43 @@ Create `notes/lab49-backend-demo-outline.md` — outline `docs/backend-demo.md` 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-backend-demo-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-backend-demo-outline.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 49 — Outline Backend Demo Notes
+
+## Step 1 — Headings
+
+Prereqs, start commands, curl/HTTPie samples, expected JSON, test commands, known limits.
+
+## Step 2 — Samples
+
+Include placeholder curls using `CUS-1001` and correlation header.
+
+## Step 3 — Limits
+
+Document what is stubbed vs complete for the day.
+
+## Step 4 — Scope
+
+Outline warmup for Lab 49.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Backend demo outline with sample calls in `notes/lab49-backend-demo-outline.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab49-backend-demo-outline.md` | Pass / Fail |
-| 2 | Headings complete | Pass / Fail |
-| 3 | Fixture samples present | Pass / Fail |
-| 4 | Limits section included | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab49-backend-demo-outline.md`
+- [ ] Headings complete
+- [ ] Fixture samples present
+- [ ] Limits section included
+

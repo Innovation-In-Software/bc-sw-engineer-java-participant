@@ -8,10 +8,43 @@ Create `notes/lab36-csrf-notes.md` — explain when CSRF matters for the CRM SPA
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-csrf-notes.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-csrf-notes.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 36 — CSRF Notes
+
+## Step 1 — Cookie sessions
+
+If auth cookie is sent automatically, CSRF is in scope.
+
+## Step 2 — Bearer header
+
+If token only in Authorization header from JS, classic CSRF is reduced.
+
+## Step 3 — Lab stance
+
+Write which model your Lab 36 starter follows (from README skim or instructor).
+
+## Step 4 — Checklist
+
+Add item: SameSite cookie attributes if cookies used.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ CSRF applicability note matched to token model in `notes/lab36-csrf-notes.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab36-csrf-notes.md` | Pass / Fail |
-| 2 | Cookie vs bearer contrast | Pass / Fail |
-| 3 | Lab stance stated | Pass / Fail |
-| 4 | SameSite checklist item | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab36-csrf-notes.md`
+- [ ] Cookie vs bearer contrast
+- [ ] Lab stance stated
+- [ ] SameSite checklist item
+

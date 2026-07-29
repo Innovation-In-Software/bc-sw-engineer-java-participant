@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab27-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-27/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -58,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | AI review notes or manual equivalent |
 | 8 | README runbook; no secrets/`target/` committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -219,9 +223,9 @@ Ignore `target/`, local env files, DB volumes, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/acid-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Transfer flow: HTTP → transactional service → two account updates + log
 2. Trust boundary: amounts, account ownership, correlation ID
@@ -229,10 +233,49 @@ Write 2–3 sentences each in `docs/acid-notes.md`:
 4. Stable account IDs vs transfer idempotency keys
 5. Retry risks after network timeout (double spend)
 6. H2 local shortcut vs PostgreSQL production isolation/durability
-7. Evidence operators need (`lab-request-001`, balances, rollback logs)
-8. Two app instances: DB transactions vs in-process locks
-9. Why `@Transactional` on controller is the wrong seam
-10. Self-invocation (`this.transfer`) skipping the proxy
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@Service
+public class TransferService {
+  private final AccountRepository accounts;
+  private final TransactionLogRepository logs;
+
+  public TransferService(AccountRepository accounts, TransactionLogRepository logs) {
+    this.accounts = accounts;
+    this.logs = logs;
+  }
+
+  @Transactional
+  public TransactionLog transfer(String fromId, String toId,
+                                 BigDecimal amount, String correlationId) {
+    Account from = accounts.findById(fromId)
+        .orElseThrow(() -> new AccountNotFoundException(fromId));
+    Account to = accounts.findById(toId)
+        .orElseThrow(() -> new AccountNotFoundException(toId));
+    if (from.getBalance().compareTo(amount) < 0) {
+      throw new InsufficientFundsException(fromId);
+    }
+    from.setBalance(from.getBalance().subtract(amount));
+    to.setBalance(to.getBalance().add(amount));
+    accounts.save(from);
+    accounts.save(to);
+    if ("ACC-FORCE-FAIL".equals(toId)) {
+      throw new IllegalStateException("Forced failure for rollback demo");
+    }
+    return logs.save(new TransactionLog(
+        /* transferId */, correlationId, fromId, toId, amount, Instant.now()));
+  }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -485,7 +528,7 @@ mvn -q test
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -495,7 +538,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Transfer core
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -505,7 +548,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Rollback + ACID + AI
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -515,7 +558,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -669,18 +712,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (amount, account IDs, headers)?
 2. Where are authn/authz/validation enforced (Lab 28 deepens)?
 3. Which values are sensitive (balances), and where stored?
-4. What can be retried safely (reads vs transfers)?
-5. What happens after partial failure before commit?
-6. What would an operator monitor (rollback rate, transfer latency)?
-7. Which local default is unacceptable in production (blank H2 password, mem DB as ledger)?
-8. How are schema/API contracts versioned for transfer payloads?
 
 ---
+
 
 ## Cleanup
 
@@ -699,16 +738,9 @@ git status
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `@Transactional TransferService` + controller
-* Seeded accounts + transaction log entity
-* Happy-path evidence (MAIN→LOYALTY + correlation)
-* `ACC-FORCE-FAIL` rollback evidence (balances + no log)
-* ACID explanation tied to observations
-* Automated tests proving rollback balances
-* AI review notes or manual equivalent
-* README runbook; no secrets/`target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -730,44 +762,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (transaction boundary size)?
-2. Which failure was hardest (proxy / self-invocation / exception type)?
-3. What evidence proves rollback works?
-4. What breaks first at ten times the transfer rate?
-5. Which concern should move to shared infrastructure (DBA isolation standards)?
-6. What must change before real customer money is moved?
-7. How does this lab connect to Labs 25–26 and Lab 28?
-8. What metric or log field matters most for ledger support?
-9. (Forward look) How would an idempotency key change the retry story?
+2. What evidence proves rollback works?
+3. Which failure was hardest (proxy / self-invocation / exception type)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Unique `transferRequestId` constraint + conflict response.
 2. Structured correlation logging without PII.
 3. Readiness vs liveness including DB health.
-4. Metrics for transfer success/failure/latency.
-5. Operator runbook paragraph for rollback incidents.
-6. Concurrent transfer isolation experiment with evidence.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate a `@Transactional` transfer and `ACC-FORCE-FAIL` rollback with unchanged balances
-* Happy path and failure paths are repeatable
-* Another student can follow your run instructions
-* Tests/build pass twice with balance asserts after rollback
-* No production secret is hard-coded
-* You can explain ACID with CRM-specific evidence and H2 vs PostgreSQL trade-offs
-* AI TX advice (if any) was reviewed and logged
-
----
 
 ## Instructor Notes
 

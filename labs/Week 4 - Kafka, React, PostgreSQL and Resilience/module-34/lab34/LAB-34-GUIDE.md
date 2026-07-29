@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab34-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-34/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | README runbook |
 | 8 | No secrets or generated directories committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -201,9 +206,9 @@ Ignore `node_modules/`, `dist/`, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/state-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main state flow (events → setState → derived render)
 2. Trust boundary: client validation is UX; server will re-validate (Lab 35)
@@ -211,10 +216,24 @@ Write 2–3 sentences each in `docs/state-notes.md`:
 4. Stable identity: `customerId` for edit mode and list keys
 5. Retry / double-submit: disable Save while “saving” flag (soft) before API
 6. Why derived `visible` must not be a second `useState`
-7. Evidence: RTL flows + DevTools state screenshot
-8. Two browsers: independent memory; no shared server yet
-9. False confidence: mutating arrays in place “works” until Strict Mode
-10. What Lab 35 changes (fetch) without rewriting mode union shapes
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```tsx
+type Mode =
+  | { kind: "closed" }
+  | { kind: "create" }
+  | { kind: "edit"; id: string };
+
+const [mode, setMode] = useState<Mode>({ kind: "closed" });
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -494,7 +513,7 @@ Complete [Failure Experiments](#failure-experiments). Capture evidence. Run test
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -504,7 +523,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core state behavior
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -515,7 +534,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Effects + tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -526,7 +545,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -692,18 +711,14 @@ it("filters to Amina", async () => {
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (all form fields; still client-only)?
 2. Where are authn/authz/validation enforced (client UX now; API later)?
 3. Which values are sensitive—never log real PII beyond fixtures?
-4. What can be retried safely (`npm test` / refresh loses memory—expected)?
-5. What happens after partial failure (validation stop; no half-written row)?
-6. What would an operator monitor (Lab 35: API errors; here: test suite)?
-7. Which local default is unacceptable (in-place mutation, duplicate filtered state)?
-8. How are contracts versioned with Lab 35 DTO fetch (keep `Customer` shape)?
 
 ---
+
 
 ## Cleanup
 
@@ -721,16 +736,9 @@ Do not commit `node_modules/` or `dist/`.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `lab34-crm/crm-ui` with lifted state CRUD + search
-* Discriminated form modes; immutable updates
-* Client validation with accessible errors
-* Title `useEffect` with cleanup; no derived-state effects
-* ≥8 RTL interaction tests + green build
-* State notes + evidence screenshots
-* README runbook
-* No secrets or generated directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -752,44 +760,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the list size?
-5. Which concern should move to shared infrastructure?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 33 and 35?
-8. What metric matters most on the CI dashboard for this gate?
-9. (Forward look) Which state will become request-status enums in Lab 35?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a `saving` boolean that disables Save (practice for Lab 35).
 2. Debounce search input (document why debounce is UX, not correctness).
 3. Prefer `customerId` exact match boost in filter ranking.
-4. Extract `useCustomerPageState` hook with the same tests.
-5. Mutation-testing thought: which one-line bug still keeps tests green?
-6. Document rollback if someone reintroduces filtered-state effects.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* In-memory CRUD + search works with immutable updates
-* Modes are exclusive; validation blocks bad saves; cancel is safe
-* Title syncs via effect; no derived-state filter effects
-* ≥8 flow tests and build are green twice
-* Another student can follow your run instructions
-* No production secret is hard-coded
-* You can explain the Lab 35 handoff (fetch replaces seed setters)
-
----
 
 ## Instructor Notes
 

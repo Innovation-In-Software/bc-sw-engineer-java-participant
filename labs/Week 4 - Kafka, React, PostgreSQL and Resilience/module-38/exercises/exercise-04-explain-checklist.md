@@ -8,10 +8,43 @@ Create `notes/lab38-explain-checklist.md` — build a checklist for reading `EXP
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-38-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-explain-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab38-explain-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 38 — EXPLAIN Checklist
+
+## Step 1 — Command
+
+Write the command you will use: `EXPLAIN (ANALYZE, BUFFERS) <sql>;`.
+
+## Step 2 — Look for
+
+Seq Scan vs Index Scan, rows estimates, buffers.
+
+## Step 3 — Success signal
+
+Index Scan on customer_id for Amina lookup is a good sign.
+
+## Step 4 — Analyze
+
+Note `ANALYZE customer;` updates stats (PostgreSQL), not DBMS_STATS.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ EXPLAIN checklist with PostgreSQL-native commands in `notes/lab38-explain-checkl
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab38-explain-checklist.md` | Pass / Fail |
-| 2 | EXPLAIN command written | Pass / Fail |
-| 3 | Scan types named | Pass / Fail |
-| 4 | ANALYZE noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab38-explain-checklist.md`
+- [ ] EXPLAIN command written
+- [ ] Scan types named
+- [ ] ANALYZE noted
+

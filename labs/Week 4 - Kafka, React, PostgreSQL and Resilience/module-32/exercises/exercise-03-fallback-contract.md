@@ -8,10 +8,43 @@ Create `notes/lab32-fallback-contract.md` — specify what minimal Account Profi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-fallback-contract.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-fallback-contract.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 32 — Fallback Contract
+
+## Step 1 — Fields kept
+
+List fields still shown: customerId, displayName maybe, status UNKNOWN.
+
+## Step 2 — Fields dropped
+
+List fields omitted: balance, tier, lastLogin.
+
+## Step 3 — API signal
+
+Decide: HTTP 200 with `degraded=true` vs 503 — pick one and justify.
+
+## Step 4 — User message
+
+Draft one UI string: *Account details temporarily limited.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A written degraded contract for CRM profile responses in `notes/lab32-fallback-c
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab32-fallback-contract.md` | Pass / Fail |
-| 2 | Kept vs dropped fields | Pass / Fail |
-| 3 | Status-code choice justified | Pass / Fail |
-| 4 | User-facing string drafted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab32-fallback-contract.md`
+- [ ] Kept vs dropped fields
+- [ ] Status-code choice justified
+- [ ] User-facing string drafted
+

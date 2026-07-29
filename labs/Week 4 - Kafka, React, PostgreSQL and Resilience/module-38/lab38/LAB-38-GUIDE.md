@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab38-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-38/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Index challenge cycle with retained-index justification |
 | 8 | `report.md` with plan hash, buffers, median time, write cost |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -207,9 +212,9 @@ Ignore `*.dmp`, volume mounts with secrets, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/performance-concepts.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: how a CRM email lookup and ACTIVE list query hit PostgreSQL
 2. Trust boundary: who may run DDL/DML vs who runs SELECT (app least-priv)
@@ -217,10 +222,30 @@ Write 2–3 sentences each in `docs/performance-concepts.md`:
 4. Stable fixtures (`CUS-1001`) vs synthetic bulk generators
 5. Idempotency of `GATHER_TABLE_STATS` and recreate-from-script indexes
 6. Why measure actual rows/buffers, not only EXPLAIN without execute
-7. Evidence operators need (plan hash, buffers, median latency, storage delta)
-8. Two sessions: same binds → comparable plans
-9. Non-sargable predicates vs half-open ranges
-10. What Lab 39 will change (JPA/Flyway) without dropping justified indexes
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```sql
+CREATE INDEX ix_account_customer ON account (customer_id);
+
+-- Selective: one customer (Amina / public_id bind)
+SELECT /*+ gather_plan_statistics */ c.public_id, a.account_id, a.balance
+FROM customer c
+JOIN account a ON a.customer_id = c.customer_id
+WHERE c.public_id = 'CUS-1001';
+
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(NULL, NULL, 'ALLSTATS LAST'));
+
+-- Broader: many ACTIVE customers with accounts (report-style)
+-- Capture plan without forcing hints; note HASH vs NESTED LOOPS
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -551,7 +576,7 @@ Capture plan excerpts under `notes/screenshots/lab-38/`.
 
 ### Checkpoint A — Tooling and volume
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -561,7 +586,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Plans and indexes
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -571,7 +596,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Sargability, joins, paging
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -581,7 +606,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene and report
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -692,18 +717,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README / `report.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (ad-hoc SQL in prod? app binds only)?
 2. Where are authn/authz/validation enforced (still not in SQL scripts—app later)?
 3. Which values are sensitive—never in scripts/logs (passwords, real emails)?
-4. What can be retried safely (`GATHER_STATS`, re-run SELECTs, recreate indexes from script)?
-5. What happens after partial failure (failed index create; incomplete load commit)?
-6. What would an operator monitor (buffer gets, slow SQL, index bloat)?
-7. Which local default is unacceptable (unguessed indexes on prod; running as SYS forever)?
-8. How are index/DDL contracts versioned with Lab 39 Flyway?
 
 ---
+
 
 ## Cleanup
 
@@ -721,17 +742,9 @@ Do not commit PostgreSQL password files, datapump dumps, or full plan HTML expor
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `database/performance/01`–`05` SQL scripts
-* ≥50k load with documented skew + preserved CRM fixtures
-* Baseline and after-index `DBMS_XPLAN` evidence
-* Sargable date rewrite comparison
-* Join strategy notes (selective vs broad)
-* Deterministic OFFSET + keyset paging demos
-* Index challenge cycle with retained-index justification
-* `report.md` with plan hash, buffers, median time, write cost
-* Concepts notes + no secrets in Git
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -753,44 +766,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness of page results?
-2. Which failure was hardest to diagnose (wrong plan, skew, ties)?
-3. What evidence proves the email index was worth the write cost?
-4. What breaks first at ten times the row count?
-5. Which concern should move to shared DBA / Flyway infrastructure?
-6. What must change before real customer data is used (spoiler: don’t dump it locally)?
-7. How does this lab connect to Lab 37 DDL and Lab 39 JPA?
-8. What metric matters most on a slow CRM list ticket?
-9. (Forward look) Which queries will Hibernate generate that still need these indexes?
+2. What evidence proves the email index was worth the write cost?
+3. Which failure was hardest to diagnose (wrong plan, skew, ties)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Histogram / column-group thought experiment on `status` skew—document only.
 2. Compare `INDEX SKIP SCAN` myths vs your actual plans.
 3. Measure index storage (`user_segments`) before/after.
-4. Add covering index debate: include `public_id` in leaf—cost vs gain.
-5. Document rollback DDL if a bad index locks nightly batch writes.
-6. Sketch how a Spring keyset API would pass `(lastCreated, lastId)` as query params.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Volume, stats, and actual plans are captured
-* Email and list indexes are justified with before/after numbers
-* Sargable date predicates and join notes are documented
-* OFFSET and keyset paging are demoed without dup/miss IDs
-* Indexes were challenged; report is peer-reproducible
-* No production secret or real PII is hard-coded
-* You can explain local shortcuts vs production change control
-
----
 
 ## Instructor Notes
 

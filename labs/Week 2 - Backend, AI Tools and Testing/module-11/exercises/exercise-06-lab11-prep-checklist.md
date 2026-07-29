@@ -8,6 +8,10 @@ Create `notes/lab11-prep-checklist.md` confirming you are ready for Lab 11 pract
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-lab11-prep-checklist.md` (this file in the course repo) |
@@ -22,6 +26,38 @@ Create `notes/lab11-prep-checklist.md` confirming you are ready for Lab 11 pract
 | 3 | `notes/lab11-prelab-asserts.md` (Exercise 3) |
 | 4 | `notes/lab11-acceptance-todos.md` (Exercise 4) |
 | 5 | `notes/lab11-coverage-gaps.md` (Exercise 5) |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 11 prep checklist
+
+## Fixtures (from memory — then verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | (your note here) | (your note here) |
+| CUS-1002 | (your note here) | (your note here) |
+
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab11-aaa-template.md | (your note here) |
+| notes/lab11-notifier-extract-plan.md | (your note here) |
+| notes/lab11-prelab-asserts.md | (your note here) |
+| notes/lab11-acceptance-todos.md | (your note here) |
+| notes/lab11-coverage-gaps.md | (your note here) |
+
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 11 now.
+
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): (your note here)
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -84,9 +120,10 @@ Write **Pass** only if all five files exist and fixtures are correct. Otherwise 
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab11-prep-checklist.md` | Pass / Fail |
-| 2 | Fixtures correct (Amina ACTIVE / Ravi PROSPECT) | Pass / Fail |
-| 3 | All five prior notes marked present (or Fail + revisit list) | Pass / Fail |
-| 4 | Pre-lab-only statement + overall Pass/Fail written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab11-prep-checklist.md`
+- [ ] Fixtures correct (Amina ACTIVE / Ravi PROSPECT)
+- [ ] All five prior notes marked present (or Fail + revisit list)
+- [ ] Pre-lab-only statement + overall Pass/Fail written
+

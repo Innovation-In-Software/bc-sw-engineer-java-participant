@@ -8,10 +8,39 @@ Create `notes/lab48-backlog-slice.md` — write three vertical stories crossing 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-backlog-slice.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-backlog-slice.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 48 — Sketch Vertical Stories
+
+## Step 1 — Stories
+
+Examples: create customer, record interaction, search + timeline—using Amina/Ravi fixtures in acceptance criteria.
+
+## Step 2 — Check the reference
+
+Stories need acceptance criteria—not tasks like “make controller”.
+
+## Step 3 — Priority
+
+Order Must/Should and note dependencies on Labs 49–51.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Three prioritized vertical stories with acceptance criteria in `notes/lab48-back
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab48-backlog-slice.md` | Pass / Fail |
-| 2 | Three stories written | Pass / Fail |
-| 3 | Acceptance criteria present | Pass / Fail |
-| 4 | Priority ordered | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab48-backlog-slice.md`
+- [ ] Three stories written
+- [ ] Acceptance criteria present
+- [ ] Priority ordered
+

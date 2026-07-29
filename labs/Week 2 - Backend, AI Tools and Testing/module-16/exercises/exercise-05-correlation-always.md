@@ -8,10 +8,39 @@ Create `notes/lab16-correlation-always.md` — checklist that success and failur
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-16-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-correlation-always.md` (this file in the course repo) |
 | Your notes file | `notes/lab16-correlation-always.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 16 — Correlation on Every Error
+
+## Step 1 — Success path
+
+Activate Ravi success still echoes/logs lab-request-001.
+
+## Step 2 — Failure path
+
+Not-found CUS-9999 response includes same correlation field.
+
+## Step 3 — Missing header
+
+Policy idea: generate a correlation if missing — note for later labs.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A correlation checklist covering success and failure in `notes/lab16-correlation
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab16-correlation-always.md` | Pass / Fail |
-| 2 | Success path noted | Pass / Fail |
-| 3 | Failure path noted | Pass / Fail |
-| 4 | Missing-header policy idea written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab16-correlation-always.md`
+- [ ] Success path noted
+- [ ] Failure path noted
+- [ ] Missing-header policy idea written
+

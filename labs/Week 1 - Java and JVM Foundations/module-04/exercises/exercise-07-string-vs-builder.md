@@ -9,6 +9,18 @@
 
 Create `StringBuilderComparison.java` and compare repeated immutable `String` concatenation with mutable `StringBuilder`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+String: 50000 chars, 271.661 ms
+StringBuilder: 50000 chars, 1.865 ms
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

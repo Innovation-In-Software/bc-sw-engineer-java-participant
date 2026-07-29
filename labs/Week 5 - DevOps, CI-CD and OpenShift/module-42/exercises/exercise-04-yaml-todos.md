@@ -8,10 +8,28 @@ Create `notes/lab42-yaml-todos.md` — complete a Deployment skeleton with blank
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-yaml-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-yaml-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 42 — Fill Deployment YAML TODOs
+
+## Step 1 — Skeleton
+
+In notes, draft:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -81,9 +99,10 @@ Filled Deployment skeleton with apply deferred to Lab 42 in `notes/lab42-yaml-to
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab42-yaml-todos.md` | Pass / Fail |
-| 2 | Skeleton blanks filled | Pass / Fail |
-| 3 | Resources placeholders present | Pass / Fail |
-| 4 | No apply claimed | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab42-yaml-todos.md`
+- [ ] Skeleton blanks filled
+- [ ] Resources placeholders present
+- [ ] No apply claimed
+

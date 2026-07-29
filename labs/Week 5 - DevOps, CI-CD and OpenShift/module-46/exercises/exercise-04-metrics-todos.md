@@ -8,10 +8,28 @@ Create `notes/lab46-metrics-todos.md` — complete blanks for metrics and dashbo
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-metrics-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-metrics-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 46 — Fill Metrics/Alert TODOs
+
+## Step 1 — Template
+
+Fill:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -70,9 +88,10 @@ Metrics/alert TODO sheet filled without high-cardinality PII tags in `notes/lab4
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab46-metrics-todos.md` | Pass / Fail |
-| 2 | Metric blanks filled | Pass / Fail |
-| 3 | Three panels listed | Pass / Fail |
-| 4 | No email tags | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab46-metrics-todos.md`
+- [ ] Metric blanks filled
+- [ ] Three panels listed
+- [ ] No email tags
+

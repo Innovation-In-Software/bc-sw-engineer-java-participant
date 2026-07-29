@@ -8,10 +8,30 @@ Create `notes/jdk-maven-checklist.md` and record the exact version checks you wi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-jdk-maven-habit.md` (this file in the course repo) |
 | Your notes file | `notes/jdk-maven-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# JDK 21 / Maven habit
+
+- [ ] `java -version` shows 21.x
+- [ ] `mvn -version` uses JDK 21
+- PATH trap: ...
+- Workspace: examples/module-10-exercises/notes/
+- Boundary: do not run full Lab 10 Maven goals yet
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -53,9 +73,10 @@ A short toolchain checklist in `notes/jdk-maven-checklist.md` with PATH awarenes
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/jdk-maven-checklist.md` | Pass / Fail |
-| 2 | java and mvn checks listed | Pass / Fail |
-| 3 | One PATH trap named | Pass / Fail |
-| 4 | No-full-lab note present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/jdk-maven-checklist.md`
+- [ ] java and mvn checks listed
+- [ ] One PATH trap named
+- [ ] No-full-lab note present
+

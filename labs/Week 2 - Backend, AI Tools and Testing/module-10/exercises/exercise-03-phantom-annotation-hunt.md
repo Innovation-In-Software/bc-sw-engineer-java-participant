@@ -8,6 +8,10 @@ Create `notes/phantom-annotation-notes.md` and flag Copilot-style annotations th
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-phantom-annotation-hunt.md` (this file in the course repo) |
@@ -21,6 +25,16 @@ Create `notes/phantom-annotation-notes.md` and flag Copilot-style annotations th
 | @Service / @Autowired | Spring | Defer — hosting labs later |
 | @NotNull (Jakarta) | Validation lib | Name it; don't invent imports |
 | public record Customer(...) | Java 16+ | OK on JDK 21 |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Create `notes/phantom-annotation-notes.md` and flag Copilot-style annotations that do not belong in a plain Java prep sketch.
+
+**Done looks like:** A phantom-annotation checklist in `notes/phantom-annotation-notes.md` tied to JDK 21 / Maven honesty.
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -46,9 +60,10 @@ A phantom-annotation checklist in `notes/phantom-annotation-notes.md` tied to JD
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/phantom-annotation-notes.md` | Pass / Fail |
-| 2 | Table copied with one trap row | Pass / Fail |
-| 3 | Reject-unknown-import rule written | Pass / Fail |
-| 4 | Ravi status PROSPECT called out | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/phantom-annotation-notes.md`
+- [ ] Table copied with one trap row
+- [ ] Reject-unknown-import rule written
+- [ ] Ravi status PROSPECT called out
+

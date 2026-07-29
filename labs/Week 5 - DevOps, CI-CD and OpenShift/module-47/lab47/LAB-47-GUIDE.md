@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab47-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-47/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | Consistent, secret-free packet |
 | 7 | Optional: links to Labs 43–46 evidence |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -216,9 +221,9 @@ Ignore secrets, raw pager dumps with PII, and unrelated binary noise.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `communications/shared-facts.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main narrative arc (release → symptom → mitigation → next update)
 2. Trust boundary: what you may claim without telemetry links
@@ -226,10 +231,24 @@ Write 2–3 sentences each in `communications/shared-facts.md`:
 4. Stable fixture IDs vs naming real customers
 5. Idempotency of posting a corrected update (say what changed)
 6. Why audience splitting matters without fact splitting
-7. Evidence stakeholders vs engineers need
-8. Two writers editing drafts: conflict / consistency control
-9. False confidence: sounding certain about unknown root cause
-10. How Labs 43–46 evidence supports or limits your wording
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+| Field | Lab value |
+| ----- | --------- |
+| Severity | SEV-2 (example) |
+| Symptom | Some agents see HTTP 503 opening profiles |
+| Started | Document a UTC start (e.g. 13:52 UTC) |
+| Suspected change | `crm-api` 1.4.0 rollout (Lab 44 artifact) |
+| Mitigation example | Roll back toward 1.3.2 digest; watch readiness + Kafka lag (Lab 46) |
+| Fixtures | `CUS-1001` Amina Khan; `CUS-1002` Ravi Singh; `lab-request-001` |
+
+**What to notice:** Use these fixtures consistently in Main, tests, and screenshots.
 
 ---
 
@@ -249,12 +268,16 @@ Minimum fields:
 
 ```markdown
 ## Confirmed
+
 - ...
 ## Assumptions
+
 - ...
 ## Unknowns
+
 - ...
 ## Owners / next update time
+
 - ...
 ```
 
@@ -323,15 +346,18 @@ Adapt to your fact sheet. Fixtures may appear sparingly (“synthetic checks on 
 
 ```markdown
 ## Why
+
 State the customer or operational problem.
 
 ## What changed
+
 - Backend:
 - Messaging/data:
 - Deployment/configuration:
 
 ## Verification
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -340,9 +366,11 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Happy and failure paths (CUS-1001 / CUS-1002) | Pass / Fail |
 
 ## Risk and rollback
+
 State compatibility, observability, and exact rollback action.
 
 ## Reviewer focus
+
 Ask two or three precise questions.
 ```
 
@@ -418,7 +446,8 @@ git status --short
 
 ```markdown
 ## Final consistency scan
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -439,7 +468,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -449,7 +478,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core artifacts
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -459,7 +488,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Audience + review
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -469,7 +498,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -486,20 +515,27 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 ```markdown
 # Shared facts — CRM 1.4 lab scenario
 ## Confirmed
+
 - Symptom:
 - Start (UTC):
 - Mitigation in progress:
 ## Assumptions
+
 -
 ## Unknowns
+
 - Root cause:
 ## Owners
+
 - Release commander:
 ## Next update
+
 - Time (UTC):
 ## Fixtures (synthetic only)
+
 - CUS-1001 Amina Khan; CUS-1002 Ravi Singh; lab-request-001
 ## Links to prior labs (paths only)
+
 - Lab 43 ci-runbook:
 - Lab 44 rollback-runbook:
 - Lab 46 dlt-replay-runbook:
@@ -524,15 +560,18 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ```markdown
 ## Why
+
 State the customer or operational problem.
 
 ## What changed
+
 - Backend:
 - Messaging/data:
 - Deployment/configuration:
 
 ## Verification
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -541,9 +580,11 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Happy and failure paths (CUS-1001 / CUS-1002 / lab-request-001) | Pass / Fail |
 
 ## Risk and rollback
+
 State compatibility, observability, and exact rollback digest/action.
 
 ## Reviewer focus
+
 1.
 2.
 3.
@@ -570,15 +611,19 @@ CRM Release Team
 # Peer review — Lab 47
 Reviewer / date:
 ## Consistency with shared-facts.md
+
 -
 ## Audience fit
+
 -
 ## Concrete rewrites
+
 1. Before: ...
    After: ...
 2. Before: ...
    After: ...
 ## Author disposition
+
 - Accept / decline + rationale
 ```
 
@@ -600,6 +645,7 @@ git status --short
 - Scenario used (lab table / real prior evidence):
 - Peer reviewer:
 ## Results
+
 | Check | Result | Evidence |
 | ----- | ------ | -------- |
 | Shared facts labeled | PASS/FAIL | |
@@ -670,18 +716,14 @@ git status --short
 
 ## Security and Production Review
 
-Answer in `docs/release-briefing-notes.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (chat rumors vs telemetry)?
 2. Where are approval gates for external stakeholder email?
 3. Which values are sensitive in incident pastes?
-4. What can be safely corrected after sending (correction update)?
-5. What happens after partial communication failure (wrong channel)?
-6. What would an operator monitor (update cadence, conflict)?
-7. Which local default is unacceptable (invented RCA, secret paste)?
-8. How are communication templates versioned with release process?
 
 ---
+
 
 ## Cleanup
 
@@ -698,15 +740,9 @@ Remove any accidental secret pastes. Keep the finalized packet for portfolio. No
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `communications/incident-update.md`
-* `communications/pull-request-description.md`
-* `communications/stakeholder-release-email.md`
-* `communications/peer-review.md`
-* Release briefing notes + shared facts
-* Consistent, secret-free packet
-* Optional: links to Labs 43–46 evidence
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -728,44 +764,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected clarity (fact sheet vs tone)?
-2. Which failure was hardest to diagnose (contradiction type)?
-3. What evidence proves the packet is internally consistent?
-4. What breaks first at ten concurrent update authors?
-5. Which concern should move to shared org templates?
-6. What must change before real customer names appear (spoiler: don’t)?
-7. How does this lab connect to Labs 43–46?
-8. What metric matters most for incident communications (update cadence)?
-9. (Forward look) How would Statuspage wording differ from Slack war-room notes?
+2. What evidence proves the packet is internally consistent?
+3. Which failure was hardest to diagnose (contradiction type)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Write a 60-second executive briefing.
 2. Create a correction for an inaccurate earlier update.
 3. Turn a vague review comment into actionable feedback.
-4. Write a blameless incident handoff between shifts.
-5. Compare technical and stakeholder versions for consistency in a table.
-6. Draft a Statuspage-style customer notice from the same fact sheet.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Four audience-appropriate artifacts share one fact base
-* Incident update is scannable and timed
-* PR description is reviewable with rollback
-* Stakeholder email is plain and honest
-* Peer review produced concrete improvements
-* Secrets and real PII are absent
-* Another student can brief from the packet alone
-
----
 
 ## Instructor Notes
 

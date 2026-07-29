@@ -8,10 +8,39 @@ Create `notes/lab49-definition-of-done.md` — write a Definition of Done checkl
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-definition-of-done.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-definition-of-done.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 49 — Backend Slice DoD
+
+## Step 1 — Items
+
+API works, migration present, event versioned, tests green, demo notes, no secrets.
+
+## Step 2 — Check the reference
+
+Green demo alone is not enough—peer must reproduce from docs.
+
+## Step 3 — Negative proof
+
+Require one failing-path proof in the DoD.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ DoD checklist emphasizing reproducibility and negative proof in `notes/lab49-def
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab49-definition-of-done.md` | Pass / Fail |
-| 2 | DoD items listed | Pass / Fail |
-| 3 | Negative proof required | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab49-definition-of-done.md`
+- [ ] DoD items listed
+- [ ] Negative proof required
+- [ ] Notes saved
+

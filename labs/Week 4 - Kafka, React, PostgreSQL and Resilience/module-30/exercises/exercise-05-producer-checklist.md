@@ -8,10 +8,43 @@ Create `notes/lab30-producer-checklist.md` — list Lab 30 producer settings you
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-producer-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-producer-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 30 — Producer Checklist
+
+## Step 1 — Settings list
+
+Write a checklist: `acks=all`, idempotent producer, key = customerId, value = JSON envelope.
+
+## Step 2 — Why acks=all
+
+One sentence: wait for ISR ack before considering the CRM event durable.
+
+## Step 3 — Idempotence
+
+One sentence: broker dedupes producer retries so Amina is not double-created in the log.
+
+## Step 4 — Out of scope today
+
+Mark: *Do not run `kafka-console-producer` in this pre-lab.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A producer settings checklist ready for the timed lab path in `notes/lab30-produ
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab30-producer-checklist.md` | Pass / Fail |
-| 2 | acks + idempotence + key listed | Pass / Fail |
-| 3 | Two why-sentences written | Pass / Fail |
-| 4 | Explicit no-run note present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab30-producer-checklist.md`
+- [ ] acks + idempotence + key listed
+- [ ] Two why-sentences written
+- [ ] Explicit no-run note present
+

@@ -50,13 +50,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class:** prefer the [45-minute timed path](#45-minute-timed-path-use-starter) with [`starter/`](starter/README.md).
-2. Confirm Lab 0 + Lab 2 package habits + Module 3 Exercises 1–8 are done (checklists below).
-3. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-4. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-5. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-6. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-7. Capture evidence under `notes/screenshots/lab-3/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -70,6 +71,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 4 | Short design note | SOLID + inheritance/polymorphism in your own words |
 | 5 | Compile/run commands | Documented `javac -d out` / `java -cp out com.academy.bank.Main` |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Module 3 exercises you must already have completed
 
@@ -354,7 +358,9 @@ ls examples/module-03-exercises
 
 ---
 
-## Concepts to Discuss (with instructor)
+## Key ideas (skim — no write-up)
+
+Skim these ideas before coding. **No separate essay write-up required.**
 
 Revisit your exercise notes, then discuss:
 
@@ -365,6 +371,58 @@ Revisit your exercise notes, then discuss:
 * Why `double` is OK for teaching but production money often uses `BigDecimal`
 * SOLID at console scale: thin `Main`, service owns orchestration, models stay focused *(Exercises 6–7)*
 * How Exercise 8’s six-type UML grows when `BankService` / `Main` appear *(Exercise 8 → Step 14)*
+
+---
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```
+================================
+Bank Management System
+================================
+1 Create Customer
+...
+Choice : 1
+Customer ID : C101
+Name : John Smith
+Email : john@gmail.com
+Phone : 1234567890
+Customer Created Successfully.
+----------------------------------
+Choice : 2
+Customer ID : C101
+Initial Balance : 10000
+Interest Rate (%) : 5
+Savings Account Created.
+Account Number : 10001
+Balance : 10000
+Interest Rate : 5%
+----------------------------------
+Choice : 4
+Account Number : 10001
+Deposit Amount : 2000
+Balance Updated : 12000
+----------------------------------
+Choice : 5
+Account Number : 10001
+Withdraw : 3000
+Balance Updated : 9000
+----------------------------------
+Choice : 6
+Savings Account
+Account Number : 10001
+Customer : John Smith
+Balance : 9000
+Interest Rate : 5%
+Interest : 450
+----------------------------------
+Choice : 8
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -923,13 +981,9 @@ Delete `out/` anytime; keep sources under `examples/Lab3-BankingSystem/` for evi
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Full source under `java-bootcamp/examples/Lab3-BankingSystem/src/com/academy/bank/`
-* Screenshots: customer create, savings create, deposit, withdraw, polymorphic display, exit
-* UML class diagram
-* Short design note (SOLID + inheritance/polymorphism in your own words)
-* Working compile/run commands
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -947,46 +1001,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
+Write **1–3 sentence** answers (not essays):
+
 1. Why should `Account` be abstract rather than a concrete empty type?
 2. Where does dynamic dispatch show up when you call `displayAccount()` on `Account[]`?
 3. How does `Printable` differ from extending a base class?
-4. What would break if `Main` owned all arrays instead of `BankService`?
-5. How do today’s Customer/Account patterns prepare you for later CRM entity design **without** building Spring here?
 
 ---
+
 
 ## Bonus Challenges
 
-Attempt after the core menu works. Ideas exist under [`solution/`](solution/) (menu 9–13)—try first.
+Optional — only after core deliverables pass. Pick at most one if time is short.
 
-1. **Transfer money** between accounts  
-2. **Transaction history** listing  
-3. **Sort accounts by balance**  
-4. **Highest-balance customer**  
-5. **Account summary report**  
 
----
-
-## Success Criteria
-
-You have completed Lab 3 when you can:
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 0 | Module 3 Exercises 1–8 Pass criteria are complete **before** Lab Steps 3+ | Pass / Fail |
-| 1 | Package folders match `com.academy.bank` under `examples/Lab3-BankingSystem/src/` | Pass / Fail |
-| 2 | Abstract `Account` hierarchy + `Printable` compile; cannot `new Account(...)` | Pass / Fail |
-| 3 | Create customer C101 + savings; deposit/withdraw work | Pass / Fail |
-| 4 | Polymorphic display via `Account[]` (no unnecessary casts) | Pass / Fail |
-| 5 | Thin `Main` + `BankService` orchestration; SOLID checklist explained | Pass / Fail |
-| 6 | UML matches files (includes service/Main growth from Exercise 8) | Pass / Fail |
-| 7 | `javac -d out` and `java -cp out com.academy.bank.Main` succeed | Pass / Fail |
-
-This lab bridges **Module 3 exercises** (after Lab 2 package habits) to a graded OOP banking console.
+1. **Transfer money** between accounts
+2. **Transaction history** listing
+3. **Sort accounts by balance**
 
 ---
+
 
 ## Instructor Notes
 

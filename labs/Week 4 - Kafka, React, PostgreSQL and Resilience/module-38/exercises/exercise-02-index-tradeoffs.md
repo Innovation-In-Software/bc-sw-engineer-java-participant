@@ -8,10 +8,43 @@ Create `notes/lab38-index-tradeoffs.md` — document costs of extra indexes on C
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-38-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-index-tradeoffs.md` (this file in the course repo) |
 | Your notes file | `notes/lab38-index-tradeoffs.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 38 — Index Tradeoffs
+
+## Step 1 — Benefit
+
+Faster status filters and account-by-customer joins.
+
+## Step 2 — Cost
+
+Slower INSERT/UPDATE for Amina/Ravi seeds at scale; more disk.
+
+## Step 3 — Cleanup
+
+Lab may include dropping experimental indexes — plan to document before/after.
+
+## Step 4 — Rule
+
+Add index only when EXPLAIN shows need.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Tradeoff paragraph tied to CRM workloads in `notes/lab38-index-tradeoffs.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab38-index-tradeoffs.md` | Pass / Fail |
-| 2 | Benefit stated | Pass / Fail |
-| 3 | Write-cost stated | Pass / Fail |
-| 4 | Measure-first rule | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab38-index-tradeoffs.md`
+- [ ] Benefit stated
+- [ ] Write-cost stated
+- [ ] Measure-first rule
+

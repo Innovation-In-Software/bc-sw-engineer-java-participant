@@ -10,6 +10,33 @@
 Create `HrNamesDemo.java`. Compose `filter`, `map`, `sorted`, and `toList` to
 produce an alphabetized list of names for employees in HR.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+import java.util.List;
+
+public class HrNamesDemo {
+    public static void main(String[] args) {
+        // TODO: compose filter → map → sorted → toList
+        List<String> hrNames = EmployeeData.sample().stream()
+                // TODO: .filter(employee -> employee.department().equals("HR"))
+                // TODO: .map(Employee::name)
+                // TODO: .sorted()
+                // TODO: .toList()
+                ;
+
+        System.out.println("HR names: " + hrNames);
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -120,14 +147,12 @@ The final list contains only Alice and Charlie in alphabetical order.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Output is exactly `[Alice, Charlie]` | Pass / Fail |
-| 2 | The pipeline contains filter, map, sorted, and toList | Pass / Fail |
-| 3 | Case-insensitive test works | Pass / Fail |
-| 4 | You can trace the element type after each operation | Pass / Fail |
+Self-check before marking Pass:
 
----
+- [ ] Output is exactly `[Alice, Charlie]`
+- [ ] The pipeline contains filter, map, sorted, and toList
+- [ ] Case-insensitive test works
+- [ ] You can trace the element type after each operation
 
 ## Next
 

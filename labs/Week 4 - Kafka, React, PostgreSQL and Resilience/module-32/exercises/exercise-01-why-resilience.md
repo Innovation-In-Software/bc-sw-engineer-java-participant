@@ -8,10 +8,43 @@ Create `notes/lab32-resilience.md` — explain how a slow Account Profile depend
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-why-resilience.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-resilience.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 32 — Why Resilience
+
+## Step 1 — Scenario
+
+Customer detail for `CUS-1001` Amina calls Account Profile. The dependency hangs 30s. List three user-visible or thread-pool effects.
+
+## Step 2 — Pattern names
+
+Write the four Resilience4j ideas: retry, circuit breaker, time limiter, fallback.
+
+## Step 3 — Not a substitute
+
+One sentence: resilience wraps calls; it does not fix a permanently wrong URL.
+
+## Step 4 — Notes file
+
+
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A scenario analysis plus named Resilience4j patterns in `notes/lab32-resilience.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab32-resilience.md` | Pass / Fail |
-| 2 | Three hang effects | Pass / Fail |
-| 3 | Four patterns named | Pass / Fail |
-| 4 | Limitation sentence written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab32-resilience.md`
+- [ ] Three hang effects
+- [ ] Four patterns named
+- [ ] Limitation sentence written
+

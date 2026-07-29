@@ -8,10 +8,43 @@ Create `notes/lab33-a11y-checklist.md` — list accessibility checks before codi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-33-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-a11y-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab33-a11y-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 33 — A11y Checklist
+
+## Step 1 — Semantics
+
+Prefer `button`, `h1–h3`, `ul/li` over clickable divs.
+
+## Step 2 — Contrast
+
+Note status colors need text + icon/shape, not color alone.
+
+## Step 3 — Keyboard
+
+Tab order reaches View for Amina and Ravi.
+
+## Step 4 — Checklist file
+
+Save 5 checkbox lines in notes.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A five-item a11y checklist for Lab 33 in `notes/lab33-a11y-checklist.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab33-a11y-checklist.md` | Pass / Fail |
-| 2 | Semantics called out | Pass / Fail |
-| 3 | Color-not-only noted | Pass / Fail |
-| 4 | Five checklist lines | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab33-a11y-checklist.md`
+- [ ] Semantics called out
+- [ ] Color-not-only noted
+- [ ] Five checklist lines
+

@@ -8,10 +8,26 @@ Create `notes/lab24-payloadroot-skeleton.md` — complete a pseudocode endpoint 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-24-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-payloadroot-skeleton.md` (this file in the course repo) |
 | Your notes file | `notes/lab24-payloadroot-skeleton.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 24 — PayloadRoot Skeleton (TODOs)
+
+## Step 2 — Fill TODOs
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -77,9 +93,10 @@ Endpoint sketch blanks filled; delegation rule clear in `notes/lab24-payloadroot
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab24-payloadroot-skeleton.md` | Pass / Fail |
-| 2 | `@Endpoint` and GetCustomer localPart filled | Pass / Fail |
-| 3 | Service `get` delegation present | Pass / Fail |
-| 4 | No rule logic invented in the endpoint | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab24-payloadroot-skeleton.md`
+- [ ] `@Endpoint` and GetCustomer localPart filled
+- [ ] Service `get` delegation present
+- [ ] No rule logic invented in the endpoint
+

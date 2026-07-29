@@ -8,10 +8,43 @@ Create `notes/lab19-page-object.md` — sketch a CustomerStatusPage object with 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-page-object.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-page-object.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 19 — Page Object Sketch
+
+## Step 1 — Class
+
+Paper class `CustomerStatusPage` with driver field.
+
+## Step 2 — Actions
+
+Methods: open(customerId), readStatus(), clickActivate().
+
+## Step 3 — No asserts in page?
+
+Prefer assertions in tests; page returns data (status text).
+
+## Step 4 — Prep boundary
+
+Write: *Prepare for Lab 19; do not complete full Selenium suite now.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A Page Object sketch with clear responsibilities in `notes/lab19-page-object.md`
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab19-page-object.md` | Pass / Fail |
-| 2 | Class and methods sketched | Pass / Fail |
-| 3 | Assert placement noted | Pass / Fail |
-| 4 | Pre-lab boundary present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab19-page-object.md`
+- [ ] Class and methods sketched
+- [ ] Assert placement noted
+- [ ] Pre-lab boundary present
+

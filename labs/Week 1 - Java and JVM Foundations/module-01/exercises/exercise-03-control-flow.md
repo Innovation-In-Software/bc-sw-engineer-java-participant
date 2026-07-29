@@ -9,6 +9,26 @@
 
 Create `ControlFlow.java` using `if`, `for`, `while`, and `switch` with simple examples.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+even
+1
+2
+3
+4
+5
+countdown 3
+countdown 2
+countdown 1
+Tuesday
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

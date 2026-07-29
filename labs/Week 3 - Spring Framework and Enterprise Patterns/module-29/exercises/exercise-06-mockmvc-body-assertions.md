@@ -8,10 +8,43 @@ Create `notes/mockmvc-body-plan.md` — plan tests that check JSON fields, not o
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-mockmvc-body-assertions.md` (this file in the course repo) |
 | Your notes file | `notes/mockmvc-body-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 29 — MockMvc Body Assertions Plan
+
+## Step 1 — Cases
+
+In `notes/mockmvc-body-plan.md`: invalid POST; GET `CUS-9999`; duplicate `CUS-1001`; happy GET Amina.
+
+## Step 2 — Assertions
+
+For failures, assert `status`, `message`/`error`, and `correlationId` exist.
+
+## Step 3 — Security coexistence
+
+If Lab 28 is complete, note tests may need auth headers — do not remove security.
+
+## Step 4 — Boundary
+
+Do not implement full MockMvc classes in pre-lab.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Body-assertion test plan ready in `notes/mockmvc-body-plan.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/mockmvc-body-plan.md` | Pass / Fail |
-| 2 | Four cases listed | Pass / Fail |
-| 3 | Envelope field assertions named | Pass / Fail |
-| 4 | Security coexistence noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/mockmvc-body-plan.md`
+- [ ] Four cases listed
+- [ ] Envelope field assertions named
+- [ ] Security coexistence noted
+

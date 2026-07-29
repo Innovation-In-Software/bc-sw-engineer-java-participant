@@ -8,10 +8,43 @@ Create `notes/lab33-components.md` — list CRM dashboard components you will bu
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-33-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-component-inventory.md` (this file in the course repo) |
 | Your notes file | `notes/lab33-components.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 33 — Component Inventory
+
+## Step 1 — Screen
+
+Imagine a Customer list showing Amina and Ravi with status badges.
+
+## Step 2 — Inventory
+
+List ≥5 components: e.g. `App`, `CustomerList`, `CustomerCard`, `StatusBadge`, `PageHeader`.
+
+## Step 3 — One responsibility
+
+For each, write a ≤6-word responsibility.
+
+## Step 4 — Notes
+
+
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A component inventory with single-responsibility blurbs in `notes/lab33-componen
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab33-components.md` | Pass / Fail |
-| 2 | At least five components | Pass / Fail |
-| 3 | Responsibilities written | Pass / Fail |
-| 4 | Notes file saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab33-components.md`
+- [ ] At least five components
+- [ ] Responsibilities written
+- [ ] Notes file saved
+

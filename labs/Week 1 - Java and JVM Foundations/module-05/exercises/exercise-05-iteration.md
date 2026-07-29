@@ -9,6 +9,17 @@
 
 Create `IteratorDemo.java` and safely remove matching titles through the active `Iterator`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Remaining: [Java 21, Clean Code]
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

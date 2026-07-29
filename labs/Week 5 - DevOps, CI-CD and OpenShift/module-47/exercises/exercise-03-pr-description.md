@@ -8,10 +8,43 @@ Create `notes/lab47-pr-description.md` — structure a PR body for a mitigation/
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-47-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-pr-description.md` (this file in the course repo) |
 | Your notes file | `notes/lab47-pr-description.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 47 — PR Description Outline
+
+## Step 1 — Sections
+
+Why, what changed, how verified (`./mvnw -B test` / CI link placeholder), rollback, risks.
+
+## Step 2 — Check the reference
+
+PR must be reviewable without Slack archaeology.
+
+## Step 3 — Verify bullets
+
+List two verification bullets using synthetic fixtures.
+
+## Step 4 — Scope
+
+Outline only—full packet is Lab 47.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ PR description outline with verify and rollback in `notes/lab47-pr-description.m
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab47-pr-description.md` | Pass / Fail |
-| 2 | Five sections present | Pass / Fail |
-| 3 | Verify bullets use fixtures | Pass / Fail |
-| 4 | Rollback mentioned | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab47-pr-description.md`
+- [ ] Five sections present
+- [ ] Verify bullets use fixtures
+- [ ] Rollback mentioned
+

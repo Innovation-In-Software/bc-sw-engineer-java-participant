@@ -37,13 +37,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class:** prefer the [45-minute timed path](#45-minute-timed-path-use-starter) with [`starter/`](starter/README.md).
-2. Confirm Lab 0 + Module 1 Exercises 1–8 are done (checklists below).
-3. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-4. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this course `labs/` clone unless a step says otherwise).
-5. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-6. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-7. Capture evidence under `notes/screenshots/lab-1/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -92,6 +93,10 @@ cd $env:USERPROFILE\java-bootcamp\examples\jvm-compilation-lab
 ```
 
 **IntelliJ file creation (flat lab folder):** right-click `jvm-compilation-lab` → **New → File** → type `HelloWorld.java` (include `.java`). Ignore the yellow *outside of the module source root* banner. Do **not** mark `jvm-compilation-lab` as Sources Root.
+
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab 0 baseline you must already have
 
@@ -340,17 +345,46 @@ replay_pid*
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Before Lab steps, **revisit** your exercise notes and write two or three sentences for each prompt. Revisit again after Checkpoint C.
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
-1. **Why bytecode?** Why does Java compile to platform-neutral bytecode instead of a native `.exe` on each OS? *(Exercise 2 WORA)*
-2. **Class name vs file path.** Why does `java HelloWorld` omit `.class`, and what goes wrong if you type `java HelloWorld.java` or `java helloworld`? *(Exercises 1–2)*
-3. **Stack frames.** What is created when `main` calls `Calculator.add`, and what happens to that frame on `return`? *(Exercise 6 → Lab Steps 5–6)*
-4. **Heap identity.** In `Employee emp = new Employee(101, "Aman")`, what lives on the stack versus the heap? *(Exercise 7 → Lab Step 7)*
-5. **Class loading cost.** Why does `java -verbose:class Employee` print dozens of JDK classes before your `Employee` line? *(Exercise 4 → Lab Step 8)*
-6. **`-Xmx` / source of truth.** What does `-Xmx` constrain, and if `.java` and `.class` disagree after an edit without `javac`, which file does `java` execute? *(Lab-only depth + Exercise 2)*
-7. **Forward look.** How will Maven (`mvn compile`) change *tooling* but not the javac → bytecode → JVM story for the future CRM?
+1. **Why bytecode?** Why does Java compile to platform-neutral bytecode instead of a native `.exe` on each OS?
+2. **Class name vs file path.** Why does `java HelloWorld` omit `.class`, and what goes wrong if you type `java HelloWorld.java` or `java helloworld`?
+3. **Stack frames.** What is created when `main` calls `Calculator.add`, and what happens to that frame on `return`?
+4. **Heap identity.** In `Employee emp = new Employee(101, "Aman")`, what lives on the stack versus the heap?
+5. **Class loading cost.** Why does `java -verbose:class Employee` print dozens of JDK classes before your `Employee` line?
+6. **`-Xmx` / source of truth.** What does `-Xmx` constrain, and if `.java` and `.class` disagree after an edit without `javac`, which file does `java` execute?
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+public class Employee {
+    private int id;
+    private String name;
+
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public void display() {
+        System.out.println(id + " - " + name);
+    }
+
+    public static void main(String[] args) {
+        Employee emp = new Employee(101, "Aman");
+        emp.display();
+    }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -1346,16 +1380,14 @@ You may see `java.lang.OutOfMemoryError: Java heap space`. Restore normal `Memor
 
 ## Security and Production Review
 
-Answer in your notes (for example `notes/lab1-security.md`). Forward-looking—CRM is not running yet.
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. **Bytecode as artifact:** Why might an enterprise forbid copying raw `.class` files between machines without a reproducible build (Maven/CI)?
 2. **Heap dumps:** If a future CRM JVM writes a heap dump on OOM, what privacy risk appears if customer PII sits in memory? Who should access dumps?
 3. **Logging secrets:** Why must you never print passwords or cloud access keys—even in a tiny training `main`?
-4. **Classpath trust:** What risk exists if a malicious `Employee.class` appears earlier on the classpath than your build output?
-5. **Flag / container limits:** Why is casually setting `-Xmx` without matching container memory limits dangerous in production?
-6. **Production delta:** Name three controls Northstar would add before real customer workloads (non-root user, memory limits, CI-signed artifacts, no secrets in logs).
 
 ---
+
 
 ## Cleanup
 
@@ -1397,14 +1429,9 @@ After grading, you may keep `.class` files locally; they are not sacred—source
 
 ## Expected Deliverables
 
-Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above — detail here for grading.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* **Sources** under `java-bootcamp/examples/jvm-compilation-lab/`: `HelloWorld.java`, `Calculator.java`, `Employee.java`, `MemoryDemo.java`
-* **Screenshots** under `notes/screenshots/lab-1/`: JDK 21 (`java` / `javac` versions); `javac` + `.class` listing; run output for all four entry points; `javap -c` (HelloWorld minimum; Calculator recommended); class loading (`-verbose:class` or `-Xlog:class+load`); recommended filtered `PrintFlagsFinal`
-* **Short answers (3–7 sentences each, or bullet notes):** What does `javac` do? What is bytecode? Why is bytecode platform-independent? What is the role of the JVM? Where are objects stored? Where are method calls / frames stored? What happens when a class is loaded?
-* **Personal GitHub:** private repo `java-bootcamp` (Step 0) with Lab 1 sources pushed (Step 12); `.gitignore` excludes `notes/screenshots/`, `*.class`, `out/`, secrets
-
-Optional: failure-experiment log (min. three); Security and Production Review answers; Checkpoint A–C notes.
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -1429,14 +1456,14 @@ Partial credit is normal if optional VisualVM/`jconsole` is skipped. Missing JDK
 
 ## Reflection Questions
 
-1. Which mental model changed most: “Java runs my `.java` file” versus “JVM runs bytecode”?
-2. Why does enterprise onboarding spend time on `javap` before Spring annotations?
-3. When `Calculator` printed a stale result, what process would you use in a large Maven CRM project to avoid the same bug class?
-4. How does loading hundreds of classes at startup explain “JVM process up” versus “application ready”?
-5. What evidence would convince a grader the bytecode screenshot is from **your** `HelloWorld`?
-6. Looking forward: which Lab 1 idea will matter first when the CRM runs under Docker—heap limits, class loading, or bytecode inspection?
+Write **1–3 sentence** answers (not essays):
+
+1. What evidence would convince a grader the bytecode screenshot is from **your** `HelloWorld`?
+2. Looking forward: which Lab 1 idea will matter first when the CRM runs under Docker—heap limits, class loading, or bytecode inspection?
+3. Which mental model changed most: “Java runs my `.java` file” versus “JVM runs bytecode”?
 
 ---
+
 
 ## Bonus Challenges
 
@@ -1447,29 +1474,6 @@ Complete only after core deliverables pass.
 2. **Compare G1-related flags:** From `PrintFlagsFinal`, note `UseG1GC` and two related flags. Write five lines on what “default GC” means for a training laptop versus a latency-sensitive CRM API.
 
 3. **StackOverflow recursion demo (careful):** Write a tiny `RecursionBomb` with an unbounded recursive method; run until `StackOverflowError`. Keep the demo separate from required files. Explain why this is a *stack* failure, not a heap OOM. Delete or quarantine the demo after evidence.
-
----
-
-## Success Criteria
-
-You have completed Lab 1 when you can:
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 0 | Module 1 Exercises 1–8 Pass criteria are complete **before** Lab Steps 2+ | Pass / Fail |
-| 1 | Work in `java-bootcamp/examples/jvm-compilation-lab/` on your laptop (VS Code and/or IntelliJ) | Pass / Fail |
-| 2 | Compile and run `HelloWorld`, `Calculator`, `Employee`, and `MemoryDemo` with the exact expected outputs | Pass / Fail |
-| 3 | Explain `.java` versus `.class` and demonstrate `javap -c` (building on Exercise 8) | Pass / Fail |
-| 4 | Describe stack frames vs heap objects using Calculator and Employee (building on Exercises 6–7) | Pass / Fail |
-| 5 | Show class-loading evidence and locate basic heap/GC flags | Pass / Fail |
-| 6 | Clean `*.class`, recompile, and re-run successfully | Pass / Fail |
-| 7 | Personal GitHub repo `java-bootcamp` created (Step 0) and Lab 1 committed/pushed (Step 12) | Pass / Fail |
-| 8 | Submit sources, screenshots, and short answers per the deliverables list | Pass / Fail |
-| 9 | Articulate that this JVM flow underpins future CRM services (this lab does not build the CRM) | Pass / Fail |
-
-This lab bridges **Module 1 exercises** (after Lab 0) to graded JVM evidence and a personal GitHub workspace.
 
 ---
 

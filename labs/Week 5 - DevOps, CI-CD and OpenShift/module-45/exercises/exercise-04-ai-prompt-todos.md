@@ -8,10 +8,28 @@ Create `notes/lab45-ai-prompt-todos.md` — complete a bounded prompt template f
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-ai-prompt-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-ai-prompt-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 45 — Fill AI Prompt TODOs
+
+## Step 1 — Template
+
+Fill blanks:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -70,9 +88,10 @@ Constrained AI prompt with a planned rejection in `notes/lab45-ai-prompt-todos.m
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab45-ai-prompt-todos.md` | Pass / Fail |
-| 2 | Template filled | Pass / Fail |
-| 3 | Forbid list includes secrets/public DB | Pass / Fail |
-| 4 | Rejection example written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab45-ai-prompt-todos.md`
+- [ ] Template filled
+- [ ] Forbid list includes secrets/public DB
+- [ ] Rejection example written
+

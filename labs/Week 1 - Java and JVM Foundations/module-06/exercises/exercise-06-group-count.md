@@ -10,6 +10,35 @@
 Create `DepartmentCountDemo.java`. Group employees by department, count each
 group, and print the report in deterministic alphabetical key order.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+
+public class DepartmentCountDemo {
+    public static void main(String[] args) {
+        // TODO: stream + collect groupingBy(Employee::department, Collectors.counting())
+        Map<String, Long> counts = EmployeeData.sample().stream()
+                .collect(_____);
+
+        // TreeMap gives the report a stable alphabetical order.
+        Map<String, Long> sortedCounts = new TreeMap<>(counts);
+
+        sortedCounts.forEach((department, count) ->
+                System.out.println(department + ": " + count));
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -126,9 +155,10 @@ The report prints Finance 1, HR 2, and IT 2 in alphabetical department order.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Finance, HR, and IT counts are 1, 2, and 2 | Pass / Fail |
-| 2 | Output is deterministic and alphabetical | Pass / Fail |
-| 3 | Adding Fatima changes only Finance to 2 | Pass / Fail |
-| 4 | You can explain grouping key versus downstream collector | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Finance, HR, and IT counts are 1, 2, and 2
+- [ ] Output is deterministic and alphabetical
+- [ ] Adding Fatima changes only Finance to 2
+- [ ] You can explain grouping key versus downstream collector
+

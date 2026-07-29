@@ -8,10 +8,43 @@ Create `notes/lab47-incident-update.md` — outline an incident update without n
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-47-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-incident-update.md` (this file in the course repo) |
 | Your notes file | `notes/lab47-incident-update.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 47 — Draft Incident Update Skeleton
+
+## Step 1 — Sections
+
+Summary, impact, current status, what we know, next update time, contacts.
+
+## Step 2 — Check the reference
+
+No invented root cause; no credentials; no customer PII.
+
+## Step 3 — Impact line
+
+Write one impact sentence mentioning agents and synthetic customer IDs only.
+
+## Step 4 — Next update
+
+Pick a concrete next-update clock time placeholder.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Incident update skeleton with next-update time in `notes/lab47-incident-update.m
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab47-incident-update.md` | Pass / Fail |
-| 2 | Sections present | Pass / Fail |
-| 3 | Blameless tone | Pass / Fail |
-| 4 | Next update time set | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab47-incident-update.md`
+- [ ] Sections present
+- [ ] Blameless tone
+- [ ] Next update time set
+

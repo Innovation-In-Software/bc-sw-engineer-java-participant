@@ -8,10 +8,43 @@ Create `notes/service-test-plan.md` — list three service tests Lab 25 should p
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-test-plan.md` (this file in the course repo) |
 | Your notes file | `notes/service-test-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 25 — Service Test Plan
+
+## Step 1 — Cases
+
+In `notes/service-test-plan.md`: get seeded Amina; duplicate create fails; missing id fails; optional PROSPECT→ACTIVE.
+
+## Step 2 — Fake vs in-memory
+
+State either a fake repo or the in-memory impl is acceptable for unit tests.
+
+## Step 3 — Dual green
+
+Lab expects `mvn test` green twice — note that as a lab habit, not pre-lab work.
+
+## Step 4 — Boundary
+
+Do not write the full JUnit class here.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Test plan lists core service cases without full JUnit in `notes/service-test-pla
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/service-test-plan.md` | Pass / Fail |
-| 2 | At least three cases listed | Pass / Fail |
-| 3 | Fake/in-memory option stated | Pass / Fail |
-| 4 | Full JUnit deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/service-test-plan.md`
+- [ ] At least three cases listed
+- [ ] Fake/in-memory option stated
+- [ ] Full JUnit deferred
+

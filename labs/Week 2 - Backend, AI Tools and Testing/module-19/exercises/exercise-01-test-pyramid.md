@@ -8,10 +8,39 @@ Create `notes/lab19-pyramid.md` — place activate unit tests, API IT, and Selen
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-test-pyramid.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-pyramid.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 19 — Test Pyramid for CRM
+
+## Step 1 — Base
+
+Many fast JUnit/Mockito tests for service rules (Labs 17–18).
+
+## Step 2 — Middle
+
+Fewer API integration tests with real Spring slice or Testcontainers later.
+
+## Step 3 — Top
+
+Few Selenium journeys: view Amina ACTIVE, activate Ravi path in UI if exposed.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A pyramid note with Northstar examples at each layer in `notes/lab19-pyramid.md`
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab19-pyramid.md` | Pass / Fail |
-| 2 | Three layers described | Pass / Fail |
-| 3 | Fixtures mentioned at UI layer | Pass / Fail |
-| 4 | Actuator deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab19-pyramid.md`
+- [ ] Three layers described
+- [ ] Fixtures mentioned at UI layer
+- [ ] Actuator deferred
+

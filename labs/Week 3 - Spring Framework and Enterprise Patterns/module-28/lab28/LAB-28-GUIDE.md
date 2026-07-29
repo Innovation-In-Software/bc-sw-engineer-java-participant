@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab28-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-28/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -58,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Run and cleanup instructions |
 | 8 | No secrets or generated build directories committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -217,9 +221,9 @@ Ignore `target/`, IDE metadata, `.env`, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/security-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main request flow for login versus an authenticated customer read
 2. Trust boundary: credentials at login, signature/expiry on every Bearer request
@@ -227,10 +231,25 @@ Write 2–3 sentences each in `docs/security-notes.md`:
 4. Stable identity (`sub` / username) versus customer IDs (`CUS-1001`)
 5. Idempotency: login vs `GET` with a bearer token; why refresh tokens are a production topic
 6. Local shortcut (in-memory users, HS256 shared secret) versus production (IdP, JWKS, rotation)
-7. Evidence operators need (failed-login rate, 401/403) without logging raw tokens or passwords
-8. Two app instances: shared JWT secret / JWKS so both accept the same tokens
-9. Why CSRF disable is acceptable for a pure Bearer API and when it would not be
-10. What Lab 29 will change (error bodies) without rewriting role names or fixture IDs
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"agent1","password":"agent-pass"}' | jq -r .accessToken)
+
+curl -s http://localhost:8080/api/customers/CUS-1001 \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "X-Correlation-Id: lab-request-001"
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -524,7 +543,7 @@ If your Lab 25/27 copy has empty data, add a `CommandLineRunner` or `data.sql` b
 
 ### Checkpoint A — Tooling and secret hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -534,7 +553,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Filter chain and JWT login
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -544,7 +563,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Roles and API access
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -554,7 +573,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Tests and hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -665,18 +684,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README / `docs/security-notes.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (credentials, Authorization header, customer IDs)?
 2. Where are authn/authz enforced (filter chain, method security)?
 3. Which values are sensitive (JWT secret, passwords, bearer tokens) and where stored?
-4. What can be retried safely (GET with token; login rate-limits)?
-5. What happens after partial failure (login succeeded, client lost token)?
-6. What would an operator monitor (failed logins, 401/403 rates)?
-7. Which local default is unacceptable in production (in-memory users, shared HS256 lab secret)?
-8. How are token claim contracts versioned when roles or claim names change?
 
 ---
+
 
 ## Cleanup
 
@@ -696,16 +711,9 @@ Do not commit `.env`, tokens, or `target/`. Keep redacted screenshots under `not
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `lab28-crm` with SecurityFilterChain, JWT login, AGENT/ADMIN roles
-* MockMvc (or WebTestClient) evidence for 401/403/200
-* Successful-path evidence (login + `CUS-1001` with AGENT)
-* Controlled-failure evidence (401/403)
-* Auth-flow notes or diagram in `docs/security-notes.md`
-* Production IdP / secret-rotation checklist
-* Run and cleanup instructions
-* No secrets or generated build directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -727,43 +735,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (stateless JWT vs session)?
-2. Which failure was hardest to diagnose (401 vs 403 vs filter order)?
-3. What evidence proves role separation works?
-4. What breaks first at ten times the login rate?
-5. Which concern should move to shared infrastructure (IdP, key vault)?
-6. What must change before real customer data is used?
-7. How does this lab connect to Lab 25 APIs and Lab 29 error bodies?
-8. What metric or log field matters most for auth support?
-9. (Forward look) How will Lab 29 keep validation errors as JSON under Security?
+2. What evidence proves role separation works?
+3. Which failure was hardest to diagnose (401 vs 403 vs filter order)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Structured correlation IDs without logging tokens or passwords.
 2. Refresh-token design notes (even if not fully implemented).
 3. Readiness separate from liveness under Security.
-4. Latency, failure, and success metrics for login.
-5. Document rollback and recovery for secret rotation.
-6. Short-lived tokens + forced relogin experiment with MockMvc.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate JWT login, protected endpoints, and AGENT/ADMIN role checks
-* Happy path and 401/403 failure paths are repeatable
-* Another student can follow your run instructions
-* MockMvc/build pass; two consecutive `mvn test` runs match
-* No production secret is hard-coded
-* You can explain local and production auth trade-offs
-
----
 
 ## Instructor Notes
 

@@ -8,10 +8,30 @@ Create `notes/lab25-service-todo-skeleton.md` — complete a tiny layered demo t
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-service-todo-skeleton.md` (this file in the course repo) |
 | Your notes file | `notes/lab25-service-todo-skeleton.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 25 — Service Layer Skeleton (TODOs)
+
+## Step 1 — Files
+
+Under `module-25-exercises/mini-src/com/northstar/crm/`, create `CustomerRepository.java`, `InMemoryCustomerRepository.java`, `CustomerService.java`, `LayerDemo.java`.
+
+## Step 2 — Fill TODOs
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -109,9 +129,10 @@ Demo prints `duplicate blocked` after filling blanks in `notes/lab25-service-tod
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab25-service-todo-skeleton.md` | Pass / Fail |
-| 2 | Seed and exists TODOs completed | Pass / Fail |
-| 3 | Expected console output | Pass / Fail |
-| 4 | Reflection notes HTTP is deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab25-service-todo-skeleton.md`
+- [ ] Seed and exists TODOs completed
+- [ ] Expected console output
+- [ ] Reflection notes HTTP is deferred
+

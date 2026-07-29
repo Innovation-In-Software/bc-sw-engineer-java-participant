@@ -8,10 +8,52 @@ Create `notes/lab36-token-storage.md` — recommend where the CRM SPA keeps acce
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-token-storage.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-token-storage.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 36 — Token Storage Options
+
+## Reference
+
+| Option | Risk / note |
+| --- | --- |
+| In-memory variable | Lost on refresh; safer from XSS persistence |
+| sessionStorage | Per-tab; XSS can read |
+| localStorage | Survives refresh; XSS can read |
+| HttpOnly cookie | Not JS-readable; needs CSRF strategy |
+
+## Step 1 — Study table
+
+Copy the reference table.
+
+## Step 2 — Lab choice
+
+Pick one approach for Lab 36 and justify in two sentences.
+
+## Step 3 — Never
+
+Never commit tokens; never put DB passwords in Vite env.
+
+## Step 4 — Fixture
+
+Use fake token `lab-token-001` in notes only — not a real secret.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -71,9 +113,10 @@ Storage recommendation with explicit never-commit rules in `notes/lab36-token-st
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab36-token-storage.md` | Pass / Fail |
-| 2 | Choice + justification | Pass / Fail |
-| 3 | Never-commit rule | Pass / Fail |
-| 4 | Fake token example only | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab36-token-storage.md`
+- [ ] Choice + justification
+- [ ] Never-commit rule
+- [ ] Fake token example only
+

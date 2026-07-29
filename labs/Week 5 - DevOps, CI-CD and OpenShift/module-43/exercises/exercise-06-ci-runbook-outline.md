@@ -8,10 +8,43 @@ Create `notes/lab43-ci-runbook-outline.md` — outline `docs/ci-runbook.md` so a
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-43-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-ci-runbook-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab43-ci-runbook-outline.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 43 — Outline CI Runbook
+
+## Step 1 — Headings
+
+Triggers, jobs, where reports live, how to re-run, what deploy steps exist (none yet).
+
+## Step 2 — Re-run recipe
+
+Bullet the GitHub UI/CLI re-run path and local `./mvnw -B clean verify` equivalent.
+
+## Step 3 — Evidence index
+
+Placeholder links for Surefire zip and JAR SHA artifact names.
+
+## Step 4 — Scope
+
+Mark as pre-lab outline for Lab 43.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ CI runbook outline with re-run recipe in `notes/lab43-ci-runbook-outline.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab43-ci-runbook-outline.md` | Pass / Fail |
-| 2 | Headings complete | Pass / Fail |
-| 3 | Re-run recipe present | Pass / Fail |
-| 4 | Pre-lab marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab43-ci-runbook-outline.md`
+- [ ] Headings complete
+- [ ] Re-run recipe present
+- [ ] Pre-lab marked
+

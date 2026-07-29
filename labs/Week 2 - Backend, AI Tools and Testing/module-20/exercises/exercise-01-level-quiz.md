@@ -8,10 +8,48 @@ Create `notes/lab20-level-quiz.md` — assign DEBUG/INFO/WARN/ERROR to CRM event
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-level-quiz.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-level-quiz.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 20 — Log Level Quiz
+
+## Reference
+
+| Event | Level |
+| --- | --- |
+| Activate success Ravi | INFO |
+| Illegal transition Amina | WARN |
+| Unexpected repo failure | ERROR |
+| Entering mapper field copy | DEBUG |
+
+## Step 2 — Prod habit
+
+One sentence: DEBUG off by default in prod profiles.
+
+## Step 3 — JDK/Maven
+
+Note logging deps align with Maven BOM/Spring Boot later; prep is level policy.
+
+## Step 4 — Prep only
+
+Write: *Do not complete full Lab 20 retrofit in pre-lab.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ A level quiz table with prod DEBUG habit in `notes/lab20-level-quiz.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab20-level-quiz.md` | Pass / Fail |
-| 2 | Table plus custom event | Pass / Fail |
-| 3 | Prod DEBUG habit written | Pass / Fail |
-| 4 | Pre-lab boundary present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab20-level-quiz.md`
+- [ ] Table plus custom event
+- [ ] Prod DEBUG habit written
+- [ ] Pre-lab boundary present
+

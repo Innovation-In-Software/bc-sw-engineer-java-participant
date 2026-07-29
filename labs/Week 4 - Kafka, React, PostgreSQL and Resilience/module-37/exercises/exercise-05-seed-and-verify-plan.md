@@ -8,10 +8,43 @@ Create `notes/lab37-seed-and-verify-plan.md` — outline seed and verify queries
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-37-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-seed-and-verify-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab37-seed-and-verify-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 37 — Seed and Verify Plan
+
+## Step 1 — Seed order
+
+Insert customers before accounts.
+
+## Step 2 — Verify SQL
+
+Write offline: `SELECT customer_id, full_name FROM customer ORDER BY customer_id;`
+
+## Step 3 — Join check
+
+Paper join: accounts for Amina by customer_id.
+
+## Step 4 — No execute
+
+Do not run against a live database in pre-lab.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Ordered seed/verify plan with a SELECT written on paper in `notes/lab37-seed-and
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab37-seed-and-verify-plan.md` | Pass / Fail |
-| 2 | Insert order correct | Pass / Fail |
-| 3 | Verify SELECT written | Pass / Fail |
-| 4 | No-execute confirmation | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab37-seed-and-verify-plan.md`
+- [ ] Insert order correct
+- [ ] Verify SELECT written
+- [ ] No-execute confirmation
+

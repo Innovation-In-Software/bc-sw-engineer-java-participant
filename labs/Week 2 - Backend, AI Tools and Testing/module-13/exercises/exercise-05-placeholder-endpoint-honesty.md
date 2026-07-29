@@ -8,10 +8,39 @@ Create `notes/lab13-placeholder-honesty.md` — document what a placeholder endp
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-placeholder-endpoint-honesty.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-placeholder-honesty.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 13 — Placeholder Endpoint Honesty
+
+## Step 1 — Define placeholder
+
+One sentence: contract + sample messages without a production-ready host.
+
+## Step 2 — What you will not do
+
+List: no Spring-WS `@Endpoint`, no Boot app, no deploy to Tomcat in prep.
+
+## Step 3 — What Lab 24 adds
+
+Note Lab 24 introduces Spring hosting for SOAP.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ An honesty note separating design from hosting in `notes/lab13-placeholder-hones
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab13-placeholder-honesty.md` | Pass / Fail |
-| 2 | Placeholder defined | Pass / Fail |
-| 3 | Three non-goals listed | Pass / Fail |
-| 4 | Lab 24 referenced | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab13-placeholder-honesty.md`
+- [ ] Placeholder defined
+- [ ] Three non-goals listed
+- [ ] Lab 24 referenced
+

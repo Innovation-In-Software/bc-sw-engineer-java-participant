@@ -11,6 +11,20 @@
 
 Create `DecisionDemo.java` that reads a numeric score and prints a letter grade with `if`/`else if`/`else`, then reads a day number (1–7) and prints its name with `switch`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Score (0-100): 85
+Grade: B
+Day number (1-7): 3
+Wednesday
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

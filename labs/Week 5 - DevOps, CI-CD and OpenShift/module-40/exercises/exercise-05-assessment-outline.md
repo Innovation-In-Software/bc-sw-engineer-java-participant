@@ -8,10 +8,43 @@ Create `notes/lab40-assessment-outline.md` — outline `docs/security-assessment
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-assessment-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-assessment-outline.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 40 — Outline Security Assessment
+
+## Step 1 — Sections
+
+List: scope, tools, findings summary, remediations planned, residual risks, evidence index.
+
+## Step 2 — Check the reference
+
+Residual risk row must include: risk, severity, owner, due date, mitigating control.
+
+## Step 3 — Evidence index draft
+
+Map claim → artifact path placeholders (Dependency-Check HTML, triage CSV, regression test name).
+
+## Step 4 — Scope honesty
+
+Add a one-line note: pre-lab outline only; full remediation/re-scan is Lab 40 timed/full path.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Assessment outline with residual-risk and evidence placeholders in `notes/lab40-
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab40-assessment-outline.md` | Pass / Fail |
-| 2 | Six sections present | Pass / Fail |
-| 3 | Residual risk fields complete in template | Pass / Fail |
-| 4 | Pre-lab scope stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab40-assessment-outline.md`
+- [ ] Six sections present
+- [ ] Residual risk fields complete in template
+- [ ] Pre-lab scope stated
+

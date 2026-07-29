@@ -48,13 +48,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab16-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-16/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -69,6 +70,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 5 | README / notes on status-code choices |
 | 6 | No secrets, stack traces in client samples, or `target/` committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -224,9 +228,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/error-model-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main error flow (throw/fail → handler → `ErrorResponse`)
 2. Trust boundary: what clients may see vs what logs may hold
@@ -234,10 +238,52 @@ Write 2–3 sentences each in `docs/error-model-notes.md`:
 4. Stable identity in messages (`CUS-9999`) without dumping entities
 5. Retry implications (404/409 often not blindly retried; 500 maybe)
 6. Why one JSON shape beats ad-hoc `ex.getMessage()` strings for React
-7. Correlation ID as the support join key across services
-8. Two instances: correlation still works without shared memory
-9. Why 500 messages must be generic
-10. What Spring `@ControllerAdvice` will wrap without changing the payload fields
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.northstar.crm.exception;
+
+import jakarta.validation.ConstraintViolation;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class GlobalExceptionHandler {
+
+    public ErrorResponse fromBusiness(BusinessException ex) {
+        return new ErrorResponse(
+            ex.getStatusHint(),
+            ex.getCode(),
+            ex.getMessage(),
+            ex.getCorrelationId(),
+            Map.of());
+    }
+
+    public ErrorResponse fromValidation(
+            Set<? extends ConstraintViolation<?>> violations, String correlationId) {
+        Map<String, String> fields = new LinkedHashMap<>();
+        for (ConstraintViolation<?> v : violations) {
+            fields.put(v.getPropertyPath().toString(), v.getMessage());
+        }
+        return new ErrorResponse(
+            400, "VALIDATION_FAILED", "Validation failed", correlationId, fields);
+    }
+
+    public ErrorResponse fromUnexpected(Exception ex, String correlationId) {
+        // Log full stack internally; do not put stack or ex.getMessage() if it may leak
+        return new ErrorResponse(
+            500, "INTERNAL_ERROR", "Unexpected server error", correlationId, Map.of());
+    }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -531,7 +577,7 @@ git status
 
 ### Checkpoint A — Model types
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -541,7 +587,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Handler + facade
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -551,7 +597,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Demo evidence
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -561,7 +607,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Tests + hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -665,18 +711,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (all request fields + headers later)?
 2. Where are authn/authz/validation enforced (validation/business now; auth still absent)?
 3. Which values are sensitive—never in `ErrorResponse`?
-4. What can be retried safely (reads; not blind repeat of conflicts)?
-5. What happens after partial failure (Fail payload; no silent success)?
-6. What would an operator monitor (400/404/409 rates by correlation)?
-7. Which local default is unacceptable in production (stack traces to clients; empty correlation)?
-8. How are error contracts versioned when field names change?
 
 ---
+
 
 ## Cleanup
 
@@ -692,14 +734,9 @@ No containers required. **Keep `lab16-crm`**—Labs 17–18 test behavior; Week 
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `ErrorResponse`, `BusinessException`, `GlobalExceptionHandler`
-* Facade integration returning consistent Fail payloads
-* Evidence JSON for 400, 404, and 409 with `lab-request-001`
-* `GlobalExceptionHandlerTest` output
-* README / notes on status-code choices
-* No secrets, stack traces in client samples, or `target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -721,43 +758,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the error volume?
-5. Which concern should move to shared infrastructure (logging/MDC)?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 14–15 and Spring advice later?
-8. What metric or log field matters most when correlating client complaints?
-9. (Forward look) Which `ErrorResponse` fields must stay stable when HTTP arrives?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. ThreadLocal/MDC-style correlation for server logs matching the payload.
 2. Counters for 400 vs 404 vs 409 in Main.
 3. Map Lab 13 SOAP fault samples to the same codes in a crosswalk table.
-4. Document rollback if you rename JSON fields (client coupling).
-5. Sketch `@ControllerAdvice` method signatures that call today’s handler.
-6. Problem Details (RFC 7807) field alias notes—without breaking this lab’s JSON.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate consistent payloads for validation, not-found, and business conflict
-* Happy path and three failure paths are repeatable with `lab-request-001`
-* Another student can follow your README
-* Tests/build pass
-* No production secret or stack trace is exposed to clients
-* You can explain how this maps to Spring `@ControllerAdvice` later
-
----
 
 ## Instructor Notes
 

@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab24-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-24/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -58,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | `CustomerEndpointTest` green twice |
 | 8 | Evidence that REST and SOAP share `CustomerService` |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -222,9 +226,9 @@ Ignore `target/` (including generated XJC sources unless course policy says othe
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/soap-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Why contract-first beats contract-last for partner SOAP
 2. `@PayloadRoot` vs REST `@RequestMapping`
@@ -232,10 +236,44 @@ Write 2–3 sentences each in `docs/soap-notes.md`:
 4. What SOAP fault communicates vs REST `ErrorResponse`
 5. Idempotency: `getCustomer` vs `createCustomer` retries
 6. HTTPS (transport) vs WS-Security (message) and why both matter
-7. Partner evidence pack: WSDL, sample XML, fault XML
-8. Two Boot instances: in-memory state does not share
-9. What must never appear in fault strings (stack traces, secrets)
-10. What Lab 25 changes (repo) without rewriting `@PayloadRoot` methods
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://northstar.com/crm/customer"
+           targetNamespace="http://northstar.com/crm/customer"
+           elementFormDefault="qualified">
+  <xs:simpleType name="CustomerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PROSPECT"/>
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="SUSPENDED"/>
+      <xs:enumeration value="CLOSED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CustomerType">
+    <xs:sequence>
+      <xs:element name="customerId" type="xs:string"/>
+      <xs:element name="fullName" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="tns:CustomerStatus"/>
+      <xs:element name="createdAt" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- request/response pairs: createCustomer, getCustomer,
+       updateCustomerStatus, listCustomers (see module materials) -->
+</xs:schema>
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -461,7 +499,7 @@ mvn -q test
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -471,7 +509,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Contract + endpoint
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -481,7 +519,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Faults + security
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -491,7 +529,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -667,18 +705,14 @@ mvn -q test
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which SOAP fields are untrusted and where validated?
 2. Is UsernameToken enough without HTTPS?
 3. Is plaintext PasswordText acceptable outside the lab? What replaces it?
-4. Which operations are safe to retry?
-5. What happens if create succeeds but response is lost in transit?
-6. What should operators monitor (fault rates, WSS rejects, latency)?
-7. Which local defaults are unacceptable in prod (in-memory, plaintext secret, clear HTTP)?
-8. How do you version `customer.xsd` without breaking the partner?
 
 ---
+
 
 ## Cleanup
 
@@ -697,17 +731,9 @@ Do not commit `target/` or real secrets. Keep `requests/` samples with **lab** c
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `CustomerEndpoint` with four SOAP operations
-* `customer.xsd` + live-generated WSDL
-* JAXB generation + `CustomerSoapMapper`
-* SOAP fault mapping to business exceptions
-* Working UsernameToken interceptor (lab secret)
-* `requests/` sample XML + fault cases
-* `CustomerEndpointTest` green twice
-* Evidence that REST and SOAP share `CustomerService`
-* README runbook; no secrets/`target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -729,44 +755,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (contract-first)?
-2. Which failure was hardest to diagnose (payload root vs WSS)?
-3. What evidence proves SOAP and REST share rules?
-4. What breaks first at ten concurrent partners on in-memory storage?
-5. Which concern should move to shared platform (WSDL hosting, credential rotation)?
-6. What must change before real partner traffic?
-7. How does this lab connect to Labs 13, 16, 23, and 25?
-8. Which fault code or WSDL element matters most when a partner says “it doesn’t work”?
-9. (Forward look) What must remain stable when Lab 25 swaps repository implementation?
+2. What evidence proves SOAP and REST share rules?
+3. Which failure was hardest to diagnose (payload root vs WSS)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add `closeCustomer` / `deleteCustomer` to XSD + endpoint + tests.
 2. `PayloadValidatingInterceptor` for schema validation before the method.
 3. PasswordDigest instead of PasswordText.
-4. Full HTTP SOAP IT with `TestRestTemplate` / `RestClient`.
-5. SoapUI/Postman collection for partner onboarding.
-6. Correlation header/header block echoed into SOAP logs as `lab24-001`.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You demonstrate XSD/WSDL, `@Endpoint` mapping, faults, and UsernameToken
-* Happy path and failure paths (not-found, missing token) are repeatable
-* Another student can follow secured curl instructions
-* Tests/build pass twice
-* No production secret is hard-coded
-* You can explain transport vs message security trade-offs
-* REST and SOAP share one service proof
-
----
 
 ## Instructor Notes
 

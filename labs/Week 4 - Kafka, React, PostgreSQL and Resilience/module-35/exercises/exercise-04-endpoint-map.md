@@ -8,10 +8,48 @@ Create `notes/lab35-api.md` — connect dashboard actions to Spring CRM endpoint
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-endpoint-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-api.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 35 — Endpoint Map
+
+## Reference
+
+| UI action | HTTP |
+| --- | --- |
+| List customers | GET /api/customers |
+| Open Amina | GET /api/customers/CUS-1001 |
+| Create customer | POST /api/customers |
+| Update status | PATCH /api/customers/{id} |
+
+## Step 2 — Ravi row
+
+Add GET for `CUS-1002`.
+
+## Step 3 — Status codes
+
+List expected codes: 200, 201, 400, 404, 500.
+
+## Step 4 — JSON shape
+
+Sketch list item JSON: customerId, name, status.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ UI↔HTTP map with status codes and a JSON sketch in `notes/lab35-api.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab35-api.md` | Pass / Fail |
-| 2 | Table + Ravi row | Pass / Fail |
-| 3 | Five status codes | Pass / Fail |
-| 4 | JSON fields listed | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab35-api.md`
+- [ ] Table + Ravi row
+- [ ] Five status codes
+- [ ] JSON fields listed
+

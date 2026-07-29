@@ -48,13 +48,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab8-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-8/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -71,6 +72,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Architecture / data-flow diagram showing NOW vs LATER |
 | 8 | Answers to reflection / concepts in `notes/lab8-answers.md` |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -295,9 +299,9 @@ Ignore `target/`, IDE metadata (`.idea/`, `*.iml`), `.env`, tokens, and password
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `notes/lab8-answers.md` before or during the steps; revisit after Checkpoint C.
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. The main data or request flow once create-customer is implemented (even though stubs only today)
 2. The trust boundary and which layer will own input validation later
@@ -305,10 +309,33 @@ Write 2–3 sentences each in `notes/lab8-answers.md` before or during the steps
 4. Stable identity (`CUS-1001`) versus display name (`Amina Khan`)
 5. Retry and idempotency implications at the repository boundary
 6. Local development shortcut versus production design (in-memory vs PostgreSQL)
-7. Logs, metrics, or UI evidence support will need once APIs exist (`lab-request-001`)
-8. Behavior with two application instances sharing the same customer IDs
-9. Why entity must not import controller (layer direction)
-10. What belongs in `dto` vs `entity` for the same Amina Khan create request
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.northstar.crm;
+
+/**
+ * Manual entry point for early labs.
+ * Example IDs: CUS-1001 Amina Khan ACTIVE; CUS-1002 Ravi Singh PROSPECT.
+ * Correlation ID (for logging later): lab-request-001
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("Northstar CRM skeleton — Lab 8");
+        System.out.println("Packages: controller, service, repository, entity, dto, config, exception");
+        System.out.println("Examples: CUS-1001 Amina Khan ACTIVE | CUS-1002 Ravi Singh PROSPECT");
+    }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -797,6 +824,7 @@ Example excerpt:
 # Northstar CRM Coding Standards (Lab 8)
 
 ## Layers
+
 - controller: transport / API mapping only
 - service: business rules
 - repository: persistence
@@ -806,6 +834,7 @@ Example excerpt:
 - exception: domain and API failures
 
 ## Hard rules
+
 - Services must not depend on controllers.
 - Entities must not carry HTTP or SOAP types.
 - Repositories must not import controllers.
@@ -864,7 +893,7 @@ Screenshot or paste compile success and the `find` listing into `notes/screensho
 
 ### Checkpoint A — Project root + Maven layout
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -875,7 +904,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Stubs compile and Main runs
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -886,7 +915,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Documentation
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -896,7 +925,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Failure evidence + security
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1028,20 +1057,14 @@ Perform deliberately, then restore working code.
 
 ## Security and Production Review
 
-Training skeleton only—gaps are intentional. Answer briefly in project `LAB-8-GUIDE.md` or `notes/lab8-answers.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which browser, network, event, or database inputs are untrusted? *(Design: future API inputs)*
 2. Where are authentication, authorization, and validation enforced? *(Which layer will own them?)*
 3. Which values are sensitive, and where are they stored? *(None in Lab 8—keep it that way)*
-4. What can be retried safely? *(`mvn compile`; not “create customer” yet)*
-5. What happens after a partial failure? *(Stub methods throw before storing)*
-6. What would an operator monitor later? *(API latency, DB health—note the gap)*
-7. Which local default is unacceptable in production? *(Empty stubs / no auth / later in-memory without hardening)*
-8. How are schema/event/API contracts versioned later? *(Packages + future WSDL/OpenAPI labs)*
-
-Never commit production customer PII, passwords, or cloud keys with this skeleton.
 
 ---
+
 
 ## Cleanup
 
@@ -1061,19 +1084,9 @@ Remove any temporary secrets from the environment where practical. Keep `docs/`,
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-Students should submit:
-
-* Completed Lab 8 Maven skeleton (`lab8-crm` or `customer-management-platform`)
-* All layer packages with stub classes plus `Main`
-* `docs/CODING-STANDARDS.md` and `docs/layer-flow.md`
-* Project `LAB-8-GUIDE.md` with compile/run and design decisions
-* Successful `mvn clean compile` evidence (+ `Main` output)
-* Controlled-failure evidence (broken layer import and/or missing POM experiment)
-* Architecture / data-flow diagram showing NOW vs LATER
-* Answers to reflection / concepts in `notes/lab8-answers.md`
-* No secrets or generated `target/` directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -1095,47 +1108,28 @@ Students should submit:
 
 ## Reflection Questions
 
-Write short answers (3–6 sentences) in `notes/lab8-answers.md`:
+Write answers in `notes/lab8-answers.md`:
+
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness of the skeleton?
-2. Which failure was hardest to diagnose (pathing, packages, POM)?
-3. What evidence proves the layered structure is real, not only aspirational?
-4. What breaks first at ten times the team size if packages are messy?
-5. Which concern should move to shared infrastructure later?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 9–12 and later CRM platform pieces?
-8. What metric, log field, query plan, or UI state matters most once APIs exist?
-9. Why keep DTOs separate from entities for creating Amina Khan (`CUS-1001`)?
-10. (Forward look) When Spring Boot arrives, which packages stay stable vs which files change first?
+2. What evidence proves the layered structure is real, not only aspirational?
+3. Which failure was hardest to diagnose (pathing, packages, POM)?
 
 ---
 
+
 ## Bonus Challenges
 
-Attempt after core rubric items are solid.
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add structured correlation and customer IDs in `docs/observability-notes.md` without sensitive fields (`lab-request-001`, `CUS-1001`).
 2. Add a one-line `package-info.java` description per layer package.
 3. Add a simple check script that fails if `controller` is imported from `repository` (grep/CI idea).
-4. Sketch package modules for a future `notification` and `audit` consumer (text only).
-5. Document rollback and recovery for deleting a bad package rename.
-6. Add a `docs/request-flow-sequence.md` sequence diagram for get `CUS-1002` not-found → `CustomerNotFoundException`.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate Maven layout, seven layer packages, stubs, and coding standards
-* Happy path (`mvn compile` + `Main`) and at least one failure path are repeatable
-* Another student can follow your run instructions from the project README
-* Build passes on your laptop JDK 21
-* No production secret is hard-coded
-* You can explain local skeleton versus future Spring/PostgreSQL/React/Kafka trade-offs
-* You can point at each package and state what must **not** live there
-
----
 
 ## Instructor Notes
 

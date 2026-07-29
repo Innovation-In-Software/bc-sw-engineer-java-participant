@@ -34,13 +34,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab20-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-20/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | `docs/logging.md` contract |
 | 8 | Run and cleanup instructions |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -200,9 +204,9 @@ Ignore rotated log files with real payloads, tokens, and passwords. Prefer commi
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/logging.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: request → filter MDC → controller → service → appender
 2. Trust boundary: what is safe to log vs PII
@@ -210,10 +214,32 @@ Write 2–3 sentences each in `docs/logging.md`:
 4. Stable identity (`customerId`, correlation) vs free-text names
 5. Idempotent create logging (duplicate WARN without payload dump)
 6. Local console DEBUG vs production INFO + central shipping
-7. Evidence operators need (search by `lab-request-001`)
-8. Two instances: MDC must not leak across threads/requests
-9. Why `%X{...}` patterns beat ad-hoc string concatenation
-10. What Lab 21 will add (metrics) without putting IDs in metric tags
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+mvn spring-boot:run
+
+curl -s -D - -H "X-Correlation-Id: lab-request-001" \
+  -H "Content-Type: application/json" \
+  -d '{"customerId":"CUS-1001","fullName":"Amina Khan","status":"ACTIVE"}' \
+  http://localhost:8080/api/customers
+
+curl -s -H "X-Correlation-Id: lab-request-001" \
+  http://localhost:8080/api/customers/CUS-1001
+
+curl -s -H "X-Correlation-Id: lab-request-001" \
+  -H "Content-Type: application/json" \
+  -d '{"customerId":"CUS-1002","fullName":"Ravi Singh","status":"PROSPECT"}' \
+  http://localhost:8080/api/customers
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -462,6 +488,7 @@ mvn -q -Dtest=CustomerLoggingIT test
 
 ```markdown
 ## Logging contract
+
 - Required MDC: correlationId, customerId (when known), op
 - Allowed: customerId, status, reason codes, durations, HTTP status
 - Forbidden: fullName, email, phone, address, passwords, tokens, PAN
@@ -482,7 +509,7 @@ Complete [Failure Experiments](#failure-experiments). Capture sanitized excerpts
 
 ### Checkpoint A — Tooling and pattern
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -492,7 +519,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Correlation and service logs
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -502,7 +529,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Validation + automated proof
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -512,7 +539,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -642,18 +669,14 @@ Do **not** commit unsanitized consoles. If grep hits, scrub the excerpt and fix 
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which browser, network, or API inputs are untrusted?
 2. Where are authn/authz/validation enforced (logs do not replace them)?
 3. Which values are sensitive—forbidden in logs/MDC?
-4. What can be retried safely (read paths; careful create)?
-5. What happens after partial failure (ERROR + correlation for search)?
-6. What would an operator monitor (error rate by op; search by correlation)?
-7. Which local default is unacceptable (DEBUG with payloads, PII in MDC)?
-8. How are logging contracts versioned when ops rename?
 
 ---
+
 
 ## Cleanup
 
@@ -673,17 +696,9 @@ Preserve Lab 19 IT/UI suites when practical; logging changes should not require 
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `logback-spring.xml` (or equivalent) structured pattern
-* `CorrelationFilter` with MDC lifecycle
-* CustomerService/controller logging without PII
-* Automated `CustomerLoggingIT` output
-* Successful-path evidence (`CUS-1001` / `CUS-1002` / `lab-request-001`)
-* Controlled-failure evidence (WARN/ERROR samples)
-* `docs/logging.md` contract
-* Run and cleanup instructions
-* No secrets or PII dumps committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -705,44 +720,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (filter-owned MDC vs service-owned)?
-2. Which failure was hardest to diagnose?
-3. What evidence proves support can search a request?
-4. What breaks first at ten times the log volume?
-5. Which concern should move to shared infrastructure (shipping, retention, redaction)?
-6. What must change before real customer data is used (still: never log PII)?
-7. How does this lab connect to Labs 19 and 21?
-8. What log field matters most on the ops dashboard?
-9. (Forward look) Why must customer IDs stay in logs but not become Micrometer tags?
+2. What evidence proves support can search a request?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Emit JSON logs (Logstash encoder / Jackson) while still omitting PII.
 2. Add a container-backed IT that scrapes logs for `lab-request-001`.
 3. Log probe outcomes at DEBUG only once Actuator readiness exists.
-4. Add latency fields alongside structured logs (preview Lab 21).
-5. Document rollback/recovery using correlation-ID search runbooks.
-6. Async listener MDC propagation demo (copy context; prove leak without it).
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate SLF4J/Logback structured logs with correlation and customer IDs
-* Happy path and at least one failure path are repeatable and PII-free
-* `CustomerLoggingIT` enforces no-name logs
-* Another student can follow your run instructions and contract
-* Tests/build pass
-* No production secret or PII is hard-coded into logs
-* You can explain local console logging versus production log shipping
-
----
 
 ## Instructor Notes
 

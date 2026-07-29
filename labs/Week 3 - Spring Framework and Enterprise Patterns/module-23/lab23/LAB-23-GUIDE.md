@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab23-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-23/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -58,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Controlled-failure evidence |
 | 8 | README runbook + cleanup |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -205,9 +209,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/autoconfig-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: HTTP → Boot MVC → service map → JSON response
 2. Trust boundary: `@Valid` / `@NotBlank` at the controller before store put
@@ -215,10 +219,43 @@ Write 2–3 sentences each in `docs/autoconfig-notes.md`:
 4. Stable fixtures (`CUS-1001`) vs random IDs in demos
 5. Idempotency: GET safe; POST create may overwrite map key today — document honesty
 6. Why embedded Tomcat is a local shortcut vs reverse-proxy + hardened Actuator in prod
-7. Evidence operators need: startup banner, health JSON, curl transcripts
-8. Two instances: in-memory state does not share — Lab 25/27 implications
-9. What auto-config provided (server, Jackson, DispatcherServlet) vs what you own
-10. What Lab 24 adds (SOAP) without abandoning this REST contract
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@SpringBootTest
+class CrmApplicationTests {
+  @Test void contextLoads() {}
+}
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class CustomerControllerIT {
+  @LocalServerPort int port;
+  @Autowired TestRestTemplate rest;
+
+  @Test
+  void createAndGetCus1001() {
+    var headers = new HttpHeaders();
+    headers.set("X-Correlation-Id", "lab-request-001");
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    var body = "{\"customerId\":\"CUS-1001\",\"fullName\":\"Amina Khan\",\"status\":\"ACTIVE\"}";
+    var created = rest.postForEntity(
+        "http://localhost:" + port + "/api/customers",
+        new HttpEntity<>(body, headers),
+        Customer.class);
+    assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    assertThat(rest.getForEntity("/api/customers/CUS-1001", Customer.class)
+        .getBody().customerId()).isEqualTo("CUS-1001");
+  }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -543,7 +580,7 @@ mvn -q test
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -553,7 +590,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core API
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -563,7 +600,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Ops + profiles
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -573,7 +610,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -744,18 +781,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (JSON body, headers)?
 2. Where are authn/authz/validation enforced (validation now; full security later)?
 3. Which values are sensitive — never commit API keys or real DB passwords?
-4. What can be retried safely (`GET`, health; careful with duplicate `POST` create)?
-5. What happens after partial failure (in-memory put is atomic per key; no multi-row TX yet)?
-6. What would an operator monitor (health, startup errors, HTTP 4xx/5xx)?
-7. Which local default is unacceptable in production (open Actuator, debug everywhere)?
-8. How are API contracts versioned when Lab 24 adds SOAP?
 
 ---
+
 
 ## Cleanup
 
@@ -774,17 +807,9 @@ Do not commit `target/`. Keep curl transcripts and notes.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Initializr-style `pom.xml` with web + actuator + test
-* `CrmApplication` + `application.yml` + profile teasers
-* `/api/customers` evidence for `CUS-1001` / `CUS-1002` / `lab-request-001`
-* Actuator health verification
-* Automated context-load and API IT; dual `mvn test` green
-* Autoconfig vs ownership notes
-* Controlled-failure evidence
-* README runbook + cleanup
-* No secrets or generated build directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -806,44 +831,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the request rate with an in-memory map?
-5. Which concern should move to shared infrastructure (Actuator policy, reverse proxy)?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 22 and 24–26?
-8. What metric or log field matters most on first Boot smoke?
-9. (Forward look) What must stay stable when Lab 24 adds SOAP beside REST?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Structured logging of `customerId` + correlation without PII.
 2. Separate readiness vs liveness notes on top of basic health.
 3. Metrics counter for create/get success/failure.
-4. Document rollback if a bad `prod` teaser were deployed.
-5. Optional container-backed smoke plan for a future DB profile.
-6. Initializr CLI one-liner captured in README for peer recreate.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Boot app runs with starters, YAML, customers REST API, and Actuator health
-* Happy path and at least one failure path are repeatable
-* Another student can follow your run instructions
-* Tests/build pass twice
-* No production secret is hard-coded
-* You can explain auto-configuration benefits and Actuator/profile trade-offs
-* Evidence covers `CUS-1001`, `CUS-1002`, and `lab-request-001`
-
----
 
 ## Instructor Notes
 

@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab36-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-36/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Abuse tests + green build |
 | 8 | Redacted screenshots + README runbook |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -208,9 +213,9 @@ Document Spring Security / header changes in `docs/security-decisions.md` even i
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/security-decisions.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main auth flow (login → memory token → bearer on API → logout)
 2. Trust boundary: browser untrusted; API authorizes every call
@@ -218,10 +223,21 @@ Write 2–3 sentences each in `docs/security-decisions.md`:
 4. Stable identity: user id vs customer ids (`CUS-1001`)
 5. Retry implications after 401 (re-auth; do not infinite refresh without design)
 6. Memory token shortcut vs production HttpOnly/BFF
-7. Evidence: DevTools storage empty of tokens; XSS test; header dump
-8. Two tabs: memory token not shared (document limitation)
-9. False confidence: “ProtectedRoute means secure”
-10. What Lab 37 changes (data at rest) without relaxing browser controls
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+npm run test -- --run
+npm run build
+curl -I http://localhost:8080
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -487,7 +503,7 @@ Complete [Failure Experiments](#failure-experiments). Confirm storage has no tok
 
 ### Checkpoint A — Tooling + model
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -497,7 +513,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Session mechanics
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -508,7 +524,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Hardening proofs
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -519,7 +535,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -674,18 +690,14 @@ expect(document.querySelector("script")).toBeNull();
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (all browser input, query params, customer fields)?
 2. Where are authn/authz/validation enforced (Spring Security / API; guards UX only)?
 3. Which values are sensitive—tokens, passwords—and where stored (memory / HttpOnly)?
-4. What can be retried safely (GETs after re-auth; not blind POST replay)?
-5. What happens after partial failure (401 expire; 403 keep; CSRF 403)?
-6. What would an operator monitor (401 spike, CSP reports, auth failures)?
-7. Which local default is unacceptable (`localStorage` tokens, `*` CORS, open redirects)?
-8. How are auth contracts versioned with API changes (header schemes, error codes)?
 
 ---
+
 
 ## Cleanup
 
@@ -704,17 +716,9 @@ Do not commit tokens, `.env` secrets, `node_modules/`, or `dist/`.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Threat model document
-* Auth state + in-memory token store
-* Origin-scoped Authorization on CRM calls
-* Login + ProtectedRoute + 401/403/logout behavior
-* XSS proof test; CSRF evidence or N/A rationale
-* CSP/security headers evidence
-* Abuse tests + green build
-* Redacted screenshots + README runbook
-* No secrets committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -736,46 +740,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the session count?
-5. Which concern should move to shared infrastructure?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 35 and 37?
-8. What metric matters most on the security dashboard for this gate?
-9. (Forward look) Why does PostgreSQL schema design not replace XSS/CSP controls?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Implement a BFF-style cookie session note with SameSite=Lax/Strict trade-offs.
 2. Add refresh-token rotation thought experiment (no long-lived memory secrets).
 3. CSP report-uri / report-to dry-run documentation.
-4. Role-based UI hiding **plus** 403 proof that UI hide is not authz.
-5. Document rollback if someone re-adds `localStorage` tokens.
-6. Automated check failing CI when `localStorage.setItem.*token` appears.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Threat model is written and applied
-* Memory tokens + origin-scoped bearer work; storage clean
-* Guards, 401/403, and logout behave correctly
-* XSS test proves non-execution
-* CSRF/CSP evidence (or precise N/A) exists
-* Abuse tests and build are green twice
-* Another student can follow your secure run instructions
-* No production secret is hard-coded
-* You can explain why backend authorization remains mandatory
-
----
 
 ## Instructor Notes
 

@@ -34,13 +34,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab19-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-19/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Regression notes (why integration vs UI scope; CI browser strategy) |
 | 8 | Run and cleanup instructions |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -205,9 +209,9 @@ Ignore `target/`, `node_modules`, downloaded drivers under home directories, tok
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/regression-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main request flow: UI/API → controller → service → repository
 2. Trust boundary: validation at API/UI edge vs service rules
@@ -215,10 +219,40 @@ Write 2–3 sentences each in `docs/regression-notes.md`:
 4. Stable identities (`CUS-1001`) vs random data in IT
 5. Idempotency of repeated create and UI double-submit
 6. Local headed Chrome vs CI headless WebDriverManager
-7. Evidence: surefire, screenshots, correlation header echo
-8. Two instances: port conflicts, shared DB/map contamination
-9. Why Page Objects reduce brittle locator duplication
-10. What Lab 20 will add (structured logs) without changing fixture IDs
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class CustomerApiIT {
+  @LocalServerPort int port;
+  @Autowired TestRestTemplate rest;
+
+  @Test
+  void createAndGetCus1001() {
+    var headers = new HttpHeaders();
+    headers.set("X-Correlation-Id", "lab-request-001");
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    var body = """
+      {"customerId":"CUS-1001","fullName":"Amina Khan","status":"ACTIVE"}
+      """;
+    var created = rest.exchange(
+        "http://localhost:" + port + "/api/customers",
+        HttpMethod.POST, new HttpEntity<>(body, headers), Customer.class);
+    assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    assertThat(created.getHeaders().getFirst("X-Correlation-Id")).isEqualTo("lab-request-001");
+    var got = rest.getForEntity("/api/customers/CUS-1001", Customer.class);
+    assertThat(got.getBody().customerId()).isEqualTo("CUS-1001");
+  }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -545,7 +579,7 @@ Document in `docs/regression-notes.md`: unit vs IT vs UI scope, headless CI stra
 
 ### Checkpoint A — Tooling and API
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -555,7 +589,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Integration tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -565,7 +599,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — UI suite
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -576,7 +610,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Regression hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -687,18 +721,14 @@ Content-Type: application/json
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which browser, network, or API inputs are untrusted?
 2. Where are authentication, authorization, and validation enforced (UI is not enough)?
 3. Which values are sensitive—never in screenshots or surefire dumps?
-4. What can be retried safely (idempotent GET; careful POST)?
-5. What happens after partial failure (red CI blocks merge; screenshot captured)?
-6. What would an operator monitor (suite duration, flake rate, 5xx on create)?
-7. Which local default is unacceptable (headed-only CI, committed chromedriver, sleeps)?
-8. How are API/UI contracts versioned with DTO field renames?
 
 ---
+
 
 ## Cleanup
 
@@ -718,17 +748,9 @@ git status
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Integration test class(es) for CRM create/get (`CustomerApiIT`)
-* Selenium UI suite with Page Object(s) (`CustomerUiIT`, `CustomerFormPage`)
-* Minimal UI surface with stable selectors
-* Automated test output (surefire)
-* Successful-path evidence (API + UI) for `CUS-1001` / `CUS-1002`
-* Controlled-failure evidence (validation / not found / broken locator screenshot)
-* Regression notes (why integration vs UI scope; CI browser strategy)
-* Run and cleanup instructions
-* No secrets or generated drivers/`target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -750,44 +772,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (Page Object vs inline locators)?
-2. Which failure was hardest to diagnose (driver mismatch, wait timeout, API JSON)?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the suite size (shared browser session, shared data store)?
-5. Which concern should move to shared CI infrastructure (browser image, WebDriver cache)?
-6. What must change before real customer data is used in UI tests (spoiler: don’t)?
-7. How does this lab connect to Labs 17–18 and Labs 20–21?
-8. What metric or UI state matters most on the CI dashboard?
-9. (Forward look) How will structured correlation logs (Lab 20) help debug a red UI run?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose (driver mismatch, wait timeout, API JSON)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add structured correlation and customer IDs without sensitive fields in UI failure reports.
 2. Add one container-backed integration test (Testcontainers) for the API layer.
 3. Gate the UI suite on readiness once Actuator exists (Lab 21 preview).
-4. Add latency notes for create/get around the test run.
-5. Document rollback and recovery for a failing release detected by this suite.
-6. Parallel-safe IT data: per-test unique suffix while keeping Amina/Ravi demos in docs.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate CRM API integration tests and a Chrome/Chromium Selenium suite
-* Happy path and at least one failure path are repeatable
-* Another student can follow your run instructions
-* Tests/build pass without blind sleeps
-* Deliberate locator failure evidence was captured and restored
-* No production secret is hard-coded
-* You can explain local and CI browser trade-offs
-
----
 
 ## Instructor Notes
 

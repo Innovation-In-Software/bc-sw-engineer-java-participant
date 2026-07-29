@@ -8,10 +8,39 @@ Create `notes/lab21-probes.md` — explain when Kubernetes (or PaaS) should rest
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-liveness-vs-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-probes.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 21 — Liveness vs Readiness
+
+## Step 1 — Liveness
+
+Process stuck → restart. CRM example: deadlocked request threads.
+
+## Step 2 — Readiness
+
+Dependency down (DB) → not ready, keep process, remove from load balancer.
+
+## Step 3 — Wrong mix
+
+One sentence: do not kill the pod on every DB blip if readiness can gate traffic.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A liveness/readiness contrast with CRM examples in `notes/lab21-probes.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab21-probes.md` | Pass / Fail |
-| 2 | Both probes defined | Pass / Fail |
-| 3 | CRM examples present | Pass / Fail |
-| 4 | Wrong-mix warning written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab21-probes.md`
+- [ ] Both probes defined
+- [ ] CRM examples present
+- [ ] Wrong-mix warning written
+

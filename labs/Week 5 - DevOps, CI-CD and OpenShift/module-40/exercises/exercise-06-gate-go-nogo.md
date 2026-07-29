@@ -8,10 +8,39 @@ Create `notes/lab40-gate-go-nogo.md` — write leadership questions that freeze 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-gate-go-nogo.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-gate-go-nogo.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 40 — Draft AppSec Go/No-Go Questions
+
+## Step 1 — Questions
+
+Draft five go/no-go questions (High CVE owned?, secrets in Git?, authz negative test?, suppression policy?, verify still green?).
+
+## Step 2 — Check the reference
+
+Leadership rule: no ship on raw scanner volume; no silent suppressions; no secrets.
+
+## Step 3 — Tie to CRM
+
+For each question, one line on impact to agents serving Amina/Ravi.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Five go/no-go questions with CRM impact lines in `notes/lab40-gate-go-nogo.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab40-gate-go-nogo.md` | Pass / Fail |
-| 2 | Five questions drafted | Pass / Fail |
-| 3 | Each has CRM impact | Pass / Fail |
-| 4 | Secrets/suppression rules reflected | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab40-gate-go-nogo.md`
+- [ ] Five questions drafted
+- [ ] Each has CRM impact
+- [ ] Secrets/suppression rules reflected
+

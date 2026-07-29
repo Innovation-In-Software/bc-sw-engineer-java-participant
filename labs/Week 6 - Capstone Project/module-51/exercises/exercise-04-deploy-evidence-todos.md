@@ -8,10 +8,28 @@ Create `notes/lab51-deploy-evidence-todos.md` — complete blanks for deploy/smo
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-51-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-deploy-evidence-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab51-deploy-evidence-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 51 — Fill Deploy Evidence TODOs
+
+## Step 1 — Template
+
+Fill:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -71,9 +89,10 @@ Deploy evidence TODO sheet with safe screenshot plan in `notes/lab51-deploy-evid
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab51-deploy-evidence-todos.md` | Pass / Fail |
-| 2 | Blanks filled or path-mapped | Pass / Fail |
-| 3 | No kubeconfig screenshots | Pass / Fail |
-| 4 | Pre-lab marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab51-deploy-evidence-todos.md`
+- [ ] Blanks filled or path-mapped
+- [ ] No kubeconfig screenshots
+- [ ] Pre-lab marked
+

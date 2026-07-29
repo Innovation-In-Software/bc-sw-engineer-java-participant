@@ -8,10 +8,43 @@ Create `notes/lab14-mapper-no-leak.md` — sketch toDto/toEntity rules that keep
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-mapper-no-leak.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-mapper-no-leak.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 14 — Mapper No-Leak Rule
+
+## Step 1 — toDto
+
+Map only id, fullName, status for CUS-1001 responses.
+
+## Step 2 — Forbidden
+
+List forbidden: password hashes, internal risk scores, raw SQL ids if different.
+
+## Step 3 — Activate DTO
+
+Activate request carries customerId only (+ correlation header outside body).
+
+## Step 4 — Prep boundary
+
+Write: *DTOs before deep service rules — Lab 15 owns transitions.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Mapper rules with Lab 15 boundary stated in `notes/lab14-mapper-no-leak.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab14-mapper-no-leak.md` | Pass / Fail |
-| 2 | toDto fields listed | Pass / Fail |
-| 3 | Forbidden fields listed | Pass / Fail |
-| 4 | Lab 15 deferral noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab14-mapper-no-leak.md`
+- [ ] toDto fields listed
+- [ ] Forbidden fields listed
+- [ ] Lab 15 deferral noted
+

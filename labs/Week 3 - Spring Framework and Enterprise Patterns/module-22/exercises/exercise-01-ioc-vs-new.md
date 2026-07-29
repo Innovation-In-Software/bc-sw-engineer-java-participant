@@ -8,10 +8,35 @@ Create `notes/ioc-vs-new.md` — explain why Northstar CRM should stop construct
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-ioc-vs-new.md` (this file in the course repo) |
 | Your notes file | `notes/ioc-vs-new.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 22 — IoC Versus Manual Wiring
+
+## Reference
+
+| Approach | Who creates collaborators? | Test impact |
+| --- | --- | --- |
+| Manual `new` | Service constructs `InMemoryCustomerRepository` | Hard to swap fakes |
+| IoC / DI | Spring (or test) supplies collaborators | Constructor takes a fake repo |
+
+## Step 1 — Spot the smell
+
+In `notes/ioc-vs-new.md`, rewrite this anti-pattern in one sentence:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -77,9 +102,10 @@ A short note explains IoC vs `new` and lists the three CRM fixtures in `notes/io
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/ioc-vs-new.md` | Pass / Fail |
-| 2 | Anti-pattern problem is named (testability or swapability) | Pass / Fail |
-| 3 | IoC ownership is stated clearly | Pass / Fail |
-| 4 | CUS-1001, CUS-1002, and lab-request-001 appear in notes | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/ioc-vs-new.md`
+- [ ] Anti-pattern problem is named (testability or swapability)
+- [ ] IoC ownership is stated clearly
+- [ ] CUS-1001, CUS-1002, and lab-request-001 appear in notes
+

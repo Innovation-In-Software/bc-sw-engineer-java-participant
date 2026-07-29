@@ -8,10 +8,43 @@ Create `notes/security-notes-outline.md` — draft `docs/security-notes.md` outl
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-production-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/security-notes-outline.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 28 — Production IdP Checklist
+
+## Step 1 — Outline
+
+In `notes/security-notes-outline.md`: replace lab users with IdP; rotate signing keys; short token TTL; HTTPS only.
+
+## Step 2 — Lab vs prod
+
+In-memory `agent1`/`admin1` are lab-only.
+
+## Step 3 — Transfers
+
+Note Lab 27 money routes must stay behind auth in production narratives.
+
+## Step 4 — Boundary
+
+Do not implement OAuth2 Authorization Server here.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Production checklist outline exists in `notes/security-notes-outline.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/security-notes-outline.md` | Pass / Fail |
-| 2 | Four checklist items present | Pass / Fail |
-| 3 | Lab users marked non-prod | Pass / Fail |
-| 4 | OAuth server deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/security-notes-outline.md`
+- [ ] Four checklist items present
+- [ ] Lab users marked non-prod
+- [ ] OAuth server deferred
+

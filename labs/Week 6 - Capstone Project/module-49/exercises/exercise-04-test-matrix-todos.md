@@ -8,10 +8,28 @@ Create `notes/lab49-test-matrix-todos.md` — complete a happy/failure test matr
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-test-matrix-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-test-matrix-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 49 — Fill Test Matrix TODOs
+
+## Step 1 — Template
+
+Fill blanks:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -70,9 +88,10 @@ Test matrix with concrete happy/failure cases in `notes/lab49-test-matrix-todos.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab49-test-matrix-todos.md` | Pass / Fail |
-| 2 | Happy and failure filled | Pass / Fail |
-| 3 | Kafka/idempotency considered | Pass / Fail |
-| 4 | Pre-lab marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab49-test-matrix-todos.md`
+- [ ] Happy and failure filled
+- [ ] Kafka/idempotency considered
+- [ ] Pre-lab marked
+

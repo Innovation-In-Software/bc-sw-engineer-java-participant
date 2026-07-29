@@ -8,10 +8,50 @@ Create `notes/lab41-multistage-sketch.md` — separate Maven build stage from JR
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-41-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-multistage-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab41-multistage-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 41 — Sketch Multi-Stage Build
+
+## Reference
+
+| Stage | Contains | Must not contain |
+| --- | --- | --- |
+| build | JDK 21, Maven, sources | runtime secrets |
+| runtime | JRE, app JAR, non-root user | Maven, .git, passwords |
+
+## Step 1 — Stages
+
+Name two stages: `build` (Maven + JDK 21) and `runtime` (JRE 21). List what copies between them (the JAR only).
+
+## Step 2 — Check the reference
+
+Runtime must not include Maven, source, or `.git`. Prefer Temurin/Eclipse JRE base images as instructed.
+
+## Step 3 — User
+
+Plan non-root UID (example `10001`) and note why root fails the lab.
+
+## Step 4 — CRM note
+
+State that fixtures `CUS-1001`/`CUS-1002` are app data at runtime—not build args.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -69,9 +109,10 @@ A two-stage Dockerfile sketch with non-root runtime intent in `notes/lab41-multi
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab41-multistage-sketch.md` | Pass / Fail |
-| 2 | Build vs runtime separated | Pass / Fail |
-| 3 | JAR-only copy planned | Pass / Fail |
-| 4 | Non-root UID noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab41-multistage-sketch.md`
+- [ ] Build vs runtime separated
+- [ ] JAR-only copy planned
+- [ ] Non-root UID noted
+

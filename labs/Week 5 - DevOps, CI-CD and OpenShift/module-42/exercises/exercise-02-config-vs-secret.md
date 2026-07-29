@@ -8,10 +8,43 @@ Create `notes/lab42-config-vs-secret.md` — classify CRM settings into ConfigMa
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-config-vs-secret.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-config-vs-secret.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 42 — ConfigMap vs Secret Split
+
+## Step 1 — Sort list
+
+Sort: datasource URL host, DB password, Kafka bootstrap, JWT issuer URI, log level, feature flags.
+
+## Step 2 — Check the reference
+
+Secret data is created out-of-band; Git only gets `secret.example.yaml` without values.
+
+## Step 3 — CRM fixtures
+
+Confirm `CUS-1001`/`CUS-1002` are app fixtures, not K8s config keys.
+
+## Step 4 — Write table
+
+Save a two-column table in notes.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Config vs Secret classification table saved in `notes/lab42-config-vs-secret.md`
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab42-config-vs-secret.md` | Pass / Fail |
-| 2 | Every setting classified | Pass / Fail |
-| 3 | secret.example pattern stated | Pass / Fail |
-| 4 | Fixtures not in ConfigMap | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab42-config-vs-secret.md`
+- [ ] Every setting classified
+- [ ] secret.example pattern stated
+- [ ] Fixtures not in ConfigMap
+

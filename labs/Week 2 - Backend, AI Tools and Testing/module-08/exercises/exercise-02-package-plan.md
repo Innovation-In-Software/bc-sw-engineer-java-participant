@@ -16,6 +16,16 @@ Create `package-plan.md` mapping CRM types to packages and fully qualified class
 | Folder path matches package declaration | `com/northstar/crm/service` |
 | Package describes responsibility | `repository`, not `misc` |
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Create `package-plan.md` mapping CRM types to packages and fully qualified class names.
+
+**Done looks like:** All seven types have focused packages, valid fully qualified names, and matching source paths.
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Complete the map

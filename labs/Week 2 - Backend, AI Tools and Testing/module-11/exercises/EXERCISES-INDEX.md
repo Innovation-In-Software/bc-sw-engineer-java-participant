@@ -9,6 +9,8 @@
 > Use JDK 21. Work under `examples/module-11-exercises/` — these are **notes files**, not a Maven project.  
 > Lab 11 is the graded consolidation (tests + notifier + Copilot notes). Do **not** finish Lab 11 during pre-lab.
 
+> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+
 ## What you produce (all six)
 
 | # | Your deliverable file | Type |

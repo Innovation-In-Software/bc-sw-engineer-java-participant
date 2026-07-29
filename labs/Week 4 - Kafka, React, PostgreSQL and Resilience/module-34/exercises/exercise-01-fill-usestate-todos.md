@@ -8,10 +8,28 @@ Create `notes/lab34-todos.md` — fill TODOs in a tiny useState form snippet.
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-34-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-fill-usestate-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab34-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 34 — Fill useState TODOs
+
+## Step 1 — Paste
+
+Create `notes/lab34-todos.md`:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -77,9 +95,10 @@ Filled useState/onChange snippet with validation and Lab 35 deferral in `notes/l
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab34-todos.md` | Pass / Fail |
-| 2 | Blanks filled | Pass / Fail |
-| 3 | preventDefault path clear | Pass / Fail |
-| 4 | Lift-state TODO present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab34-todos.md`
+- [ ] Blanks filled
+- [ ] preventDefault path clear
+- [ ] Lift-state TODO present
+

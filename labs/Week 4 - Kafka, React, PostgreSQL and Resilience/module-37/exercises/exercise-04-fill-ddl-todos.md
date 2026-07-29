@@ -8,10 +8,28 @@ Create `notes/lab37-ddl-todos.md` — fill blanks in CREATE TABLE drafts (offlin
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-37-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fill-ddl-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab37-ddl-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 37 — Fill DDL TODOs
+
+## Step 1 — Paste
+
+Create `notes/lab37-todos.sql`:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -84,9 +102,10 @@ Completed paper DDL + seed for Amina/Ravi without executing it in `notes/lab37-d
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab37-ddl-todos.md` | Pass / Fail |
-| 2 | All blanks filled | Pass / Fail |
-| 3 | Seeds use CUS-1001/1002 | Pass / Fail |
-| 4 | PostgreSQL dialect check done | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab37-ddl-todos.md`
+- [ ] All blanks filled
+- [ ] Seeds use CUS-1001/1002
+- [ ] PostgreSQL dialect check done
+

@@ -49,13 +49,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class:** prefer the [45-minute timed path](#45-minute-timed-path-use-starter) with [`starter/`](starter/README.md).
-2. Confirm Lab 0 + Lab 2–3 package/menu habits + Module 5 Exercises 1–7 are done (checklists below).
-3. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-4. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-5. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-6. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-7. Capture evidence under `notes/screenshots/lab-5/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -229,6 +230,25 @@ javac -version
 **Expected theme:** OpenJDK / Temurin **21.x**.
 
 **If it fails:** Revisit Lab 0; open a new IDE terminal after changing `JAVA_HOME`.
+
+---
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+private final ArrayList<Book> books = new ArrayList<>();
+private final ArrayList<Member> members = new ArrayList<>();
+private final HashSet<String> bookIds = new HashSet<>();
+private final HashSet<String> memberIds = new HashSet<>();
+private final HashMap<String, String> borrowRecords = new HashMap<>();
+private final TreeSet<String> categories = new TreeSet<>();
+private final TreeMap<String, Integer> categoryBookCount = new TreeMap<>();
+private final ArrayList<BorrowRecord> borrowHistory = new ArrayList<>();
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -659,31 +679,11 @@ Optionally skim [`solution/Lab5-LibraryManagement/`](solution/Lab5-LibraryManage
 
 ---
 
-## Success Criteria
-
-You have completed Lab 5 when you can:
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 0 | Module 5 Exercises 1–7 Pass criteria are complete **before** Lab Step 1 | Pass / Fail |
-| 1 | Work in `java-bootcamp/examples/Lab5-LibraryManagement/` with `package com.academy.library` | Pass / Fail |
-| 2 | List / Set / Map / TreeSet / TreeMap fields wired; duplicate IDs rejected | Pass / Fail |
-| 3 | Borrow/return uses `HashMap`; map and availability flag stay in sync | Pass / Fail |
-| 4 | `javac -d out src/com/academy/library/*.java` and menu sample session succeed | Pass / Fail |
-| 5 | You can justify each collection choice (List vs Set vs Map) in your notes | Pass / Fail |
-| 6 | Screenshots/evidence under `notes/screenshots/lab-5/` without secrets | Pass / Fail |
-
-This lab bridges **Module 5 exercises** (after Lab 2–3 habits) to a graded library console.
-
----
-
 ## Implementation Checkpoints
 
 ### Checkpoint A — Packages + models
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -693,7 +693,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Collections wired
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -703,7 +703,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Compile / menu / sample session
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -714,7 +714,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Evidence
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -829,12 +829,7 @@ See [Expected Deliverables](#expected-deliverables) below for the submit list.
 
 ## Expected Deliverables
 
-Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
-
-* **Sources** under `java-bootcamp/examples/Lab5-LibraryManagement/src/com/academy/library/`
-* **Screenshots** under `notes/screenshots/lab-5/`: menu + sample session
-* **Notes** mapping each field to List / Set / Map
-* **LMS write-up** with compile/run commands
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
 Optional bonuses (history, top borrowed, export, multi-sort). Do not submit a verbatim instructor [`solution/`](solution/).
 
@@ -859,15 +854,14 @@ Optional bonuses (history, top borrowed, export, multi-sort). Do not submit a ve
 
 Write short answers in `../../notes/lab5-answers.md` (from project; or `~/java-bootcamp/notes/lab5-answers.md`):
 
+Write **1–3 sentence** answers (not essays):
+
 1. When choose `List` over `Set`?
 2. Why `HashSet` before inserting a book ID?
 3. Why a `Map` for “currently borrowed” vs only a boolean?
-4. `HashMap` vs `TreeMap` in this lab?
-5. `Comparable` vs `Comparator` for books?
-6. Which iteration style would you use most in production—and why?
-7. CRM: which collection for customer list / unique emails / id→customer lookup?
 
 ---
+
 
 ## Bonus Challenges
 

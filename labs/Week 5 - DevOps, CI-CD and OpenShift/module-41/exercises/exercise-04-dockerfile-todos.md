@@ -8,10 +8,28 @@ Create `notes/lab41-dockerfile-todos.md` — complete a skeleton with blanks (do
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-41-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-dockerfile-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab41-dockerfile-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 41 — Fill Dockerfile TODO Skeleton
+
+## Step 1 — Skeleton
+
+Create `Dockerfile.skeleton` notes:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -73,9 +91,10 @@ A filled Dockerfile skeleton ready for Lab 41 verification in `notes/lab41-docke
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab41-dockerfile-todos.md` | Pass / Fail |
-| 2 | All major blanks filled or marked unsure | Pass / Fail |
-| 3 | Non-root USER set | Pass / Fail |
-| 4 | No secrets present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab41-dockerfile-todos.md`
+- [ ] All major blanks filled or marked unsure
+- [ ] Non-root USER set
+- [ ] No secrets present
+

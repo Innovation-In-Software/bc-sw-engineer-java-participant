@@ -9,6 +9,25 @@
 
 Write, compile, and run a minimal program that prints `Hello, JVM!`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+public class Hello {
+    // TODO: program entry point — JVM starts here when you run `java Hello`
+    public static void main(String[] args) {
+        // TODO: print one line of text: Hello, JVM! (hint: System.out.println)
+        _____
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

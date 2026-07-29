@@ -11,6 +11,22 @@
 
 Create `Calculator.java` that reads two numbers and prints sum, difference, product, and quotient (use `double` so division keeps decimals).
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+First number: 12
+Second number: 4
+Sum: 16.00
+Difference: 8.00
+Product: 48.00
+Quotient: 3.00
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

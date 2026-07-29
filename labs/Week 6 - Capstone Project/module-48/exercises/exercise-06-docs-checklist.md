@@ -8,10 +8,43 @@ Create `notes/lab48-docs-checklist.md` — build a Pass/Fail checklist mirroring
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-docs-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-docs-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 48 — Planning Docs Checklist
+
+## Step 1 — Rows
+
+Context/container, measurable NFRs, backlog+AC, ADRs, risk register.
+
+## Step 2 — Paths
+
+Map each row to a `docs/...` path from the week index.
+
+## Step 3 — Branch note
+
+Note intended branch name pattern `lab/48-crm` (as instructed).
+
+## Step 4 — Scope
+
+Checklist warmup only—do not claim Lab 48 complete.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Planning checklist mapped to docs paths in `notes/lab48-docs-checklist.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab48-docs-checklist.md` | Pass / Fail |
-| 2 | Five rows present | Pass / Fail |
-| 3 | Paths mapped | Pass / Fail |
-| 4 | Pre-lab scope clear | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab48-docs-checklist.md`
+- [ ] Five rows present
+- [ ] Paths mapped
+- [ ] Pre-lab scope clear
+

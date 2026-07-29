@@ -11,6 +11,18 @@
 
 Create `CircleArea.java` that reads a radius (`double`) and prints the area using `Math.PI`, formatted to 2 decimal places.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Radius: 5
+Area: 78.54
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

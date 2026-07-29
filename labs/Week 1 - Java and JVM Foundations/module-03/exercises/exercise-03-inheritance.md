@@ -11,6 +11,18 @@
 
 Create `SavingsAccount` and `CurrentAccount` subclasses. Override account type in both; override withdrawal in current accounts to apply a fee. Demonstrate runtime polymorphism with `Account[]`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Savings balance: 80.00
+Current balance: 78.00
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.

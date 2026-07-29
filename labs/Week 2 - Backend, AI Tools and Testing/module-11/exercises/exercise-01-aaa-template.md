@@ -8,6 +8,10 @@ Create `notes/lab11-aaa-template.md` with an Arrange–Act–Assert outline Copi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-aaa-template.md` (this file in the course repo) |
@@ -19,6 +23,33 @@ Create `notes/lab11-aaa-template.md` with an Arrange–Act–Assert outline Copi
 | -- | ---- | ------------ | -------------- |
 | `CUS-1002` | Ravi Singh | `PROSPECT` | `ACTIVE` |
 | Correlation (comments only) | — | — | `lab-request-001` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 11 AAA template — activate Ravi
+
+## Test name (style only)
+activate_prospectRavi_setsStatusActive
+
+## AAA
+
+| Phase | What you write |
+| ----- | -------------- |
+| Arrange | Customer CUS-1002 Ravi Singh status PROSPECT |
+| Act | Call updateStatus / activate so Ravi becomes ACTIVE (conceptual — no full suite yet) |
+| Assert | Status is ACTIVE; note correlation lab-request-001 for later logging |
+
+## Boundary
+Full Mockito isolation waits for Lab 18. This file is structure only.
+
+## Prep note
+Prepare for Lab 11; do not complete the full AI-assisted test suite now.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 

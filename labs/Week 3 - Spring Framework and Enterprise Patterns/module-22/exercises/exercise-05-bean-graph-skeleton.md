@@ -8,10 +8,28 @@ Create `notes/bean-graph-sketch.md` — complete a plain-Java skeleton that mimi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-bean-graph-skeleton.md` (this file in the course repo) |
 | Your notes file | `notes/bean-graph-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 22 — Bean Graph Skeleton (TODOs)
+
+## Step 2 — Fill TODOs
+
+Paste and complete:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -102,9 +120,10 @@ Demo prints `CUS-1001 | Amina Khan` after filling blanks in `notes/bean-graph-sk
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/bean-graph-sketch.md` | Pass / Fail |
-| 2 | Every `_____` / TODO is replaced | Pass / Fail |
-| 3 | Compile and run succeed with expected output | Pass / Fail |
-| 4 | Notes show the dependency arrow | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/bean-graph-sketch.md`
+- [ ] Every `_____` / TODO is replaced
+- [ ] Compile and run succeed with expected output
+- [ ] Notes show the dependency arrow
+

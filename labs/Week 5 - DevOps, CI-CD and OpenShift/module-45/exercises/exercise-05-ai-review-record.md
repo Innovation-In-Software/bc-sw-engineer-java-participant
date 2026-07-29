@@ -8,10 +8,43 @@ Create `notes/lab45-ai-review-record.md` — outline `docs/ai-iac-review.md` ent
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-ai-review-record.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-ai-review-record.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 45 — Outline AI IaC Review Record
+
+## Step 1 — Fields
+
+prompt summary, assumptions, accepted snippets, rejected/hardened items, residual risks, approval status.
+
+## Step 2 — Check the reference
+
+Undocumented AI acceptance fails the lab.
+
+## Step 3 — Sample reject row
+
+Draft one rejected item with rationale and safer alternative.
+
+## Step 4 — Approver
+
+Leave approver/date blank for Lab 45 completion.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ AI review outline with sample rejection in `notes/lab45-ai-review-record.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab45-ai-review-record.md` | Pass / Fail |
-| 2 | Fields listed | Pass / Fail |
-| 3 | Sample reject present | Pass / Fail |
-| 4 | Approval left for lab | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab45-ai-review-record.md`
+- [ ] Fields listed
+- [ ] Sample reject present
+- [ ] Approval left for lab
+

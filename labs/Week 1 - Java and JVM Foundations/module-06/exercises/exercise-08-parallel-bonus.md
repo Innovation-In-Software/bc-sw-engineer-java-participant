@@ -15,6 +15,19 @@ Create `ParallelStreamDemo.java`. Run the same stateless count with `stream`
 and `parallelStream`, verify identical results, and explain why one small timing
 run is not a benchmark.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Sequential count: 4
+Parallel count: 4
+Timing conclusion: none from one tiny run
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -146,14 +159,12 @@ state that the exercise demonstrates correctness—not a performance win.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Sequential and parallel counts both equal 4 | Pass / Fail |
-| 2 | You ran the comparison five times | Pass / Fail |
-| 3 | You did not claim one tiny run proves performance | Pass / Fail |
-| 4 | You can explain why a shared mutable counter is unsafe | Pass / Fail |
+Self-check before marking Pass:
 
----
+- [ ] Sequential and parallel counts both equal 4
+- [ ] You ran the comparison five times
+- [ ] You did not claim one tiny run proves performance
+- [ ] You can explain why a shared mutable counter is unsafe
 
 ## Next
 

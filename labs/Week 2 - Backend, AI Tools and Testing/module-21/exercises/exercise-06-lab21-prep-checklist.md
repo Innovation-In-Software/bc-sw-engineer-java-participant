@@ -8,10 +8,46 @@ Create `notes/lab21-prep-checklist.md` — confirm prior notes exist and you are
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-lab21-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-prep-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 21 prep checklist
+
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab21-cardinality-antipatterns.md | (your note here) |
+| notes/lab21-actuator-allowlist.md | (your note here) |
+| notes/lab21-prep-checklist.md | (your note here) |
+| notes/lab21-metric-sketch-todos.md | (your note here) |
+| notes/lab21-alert-runbook.md | (your note here) |
+
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
+
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 21 now.
+
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): (your note here)
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -65,9 +101,10 @@ Final Week 2 readiness checklist with pre-lab-only scope in `notes/lab21-prep-ch
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab21-prep-checklist.md` | Pass / Fail |
-| 2 | Artifacts confirmed | Pass / Fail |
-| 3 | Pre-lab-only statement present | Pass / Fail |
-| 4 | Pass/Fail marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab21-prep-checklist.md`
+- [ ] Artifacts confirmed
+- [ ] Pre-lab-only statement present
+- [ ] Pass/Fail marked
+

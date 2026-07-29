@@ -8,10 +8,43 @@ Create `notes/lab52-retro-agenda.md` — plan a retrospective that avoids blame.
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-52-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-retro-agenda.md` (this file in the course repo) |
 | Your notes file | `notes/lab52-retro-agenda.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 52 — Blameless Retro Agenda
+
+## Step 1 — Agenda
+
+What went well / what was hard / what we learned / actions with owners/dates.
+
+## Step 2 — Check the reference
+
+Blameless: systems and process, not individuals.
+
+## Step 3 — Three actions
+
+Draft three improvement actions with owner placeholders.
+
+## Step 4 — Tie to rubric
+
+Note how retro feeds professionalism/peer-review scores.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Retro agenda with three owned actions in `notes/lab52-retro-agenda.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab52-retro-agenda.md` | Pass / Fail |
-| 2 | Agenda sections present | Pass / Fail |
-| 3 | Blameless framing | Pass / Fail |
-| 4 | Three actions drafted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab52-retro-agenda.md`
+- [ ] Agenda sections present
+- [ ] Blameless framing
+- [ ] Three actions drafted
+

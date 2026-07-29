@@ -13,6 +13,17 @@ Select the G1 garbage collector explicitly, verify the JVM accepted it, and expl
 
 G1 divides the heap into regions and aims to balance throughput with predictable pause goals. In JDK 21, G1 is commonly the default on typical server-class machines, but this exercise selects it explicitly so the command is unambiguous.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+[info][gc] Using G1
+[info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) ...
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Confirm the class exists

@@ -12,6 +12,22 @@
 Trace a checked exception from account layer → service layer → menu layer →
 `main`, catching it only at the recovery boundary.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Caught at main: Insufficient funds: balance=100.00, requested=150.00
+InsufficientFundsException: Insufficient funds: ...
+    at PropagationDemo.accountLayer(...)
+    at PropagationDemo.serviceLayer(...)
+    at PropagationDemo.menuLayer(...)
+    at PropagationDemo.main(...)
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

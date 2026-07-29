@@ -8,10 +8,46 @@ Create `notes/lab30-kafka-todos.md` — complete fill-in blanks for topic, parti
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fill-kafka-basics.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-kafka-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 30 — Fill Kafka Basics TODOs
+
+## Step 1 — Copy the quiz
+
+1. A (your note here) is a named stream of records.
+2. A (your note here) is an ordered subset of a topic; offsets are per partition.
+3. The (your note here) is the consumer's position in a partition.
+4. Consumers in the same (your note here) compete for partitions; different groups each get a copy.
+
+## Step 2 — Fill blanks
+
+Replace each `(your note here)` with: topic / partition / offset / consumer group (one each).
+
+## Step 3 — CRM example
+
+Add one line: group `crm-notifications` shares partitions; group `crm-audit` reads all `CUS-1001`/`CUS-1002` events independently.
+
+## Step 4 — Self-check
+
+Compare to Step 2 answer key in your head: topic, partition, offset, consumer group.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -65,9 +101,10 @@ Four blanks filled correctly with a CRM group example sentence in `notes/lab30-k
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab30-kafka-todos.md` | Pass / Fail |
-| 2 | All four terms filled | Pass / Fail |
-| 3 | CRM competing vs independent groups noted | Pass / Fail |
-| 4 | File saved under notes/ | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab30-kafka-todos.md`
+- [ ] All four terms filled
+- [ ] CRM competing vs independent groups noted
+- [ ] File saved under notes/
+

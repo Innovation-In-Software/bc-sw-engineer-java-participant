@@ -34,13 +34,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab21-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-21/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Production exposure restrictions documented |
 | 8 | No secrets or generated build directories committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -200,9 +204,9 @@ Ignore build output, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/monitoring-report.md` (concepts subsection):
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: traffic → service → metrics registry → Actuator scrape
 2. Trust boundary: which Actuator endpoints are sensitive
@@ -210,10 +214,40 @@ Write 2–3 sentences each in `docs/monitoring-report.md` (concepts subsection):
 4. Stable aggregate tags (`operation`, `result`) vs high-cardinality IDs
 5. Idempotent GET vs create counter growth semantics
 6. Local exposure vs production allow-list / auth
-7. Evidence: before/after metric JSON + log correlation
-8. Two instances: each has its own counters; LB uses readiness
-9. Why readiness down should not always restart the process
-10. What Lab 22 changes (DI wiring) without renaming metric names
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@SpringBootTest(webEnvironment = RANDOM_PORT)
+class ActuatorIT {
+  @Autowired TestRestTemplate rest;
+  @LocalServerPort int port;
+
+  @Test
+  void healthIsUp() {
+    var res = rest.getForEntity("http://localhost:" + port + "/actuator/health", Map.class);
+    assertThat(res.getStatusCode().is2xxSuccessful()).isTrue();
+    assertThat(res.getBody().get("status")).isEqualTo("UP");
+  }
+
+  @Test
+  void createIncrementsMetric() {
+    // read counter, POST CUS-1002, read again, assert delta >= 1
+  }
+
+  @Test
+  void readinessCanFailIndependently() {
+    // flip lab toggle / indicator; assert readiness not UP; liveness still UP; restore
+  }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -489,7 +523,7 @@ Complete [Failure Experiments](#failure-experiments). Capture before/after JSON.
 
 ### Checkpoint A — Actuator tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -499,7 +533,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Probes
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -509,7 +543,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Metrics + IT
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -519,7 +553,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -649,18 +683,14 @@ Metric name spelling in Prometheus may differ from Actuator JSON (`crm.customer.
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which browser, network, or Actuator inputs are untrusted?
 2. Where are authn/authz enforced for management endpoints in production?
 3. Which values are sensitive (`/env`, secrets, PII)—never as metric tags or open Actuator fields?
-4. What can be retried safely (GET health/metrics scrapes)?
-5. What happens after partial failure (failure counters; readiness drain)?
-6. What would an operator monitor (create failure ratio, readiness flaps)?
-7. Which local default is unacceptable (public unrestricted Actuator, lab toggle left on)?
-8. How are metric names versioned when services rename ops?
 
 ---
+
 
 ## Cleanup
 
@@ -678,16 +708,9 @@ git status
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Actuator health (liveness/readiness) evidence
-* Micrometer metrics for CRM create/get
-* Automated `ActuatorIT` output
-* Successful-path evidence with `CUS-1001` / `CUS-1002`
-* Controlled-failure evidence (readiness down / create failure counter)
-* `docs/monitoring-report.md`
-* Production exposure restrictions documented
-* No secrets or generated build directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -709,44 +732,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (readiness group vs single health blob)?
-2. Which failure was hardest to diagnose?
-3. What evidence proves create traffic is observable?
-4. What breaks first at ten times the scrape rate or traffic?
-5. Which concern should move to shared infrastructure (Prometheus, alertmanager, auth gateway)?
-6. What must change before real customer data appears in telemetry (still no PII tags)?
-7. How does this lab connect to Labs 19–20 and Lab 22?
-8. What metric matters most on the ops dashboard for CRM create?
-9. (Forward look) How should constructor DI (Lab 22) change how `CustomerMetrics` is wired?
+2. What evidence proves create traffic is observable?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Keep Lab 20 correlation logs aligned with metric-generating traffic.
 2. IT that waits on readiness before exercising create.
 3. Real `DataSource` health check contributing to readiness.
-4. Prometheus scrape format + sample alert rule document.
-5. Rollback/runbook when create failure rate spikes.
-6. Management port separation with documented firewall story.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate Actuator health/metrics and CRM create/get counters/timers
-* Readiness can fail independently of liveness in a controlled experiment
-* Happy path and at least one failure path are repeatable
-* Another student can follow your run and monitoring report
-* Tests/build pass
-* No production secret is hard-coded
-* You can explain readiness vs liveness and local vs production Actuator exposure
-
----
 
 ## Instructor Notes
 

@@ -8,10 +8,28 @@ Create `notes/lab48-adr-todos.md` — complete an ADR shortlist with blanks for 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-adr-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-adr-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 48 — Fill ADR Topic TODOs
+
+## Step 1 — Template
+
+For each topic fill:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -70,9 +88,10 @@ ADR shortlist with three filled stubs in `notes/lab48-adr-todos.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab48-adr-todos.md` | Pass / Fail |
-| 2 | Five topics listed | Pass / Fail |
-| 3 | Three stubs filled | Pass / Fail |
-| 4 | No implementation attempted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab48-adr-todos.md`
+- [ ] Five topics listed
+- [ ] Three stubs filled
+- [ ] No implementation attempted
+

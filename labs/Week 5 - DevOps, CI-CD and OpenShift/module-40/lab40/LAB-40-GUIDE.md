@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab40-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-40/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Baseline and final `verify` results |
 | 8 | No secrets or real customer records |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -214,9 +219,9 @@ Ignore real `.env`, NVD keys, private reports with tokens, `target/`, and custom
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/threat-checklist.md` (or assessment appendix):
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow under review (HTTP API → service → PostgreSQL; optional Kafka later)
 2. Trust boundary: who is authenticated vs what every agent may read
@@ -224,10 +229,25 @@ Write 2–3 sentences each in `docs/threat-checklist.md` (or assessment appendix
 4. Stable fixtures (`CUS-1001`) vs real PII (never)
 5. Idempotency of re-scan (`mvn -Psecurity-scan`) and regression tests
 6. Why CVSS alone is insufficient without reachability notes
-7. Evidence leads need (command, plugin version, finding ID, fix commit)
-8. Two machines: same suppressions file, same threshold, same results intent
-9. False positives vs silent ignores
-10. What Lab 41 changes (container attack surface) without invalidating this assessment’s code findings
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@Test
+@WithMockUser(username = "agent-a", roles = "AGENT")
+void agentCannotReadAnotherAgentsCustomer() throws Exception {
+  mvc.perform(get("/api/customers/{id}", otherAgentsCustomerId)
+          .header("X-Correlation-Id", "lab-request-001"))
+     .andExpect(status().isForbidden()); // or policy-accurate status
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -451,7 +471,7 @@ Update the residual-risk register with any peer questions that revealed undocume
 
 ### Checkpoint A — Scope and tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -461,7 +481,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Scan and triage
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -471,7 +491,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — SAST and remediation
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -481,7 +501,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -566,6 +586,7 @@ lab40-002,sast,CustomerController#get,ACL-missing,,confirmed,student,2026-07-15,
 ## Residual risks (owner, due date)
 ## Facts vs assumptions
 ## Reproduce commands
+
 ```
 
 ### Commands
@@ -655,18 +676,14 @@ git status --short
 
 ## Security and Production Review
 
-Answer in `security-assessment.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (HTTP, headers, file uploads if any)?
 2. Where are authn/authz/validation enforced?
 3. Which values are sensitive—where stored (never in reports)?
-4. What can be retried safely (re-scan, re-test)?
-5. What happens after partial failure (scan fail vs app still running)?
-6. What would an operator/security lead monitor (CI gate, CVE aging)?
-7. Which local default is unacceptable (empty suppressions forever, disabled tests)?
-8. How are dependency/API contracts versioned with remediations?
 
 ---
+
 
 ## Cleanup
 
@@ -685,16 +702,9 @@ Do not commit live credentials rotated during the lab without scrubbing history 
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Threat checklist + OWASP mapping notes
-* Dependency-Check profile, reports (sanitized), triage CSV
-* Focused SAST notes with code locations
-* Security regression test + remediation evidence
-* Before/after scan comparison for the fixed finding
-* `docs/security-assessment.md` with residual risks owned
-* Baseline and final `verify` results
-* No secrets or real customer records
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -716,44 +726,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness of the security gate?
-2. Which failure was hardest to triage (tool noise vs real bug)?
-3. What evidence proves the remediation worked?
-4. What breaks first at ten times the dependency graph size?
-5. Which concern should move to shared CI security infrastructure?
-6. What must change before real customer data is used in tests?
-7. How does this lab connect to Labs 39 and 41–42?
-8. What metric matters most on the security dashboard for this CRM?
-9. (Forward look) Which findings become image/K8s issues rather than Java issues?
+2. What evidence proves the remediation worked?
+3. Which failure was hardest to triage (tool noise vs real bug)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Generate a CycloneDX SBOM and link it in the assessment.
 2. Add a time-bounded suppression with evidence and expiry.
 3. Create a CI snippet that archives reports on failure.
-4. Threat-model one Kafka event path (even if stubbed).
-5. Compare tool output with a second manual data-flow pass; note gaps.
-6. Document incident response if a Critical is found the day before release.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Scope + scanner + triage + SAST are documented
-* One confirmed issue is reproduced, fixed, and regression-tested
-* Re-scan and `mvn clean verify` support the story
-* Assessment is peer-reproducible and sanitized
-* Residual risks have owners and dates
-* No production secret or real PII is in the packet
-* You did not weaken controls to force a green result
-
----
 
 ## Instructor Notes
 

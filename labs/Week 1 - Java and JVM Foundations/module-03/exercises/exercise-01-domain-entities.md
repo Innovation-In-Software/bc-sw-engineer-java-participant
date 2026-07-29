@@ -31,6 +31,22 @@ A bank employee needs to:
 | Relationship | How entities connect | customer owns accounts |
 | Invariant | Rule that must remain true | balance changes only through account methods |
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Banking domain notes
+
+| Entity | Identity | Important attributes | Main responsibility |
+| ------ | -------- | -------------------- | ------------------- |
+| Customer | customerId | name, email, phone | Maintain customer profile |
+| Account | accountNumber | owner, balance, accountType | Protect balance and perform deposits/withdrawals |
+| Transaction | transactionId | account, type, amount, timestamp | Record one account operation |
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Find candidate entities
@@ -107,11 +123,10 @@ Suggested idea: `Account` owns the balance and its rules, while `Main` should on
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes._
+Self-check before marking Pass:
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `notes.md` identifies at least Customer, Account, Transaction | Pass / Fail |
-| 2 | Every entity has attributes and one focused responsibility | Pass / Fail |
-| 3 | Relationships include one-to-many multiplicities | Pass / Fail |
-| 4 | You can explain why Account owns withdrawal validation | Pass / Fail |
+- [ ] `notes.md` identifies at least Customer, Account, Transaction
+- [ ] Every entity has attributes and one focused responsibility
+- [ ] Relationships include one-to-many multiplicities
+- [ ] You can explain why Account owns withdrawal validation
+

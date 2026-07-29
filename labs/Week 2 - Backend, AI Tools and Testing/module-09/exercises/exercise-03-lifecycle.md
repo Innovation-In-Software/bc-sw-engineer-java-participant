@@ -22,6 +22,16 @@ validate → compile → test → package → verify → install → deploy
 | `install` | Artifact copied into the local `~/.m2` repository |
 | `deploy` | Artifact published to a remote repository (CI/release, not casual laptop) |
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Create `notes/lifecycle-notes.md` mapping each major phase to what it proves for Northstar CRM.
+
+**Done looks like:** You can name each phase, pick the right command, and explain why classroom/CI stops at `verify` unless install is intentional.
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Match command to intent

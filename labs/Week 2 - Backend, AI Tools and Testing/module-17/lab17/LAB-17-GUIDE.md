@@ -49,13 +49,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab17-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-17/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -72,6 +73,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | README runbook + coverage notes |
 | 8 | No secrets or generated build directories committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -212,9 +216,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/coverage-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow under test (service use cases, not UI)
 2. Trust boundary: what tests prove vs what they assume about the repo
@@ -222,10 +226,23 @@ Write 2–3 sentences each in `docs/coverage-notes.md`:
 4. Stable fixtures (`CUS-1001`) vs random data
 5. Idempotency of `mvn test` (repeatability)
 6. Why ≥80% on `service` not 100% whole project
-7. Evidence operators/leads need (Surefire + JaCoCo)
-8. Two machines: same tests, same fixtures, same gate
-9. False-confidence asserts vs AAA with domain outcomes
-10. What Lab 18 will change (repo → mock) without rewriting fixture IDs
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+cd ~/java-bootcamp/examples
+cp -r lab16-crm lab17-crm
+cd lab17-crm
+mkdir -p copilot-notes docs
+mkdir -p ~/java-bootcamp/notes/screenshots/lab-17
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -401,7 +418,7 @@ List test classes, coverage goal, Copilot review policy, and which branch closed
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -411,7 +428,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core suite
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -421,7 +438,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Gate + AI discipline
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -431,7 +448,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -521,18 +538,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (production inputs; tests use fixtures only)?
 2. Where are authn/authz/validation enforced (still service/facade; tests don’t replace auth)?
 3. Which values are sensitive—never in test code beyond samples?
-4. What can be retried safely (`mvn test`/`verify`)?
-5. What happens after partial failure (red build blocks merge)?
-6. What would an operator/lead monitor (CI verify, coverage trend)?
-7. Which local default is unacceptable (sleeps, ignored gate, committed secrets)?
-8. How are test contracts versioned with DTO/service changes?
 
 ---
+
 
 ## Cleanup
 
@@ -550,16 +563,9 @@ Do not commit `target/site/jacoco` unless your course policy explicitly allows i
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `CustomerServiceTests` with happy and negative paths
-* Parameterized transition tests
-* JaCoCo configuration + evidence of ≥80% on service package
-* Copilot review notes with human acceptance **or** manual equivalent
-* Deliberate gate-fail evidence + restore
-* `mvn clean verify` success log
-* README runbook + coverage notes
-* No secrets or generated build directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -581,44 +587,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the suite size?
-5. Which concern should move to shared CI infrastructure?
-6. What must change before real customer data is used in tests (spoiler: don’t)?
-7. How does this lab connect to Labs 11, 15–16, and Lab 18?
-8. What metric matters most on the CI dashboard for this gate?
-9. (Forward look) Which tests will need rewriting when the repository becomes a mock?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Assert `BusinessException` code + correlation on every failure path.
 2. Mutation-testing thought experiment: which one-line bug still keeps 80%?
 3. Separate coverage notes for `service` vs `exception` packages.
-4. Surefire timing: note slowest test and why.
-5. Document rollback if someone adds a bad JaCoCo exclude.
-6. `@EnumSource` for all `CustomerStatus` values in a “from CLOSED” rejection matrix.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* JUnit suite is green with parameterized transitions
-* Coverage gate ≥80% on `com.northstar.crm.service` passes
-* Happy and failure paths are repeatable
-* Another student can follow your verify instructions
-* AI-drafted tests (if any) were human-reviewed
-* Deliberate gate failure was observed and restored
-* No production secret is hard-coded
-
----
 
 ## Instructor Notes
 

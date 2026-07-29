@@ -8,10 +8,39 @@ Create `notes/lab34-event-handler-map.md` — document which handler updates whi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-34-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-event-handler-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab34-event-handler-map.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 34 — Event Handler Map
+
+## Step 1 — Table
+
+Columns: Event, Handler, State updated.
+
+## Step 2 — Rows
+
+Include name onChange, status onChange, form onSubmit, row onClick → select Amina.
+
+## Step 3 — Derived
+
+Note `isValid` is derived, not stored, if possible.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Handler map covering list selection and form edits in `notes/lab34-event-handler
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab34-event-handler-map.md` | Pass / Fail |
-| 2 | ≥4 event rows | Pass / Fail |
-| 3 | Select-Amina row included | Pass / Fail |
-| 4 | Derived state note | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab34-event-handler-map.md`
+- [ ] ≥4 event rows
+- [ ] Select-Amina row included
+- [ ] Derived state note
+

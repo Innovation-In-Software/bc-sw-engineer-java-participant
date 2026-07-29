@@ -8,10 +8,43 @@ Create `notes/lab18-keep-real-validator.md` — decide which collaborator stays 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-keep-real-validator.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-keep-real-validator.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 18 — When to Keep Real Validator
+
+## Step 1 — Mock repo
+
+Mock CustomerRepository — I/O boundary.
+
+## Step 2 — Real validator?
+
+Keep a pure StatusValidator real if it is deterministic and fast.
+
+## Step 3 — Mock notifier
+
+Mock notifier to avoid email/IO in unit tests.
+
+## Step 4 — Rule
+
+Write: mock I/O and unstable deps; keep pure domain helpers real when cheap.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A mock/real decision table for activate collaborators in `notes/lab18-keep-real-
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab18-keep-real-validator.md` | Pass / Fail |
-| 2 | Repo mock justified | Pass / Fail |
-| 3 | Validator real justified | Pass / Fail |
-| 4 | Notifier mock justified | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab18-keep-real-validator.md`
+- [ ] Repo mock justified
+- [ ] Validator real justified
+- [ ] Notifier mock justified
+

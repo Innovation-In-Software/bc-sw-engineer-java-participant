@@ -8,10 +8,39 @@ Create `notes/lab20-safe-logs.md` — turn unsafe Customer logs into id+status+c
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-rewrite-unsafe-logs.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-safe-logs.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 20 — Rewrite Unsafe Logs
+
+## Step 1 — Unsafe
+
+Example bad: log full Customer toString including email/phone if present.
+
+## Step 2 — Safe
+
+Rewrite: customerId=CUS-1001 status=ACTIVE correlation=lab-request-001.
+
+## Step 3 — Ravi line
+
+Write a safe activate start line for CUS-1002 PROSPECT.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Before/after log lines using Northstar fixtures safely in `notes/lab20-safe-logs
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab20-safe-logs.md` | Pass / Fail |
-| 2 | Unsafe example named | Pass / Fail |
-| 3 | Safe Amina line written | Pass / Fail |
-| 4 | Safe Ravi line written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab20-safe-logs.md`
+- [ ] Unsafe example named
+- [ ] Safe Amina line written
+- [ ] Safe Ravi line written
+

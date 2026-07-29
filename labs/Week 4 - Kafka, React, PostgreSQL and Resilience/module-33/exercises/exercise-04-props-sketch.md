@@ -8,10 +8,48 @@ Create `notes/lab33-props-sketch.md` — define props for CustomerCard using Nor
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-33-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-props-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab33-props-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 33 — Props Sketch
+
+## Reference
+
+| Prop | Example |
+| --- | --- |
+| customerId | CUS-1001 |
+| name | Amina Khan |
+| status | ACTIVE |
+| onSelect | () => void |
+
+## Step 2 — Types
+
+Write TypeScript-ish types: `status: 'ACTIVE' | 'SUSPENDED' | ...`.
+
+## Step 3 — Children?
+
+Decide whether `CustomerCard` takes `children` or only props — one sentence.
+
+## Step 4 — Anti-pattern
+
+Note: do not pass the entire global store as one mega-prop.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Props table with Amina/Ravi examples and a status union type in `notes/lab33-pro
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab33-props-sketch.md` | Pass / Fail |
-| 2 | Both customers exemplified | Pass / Fail |
-| 3 | Status union drafted | Pass / Fail |
-| 4 | Mega-prop anti-pattern noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab33-props-sketch.md`
+- [ ] Both customers exemplified
+- [ ] Status union drafted
+- [ ] Mega-prop anti-pattern noted
+

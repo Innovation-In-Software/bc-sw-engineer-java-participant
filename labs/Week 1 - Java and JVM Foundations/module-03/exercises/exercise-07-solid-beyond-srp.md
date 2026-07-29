@@ -13,6 +13,19 @@
 For each remaining SOLID principle, write one short justification and prove LSP
 with a working `FrozenAccount` that runs inside the existing polymorphic loop.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Savings withdraw=true balance=80.00
+Current withdraw=true balance=78.00
+Frozen withdraw=false balance=100.00
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
@@ -175,9 +188,10 @@ and you have one written sentence for each remaining SOLID principle.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `FrozenAccount` compiles and runs inside the same loop | Pass / Fail |
-| 2 | Frozen withdrawal returns `false` and leaves balance unchanged | Pass / Fail |
-| 3 | You wrote one sentence for each of OCP, LSP, ISP, and DIP | Pass / Fail |
-| 4 | You can name all five SOLID letters from memory | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] `FrozenAccount` compiles and runs inside the same loop
+- [ ] Frozen withdrawal returns `false` and leaves balance unchanged
+- [ ] You wrote one sentence for each of OCP, LSP, ISP, and DIP
+- [ ] You can name all five SOLID letters from memory
+

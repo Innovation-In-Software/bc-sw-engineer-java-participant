@@ -8,10 +8,43 @@ Create `notes/lab38-perf.md` — list how the CRM will query customers and accou
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-38-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-access-patterns.md` (this file in the course repo) |
 | Your notes file | `notes/lab38-perf.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 38 — Access Patterns
+
+## Step 1 — Patterns
+
+By customer_id (`CUS-1001`), by status, by created_at range, accounts by customer_id.
+
+## Step 2 — Hot path
+
+Mark lookup by customer_id as the hottest path.
+
+## Step 3 — Anti-pattern
+
+`SELECT *` without WHERE on huge tables — avoid in app code.
+
+## Step 4 — Notes
+
+Save `notes/lab38-perf.md`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Access-pattern list with a named hot path in `notes/lab38-perf.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab38-perf.md` | Pass / Fail |
-| 2 | ≥3 patterns | Pass / Fail |
-| 3 | Hot path identified | Pass / Fail |
-| 4 | SELECT * warning | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab38-perf.md`
+- [ ] ≥3 patterns
+- [ ] Hot path identified
+- [ ] SELECT * warning
+

@@ -8,10 +8,54 @@ Create `notes/lab52-packet-index.md` — list Lab 52 artifacts and their purpose
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-52-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-packet-index.md` (this file in the course repo) |
 | Your notes file | `notes/lab52-packet-index.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 52 — Defense Packet Index
+
+## Reference
+
+| Artifact | Purpose |
+| --- | --- |
+| final-presentation | Panel narrative |
+| demo-script.md | Deterministic walkthrough |
+| evidence-index.md | Claim → artifact map |
+| technical-q-and-a.md | Prepared answers + links |
+| retrospective.md | Blameless lessons |
+| self-assessment.md | Rubric score + evidence |
+
+## Step 1 — Files
+
+`final-presentation`, `demo-script.md`, `evidence-index.md`, `technical-q-and-a.md`, `retrospective.md`, `self-assessment.md`.
+
+## Step 2 — Check the reference
+
+Reviewers assess understanding with claim→artifact linkage—not only a running CRM.
+
+## Step 3 — Folder
+
+Plan `defense/` paths under the capstone repo layout.
+
+## Step 4 — Scope
+
+Index warmup—full packet is Lab 52.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -73,9 +117,10 @@ Defense packet index with folder paths in `notes/lab52-packet-index.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab52-packet-index.md` | Pass / Fail |
-| 2 | Six artifacts listed | Pass / Fail |
-| 3 | defense/ paths noted | Pass / Fail |
-| 4 | Pre-lab marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab52-packet-index.md`
+- [ ] Six artifacts listed
+- [ ] defense/ paths noted
+- [ ] Pre-lab marked
+

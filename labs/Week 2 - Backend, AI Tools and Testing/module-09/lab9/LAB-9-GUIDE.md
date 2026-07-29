@@ -58,13 +58,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab9-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-9/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -81,6 +82,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Architecture note: build-time NOW vs React/Kafka/PostgreSQL LATER |
 | 8 | README with run/cleanup and `mvn -B verify` CI note |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -266,9 +270,9 @@ Ignore `target/`, IDE metadata, `.env`, tokens, passwords, and never commit `~/.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `notes/lab9-answers.md` before or during the steps; revisit after Checkpoint C.
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. The main data or request flow in this lab (source → compile → package → optional install)
 2. The trust boundary between Maven Central artifacts and your own source
@@ -276,10 +280,29 @@ Write 2–3 sentences each in `notes/lab9-answers.md` before or during the steps
 4. Stable identity of the artifact (`groupId:artifactId:version`) versus customer IDs (`CUS-1001`)
 5. Retry and idempotency of `mvn install` (safe to repeat; overwrites snapshot)
 6. Local development shortcut (`dev` profile) versus production design (`prod`)
-7. Logs or evidence needed when a CI build fails
-8. Behavior with two application instances built from the same POM version
-9. Why `test` scope keeps JUnit out of the runtime image mindset
-10. Why CI prefers `verify` over casually installing snapshots on shared agents
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.northstar.crm;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class PlaceholderTest {
+    @Test
+    void projectCoordinatesAreMeaningful() {
+        assertTrue(true, "Replace with real CRM tests in Labs 11/17");
+    }
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -685,7 +708,7 @@ Correlation ID (logs later): lab-request-001
 
 ### Checkpoint A — Project copy + coordinates
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -696,7 +719,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Dependencies, plugins, tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -707,7 +730,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Lifecycle + tree + profiles
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -718,7 +741,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — JAR, CI, failures, security
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -847,20 +870,14 @@ Perform deliberately, then restore working state.
 
 ## Security and Production Review
 
-Answer briefly in project `LAB-9-GUIDE.md` or `notes/lab9-answers.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted? *(Downloaded Maven artifacts; later API inputs)*
 2. Where are authn/authz/validation enforced later? *(App layers + CI/repo managers)*
 3. Which values are sensitive, and where stored? *(Never in POM; use secrets stores)*
-4. What can be retried safely? *(`mvn verify`, snapshot install)*
-5. What happens after a partial failure? *(Failed test stops verify; no bad promotion in CI)*
-6. What would an operator monitor? *(CI duration, failed verify jobs)*
-7. Which local default is unacceptable in production? *(`dev` profile active by default with real secrets—never do that)*
-8. How are contracts versioned? *(Artifact version + later OpenAPI/WSDL)*
-
-Do not commit production customer PII, passwords, or cloud keys with this build lab.
 
 ---
+
 
 ## Cleanup
 
@@ -882,21 +899,9 @@ Keep sources, `docs/lifecycle-evidence.md`, `docs/dependency-tree.txt`, and note
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-Students should submit:
-
-* Completed Lab 9 `pom.xml` with dependencies, plugins, profiles
-* `PlaceholderTest` and layered sources from Lab 8
-* `docs/lifecycle-evidence.md` covering each lifecycle command
-* `docs/dependency-tree.txt` (annotated)
-* `target/customer-service.jar` evidence (listing + `java -jar` run)—screenshot/log, not necessarily the binary in Git
-* Controlled-failure evidence (bad version / failing test)
-* Architecture note: build-time NOW vs React/Kafka/PostgreSQL LATER
-* README with run/cleanup and `mvn -B verify` CI note
-* Short design-decisions section (scopes, profiles, CI)
-* Reflection/concepts in `notes/lab9-answers.md`
-* No secrets or committed `target/` / `.m2` contents
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -918,47 +923,28 @@ Students should submit:
 
 ## Reflection Questions
 
-Write short answers (3–6 sentences) in `notes/lab9-answers.md`:
+Write answers in `notes/lab9-answers.md`:
+
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected build correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the lifecycle walk was real (not only `package` once)?
-4. What breaks first at ten times the dependency count?
-5. Which concern should move to shared infrastructure (artifact repository, CI cache)?
-6. What must change before real customer data is used?
-7. How does this lab connect to Lab 8 structure and Lab 10+ code?
-8. What metric, log field, or CI signal matters most when verify fails?
-9. Why is `test` scope on JUnit more than a style preference?
-10. (Forward look) When Spring Boot arrives, what stays stable in this POM vs what changes first?
+2. What evidence proves the lifecycle walk was real (not only `package` once)?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
 
-Attempt after core rubric items are solid.
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a `dependencyManagement` BOM-style section for version alignment.
 2. Sketch a second Maven module (`crm-api` / `crm-domain`) in docs—implement only if time allows.
 3. Fail the build if someone adds a `compile`-scoped JUnit dependency (Enforcer rule sketch).
-4. Record build duration metrics for cold vs warm `~/.m2`.
-5. Document rollback when a bad snapshot was installed locally.
-6. Add `mvn versions:display-dependency-updates` output (read-only) to notes—do not blindly upgrade mid-lab.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate coordinates, scopes, lifecycle phases, tree, profiles, and JAR packaging
-* Happy path and at least one failure path are repeatable
-* Another student can follow your README run instructions
-* `mvn -B verify` passes
-* No production secret is hard-coded
-* You can explain local profile defaults versus production and CI trade-offs
-* You can explain why building `customer-service.jar` is not the same as creating `CUS-1001` in a CRM database
-
----
 
 ## Instructor Notes
 

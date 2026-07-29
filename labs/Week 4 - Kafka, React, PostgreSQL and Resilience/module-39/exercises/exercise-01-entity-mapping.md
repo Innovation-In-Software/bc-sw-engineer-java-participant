@@ -8,10 +8,48 @@ Create `notes/lab39-jpa.md` — connect Lab 37 columns to JPA entity fields for 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-39-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-entity-mapping.md` (this file in the course repo) |
 | Your notes file | `notes/lab39-jpa.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 39 — Entity Mapping
+
+## Reference
+
+| Column | Java field / annotation idea |
+| --- | --- |
+| customer_id | @Id String customerId |
+| full_name | String fullName + @Column |
+| status | String or enum status |
+| created_at | Instant createdAt |
+
+## Step 2 — Account
+
+Add account mapping: Long id, String customerId, @ManyToOne optional note.
+
+## Step 3 — Naming
+
+Decide snake_case columns vs camelCase fields strategy.
+
+## Step 4 — Fixture
+
+Entity instance mental model: customerId=`CUS-1001`, fullName=`Amina Khan`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Customer/account mapping notes with Amina fixture in `notes/lab39-jpa.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab39-jpa.md` | Pass / Fail |
-| 2 | Customer map present | Pass / Fail |
-| 3 | Account fields listed | Pass / Fail |
-| 4 | Naming strategy chosen | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab39-jpa.md`
+- [ ] Customer map present
+- [ ] Account fields listed
+- [ ] Naming strategy chosen
+

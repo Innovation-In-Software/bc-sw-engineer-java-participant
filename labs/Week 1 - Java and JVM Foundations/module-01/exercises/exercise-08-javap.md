@@ -30,6 +30,16 @@ flowchart LR
 
 `javac` compiles once. `javap` just *shows* the bytecode; `java` *runs* it.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Disassemble `Person` (or `Hello`) with `javap` and note three bytecode instructions.
+
+**Done looks like:** You can name what three instructions do from your listing.
+
+Then follow **Steps** to create your own file.
+
 ## Do this
 
 **Why:** Connect your Java source to the instructions the JVM actually runs.

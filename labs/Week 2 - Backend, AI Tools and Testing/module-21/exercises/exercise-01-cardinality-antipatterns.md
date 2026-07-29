@@ -8,10 +8,48 @@ Create `notes/lab21-cardinality-antipatterns.md` — reject labels that explode 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-cardinality-antipatterns.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-cardinality-antipatterns.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 21 — Cardinality Anti-Patterns
+
+## Reference
+
+| Label | OK? |
+| --- | --- |
+| outcome=success|failure | yes |
+| status=ACTIVE|PROSPECT | careful / limited |
+| customerId=CUS-1001 | no — high cardinality |
+| correlationId=lab-request-001 | no — use logs/traces |
+
+## Step 2 — Where ids go
+
+customerId and correlation belong in logs/traces, not metric labels.
+
+## Step 3 — Good metric
+
+Name idea: `customer_create_failure_total` with reason=validation|conflict.
+
+## Step 4 — Boundary
+
+Prep sketch only — do not complete full Lab 21 dashboards now.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ A cardinality do/don't table tied to CRM ids in `notes/lab21-cardinality-antipat
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab21-cardinality-antipatterns.md` | Pass / Fail |
-| 2 | Table plus URL anti-pattern | Pass / Fail |
-| 3 | Ids routed to logs/traces | Pass / Fail |
-| 4 | Good metric named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab21-cardinality-antipatterns.md`
+- [ ] Table plus URL anti-pattern
+- [ ] Ids routed to logs/traces
+- [ ] Good metric named
+

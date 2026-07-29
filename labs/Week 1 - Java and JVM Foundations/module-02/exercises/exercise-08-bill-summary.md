@@ -11,6 +11,26 @@
 
 Create `BillSummary.java` that reads product name, quantity, and unit price; computes total, 10% discount, and final amount; prints a short bill with `%.2f`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Product name: Laptop
+Quantity: 3
+Unit price: 59.99
+--- Bill Summary ---
+Product: Laptop
+Quantity: 3
+Unit price: 59.99
+Total: 179.97
+Discount (10%): 18.00
+Final amount: 161.97
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

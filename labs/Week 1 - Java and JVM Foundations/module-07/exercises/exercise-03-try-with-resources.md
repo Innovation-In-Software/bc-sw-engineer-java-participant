@@ -10,6 +10,19 @@
 Create and read a small `transactions.txt` file using `BufferedReader` in
 try-with-resources—without calling `close()` manually.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Read: deposit 100
+Read: withdraw 25
+Reader closed automatically.
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

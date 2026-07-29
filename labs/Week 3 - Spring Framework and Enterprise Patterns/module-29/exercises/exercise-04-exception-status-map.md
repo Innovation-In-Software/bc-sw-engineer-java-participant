@@ -8,10 +8,53 @@ Create `notes/exception-status-map.md` — document handler mappings for Lab 29 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-exception-status-map.md` (this file in the course repo) |
 | Your notes file | `notes/exception-status-map.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 29 — Exception to Status Map
+
+## Reference
+
+| Case | HTTP |
+| --- | --- |
+| Bean Validation failure | 400 |
+| Customer not found | 404 |
+| Duplicate create | 409 |
+| Illegal status transition | 409 or 422 (pick & justify) |
+| Unhandled | 500 safe fallback |
+
+## Step 1 — Fill map
+
+Create `notes/exception-status-map.md` with the five cases.
+
+## Step 2 — Check the reference
+
+Compare statuses; justify illegal-transition choice in one sentence.
+
+## Step 3 — Handler type
+
+Note `@RestControllerAdvice` / `GlobalExceptionHandler`.
+
+## Step 4 — SOAP optional
+
+Optional note: SOAP faults should stay aligned in spirit with REST envelopes.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -72,9 +115,10 @@ Exception→status map and handler type documented in `notes/exception-status-ma
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/exception-status-map.md` | Pass / Fail |
-| 2 | Five cases mapped | Pass / Fail |
-| 3 | Global handler named | Pass / Fail |
-| 4 | Justification for transition status present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/exception-status-map.md`
+- [ ] Five cases mapped
+- [ ] Global handler named
+- [ ] Justification for transition status present
+

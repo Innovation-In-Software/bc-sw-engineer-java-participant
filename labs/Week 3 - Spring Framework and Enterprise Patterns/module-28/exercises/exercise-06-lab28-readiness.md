@@ -8,10 +8,46 @@ Create `notes/lab28-readiness.md` — confirm prior notes exist and you are read
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-lab28-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab28-readiness.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 28 prep checklist
+
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/authn-authz.md | (your note here) |
+| notes/filter-chain.md | (your note here) |
+| notes/lab28-jwt-login-todos.md | (your note here) |
+| notes/mockmvc-matrix.md | (your note here) |
+| notes/security-notes-outline.md | (your note here) |
+
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
+
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 28 now.
+
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): (your note here)
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -65,9 +101,10 @@ Readiness checklist points validation to Lab 29 in `notes/lab28-readiness.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab28-readiness.md` | Pass / Fail |
-| 2 | Dependencies named | Pass / Fail |
-| 3 | Path written | Pass / Fail |
-| 4 | Lab 29 deferred for validation polish | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab28-readiness.md`
+- [ ] Dependencies named
+- [ ] Path written
+- [ ] Lab 29 deferred for validation polish
+

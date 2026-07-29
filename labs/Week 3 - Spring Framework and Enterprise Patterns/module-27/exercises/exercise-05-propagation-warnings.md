@@ -8,10 +8,43 @@ Create `notes/propagation-warnings.md` — flag common AI/propagation mistakes b
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-propagation-warnings.md` (this file in the course repo) |
 | Your notes file | `notes/propagation-warnings.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 27 — Propagation Warnings
+
+## Step 1 — List risks
+
+In `notes/propagation-warnings.md`: NOT_SUPPORTED mid-transfer; REQUIRES_NEW for the log only; self-invocation bypassing proxy.
+
+## Step 2 — Preferred default
+
+Default REQUIRED on the outer transfer method is enough for this lab.
+
+## Step 3 — Proxy note
+
+Calling `this.transfer` inside the same class may skip the Spring proxy.
+
+## Step 4 — Boundary
+
+Do not configure custom managers — Boot defaults suffice for Lab 27.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Propagation risks and defaults documented in `notes/propagation-warnings.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/propagation-warnings.md` | Pass / Fail |
-| 2 | Three risks listed | Pass / Fail |
-| 3 | REQUIRED default stated | Pass / Fail |
-| 4 | Self-invocation warning present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/propagation-warnings.md`
+- [ ] Three risks listed
+- [ ] REQUIRED default stated
+- [ ] Self-invocation warning present
+

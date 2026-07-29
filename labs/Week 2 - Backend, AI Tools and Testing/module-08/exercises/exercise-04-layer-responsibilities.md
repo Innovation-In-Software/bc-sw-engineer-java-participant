@@ -18,6 +18,16 @@ Create `layer-responsibilities.md` and assign each CRM task to the layer that sh
 | `config` | Object/application configuration | Customer operations |
 | `exception` | Meaningful failure types | Catch-all utility logic |
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Create `layer-responsibilities.md` and assign each CRM task to the layer that should own it.
+
+**Done looks like:** Every responsibility has one primary home, and the repaired flow follows controller → service → repository.
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Assign the tasks

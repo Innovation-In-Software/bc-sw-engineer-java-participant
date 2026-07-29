@@ -8,10 +8,43 @@ Create `notes/lab35-cors-and-headers.md` — document local CORS and correlation
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-cors-and-headers.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-cors-and-headers.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 35 — CORS and Headers
+
+## Step 1 — Origins
+
+Typical: UI `http://localhost:5173`, API `http://localhost:8080` (adjust if your lab differs).
+
+## Step 2 — CORS
+
+One sentence: browser blocks cross-origin XHR unless Spring allows the UI origin.
+
+## Step 3 — Correlation
+
+Plan header e.g. `X-Correlation-Id: lab-request-001` on fetches.
+
+## Step 4 — Secrets
+
+Do not put DB passwords in frontend env — only public API base URL.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ CORS/header notes with a safe env boundary in `notes/lab35-cors-and-headers.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab35-cors-and-headers.md` | Pass / Fail |
-| 2 | Origins stated | Pass / Fail |
-| 3 | Correlation header planned | Pass / Fail |
-| 4 | No-secrets rule written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab35-cors-and-headers.md`
+- [ ] Origins stated
+- [ ] Correlation header planned
+- [ ] No-secrets rule written
+

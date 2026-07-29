@@ -8,10 +8,43 @@ Create `notes/lab37-constraints.md` — list PK/UK/FK/CHECK constraints before w
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-37-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-constraints.md` (this file in the course repo) |
 | Your notes file | `notes/lab37-constraints.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 37 — Constraints Checklist
+
+## Step 1 — PK/UK
+
+PK on customer_id; UNIQUE on account_number.
+
+## Step 2 — CHECK
+
+status IN ('ACTIVE','SUSPENDED',...).
+
+## Step 3 — NOT NULL
+
+full_name and status NOT NULL.
+
+## Step 4 — SQLSTATE awareness
+
+Note unique violations → SQLSTATE 23505 (for later labs).
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Constraint checklist including a CHECK for status in `notes/lab37-constraints.md
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab37-constraints.md` | Pass / Fail |
-| 2 | PK/UK listed | Pass / Fail |
-| 3 | CHECK drafted | Pass / Fail |
-| 4 | 23505 noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab37-constraints.md`
+- [ ] PK/UK listed
+- [ ] CHECK drafted
+- [ ] 23505 noted
+

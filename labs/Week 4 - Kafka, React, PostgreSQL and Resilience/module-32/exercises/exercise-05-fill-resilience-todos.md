@@ -8,10 +8,28 @@ Create `notes/lab32-todos.md` — fill TODOs in Resilience4j pseudocode for the 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-fill-resilience-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 32 — Fill Resilience TODOs
+
+## Step 1 — Paste
+
+Create `notes/lab32-todos.md`:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -76,9 +94,10 @@ Filled pseudocode and numeric config TODOs ready for the starter in `notes/lab32
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab32-todos.md` | Pass / Fail |
-| 2 | Annotation blanks filled | Pass / Fail |
-| 3 | Three config numbers chosen | Pass / Fail |
-| 4 | Correlation log TODO present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab32-todos.md`
+- [ ] Annotation blanks filled
+- [ ] Three config numbers chosen
+- [ ] Correlation log TODO present
+

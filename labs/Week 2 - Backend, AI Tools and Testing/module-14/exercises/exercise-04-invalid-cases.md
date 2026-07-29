@@ -8,10 +8,35 @@ Create `notes/lab14-invalid-cases.md` — catalog invalid requests you will asse
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-invalid-cases.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-invalid-cases.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 14 — Invalid Cases Catalog
+
+## Step 2 — Activate invalids
+
+Activate missing id; activate CUS-9999 unknown (tie to API errors later).
+
+## Step 3 — Valid control
+
+Control: create Ravi-shaped PROSPECT with non-blank name.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -54,9 +79,10 @@ A negative/positive case list ready for the timed lab in `notes/lab14-invalid-ca
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab14-invalid-cases.md` | Pass / Fail |
-| 2 | At least three invalids | Pass / Fail |
-| 3 | One valid control | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab14-invalid-cases.md`
+- [ ] At least three invalids
+- [ ] One valid control
+- [ ] Notes saved
+

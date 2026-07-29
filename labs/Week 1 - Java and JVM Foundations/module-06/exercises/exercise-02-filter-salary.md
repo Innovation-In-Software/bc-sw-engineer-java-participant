@@ -12,6 +12,39 @@
 Create `FilterSalaryDemo.java` and use `filter` to select employees whose
 salary is greater than 60,000 without changing the source list.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+import java.util.List;
+
+public class FilterSalaryDemo {
+    public static void main(String[] args) {
+        List<Employee> employees = EmployeeData.sample();
+
+        // TODO: stream pipeline — filter salary > 60_000, collect to List<Employee>
+        List<Employee> highEarners = employees.stream()
+                // TODO: .filter(...)
+                // TODO: .toList()
+                ;
+
+        System.out.println("Employees above 60000:");
+        highEarners.forEach(employee ->
+                System.out.printf("%s - %.0f%n",
+                        employee.name(), employee.salary()));
+
+        System.out.println("Source size: " + employees.size());
+        System.out.println("Filtered size: " + highEarners.size());
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -125,9 +158,10 @@ and the original source list still contains five employees.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Exactly four employees print at the 60,000 threshold | Pass / Fail |
-| 2 | Evan does not appear in the filtered output | Pass / Fail |
-| 3 | Source size remains 5 and filtered size is 4 | Pass / Fail |
-| 4 | You can explain why `filter` is an intermediate operation | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Exactly four employees print at the 60,000 threshold
+- [ ] Evan does not appear in the filtered output
+- [ ] Source size remains 5 and filtered size is 4
+- [ ] You can explain why `filter` is an intermediate operation
+

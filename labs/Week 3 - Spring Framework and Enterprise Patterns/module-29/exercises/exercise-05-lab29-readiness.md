@@ -8,10 +8,46 @@ Create `notes/mockmvc-body-plan.md` — confirm prior notes exist and you are re
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-lab29-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/mockmvc-body-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 29 prep checklist
+
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/dto-constraints.md | (your note here) |
+| notes/lab29-handler-todos.md | (your note here) |
+| notes/error-envelope.md | (your note here) |
+| notes/exception-status-map.md | (your note here) |
+| notes/mockmvc-body-plan.md | (your note here) |
+
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
+
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 29 now.
+
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): (your note here)
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -65,9 +101,10 @@ Readiness checklist closes Week 3 pre-lab preparation in `notes/lab29-readiness.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab29-readiness.md` | Pass / Fail |
-| 2 | Prior lab dependencies listed | Pass / Fail |
-| 3 | lab29-crm path written | Pass / Fail |
-| 4 | Week 4 explicitly out of scope | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab29-readiness.md`
+- [ ] Prior lab dependencies listed
+- [ ] lab29-crm path written
+- [ ] Week 4 explicitly out of scope
+

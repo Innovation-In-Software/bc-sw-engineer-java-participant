@@ -8,10 +8,51 @@ Create `notes/autoconfig-ownership.md` — produce a three-and-three list Lab 23
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-autoconfig-vs-ownership.md` (this file in the course repo) |
 | Your notes file | `notes/autoconfig-ownership.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 23 — Auto-Config Versus Ownership
+
+## Reference
+
+| Auto-config gift | You still own |
+| --- | --- |
+| Embedded Tomcat | API paths and status codes |
+| DispatcherServlet wiring | Domain validation rules |
+| Jackson JSON converters | DTO field exposure policy |
+
+## Step 1 — Draft three gifts
+
+In `notes/autoconfig-ownership.md`, list three Boot auto-config gifts.
+
+## Step 2 — Draft three ownerships
+
+List three items Northstar still designs (rules, exposure, fixtures).
+
+## Step 3 — Check the reference
+
+Align wording with the reference table.
+
+## Step 4 — CRM fixtures
+
+Mention smoke targets: POST/GET `CUS-1001`, `CUS-1002`, correlation `lab-request-001`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -70,9 +111,10 @@ Balanced gift/ownership note ready for Lab 23 evidence in `notes/autoconfig-owne
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/autoconfig-ownership.md` | Pass / Fail |
-| 2 | Three gifts listed | Pass / Fail |
-| 3 | Three ownership items listed | Pass / Fail |
-| 4 | Fixtures named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/autoconfig-ownership.md`
+- [ ] Three gifts listed
+- [ ] Three ownership items listed
+- [ ] Fixtures named
+

@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab37-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-37/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Drop/recreate proof |
 | 8 | Design decisions + screenshots |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -205,9 +210,9 @@ Ignore PostgreSQL volume data, real passwords, and local `.env`.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `database/design-decisions.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main data flow (API later → CRM_APP → tables)
 2. Trust boundary: app user least privilege; browser never touches DB
@@ -215,10 +220,39 @@ Write 2–3 sentences each in `database/design-decisions.md`:
 4. Stable identity: `public_id` vs surrogate `customer_id`
 5. Idempotency of seed scripts (re-run after drop)
 6. Local shared (or local) PostgreSQL vs managed production PDB/service
-7. Evidence operators need (DESC, constraint names, seed SELECTs)
-8. Two app instances: same schema; transactions isolate writes
-9. False confidence: FLOAT for money
-10. What JPA labs will map without renaming public ids
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```sql
+INSERT INTO customer (public_id, full_name, email_normalized, phone, status)
+VALUES ('CUS-1001', 'Amina Khan', 'amina@example.com', '+1-555-0101', 'ACTIVE');
+
+INSERT INTO customer (public_id, full_name, email_normalized, phone, status)
+VALUES ('CUS-1002', 'Ravi Singh', 'ravi@example.com', '+1-555-0102', 'PROSPECT');
+
+INSERT INTO account (account_number, customer_id, account_type, balance, currency)
+SELECT 'ACCT-1001-01', customer_id, 'CHECKING', 2500.00, 'CAD'
+FROM customer WHERE public_id = 'CUS-1001';
+
+INSERT INTO address (customer_id, address_type, line1, city, region, postal_code, country_code)
+SELECT customer_id, 'HOME', '100 Maple St', 'Toronto', 'ON', 'M5V 2T6', 'CA'
+FROM customer WHERE public_id = 'CUS-1001';
+
+INSERT INTO customer_status_history (
+  customer_id, old_status, new_status, changed_by, reason, correlation_id
+)
+SELECT customer_id, 'PROSPECT', 'ACTIVE', 'lab37', 'Activation', 'lab-request-001'
+FROM customer WHERE public_id = 'CUS-1001';
+
+COMMIT;
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -601,7 +635,7 @@ docker stop crm-postgres
 
 ### Checkpoint A — Design + runtime
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -611,7 +645,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Schema
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -621,7 +655,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Data + proofs
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -631,7 +665,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -756,18 +790,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (any SQL from apps; never expose DB to browser)?
 2. Where are authn/authz/validation enforced (DB constraints + app authz)?
 3. Which values are sensitive—DB passwords, PII—and where stored?
-4. What can be retried safely (read queries; seeds after drop)?
-5. What happens after partial failure (transaction rollback; savepoints in tests)?
-6. What would an operator monitor (tablespace, constraint violations, slow FK scans)?
-7. Which local default is unacceptable (DBA app user, FLOAT money, real PII seeds)?
-8. How are schema contracts versioned with API/JPA (Flyway later; keep public_id stable)?
 
 ---
+
 
 ## Cleanup
 
@@ -790,18 +820,9 @@ Remove lab passwords from shell history where practical. Recheck `git status`.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* ER notes/diagram with cardinalities and identifier rules
-* PostgreSQL Docker runtime with persistent volume
-* `CRM_APP` least-privilege user script
-* Full DDL for CUSTOMER, ACCOUNT, ADDRESS, HISTORY + indexes
-* Seed script for Amina/Ravi (+ history correlation)
-* Negative verification script with ORA evidence
-* Drop/recreate proof
-* Design decisions + screenshots
-* README runbook
-* No secrets or data volumes committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -823,45 +844,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the implementation works?
-4. What breaks first at ten times the row count?
-5. Which concern should move to shared infrastructure?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 33–36 and later JPA labs?
-8. What metric matters most on the DBA dashboard for this gate?
-9. (Forward look) Which columns must remain stable when Spring entities are mapped?
+2. What evidence proves the implementation works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a partial uniqueness rule thought experiment (one BILLING address)—document PostgreSQL approach.
 2. Flashback / auditing note for HISTORY vs UPDATE.
 3. Partitioning thought experiment for history by `changed_at`.
-4. Flyway baseline script wrapping `02_schema.sql`.
-5. Document rollback if someone grants DBA to `CRM_APP`.
-6. `EXPLAIN PLAN` screenshot for history timeline query using `ix_history_customer_time`.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* ER + identifier rules are documented
-* PostgreSQL is usable with `CRM_APP` least privilege
-* All four entity tables exist with proper types and constraints
-* Amina/Ravi seeds verify (account vs no-account)
-* Negative ORA tests and drop/recreate succeed
-* Another student can follow your SQL runbook
-* No production secret or real PII is committed
-* You can explain the handoff to JPA mapping labs
-
----
 
 ## Instructor Notes
 

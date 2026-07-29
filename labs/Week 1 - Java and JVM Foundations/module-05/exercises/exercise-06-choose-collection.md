@@ -19,6 +19,25 @@ Ask in order:
 4. Must iteration be sorted? Consider `TreeSet` or `TreeMap`.
 5. Must insertion order be preserved? Consider `LinkedHashSet` or `LinkedHashMap`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Collection choices
+
+| # | Scenario | Need (order / unique / key→value / sorted) | Interface | Implementation | Why |
+| - | -------- | ------------------------------------------ | --------- | -------------- | --- |
+| 1 | Ordered catalog; duplicate titles allowed | | `(your note here)` | `(your note here)` | |
+| 2 | Unique registered book IDs | | `(your note here)` | `(your note here)` | |
+| 3 | Book ID → current borrower ID | | `(your note here)` | `(your note here)` | |
+| 4 | Alphabetically sorted categories | | `(your note here)` | `(your note here)` | |
+| 5 | Category → count, sorted by category | | `(your note here)` | `(your note here)` | |
+| 6 | Checkout history in event order | | `(your note here)` | `(your note here)` | |
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Copy the scenario table

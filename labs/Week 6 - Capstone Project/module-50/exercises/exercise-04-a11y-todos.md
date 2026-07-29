@@ -8,10 +8,28 @@ Create `notes/lab50-a11y-todos.md` — complete an accessibility checklist for f
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-50-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-a11y-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab50-a11y-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 50 — Fill Accessibility TODOs
+
+## Step 1 — Template
+
+Fill blanks:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -69,9 +87,10 @@ Accessibility TODO sheet filled for key screens in `notes/lab50-a11y-todos.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab50-a11y-todos.md` | Pass / Fail |
-| 2 | Form/search blanks filled | Pass / Fail |
-| 3 | Empty-state note present | Pass / Fail |
-| 4 | Pre-lab marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab50-a11y-todos.md`
+- [ ] Form/search blanks filled
+- [ ] Empty-state note present
+- [ ] Pre-lab marked
+

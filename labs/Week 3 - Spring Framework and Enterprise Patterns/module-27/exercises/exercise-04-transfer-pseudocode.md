@@ -8,10 +8,26 @@ Create `notes/lab27-transfer-pseudocode.md` — complete pseudocode showing roll
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-transfer-pseudocode.md` (this file in the course repo) |
 | Your notes file | `notes/lab27-transfer-pseudocode.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 27 — Transfer Pseudocode (TODOs)
+
+## Step 2 — Fill TODOs
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -76,9 +92,10 @@ Pseudocode blanks filled; atomicity reflection written in `notes/lab27-transfer-
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab27-transfer-pseudocode.md` | Pass / Fail |
-| 2 | `@Transactional` filled | Pass / Fail |
-| 3 | Force-fail throw present | Pass / Fail |
-| 4 | Swallowing danger explained | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab27-transfer-pseudocode.md`
+- [ ] `@Transactional` filled
+- [ ] Force-fail throw present
+- [ ] Swallowing danger explained
+

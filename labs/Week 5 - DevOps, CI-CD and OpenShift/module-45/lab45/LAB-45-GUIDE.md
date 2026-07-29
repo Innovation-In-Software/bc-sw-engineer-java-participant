@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab45-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-45/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | Plan / lint evidence (or approved substitute) |
 | 7 | No secrets, state files, or real customer data committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -213,9 +218,9 @@ Ignore state files, real tfvars, vault passwords, `.env`, and kubeconfig.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/ai-iac-review.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main infra flow (contract → draft → validate → plan → config manage)
 2. Trust boundary: what `plan` proves vs what it assumes about provider credentials
@@ -223,10 +228,40 @@ Write 2–3 sentences each in `docs/ai-iac-review.md`:
 4. Stable naming (`crm-${environment}`) vs random AI names
 5. Idempotency of Ansible second runs and Terraform plans
 6. Why `-backend=false` may be required in training
-7. Evidence operators need (plan summary, lint, review log)
-8. Two engineers applying the same root module (locking)
-9. False confidence: AI code that “looks enterprise” but opens `0.0.0.0/0`
-10. What Labs 43–44 still own (artifact promote) vs what IaC owns
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```yaml
+- name: Configure CRM runtime host
+  hosts: crm
+  become: true
+  tasks:
+    - name: Create CRM service account
+      ansible.builtin.user:
+        name: crm
+        system: true
+        shell: /usr/sbin/nologin
+    - name: Install runtime configuration
+      ansible.builtin.template:
+        src: crm.env.j2
+        dest: /etc/crm/crm.env
+        owner: root
+        group: crm
+        mode: "0640"
+      notify: Restart CRM
+  handlers:
+    - name: Restart CRM
+      ansible.builtin.service:
+        name: crm
+        state: restarted
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -451,7 +486,7 @@ Checklist reminder:
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -461,7 +496,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core IaC
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -471,7 +506,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Validation + AI discipline
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -481,7 +516,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -579,18 +614,23 @@ environment = "dev"
 ```markdown
 # AI IaC Review — lab45-001
 ## Contract summary
+
 - Forbidden: public DB, hard-coded secrets, unpinned providers
 ## Prompt (paste sanitized)
 ## Generated excerpt (short)
 ## Human corrections
+
 1.
 ## Validation evidence
+
 - terraform fmt/validate/plan:
 - ansible syntax/lint:
 ## Rejected AI suggestion
+
 - What / why unsafe:
 ## Residual risks / owners / dates
 ## Approval
+
 - Name / date / decision:
 ```
 
@@ -616,6 +656,7 @@ ansible-lint site.yml
 - Ansible version:
 - AI used? Y/N (tool):
 ## Results
+
 | Check | Result | Evidence |
 | ----- | ------ | -------- |
 | Contract written | PASS/FAIL | |
@@ -681,18 +722,14 @@ ansible-lint site.yml
 
 ## Security and Production Review
 
-Answer in `docs/ai-iac-review.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (AI output, community modules)?
 2. Where are authn/authz for apply enforced (human approval, CI roles)?
 3. Which values are sensitive in state and logs?
-4. What can be retried safely (`plan`, syntax-check)?
-5. What happens after partial apply failure?
-6. What would an operator monitor (drift, cost, open network / firewalls)?
-7. Which local default is unacceptable (`apply` without plan read, public DB)?
-8. How are IaC contracts versioned with Lab 44 environment names?
 
 ---
+
 
 ## Cleanup
 
@@ -712,15 +749,9 @@ Delete any local state created accidentally. Keep sanitized plan excerpts.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `infra/terraform/*.tf` (structured, pinned providers)
-* `terraform.tfvars.example`
-* `infra/ansible/site.yml`
-* `inventory.example.yml`
-* `docs/ai-iac-review.md` with human corrections and validation evidence
-* Plan / lint evidence (or approved substitute)
-* No secrets, state files, or real customer data committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -742,44 +773,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected safety (contract vs AI draft)?
-2. Which failure was hardest to diagnose?
-3. What evidence proves you read the plan, not only validated syntax?
-4. What breaks first when ten engineers share one state file without locks?
-5. Which concern should move to policy-as-code in CI?
-6. What must change before real customer data lands in these environments?
-7. How does this lab connect to Labs 43–44 and Lab 46?
-8. What metric matters most for IaC drift detection?
-9. (Forward look) Which AI suggestion would be most dangerous under prompt injection?
+2. What evidence proves you read the plan, not only validated syntax?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add policy-as-code checks forbidding public exposure.
 2. Create a module interface with validated inputs.
 3. Add Ansible check mode and capture idempotence evidence.
-4. Compare two AI drafts for risk and cost.
-5. Write a prompt-injection-resistant review checklist.
-6. Wire `terraform plan` into a GitHub Actions step (Lab 43 style) without auto-apply.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Terraform and Ansible sketches match the written contract
-* Validation/plan (or approved substitutes) are evidenced
-* AI drafts (if any) were human-reviewed with at least one harden/reject
-* Secrets and state stay out of Git
-* Another student can reproduce validate/plan/syntax steps
-* CRM PII fixtures are not embedded in IaC
-* No production cloud key is hard-coded
-
----
 
 ## Instructor Notes
 

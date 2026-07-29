@@ -8,10 +8,26 @@ Create `notes/lab28-jwt-login-todos.md` — complete a JWT login/filter sketch w
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-jwt-login-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab28-jwt-login-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 28 — JWT Login TODOs
+
+## Step 2 — Fill TODOs
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -79,9 +95,10 @@ JWT sketch blanks and secret placeholder completed in `notes/lab28-jwt-login-tod
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab28-jwt-login-todos.md` | Pass / Fail |
-| 2 | Login token return filled | Pass / Fail |
-| 3 | Bearer prefix filled | Pass / Fail |
-| 4 | No real JWT secret committed | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab28-jwt-login-todos.md`
+- [ ] Login token return filled
+- [ ] Bearer prefix filled
+- [ ] No real JWT secret committed
+

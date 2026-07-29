@@ -10,6 +10,19 @@
 Model insufficient balance as a meaningful checked domain exception. Preserve
 balance and requested amount as structured context.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Insufficient funds: balance=100.00, requested=150.00
+Short by: 50.00
+Balance unchanged: 100.00
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste each skeleton, then replace every `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished files.

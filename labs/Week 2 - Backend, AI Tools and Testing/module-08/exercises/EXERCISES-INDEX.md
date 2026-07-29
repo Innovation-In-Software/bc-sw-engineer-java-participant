@@ -10,6 +10,8 @@
 > These exercises design and test small pieces; Lab 8 builds the complete CRM skeleton.  
 > Exercise 3 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` with your own code, then compile and run.
 
+> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+
 ## Scope boundary — do not build later technology yet
 
 | Do now | Do not add yet |

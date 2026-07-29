@@ -8,10 +8,24 @@ Create `notes/lab11-notifier-extract-plan.md` that plans extracting a notifier c
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-notifier-extract.md` (this file in the course repo) |
 | Your notes file | `notes/lab11-notifier-extract-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Create `notes/lab11-notifier-extract-plan.md` that plans extracting a notifier collaborator so tests can isolate side effects (matches Lab 11’s `CustomerNotifier`).
+
+**Done looks like:** `notes/lab11-notifier-extract-plan.md` with smell, interface sketch, Copilot sentence, and out-of-scope note.
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 

@@ -8,10 +8,43 @@ Create `notes/rest-smoke-plan.md` — document the Lab 23 HTTP smoke sequence wi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-rest-smoke-plan.md` (this file in the course repo) |
 | Your notes file | `notes/rest-smoke-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 23 — REST Smoke Plan
+
+## Step 1 — Sequence
+
+In `notes/rest-smoke-plan.md`, list: start app → POST Amina → GET `CUS-1001` → GET `CUS-1002` or create Ravi → GET missing → check health.
+
+## Step 2 — Correlation
+
+Specify header `X-Correlation-Id: lab-request-001` on create evidence.
+
+## Step 3 — Failure case
+
+Note expected 404 for `CUS-MISSING` (or equivalent missing id).
+
+## Step 4 — Boundary
+
+State SOAP partner calls wait for Lab 24.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Ordered smoke plan with correlation and failure case in `notes/rest-smoke-plan.m
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/rest-smoke-plan.md` | Pass / Fail |
-| 2 | Happy path for CUS-1001 present | Pass / Fail |
-| 3 | Correlation header specified | Pass / Fail |
-| 4 | Missing-id failure planned | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/rest-smoke-plan.md`
+- [ ] Happy path for CUS-1001 present
+- [ ] Correlation header specified
+- [ ] Missing-id failure planned
+

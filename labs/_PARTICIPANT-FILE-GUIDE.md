@@ -28,7 +28,7 @@ Open the module’s **`README.md`** first when it exists (Week 1 Modules 1–7) 
 | **`exercises/exercise-0N-….md`** | You | One practice task at a time |
 | **`LAB-N-WINDOWS.md`** / **`LAB-N-MACOS.md`** | You — pick **one** OS | Paths, IntelliJ open steps, shell tips for your laptop |
 | **`starter/README.md`** | You — **in-class timed path** | 45-min checklist + smoke; Capstone 48–52 = session block |
-| **`LAB-N-GUIDE.md`** | You — **main lab** | Every Step, Expected result, pass criteria (full path) |
+| **`LAB-N-GUIDE.md`** | You — **main lab** | Worked example → Steps → Expected result; submit list at top |
 | **`INSTRUCTOR-DEMO.md`** | Instructor only | Live demo before students start — **skip** |
 | **`solution/`** | Instructor / after you try | Answers — **do not open first**; participant clone may omit this |
 | **[_STARTER-PATH.md](_STARTER-PATH.md)** | You | How timed path vs full path works for Labs 0–52 |

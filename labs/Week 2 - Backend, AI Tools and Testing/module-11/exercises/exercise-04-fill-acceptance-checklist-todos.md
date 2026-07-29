@@ -8,10 +8,39 @@ Create `notes/lab11-acceptance-todos.md` and complete every fill-in blank for an
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fill-acceptance-checklist-todos.md` (this file in the course repo) |
 | Your notes file (starter) | `notes/lab11-acceptance-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 11 acceptance checklist TODOs
+
+Imagine Copilot just generated a CustomerServiceTest. Score it below.
+
+AAA structure present? (your note here)
+Asserts use Amina/Ravi values (CUS-1001 ACTIVE / CUS-1002 PROSPECT)? (your note here)
+Trivial assertNotNull-only / assertTrue(true) rejected? (your note here)
+Correlation mention lab-request-001 (notes/comments OK)? (your note here)
+Coverage gap noted for Labs 17–18? (your note here)
+Accept / Reject / Edit: (your note here)
+
+## Gap sentence (Labs 17–18)
+(your note here)
+
+## One reason for Accept / Reject / Edit
+(your note here)
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -74,9 +103,10 @@ A filled acceptance TODO sheet at `notes/lab11-acceptance-todos.md` with an hone
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab11-acceptance-todos.md` | Pass / Fail |
-| 2 | All `_____` replaced | Pass / Fail |
-| 3 | Labs 17–18 gap sentence present | Pass / Fail |
-| 4 | Accept / Reject / Edit recorded | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab11-acceptance-todos.md`
+- [ ] All `_____` replaced
+- [ ] Labs 17–18 gap sentence present
+- [ ] Accept / Reject / Edit recorded
+

@@ -27,6 +27,17 @@ This method has two reasons to change:
 1. the bank changes its interest formula;
 2. the UI changes how interest is displayed.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Interest earned: 500.00
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished file.
@@ -141,9 +152,10 @@ The program prints `500.00`; calculation has no `System.out`, and display code d
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Output is `Interest earned: 500.00` | Pass / Fail |
-| 2 | Calculation and display are separate methods | Pass / Fail |
-| 3 | You can name both reasons the original method might change | Pass / Fail |
-| 4 | You can connect SRP to Main / BankService / domain classes | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Output is `Interest earned: 500.00`
+- [ ] Calculation and display are separate methods
+- [ ] You can name both reasons the original method might change
+- [ ] You can connect SRP to Main / BankService / domain classes
+

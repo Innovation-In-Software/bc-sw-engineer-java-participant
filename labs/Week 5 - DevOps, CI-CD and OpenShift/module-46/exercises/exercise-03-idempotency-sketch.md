@@ -8,10 +8,43 @@ Create `notes/lab46-idempotency-sketch.md` — explain how replay must not doubl
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-idempotency-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-idempotency-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 46 — Sketch Idempotent Handling
+
+## Step 1 — Side effects
+
+List side effects your consumer might own (projection upsert, email, audit row).
+
+## Step 2 — Check the reference
+
+Idempotency keys / upserts / dedupe store—pick a strategy in notes.
+
+## Step 3 — Scenario
+
+Describe duplicate delivery for an event about `CUS-1002` status change.
+
+## Step 4 — Test idea
+
+Name one test: process same event twice → one projection row.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Idempotency strategy and duplicate-delivery scenario documented in `notes/lab46-
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab46-idempotency-sketch.md` | Pass / Fail |
-| 2 | Side effects listed | Pass / Fail |
-| 3 | Strategy chosen | Pass / Fail |
-| 4 | Duplicate test idea named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab46-idempotency-sketch.md`
+- [ ] Side effects listed
+- [ ] Strategy chosen
+- [ ] Duplicate test idea named
+

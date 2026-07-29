@@ -8,10 +8,43 @@ Create `notes/lab32-circuit-states.md` — document closed, open, and half-open 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-circuit-states.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-circuit-states.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 32 — Circuit States
+
+## Step 1 — Closed
+
+Normal calls flow; failures counted.
+
+## Step 2 — Open
+
+Calls fail fast / use fallback; Account Profile is not hammered.
+
+## Step 3 — Half-open
+
+Trial calls probe recovery; success → closed, failure → open.
+
+## Step 4 — Draw
+
+Sketch a tiny state diagram (boxes + arrows) in markdown.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ State descriptions plus a simple diagram in notes in `notes/lab32-circuit-states
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab32-circuit-states.md` | Pass / Fail |
-| 2 | All three states described | Pass / Fail |
-| 3 | Diagram present | Pass / Fail |
-| 4 | Fallback mentioned for open | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab32-circuit-states.md`
+- [ ] All three states described
+- [ ] Diagram present
+- [ ] Fallback mentioned for open
+

@@ -12,6 +12,34 @@
 Create `NamesDemo.java`. Transform each `Employee` into a `String` name with
 `map`, collect the names, and print them with a method reference.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+import java.util.List;
+
+public class NamesDemo {
+    public static void main(String[] args) {
+        List<Employee> employees = EmployeeData.sample();
+
+        // TODO: stream pipeline — map each Employee to its name, collect to List<String>
+        List<String> names = employees.stream()
+                // TODO: .map(Employee::name)  (or equivalent lambda)
+                // TODO: .toList()
+                ;
+
+        System.out.println("Employee names:");
+        names.forEach(System.out::println);
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -127,9 +155,10 @@ versions give the same result.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | All five names print in source order | Pass / Fail |
-| 2 | Lambda and method-reference versions match | Pass / Fail |
-| 3 | Uppercase transformation works | Pass / Fail |
-| 4 | You can explain the `Employee` → `String` type change | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] All five names print in source order
+- [ ] Lambda and method-reference versions match
+- [ ] Uppercase transformation works
+- [ ] You can explain the `Employee` → `String` type change
+

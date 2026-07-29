@@ -10,6 +10,23 @@
 Create `FinallyDemo.java` and compare successful and failed transfer paths.
 Confirm cleanup runs after both.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Transfer started.
+Transfer completed.
+Cleanup: release transfer session.
+---
+Transfer started.
+Handled: Transfer service unavailable
+Cleanup: release transfer session.
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.

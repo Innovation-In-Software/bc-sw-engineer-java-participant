@@ -8,10 +8,55 @@ Create `notes/error-envelope.md` — specify `ErrorResponse` fields clients can 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-error-envelope.md` (this file in the course repo) |
 | Your notes file | `notes/error-envelope.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 29 — ErrorResponse Envelope
+
+## Reference
+
+| Field | Purpose |
+| --- | --- |
+| timestamp | ISO-8601 UTC |
+| status | HTTP status code |
+| error | Short reason phrase |
+| message | Safe human message |
+| path | Request path |
+| correlationId | e.g. lab-request-001 |
+| violations | Optional field errors |
+
+## Step 1 — Sketch JSON
+
+In `notes/error-envelope.md`, sketch a 400 validation example including `correlationId: lab-request-001`.
+
+## Step 2 — Check the reference
+
+Ensure required fields from the table appear.
+
+## Step 3 — 404 example
+
+Sketch envelope for `CUS-9999` not-found.
+
+## Step 4 — Safety
+
+No stack traces or SQL in `message`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -74,9 +119,10 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/error-envelope.md` | Pass / Fail |
-| 2 | Validation example includes violations/correlation | Pass / Fail |
-| 3 | 404 example present | Pass / Fail |
-| 4 | No stack traces | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/error-envelope.md`
+- [ ] Validation example includes violations/correlation
+- [ ] 404 example present
+- [ ] No stack traces
+

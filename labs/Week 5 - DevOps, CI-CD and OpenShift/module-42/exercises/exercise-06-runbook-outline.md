@@ -8,10 +8,43 @@ Create `notes/lab42-runbook-outline.md` — outline `docs/deployment-runbook.md`
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-runbook-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-runbook-outline.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 42 — Outline Deployment Runbook
+
+## Step 1 — Headings
+
+Prereqs, apply order, verify probes, smoke CRM, rollback, contacts.
+
+## Step 2 — Apply order
+
+Propose order: ConfigMap → Secret (out-of-band) → Deployment → Service → Ingress.
+
+## Step 3 — Safety
+
+Add “stop before destructive actions; instructor approval” note.
+
+## Step 4 — Scope
+
+Mark outline as pre-lab; full apply/smoke is Lab 42.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Deployment runbook outline ready for Lab 42 in `notes/lab42-runbook-outline.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab42-runbook-outline.md` | Pass / Fail |
-| 2 | Headings complete | Pass / Fail |
-| 3 | Apply order stated | Pass / Fail |
-| 4 | Pre-lab scope marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab42-runbook-outline.md`
+- [ ] Headings complete
+- [ ] Apply order stated
+- [ ] Pre-lab scope marked
+

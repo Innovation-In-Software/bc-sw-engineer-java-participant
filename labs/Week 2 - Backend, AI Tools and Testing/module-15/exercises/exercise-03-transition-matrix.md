@@ -8,10 +8,47 @@ Create `notes/lab15-transition-matrix.md` — tabulate allowed and forbidden cus
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-transition-matrix.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-transition-matrix.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 15 — Transition Matrix
+
+## Reference
+
+| From | To | Allowed? |
+| --- | --- | --- |
+| PROSPECT | ACTIVE | yes (Ravi activate) |
+| ACTIVE | ACTIVE | no-op or reject — decide |
+| ACTIVE | PROSPECT | no |
+
+## Step 2 — Amina
+
+Note CUS-1001 already ACTIVE — activate should be rejected or no-op per your policy.
+
+## Step 3 — Illegal list
+
+List two illegal transitions you will throw on later.
+
+## Step 4 — Boundary
+
+Mark: exception HTTP mapping waits for Lab 16.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -66,9 +103,10 @@ A transition matrix with Amina/Ravi implications in `notes/lab15-transition-matr
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab15-transition-matrix.md` | Pass / Fail |
-| 2 | Matrix filled | Pass / Fail |
-| 3 | Amina case noted | Pass / Fail |
-| 4 | Lab 16 mapping deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab15-transition-matrix.md`
+- [ ] Matrix filled
+- [ ] Amina case noted
+- [ ] Lab 16 mapping deferred
+

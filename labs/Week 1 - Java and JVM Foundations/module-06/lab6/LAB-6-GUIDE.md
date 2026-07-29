@@ -49,13 +49,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class:** prefer the [45-minute timed path](#45-minute-timed-path-use-starter) with [`starter/`](starter/README.md).
-2. Confirm Lab 0 + Lab 5 List habits + Module 6 Exercises 1–7 are done (checklists below).
-3. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-4. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-5. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-6. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-7. Capture evidence under `notes/screenshots/lab-6/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -293,9 +294,9 @@ Ignore build artifacts if committed later: `out/`, `*.class`, `*.log`.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `../../notes/lab6-answers.md` (from project; or `~/java-bootcamp/notes/lab6-answers.md`) before or during the steps; revisit after Checkpoint C.
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Why do stream pipelines postpone work until a **terminal** operation runs?
 2. When is a lambda clearer than a named method—and when should you extract a method instead?
@@ -303,8 +304,59 @@ Write 2–3 sentences each in `../../notes/lab6-answers.md` (from project; or `~
 4. Why prefer `Comparator.comparingDouble(Employee::getSalary).reversed()` over a hand-written `compare` for salary descending?
 5. What does `Collectors.groupingBy(Employee::getDepartment)` give you that a single `List` does not?
 6. Why return `Optional<Employee>` from “highest paid” instead of a nullable `Employee`?
-7. When should you use a method reference (`Employee::getName`) vs a lambda (`e -> e.getName()`)?
-8. How will CRM later reuse filter/map/group thinking for customers (without claiming CRM is done today)?
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.academy.analytics;
+
+import java.util.DoubleSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class ReportService {
+
+    private final EmployeeService employeeService;
+
+    public ReportService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    public void displayDashboard() {
+        List<Employee> employees = employeeService.getEmployees();
+        DoubleSummaryStatistics stats = employees.stream()
+                .collect(Collectors.summarizingDouble(Employee::getSalary));
+
+        long departmentCount = employees.stream()
+                .map(Employee::getDepartment).distinct().count();
+        long activeCount = employees.stream().filter(Employee::isActive).count();
+        long inactiveCount = employees.size() - activeCount;
+
+        Optional<Employee> topPerformer = employeeService.findTopPerformer();
+        Optional<String> highestPaidDepartment =
+                employeeService.findDepartmentWithHighestAverageSalary();
+        List<Employee> topSalaries = employeeService.getTopSalaries(5);
+
+        System.out.println("=============================");
+        System.out.println("Employee Analytics Dashboard");
+        System.out.println("=============================");
+        System.out.println("Employees : " + employees.size());
+        System.out.printf("Average Salary : %.0f%n", stats.getAverage());
+        System.out.printf("Highest Salary : %.0f%n", stats.getMax());
+        System.out.printf("Lowest Salary : %.0f%n", stats.getMin());
+        System.out.println("Departments : " + departmentCount);
+
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -1269,7 +1321,7 @@ Capture screenshots under `notes/screenshots/lab-6/` (no secrets).
 
 ### Checkpoint A — Project + domain model
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1279,7 +1331,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Service + reports compile
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1290,7 +1342,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Stream features
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1301,7 +1353,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Dashboard + evidence
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -1443,14 +1495,7 @@ Keep `.java` sources, stream notes, and evidence screenshots. Do not delete GitH
 
 ## Expected Deliverables
 
-Submit according to your LMS or instructor dropbox. Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
-
-* **Sources** under `src/com/academy/analytics/`: `Employee`, `EmployeeData`, `EmployeeService`, `ReportService`, `Main`
-* **Screenshots:** menu, filters/groups, Dashboard
-* **Stream operations table** (completed)
-* **LMS / README notes:** overview; stream ops; functional interfaces; sample lambdas/method refs; compile/run (`javac -d out` / `java -cp out com.academy.analytics.Main`); sample dashboard; observations
-* **Answers** in `notes/lab6-answers.md`
-* Optional: labeled bonuses; git repository
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
 Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your own work.
 
@@ -1476,21 +1521,16 @@ Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your 
 
 ## Reflection Questions
 
-Write short answers (3–6 sentences) in `../../notes/lab6-answers.md` (from project; or `~/java-bootcamp/notes/lab6-answers.md`):
+Write answers in `../../notes/lab6-answers.md` (from project; or `~/java-bootcamp/notes/lab6-answers.md`):
 
-1. What are the advantages of Streams over loops?
-2. When should Streams be preferred?
-3. What is the difference between `filter()` and `map()`?
-4. Why is `reduce()` useful?
-5. What does `Collectors.groupingBy()` do?
-6. What is the benefit of using `Optional`?
-7. Why are Lambda Expressions more readable?
-8. When should method references be used?
-9. Which stream operation is terminal? Give three examples from your lab.
-10. How do Streams improve enterprise Java applications?
-11. (Forward look) How would a future CRM use `filter` / `map` / `groupingBy` on customers the same way this lab uses them on employees—without claiming the CRM is implemented today?
+Write **1–3 sentence** answers (not essays):
+
+1. (Forward look) How would a future CRM use `filter` / `map` / `groupingBy` on customers the same way this lab uses them on employees—without claiming the CRM is implemented today?
+2. What are the advantages of Streams over loops?
+3. When should Streams be preferred?
 
 ---
+
 
 ## Bonus Challenges
 
@@ -1554,37 +1594,6 @@ Copy into `notes/stream-operations-table.md` and check what you implemented:
 | Dashboard composed report |  | menu 8 |  |
 
 Optional: add a second table comparing one report written with a classic `for` loop vs Streams (LOC, readability, mutability).
-
----
-
-## Success Criteria
-
-You have completed Lab 6 when you can:
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 0 | Module 6 Exercises 1–7 Pass criteria are complete **before** Lab Step 1 | Pass / Fail |
-| 1 | Work in `java-bootcamp/examples/Lab6-EmployeeAnalytics/` with `package com.academy.analytics` | Pass / Fail |
-| 2 | CORE menu options 1–9 run; Dashboard (option 8) shows expected summary numbers | Pass / Fail |
-| 3 | Filter, map, sort, grouping, and Optional pipelines use Streams (not nested loops) | Pass / Fail |
-| 4 | `javac -d out src/com/academy/analytics/*.java` and sample session succeed | Pass / Fail |
-| 5 | Stream-operations table + intermediate-vs-terminal explanation in notes | Pass / Fail |
-| 6 | Screenshots/evidence under `notes/screenshots/lab-6/` without secrets | Pass / Fail |
-
-By the end of this lab, you should also be able to:
-
-* Write concise and expressive Java code using Lambda Expressions
-* Build complete Stream pipelines for querying and transforming collections
-* Apply filtering, mapping, sorting, reduction, grouping, and partitioning effectively
-* Use `Optional` to safely handle missing values
-* Generate business reports using `Collectors` and summary statistics
-* Replace imperative loops with declarative functional programming constructs
-* Design an enterprise-style analytics console under `com.academy.analytics` with `javac -d out` / `java -cp out`
-* Explain how Lab 6’s stream pipelines prepare (but do not implement) later CRM reporting
-
-This lab bridges **Module 6 exercises** (after Lab 5) to graded stream analytics evidence.
 
 ---
 

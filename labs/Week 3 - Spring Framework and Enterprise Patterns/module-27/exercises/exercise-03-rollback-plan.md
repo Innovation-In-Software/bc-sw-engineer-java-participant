@@ -8,10 +8,43 @@ Create `notes/rollback-plan.md` — document what must remain unchanged after fo
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-rollback-plan.md` (this file in the course repo) |
 | Your notes file | `notes/rollback-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 27 — Rollback Evidence Plan
+
+## Step 1 — Happy path
+
+In `notes/rollback-plan.md`: MAIN→LOYALTY updates both balances and writes a log.
+
+## Step 2 — Force fail
+
+Transfer to `ACC-FORCE-FAIL`: MAIN balance unchanged; no success log row.
+
+## Step 3 — Test idea
+
+Automated test asserts balances after failure — plan only.
+
+## Step 4 — AI caution
+
+Reject AI drafts that catch Exception and swallow it inside `@Transactional` methods.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Rollback evidence plan and AI caution recorded in `notes/rollback-plan.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/rollback-plan.md` | Pass / Fail |
-| 2 | Happy and fail paths contrasted | Pass / Fail |
-| 3 | No-log-on-fail stated | Pass / Fail |
-| 4 | Swallowed-exception reject rule written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/rollback-plan.md`
+- [ ] Happy and fail paths contrasted
+- [ ] No-log-on-fail stated
+- [ ] Swallowed-exception reject rule written
+

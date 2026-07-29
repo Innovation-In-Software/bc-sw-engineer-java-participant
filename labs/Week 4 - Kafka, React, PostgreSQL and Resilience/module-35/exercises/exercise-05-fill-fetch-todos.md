@@ -8,10 +8,28 @@ Create `notes/lab35-todos.md` — fill TODOs in a TypeScript fetch helper for cu
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-fill-fetch-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 35 — Fill Fetch TODOs
+
+## Step 1 — Paste
+
+Create `notes/lab35-todos.md`:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -81,9 +99,10 @@ Filled fetch helper with correlation and error TODOs in `notes/lab35-todos.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab35-todos.md` | Pass / Fail |
-| 2 | URL and correlation filled | Pass / Fail |
-| 3 | Return type filled | Pass / Fail |
-| 4 | Two UI/error TODOs present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab35-todos.md`
+- [ ] URL and correlation filled
+- [ ] Return type filled
+- [ ] Two UI/error TODOs present
+

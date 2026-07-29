@@ -8,10 +8,36 @@ Create `notes/lab10-prelab-prompts.md` and contrast a vague Copilot prompt with 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-weak-vs-strong-prompts.md` (this file in the course repo) |
 | Your notes file | `notes/lab10-prelab-prompts.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 10 pre-lab prompts
+
+## Weak
+Write a customer class.
+Why weak: ...
+
+## Strong
+...
+
+## Three constraints
+1. ...
+2. ...
+3. ...
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 

@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab46-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-46/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | Metrics/lag evidence |
 | 7 | No secrets or real customer PII committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -217,9 +222,9 @@ Ignore `target/`, broker data dirs with real payloads, and credential files.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/dlt-replay-runbook.md` or `docs/kafka-dashboard.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main event flow (produce → consume → side effect)
 2. Trust boundary: deserialization / validation before side effects
@@ -227,10 +232,21 @@ Write 2–3 sentences each in `docs/dlt-replay-runbook.md` or `docs/kafka-dashbo
 4. Stable keys (`CUS-1001`) and event IDs vs random offsets alone
 5. Idempotency under at-least-once delivery
 6. Why unbounded retry is worse than a DLT
-7. Evidence operators need (lag, DLT rate, correlation)
-8. Two consumer instances in one group (rebalance behavior)
-9. False confidence: lag=0 while DLT is growing
-10. What Lab 47 stakeholders need from your incident evidence
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+curl -fsS http://localhost:8080/actuator/prometheus | head
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 \
+  --group crm-customer-projection-v1 --describe
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -417,7 +433,8 @@ Lag > 10000 or DLT rate > 0 for 2m → critical + page runbook
 
 ```markdown
 ## Lab Pass criteria
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -438,7 +455,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -448,7 +465,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core resilience
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -458,7 +475,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Idempotency + observability
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -468,7 +485,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -536,7 +553,8 @@ curl -fsS http://localhost:8080/actuator/prometheus | rg -i "kafka|crm|dlt|consu
 ```markdown
 # DLT Replay Runbook — crm.customer.events
 ## Preconditions
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -544,14 +562,17 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 2 | Idempotency proven for event type | Pass / Fail |
 | 3 | Dry-run selection listed (offsets / eventIds) | Pass / Fail |
 ## Steps
+
 1. Export selected DLT records (sanitize PII)
 2. Rate-limit republish to main topic
 3. Watch lag, error rate, DLT growth
 4. Verify CUS-1001 / CUS-1002 projections
 ## Abort if
+
 - Duplicate side effects detected
 - Lag critical threshold exceeded
 ## Correlation
+
 - Prefer lab-request-001 style IDs in lab evidence
 ```
 
@@ -560,16 +581,20 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 ```markdown
 # CRM Kafka Dashboard
 ## Panels
+
 1. Messages/sec processed
 2. Error rate
 3. p95 handler latency
 4. Consumer lag by group
 5. DLT publish rate
 ## Thresholds
+
 - Warning / Critical (document values)
 ## User impact
+
 - Stale profiles for agents (CUS-* projections)
 ## Runbook link
+
 - docs/dlt-replay-runbook.md
 ```
 
@@ -589,6 +614,7 @@ git status --short
 - Topic / DLT / group:
 - Poison test correlation:
 ## Results
+
 | Check | Result | Evidence |
 | ----- | ------ | -------- |
 | DLT receive | PASS/FAIL | |
@@ -657,18 +683,14 @@ git status --short
 
 ## Security and Production Review
 
-Answer in `docs/dlt-replay-runbook.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (Kafka payloads from other services)?
 2. Where are authn/authz for redrive enforced?
 3. Which values are sensitive in DLT bodies and logs?
-4. What can be retried safely (idempotent handlers)?
-5. What happens after partial replay failure?
-6. What would an operator monitor (lag, DLT rate, error ratio)?
-7. Which local default is unacceptable (infinite retry, PII logs, replay-all)?
-8. How are event contracts versioned with schema evolution?
 
 ---
+
 
 ## Cleanup
 
@@ -687,15 +709,9 @@ Purge lab DLT messages if shared brokers require it. Keep sanitized screenshots.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Kafka error-handler configuration (retry + DLT)
-* DLT inspection evidence
-* `docs/kafka-dashboard.md`
-* `docs/dlt-replay-runbook.md`
-* Failure and recovery tests
-* Metrics/lag evidence
-* No secrets or real customer PII committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -717,44 +733,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (keying, DLT, or idempotency)?
-2. Which failure was hardest to diagnose?
-3. What evidence proves the poison path is bounded?
-4. What breaks first at ten times the event rate?
-5. Which concern should move to shared platform Kafka tooling?
-6. What must change before real customer payloads are logged (spoiler: don’t)?
-7. How does this lab connect to Labs 30–31, 44, and 47?
-8. What metric matters most on the on-call dashboard?
-9. (Forward look) How does schema evolution change DLT replay criteria?
+2. What evidence proves the poison path is bounded?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a DLT redrive utility with dry-run mode.
 2. Alert on lag **duration** rather than only record count.
 3. Test duplicate delivery across process restart.
-4. Add retry and DLT integration tests with EmbeddedKafka / Testcontainers.
-5. Document partition-key trade-offs for `CUS-*` keys.
-6. Export a Grafana JSON excerpt (sanitized) matching `kafka-dashboard.md`.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Poison events reach the DLT after bounded retries
-* Idempotent handling prevents duplicate side effects
-* Lag and consumer metrics are observable
-* Dashboard/alert notes and replay runbook exist
-* Failure/recovery tests pass deterministically
-* Another student can follow the replay dry-run
-* No production secret or real PII is hard-coded in logs
-
----
 
 ## Instructor Notes
 

@@ -8,10 +8,43 @@ Create `notes/lab39-paging-locking.md` — document how CRM list paging and opti
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-39-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-paging-locking.md` (this file in the course repo) |
 | Your notes file | `notes/lab39-paging-locking.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 39 — Paging and Locking Notes
+
+## Step 1 — Page request
+
+`PageRequest.of(0, 20, Sort.by("customerId"))`.
+
+## Step 2 — Response
+
+Return totalElements + content slice to the UI later.
+
+## Step 3 — Optimistic lock
+
+Second writer on Amina fails if version stale — user retries.
+
+## Step 4 — Correlation
+
+Log `lab-request-001` on lock failures for support.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Paging + optimistic locking behavior notes in `notes/lab39-paging-locking.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab39-paging-locking.md` | Pass / Fail |
-| 2 | PageRequest example | Pass / Fail |
-| 3 | Stale version behavior | Pass / Fail |
-| 4 | Correlation logging note | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab39-paging-locking.md`
+- [ ] PageRequest example
+- [ ] Stale version behavior
+- [ ] Correlation logging note
+

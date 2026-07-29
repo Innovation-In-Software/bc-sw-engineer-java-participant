@@ -8,10 +8,39 @@ Create `notes/lab12-smell-bingo.md` — mark five smells you expect in a rushed 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-smell-bingo.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-smell-bingo.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 12 — Smell Bingo
+
+## Step 1 — Smell list
+
+Bingo card: long method, magic strings for ACTIVE/PROSPECT, == on Strings, mixed I/O in domain, unclear names.
+
+## Step 2 — Fixture tie-in
+
+For each smell, note how it could corrupt CUS-1001 / CUS-1002 handling.
+
+## Step 3 — Priority
+
+Star the two smells you will fix first in the timed lab.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A smell bingo card prioritized for Lab 12 in `notes/lab12-smell-bingo.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab12-smell-bingo.md` | Pass / Fail |
-| 2 | Five smells listed | Pass / Fail |
-| 3 | Fixture impact noted | Pass / Fail |
-| 4 | Two priorities starred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab12-smell-bingo.md`
+- [ ] Five smells listed
+- [ ] Fixture impact noted
+- [ ] Two priorities starred
+

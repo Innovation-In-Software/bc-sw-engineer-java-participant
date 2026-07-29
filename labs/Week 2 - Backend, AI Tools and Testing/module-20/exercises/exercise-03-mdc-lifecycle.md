@@ -8,10 +8,43 @@ Create `notes/lab20-mdc-lifecycle.md` — sketch put → use → clear MDC for c
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-mdc-lifecycle.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-mdc-lifecycle.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 20 — MDC Lifecycle
+
+## Step 1 — Put
+
+On request entry: MDC.put("correlationId", "lab-request-001").
+
+## Step 2 — Use
+
+Service logs automatically include correlation via pattern.
+
+## Step 3 — Clear
+
+finally { MDC.clear(); } or remove key — prevent leak to next request.
+
+## Step 4 — Boundary
+
+Note metrics/alerts deepen in Lab 21; here focus logs/MDC.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ An MDC lifecycle sketch with clear-in-finally in `notes/lab20-mdc-lifecycle.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab20-mdc-lifecycle.md` | Pass / Fail |
-| 2 | Put documented | Pass / Fail |
-| 3 | Clear in finally documented | Pass / Fail |
-| 4 | Lab 21 boundary noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab20-mdc-lifecycle.md`
+- [ ] Put documented
+- [ ] Clear in finally documented
+- [ ] Lab 21 boundary noted
+

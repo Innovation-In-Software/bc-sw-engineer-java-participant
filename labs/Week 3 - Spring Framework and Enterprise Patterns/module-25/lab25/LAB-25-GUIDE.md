@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab25-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-25/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -58,6 +59,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Dual green `mvn test` |
 | 8 | No secrets or `target/` committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -211,9 +215,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/layering-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: HTTP → controller → service → repository
 2. Trust boundary: JSON → DTO validation → domain
@@ -221,10 +225,33 @@ Write 2–3 sentences each in `docs/layering-notes.md`:
 4. Stable business IDs (`CUS-1001`) vs generated DB keys later
 5. Idempotency: GET vs POST create
 6. In-memory shortcut vs JPA + PostgreSQL production design
-7. Correlation `lab-request-001` as support evidence
-8. Two instances: maps do not share
-9. False-confidence AI: `ResponseEntity` in service, repo using Servlet types
-10. What Lab 27 adds (transactions) without rewriting controller routes
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@Test
+void updateStatus_movesProspectToActive() {
+  var repo = new InMemoryCustomerRepository();
+  var service = new CustomerService(repo);
+  var updated = service.updateStatus("CUS-1002", CustomerStatus.ACTIVE);
+  assertEquals(CustomerStatus.ACTIVE, updated.getStatus());
+  assertEquals("Ravi Singh", updated.getFullName());
+}
+
+@Test
+void getRequired_throws_whenMissing() {
+  var service = new CustomerService(new InMemoryCustomerRepository());
+  assertThrows(CustomerNotFoundException.class,
+      () -> service.getRequired("CUS-9999"));
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -508,7 +535,7 @@ mvn -q test -Dtest=CustomerServiceTest
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -518,7 +545,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Layering core
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -528,7 +555,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Writes + tests + AI
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -538,7 +565,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -690,18 +717,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (JSON bodies, path IDs)?
 2. Where are authn/authz/validation enforced (Lab 28 deepens auth)?
 3. Which values are sensitive — never log emails/phones as PII dumps?
-4. What can be retried safely (GET vs POST create)?
-5. What happens after partial failure (create saved, response lost)?
-6. What would an operator monitor (not-found rate, create rate)?
-7. Which local default is unacceptable in production (in-memory as sole store)?
-8. How are API contracts versioned when repository becomes JPA?
 
 ---
+
 
 ## Cleanup
 
@@ -718,16 +741,9 @@ git status
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Layered Controller → Service → Repository source
-* Seeded in-memory repo with `CUS-1001` / `CUS-1002`
-* HTTP evidence + duplicate/not-found failures
-* `CustomerServiceTest` output
-* AI review notes (`lab25-001`) or manual equivalent
-* Layering / JPA readiness notes
-* Dual green `mvn test`
-* No secrets or `target/` committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -749,44 +765,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (where rules live)?
-2. Which failure was hardest to diagnose?
-3. What evidence proves layering works?
-4. What breaks first at ten times load with an in-memory map?
-5. Which concern should move to shared infrastructure (DB, migrations)?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 23–24 and 26–28?
-8. What metric or log field matters most for layered CRM APIs?
-9. (Forward look) Which files should stay untouched when JPA arrives?
+2. What evidence proves layering works?
+3. Which failure was hardest to diagnose?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. MDC correlation + `customerId` without PII.
 2. `@DataJpaTest` plan doc even before JPA wiring.
 3. Actuator readiness reflecting repository health (document-only OK).
-4. Metrics around service create/status calls.
-5. Operator rollback note for a failed status update.
-6. Prove SOAP Lab 24 still compiles against the same service interface.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Controller → Service → Repository is demonstrable for Customer
-* Happy path and failure paths are repeatable
-* Another student can follow your run instructions
-* Tests/build pass twice
-* No production secret is hard-coded
-* You can explain in-memory vs JPA trade-offs
-* AI-assisted code (if any) was human-reviewed and logged
-
----
 
 ## Instructor Notes
 

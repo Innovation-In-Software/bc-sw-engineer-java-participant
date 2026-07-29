@@ -8,6 +8,10 @@ Create `notes/dependency-tree-notes.md` distinguishing direct vs transitive depe
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-09-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | this file in the course repo |
@@ -56,6 +60,16 @@ com.northstar:build-demo:jar:0.1.0-SNAPSHOT
 | `-B` | Batch / non-interactive | CI-style runs (`mvn -B verify`) |
 
 **Do not use `-q` with `dependency:tree`.** Quiet mode can hide the tree you are supposed to inspect.
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Create `notes/dependency-tree-notes.md` distinguishing direct vs transitive dependencies and recording why CI prefers `mvn -B verify`.
+
+**Done looks like:** You can label direct vs transitive rows, explain `+-` vs `\-`, spot `:test` scope, and know the CI verify habit—before Lab 9’s full evidence pack.
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -106,9 +120,10 @@ You can label direct vs transitive rows, explain `+-` vs `\-`, spot `:test` scop
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| - | ------- | ----- |
-| 1 | Direct vs transitive for Jupiter rows is correct | Pass / Fail |
-| 2 | Notes explain `+-` vs `\-` in one short line each | Pass / Fail |
-| 3 | You ran `mvn dependency:tree` **without** `-q` (or explained why) | Pass / Fail |
-| 4 | Notes include `mvn -B verify` as the CI habit | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Direct vs transitive for Jupiter rows is correct
+- [ ] Notes explain `+-` vs `\-` in one short line each
+- [ ] You ran `mvn dependency:tree` **without** `-q` (or explained why)
+- [ ] Notes include `mvn -B verify` as the CI habit
+

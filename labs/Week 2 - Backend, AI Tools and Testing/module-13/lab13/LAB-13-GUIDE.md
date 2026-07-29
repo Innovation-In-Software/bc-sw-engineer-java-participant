@@ -49,13 +49,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab13-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-13/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -72,6 +73,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Architecture note: contracts NOW vs Spring-WS Lab 24 vs React/Kafka/PostgreSQL LATER |
 | 8 | Design decisions (document/literal, correlation placement) |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -232,9 +236,9 @@ Ignore IDE metadata and any accidental early JAXB `target/` output from Lab 24 e
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/soap-design-notes.md` before or during authoring:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main data flow (partner → SOAP contract → future endpoint → `CustomerService`)
 2. Trust boundary: schema validation vs service business rules
@@ -242,10 +246,59 @@ Write 2–3 sentences each in `docs/soap-design-notes.md` before or during autho
 4. Stable identity (`CUS-1001`) vs display fields
 5. Retry/idempotency: Create vs Get vs Update semantics
 6. Static WSDL files vs generating WSDL only at runtime
-7. Correlation header/field for support (`lab-request-001`)
-8. Two instances serving the same WSDL version—what must stay identical?
-9. Why document/literal over RPC/encoded for this lab?
-10. What must **not** change between Lab 13 and Lab 24 without a version bump?
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```xml
+  <xs:element name="createCustomerRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fullName" type="xs:string"/>
+        <xs:element name="email" type="xs:string"/>
+        <xs:element name="phone" type="xs:string" minOccurs="0"/>
+        <xs:element name="status" type="tns:CustomerStatus" minOccurs="0"/>
+        <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="tns:CustomerType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="updateCustomerRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customerId" type="xs:string"/>
+        <xs:element name="fullName" type="xs:string" minOccurs="0"/>
+        <xs:element name="email" type="xs:string" minOccurs="0"/>
+        <xs:element name="phone" type="xs:string" minOccurs="0"/>
+        <xs:element name="status" type="tns:CustomerStatus" minOccurs="0"/>
+        <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="tns:CustomerType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getCustomerRequest">
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -604,7 +657,7 @@ In `docs/soap-design-notes.md`, state that Lab 24 maps these ideas to Spring-WS 
 
 **Do this:** Complete README checklist:
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -646,7 +699,7 @@ ls -R contracts samples docs
 
 ### Checkpoint A — Layout + XSD core
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -656,7 +709,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Full contract
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -666,7 +719,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Samples + faults
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -676,7 +729,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Handoff + experiments
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -776,18 +829,14 @@ Different XML tools disagree on partial SOAP validation—grade well-formed cont
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which SOAP inputs are untrusted (body/header fields)?
 2. Where will authn/authz/validation be enforced (schema + future WS-Security / service rules)?
 3. Which values are sensitive—keep samples fictional?
-4. What can be retried safely (Get yes; Create only with idempotency design)?
-5. What happens after failure (Fault response; no half-written customer in samples)?
-6. What would ops monitor later (fault rates, latency)?
-7. Which local default is unacceptable in production (`http://` placeholder, no auth)?
-8. How are contracts versioned (namespace / WSDL version strategy)?
 
 ---
+
 
 ## Cleanup
 
@@ -803,17 +852,9 @@ No Docker stack. Keep contracts and samples. **Keep `lab13-crm`**—Lab 24 imple
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `contracts/customer.xsd` and `contracts/CustomerService.wsdl`
-* Sample SOAP envelopes for CreateCustomer, UpdateCustomer, GetCustomer
-* Fault samples (not-found + validation)
-* `docs/operation-matrix.md` and `docs/soap-design-notes.md`
-* Partner handoff checklist in README
-* Controlled-failure evidence (broken schemaLocation)
-* Architecture note: contracts NOW vs Spring-WS Lab 24 vs React/Kafka/PostgreSQL LATER
-* Design decisions (document/literal, correlation placement)
-* No secrets; no requirement to commit a running SOAP server
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -835,44 +876,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers in design notes:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected partner usability?
-2. Which failure was hardest to diagnose (namespace vs element name)?
-3. What evidence proves the contract is implementable in Lab 24?
-4. What breaks first at ten times the field count without versioning?
-5. Which concern should move to shared infrastructure (WSDL hosting, WS-Security)?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 8–12 domain work and Lab 24 SOAP hosting?
-8. What metric or log field matters most once the endpoint is live?
-9. (Forward look) If REST arrives later, what from this SOAP contract should stay conceptually identical?
+2. What evidence proves the contract is implementable in Lab 24?
+3. Which failure was hardest to diagnose (namespace vs element name)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a SOAP header element for correlation instead of (or in addition to) body field.
 2. Sketch a v2 namespace (`.../customer/v2`) without breaking v1 samples.
 3. Generate a one-page partner onboarding markdown from your samples.
-4. Cross-walk UpdateCustomer fields to Lab 12 `updateStatus` in a table.
-5. Document rollback if a breaking XSD change shipped to a partner early.
-6. Optional SoapUI project file importing the WSDL (still no live endpoint required).
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate XSD types, WSDL operations Create/Update/Get, and sample envelopes
-* Happy-path samples and at least one fault sample are reviewable
-* Another student can follow your handoff checklist without a live server
-* XML is well-formed; optional validators pass
-* No production secret is hard-coded
-* You can explain contract-first design versus Lab 24 implementation trade-offs
-* You explicitly did **not** claim a running SOAP server for Lab 13 marks
-
----
 
 ## Instructor Notes
 

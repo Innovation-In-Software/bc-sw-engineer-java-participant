@@ -8,10 +8,28 @@ Create `notes/lab40-sast-todo-notes.md` — complete a fill-in checklist for one
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-sast-todo-notes.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-sast-todo-notes.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 40 — Fill SAST Path TODOs
+
+## Step 1 — Copy template
+
+In notes, create `sast-path-todo.md` with blanks:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -69,9 +87,10 @@ Two filled SAST path notes with remaining blanks only where Lab 40 code proof is
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab40-sast-todo-notes.md` | Pass / Fail |
-| 2 | Template filled for read and write paths | Pass / Fail |
-| 3 | Fixtures CUS-1001/CUS-1002 used | Pass / Fail |
-| 4 | No secrets in notes | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab40-sast-todo-notes.md`
+- [ ] Template filled for read and write paths
+- [ ] Fixtures CUS-1001/CUS-1002 used
+- [ ] No secrets in notes
+

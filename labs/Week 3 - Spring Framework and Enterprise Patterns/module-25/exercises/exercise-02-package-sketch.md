@@ -8,10 +8,43 @@ Create `notes/package-tree.md` — sketch `api`/`controller`, `service`, `reposi
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-package-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/package-tree.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 25 — Package Sketch
+
+## Step 1 — Tree
+
+In `notes/package-tree.md`, draw `com.northstar.crm` with controller, service, repository, model (and optional dto).
+
+## Step 2 — Types
+
+Place `CustomerController`, `CustomerService`, `CustomerRepository`, `InMemoryCustomerRepository`, `Customer`.
+
+## Step 3 — SOAP note
+
+If SOAP exists from Lab 24, endpoints stay adapters; still call the same service.
+
+## Step 4 — JPA readiness
+
+One sentence: later JPA repo should keep the same service method signatures.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Package tree supports layered Boot CRM in `notes/package-tree.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/package-tree.md` | Pass / Fail |
-| 2 | Four packages present | Pass / Fail |
-| 3 | Five types placed | Pass / Fail |
-| 4 | JPA readiness sentence written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/package-tree.md`
+- [ ] Four packages present
+- [ ] Five types placed
+- [ ] JPA readiness sentence written
+

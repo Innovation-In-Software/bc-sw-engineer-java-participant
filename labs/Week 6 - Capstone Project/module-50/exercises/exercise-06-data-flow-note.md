@@ -8,10 +8,39 @@ Create `notes/lab50-data-flow-note.md` — write a short UI→API→JPA→Postgr
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-50-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-data-flow-note.md` (this file in the course repo) |
 | Your notes file | `notes/lab50-data-flow-note.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 50 — Document End-to-End Data Flow
+
+## Step 1 — Pick action
+
+Add interaction on `CUS-1001` with correlation `lab-request-001`.
+
+## Step 2 — Sequence
+
+Numbered steps across frontend, controller, service, repository, DB row.
+
+## Step 3 — Failure point
+
+Mark where validation or DB failure surfaces in the UI.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ End-to-end data-flow note with failure surfacing in `notes/lab50-data-flow-note.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab50-data-flow-note.md` | Pass / Fail |
-| 2 | Sequence numbered | Pass / Fail |
-| 3 | Failure surfacing marked | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab50-data-flow-note.md`
+- [ ] Sequence numbered
+- [ ] Failure surfacing marked
+- [ ] Notes saved
+

@@ -8,10 +8,43 @@ Create `notes/lab35-error-ux.md` — draft user-facing messages for common CRM A
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-error-ux.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-error-ux.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 35 — Error UX Copy
+
+## Step 1 — 404
+
+Message when `CUS-9999` not found.
+
+## Step 2 — Network
+
+Message when API unreachable.
+
+## Step 3 — 400
+
+Message when name validation fails.
+
+## Step 4 — Logging
+
+Dev console may show correlation id; users see plain language only.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Three user messages plus logging vs UX boundary in `notes/lab35-error-ux.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab35-error-ux.md` | Pass / Fail |
-| 2 | 404/network/400 messages | Pass / Fail |
-| 3 | Correlation stays in logs note | Pass / Fail |
-| 4 | No stack traces in UI copy | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab35-error-ux.md`
+- [ ] 404/network/400 messages
+- [ ] Correlation stays in logs note
+- [ ] No stack traces in UI copy
+

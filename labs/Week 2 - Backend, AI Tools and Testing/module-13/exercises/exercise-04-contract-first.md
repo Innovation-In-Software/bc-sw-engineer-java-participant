@@ -8,10 +8,39 @@ Create `notes/lab13-contract-first.md` — explain why Northstar SOAP should sta
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-contract-first.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-contract-first.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 13 — Contract-First Mindset
+
+## Step 1 — Definition
+
+One sentence: define types and operations in XSD/WSDL before generating Java.
+
+## Step 2 — Risk of code-first
+
+Name two risks: accidental breaking changes and framework leakage into the contract.
+
+## Step 3 — CRM ops
+
+List candidate ops: GetCustomer, ActivateCustomer (paper names only).
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A contract-first rationale with two CRM operations named in `notes/lab13-contrac
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab13-contract-first.md` | Pass / Fail |
-| 2 | Contract-first sentence written | Pass / Fail |
-| 3 | Two code-first risks | Pass / Fail |
-| 4 | Two operations listed | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab13-contract-first.md`
+- [ ] Contract-first sentence written
+- [ ] Two code-first risks
+- [ ] Two operations listed
+

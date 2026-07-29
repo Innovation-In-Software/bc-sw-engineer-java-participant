@@ -8,10 +8,43 @@ Create `notes/lab34-validation-messages.md` — write validation messages for em
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-34-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-validation-messages.md` (this file in the course repo) |
 | Your notes file | `notes/lab34-validation-messages.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 34 — Validation Messages
+
+## Step 1 — Rules
+
+Name required; status required; name min length 2.
+
+## Step 2 — Messages
+
+Draft three user-facing strings (no jargon).
+
+## Step 3 — Timing
+
+Choose: validate on blur vs on submit — pick one for Lab 34.
+
+## Step 4 — Server later
+
+Note Lab 35 will also show API 400 errors.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Three messages plus a validation-timing decision in `notes/lab34-validation-mess
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab34-validation-messages.md` | Pass / Fail |
-| 2 | Three messages | Pass / Fail |
-| 3 | Timing chosen | Pass / Fail |
-| 4 | Lab 35 boundary noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab34-validation-messages.md`
+- [ ] Three messages
+- [ ] Timing chosen
+- [ ] Lab 35 boundary noted
+

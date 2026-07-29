@@ -8,10 +8,53 @@ Create `notes/lab42-manifest-map.md` — name the objects required to run `crm-a
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-manifest-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-manifest-map.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 42 — Map k3s Manifests
+
+## Reference
+
+| Object | Holds | Must not hold |
+| --- | --- | --- |
+| ConfigMap | Non-secret URLs/flags | DB passwords |
+| Secret | Credentials (out-of-band) | Values in Git |
+| Deployment | Pod template, probes | HostPath secrets |
+| Service | ClusterIP ports | TLS private keys |
+| Ingress | Host/path/TLS redirect | App business logic |
+
+## Step 1 — Objects
+
+List: Namespace (student), ConfigMap, Secret (ref only), Deployment, Service, Ingress (Traefik).
+
+## Step 2 — Check the reference
+
+Cohort cluster uses shared k3s with Traefik Ingress and per-student namespaces—use `kubectl` and instructor kubeconfig (never commit it).
+
+## Step 3 — Labels
+
+Propose app labels: `app=crm-api`, `lab=42`, `customer-fixture=synthetic`.
+
+## Step 4 — Image pin
+
+Note image must be digest-pinned from Lab 41—not `:latest` alone.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -72,9 +115,10 @@ A manifest object map with labels and digest-pin note in `notes/lab42-manifest-m
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab42-manifest-map.md` | Pass / Fail |
-| 2 | Six object types listed | Pass / Fail |
-| 3 | Traefik Ingress noted | Pass / Fail |
-| 4 | Digest pin required | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab42-manifest-map.md`
+- [ ] Six object types listed
+- [ ] Traefik Ingress noted
+- [ ] Digest pin required
+

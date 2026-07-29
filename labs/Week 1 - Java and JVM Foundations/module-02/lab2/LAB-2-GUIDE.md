@@ -50,13 +50,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class:** prefer the [45-minute timed path](#45-minute-timed-path-use-starter) with [`starter/`](starter/README.md).
-2. Confirm Lab 0 + Module 2 Exercises 1–7 are done (checklists below). Exercises 8–9 help with money/`printf` tables — finish them if you can before Step 7.
-3. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-4. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-5. For each **Step N**: read **Why** / **Builds on** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-6. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-7. Capture evidence under `notes/screenshots/lab-2/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## Module 2 exercises you must already have completed
 
@@ -262,7 +263,9 @@ Optional bonus later: menu items 6–10 (top / lowest / pass-fail / sort / stats
 
 ---
 
-## Concepts to Discuss (with instructor)
+## Key ideas (skim — no write-up)
+
+Skim these ideas before coding. **No separate essay write-up required.**
 
 Revisit your exercise notes, then discuss:
 
@@ -272,6 +275,58 @@ Revisit your exercise notes, then discuss:
 * Why arrays need a separate `studentCount` (do not loop to `students.length` blindly) *(lab-only)*
 * Why `Main` stays thin and `StudentManager` owns operations *(Exercise 4)*
 * How `printf` column widths from Exercises 7–9 transfer to the student table *(Exercises 7–9)*
+
+---
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.academy.student;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        StudentManager studentManager = new StudentManager(scanner);
+
+        while (true) {
+            studentManager.displayMenu();
+
+            String choiceInput = scanner.nextLine().trim();
+            if (choiceInput.isEmpty()) {
+                System.out.println("Invalid Input");
+                System.out.println("Please Try Again.");
+                continue;
+            }
+
+            int choice;
+            try {
+                choice = Integer.parseInt(choiceInput);
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid Input");
+                System.out.println("Please Try Again.");
+                continue;
+            }
+
+            switch (choice) {
+                case 1 -> studentManager.addStudent();
+                case 2 -> studentManager.displayStudents();
+                case 3 -> studentManager.searchStudent();
+                case 4 -> studentManager.calculateAverage();
+                case 5 -> {
+                    System.out.println("Thank You");
+                    scanner.close();
+                    return;
+                }
+                default -> {
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -882,10 +937,9 @@ You may delete `out/` anytime; sources stay. Keep `examples/Lab2-JavaSyntax/` fo
 
 ## Expected Deliverables
 
-* Source under `java-bootcamp/examples/Lab2-JavaSyntax/src/com/academy/student/`
-* Screenshots: menu, add success, display table, average, thank-you exit
-* Short note (3–5 sentences): packages, Scanner choice, array + count
-* Working compile/run commands documented
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
+
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -904,46 +958,26 @@ You may delete `out/` anytime; sources stay. Keep `examples/Lab2-JavaSyntax/` fo
 
 ## Reflection Questions
 
+Write **1–3 sentence** answers (not essays):
+
 1. Why must the package folder tree match `package com.academy.student`?
 2. Why prefer `nextLine()` + parse over `nextInt()` in a menu app?
 3. Why keep a `studentCount` instead of relying on `students.length` alone?
-4. What belongs in `Main` versus `StudentManager`?
-5. How does this console CRUD prepare you for later Spring/customer labs **without** implementing them here?
 
 ---
+
 
 ## Bonus Challenges
 
-Try after the core menu works. Reference ideas live under [`solution/`](solution/) (menu 6–10)—attempt first.
+Optional — only after core deliverables pass. Pick at most one if time is short.
 
-1. **Top student** — highest marks  
-2. **Lowest marks**  
-3. **Pass / Fail report** (threshold 50)  
-4. **Sort by marks** (copy array, then sort; do not corrupt insert order unless asked)  
-5. **Class statistics** — high / low / average / count  
 
----
-
-## Success Criteria
-
-You have completed Lab 2 when you can:
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 0 | Module 2 Exercises 1–7 Pass criteria are complete **before** Lab Steps 3+ | Pass / Fail |
-| 1 | Package folders match `com.academy.student` under `examples/Lab2-JavaSyntax/src/` | Pass / Fail |
-| 2 | `Student` / `StudentManager` / thin `Main` compile and run | Pass / Fail |
-| 3 | One shared `Scanner`; add path works for demo `101` / `John` / `Java` / `91` | Pass / Fail |
-| 4 | Display prints a `printf` student table | Pass / Fail |
-| 5 | Search and average menu paths work | Pass / Fail |
-| 6 | `javac -d out` and `java -cp out com.academy.student.Main` succeed from the terminal | Pass / Fail |
-| 7 | You can explain each layer without copying the solution | Pass / Fail |
-
-This lab bridges **Module 2 exercises** (after Lab 0 / Lab 1 habits) to a graded packaged console app.
+1. **Top student** — highest marks
+2. **Lowest marks**
+3. **Pass / Fail report** (threshold 50)
 
 ---
+
 
 ## Instructor Notes
 

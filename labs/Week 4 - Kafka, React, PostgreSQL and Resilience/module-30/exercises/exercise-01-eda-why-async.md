@@ -8,10 +8,39 @@ Create `notes/lab30-prelab-eda.md` — explain why Northstar notifications shoul
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-eda-why-async.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-prelab-eda.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 30 — Why Async for CRM
+
+## Step 1 — List sync pain
+
+Customer service creates `CUS-1001` Amina Khan over HTTP with correlation `lab-request-001`. List **three** problems if it also calls email, audit, and analytics synchronously in the same request thread.
+
+## Step 2 — Event idea
+
+In one sentence, describe publishing a `CustomerCreated` event so other teams consume independently.
+
+## Step 3 — Coupling check
+
+Mark true/false: *The Customer JVM must be up for the Audit consumer to process an already-published event.*
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A short note contrasts sync fan-out with Kafka publish-and-forget for CRM in `no
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab30-prelab-eda.md` | Pass / Fail |
-| 2 | Three sync pain points named | Pass / Fail |
-| 3 | One clear event-driven sentence | Pass / Fail |
-| 4 | True/false answered with a one-line reason | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab30-prelab-eda.md`
+- [ ] Three sync pain points named
+- [ ] One clear event-driven sentence
+- [ ] True/false answered with a one-line reason
+

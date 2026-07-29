@@ -37,12 +37,14 @@ Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
 
 ## How to follow this lab
 
-1. **In class (session block):** prefer [`starter/README.md`](starter/README.md) — copy starter → `defense/`, fill outline + demo script (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / multi-day): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-52/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -59,6 +61,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | Baseline/demo validation notes (health, smoke, or fallback) |
 | 8 | One controlled failure-path demo beat result |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -228,9 +233,9 @@ If instructor requires `lab52-crm/defense/`, mirror the same files and link from
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `defense/evidence-index.md` intro:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main demo flow the panel will see (Amina interaction)
 2. Trust boundary you will explain (JWT validation location)
@@ -238,10 +243,27 @@ Write 2–3 sentences each in `defense/evidence-index.md` intro:
 4. Why stable fixtures beat improvising new customers live
 5. Idempotency story (consumer dedupe or submit guard)
 6. Why digest identity matters more than “we deployed”
-7. Evidence types (tests, SQL, Kafka, pipeline, ADR)
-8. Two environments: rehearsal vs panel room differences
-9. False-confidence answers (“it should work”) vs evidence
-10. What you will explicitly say is out of scope / residual risk
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+curl -fsS "$CRM_URL/actuator/health/readiness"
+curl -fsS "$CRM_URL/api/customers?email=amina.khan@example.test" \
+  -H "Authorization: Bearer $DEMO_TOKEN" | jq .
+curl -i -X POST "$CRM_URL/api/customers/$CUSTOMER_ID/interactions" \
+  -H "Authorization: Bearer $DEMO_TOKEN" -H 'Content-Type: application/json' \
+  -H 'X-Correlation-ID: lab-request-001' \
+  -d '{"channel":"CHAT","summary":"Resolved login question"}'
+kubectl get pods -l app=crm-api
+kubectl rollout history deployment/crm-api
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -320,7 +342,7 @@ Export `defense/final-presentation.pdf` (or approved format). Keep fixtures `CUS
 
 Pre-seed checklist before the panel enters:
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -419,16 +441,22 @@ Card template:
 
 ```markdown
 ## Observation
+
 Frontend and backend contracts diverged.
 ## Impact
+
 Two stories missed staging rehearsal.
 ## Contributing conditions
+
 Examples were copied manually and no consumer test ran in CI.
 ## Action
+
 Add OpenAPI contract validation to pull requests.
 ## Owner and due date
+
 Backend lead — within two weeks.
 ## Success measure
+
 Three releases with no staging contract mismatch.
 ```
 
@@ -446,7 +474,7 @@ Three releases with no staging contract mismatch.
 
 Scrub checklist before archive:
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -478,7 +506,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint A — Evidence and story
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -488,7 +516,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Demo readiness
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -498,7 +526,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Defense quality
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -508,7 +536,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Close-out hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -623,18 +651,14 @@ git status --short
 
 ## Security and Production Review
 
-Answer in `defense/self-assessment.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs remain untrusted in the demonstrated system?
 2. Where did you prove authn/authz/validation?
 3. Which sensitive values were excluded from the portfolio pack?
-4. What demo steps are safely retryable?
-5. What is the plan after a live demo partial failure?
-6. What should operators monitor post-release?
-7. Which demo habit is unacceptable (live coding secrets, real PII)?
-8. How will contract/ADR versions be maintained after the course?
 
 ---
+
 
 ## Cleanup
 
@@ -655,21 +679,9 @@ Capstone grading should weigh evidence linked from `defense/evidence-index.md` o
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `defense/final-presentation.pdf` (or instructor-approved slide export)
-* `defense/demo-script.md`
-* `defense/evidence-index.md`
-* `defense/technical-q-and-a.md`
-* `defense/retrospective.md`
-* `defense/self-assessment.md`
-* Baseline/demo validation notes (health, smoke, or fallback)
-* One controlled failure-path demo beat result
-* Concise reproduction pointers for peer operators
-* Peer-review notes and resolved comments
-* Known limitations, residual risks, owners, and next actions
-
-Exclude real `.env` files, access tokens, database exports, private keys, kubeconfig, Terraform state, and sensitive screenshots.
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -691,44 +703,26 @@ Exclude real `.env` files, access tokens, database exports, private keys, kubeco
 
 ## Reflection Questions
 
-Write 3–6 sentence answers (may overlap self-assessment):
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected the defense narrative?
-2. Which panel (or rehearsal) question was hardest?
-3. What evidence most strongly proves the CRM works?
-4. What breaks first if demo traffic multiplies?
-5. Which concern should become shared platform CI next?
-6. What must change before real customer data appears in demos?
-7. How do Labs 48–51 connect in the story you told?
-8. What metric should leadership watch after “go-live”?
-9. (Forward look) Which residual risk would you fund first post-bootcamp?
+2. What evidence most strongly proves the CRM works?
+3. Which panel (or rehearsal) question was hardest?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Answer ten panel questions in one minute each (timed peer drill).
 2. Rehearse complete demo fallback end-to-end without UI.
 3. Create a portfolio-safe one-page architecture summary.
-4. Compare self-score with peer score using evidence diffs.
-5. Convert retrospective learning into tracked backlog items in `docs/backlog.md`.
-6. Record a 3-minute captioned demo video as archive fallback.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Presentation and demo script are rehearsal-proven
-* Evidence index links every major claim
-* Q&A uses artifacts; limitations are explicit
-* Retro actions are few, owned, and measurable
-* Self-assessment is evidence-based
-* Another teammate can operate the demo script
-* No production secret remains in the defense pack
-
----
 
 ## Instructor Notes
 

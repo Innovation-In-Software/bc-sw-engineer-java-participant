@@ -11,6 +11,20 @@
 
 Create `RetentionDemo.java`, observe a static collection retaining objects, then clear the collection and explain why those objects become GC-eligible.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Before: 2 MB
+Retained objects: 10000
+After allocation: 13 MB
+After clear (approx): 1 MB
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -151,9 +165,10 @@ The list reaches exactly 10,000 entries, memory usage rises approximately, and c
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Program safely retains exactly 10,000 objects | Pass / Fail |
-| 2 | You trace the static-field retaining path | Pass / Fail |
-| 3 | You explain why GC cannot free reachable objects | Pass / Fail |
-| 4 | You name at least one bounded-cache fix | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Program safely retains exactly 10,000 objects
+- [ ] You trace the static-field retaining path
+- [ ] You explain why GC cannot free reachable objects
+- [ ] You name at least one bounded-cache fix
+

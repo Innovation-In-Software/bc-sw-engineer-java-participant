@@ -8,10 +8,39 @@ Create `notes/lab45-cost-exposure-quiz.md` — answer short prompts about insecu
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-cost-exposure-quiz.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-cost-exposure-quiz.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 45 — Cost and Exposure Quiz
+
+## Step 1 — Scenarios
+
+For each: public DB, unrestricted SG, huge VM without need, missing tags—write fail reason.
+
+## Step 2 — Check the reference
+
+Cost limits and tags are part of the infra contract.
+
+## Step 3 — CRM link
+
+One sentence: insecure infra endangers APIs that serve agent lookups of Amina/Ravi.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Risk quiz answers saved in `notes/lab45-cost-exposure-quiz.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab45-cost-exposure-quiz.md` | Pass / Fail |
-| 2 | Four scenarios answered | Pass / Fail |
-| 3 | Contract link made | Pass / Fail |
-| 4 | CRM impact stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab45-cost-exposure-quiz.md`
+- [ ] Four scenarios answered
+- [ ] Contract link made
+- [ ] CRM impact stated
+

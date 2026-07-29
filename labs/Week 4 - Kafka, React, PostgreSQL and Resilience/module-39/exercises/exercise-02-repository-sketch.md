@@ -8,10 +8,43 @@ Create `notes/lab39-repository-sketch.md` — list repository methods you will i
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-39-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-repository-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab39-repository-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 39 — Repository Sketch
+
+## Step 1 — CustomerRepository
+
+`findById`, `findByStatus`, `findAll(Pageable)`.
+
+## Step 2 — AccountRepository
+
+`findByCustomerId(String customerId)` for Amina/Ravi.
+
+## Step 3 — Derived vs @Query
+
+Note when a `@Query` might be clearer than a long derived name.
+
+## Step 4 — Service boundary
+
+Controllers talk to services; services use repositories.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Repository method list with layering reminder in `notes/lab39-repository-sketch.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab39-repository-sketch.md` | Pass / Fail |
-| 2 | ≥3 customer methods | Pass / Fail |
-| 3 | Account-by-customer method | Pass / Fail |
-| 4 | Layering note | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab39-repository-sketch.md`
+- [ ] ≥3 customer methods
+- [ ] Account-by-customer method
+- [ ] Layering note
+

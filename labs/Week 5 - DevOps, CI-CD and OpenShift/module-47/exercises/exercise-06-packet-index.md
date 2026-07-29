@@ -8,10 +8,43 @@ Create `notes/lab47-packet-index.md` — index the four artifacts Lab 47 expects
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-47-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-packet-index.md` (this file in the course repo) |
 | Your notes file | `notes/lab47-packet-index.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 47 — Communication Packet Index
+
+## Step 1 — List
+
+Incident update, technical follow-up, PR description, stakeholder email (+ peer review notes).
+
+## Step 2 — Consistency check
+
+Create a mini checklist: same SEV, same start time, same suspected change, same fixtures.
+
+## Step 3 — Evidence links
+
+Placeholder links to CI/CD/Kafka notes from Labs 43–46.
+
+## Step 4 — Scope
+
+Index only; writing the full packet is Lab 47.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Packet index with consistency checklist in `notes/lab47-packet-index.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab47-packet-index.md` | Pass / Fail |
-| 2 | Four artifacts listed | Pass / Fail |
-| 3 | Consistency checklist present | Pass / Fail |
-| 4 | Pre-lab scope marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab47-packet-index.md`
+- [ ] Four artifacts listed
+- [ ] Consistency checklist present
+- [ ] Pre-lab scope marked
+

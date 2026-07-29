@@ -8,10 +8,48 @@ Create `notes/lab17-jacoco-gate-todos.md` — complete fill-in blanks for a JaCo
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fill-jacoco-gate-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-jacoco-gate-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 17 — Fill JaCoCo Gate Narrative TODOs
+
+## Step 1 — Copy TODOs
+
+Tool: (your note here)
+Maven phase idea: (your note here)
+Target line coverage % (lab goal): (your note here)
+Package to measure: (your note here)
+Gap you still expect: (your note here)
+Mockito depth in this pre-lab? (your note here)
+
+## Step 2 — Fill blanks
+
+Fill JaCoCo, verify/test phase idea, a % goal (e.g. 70), service package name idea, one gap, and `no` for Mockito depth.
+
+## Step 3 — AAA plan line
+
+Add: *AAA service tests planned; collaborators real or simple fakes until Lab 18.*
+
+## Step 4 — Self-check
+
+Confirm Mockito depth blank is no.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Filled JaCoCo narrative TODOs with Mockito deferral in `notes/lab17-jacoco-gate-
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab17-jacoco-gate-todos.md` | Pass / Fail |
-| 2 | All _____ replaced | Pass / Fail |
-| 3 | AAA plan line present | Pass / Fail |
-| 4 | Mockito deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab17-jacoco-gate-todos.md`
+- [ ] All _____ replaced
+- [ ] AAA plan line present
+- [ ] Mockito deferred
+

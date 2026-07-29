@@ -8,10 +8,43 @@ Create `notes/lab35-fetch-flow.md` — sketch loading/success/error flow for lis
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-fetch-flow.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-fetch-flow.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 35 — Fetch Flow
+
+## Step 1 — States
+
+`idle | loading | success | error` for the list view.
+
+## Step 2 — Sequence
+
+Mount → set loading → fetch → set data (Amina/Ravi) or error message.
+
+## Step 3 — Abort
+
+Note AbortController on unmount to avoid setState after navigate away.
+
+## Step 4 — Empty
+
+Draft empty-state copy when API returns [].
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ State machine notes including abort and empty UI in `notes/lab35-fetch-flow.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab35-fetch-flow.md` | Pass / Fail |
-| 2 | Four states named | Pass / Fail |
-| 3 | Abort noted | Pass / Fail |
-| 4 | Empty copy drafted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab35-fetch-flow.md`
+- [ ] Four states named
+- [ ] Abort noted
+- [ ] Empty copy drafted
+

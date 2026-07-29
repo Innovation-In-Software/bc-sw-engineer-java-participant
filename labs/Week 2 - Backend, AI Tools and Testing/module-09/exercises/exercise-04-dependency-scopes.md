@@ -15,6 +15,17 @@ Create `notes/dependency-scopes-notes.md` and assign the correct Maven scope so 
 | `runtime` | No | Yes | Drivers needed to run but not compile against |
 | `provided` | Yes | No (container supplies) | Servlet API on an app server; JDK-provided APIs |
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+Test libraries always use `<scope>test</scope>`.
+Do not leave JUnit on the default `compile` scope.
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Assign a scope

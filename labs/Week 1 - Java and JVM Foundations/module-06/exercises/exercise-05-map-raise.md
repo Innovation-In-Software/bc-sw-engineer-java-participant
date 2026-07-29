@@ -10,6 +10,42 @@
 Create `RaiseDemo.java`. Transform every salary into a proposed value that is
 10% higher while proving that the immutable source employees are unchanged.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+Complete form of the idea (your file should look similar when TODOs are filled):
+
+```java
+import java.util.List;
+
+public class RaiseDemo {
+    public static void main(String[] args) {
+        List<Employee> employees = EmployeeData.sample();
+
+        // TODO: stream pipeline — map each salary to salary * 1.10, collect to List<Double>
+        List<Double> proposedSalaries = employees.stream()
+                // TODO: .map(employee -> employee.salary() * 1.10)
+                // TODO: .toList()
+                ;
+
+        System.out.println("Proposed salaries:");
+        for (int i = 0; i < employees.size(); i++) {
+            Employee employee = employees.get(i);
+            double proposed = proposedSalaries.get(i);
+            System.out.printf("%s: %.2f -> %.2f%n",
+                    employee.name(), employee.salary(), proposed);
+        }
+
+        System.out.printf("Alice original salary: %.2f%n",
+                employees.get(0).salary());
+    }
+}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -122,9 +158,10 @@ higher, and Alice's original salary remains 72,000.
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Alice's proposed salary is 79200.00 | Pass / Fail |
-| 2 | All five proposals are correct | Pass / Fail |
-| 3 | Alice's original salary remains 72000.00 | Pass / Fail |
-| 4 | You can explain why this is a transformation, not mutation | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Alice's proposed salary is 79200.00
+- [ ] All five proposals are correct
+- [ ] Alice's original salary remains 72000.00
+- [ ] You can explain why this is a transformation, not mutation
+

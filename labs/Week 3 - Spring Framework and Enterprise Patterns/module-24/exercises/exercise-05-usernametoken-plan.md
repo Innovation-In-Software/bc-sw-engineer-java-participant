@@ -8,10 +8,43 @@ Create `notes/usernametoken-plan.md` — outline UsernameToken evidence without 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-24-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-usernametoken-plan.md` (this file in the course repo) |
 | Your notes file | `notes/usernametoken-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 24 — UsernameToken Plan
+
+## Step 1 — Happy path
+
+In `notes/usernametoken-plan.md`: secured GetCustomer for `CUS-1001` succeeds.
+
+## Step 2 — Failure path
+
+Missing/invalid token produces a distinct fault from not-found.
+
+## Step 3 — Secret hygiene
+
+Lab secrets stay in local config / `.env.example` placeholders — never real prod passwords.
+
+## Step 4 — Not JWT
+
+Explicitly defer Bearer JWT filter chains to Lab 28.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ UsernameToken plan distinguishes security faults from not-found in `notes/userna
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/usernametoken-plan.md` | Pass / Fail |
-| 2 | Happy and failure paths listed | Pass / Fail |
-| 3 | Secret hygiene stated | Pass / Fail |
-| 4 | JWT deferred to Lab 28 | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/usernametoken-plan.md`
+- [ ] Happy and failure paths listed
+- [ ] Secret hygiene stated
+- [ ] JWT deferred to Lab 28
+

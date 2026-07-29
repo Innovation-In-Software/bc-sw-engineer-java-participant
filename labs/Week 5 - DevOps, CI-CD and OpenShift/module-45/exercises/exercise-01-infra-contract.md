@@ -8,10 +8,52 @@ Create `notes/lab45-infra-contract.md` — define what AI-assisted Terraform/Ans
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-infra-contract.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-infra-contract.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 45 — Draft Infra Contract
+
+## Reference
+
+| Allowed in IaC | Forbidden in IaC |
+| --- | --- |
+| Network/runtime sketches | Real cloud keys |
+| tfvars.example | terraform.tfstate |
+| inventory.example.yml | Customer PII |
+| Tags/labels | Unreviewed public DB |
+
+## Step 1 — Contract fields
+
+env names (`crm-dev`/`crm-test`), region, network, runtime, DB, tags, cost limits, forbidden public exposure.
+
+## Step 2 — Check the reference
+
+Syntactically valid Terraform that opens a public DB still fails the lab.
+
+## Step 3 — Tags
+
+Propose tags: `application=crm`, `environment=dev`, `owner=(your note here)`.
+
+## Step 4 — Data rule
+
+State: fixtures `CUS-1001`/`CUS-1002` stay in app labs—not IaC state.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -71,9 +113,10 @@ Infra contract with forbidden exposures documented in `notes/lab45-infra-contrac
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab45-infra-contract.md` | Pass / Fail |
-| 2 | Contract fields present | Pass / Fail |
-| 3 | Public DB forbidden | Pass / Fail |
-| 4 | Fixture rule stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab45-infra-contract.md`
+- [ ] Contract fields present
+- [ ] Public DB forbidden
+- [ ] Fixture rule stated
+

@@ -8,10 +8,39 @@ Create `notes/lab17-aaa-plan.md` — outline three AAA service tests you will wr
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-aaa-service-tests-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-aaa-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 17 — AAA Service Tests Plan
+
+## Step 1 — Happy path
+
+AAA for activate Ravi PROSPECT → ACTIVE.
+
+## Step 2 — Not found
+
+AAA for CUS-9999 throws not found.
+
+## Step 3 — Illegal
+
+AAA for illegal transition on Amina ACTIVE.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Three AAA outlines covering happy/not-found/illegal in `notes/lab17-aaa-plan.md`
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab17-aaa-plan.md` | Pass / Fail |
-| 2 | Three AAA outlines | Pass / Fail |
-| 3 | Fixtures used | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab17-aaa-plan.md`
+- [ ] Three AAA outlines
+- [ ] Fixtures used
+- [ ] Notes saved
+

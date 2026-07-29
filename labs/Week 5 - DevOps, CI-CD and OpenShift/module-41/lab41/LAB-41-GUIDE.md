@@ -35,12 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab41-crm`, fill TODOs, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-41/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | `docs/container-runbook.md` (registry flow included) |
 | 7 | No secrets in Git or image layers |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -208,9 +213,9 @@ Ignore `.env`, `.env.local`, `target/` in Git (and via `.dockerignore`).
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/container-runbook.md` (concepts section):
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow: build context → layers → runtime process
 2. Trust boundary: what is in the image vs injected at run
@@ -218,10 +223,39 @@ Write 2–3 sentences each in `docs/container-runbook.md` (concepts section):
 4. Stable tags/digests vs floating `latest`
 5. Idempotency of `docker build` with cache; when to `--pull`
 6. Why multi-stage shrinks attack surface vs fat Maven image
-7. Evidence operators need (digest, health, logs without secrets)
-8. Two hosts: same Dockerfile + pinned bases → comparable images
-9. Root vs UID 10001 blast radius
-10. What Lab 42 adds (probes, Route, rollout) without rewriting the JAR
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM maven:3.9-eclipse-temurin-21 AS build
+WORKDIR /workspace
+COPY pom.xml .
+COPY .mvn .mvn
+COPY mvnw mvnw
+RUN chmod +x mvnw && ./mvnw -B -q -DskipTests dependency:go-offline
+COPY src ./src
+RUN ./mvnw -B clean verify
+
+FROM eclipse-temurin:21-jre
+RUN useradd --system --uid 10001 --create-home spring
+WORKDIR /app
+COPY --from=build --chown=spring:spring /workspace/target/*-SNAPSHOT.jar app.jar
+# Prefer a single Boot jar name; adjust pattern to your artifact
+USER 10001
+EXPOSE 8080
+ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75"
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+  CMD wget -qO- http://127.0.0.1:8080/actuator/health/readiness || exit 1
+ENTRYPOINT ["java","-jar","/app/app.jar"]
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -454,7 +488,7 @@ Record in the runbook which hostname works on the local workstation (`host.docke
 
 ### Checkpoint A — Context and Dockerfile
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -464,7 +498,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Hardening and inspect
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -474,7 +508,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Run and prove
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -484,7 +518,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -668,18 +702,14 @@ docker tag crm-api:lab41 crm-api:1.0.0-${GIT_SHA}
 
 ## Security and Production Review
 
-Answer in the runbook:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (env files, image bases, registry)?
 2. Where are authn/authz/validation enforced (still in app—not Docker alone)?
 3. Which values are sensitive—how injected (env/secret store)?
-4. What can be retried safely (`docker build`, recreate container)?
-5. What happens after partial failure (crash loop vs ready)?
-6. What would an operator monitor (health, restart count, image digest)?
-7. Which local default is unacceptable (root, `latest`, secrets in image)?
-8. How are image contracts versioned (tag + digest + git SHA)?
 
 ---
+
 
 ## Cleanup
 
@@ -699,15 +729,9 @@ Keep Dockerfile and runbook; delete plaintext env files from shared hosts.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `Dockerfile` (multi-stage, non-root, health)
-* `.dockerignore` + `.env.example`
-* Image build evidence (id/size/user) + digest notes
-* Readiness + CRM smoke evidence (`CUS-1001`)
-* Graceful stop + dependency failure evidence
-* `docs/container-runbook.md` (registry flow included)
-* No secrets in Git or image layers
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -729,44 +753,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected image safety/size?
-2. Which failure was hardest to diagnose (network vs health vs perms)?
-3. What evidence proves non-root + readiness?
-4. What breaks first at ten times the build frequency (cache, base CVEs)?
-5. Which concern should move to shared CI image pipelines?
-6. What must change before real customer data is used in container logs?
-7. How does this lab connect to Labs 39–40 and Lab 42?
-8. What metric matters most when a pod/container restarts?
-9. (Forward look) Which Docker HEALTHCHECK semantics differ from K8s probes?
+2. What evidence proves non-root + readiness?
+3. Which failure was hardest to diagnose (network vs health vs perms)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add OCI labels (`org.opencontainers.image.revision`, version).
 2. Compare image size single-stage vs multi-stage with numbers.
 3. Generate and inspect an image SBOM.
-4. Scan the image (Trivy/Grype if available) and triage one result.
-5. Run with read-only rootfs + explicit tmp volume.
-6. Document rollback if a bad base image tag is pulled.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Multi-stage non-root image builds reproducibly
-* Runtime config is injected safely
-* Readiness and CRM smoke succeed
-* Shutdown and failure experiments are documented
-* Runbook enables a peer to reproduce
-* No production secret is in Git or layers
-* Digests/tags are ready for Lab 42
-
----
 
 ## Instructor Notes
 

@@ -30,6 +30,16 @@ Include visibility, inheritance, interface realization, associations, and multip
 | `<|..` | Interface implementation | Customer implements Printable |
 | `"1" --> "0..*"` | One-to-many association | Customer owns many accounts |
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Banking mini UML
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Create `banking-uml.md`
@@ -124,14 +134,12 @@ The rendered diagram matches your code and clearly distinguishes inheritance, in
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Diagram includes all six types | Pass / Fail |
-| 2 | Inheritance and interface arrows are correct | Pass / Fail |
-| 3 | Customer–Account and Account–Transaction multiplicities appear | Pass / Fail |
-| 4 | You can explain the three relationship types | Pass / Fail |
+Self-check before marking Pass:
 
----
+- [ ] Diagram includes all six types
+- [ ] Inheritance and interface arrows are correct
+- [ ] Customer–Account and Account–Transaction multiplicities appear
+- [ ] You can explain the three relationship types
 
 ## Next
 

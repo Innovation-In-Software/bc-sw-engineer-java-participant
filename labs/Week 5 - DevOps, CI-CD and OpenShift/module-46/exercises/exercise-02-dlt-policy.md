@@ -8,10 +8,43 @@ Create `notes/lab46-dlt-policy.md` — define retry bounds and dead-letter topic
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-dlt-policy.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-dlt-policy.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 46 — Draft DLT Policy
+
+## Step 1 — Names
+
+Primary topic example `crm.customer.events`; DLT `crm.customer.events.DLT`; group `crm-customer-projection-v1`.
+
+## Step 2 — Check the reference
+
+Use `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` pattern (Spring Kafka).
+
+## Step 3 — Headers
+
+List headers to preserve: original topic, exception message class, correlation `lab-request-001`.
+
+## Step 4 — PII rule
+
+Prefer customer IDs in logs/metrics—not emails/names.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ DLT policy with headers and PII rule in `notes/lab46-dlt-policy.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab46-dlt-policy.md` | Pass / Fail |
-| 2 | Topic/DLT named | Pass / Fail |
-| 3 | Retry+DLT approach stated | Pass / Fail |
-| 4 | Correlation header included | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab46-dlt-policy.md`
+- [ ] Topic/DLT named
+- [ ] Retry+DLT approach stated
+- [ ] Correlation header included
+

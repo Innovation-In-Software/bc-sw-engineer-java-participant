@@ -8,10 +8,46 @@ Create `notes/lab38-prep-checklist.md` — confirm prior notes exist and you are
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-38-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-lab38-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab38-prep-checklist.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 38 prep checklist
+
+## Earlier exercise files present?
+| File | Present? (yes/no) |
+| ---- | ----------------- |
+| notes/lab38-perf.md | (your note here) |
+| notes/lab38-index-tradeoffs.md | (your note here) |
+| notes/lab38-sql-index-todos.md | (your note here) |
+| notes/lab38-explain-checklist.md | (your note here) |
+| notes/lab38-sargability.md | (your note here) |
+
+## Fixtures (verify)
+| ID | Name | Status |
+| -- | ---- | ------ |
+| CUS-1001 | Amina Khan | ACTIVE |
+| CUS-1002 | Ravi Singh | PROSPECT |
+
+## Scope statement
+Pre-lab only — prepare for lab; do not complete full Lab 38 now.
+
+## Self mark
+Overall prep: Pass / Fail
+If Fail, revisit exercise(s): (your note here)
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -65,9 +101,10 @@ Hypothesis + dialect-correct readiness note in `notes/lab38-prep-checklist.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab38-prep-checklist.md` | Pass / Fail |
-| 2 | Hypothesis written | Pass / Fail |
-| 3 | PostgreSQL tools named | Pass / Fail |
-| 4 | Pass/Fail marked | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab38-prep-checklist.md`
+- [ ] Hypothesis written
+- [ ] PostgreSQL tools named
+- [ ] Pass/Fail marked
+

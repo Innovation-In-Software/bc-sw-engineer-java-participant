@@ -8,10 +8,52 @@ Create `notes/override-order.md` — order CLI, env, profile YAML, and base YAML
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-override-order.md` (this file in the course repo) |
 | Your notes file | `notes/override-order.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 26 — Property Override Order
+
+## Reference
+
+| Rank (highest first) | Source |
+| --- | --- |
+| 1 | Command-line args / `-D` |
+| 2 | Environment variables |
+| 3 | Profile-specific YAML |
+| 4 | Base `application.yml` |
+
+## Step 1 — Rank
+
+In `notes/override-order.md`, number the four sources highest→lowest.
+
+## Step 2 — Check the reference
+
+Compare to the reference table; correct mistakes.
+
+## Step 3 — Activation pair
+
+Write example activations: `-Dspring.profiles.active=dev` and `SPRING_PROFILES_ACTIVE=prod`.
+
+## Step 4 — Measurement plan
+
+Lab 26 asks for measured override evidence — note you will capture it in lab, not here.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -71,9 +113,10 @@ Correct precedence and activation examples recorded in `notes/override-order.md`
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/override-order.md` | Pass / Fail |
-| 2 | Order matches reference | Pass / Fail |
-| 3 | Both activation styles listed | Pass / Fail |
-| 4 | Lab measurement deferred explicitly | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/override-order.md`
+- [ ] Order matches reference
+- [ ] Both activation styles listed
+- [ ] Lab measurement deferred explicitly
+

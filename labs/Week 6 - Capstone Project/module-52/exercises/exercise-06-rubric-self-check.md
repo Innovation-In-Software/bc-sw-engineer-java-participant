@@ -8,10 +8,39 @@ Create `notes/lab52-rubric-self-check.md` — walk the shared rubric categories 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-52-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-rubric-self-check.md` (this file in the course repo) |
 | Your notes file | `notes/lab52-rubric-self-check.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 52 — Rubric Self-Check Warmup
+
+## Step 1 — Categories
+
+Scope/baseline, implementation, security, automated validation, operability, recovery/risk, documentation, peer review.
+
+## Step 2 — Pointers
+
+For each, write one evidence pointer or `MISSING`.
+
+## Step 3 — Check the reference
+
+Live demo without evidence does not earn full credit.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Rubric warmup with honest MISSING markers in `notes/lab52-rubric-self-check.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab52-rubric-self-check.md` | Pass / Fail |
-| 2 | All categories touched | Pass / Fail |
-| 3 | Evidence or MISSING per row | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab52-rubric-self-check.md`
+- [ ] All categories touched
+- [ ] Evidence or MISSING per row
+- [ ] Notes saved
+

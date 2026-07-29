@@ -8,10 +8,48 @@ Create `notes/lab21-metric-sketch-todos.md` — complete fill-in blanks for metr
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-fill-metric-sketch-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-metric-sketch-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 21 — Fill Metric Sketch TODOs
+
+## Step 1 — Copy TODOs
+
+Success counter: (your note here)
+Failure counter: (your note here)
+Forbidden label: (your note here)
+Alert name: (your note here)
+Alert when create_failure_total rises above: (your note here)
+First responder action: (your note here)
+
+## Step 2 — Fill blanks
+
+Fill create_success_total, create_failure_total, customerId (forbidden), CrmCreateFailuresHigh, a numeric threshold you choose, and check logs for lab-request-001.
+
+## Step 3 — Alert narrative
+
+Write: page on sustained create_failure_total; correlate with recent CUS-1001/CUS-1002 traffic via logs, not metric labels.
+
+## Step 4 — Self-check
+
+Confirm failure counter blank is create_failure_total.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Filled metric/alert TODOs anchored on create_failure_total in `notes/lab21-metri
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab21-metric-sketch-todos.md` | Pass / Fail |
-| 2 | All _____ replaced | Pass / Fail |
-| 3 | create_failure_total used | Pass / Fail |
-| 4 | Responder action named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab21-metric-sketch-todos.md`
+- [ ] All _____ replaced
+- [ ] create_failure_total used
+- [ ] Responder action named
+

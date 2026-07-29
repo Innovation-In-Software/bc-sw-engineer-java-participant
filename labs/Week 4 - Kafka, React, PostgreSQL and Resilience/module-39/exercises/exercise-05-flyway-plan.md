@@ -8,10 +8,43 @@ Create `notes/lab39-flyway-plan.md` — outline Flyway scripts that match the CR
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-39-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-flyway-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab39-flyway-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 39 — Flyway Plan
+
+## Step 1 — Version file
+
+Name idea: `V1__crm_schema.sql` under `db/migration`.
+
+## Step 2 — Content
+
+Include customer + account DDL from Lab 37 design.
+
+## Step 3 — Why Flyway
+
+One sentence: schema changes are versioned and repeatable across machines.
+
+## Step 4 — Anti-pattern
+
+Avoid relying on `spring.jpa.hibernate.ddl-auto=create-drop` for shared envs.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Flyway file plan with ddl-auto warning in `notes/lab39-flyway-plan.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab39-flyway-plan.md` | Pass / Fail |
-| 2 | V1 filename stated | Pass / Fail |
-| 3 | Tables included | Pass / Fail |
-| 4 | ddl-auto warning written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab39-flyway-plan.md`
+- [ ] V1 filename stated
+- [ ] Tables included
+- [ ] ddl-auto warning written
+

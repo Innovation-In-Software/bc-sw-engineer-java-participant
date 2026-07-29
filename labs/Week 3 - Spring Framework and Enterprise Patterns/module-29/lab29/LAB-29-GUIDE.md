@@ -35,13 +35,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab29-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-29/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -57,6 +58,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | Run and cleanup instructions |
 | 7 | No secrets or generated build directories committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -221,9 +225,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/error-contract-notes.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow when validation fails versus when a domain exception is thrown
 2. Trust boundary: DTO vs service vs database constraints
@@ -231,10 +235,39 @@ Write 2–3 sentences each in `docs/error-contract-notes.md`:
 4. Stable identity (`CUS-1001`) in error payloads for support
 5. Retry implications for 400/404/409 vs transient 500/503
 6. Local shortcut versus production (localization, problem+json)
-7. Evidence operators need (`lab-request-001`, timestamp, path)
-8. Two app instances: stateless error mapping (same envelope everywhere)
-9. Why forgetting `@Valid` is a production foot-gun
-10. How Lab 14/16 ideas map onto Boot without divergent SOAP/REST semantics
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+@Test
+void create_rejectsInvalidEmail() throws Exception {
+  mockMvc.perform(post("/api/customers")
+          .contentType(MediaType.APPLICATION_JSON)
+          .header("X-Correlation-Id", "lab-request-001")
+          .content("""
+              {"customerId":"CUS-1003","fullName":"Maya Chen",
+               "email":"bad","status":"PROSPECT"}
+              """))
+      .andExpect(status().isBadRequest())
+      .andExpect(jsonPath("$.correlationId").value("lab-request-001"))
+      .andExpect(jsonPath("$.violations[0].field").exists());
+}
+
+@Test
+void get_unknownCustomer_returns404Envelope() throws Exception {
+  mockMvc.perform(get("/api/customers/CUS-9999")
+          .header("X-Correlation-Id", "lab-request-001"))
+      .andExpect(status().isNotFound())
+      .andExpect(jsonPath("$.status").value(404));
+}
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -527,7 +560,7 @@ mvn -q test
 
 ### Checkpoint A — Tooling and envelope
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -537,7 +570,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — DTO and controller validation
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -547,7 +580,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Global handler and domain mapping
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -557,7 +590,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Tests and hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -669,18 +702,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README / `docs/error-contract-notes.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (JSON bodies, path IDs, headers)?
 2. Where are authn (Lab 28), authz, and validation enforced?
 3. Which values are sensitive — never in `rejectedValue` or client 500 bodies?
-4. What can be retried safely (which statuses)?
-5. What happens after partial failure (client retries after 409)?
-6. What would an operator monitor (validation failure rate, 404 rate)?
-7. Which local default is unacceptable (leaky 500 messages, default correlation always `lab-request-001` in prod)?
-8. How is the `ErrorResponse` contract versioned when fields change?
 
 ---
+
 
 ## Cleanup
 
@@ -699,15 +728,9 @@ Keep screenshots/excerpts. Do not commit `target/`.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `lab29-crm` with Bean Validation + `GlobalExceptionHandler` + `ErrorResponse`
-* Automated tests for validation and not-found envelopes
-* Successful-path evidence (`CUS-1001`, `CUS-1002`)
-* Controlled-failure evidence (400/404/409 + envelope)
-* Lab 14/16 unify note (and optional SOAP alignment)
-* Run and cleanup instructions
-* No secrets or generated build directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -729,43 +752,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (where validation runs)?
-2. Which failure was hardest to diagnose (missing `@Valid`, advice not scanned)?
-3. What evidence proves the error contract is stable?
-4. What breaks first at ten times the invalid-request rate?
-5. Which concern should move to shared infrastructure (problem+json standards)?
-6. What must change before real customer data is used (PII in violations)?
-7. How does this lab connect to Labs 14, 16, 25, 27, and 28?
-8. What metric or log field matters most for API support?
-9. (Forward look) How should Kafka consumers (Labs 30–31) emit correlated errors without HTML?
+2. What evidence proves the error contract is stable?
+3. Which failure was hardest to diagnose (missing `@Valid`, advice not scanned)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. RFC 7807 `application/problem+json` while keeping field violations.
 2. Container-backed integration test for the error envelope.
 3. Readiness separate from liveness.
-4. Metrics including validation failure counts.
-5. Document rollback if a bad deploy breaks `ErrorResponse` shape.
-6. Object-level custom constraint (e.g., status + email domain rule).
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate Bean Validation + `@ControllerAdvice` `ErrorResponse` for the CRM API
-* Happy path and failure paths (400/404/409) are repeatable
-* Another student can follow your run instructions
-* Tests/build pass twice consecutively
-* No production secret is hard-coded
-* Lab 14/16 patterns are explicitly unified in Boot (with optional WS notes)
-
----
 
 ## Instructor Notes
 

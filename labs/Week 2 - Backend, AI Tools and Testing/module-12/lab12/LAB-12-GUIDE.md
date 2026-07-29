@@ -50,13 +50,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab12-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-12/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -73,6 +74,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | README run/cleanup + short SOLID applied/deferred decisions |
 | 8 | No secrets or generated dependency directories committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -230,9 +234,9 @@ Ignore `target/`, IDE metadata, and local env files. The `.before.java.txt` suff
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `notes/lab12-answers.md` or `docs/before-after.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main data flow after refactor (create / get / update status)
 2. Trust boundary and where validation lives after cleanup
@@ -240,10 +244,59 @@ Write 2–3 sentences each in `notes/lab12-answers.md` or `docs/before-after.md`
 4. Stable identity (`CUS-1001`) vs mutable fields (status, email)
 5. Retry/idempotency implications for `create` vs `get`
 6. Local in-memory shortcut vs production persistence
-7. Logs/evidence for support (`lab-request-001`)
-8. Two JVM instances = independent memory (conflict risk)
-9. Which SOLID ideas fit this lab’s size, and which are deferred?
-10. Why freezing a before snapshot matters more than “I rewrote it cleanly”?
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.northstar.crm.service;
+
+import com.northstar.crm.entity.Customer;
+import com.northstar.crm.entity.CustomerStatus;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+/** INTENTIONALLY MESSY — refactor in later steps. Do not submit this style. */
+public class CustomerService {
+    List data = new ArrayList();
+
+    public Object doStuff(String a, String b, String c, String d, String e) {
+        // a=id b=name c=email d=phone e=status-as-string
+        if (a == null || a == "" || b == null || b == "") {
+            System.out.println("bad");
+            return null;
+        }
+        for (int i = 0; i < data.size(); i++) {
+            Customer x = (Customer) data.get(i);
+            if (x.getCustomerId().equals(a)) {
+                System.out.println("dup");
+                return null;
+            }
+        }
+        Customer x = new Customer();
+        x.setCustomerId(a);
+        x.setFullName(b);
+        x.setEmail(c);
+        x.setPhone(d);
+        if (e != null && e.equals("ACTIVE")) x.setStatus(CustomerStatus.ACTIVE);
+        else if (e != null && e.equals("PROSPECT")) x.setStatus(CustomerStatus.PROSPECT);
+        else if (e != null && e.equals("SUSPENDED")) x.setStatus(CustomerStatus.SUSPENDED);
+        else if (e != null && e.equals("CLOSED")) x.setStatus(CustomerStatus.CLOSED);
+        else x.setStatus(CustomerStatus.PROSPECT);
+        x.setCreatedAt(LocalDateTime.now());
+        data.add(x);
+        System.out.println("ok " + a);
+        // also update path jammed in:
+        if (b != null && b.contains("UPDATE")) {
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -536,7 +589,7 @@ Write `docs/before-after.md` with:
 
 **Do this:** Create `docs/CODING-STANDARDS-check.md`:
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -573,7 +626,7 @@ mvn -B verify
 
 ### Checkpoint A — Baseline frozen
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -583,7 +636,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Refactored API
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -594,7 +647,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Tests + demos
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -604,7 +657,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Evidence + standards
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -711,18 +764,14 @@ Fresh `CustomerService` per test; no static shared lists.
 
 ## Security and Production Review
 
-Answer in project README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (customer fields from callers)?
 2. Where are authn/authz/validation enforced after refactor (service helpers—auth still absent)?
 3. Which values are sensitive, and where stored (none beyond samples)?
-4. What can be retried safely (`get`; `create` is not silently idempotent)?
-5. What happens after partial failure (exceptions; no half-written silent null)?
-6. What would an operator monitor later (correlation ID, error rates)?
-7. Which local default is unacceptable in production (in-memory; `System.out` logging)?
-8. How are contracts versioned later (Lab 13+ WSDL/OpenAPI; stable method names help)?
 
 ---
+
 
 ## Cleanup
 
@@ -740,16 +789,9 @@ Keep `CustomerService.before.java.txt` and docs evidence. Remove temporary crede
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* Refactored `CustomerService` with clear methods and typed storage
-* Frozen before snapshot and `docs/smells.md` + `docs/before-after.md`
-* Passing `CustomerServiceTest` (or equivalent)
-* AI review notes or explicit manual-review substitute
-* Standards checklist + controlled-failure evidence
-* Architecture note: in-memory NOW vs React/Kafka/PostgreSQL LATER
-* README run/cleanup + short SOLID applied/deferred decisions
-* No secrets or generated dependency directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -771,44 +813,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness?
-2. Which smell was hardest to justify removing?
-3. What evidence proves the refactor preserves intended behavior?
-4. What breaks first at ten times method length if smells return?
-5. Which concern should move to shared infrastructure (logging, IDs)?
-6. What must change before real customer data is used?
-7. How does this lab connect to Labs 8–11 standards and Lab 13 contracts?
-8. What metric, log field, or support clue matters most after refactor?
-9. (Forward look) Which deferred SOLID step (e.g. repository DIP) comes next—and why not today?
+2. What evidence proves the refactor preserves intended behavior?
+3. Which smell was hardest to justify removing?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add structured correlation IDs on every public method without sensitive fields.
 2. Add a Checkstyle/Spotless config sketch matching Lab 8 standards.
 3. Extract a `CustomerRepository` interface with an in-memory impl.
-4. Note cyclomatic complexity of the worst before method vs after.
-5. Document rollback if a refactor had to be reverted mid-review.
-6. Parameterized tests for blank-field validation matrix.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* You can demonstrate smell catalog, refactored service, tests, and before/after evidence
-* Happy path and failure paths (duplicate/unknown/blank) are repeatable
-* Another student can follow your README
-* Tests/build pass (`mvn -B verify`)
-* No production secret is hard-coded
-* You can explain in-memory trade-offs vs future persistence
-* You can name one SOLID improvement applied and one deferred on purpose
-
----
 
 ## Instructor Notes
 

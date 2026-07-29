@@ -37,12 +37,14 @@ Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
 
 ## How to follow this lab
 
-1. **In class (session block):** prefer [`starter/README.md`](starter/README.md) — copy starter → `customer-management-platform`, fill planning TODOs (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / multi-day): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-48/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -59,6 +61,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | `docs/team-plan.md` (owners, milestones, critical path) |
 | 8 | Baseline note if platform code already exists |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -233,9 +238,9 @@ Ignore `target/`, `node_modules/`, IDE metadata, tokens, and passwords. Capstone
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/team-plan.md` or `docs/architecture/context.md` notes:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow planned for Week 6 (agent search → profile → record interaction for `CUS-1001`)
 2. Trust boundary: browser vs API vs IdP vs Kafka consumers
@@ -243,10 +248,28 @@ Write 2–3 sentences each in `docs/team-plan.md` or `docs/architecture/context.
 4. Stable fixtures (`CUS-1001`, `CUS-1002`, `lab-request-001`) vs random demo data
 5. Idempotency expectations for interaction create / event consume (preview Lab 49)
 6. Why NFRs need thresholds, measurement method, and environment—not adjectives
-7. Evidence reviewers/leads need at Lab 52 (diagrams, ADRs, risks, demo map)
-8. Two machines / two peers: same docs must yield the same plan interpretation
-9. False-confidence architecture (pretty boxes with no protocols or owners)
-10. What Labs 49–52 will change without rewriting fixture IDs
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```markdown
+### CAP-12 — Record a customer interaction
+As a service agent, I want to record an interaction for CUS-1001 (Amina Khan)
+so the next agent understands customer history.
+
+Acceptance criteria:
+1. Valid input returns 201 and a resource identifier; correlation `lab-request-001` preserved.
+2. The timeline shows the interaction within two seconds after refresh.
+3. A versioned event is published after (documented) consistency strategy.
+4. Invalid notes return field-level errors and are not persisted.
+5. Audit data records actor and correlation ID without note contents.
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -427,12 +450,16 @@ Skeleton:
 - Date: 2026-07-14
 - Owners: Capstone Team
 ## Context
+
 Describe the consistency problem and constraints.
 ## Decision
+
 State the selected approach precisely.
 ## Alternatives
+
 List at least two viable alternatives.
 ## Consequences
+
 Record benefits, costs, failure modes, and follow-up work.
 ```
 
@@ -477,6 +504,7 @@ Also complete an evidence log:
 - Peer reviewer:
 
 ## Artifact checklist
+
 | Artifact | Path | Peer OK? |
 |---|---|---|
 | Context | docs/architecture/context.md | |
@@ -510,7 +538,7 @@ If a story is deferred, mark it Explicitly Deferred with owner and date in the r
 
 ### Checkpoint A — Scope and structure
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -520,7 +548,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Architecture
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -530,7 +558,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Quality and decisions
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -540,7 +568,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Delivery hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -571,6 +599,7 @@ Fixtures: CUS-1001 (Amina), correlation lab-request-001.
 ## Decision
 ## Alternatives
 ## Consequences
+
 ```
 
 ### Commands
@@ -643,18 +672,14 @@ git status --short
 
 ## Security and Production Review
 
-Answer in `docs/team-plan.md` or README appendix:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (browser agents, JWT claims, Kafka payloads)?
 2. Where will authn/authz/validation be enforced (UI hints vs API enforcement)?
 3. Which values are sensitive—never in ADRs or screenshots?
-4. What planning artifacts can be updated safely (docs) vs locked (Accepted ADRs)?
-5. What happens after partial Week 6 failure (risk contingencies)?
-6. What would an operator/lead monitor once Lab 51 deploys (from NFRs)?
-7. Which local default is unacceptable (commits of secrets, real customer CSV)?
-8. How are contract versions tied to backlog acceptance and ADRs?
 
 ---
+
 
 ## Cleanup
 
@@ -673,22 +698,9 @@ Stop any exploratory containers started while sketching. Keep sanitized planning
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `docs/architecture/context.md` (C4 context + product outcome)
-* `docs/architecture/container.md` (containers + data flow)
-* `docs/nfrs.md` (measurable NFRs)
-* `docs/adrs/` (≥5 ADRs: DB, messaging, consistency, auth, deploy)
-* `docs/backlog.md` (prioritized vertical stories including interaction recording)
-* `docs/risk-register.md` (scored risks with mitigations)
-* `docs/team-plan.md` (owners, milestones, critical path)
-* Baseline note if platform code already exists
-* One controlled “bad plan” failure-experiment result restored
-* Concise setup/reproduction pointers in platform README
-* Peer-review notes and resolved comments
-* Known limitations, residual risks, owners, and next actions
-
-Exclude real `.env` files, access tokens, database exports, private keys, kubeconfig, Terraform state, and sensitive screenshots.
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -710,44 +722,26 @@ Exclude real `.env` files, access tokens, database exports, private keys, kubeco
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness of the Week 6 plan?
-2. Which ambiguity was hardest to force into an explicit assumption or question?
-3. What evidence proves the plan is executable (not decorative)?
-4. What breaks first if the team triples in size for one week?
-5. Which concern should move to shared CI infrastructure by Lab 51?
-6. What must change before real customer data is used (spoiler: don’t in training)?
-7. How does this lab connect to Labs 49–52 and earlier CRM modules?
-8. What metric matters most on the planning dashboard (risk burn-down? NFR coverage?)?
-9. (Forward look) Which ADR consequence will Lab 49 feel first when publishing Kafka events?
+2. What evidence proves the plan is executable (not decorative)?
+3. Which ambiguity was hardest to force into an explicit assumption or question?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add a sequence diagram for interaction recording (`docs/architecture/sequence-interaction.md`).
 2. Create an NFR-to-test traceability matrix linking CAP stories to future test classes.
 3. Write a dedicated outbox-pattern ADR and compare to after-commit publish.
-4. Run a risk pre-mortem: “It is Lab 52 and we failed—why?” and feed the register.
-5. Estimate critical path with dependency arrows and slack time.
-6. Map each Lab 17–style fixture ID to demo minutes in a draft Lab 52 run sheet.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Context and container architecture are reviewable and labeled
-* NFRs are measurable; backlog is vertical and fixture-aware
-* ADRs record decisions with alternatives and consequences
-* Risk register and team plan have owners and triggers
-* Another student can follow your docs without verbal help
-* Peer review recorded; failure experiment restored
-* No production secret or real PII is in the repository
-
----
 
 ## Instructor Notes
 

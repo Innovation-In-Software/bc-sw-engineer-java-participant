@@ -8,10 +8,47 @@ Create `notes/lab13-java-xsd-map.md` — map Customer fields to XSD-friendly typ
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-java-xsd-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-java-xsd-map.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 13 — Java to XSD Map
+
+## Reference
+
+| Java idea | XSD idea | Example |
+| --- | --- | --- |
+| String customerId | xsd:string | CUS-1001 |
+| String fullName | xsd:string | Amina Khan |
+| enum/status | xsd:string or enum | ACTIVE / PROSPECT |
+
+## Step 2 — Id pattern
+
+Propose a documentation pattern `CUS-####` (not enforced in code yet).
+
+## Step 3 — Honesty
+
+Note: mapping in this notes file. ≠ generated JAXB yet.
+
+## Step 4 — Boundary
+
+Mark: hosting/codegen with Spring-WS is Lab 24, not this prep.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -66,9 +103,10 @@ A Java→XSD map using Amina and Ravi examples in `notes/lab13-java-xsd-map.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab13-java-xsd-map.md` | Pass / Fail |
-| 2 | Table includes both customers | Pass / Fail |
-| 3 | Id pattern proposed | Pass / Fail |
-| 4 | Lab 24 hosting deferred | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab13-java-xsd-map.md`
+- [ ] Table includes both customers
+- [ ] Id pattern proposed
+- [ ] Lab 24 hosting deferred
+

@@ -37,12 +37,14 @@ Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
 
 ## How to follow this lab
 
-1. **In class (session block):** prefer [`starter/README.md`](starter/README.md) — copy starter → platform tree, fill checklist/SQL TODOs (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / multi-day): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-50/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
+2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
+
+---
 
 ## What you'll submit (read this first)
 
@@ -59,6 +61,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 7 | One controlled failure-path result (invalid input or outage) |
 | 8 | Concise setup and reproduction guide (`docs/frontend-persistence-demo.md`) |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -224,9 +229,9 @@ Ignore `node_modules/`, `dist/`, `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/frontend-persistence-demo.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow under UI test (search Amina → record interaction)
 2. Trust boundary: browser validation vs API enforcement
@@ -234,10 +239,27 @@ Write 2–3 sentences each in `docs/frontend-persistence-demo.md`:
 4. Stable fixtures vs ephemeral typed IDs without seed data
 5. Idempotency of submit button disable / single in-flight request
 6. Why optimistic locking matters when two agents edit timeline-related data
-7. Evidence leads need (screenshot + SQL + test log)
-8. Two machines: same Node/Java versions, same seed customers
-9. False-confidence UI (always shows success) vs honest outage state
-10. What Lab 51 changes (auth headers/token lifecycle) without renaming fixtures
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```bash
+cd ~/java-bootcamp/examples/customer-management-platform/frontend
+npm ci
+npm run lint
+npm test -- --run
+npm run build
+# e2e as configured, e.g.:
+# npm run test:e2e
+cd ..
+./mvnw -B clean verify 2>/dev/null || mvn -B clean verify
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -469,7 +491,7 @@ cd ..
 
 ### Checkpoint A — Journey and schema
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -479,7 +501,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Client and UI
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -489,7 +511,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — Persistence proof + tests
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -499,7 +521,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -563,6 +585,7 @@ git status --short
 ## a11y keyboard checklist
 ## Test commands (npm / mvn)
 ## Contract notes vs Lab 49 DTOs
+
 ```
 
 ### Example SQL proof (adapt schema)
@@ -629,18 +652,14 @@ Never paste connection passwords beside the query in evidence files.
 
 ## Security and Production Review
 
-Answer in `docs/frontend-persistence-demo.md`:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (form fields, query strings)?
 2. Where are authn/authz/validation enforced (UI hints vs API)?
 3. Which values are sensitive—never in browser logs or screenshots?
-4. What can be retried safely (idempotent GET; POST needs guard)?
-5. What happens after partial failure (error state; no fake toast)?
-6. What would an operator monitor (UI error rates, DB slow queries)?
-7. Which local default is unacceptable (API keys in frontend bundle)?
-8. How are UI types versioned with backend DTO changes?
 
 ---
+
 
 ## Cleanup
 
@@ -661,20 +680,9 @@ Remove temporary plaintext env files. Keep sanitized screenshots and demo.md.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* React components for search, profile, timeline, interaction form
-* Typed API client
-* JPA mapping changes as required
-* PostgreSQL migration scripts
-* Component and UI/E2E tests
-* Baseline and final validation results
-* One controlled failure-path result (invalid input or outage)
-* Concise setup and reproduction guide (`docs/frontend-persistence-demo.md`)
-* Peer-review notes and resolved comments
-* Known limitations, residual risks, owners, and next actions
-
-Exclude real `.env` files, access tokens, database exports, private keys, kubeconfig, Terraform state, and sensitive screenshots.
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -696,44 +704,26 @@ Exclude real `.env` files, access tokens, database exports, private keys, kubeco
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (fetch strategy, client types, form state)?
-2. Which failure was hardest to diagnose (CORS, JPA, E2E flake)?
-3. What evidence proves UI→DB works?
-4. What breaks first at ten times agent concurrency?
-5. Which concern should move to shared CI (E2E, a11y scan)?
-6. What must change before real customer data appears in UI screenshots?
-7. How does this lab connect to Labs 48–49 and 51–52?
-8. What metric matters most on the UI quality dashboard?
-9. (Forward look) Which auth UX will Lab 51 force you to revisit?
+2. What evidence proves UI→DB works?
+3. Which failure was hardest to diagnose (CORS, JPA, E2E flake)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Add optimistic-lock conflict UI when `@Version` conflicts.
 2. Run an automated accessibility scan (axe) and remediate top issues.
 3. Add pagination to the interaction timeline.
-4. Surface PostgreSQL constraint errors as field-level Problem Details in UI.
-5. Add a Selenium outage-state assertion.
-6. Record a 60-second silent UI→SQL proof video for Lab 52 fallback.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Accessible React journey covers search/profile/interact for Amina
-* PostgreSQL persistence is proven with restart durability
-* Invalid and outage paths are honest in the UI
-* Automated checks cover components/critical path
-* Another student can follow your demo doc
-* Lab 49 contracts remained stable
-* No production secret is hard-coded
-
----
 
 ## Instructor Notes
 

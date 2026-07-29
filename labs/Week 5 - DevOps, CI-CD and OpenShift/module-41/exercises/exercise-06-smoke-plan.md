@@ -8,10 +8,43 @@ Create `notes/lab41-smoke-plan.md` — plan a post-start smoke that uses synthet
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-41-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-06-smoke-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab41-smoke-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 41 — Plan Container Smoke
+
+## Step 1 — Steps
+
+Order: health ready → create/get `CUS-1001` → correlation header `lab-request-001` → stop container.
+
+## Step 2 — Check the reference
+
+Evidence is screenshots/logs under lab-41 notes—not production dumps.
+
+## Step 3 — Failure case
+
+One planned negative: wrong DB URL should fail readiness.
+
+## Step 4 — Scope line
+
+State this is a plan; full docker build/run is Lab 41.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Smoke plan with happy and negative paths in `notes/lab41-smoke-plan.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab41-smoke-plan.md` | Pass / Fail |
-| 2 | Happy path ordered | Pass / Fail |
-| 3 | Negative readiness case listed | Pass / Fail |
-| 4 | Pre-lab scope stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab41-smoke-plan.md`
+- [ ] Happy path ordered
+- [ ] Negative readiness case listed
+- [ ] Pre-lab scope stated
+

@@ -11,6 +11,20 @@
 
 Create `PersonalDetails.java` that prompts for name (`String`), age (`int`), and city (`String`), then prints a formatted greeting.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Enter your name: Aman
+Enter your age: 21
+Enter your city: Toronto
+Hello, Aman! You are 21 years old and live in Toronto.
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

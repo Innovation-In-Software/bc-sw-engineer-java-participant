@@ -8,10 +8,43 @@ Create `notes/lab45-ansible-idempotence.md` — describe idempotent Ansible task
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-ansible-idempotence.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-ansible-idempotence.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 45 — Ansible Idempotence Notes
+
+## Step 1 — Modules
+
+Name modules/handlers you expect (package, service, copy/template, handler restart).
+
+## Step 2 — Check the reference
+
+Second run should be no-change when authorized; prove with lint/syntax first.
+
+## Step 3 — Ownership/modes
+
+Note file ownership/modes matter for app config files.
+
+## Step 4 — Inventory
+
+Commit only `inventory.example.yml`—never real host credentials.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Ansible idempotence and inventory hygiene notes in `notes/lab45-ansible-idempote
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab45-ansible-idempotence.md` | Pass / Fail |
-| 2 | Modules named | Pass / Fail |
-| 3 | Second-run expectation stated | Pass / Fail |
-| 4 | Example inventory only | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab45-ansible-idempotence.md`
+- [ ] Modules named
+- [ ] Second-run expectation stated
+- [ ] Example inventory only
+

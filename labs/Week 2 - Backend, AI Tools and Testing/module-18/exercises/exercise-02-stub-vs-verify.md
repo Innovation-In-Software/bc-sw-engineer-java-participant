@@ -8,10 +8,39 @@ Create `notes/lab18-stub-verify.md` — explain stubbing return values versus ve
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-stub-vs-verify.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-stub-verify.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 18 — Stub vs Verify
+
+## Step 1 — Stub
+
+`when(repo.findById("CUS-1002")).thenReturn(raviProspect)` — arrange.
+
+## Step 2 — Verify
+
+`verify(repo).save(…)` — assert collaboration happened.
+
+## Step 3 — Both
+
+One sentence: stubs feed inputs; verifies prove side-effect calls.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ Clear stub vs verify examples using CUS-1002 in `notes/lab18-stub-verify.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab18-stub-verify.md` | Pass / Fail |
-| 2 | Stub example written | Pass / Fail |
-| 3 | Verify example written | Pass / Fail |
-| 4 | Contrast sentence present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab18-stub-verify.md`
+- [ ] Stub example written
+- [ ] Verify example written
+- [ ] Contrast sentence present
+

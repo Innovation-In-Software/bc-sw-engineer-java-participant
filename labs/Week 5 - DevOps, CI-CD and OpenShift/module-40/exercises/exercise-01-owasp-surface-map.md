@@ -8,10 +8,49 @@ Create `notes/lab40-owasp-surface-map.md` — list Northstar CRM surfaces that m
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-owasp-surface-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-owasp-surface-map.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 40 — Map CRM Attack Surfaces
+
+## Reference
+
+| Surface | OWASP theme | Example |
+| --- | --- | --- |
+| Customer GET/PUT API | Broken access control | Agent reads CUS-1001 |
+| Search query params | Injection | Name/email filters |
+| pom.xml deps | Vulnerable components | Transitive CVE |
+| application.yml secrets | Security misconfiguration | DB password in Git |
+| Actuator endpoints | Security misconfiguration | Unprotected /env |
+
+## Step 1 — Inventory touchpoints
+
+In notes, list at least five surfaces for the Spring CRM that serves agents looking up `CUS-1001` (Amina Khan) and `CUS-1002` (Ravi Singh): HTTP APIs, JWT/RBAC, SQL/JPA, file/log sinks, and (later) Kafka. Mark which hold PII vs IDs.
+
+## Step 2 — Check the reference
+
+Compare your list to OWASP themes: injection, broken access control, security misconfiguration, vulnerable components, logging/monitoring failures.
+
+## Step 3 — Rank top three
+
+Pick the three highest-risk surfaces for a release gate before containers. Write one sentence of business impact per item.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -68,9 +107,10 @@ A ranked surface map exists with OWASP themes and no real customer data in `note
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab40-owasp-surface-map.md` | Pass / Fail |
-| 2 | At least five surfaces listed | Pass / Fail |
-| 3 | Top three ranked with business impact | Pass / Fail |
-| 4 | Synthetic fixtures only | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab40-owasp-surface-map.md`
+- [ ] At least five surfaces listed
+- [ ] Top three ranked with business impact
+- [ ] Synthetic fixtures only
+

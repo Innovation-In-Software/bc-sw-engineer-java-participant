@@ -17,6 +17,26 @@ Requested status: ACTIVE
 Correlation ID: lab-request-001
 ```
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+## Now
+- Package names and stub responsibilities
+- Plain Java types that compile
+- Documented flow
+
+## Later
+- Spring controller annotations
+- Validation annotations
+- Repository implementation/JPA
+- HTTP response mapping
+- Correlation-ID logging
+```
+
+Then follow **Steps** to create your own file.
+
 ## Steps
 
 ### Step 1 — Create the flow
@@ -96,9 +116,10 @@ One document contains success/failure flows, object transformations, and a truth
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| - | ------- | ----- |
-| 1 | Success flow includes all three layers | Pass / Fail |
-| 2 | Failure stops before repository | Pass / Fail |
-| 3 | Request/entity/response transformations are identified | Pass / Fail |
-| 4 | No premature Spring/JPA implementation appears | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] Success flow includes all three layers
+- [ ] Failure stops before repository
+- [ ] Request/entity/response transformations are identified
+- [ ] No premature Spring/JPA implementation appears
+

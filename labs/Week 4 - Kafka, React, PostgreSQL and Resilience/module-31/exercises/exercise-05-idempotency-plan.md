@@ -8,10 +8,43 @@ Create `notes/lab31-idempotency-plan.md` — define how a consumer ignores a sec
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-31-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-idempotency-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab31-idempotency-plan.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 31 — Idempotency Plan
+
+## Step 1 — Why duplicates
+
+List two causes: producer retry, consumer rebalance/reprocess.
+
+## Step 2 — Business key
+
+Propose an idempotency key, e.g. `eventId` or `customerId+eventType+occurredAt` for `CUS-1001`.
+
+## Step 3 — Store idea
+
+One sentence: check a processed-events table/set before side effects (email).
+
+## Step 4 — Out of scope
+
+Do not implement the table yet — paper design only.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ A short idempotency plan tied to Northstar customer events in `notes/lab31-idemp
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab31-idempotency-plan.md` | Pass / Fail |
-| 2 | Two duplicate causes | Pass / Fail |
-| 3 | Concrete key proposal | Pass / Fail |
-| 4 | Processed-store idea stated | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab31-idempotency-plan.md`
+- [ ] Two duplicate causes
+- [ ] Concrete key proposal
+- [ ] Processed-store idea stated
+

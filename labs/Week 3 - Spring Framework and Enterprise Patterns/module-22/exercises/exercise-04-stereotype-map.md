@@ -8,10 +8,54 @@ Create `notes/stereotype-map.md` — map each Northstar CRM type to `@Service`, 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-stereotype-map.md` (this file in the course repo) |
 | Your notes file | `notes/stereotype-map.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 22 — Stereotype Annotation Map
+
+## Reference
+
+| Type | Stereotype / note |
+| --- | --- |
+| CustomerService | `@Service` |
+| InMemoryCustomerRepository | `@Repository` (implements interface) |
+| CustomerController | `@RestController` |
+| Customer (model) | Plain Java — no Spring unless required |
+| NotificationService | `@Service` |
+
+## Step 1 — Fill the blank table
+
+Create `notes/stereotype-map.md` with columns Type | Annotation | Why.
+Fill for: `CustomerService`, `CustomerRepository` interface, `InMemoryCustomerRepository`, `CustomerController`, `Customer`, `NotificationService`.
+
+## Step 2 — Check the reference
+
+Compare against the reference table. Domain `Customer` stays free of Spring.
+
+## Step 3 — Singleton caution
+
+Write two sentences: default Spring beans are singletons; mutable instance fields on `CustomerService` are dangerous for concurrent requests.
+
+## Step 4 — Lab prep
+
+Note that Lab 22 requires `docs/dependency-graph.md` naming these beans — you only sketch names here.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -73,9 +117,10 @@ Stereotype map matches Spring roles; domain model stays plain in `notes/stereoty
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/stereotype-map.md` | Pass / Fail |
-| 2 | Service/repository/controller annotations are correct | Pass / Fail |
-| 3 | `Customer` is marked as plain domain | Pass / Fail |
-| 4 | Singleton caution is written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/stereotype-map.md`
+- [ ] Service/repository/controller annotations are correct
+- [ ] `Customer` is marked as plain domain
+- [ ] Singleton caution is written
+

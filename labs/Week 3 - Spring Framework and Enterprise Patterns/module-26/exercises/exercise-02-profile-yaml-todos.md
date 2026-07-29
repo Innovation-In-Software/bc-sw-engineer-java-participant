@@ -8,10 +8,28 @@ Create `notes/lab26-profile-yaml-todos.md` — complete a YAML sketch distinguis
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-profile-yaml-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab26-profile-yaml-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 26 — Profile YAML TODOs
+
+## Step 2 — Fill TODOs
+
+**application.yml**
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -83,9 +101,10 @@ YAML sketches filled; prod stays secret-free in `notes/lab26-profile-yaml-todos.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab26-profile-yaml-todos.md` | Pass / Fail |
-| 2 | Base name/port filled | Pass / Fail |
-| 3 | Dev logging set | Pass / Fail |
-| 4 | Prod has no real secrets | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab26-profile-yaml-todos.md`
+- [ ] Base name/port filled
+- [ ] Dev logging set
+- [ ] Prod has no real secrets
+

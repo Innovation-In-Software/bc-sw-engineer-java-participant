@@ -8,10 +8,39 @@ Create `notes/lab15-layers.md` — sketch API → service → repository for Nor
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-layer-diagram.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-layers.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 15 — Layer Diagram
+
+## Step 1 — Boxes
+
+Draw three boxes: API adapter, CustomerService, CustomerRepository.
+
+## Step 2 — Arrow labels
+
+Label activate(CUS-1002) flowing inward; Customer returned outward.
+
+## Step 3 — Correlation
+
+Note lab-request-001 crosses the API edge into service logging later.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A three-layer diagram with activate flow labeled in `notes/lab15-layers.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab15-layers.md` | Pass / Fail |
-| 2 | Three layers named | Pass / Fail |
-| 3 | Activate flow labeled | Pass / Fail |
-| 4 | Correlation edge noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab15-layers.md`
+- [ ] Three layers named
+- [ ] Activate flow labeled
+- [ ] Correlation edge noted
+

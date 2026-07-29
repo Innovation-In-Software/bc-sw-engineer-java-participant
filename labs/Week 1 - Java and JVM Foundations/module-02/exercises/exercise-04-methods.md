@@ -11,6 +11,18 @@
 
 Create `MethodsDemo.java` with a `square` method that takes an `int` and returns its square, plus a second, overloaded `square` that takes a `double`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+square(4) = 16
+square(2.5) = 6.25
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

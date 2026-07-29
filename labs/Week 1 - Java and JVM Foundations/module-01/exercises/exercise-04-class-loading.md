@@ -9,6 +9,16 @@
 
 Run `Hello` with `-verbose:class` and identify which class loader loaded `Hello` versus a core JDK class like `String`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+**Goal reminder:** Run `Hello` with `-verbose:class` and identify which class loader loaded `Hello` versus a core JDK class like `String`.
+
+**Done looks like:** The verbose log shows `Hello` loaded from your local classpath, while `String` is already loaded from the JDK's core module before your class ever runs.
+
+Then follow **Steps** to create your own file.
+
 ## Starter / reference
 
 Reuse `Hello.java` from Exercise 1 (Hello World) — no new source file needed for this one.

@@ -9,6 +9,8 @@
 > Use JDK 21 (and any tools named in the exercises). Work under `examples/module-29-exercises/` — these are **notes files**, not the graded lab project.  
 > Lab 29 is the graded consolidation. Do **not** finish Lab 29 during pre-lab.
 
+> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+
 ## What you produce (all exercises)
 
 | # | Your deliverable file | Type |

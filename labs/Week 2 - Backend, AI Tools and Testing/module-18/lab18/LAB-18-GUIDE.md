@@ -34,13 +34,14 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## How to follow this lab
 
-1. **In class (timed path):** prefer [`starter/README.md`](starter/README.md) — copy starter → `java-bootcamp/examples/lab18-crm`, fill `// TODO`, run smoke test (~45 min).
+1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
 2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Create/work only under your `java-bootcamp/examples/…` folder from the steps (not inside this `labs/` git clone unless a step says otherwise).
-4. For each **Step N** (full path / homework): read **Why** (if present) → do the actions → confirm **Expected** / **Expected result** → then continue.
-5. When stuck, use **Failure Experiments** / troubleshooting in this guide before asking for help.
-6. Capture evidence under `notes/screenshots/lab-18/` (workspace root under `java-bootcamp`; redact secrets). Use the **Pass criteria** tables — write **Pass** or **Fail** in your notes. GitHub file view does not support clickable checkboxes.
+3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
+4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
+5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
+6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
+---
 
 ## What you'll submit (read this first)
 
@@ -56,6 +57,9 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 | 6 | Isolation policy in project README / `docs/isolation-policy.md` |
 | 7 | No secrets or generated build directories committed |
 
+**Must submit:** the items in the table above (sources + evidence + short notes).
+
+**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
 
 ## Lab Overview
 
@@ -202,9 +206,9 @@ Ignore `target/`, IDE metadata, tokens, and passwords.
 
 ---
 
-## Concepts to Discuss
+## Key ideas (skim — no write-up)
 
-Write 2–3 sentences each in `docs/isolation-policy.md`:
+Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
 
 1. Main flow under test (service use cases with stubbed repo, not HTTP)
 2. Trust boundary: what mocks prove vs what they assume about repository contracts
@@ -212,10 +216,59 @@ Write 2–3 sentences each in `docs/isolation-policy.md`:
 4. Stable fixtures (`CUS-1001`) vs random data in stubs
 5. Idempotency of `mvn test` and fresh mocks per `@BeforeEach`
 6. Why unit mocks coexist with Lab 17 real in-memory suite
-7. Evidence operators/leads need (Surefire + isolation README)
-8. Two machines: same stubs, same fixtures, same verify counts
-9. False-confidence: unused stubs, mocking the class under test, `Thread.sleep`
-10. What Lab 19 will change (HTTP/UI) without rewriting fixture IDs
+
+---
+
+
+## Worked example (read before you code)
+
+Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+
+```java
+package com.northstar.crm.service;
+
+import com.northstar.crm.entity.Customer;
+import com.northstar.crm.entity.CustomerStatus;
+import com.northstar.crm.repository.CustomerRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class CustomerServiceBddMockTest {
+
+    @Mock CustomerRepository repository;
+    DefaultCustomerService service;
+
+    @BeforeEach
+    void setUp() {
+        service = new DefaultCustomerService(repository, new CustomerValidator(repository));
+    }
+
+    @Test
+    void activatesRaviInBddStyle() {
+        Customer ravi = new Customer(
+            "CUS-1002", "Ravi Singh", "ravi.singh@example.com", CustomerStatus.PROSPECT);
+        given(repository.findById("CUS-1002")).willReturn(Optional.of(ravi));
+        given(repository.save(any(Customer.class))).willAnswer(inv -> inv.getArgument(0));
+
+        Customer updated = service.changeStatus(
+            "CUS-1002", CustomerStatus.ACTIVE, "lab-request-001");
+
+        then(repository).should().findById("CUS-1002");
+        then(repository).should().save(any(Customer.class));
+// ... truncated — see full sample in the Steps
+```
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
 
 ---
 
@@ -540,7 +593,7 @@ Complete [Failure Experiments](#failure-experiments). Capture Surefire excerpts 
 
 ### Checkpoint A — Tooling
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -551,7 +604,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint B — Core Mockito suite
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -562,7 +615,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint C — BDD + AI discipline
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -572,7 +625,7 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Checkpoint D — Hygiene
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
@@ -672,18 +725,14 @@ git status
 
 ## Security and Production Review
 
-Answer in README:
+Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
 
 1. Which inputs are untrusted (production API inputs; tests use fixtures/stubs only)?
 2. Where are authn/authz/validation enforced (still service/validator; mocks don’t replace auth)?
 3. Which values are sensitive—never in test code beyond sample emails?
-4. What can be retried safely (`mvn test` repeatedly)?
-5. What happens after partial failure (red verify blocks merge)?
-6. What would an operator/lead monitor (CI test job, isolation policy drift)?
-7. Which local default is unacceptable (sleeps, mocking class-under-test, committed secrets)?
-8. How are stub contracts versioned when repository method signatures change?
 
 ---
+
 
 ## Cleanup
 
@@ -701,15 +750,9 @@ Do not commit `target/`. Keep review notes and isolation policy.
 
 ## Expected Deliverables
 
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above.
+Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
 
-* `CustomerServiceMockitoTest` with stubbing, verify, and ArgumentCaptor
-* `CustomerServiceBddMockTest` (BDDMockito style)
-* Evidence that not-found never calls `save`
-* Optional Copilot review notes (`lab18-001`) or manual equivalent
-* Full `mvn test` success log (two consecutive runs preferred)
-* Isolation policy in project README / `docs/isolation-policy.md`
-* No secrets or generated build directories committed
+Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -731,44 +774,26 @@ Same checklist as [What you'll submit](#what-youll-submit-read-this-first) above
 
 ## Reflection Questions
 
-Write 3–6 sentence answers:
+Write **1–3 sentence** answers (not essays):
 
 1. Which design decision most affected correctness (shared mock repo vs `@InjectMocks` alone)?
-2. Which failure was hardest to diagnose (`UnnecessaryStubbing`, wrong verify count, …)?
-3. What evidence proves the implementation works (captor values, `never().save`)?
-4. What breaks first at ten times the suite size (shared static mocks, brittle `verifyNoMoreInteractions`)?
-5. Which concern should move to shared CI infrastructure (Mockito version pin, strict stubbing)?
-6. What must change before real customer data is used in tests (spoiler: don’t)?
-7. How does this lab connect to Labs 15–17 and Lab 19?
-8. What metric matters most on the CI dashboard for this isolation gate?
-9. (Forward look) How will Spring `@MockBean` differ from these plain Mockito unit tests?
+2. What evidence proves the implementation works (captor values, `never().save`)?
+3. Which failure was hardest to diagnose (`UnnecessaryStubbing`, wrong verify count, …)?
 
 ---
 
+
 ## Bonus Challenges
+
+Optional — only after core deliverables pass. Pick at most one if time is short.
+
 
 1. Assert `BusinessException` code + correlation on every mocked failure path.
 2. Mock a second collaborator (notifier from earlier labs) and verify ordering with `inOrder`.
 3. Add a strict stubbing demo that fails on unused stubs, then fix it.
-4. Compare test runtime of Lab 17 in-memory suite vs Lab 18 mock suite.
-5. Document how Spring `@MockBean` later differs from plain Mockito unit tests.
-6. Illegal-transition mock: ACTIVE Amina → PROSPECT, verify status not saved.
 
 ---
 
-## Success Criteria
-
-You are finished when:
-
-* Mocked repository unit tests demonstrate stubbing, verify, and captors
-* Happy path and not-found / illegal paths prove interaction contracts
-* BDDMockito suite shows equivalent style without new semantics
-* Another student can follow your isolation policy and `mvn test` instructions
-* AI-drafted mocks (if any) were human-reviewed
-* Two consecutive green `mvn test` runs
-* No production secret is hard-coded
-
----
 
 ## Instructor Notes
 

@@ -15,6 +15,20 @@ Create `LibraryWarmup.java` with:
 - a `Map<String,String>` from member ID to borrowed title;
 - a checkout operation that keeps both structures consistent.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Checkout success: true
+Duplicate checkout: false
+Available: [Clean Code]
+Borrowed: {M101=Effective Java}
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
@@ -174,14 +188,12 @@ First checkout succeeds, the same member’s second checkout fails, and the titl
 
 ## Pass criteria
 
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | First checkout is `true`; duplicate member checkout is `false` | Pass / Fail |
-| 2 | Final list and map match verified output | Pass / Fail |
-| 3 | Unavailable-title test leaves state unchanged | Pass / Fail |
-| 4 | You can state the checkout invariant | Pass / Fail |
+Self-check before marking Pass:
 
----
+- [ ] First checkout is `true`; duplicate member checkout is `false`
+- [ ] Final list and map match verified output
+- [ ] Unavailable-title test leaves state unchanged
+- [ ] You can state the checkout invariant
 
 ## Next
 

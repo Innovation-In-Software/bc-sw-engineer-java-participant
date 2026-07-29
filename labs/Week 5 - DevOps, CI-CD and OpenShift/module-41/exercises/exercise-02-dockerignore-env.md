@@ -8,10 +8,43 @@ Create `notes/lab41-dockerignore-env.md` — list files that must never enter bu
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-41-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-dockerignore-env.md` (this file in the course repo) |
 | Your notes file | `notes/lab41-dockerignore-env.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 41 — Plan .dockerignore and Env
+
+## Step 1 — Ignore list
+
+Draft `.dockerignore` candidates: `.git`, `target/`, `.env`, `*.tfstate`, `notes/`, IDE folders.
+
+## Step 2 — Check the reference
+
+Runtime config via env (DB URL, user, password)—never `ENV PASSWORD=...` in Dockerfile.
+
+## Step 3 — .env.example
+
+List keys only (no values): `SPRING_DATASOURCE_URL`, username, password placeholders, Java opts.
+
+## Step 4 — Evidence path
+
+Note where Lab 41 will store `docker images` / inspect evidence under `notes/screenshots/lab-41/`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Ignore list and .env.example key list without secrets in `notes/lab41-dockerigno
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab41-dockerignore-env.md` | Pass / Fail |
-| 2 | .dockerignore candidates listed | Pass / Fail |
-| 3 | No password baked into Dockerfile plan | Pass / Fail |
-| 4 | .env.example keys only | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab41-dockerignore-env.md`
+- [ ] .dockerignore candidates listed
+- [ ] No password baked into Dockerfile plan
+- [ ] .env.example keys only
+

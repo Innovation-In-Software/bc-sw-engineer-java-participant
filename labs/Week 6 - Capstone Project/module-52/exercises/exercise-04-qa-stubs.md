@@ -8,10 +8,28 @@ Create `notes/lab52-qa-stubs.md` — complete answer stubs for likely panel ques
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-52-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-qa-stubs.md` (this file in the course repo) |
 | Your notes file | `notes/lab52-qa-stubs.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 52 — Fill Q&A Stubs
+
+## Step 1 — Template
+
+Fill blanks for:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -69,9 +87,10 @@ Five Q&A stubs with evidence link slots in `notes/lab52-qa-stubs.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab52-qa-stubs.md` | Pass / Fail |
-| 2 | Five answers drafted | Pass / Fail |
-| 3 | Evidence lines present | Pass / Fail |
-| 4 | One timed practice noted | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab52-qa-stubs.md`
+- [ ] Five answers drafted
+- [ ] Evidence lines present
+- [ ] One timed practice noted
+

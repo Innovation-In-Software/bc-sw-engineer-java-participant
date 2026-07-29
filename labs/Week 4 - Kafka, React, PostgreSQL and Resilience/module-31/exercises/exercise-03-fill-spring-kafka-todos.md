@@ -8,10 +8,28 @@ Create `notes/lab31-todos.md` — fill TODOs in a tiny Spring Kafka pseudocode s
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-31-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-fill-spring-kafka-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab31-todos.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 31 — Fill Spring Kafka TODOs
+
+## Step 1 — Paste snippet
+
+Create `notes/lab31-todos.md`:
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -79,9 +97,10 @@ Pseudocode with topic/bootstrap/group filled and key/DLT reminders in `notes/lab
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab31-todos.md` | Pass / Fail |
-| 2 | All _____ replaced | Pass / Fail |
-| 3 | Customer ID key comment present | Pass / Fail |
-| 4 | DLT TODO line present | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab31-todos.md`
+- [ ] All _____ replaced
+- [ ] Customer ID key comment present
+- [ ] DLT TODO line present
+

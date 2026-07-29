@@ -8,10 +8,26 @@ Create `notes/health-sketch.md` — fill blanks on a `@SpringBootApplication` st
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-crm-application-stub.md` (this file in the course repo) |
 | Your notes file | `notes/health-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 23 — CrmApplication Stub (TODOs)
+
+## Step 2 — Fill TODOs
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -73,9 +89,10 @@ Stub blanks and health sketch filled correctly in `notes/health-sketch.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/health-sketch.md` | Pass / Fail |
-| 2 | `@SpringBootApplication` and `run` filled | Pass / Fail |
-| 3 | Health path and UP recorded | Pass / Fail |
-| 4 | No JWT/SOAP scope creep | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/health-sketch.md`
+- [ ] `@SpringBootApplication` and `run` filled
+- [ ] Health path and UP recorded
+- [ ] No JWT/SOAP scope creep
+

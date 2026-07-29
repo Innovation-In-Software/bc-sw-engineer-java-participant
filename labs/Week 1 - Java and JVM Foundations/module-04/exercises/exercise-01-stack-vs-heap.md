@@ -9,6 +9,18 @@
 
 Create `StackHeapDemo.java`, run it, then trace which values belong to method stack frames and which object lives on the heap.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Aman has 4 letters.
+Count: 1
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

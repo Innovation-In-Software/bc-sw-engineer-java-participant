@@ -8,6 +8,10 @@ Create `notes/lab11-prelab-asserts.md` that labels weak Copilot asserts vs asser
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-03-trivial-vs-real-asserts.md` (this file in the course repo) |
@@ -19,6 +23,32 @@ Create `notes/lab11-prelab-asserts.md` that labels weak Copilot asserts vs asser
 | -- | ---- | ------ |
 | `CUS-1001` | Amina Khan | `ACTIVE` |
 | `CUS-1002` | Ravi Singh | `PROSPECT` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 11 pre-lab — trivial vs real asserts
+
+## Trivial (reject these — false confidence)
+1. assertNotNull(customer);
+2. assertTrue(true);
+
+Why weak: they pass even if status, id, or business rules are wrong.
+
+## Meaningful (prefer these)
+1. assertEquals(CustomerStatus.ACTIVE, amina.getStatus());  // CUS-1001 Amina
+2. assertEquals(CustomerStatus.PROSPECT, ravi.getStatus()); // CUS-1002 Ravi
+
+## Review rule (one sentence)
+Reject AI tests that never mention domain values (CUS-1001/CUS-1002, ACTIVE/PROSPECT) or outcomes.
+
+## Scope
+Pre-lab only — do not finish Lab 11.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 

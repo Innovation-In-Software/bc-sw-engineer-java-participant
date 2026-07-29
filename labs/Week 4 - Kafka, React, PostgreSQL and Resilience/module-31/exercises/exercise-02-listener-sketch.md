@@ -8,10 +8,43 @@ Create `notes/lab31-listener-sketch.md` — sketch two listeners (notifications 
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-31-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-02-listener-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab31-listener-sketch.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 31 — Listener Sketch
+
+## Step 1 — Method outline
+
+in this notes file.: `@KafkaListener(topics="crm.customer-events.v1", groupId="crm-notifications")` void onCustomerEvent(...).
+
+## Step 2 — Second group
+
+Sketch the audit listener with groupId `crm-audit` on the same topic.
+
+## Step 3 — Payload type
+
+Decide: start with `String`/`JsonNode` or a typed `CustomerEvent` DTO — pick one and justify in one line.
+
+## Step 4 — Correlation
+
+Note where you will log `correlationId` / `lab-request-001` for support.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -62,9 +95,10 @@ Two sketched listeners with group IDs and a payload typing choice in `notes/lab3
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab31-listener-sketch.md` | Pass / Fail |
-| 2 | Both groupIds present | Pass / Fail |
-| 3 | Same topic for both | Pass / Fail |
-| 4 | Typing + correlation notes written | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab31-listener-sketch.md`
+- [ ] Both groupIds present
+- [ ] Same topic for both
+- [ ] Typing + correlation notes written
+

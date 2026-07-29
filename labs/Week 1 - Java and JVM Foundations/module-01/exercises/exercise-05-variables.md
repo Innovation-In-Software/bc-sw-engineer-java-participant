@@ -9,6 +9,22 @@
 
 Create `Variables.java` with local variables of several primitive types and one `String`; print each.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+21
+8000000000
+19.99
+true
+A
+Aman
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

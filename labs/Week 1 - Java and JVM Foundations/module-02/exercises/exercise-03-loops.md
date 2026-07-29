@@ -11,6 +11,28 @@
 
 Create `LoopsDemo.java` that prints a multiplication table with `for`, counts down with `while`, and shows a menu prompt at least once with `do-while`.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Multiplication table for 5:
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+Countdown: 3
+Countdown: 2
+Countdown: 1
+Type 'menu' to see it again, anything else to quit: menu
+1) Add  2) Withdraw  3) Exit
+Type 'menu' to see it again, anything else to quit: quit
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

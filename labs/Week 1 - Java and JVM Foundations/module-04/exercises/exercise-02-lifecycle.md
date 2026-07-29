@@ -9,6 +9,20 @@
 
 Create one object with two references. Remove references one at a time and explain when the object becomes **eligible** for garbage collection.
 
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```text
+Same object: true
+Still reachable through alias: Aman
+No strong references remain; object is GC-eligible.
+GC requested, not guaranteed.
+```
+
+Then follow **Steps** to create your own file.
+
+
 ## Starter (fill in the TODOs)
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.

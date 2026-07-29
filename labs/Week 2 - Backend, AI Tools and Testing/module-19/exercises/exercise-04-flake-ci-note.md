@@ -8,10 +8,39 @@ Create `notes/lab19-flake-ci.md` — document two flake sources and one CI const
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-04-flake-ci-note.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-flake-ci.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 19 — Flake and CI Note
+
+## Step 1 — Flake sources
+
+Timing, animations, shared mutable CRM data across tests.
+
+## Step 2 — Mitigation
+
+Isolated fixtures (Amina/Ravi), testids, explicit waits.
+
+## Step 3 — CI constraint
+
+Headless browser + driver version alignment on the agent.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -58,9 +87,10 @@ A short flake/CI readiness note in `notes/lab19-flake-ci.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab19-flake-ci.md` | Pass / Fail |
-| 2 | Two flake sources | Pass / Fail |
-| 3 | Mitigations listed | Pass / Fail |
-| 4 | CI constraint named | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab19-flake-ci.md`
+- [ ] Two flake sources
+- [ ] Mitigations listed
+- [ ] CI constraint named
+

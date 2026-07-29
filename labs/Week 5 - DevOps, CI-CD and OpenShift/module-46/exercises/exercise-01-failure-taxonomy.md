@@ -8,10 +8,48 @@ Create `notes/lab46-failure-taxonomy.md` — categorize why CRM consumer process
 
 ## Deliverable
 
+**Submit only** the file(s) in the table below (not the full graded lab).
+
+**Submit only** the file(s) in the table below (not the full graded lab).
+
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-01-failure-taxonomy.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-failure-taxonomy.md` |
+
+## Worked example (read first)
+
+Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+
+```markdown
+# Lab 46 — Classify Consumer Failures
+
+## Reference
+
+| Failure | Typical action |
+| --- | --- |
+| Validation | DLT + fix publisher |
+| Deserialization | DLT + schema/version check |
+| Transient DB | Bounded retry then DLT |
+| Poison forever-retry | Forbidden pattern |
+
+## Step 1 — Categories
+
+List: validation, deserialization, timeout, DB, authz—with one CRM example each.
+
+## Step 2 — Check the reference
+
+Poison messages must not block the partition forever while lag grows unnoticed.
+
+## Step 3 — User impact
+
+Map one failure to stale profile data for `CUS-1001` or stuck status for `CUS-1002`.
+
+## Scope
+Pre-lab only — do not finish the full graded lab in this exercise.
+```
+
+Then follow **Steps** to create your own file.
 
 ## Steps
 
@@ -67,9 +105,10 @@ Failure taxonomy with CRM user impact in `notes/lab46-failure-taxonomy.md`.
 
 ## Pass criteria
 
-| # | Confirm | Notes |
-| --- | --- | --- |
-| 1 | File exists at `notes/lab46-failure-taxonomy.md` | Pass / Fail |
-| 2 | Five categories listed | Pass / Fail |
-| 3 | User impact mapped | Pass / Fail |
-| 4 | Notes saved | Pass / Fail |
+Self-check before marking Pass:
+
+- [ ] File exists at `notes/lab46-failure-taxonomy.md`
+- [ ] Five categories listed
+- [ ] User impact mapped
+- [ ] Notes saved
+
