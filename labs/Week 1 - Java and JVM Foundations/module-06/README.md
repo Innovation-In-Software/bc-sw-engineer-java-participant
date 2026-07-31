@@ -10,6 +10,7 @@ Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md) · [
 
 | Step | When | Open this (only) |
 | ---- | ---- | ---------------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
 | A | After Lab 5 / prior labs | Stay in IntelliJ with `java-bootcamp` open |
 | B | After Module 6 **slides** (Day 4 intro + Day 5) | [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md) → exercises **1–7 in order** (Exercise 1 often starts Day 4) |
 | C | After Exercises 1–7 Pass | **One** OS how-to: [`lab6/LAB-6-WINDOWS.md`](lab6/LAB-6-WINDOWS.md) **or** [`lab6/LAB-6-MACOS.md`](lab6/LAB-6-MACOS.md) |

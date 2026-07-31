@@ -6,6 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
 | 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab45-*.md` files) |
 | 2 | OS guide → [`lab45/LAB-45-WINDOWS.md`](lab45/LAB-45-WINDOWS.md) or [`lab45/LAB-45-MACOS.md`](lab45/LAB-45-MACOS.md) |
 | 3 | Full lab → [`lab45/LAB-45-GUIDE.md`](lab45/LAB-45-GUIDE.md) |

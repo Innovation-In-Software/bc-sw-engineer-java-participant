@@ -44,6 +44,7 @@ Every lab lives under its module folder as `module-NN/labN/` and includes:
 | [**Labs Setup Instructions**](SETUP-INSTRUCTIONS.md) | Tools, versions, ports, and lab-by-lab requirements matrix |
 | [Lab 0 — Environment Setup](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md) | Hands-on laptop setup ([Windows](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md)) |
 | [Technology Stack Guide](TECHNOLOGY-STACK-GUIDE.md) | Technologies, [acronym full forms](TECHNOLOGY-STACK-GUIDE.md#acronyms-and-full-forms), and learning rationale |
+| [Acronym Cheatsheets (by module)](ACRONYM-CHEATSHEETS-INDEX.md) | Per-module term → full form → simple meaning |
 
 ---
 

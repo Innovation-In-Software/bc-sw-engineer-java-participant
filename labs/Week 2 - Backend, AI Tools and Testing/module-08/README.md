@@ -6,6 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
 | 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **1→6 in slide order** (Maven → packages → entity/DTO → layers → request flow → dependency direction) |
 | 2 | OS guide → [`lab8/LAB-8-WINDOWS.md`](lab8/LAB-8-WINDOWS.md) or [`lab8/LAB-8-MACOS.md`](lab8/LAB-8-MACOS.md) |
 | 3 | Full lab → [`lab8/LAB-8-GUIDE.md`](lab8/LAB-8-GUIDE.md) |

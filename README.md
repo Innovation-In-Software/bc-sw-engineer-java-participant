@@ -39,6 +39,7 @@ bc-sw-engineer-java-participant/
 │   ├── CLONE-AND-OWN-REPO-GUIDE.md
 │   ├── SETUP-INSTRUCTIONS.md
 │   ├── TECHNOLOGY-STACK-GUIDE.md
+│   ├── ACRONYM-CHEATSHEETS-INDEX.md  ← Per-module term → full form sheets
 │   └── Week N - …/module-NN/
 │       ├── exercises/        ← Week 1 pre-lab practice (when present)
 │       └── labN/             ← Lab guide + Windows/macOS how-tos
@@ -79,7 +80,7 @@ GHCR              Terraform         Ansible           Resilience4j
 SLF4J / Logback   Selenium          VisualVM          Node 22
 ```
 
-Details: [Technology Stack Guide](labs/TECHNOLOGY-STACK-GUIDE.md).
+Details: [Technology Stack Guide](labs/TECHNOLOGY-STACK-GUIDE.md) · [Acronym cheatsheets by module](labs/ACRONYM-CHEATSHEETS-INDEX.md).
 
 ---
 

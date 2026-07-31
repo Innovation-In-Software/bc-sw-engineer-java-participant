@@ -6,6 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
 | 1 | [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md) — exercises **1→6** (coordinates → profiles → lifecycle → scopes → dependency tree → mini POM). All notes filenames are listed there — no need to dig through slides. |
 | 2 | OS guide → [`lab9/LAB-9-WINDOWS.md`](lab9/LAB-9-WINDOWS.md) or [`lab9/LAB-9-MACOS.md`](lab9/LAB-9-MACOS.md) |
 | 3 | Full lab → [`lab9/LAB-9-GUIDE.md`](lab9/LAB-9-GUIDE.md) |

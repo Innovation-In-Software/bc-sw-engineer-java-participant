@@ -6,6 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
 | 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab29-*.md` files) |
 | 2 | OS guide → [`lab29/LAB-29-WINDOWS.md`](lab29/LAB-29-WINDOWS.md) or [`lab29/LAB-29-MACOS.md`](lab29/LAB-29-MACOS.md) |
 | 3 | Full lab → [`lab29/LAB-29-GUIDE.md`](lab29/LAB-29-GUIDE.md) |

@@ -6,6 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
 | 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab38-*.md` files) |
 | 2 | OS guide → [`lab38/LAB-38-WINDOWS.md`](lab38/LAB-38-WINDOWS.md) or [`lab38/LAB-38-MACOS.md`](lab38/LAB-38-MACOS.md) |
 | 3 | Full lab → [`lab38/LAB-38-GUIDE.md`](lab38/LAB-38-GUIDE.md) |

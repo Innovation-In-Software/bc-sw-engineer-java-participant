@@ -6,6 +6,7 @@
 
 | Step | Open this |
 | ---- | --------- |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
 | 1 | After slides → [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md), exercises **in order** (see **What you produce** for exact `notes/lab37-*.md` files) |
 | 2 | OS guide → [`lab37/LAB-37-WINDOWS.md`](lab37/LAB-37-WINDOWS.md) or [`lab37/LAB-37-MACOS.md`](lab37/LAB-37-MACOS.md) |
 | 3 | Full lab → [`lab37/LAB-37-GUIDE.md`](lab37/LAB-37-GUIDE.md) |
