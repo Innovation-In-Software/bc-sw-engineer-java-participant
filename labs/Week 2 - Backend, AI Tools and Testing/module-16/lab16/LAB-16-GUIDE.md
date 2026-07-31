@@ -651,6 +651,8 @@ git status
 
 ### Status table (lab standard)
 
+Full HTTP + diagram code catalog: [`../HTTP-STATUS-CODES.md`](../HTTP-STATUS-CODES.md).
+
 | Case | status | error code |
 | ---- | -----: | ---------- |
 | Bean Validation | 400 | `VALIDATION_FAILED` |
