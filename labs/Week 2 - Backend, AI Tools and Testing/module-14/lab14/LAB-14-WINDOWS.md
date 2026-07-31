@@ -64,7 +64,7 @@ mvn -q -DincludeScope=runtime dependency:build-classpath "-Dmdep.outputFile=targ
 java -cp "target\classes;$(Get-Content target\cp.txt -Raw)" com.northstar.crm.Main
 ```
 
-Verified: **Tests run: 13**, Failures: 0 · **BUILD SUCCESS**.
+Verified (2026-07-31, Temurin 21.0.11 + Maven 3.9.9 + IntelliJ Terminal): `mvn -q -DskipTests clean package` **BUILD SUCCESS**; Main with dependency classpath prints `CustomerResponseDTO` for `CUS-1001` / `CUS-1002` and blocks invalid email with `[lab-request-001]` (Hibernate Validator 8.0.2). Use the classpath command above — `java -cp target\classes` alone fails with `NoClassDefFoundError: jakarta/validation/Validation`.
 
 ## Run configurations (IntelliJ)
 

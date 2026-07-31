@@ -17,7 +17,7 @@
 | - | --------------------- | ---- |
 | 1 | `notes/lab21-cardinality-antipatterns.md` | Cardinality Anti-Patterns |
 | 2 | `notes/lab21-actuator-allowlist.md` | Actuator Allow-List |
-| 3 | `notes/lab21-prep-checklist.md` | Liveness vs Readiness |
+| 3 | `notes/lab21-probes.md` | Liveness vs Readiness |
 | 4 | `notes/lab21-metric-sketch-todos.md` | Fill Metric Sketch TODOs |
 | 5 | `notes/lab21-alert-runbook.md` | Alert from create_failure_total |
 | 6 | `notes/lab21-prep-checklist.md` | Lab 21 Prep Checklist |
@@ -71,7 +71,7 @@ Complete in this sequence (matches Module slide order):
 | --- | --- | --- | --- | --- |
 | 1 | Cardinality Anti-Patterns | Analysis exercise | `notes/lab21-cardinality-antipatterns.md` | [`exercise-01-cardinality-antipatterns.md`](exercise-01-cardinality-antipatterns.md) |
 | 2 | Actuator Allow-List | Documentation exercise | `notes/lab21-actuator-allowlist.md` | [`exercise-02-actuator-allowlist.md`](exercise-02-actuator-allowlist.md) |
-| 3 | Liveness vs Readiness | Analysis exercise | `notes/lab21-prep-checklist.md` | [`exercise-03-liveness-vs-readiness.md`](exercise-03-liveness-vs-readiness.md) |
+| 3 | Liveness vs Readiness | Analysis exercise | `notes/lab21-probes.md` | [`exercise-03-liveness-vs-readiness.md`](exercise-03-liveness-vs-readiness.md) |
 | 4 | Fill Metric Sketch TODOs | Hands-on exercise | `notes/lab21-metric-sketch-todos.md` | [`exercise-04-fill-metric-sketch-todos.md`](exercise-04-fill-metric-sketch-todos.md) |
 | 5 | Alert from create_failure_total | Documentation exercise | `notes/lab21-alert-runbook.md` | [`exercise-05-alert-from-failure-total.md`](exercise-05-alert-from-failure-total.md) |
 | 6 | Lab 21 Prep Checklist | Documentation exercise | `notes/lab21-prep-checklist.md` | [`exercise-06-lab21-prep-checklist.md`](exercise-06-lab21-prep-checklist.md) |

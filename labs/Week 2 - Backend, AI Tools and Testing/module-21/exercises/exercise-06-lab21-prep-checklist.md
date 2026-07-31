@@ -29,7 +29,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 | ---- | ----------------- |
 | notes/lab21-cardinality-antipatterns.md | (your note here) |
 | notes/lab21-actuator-allowlist.md | (your note here) |
-| notes/lab21-prep-checklist.md | (your note here) |
+| notes/lab21-probes.md | (your note here) |
 | notes/lab21-metric-sketch-todos.md | (your note here) |
 | notes/lab21-alert-runbook.md | (your note here) |
 
@@ -65,7 +65,7 @@ From `examples/module-21-exercises/`, create `notes/` if needed, then create `no
 | ---- | ----------------- |
 | notes/lab21-cardinality-antipatterns.md | _____ |
 | notes/lab21-actuator-allowlist.md | _____ |
-| notes/lab21-prep-checklist.md | _____ |
+| notes/lab21-probes.md | _____ |
 | notes/lab21-metric-sketch-todos.md | _____ |
 | notes/lab21-alert-runbook.md | _____ |
 

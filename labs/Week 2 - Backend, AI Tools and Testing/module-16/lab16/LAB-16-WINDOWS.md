@@ -64,7 +64,7 @@ mvn -q -DincludeScope=runtime dependency:build-classpath "-Dmdep.outputFile=targ
 java -cp "target\classes;$(Get-Content target\cp.txt -Raw)" com.northstar.crm.Main
 ```
 
-Verified: **Tests run: 21**, Failures: 0 · **BUILD SUCCESS**. Main shows 400 validation, 404 not-found, 409 conflict JSON with `correlationId=lab-request-001`.
+Verified (re-confirmed 2026-07-31): **BUILD SUCCESS**. Main with dependency classpath shows 400 validation, 404 not-found, 409 conflict JSON with `correlationId=lab-request-001`.
 
 ## Run configurations (IntelliJ)
 

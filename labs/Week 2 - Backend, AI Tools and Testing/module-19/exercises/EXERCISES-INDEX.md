@@ -19,7 +19,7 @@
 | 2 | `notes/lab19-locators.md` | data-testid Locators |
 | 3 | `notes/lab19-page-object.md` | Page Object Sketch |
 | 4 | `notes/lab19-flake-ci.md` | Flake and CI Note |
-| 5 | `notes/lab19-correlation-header-todos.md` | Lab 19 Prep Checklist |
+| 5 | `notes/lab19-prep-checklist.md` | Lab 19 Prep Checklist |
 | 6 | `notes/lab19-correlation-header-todos.md` | Fill Correlation Header TODOs |
 
 Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
@@ -73,7 +73,7 @@ Complete in this sequence (matches Module slide order):
 | 2 | data-testid Locators | Documentation exercise | `notes/lab19-locators.md` | [`exercise-02-data-testid-locators.md`](exercise-02-data-testid-locators.md) |
 | 3 | Page Object Sketch | Architecture exercise | `notes/lab19-page-object.md` | [`exercise-03-page-object.md`](exercise-03-page-object.md) |
 | 4 | Flake and CI Note | Analysis exercise | `notes/lab19-flake-ci.md` | [`exercise-04-flake-ci-note.md`](exercise-04-flake-ci-note.md) |
-| 5 | Lab 19 Prep Checklist | Documentation exercise | `notes/lab19-correlation-header-todos.md` | [`exercise-05-lab19-prep-checklist.md`](exercise-05-lab19-prep-checklist.md) |
+| 5 | Lab 19 Prep Checklist | Documentation exercise | `notes/lab19-prep-checklist.md` | [`exercise-05-lab19-prep-checklist.md`](exercise-05-lab19-prep-checklist.md) |
 | 6 | Fill Correlation Header TODOs | Hands-on exercise | `notes/lab19-correlation-header-todos.md` | [`exercise-06-fill-correlation-header-todos.md`](exercise-06-fill-correlation-header-todos.md) |
 
 ## Done when

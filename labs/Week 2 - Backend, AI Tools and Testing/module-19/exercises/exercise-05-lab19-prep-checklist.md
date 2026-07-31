@@ -4,18 +4,16 @@
 
 ## Goal
 
-Create `notes/lab19-correlation-header-todos.md` — confirm prior notes exist and you are ready for Lab 19 without finishing it now.
+Create `notes/lab19-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 19 without finishing it now.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-lab19-prep-checklist.md` (this file in the course repo) |
-| Your notes file | `notes/lab19-correlation-header-todos.md` |
+| Your notes file | `notes/lab19-prep-checklist.md` |
 
 ## Worked example (read first)
 
@@ -31,7 +29,11 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 | notes/lab19-locators.md | (your note here) |
 | notes/lab19-page-object.md | (your note here) |
 | notes/lab19-flake-ci.md | (your note here) |
-| notes/lab19-correlation-header-todos.md | (your note here) |
+
+## Next (Exercise 6)
+| File | Status |
+| ---- | ------ |
+| notes/lab19-correlation-header-todos.md | create in Exercise 6 |
 
 ## Fixtures (verify)
 | ID | Name | Status |
@@ -67,6 +69,10 @@ From `examples/module-19-exercises/`, create `notes/` if needed, then create `no
 | notes/lab19-locators.md | _____ |
 | notes/lab19-page-object.md | _____ |
 | notes/lab19-flake-ci.md | _____ |
+
+## Next (Exercise 6)
+| File | Status |
+| ---- | ------ |
 | notes/lab19-correlation-header-todos.md | _____ |
 
 ## Fixtures (verify)
