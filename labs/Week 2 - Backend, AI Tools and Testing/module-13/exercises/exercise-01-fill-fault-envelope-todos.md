@@ -1,6 +1,25 @@
 # Exercise 1 — Fill Fault Envelope TODOs
 
-**Module 13** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 13** · Checkpoint A · Exercises 1–6 Pass then Lab 13
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill SOAP fault envelope TODOs for CUS-9999 not found |
+| **Skills practiced** | SOAP Envelope/Body/Fault structure |
+| **Expected outcome** | notes/lab13-fault-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-13-exercises/` → notes/lab13-fault-todos.md |
+| **Checkpoint** | A (after slides 112–120) |
+
+## What you will learn
+
+- Faults live in the SOAP Body with code/string/detail patterns
+- NotFound for unknown customer ids is an explicit contract outcome
+- XML must stay well-formed even in fault samples
+
+**Enterprise context:** CRM integrations need predictable SOAP faults, not opaque HTTP-only errors.
 
 ## Goal
 
@@ -95,7 +114,18 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Filled fault TODOs with CUS-9999 and Lab 24 deferral in `notes/lab13-fault-todos.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Missing faultstring — add a human-readable NotFound message for CUS-9999.
+
+## Predict the Output / Behavior
+
+Does a SOAP fault replace the success response body for that call?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

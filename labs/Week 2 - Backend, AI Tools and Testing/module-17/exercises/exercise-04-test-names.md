@@ -1,20 +1,37 @@
-# Exercise 1 — Expressive Test Names
+# Exercise 4 — Expressive Test Names
 
-**Module 17** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 17** · Checkpoint D · Exercises 1–6 Pass then Lab 17
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Propose three method names that encode fixture and outcome |
+| **Skills practiced** | Naming conventions |
+| **Expected outcome** | notes/lab17-test-names.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-17-exercises/` → notes/lab17-test-names.md |
+| **Checkpoint** | D (after slides 194–198) |
+
+## What you will learn
+
+- methodName_state_expectedOutcome style
+- Names for Amina reject, Ravi success, CUS-9999 not found
+- Reject test1 / testActivate
+
+**Enterprise context:** Failure lists in CI are triage tools — `test1` wastes minutes every build.
 
 ## Goal
 
-Create `notes/lab17-test-names.md` — propose three method names that encode fixture and outcome.
+Create `notes/lab17-test-names.md` — three expressive names.
 
 ## Deliverable
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-test-names.md` (this file in the course repo) |
+| Guide | `exercises/exercise-04-test-names.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-test-names.md` |
 
 ## Worked example (read first)
@@ -24,20 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 17 — Expressive Test Names
 
-## Step 1 — Pattern
+Pattern: methodName_state_expectedOutcome
 
-Use methodName_state_expectedOutcome style.
+Examples:
+activate_raviProspect_becomesActive
+activate_aminaActive_rejectsIllegalTransition
+get_unknownCus9999_throwsNotFound
 
-## Step 2 — Examples
-
-Write names for Amina already ACTIVE reject, Ravi PROSPECT activate success, CUS-9999 not found.
-
-## Step 3 — Anti-name
-
-Reject names like `test1` / `testActivate`.
+Anti-names: test1, testActivate
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +67,19 @@ From `examples/module-17-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 17 — Expressive Test Names
 
-## Step 1 — Pattern
+## Pattern
+_____
 
-Use methodName_state_expectedOutcome style.
+## Three names
+1. _____
+2. _____
+3. _____
 
-## Step 2 — Examples
-
-Write names for Amina already ACTIVE reject, Ravi PROSPECT activate success, CUS-9999 not found.
-
-## Step 3 — Anti-name
-
-Reject names like `test1` / `testActivate`.
+## Anti-names rejected
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,22 +88,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Three expressive names plus an anti-pattern note in `notes/lab17-test-names.md`.
+Three expressive names + anti-names in `notes/lab17-test-names.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rename testActivate() to encode Ravi PROSPECT→ACTIVE.
+
+## Predict the Output / Behavior
+
+Is @DisplayName a substitute for a clear method name in Surefire reports?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab17-test-names.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 17 |
+| Using test1 | Rewrite with fixture + outcome |
+| Only one name | Provide three |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab17-test-names.md`
-- [ ] Three good names
-- [ ] Fixtures reflected
-- [ ] Anti-name rejected
-
+- [ ] Pattern stated
+- [ ] Three names
+- [ ] Anti-names listed

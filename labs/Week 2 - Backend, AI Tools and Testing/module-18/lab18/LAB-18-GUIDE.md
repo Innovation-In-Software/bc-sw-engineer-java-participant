@@ -1,5 +1,19 @@
 # Lab 18: Mockito and Mocking with AI Assistance — Northstar CRM Isolation Tests
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 18 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-18-WINDOWS.md) · [macOS](LAB-18-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship Mockito + BDDMockito isolation suites with stub/verify/never/ArgumentCaptor |
+| **Skills practiced** | @Mock repo, real validator, verify/never, ArgumentCaptor, BDDMockito syntax |
+| **Expected outcome** | Green Mockito + BDD suites · not-found never saves · isolation-policy.md |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 17 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab18-crm/` — mock suites, POM Mockito deps, isolation-policy |
+| **Validation checkpoints** | Starter smoke `mvn -B clean test` (run twice) · GUIDE Implementation Checkpoints |
+
 **Module:** 18 — Mockito for Test Isolation  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-18/lab18/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-18-WINDOWS.md](LAB-18-WINDOWS.md) |
 | macOS | [LAB-18-MACOS.md](LAB-18-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 18 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer copying `lab17-crm` → `lab18-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-18-exercises/`; graded work is `examples/lab18-crm/`.
+
+> **Incremental build:** Real-validator policy → stub/verify → captor → activate sequence → anti-patterns → Lab 18.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** Mock **repository** (+ notifier); keep **validator** real. Never mock the SUT. `never().save` on not-found. Selenium is **Lab 19**. Review AI drafts.
 
 ## 45-minute timed path (use starter)
 
@@ -720,6 +740,11 @@ git status
 | Flaky verifies | Shared static mocks | Recreate in `@BeforeEach` |
 | Lab 17 suite broken | Accidental production change | Diff only test POM + mock tests |
 | Copilot mocks service | Underspecified prompt | Reject; restate collaborator-only mocks |
+| Captor status still PROSPECT | Activate did not mutate / wrong stub | Stub PROSPECT Ravi; assert after activate |
+| `never().save` fails (save invoked) | Not-found path still persists | Fix service short-circuit before save |
+| Working in `module-18-exercises` for the lab | Wrong project | Lab lives in `examples/lab18-crm` |
+| Mixing Mockito + BDDMockito static imports | Colliding names | Prefer one style per test class |
+| Added Selenium in Lab 18 | Scope creep | Defer UI automation to Lab 19 |
 
 ---
 

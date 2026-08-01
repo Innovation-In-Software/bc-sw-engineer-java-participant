@@ -1,14 +1,31 @@
 # Exercise 5 — Fill Activate Ravi Pseudocode TODOs
 
-**Module 15** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 15** · Checkpoint D · Exercises 1–6 Pass then Lab 15
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete fill-in blanks for activate(CUS-1002) pseudocode |
+| **Skills practiced** | Use-case sequencing, validate-before-mutate |
+| **Expected outcome** | notes/lab15-activate-ravi-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-15-exercises/` → notes/lab15-activate-ravi-todos.md |
+| **Checkpoint** | D (after slides 158–163) |
+
+## What you will learn
+
+- Load Ravi by CUS-1002; require PROSPECT; set ACTIVE; save
+- Log correlation lab-request-001
+- Repository saves; it does not decide the transition
+
+**Enterprise context:** Ops demos always activate Ravi (PROSPECT); activating Amina (ACTIVE) is the negative path.
 
 ## Goal
 
-Create `notes/lab15-activate-ravi-todos.md` — complete fill-in blanks for activate(CUS-1002) pseudocode.
+Create `notes/lab15-activate-ravi-todos.md` — fill activate pseudocode.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,29 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 15 — Fill Activate Ravi Pseudocode TODOs
 
-## Step 1 — Copy pseudocode
+customer = repo.findById(CUS-1002)
+if null → NotFound
+if status is not PROSPECT → domain/illegal transition
+set status ACTIVE
+repo.save/update(customer)
+log correlation lab-request-001
 
-customer = repo.findById((your note here))
-if customer is null → throw (your note here)
-if status is not (your note here) → throw (your note here)
-set status to (your note here)
-repo.(your note here)(customer)
-log correlation (your note here)
-
-## Step 2 — Fill blanks
-
-Fill with CUS-1002, NotFound, PROSPECT, IllegalState/domain exception, ACTIVE, save/update, lab-request-001.
-
-## Step 3 — Repo boundary note
-
-Write: *Repository saves state; it does not decide PROSPECT→ACTIVE.*
-
-## Step 4 — Self-check
-
-Confirm Ravi starts PROSPECT and ends ACTIVE in the filled sheet.
+Repository saves state; it does not decide PROSPECT→ACTIVE.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,8 +67,6 @@ From `examples/module-15-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 15 — Fill Activate Ravi Pseudocode TODOs
 
-## Step 1 — Copy pseudocode
-
 customer = repo.findById(_____)
 if customer is null → throw _____
 if status is not _____ → throw _____
@@ -71,20 +74,11 @@ set status to _____
 repo._____(customer)
 log correlation _____
 
-## Step 2 — Fill blanks
-
-Fill with CUS-1002, NotFound, PROSPECT, IllegalState/domain exception, ACTIVE, save/update, lab-request-001.
-
-## Step 3 — Repo boundary note
-
-Write: *Repository saves state; it does not decide PROSPECT→ACTIVE.*
-
-## Step 4 — Self-check
-
-Confirm Ravi starts PROSPECT and ends ACTIVE in the filled sheet.
+## Repo boundary
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -95,7 +89,17 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Filled activate pseudocode with repo boundary called out in `notes/lab15-activate-ravi-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+If you set ACTIVE before checking PROSPECT, what bug appears on Amina?
+
+## Predict the Output / Behavior
+
+After a failed illegal transition, should repo.save still run?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
@@ -111,4 +115,3 @@ Self-check before marking Pass:
 - [ ] All _____ replaced
 - [ ] PROSPECT→ACTIVE correct
 - [ ] Repo boundary sentence present
-

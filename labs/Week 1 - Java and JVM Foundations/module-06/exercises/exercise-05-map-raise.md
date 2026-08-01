@@ -1,9 +1,28 @@
 # Exercise 5 — Map a 10% Salary Raise
 
-**Module 6** · Pre-lab practice · finish Exercises 1–7 Pass, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Pre-lab practice · Checkpoint C · Exercises 1–7 Pass then Lab 6
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Streams: Calculating Proposed Salary Raises](../../../lab_diagrams/mod06-ex05-map-raise.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map a 10% raise into new values without mutating source Employee records |
+| **Skills practiced** | map transform, immutability of source data |
+| **Expected outcome** | Raised salaries print; original sample salaries unchanged |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-06-exercises/` → RaiseDemo.java |
+| **Checkpoint** | C (after slides 160–162) |
+
+## What you will learn
+
+- map can produce derived numbers or new records
+- Prefer transforming to new values over mutating shared domain objects
+- Streams encourage side-effect-light pipelines
+
+**Enterprise context:** What-if raise scenarios must not silently rewrite the live employee master file in memory.
 
 ## Goal
 
@@ -147,7 +166,18 @@ Temporarily change `1.10` to `1.05`. Confirm Alice's proposal becomes
 Five proposed salaries print in employee order, every proposal is exactly 10%
 higher, and Alice's original salary remains 72,000.
 
-## If it fails
+
+## Debug / design challenge
+
+If you mutated a mutable employee class, restore map-to-new-value style and re-check source salaries.
+
+## Predict the Output / Behavior
+
+Alice starts at 72000 — what is her mapped 10% raise value?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

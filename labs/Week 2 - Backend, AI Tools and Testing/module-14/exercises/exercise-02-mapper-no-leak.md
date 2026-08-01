@@ -1,14 +1,31 @@
 # Exercise 2 — Mapper No-Leak Rule
 
-**Module 14** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 14** · Checkpoint B · Exercises 1–6 Pass then Lab 14
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch toDto/toEntity rules that keep internals out of API responses |
+| **Skills practiced** | Manual mapping, request vs response shapes |
+| **Expected outcome** | notes/lab14-mapper-no-leak.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-14-exercises/` → notes/lab14-mapper-no-leak.md |
+| **Checkpoint** | B (after slides 136–138) |
+
+## What you will learn
+
+- toDto maps only contract fields (id, fullName, status)
+- Forbidden: hashes, risk scores, persistence-only columns
+- Activate request is narrow; Lab 15 owns deep transitions
+
+**Enterprise context:** Integration partners break when mappers copy every entity field into JSON/XML by habit.
 
 ## Goal
 
 Create `notes/lab14-mapper-no-leak.md` — sketch toDto/toEntity rules that keep internals out of API responses.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -25,23 +42,19 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 # Lab 14 — Mapper No-Leak Rule
 
 ## Step 1 — toDto
-
 Map only id, fullName, status for CUS-1001 responses.
 
 ## Step 2 — Forbidden
-
 List forbidden: password hashes, internal risk scores, raw SQL ids if different.
 
 ## Step 3 — Activate DTO
-
 Activate request carries customerId only (+ correlation header outside body).
 
 ## Step 4 — Prep boundary
-
 Write: *DTOs before deep service rules — Lab 15 owns transitions.*
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -58,23 +71,20 @@ From `examples/module-14-exercises/`, create `notes/` if needed, then create `no
 # Lab 14 — Mapper No-Leak Rule
 
 ## Step 1 — toDto
-
-Map only id, fullName, status for CUS-1001 responses.
+CUS-1001 response fields: _____
 
 ## Step 2 — Forbidden
-
-List forbidden: password hashes, internal risk scores, raw SQL ids if different.
+1. _____
+2. _____
 
 ## Step 3 — Activate DTO
-
-Activate request carries customerId only (+ correlation header outside body).
+Body fields: _____ · Correlation: _____
 
 ## Step 4 — Prep boundary
-
-Write: *DTOs before deep service rules — Lab 15 owns transitions.*
+Lab that owns deep transitions: _____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -85,13 +95,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Mapper rules with Lab 15 boundary stated in `notes/lab14-mapper-no-leak.md`.
 
-## If it fails
+## Debug / design challenge
+
+toEntity copies a client-supplied `status=ACTIVE` on create — is that a leak or a business-rule problem? Name which lab deepens it.
+
+## Predict the Output / Behavior
+
+Does mapping `null` email to empty string hide a validation failure?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab14-mapper-no-leak.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 14 |
+| Mapping every entity field | Whitelist contract fields only |
+| Claiming MapStruct is required | Lab 14 uses manual mapper |
 
 ## Pass criteria
 
@@ -101,4 +121,3 @@ Self-check before marking Pass:
 - [ ] toDto fields listed
 - [ ] Forbidden fields listed
 - [ ] Lab 15 deferral noted
-

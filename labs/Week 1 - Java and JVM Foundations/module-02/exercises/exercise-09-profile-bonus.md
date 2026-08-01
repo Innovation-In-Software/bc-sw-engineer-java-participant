@@ -1,11 +1,30 @@
 # Exercise 9 — Personal Profile (bonus)
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint F · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Formatted Output: Building a Console Table](../../../lab_diagrams/mod02-ex09-profile-bonus.png)
 
 > **Optional:** practice aligned columns — same idea as Lab 2’s student list `printf` table.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Print an aligned two-column printf table |
+| **Skills practiced** | printf widths, table layout |
+| **Expected outcome** | Aligned Field | Value table |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-02-exercises/PersonalProfile.java` |
+| **Checkpoint** | F (bonus) |
+
+## What you will learn
+
+- Width/alignment in printf
+- Same idea as Lab 2 student table
+- Bonus only — after 1–7 Pass
+
+**Enterprise context:** Ops consoles show columnar reports the same way.
 
 ## Goal
 
@@ -33,6 +52,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/PersonalProfile.java`](starter/PersonalProfile.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -126,7 +148,9 @@ Hobby        | Coding
 
 A readable two-column profile table with aligned fields.
 
-## If it fails
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

@@ -1,11 +1,30 @@
 # Exercise 4 — Sorted Collections: `TreeMap`
 
-**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · Checkpoint C · all 7 then lab
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections: Sorting Map Keys with TreeMap](../../../lab_diagrams/mod05-ex04-sorted-collections.png)
 
 > **Builds on Exercise 2:** You already used `new TreeSet<>(...)` to get a sorted view of a `Set`. `TreeMap` applies the same idea to key-value pairs.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Use TreeMap sorted keys and firstKey/lastKey |
+| **Skills practiced** | TreeMap, sorted key navigation |
+| **Expected outcome** | Report keys print in sorted order |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-05-exercises/SortedMapDemo.java` |
+| **Checkpoint** | C |
+
+## What you will learn
+
+- TreeMap sorts by key
+- Useful for category reports
+- Cost differs from HashMap
+
+**Enterprise context:** Category → count reports often want alphabetical keys.
 
 ## Goal
 
@@ -26,6 +45,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -119,7 +141,14 @@ Add to `notes.md`:
 
 `TreeMap` prints titles alphabetically and reports the correct first/last title; `HashMap` order is not relied upon anywhere in your notes.
 
-## If it fails
+
+## Predict the Output / Behavior
+
+firstKey after putting B, A, C?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

@@ -1,14 +1,31 @@
 # Exercise 6 — Lab 21 Prep Checklist
 
-**Module 21** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 21** · Checkpoint D · Exercises 1–6 Pass then Lab 21
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 21 |
+| **Skills practiced** | Readiness gate |
+| **Expected outcome** | notes/lab21-prep-checklist.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-21-exercises/` → notes/lab21-prep-checklist.md |
+| **Checkpoint** | D (after slides 264–269) |
+
+## What you will learn
+
+- Gate Lab 21 on Ex 1–5 notes
+- Cardinality + probe meanings clear
+- Prod exposure caution internalized
+
+**Enterprise context:** Teams that skip cardinality notes ship customerId tags and regret it in Prometheus.
 
 ## Goal
 
-Create `notes/lab21-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 21 without finishing it now.
+Create `notes/lab21-prep-checklist.md` — readiness for Lab 21.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,27 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 21 prep checklist
 
-## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/lab21-cardinality-antipatterns.md | (your note here) |
-| notes/lab21-actuator-allowlist.md | (your note here) |
-| notes/lab21-probes.md | (your note here) |
-| notes/lab21-metric-sketch-todos.md | (your note here) |
-| notes/lab21-alert-runbook.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/lab21-cardinality-antipatterns.md | yes |
+| notes/lab21-actuator-allowlist.md | yes |
+| notes/lab21-probes.md | yes |
+| notes/lab21-metric-sketch-todos.md | yes |
+| notes/lab21-alert-runbook.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 21 now.
-
-## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+Lab exposure ≠ prod. Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -60,7 +65,6 @@ From `examples/module-21-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 21 prep checklist
 
-## Earlier exercise files present?
 | File | Present? (yes/no) |
 | ---- | ----------------- |
 | notes/lab21-cardinality-antipatterns.md | _____ |
@@ -69,18 +73,12 @@ From `examples/module-21-exercises/`, create `notes/` if needed, then create `no
 | notes/lab21-metric-sketch-todos.md | _____ |
 | notes/lab21-alert-runbook.md | _____ |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 21 now.
+## Scope
+Pre-lab only. Prod Actuator exposure? _____
 
 ## Self mark
 Overall prep: Pass / Fail
-If Fail, revisit exercise(s): _____
+If Fail, revisit: _____
 ```
 
 ### Step 3 — Self-check
@@ -89,15 +87,25 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Final Week 2 readiness checklist with pre-lab-only scope in `notes/lab21-prep-checklist.md`.
+Readiness checklist in `notes/lab21-prep-checklist.md`.
 
-## If it fails
+## Debug / design challenge
+
+If cardinality notes still allow customerId labels, which exercise do you reopen?
+
+## Predict the Output / Behavior
+
+Which IT class will prove probes and metrics in the lab?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab21-prep-checklist.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 21 |
+| Marking Pass with blanks | Fill every yes/no |
+| Starting Lab 21 mid-checklist | Finish Ex 1–5 first |
 
 ## Pass criteria
 
@@ -105,6 +113,5 @@ Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab21-prep-checklist.md`
 - [ ] Artifacts confirmed
-- [ ] Pre-lab-only statement present
+- [ ] Prod caution noted
 - [ ] Pass/Fail marked
-

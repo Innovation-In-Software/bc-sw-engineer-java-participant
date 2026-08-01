@@ -1,16 +1,26 @@
 # Module 8 — Pre-Lab Exercises
 
-> **Start here for Module 8:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Learn → Practice → Review:** Do **not** wait until every Module 8 slide is finished. Work each checkpoint when the instructor pauses ([`../PACING.md`](../PACING.md)).  
+> **Tip:** Each exercise starts with an **Activity card** + **What you will learn**. Prefer [`starter/`](starter/README.md).  
+> **Start here for Module 8:** [`../README.md`](../README.md)
 
 **Module:** 8 — Java Project Structure and Modularization  
-**Next:** [`../lab8/LAB-8-WINDOWS.md`](../lab8/LAB-8-WINDOWS.md) or [`../lab8/LAB-8-MACOS.md`](../lab8/LAB-8-MACOS.md) → [`../lab8/LAB-8-GUIDE.md`](../lab8/LAB-8-GUIDE.md)
+**Next (after all 6 Pass):** OS how-to → [`../lab8/LAB-8-WINDOWS.md`](../lab8/LAB-8-WINDOWS.md) or [`../lab8/LAB-8-MACOS.md`](../lab8/LAB-8-MACOS.md) → [`../lab8/LAB-8-GUIDE.md`](../lab8/LAB-8-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the Module 8 slides, then start Lab 8.  
-> Use JDK 21 and Maven 3.9+.  
-> These exercises design and test small pieces; Lab 8 builds the complete CRM skeleton.  
-> Exercise 3 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` and `// TODO` with your own code, then compile and run.
+> **Gate for Lab 8:** All **six** exercises must be Pass.  
+> **JDK:** 21 · **Maven:** 3.9+ · Practice: `examples/module-08-exercises/` · Lab: `examples/lab8-crm/`  
+> **Classroom order:** **1 → 2 → 4 → 3 → 5 → 6**
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+## Checkpoint map
+
+| When (after slides) | Do these | Pattern |
+| ------------------- | -------- | ------- |
+| Checkpoint A (1–8) | Ex 1 Maven layout | Learn → Practice |
+| Checkpoint B (9) | Ex 2 package plan | Learn → Practice |
+| Checkpoint C (10–14) | Ex 4 layer responsibilities | Learn → Practice |
+| Checkpoint D (15–21) | Ex 3 entity vs DTO | Learn → Practice |
+| Checkpoint E (22–24) | Ex 5–6 flow + dependency direction | Learn → Practice |
+| Checkpoint F (25–27) | Lab 8 | Practice → Lab |
 
 ## Scope boundary — do not build later technology yet
 
@@ -22,17 +32,7 @@
 | Dependency-direction reasoning | PostgreSQL, Kafka, React |
 | Request-flow documentation | Real customer persistence |
 
-## Workspace
-
-| Item | Windows | macOS |
-| ---- | ------- | ----- |
-| Exercises folder | `%USERPROFILE%\java-bootcamp\examples\module-08-exercises` | `~/java-bootcamp/examples/module-08-exercises` |
-| Mini source folder (Exercise 3) | `mini-src\` | `mini-src/` |
-| Compiled output | `mini-out\` | `mini-out/` |
-
-### Setup
-
-**Windows (PowerShell):**
+## Workspace setup
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
@@ -42,39 +42,22 @@ java -version
 mvn -version
 ```
 
-**macOS (zsh/bash):**
-
 ```bash
-cd ~/java-bootcamp
-mkdir -p examples/module-08-exercises
-cd examples/module-08-exercises
-java -version
-mvn -version
+cd ~/java-bootcamp && mkdir -p examples/module-08-exercises && cd examples/module-08-exercises
+java -version && mvn -version
 ```
 
-**Expected:** Java 21 and Maven 3.9+ are available. If not, return to Lab 0 before continuing.
-
-### How the Exercise 3 starter works
-
-1. Create the `mini-src/com/northstar/crm/` tree (see [`exercise-03-entity-vs-dto.md`](exercise-03-entity-vs-dto.md)).
-2. Paste each skeleton → fill every `_____` / `// TODO` → save.
-3. Compile with `javac -d mini-out ...` and run `com.northstar.crm.StructureDemo`.
-
-Scaffolding (packages, imports, class names) is given; the learning parts are blanks. Your finished files must compile — blanks are not valid Java.
+Prefer copy from [`starter/`](starter/README.md).
 
 ## Exercise index
 
-Complete in this sequence (matches Module slide order):
+| # | Exercise | Est. | Type | File |
+| - | -------- | ---- | ---- | ---- |
+| 1 | Maven Layout | 10–12 min | Analysis | [`exercise-01-maven-layout.md`](exercise-01-maven-layout.md) |
+| 2 | Package Plan | 10–12 min | Analysis | [`exercise-02-package-plan.md`](exercise-02-package-plan.md) |
+| 3 | Entity vs DTO | 15–20 min | TODO coding | [`exercise-03-entity-vs-dto.md`](exercise-03-entity-vs-dto.md) |
+| 4 | Layer Responsibilities | 12–15 min | Analysis | [`exercise-04-layer-responsibilities.md`](exercise-04-layer-responsibilities.md) |
+| 5 | Request Flow | 10–12 min | Analysis | [`exercise-05-request-flow.md`](exercise-05-request-flow.md) |
+| 6 | Dependency Direction | 10–12 min | Analysis | [`exercise-06-dependency-direction.md`](exercise-06-dependency-direction.md) |
 
-Complete in this sequence (matches Module 8 slide order):
-
-| # | Exercise | New structural skill | File |
-| - | -------- | -------------------- | ---- |
-| 1 | Read a Maven Layout | Source, resource, test, output locations | [`exercise-01-maven-layout.md`](exercise-01-maven-layout.md) |
-| 2 | Plan Package Organization | Fully qualified names and package rules | [`exercise-02-package-plan.md`](exercise-02-package-plan.md) |
-| 3 | Separate Entity and DTO | TODO starter: entity + request/response DTOs | [`exercise-03-entity-vs-dto.md`](exercise-03-entity-vs-dto.md) |
-| 4 | Assign Layer Responsibilities | Controller/service/repository boundaries | [`exercise-04-layer-responsibilities.md`](exercise-04-layer-responsibilities.md) |
-| 5 | Trace a Customer Request | Document future end-to-end flow | [`exercise-05-request-flow.md`](exercise-05-request-flow.md) |
-| 6 | Check Dependency Direction | Detect invalid layer coupling | [`exercise-06-dependency-direction.md`](exercise-06-dependency-direction.md) |
-
-Keep all work separate from `examples/lab8-crm`; that project begins in the full lab.
+When all **six** Pass → OS how-to → [`../lab8/LAB-8-GUIDE.md`](../lab8/LAB-8-GUIDE.md).

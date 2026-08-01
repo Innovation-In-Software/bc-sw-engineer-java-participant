@@ -1,6 +1,25 @@
 # Exercise 3 — Walk the Maven Lifecycle
 
-**Module 9** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 9** · Checkpoint B · Exercises 1–6 Pass then Lab 9
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map validate→install phases and know when to avoid deploy |
+| **Skills practiced** | Maven lifecycle phases, local vs remote |
+| **Expected outcome** | notes/lifecycle-notes.md with phase meanings |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-09-exercises/` → notes/lifecycle-notes.md |
+| **Checkpoint** | B (after slides 40–47) |
+
+## What you will learn
+
+- Later phases include earlier ones (package runs compile+test first)
+- install puts the artifact in the local ~/.m2 repository
+- deploy is for remote repos — not a classroom default
+
+**Enterprise context:** CI usually runs verify/package; promote artifacts deliberately, do not casual-deploy from laptops.
 
 ## Goal
 
@@ -80,6 +99,19 @@ Also note: `deploy` belongs to release/CI credentialed publishing, not Module 9 
 ## Expected result
 
 You can name each phase, pick the right command, and explain why classroom/CI stops at `verify` unless install is intentional.
+
+
+## Debug / design challenge
+
+Someone runs deploy to production Central from a laptop — what should they run instead locally?
+
+## Predict the Output / Behavior
+
+Does mvn package compile sources if you never ran compile?
+
+## Troubleshooting
+
+See steps above if Maven commands fail. Prefer full logs (no `-q`) while learning.
 
 ## Pass criteria
 

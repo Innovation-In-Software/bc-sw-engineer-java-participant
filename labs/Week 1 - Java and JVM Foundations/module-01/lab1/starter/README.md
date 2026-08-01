@@ -2,6 +2,18 @@
 
 Fill the `// TODO` markers. Do **not** open `../solution/` first.
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete four TODO programs that prove compile → run → allocate on the JVM |
+| **Skills practiced** | Methods, constructors, loops, `javac`/`java` |
+| **Expected outcome** | Smoke-test output snippet below |
+| **Estimated time** | ~45 minutes |
+| **Files** | `HelloWorld.java`, `Calculator.java`, `Employee.java`, `MemoryDemo.java` |
+
+**Boilerplate reduced:** `Employee` already declares `id` / `name` fields — focus on constructor, `display()`, and `main`.
+
 ## Target copy path
 
 `~/java-bootcamp/examples/jvm-compilation-lab/`
@@ -45,7 +57,7 @@ java Employee
 java MemoryDemo
 ```
 
-**Expected output snippet:**
+**Expected console output:**
 
 ```text
 Hello, JVM!
@@ -54,12 +66,20 @@ Sum = 30
 Created 100000 employees
 ```
 
-## Timed-path Pass criteria
+## Validation checkpoint
 
 | # | Criterion | Pass / Fail |
 | - | --------- | ----------- |
 | 1 | All four `.java` files compile | |
 | 2 | Smoke-test output matches snippet above | |
 | 3 | Evidence saved under `notes/screenshots/lab-1/` | |
+
+## Troubleshooting (quick)
+
+| Error | Fix |
+| ----- | --- |
+| `UnsupportedOperationException: TODO` | You still have a TODO stub — fill it |
+| `cannot find symbol: class Employee` | Compile `Employee.java` with `MemoryDemo.java` |
+| Wrong folder | `cd` into `jvm-compilation-lab` before `javac` |
 
 > Full GUIDE steps remain for homework / extended work (`javap`, verbose class load, GitHub push, written answers, etc.).

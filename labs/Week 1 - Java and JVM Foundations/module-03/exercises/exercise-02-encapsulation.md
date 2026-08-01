@@ -1,11 +1,30 @@
 # Exercise 2 — Encapsulation Practice
 
-**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · Checkpoint B · all 8 then lab
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Encapsulation with Private State and Validated Methods](../../../lab_diagrams/mod03-ex02-encapsulation.png)
 
 > **Builds on Exercise 1:** `Account` owns the balance, so callers request a deposit or withdrawal instead of writing the field directly.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Hide balance behind validated deposit/withdraw methods |
+| **Skills practiced** | private fields, validation, getters |
+| **Expected outcome** | Invalid withdrawal rejected; final balance printed |
+| **Estimated time** | 15–18 minutes |
+| **File to create** | `examples/module-03-exercises/Account.java (+ EncapsulationDemo.java)` |
+| **Checkpoint** | B (after slides 90–92) |
+
+## What you will learn
+
+- Callers request operations — they do not write balance directly
+- Reject invalid amounts early
+- Encapsulation protects invariants
+
+**Enterprise context:** Ledger balances must never be set from random UI code — only through validated operations.
 
 ## Goal
 
@@ -24,6 +43,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy matching files from [`starter/`](starter/README.md). Or paste:
+
 
 Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
 
@@ -168,7 +190,19 @@ Remove the failure-experiment line before continuing.
 
 Valid operations change the balance; the oversized withdrawal does not. Outside code cannot directly assign `balance`.
 
-## If it fails
+
+
+## Debug / design challenge
+
+Temporarily make balance public and mutate it — then restore private + methods.
+
+## Predict the Output / Behavior
+
+If withdraw(amount) exceeds balance, what prints?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

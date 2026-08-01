@@ -1,9 +1,28 @@
 # Exercise 7 — Compose a Pipeline for HR Names
 
-**Module 6** · Pre-lab practice · finish Exercises 1–7 Pass, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Pre-lab practice · Checkpoint D · Exercises 1–7 Pass then Lab 6
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Streams: Filter, Map, Sort, and Collect](../../../lab_diagrams/mod06-ex07-hr-names.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Compose filter + map + sorted + toList for HR department names |
+| **Skills practiced** | Multi-stage pipeline, sorted, declarative composition |
+| **Expected outcome** | Sorted HR names print |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-06-exercises/` → HrNamesDemo.java |
+| **Checkpoint** | D (after slides 163–166) |
+
+## What you will learn
+
+- Pipelines read left-to-right: source → intermediates → terminal
+- Order of filter vs map changes work done (and sometimes results)
+- sorted is stateful intermediate — still lazy until terminal
+
+**Enterprise context:** Staffing lists often need department filter + name projection + alphabetical sort in one report.
 
 ## Goal
 
@@ -136,7 +155,18 @@ does not.
 
 The final list contains only Alice and Charlie in alphabetical order.
 
-## If it fails
+
+## Debug / design challenge
+
+Sort before filter and explain whether the printed HR names still match.
+
+## Predict the Output / Behavior
+
+Which names appear for department HR, in alphabetical order?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

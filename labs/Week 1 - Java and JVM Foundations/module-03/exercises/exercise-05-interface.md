@@ -1,11 +1,30 @@
 # Exercise 5 — Interface Practice
 
-**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · Checkpoint D · all 8 then lab
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Printable Interface Implemented by Customer](../../../lab_diagrams/mod03-ex05-interface.png)
 
 > **New design idea:** Inheritance says what an object **is**; an interface states a capability an object promises to provide.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Define a Printable contract and implement it on domain types |
+| **Skills practiced** | interface, implements, interface references |
+| **Expected outcome** | printDetails works via Printable reference |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-03-exercises/Printable.java (+ implementors/demo)` |
+| **Checkpoint** | D |
+
+## What you will learn
+
+- Interfaces define capability without inheritance tree
+- Program to the interface
+- One type can implement multiple contracts
+
+**Enterprise context:** Statements, receipts, and audit exports often share a printable/reportable contract.
 
 ## Goal
 
@@ -23,6 +42,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy matching files from [`starter/`](starter/README.md). Or paste:
+
 
 Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
 
@@ -131,7 +153,14 @@ Restore the method before continuing.
 
 The customer’s implementation runs even though the variable is declared as `Printable`.
 
-## If it fails
+
+## Predict the Output / Behavior
+
+Can an interface reference hold a SavingsAccount that implements Printable?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

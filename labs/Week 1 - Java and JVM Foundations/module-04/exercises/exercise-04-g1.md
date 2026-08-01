@@ -1,9 +1,28 @@
 # Exercise 4 — Select and Verify G1
 
-**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · Checkpoint B · all 7 then lab
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > **Reuse Exercise 3:** No new Java file is needed. Run `GcObserve` again with an explicit collector flag.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Select G1 explicitly and verify with flags/logs |
+| **Skills practiced** | -XX:+UseG1GC, collector identity |
+| **Expected outcome** | Notes confirm G1 was used |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-04-exercises/notes + GcObserve rerun` |
+| **Checkpoint** | B |
+
+## What you will learn
+
+- G1 is the common modern default
+- Flags go before the class name
+- Module 1 awareness → Module 4 hands-on
+
+**Enterprise context:** Most JDK 11+ services still start on G1 unless tuned otherwise.
 
 ## Goal
 
@@ -95,7 +114,9 @@ The collector flag selects G1; it does not guarantee a particular pause time.
 
 The JVM starts successfully, prints `Using G1`, and the bounded allocation program completes.
 
-## If it fails
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

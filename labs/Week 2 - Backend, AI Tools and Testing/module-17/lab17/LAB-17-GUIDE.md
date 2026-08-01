@@ -1,5 +1,19 @@
 # Lab 17: JUnit Testing with AI Assistance — Northstar CRM Service Tests
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 17 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-17-WINDOWS.md) · [macOS](LAB-17-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship CustomerServiceTests + parameterized transitions + JaCoCo ≥80% on service package |
+| **Skills practiced** | AAA, meaningful asserts, @CsvSource, Surefire, JaCoCo verify gate |
+| **Expected outcome** | Green `mvn clean test` + `mvn clean verify` · runbook evidence |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 16 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab17-crm/` — service tests, parameterized suite, pom JaCoCo, runbook |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints · JaCoCo package rule |
+
 **Module:** 17 — JUnit Testing Fundamentals  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-17/lab17/`  
 **Difficulty:** Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-17-WINDOWS.md](LAB-17-WINDOWS.md) |
 | macOS | [LAB-17-MACOS.md](LAB-17-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 17 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`.
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-17-exercises/`; graded work is `examples/lab17-crm/`.
+
+> **Incremental build:** AAA plan → meaningful asserts → CsvSource → names/JaCoCo narrative → Lab 17 `lab17-crm`.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** Meaningful asserts + `mvn clean verify` JaCoCo on `com.northstar.crm.service` ≥ **0.80**. Mockito is **Lab 18**. Review AI drafts — reject Spring phantoms / `assertTrue(true)`.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -533,6 +555,11 @@ git status
 | Flaky tests | Shared static state | Fresh repo per `@BeforeEach` |
 | False confidence | Trivial asserts | Assert IDs, status, exception codes |
 | Copilot Spring imports | Underspecified prompt | Reject; restate plain Java |
+| Gate fails at 0.99 after proof | Left minimum too high | Restore `0.80` and re-verify |
+| `assertThrows(Exception)` too broad | Wrong type | Prefer `BusinessException` |
+| Working in `module-17-exercises` for the lab | Wrong project | Lab lives in `examples/lab17-crm` |
+| Committing `target/site/jacoco` | Build artifact | Delete; add to `.gitignore` |
+| Only `mvn test` used for gate evidence | Check bound to verify | Run `mvn clean verify` |
 
 ---
 

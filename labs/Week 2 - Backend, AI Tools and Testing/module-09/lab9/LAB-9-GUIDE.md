@@ -1,5 +1,19 @@
 # Lab 9: Maven Build and Dependencies — Northstar CRM Build Lab
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 9 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; classroom order **1 → 3 → 4 → 5 → 2 → 6**). Then open **one** OS how-to ([Windows](LAB-9-WINDOWS.md) · [macOS](LAB-9-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Expand the CRM Maven project: scopes, plugins, lifecycle evidence, dependency tree |
+| **Skills practiced** | `mvn test/package/verify`, Surefire, jar Main-Class, profiles, `dependency:tree` |
+| **Expected outcome** | `mvn -B clean verify` + runnable `customer-service.jar` + lifecycle/tree evidence |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 8 habits · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab9-crm/` (`pom.xml`, tests, `docs/lifecycle-evidence.md`, tree capture) |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 9 — Build and Dependency Management with Maven  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-09/lab9/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-9-WINDOWS.md](LAB-9-WINDOWS.md) |
 | macOS | [LAB-9-MACOS.md](LAB-9-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).  
-> **Pre-lab exercises:** Complete [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) **in order 1→6** before this lab (all notes filenames are listed in that index — you do not need the slides for naming):  
-> 1. POM coordinates · 2. Profiles · 3. Lifecycle · 4. Dependency scopes · 5. Dependency tree · 6. Mini POM (TODO starter).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** (classroom order **1 → 3 → 4 → 5 → 2 → 6**) before Step 1. Lab 9 expands into `examples/lab9-crm/`, separate from `module-09-exercises/`.
+
+> **Incremental build:** Mini POM (Ex 6) + Lab 8 structure → Lab 9 build-managed CRM.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Scope:** Do **not** add Spring Boot, JPA, Kafka, or React. Prefer full Maven logs while learning; never `-q` with `dependency:tree`.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -855,6 +875,10 @@ Perform deliberately, then restore working state.
 | Spring Boot confusion | Over-eager coding | Remove `@SpringBootApplication`; placeholders only |
 | Disk full after install | Local repo growth | Optional purge of this artifact under `~/.m2` |
 | Surefire / compiler version warnings | Plugin older than needed | Align plugin versions with this guide |
+| Empty `dependency:tree` | Used `-q` | Re-run **without** `-q` (Ex 5 habit) |
+| JUnit on runtime classpath / fat issues | Wrong scope | Use `<scope>test</scope>` for junit-jupiter |
+| Working in `module-09-exercises` for the lab | Wrong project | Lab lives in `examples/lab9-crm` |
+| Accidental `mvn deploy` | Followed deploy slide literally | Stop; use `package` / `verify` / local `install` only |
 
 ### Cannot connect (Maven Central)
 

@@ -1,14 +1,31 @@
 # Exercise 6 — Lab 15 Prep Checklist
 
-**Module 15** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 15** · Checkpoint D · Exercises 1–6 Pass then Lab 15
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 15 |
+| **Skills practiced** | Readiness gate, fixture check |
+| **Expected outcome** | notes/lab15-prep-checklist.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-15-exercises/` → notes/lab15-prep-checklist.md |
+| **Checkpoint** | D (after slides 158–163) |
+
+## What you will learn
+
+- Gate Lab 15 on Ex 1–5 notes
+- Fixtures: Amina ACTIVE, Ravi PROSPECT
+- No HashMap in service; Lab 16 owns HTTP mapping
+
+**Enterprise context:** Teams that skip the prep gate waste lab time rediscovering where transitions belong.
 
 ## Goal
 
-Create `notes/lab15-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 15 without finishing it now.
+Create `notes/lab15-prep-checklist.md` — readiness for Lab 15.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,27 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 15 prep checklist
 
-## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/lab15-layers.md | (your note here) |
-| notes/lab15-repo-boundary.md | (your note here) |
-| notes/lab15-transition-matrix.md | (your note here) |
-| notes/lab15-interface-ctor-sketch.md | (your note here) |
-| notes/lab15-activate-ravi-todos.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/lab15-layers.md | yes |
+| notes/lab15-repo-boundary.md | yes |
+| notes/lab15-transition-matrix.md | yes |
+| notes/lab15-interface-ctor-sketch.md | yes |
+| notes/lab15-activate-ravi-todos.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 15 now.
-
-## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+Fixtures: CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT
+Scope: pre-lab only; no full Lab 15 yet; no @ControllerAdvice yet.
+Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -60,7 +67,6 @@ From `examples/module-15-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 15 prep checklist
 
-## Earlier exercise files present?
 | File | Present? (yes/no) |
 | ---- | ----------------- |
 | notes/lab15-layers.md | _____ |
@@ -69,18 +75,15 @@ From `examples/module-15-exercises/`, create `notes/` if needed, then create `no
 | notes/lab15-interface-ctor-sketch.md | _____ |
 | notes/lab15-activate-ravi-todos.md | _____ |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
+## Fixtures
+CUS-1001 Amina _____ · CUS-1002 Ravi _____
 
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 15 now.
+## Scope
+Pre-lab only. HTTP exception mapping lab: _____
 
 ## Self mark
 Overall prep: Pass / Fail
-If Fail, revisit exercise(s): _____
+If Fail, revisit: _____
 ```
 
 ### Step 3 — Self-check
@@ -91,13 +94,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Readiness checklist with pre-lab-only scope in `notes/lab15-prep-checklist.md`.
 
-## If it fails
+## Debug / design challenge
+
+If HashMap still lives in the service package plan, what failed the gate?
+
+## Predict the Output / Behavior
+
+Which fixture starts PROSPECT for the activate demo?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab15-prep-checklist.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 15 |
+| Marking Pass with blanks | Fill every yes/no |
+| Starting Lab 15 mid-checklist | Finish Ex 1–5 first |
 
 ## Pass criteria
 
@@ -107,4 +120,3 @@ Self-check before marking Pass:
 - [ ] Artifacts confirmed
 - [ ] Fixtures correct
 - [ ] Pre-lab-only statement present
-

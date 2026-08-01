@@ -1,14 +1,31 @@
 # Exercise 6 — Lab 14 Prep Checklist
 
-**Module 14** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 14** · Checkpoint D · Exercises 1–6 Pass then Lab 14
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 14 without finishing it now |
+| **Skills practiced** | Readiness gate, fixture check |
+| **Expected outcome** | notes/lab14-prep-checklist.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-14-exercises/` → notes/lab14-prep-checklist.md |
+| **Checkpoint** | D (after slides 144–147) |
+
+## What you will learn
+
+- Gate Lab 14 on completed Ex 1–5 notes
+- Fixtures stay Amina/Ravi + correlation id
+- Honest scope: no Spring `@Valid` yet
+
+**Enterprise context:** Teams that skip the prep gate burn class time rediscovering entity leaks and missing deps.
 
 ## Goal
 
-Create `notes/lab14-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 14 without finishing it now.
+Create `notes/lab14-prep-checklist.md` — readiness for Lab 14.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -25,26 +42,23 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 # Lab 14 prep checklist
 
 ## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/lab14-entity-vs-dto.md | (your note here) |
-| notes/lab14-mapper-no-leak.md | (your note here) |
-| notes/lab14-annotate-dto.md | (your note here) |
-| notes/lab14-invalid-cases.md | (your note here) |
-| notes/lab14-validatorfactory-todos.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/lab14-entity-vs-dto.md | yes |
+| notes/lab14-mapper-no-leak.md | yes |
+| notes/lab14-annotate-dto.md | yes |
+| notes/lab14-invalid-cases.md | yes |
+| notes/lab14-validatorfactory-todos.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
+## Fixtures
+CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT · lab-request-001
 
 ## Scope statement
 Pre-lab only — prepare for lab; do not complete full Lab 14 now.
+No Spring @Valid controllers yet.
 
 ## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -77,6 +91,7 @@ From `examples/module-14-exercises/`, create `notes/` if needed, then create `no
 
 ## Scope statement
 Pre-lab only — prepare for lab; do not complete full Lab 14 now.
+Spring `@Valid`? _____
 
 ## Self mark
 Overall prep: Pass / Fail
@@ -91,13 +106,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Readiness with honest Spring `@Valid` deferral in `notes/lab14-prep-checklist.md`.
 
-## If it fails
+## Debug / design challenge
+
+One notes file is missing — which exercise do you reopen before the OS guide?
+
+## Predict the Output / Behavior
+
+If you mark Pass but still plan to return `Customer` from the facade, what failed the gate?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab14-prep-checklist.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 14 |
+| Marking Pass with blanks | Fill every yes/no and scope line |
+| Starting Lab 14 mid-checklist | Finish Ex 1–5 first |
 
 ## Pass criteria
 
@@ -107,4 +132,3 @@ Self-check before marking Pass:
 - [ ] Artifacts confirmed
 - [ ] Boundary statement present
 - [ ] Pass/Fail marked
-

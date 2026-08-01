@@ -1,6 +1,25 @@
 # Exercise 4 — Equals vs ==
 
-**Module 12** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 12** · Checkpoint B · Exercises 1–6 Pass then Lab 12
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Contrast equals vs == for status and customer id checks |
+| **Skills practiced** | Correctness habit, readability |
+| **Expected outcome** | notes/lab12-equals-vs-eqeq.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-12-exercises/` → notes/lab12-equals-vs-eqeq.md |
+| **Checkpoint** | B (after slides 100–104) |
+
+## What you will learn
+
+- == compares references for objects; equals compares value
+- Map keyed by id + equals fixes flaky get lookups
+- Enums can use == safely; String ids should not rely on it
+
+**Enterprise context:** Lookup bugs from == on String ids are classic production defects.
 
 ## Goal
 
@@ -93,7 +112,18 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A comparison cheat sheet tied to Northstar statuses in `notes/lab12-equals-vs-eqeq.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Explain why getCustomer(new String("CUS-1001")) fails with ==.
+
+## Predict the Output / Behavior
+
+Preferred structure for id lookup: List scan with == or Map + equals?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

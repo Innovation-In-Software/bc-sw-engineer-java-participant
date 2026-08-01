@@ -1,14 +1,31 @@
 # Exercise 2 — Rewrite Unsafe Logs
 
-**Module 20** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 20** · Checkpoint B · Exercises 1–6 Pass then Lab 20
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Turn unsafe Customer logs into id+status+correlation lines |
+| **Skills practiced** | PII-free structured messages |
+| **Expected outcome** | notes/lab20-safe-logs.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-20-exercises/` → notes/lab20-safe-logs.md |
+| **Checkpoint** | B (after slides 244) |
+
+## What you will learn
+
+- Unsafe: Customer.toString with email/phone
+- Safe: customerId + status + correlation
+- Safe activate line for CUS-1002
+
+**Enterprise context:** Logging “Amina Khan <email>” is a reportable privacy incident in many enterprises.
 
 ## Goal
 
-Create `notes/lab20-safe-logs.md` — turn unsafe Customer logs into id+status+correlation lines.
+Create `notes/lab20-safe-logs.md` — rewrite unsafe logs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,20 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 20 — Rewrite Unsafe Logs
 
-## Step 1 — Unsafe
-
-Example bad: log full Customer toString including email/phone if present.
-
-## Step 2 — Safe
-
-Rewrite: customerId=CUS-1001 status=ACTIVE correlation=lab-request-001.
-
-## Step 3 — Ravi line
-
-Write a safe activate start line for CUS-1002 PROSPECT.
+Unsafe: log full Customer toString including email.
+Safe: customerId=CUS-1001 status=ACTIVE correlation=lab-request-001
+Ravi activate start: customerId=CUS-1002 status=PROSPECT correlation=lab-request-001
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +62,17 @@ From `examples/module-20-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 20 — Rewrite Unsafe Logs
 
-## Step 1 — Unsafe
+## Unsafe example
+_____
 
-Example bad: log full Customer toString including email/phone if present.
+## Safe rewrite (Amina/CUS-1001)
+_____
 
-## Step 2 — Safe
-
-Rewrite: customerId=CUS-1001 status=ACTIVE correlation=lab-request-001.
-
-## Step 3 — Ravi line
-
-Write a safe activate start line for CUS-1002 PROSPECT.
+## Safe Ravi activate start
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,22 +81,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Before/after log lines using Northstar fixtures safely in `notes/lab20-safe-logs.md`.
+Unsafe→safe rewrites in `notes/lab20-safe-logs.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rewrite: log.info("created {}", customer) where toString includes email.
+
+## Predict the Output / Behavior
+
+Is fullName allowed if the ticket already knows Amina?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab20-safe-logs.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 20 |
+| Keeping email in safe line | Remove PII; keep ids |
+| Missing correlation | Include lab-request-001 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab20-safe-logs.md`
-- [ ] Unsafe example named
-- [ ] Safe Amina line written
-- [ ] Safe Ravi line written
-
+- [ ] Unsafe labeled
+- [ ] Safe Amina line
+- [ ] Safe Ravi line

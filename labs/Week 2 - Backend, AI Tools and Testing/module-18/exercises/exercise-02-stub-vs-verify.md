@@ -1,14 +1,31 @@
 # Exercise 2 — Stub vs Verify
 
-**Module 18** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 18** · Checkpoint B · Exercises 1–6 Pass then Lab 18
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Explain stubbing return values versus verifying calls for activate |
+| **Skills practiced** | when/thenReturn vs verify |
+| **Expected outcome** | notes/lab18-stub-verify.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-18-exercises/` → notes/lab18-stub-verify.md |
+| **Checkpoint** | B (after slides 208–209) |
+
+## What you will learn
+
+- Stub findById arranges input
+- verify(save) asserts collaboration
+- Stubs feed inputs; verifies prove side effects
+
+**Enterprise context:** A green test that only stubs and never verifies can miss a missing save in production.
 
 ## Goal
 
-Create `notes/lab18-stub-verify.md` — explain stubbing return values versus verifying calls for activate.
+Create `notes/lab18-stub-verify.md` — stub vs verify for activate.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,20 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 18 — Stub vs Verify
 
-## Step 1 — Stub
-
-`when(repo.findById("CUS-1002")).thenReturn(raviProspect)` — arrange.
-
-## Step 2 — Verify
-
-`verify(repo).save(…)` — assert collaboration happened.
-
-## Step 3 — Both
-
-One sentence: stubs feed inputs; verifies prove side-effect calls.
+Stub: when(repo.findById("CUS-1002")).thenReturn(raviProspect)
+Verify: verify(repo).save(…)
+Both: stubs feed inputs; verifies prove side-effect calls.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +62,17 @@ From `examples/module-18-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 18 — Stub vs Verify
 
-## Step 1 — Stub
+## Stub (arrange)
+_____
 
-`when(repo.findById("CUS-1002")).thenReturn(raviProspect)` — arrange.
+## Verify (assert collaboration)
+_____
 
-## Step 2 — Verify
-
-`verify(repo).save(…)` — assert collaboration happened.
-
-## Step 3 — Both
-
-One sentence: stubs feed inputs; verifies prove side-effect calls.
+## One sentence — both roles
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,22 +81,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Clear stub vs verify examples using CUS-1002 in `notes/lab18-stub-verify.md`.
+Stub vs verify contrast in `notes/lab18-stub-verify.md`.
 
-## If it fails
+## Debug / design challenge
+
+For CUS-9999 not-found, which verify proves the bug is fixed: save or never().save?
+
+## Predict the Output / Behavior
+
+Is thenReturn alone enough to prove activate persisted ACTIVE?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab18-stub-verify.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 18 |
+| Treating stub as assert | Add an explicit verify example |
+| Skipping the both sentence | Write stubs vs verifies roles |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab18-stub-verify.md`
-- [ ] Stub example written
-- [ ] Verify example written
-- [ ] Contrast sentence present
-
+- [ ] Stub example
+- [ ] Verify example
+- [ ] Both-roles sentence

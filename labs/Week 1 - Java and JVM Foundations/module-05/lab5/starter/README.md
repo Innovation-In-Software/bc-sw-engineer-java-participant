@@ -2,6 +2,20 @@
 
 Domain classes (`Book`, `Member`, `BorrowRecord`, `BookComparator`) and `Main` are mostly given. Fill `borrowBook` / `returnBook` / report TODOs. Do **not** open `../solution/` first.
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete borrow/return Map invariants + report TODOs |
+| **Skills practiced** | List catalog + Map loans + summary / popular category |
+| **Expected outcome** | Smoke path prints Borrowed / Popular Category / Thank You |
+| **Estimated time** | ~45 minutes |
+| **Files** | Packaged suite under `Lab5-LibraryManagement/src/com/academy/library/` |
+
+**Boilerplate reduced:** Domain models, menu `Main`, and add/register helpers are given — focus on loan Map logic and reports.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-5-GUIDE.md`](../LAB-5-GUIDE.md)
+
 ## Target copy path
 
 `~/java-bootcamp/examples/Lab5-LibraryManagement/`

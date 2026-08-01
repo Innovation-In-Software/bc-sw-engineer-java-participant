@@ -2,6 +2,22 @@
 
 **Theme:** Mockito isolation — stub / verify / never / ArgumentCaptor + BDDMockito
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete Mockito + BDDMockito suites with real validator and mock repo |
+| **Skills practiced** | Stubbing, verify/never, ArgumentCaptor, isolation policy |
+| **Expected outcome** | `mvn -B clean test` green twice · not-found never saves |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab18-crm/` copied from this starter |
+
+**Boilerplate reduced:** Baseline CRM + mock test TODOs — fill `// TODO`; do **not** mock the SUT.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-18-GUIDE.md`](../LAB-18-GUIDE.md)
+
+**Honesty:** Keep validator real. Selenium is Lab 19. Review AI mock suggestions.
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab18-crm`.

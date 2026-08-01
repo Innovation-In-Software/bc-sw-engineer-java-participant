@@ -2,6 +2,18 @@
 
 > **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 7 [pre-lab exercises 1–8](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Then open **one** OS how-to ([Windows](LAB-7-WINDOWS.md) · [macOS](LAB-7-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Build an ATM console with domain exceptions, safe login/deposit/withdraw, and logging |
+| **Skills practiced** | Custom exceptions, throw/throws, boundary catch, try-with-resources / file IO, user-safe messages |
+| **Expected outcome** | Login `1001`/`1234` → withdraw fail path → deposit → balance `12000` → mini statement → Thank You |
+| **Estimated time** | Timed path ~45 min · Full path 65–240 min |
+| **Prerequisites** | Lab 0–6 habits · Exercises 1–8 Pass · JDK 21 |
+| **Expected files** | `examples/Lab7-ATMSystem/src/com/academy/atm/*.java` (+ `transactions.txt`, `logs/`) |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 7 — Exception Handling and Error Management  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-07/lab7/`  
 **Difficulty:** Intermediate  
@@ -17,6 +29,12 @@
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 > **Hard gate — pre-lab exercises:** Complete **all eight** Module 7 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 7 is graded consolidation in a **separate** packaged project (`examples/Lab7-ATMSystem/`), not a replacement for the flat exercises folder (`examples/module-07-exercises/`).
+
+> **Incremental build:** Exercises 1–8 (specific catches → custom insufficient-funds → logging) → Lab 7 packaged `com.academy.atm`. Same `java-bootcamp`, new folder `Lab7-ATMSystem/`.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).
+
+> **Security:** Never log or screenshot real PINs/passwords. Demo PIN `1234` is training-only.
 
 ## 45-minute timed path (use starter)
 
@@ -1432,6 +1450,10 @@ Perform deliberately, then restore working code / files.
 | App exits on bad input | Uncaught exception | Wrap ops in `executeTransaction` / catch in `login` |
 | Catch order compile error | Broad catch first | Specific catches before `Exception` |
 | Changes not visible | Stale `.class` | Re-run `javac -d out ...` |
+| `*.java` glob fails in PowerShell | PowerShell does not expand like bash | Name each `.java` file (see [LAB-7-WINDOWS.md](LAB-7-WINDOWS.md)) |
+| Wrong Sources Root | Marked `module-07-exercises` | Lab uses `Lab7-ATMSystem/src` only |
+| Balance wrong after failed withdraw | Mutated before throw | Throw insufficient-funds **before** changing balance (Ex 5 habit) |
+| PIN appears in log/screenshot | Logged sensitive field | Log account id + op only — never raw PIN |
 
 ---
 

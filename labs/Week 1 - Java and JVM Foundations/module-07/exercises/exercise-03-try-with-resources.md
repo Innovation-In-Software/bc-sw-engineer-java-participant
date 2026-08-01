@@ -1,9 +1,28 @@
 # Exercise 3 — Try-With-Resources
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint C · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Try-with-Resources Closes Files Automatically](../../../lab_diagrams/mod07-ex03-try-with-resources.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Use try-with-resources so AutoCloseable closes automatically |
+| **Skills practiced** | try-with-resources, AutoCloseable |
+| **Expected outcome** | Resource closes even when the body throws |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-07-exercises/` → TryWithResourcesDemo.java |
+| **Checkpoint** | C (after slides 180) |
+
+## What you will learn
+
+- try-with-resources closes declared resources in reverse order
+- Prefer it over manual finally close for IO
+- Resources must implement AutoCloseable
+
+**Enterprise context:** Transaction log writers should not leak file handles on IOException.
 
 ## Goal
 
@@ -125,7 +144,18 @@ afterward.
 Both transaction lines print, and the resource scope clearly controls reader
 lifetime.
 
-## If it fails
+
+## Debug / design challenge
+
+Forget the resource in try (...) — show why close may not run.
+
+## Predict the Output / Behavior
+
+Is close() called if the try body throws after open?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

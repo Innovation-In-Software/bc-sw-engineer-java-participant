@@ -1,11 +1,30 @@
 # Exercise 8 — Mini UML Class Diagram
 
-**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · Checkpoint F · all 8 then lab
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Mini UML Class Diagram for Banking Types](../../../lab_diagrams/mod03-ex08-uml-mini.png)
 
 > **No new Java code:** Convert the design from Exercises 1–5 into a visual model before Lab 3 grows to eight types.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch a mini class diagram for the banking model |
+| **Skills practiced** | UML inheritance, association, multiplicity |
+| **Expected outcome** | UML note showing Customer–Account–Transaction relationships |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-03-exercises/uml-notes.md` |
+| **Checkpoint** | F (after slides 108–109) |
+
+## What you will learn
+
+- Inheritance vs association
+- Multiplicity 1..* for customer accounts
+- Diagrams communicate design before Lab 3
+
+**Enterprise context:** Architects align on UML before coding shared banking services.
 
 ## Goal
 
@@ -123,7 +142,9 @@ Below the diagram, write one sentence for each:
 
 The rendered diagram matches your code and clearly distinguishes inheritance, interface realization, and associations.
 
-## If it fails
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

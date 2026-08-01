@@ -1,14 +1,31 @@
 # Exercise 1 — When to Keep Real Validator
 
-**Module 18** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 18** · Checkpoint A · Exercises 1–6 Pass then Lab 18
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Decide which collaborator stays real for activate tests |
+| **Skills practiced** | Isolation policy, mock boundaries |
+| **Expected outcome** | notes/lab18-keep-real-validator.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-18-exercises/` → notes/lab18-keep-real-validator.md |
+| **Checkpoint** | A (after slides 203–207) |
+
+## What you will learn
+
+- Mock CustomerRepository (I/O boundary)
+- Keep pure StatusValidator/CustomerValidator real when deterministic
+- Mock notifier to avoid email/IO
+
+**Enterprise context:** Over-mocking domain helpers hides transition bugs that production still hits.
 
 ## Goal
 
-Create `notes/lab18-keep-real-validator.md` — decide which collaborator stays real for activate tests.
+Create `notes/lab18-keep-real-validator.md` — mock vs real collaborators.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 18 — When to Keep Real Validator
 
-## Step 1 — Mock repo
-
 Mock CustomerRepository — I/O boundary.
-
-## Step 2 — Real validator?
-
-Keep a pure StatusValidator real if it is deterministic and fast.
-
-## Step 3 — Mock notifier
-
-Mock notifier to avoid email/IO in unit tests.
-
-## Step 4 — Rule
-
-Write: mock I/O and unstable deps; keep pure domain helpers real when cheap.
+Keep pure validator real if deterministic and fast.
+Mock notifier to avoid email/IO.
+Rule: mock I/O and unstable deps; keep pure domain helpers real when cheap.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +63,20 @@ From `examples/module-18-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 18 — When to Keep Real Validator
 
-## Step 1 — Mock repo
+## Mock repo?
+_____
 
-Mock CustomerRepository — I/O boundary.
+## Real validator?
+_____
 
-## Step 2 — Real validator?
+## Mock notifier?
+_____
 
-Keep a pure StatusValidator real if it is deterministic and fast.
-
-## Step 3 — Mock notifier
-
-Mock notifier to avoid email/IO in unit tests.
-
-## Step 4 — Rule
-
-Write: mock I/O and unstable deps; keep pure domain helpers real when cheap.
+## Rule
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A mock/real decision table for activate collaborators in `notes/lab18-keep-real-validator.md`.
+Clear mock/real policy in `notes/lab18-keep-real-validator.md`.
 
-## If it fails
+## Debug / design challenge
+
+If you mock the validator to always allow ACTIVE→PROSPECT, what production bug do you miss?
+
+## Predict the Output / Behavior
+
+Should DefaultCustomerService be @Mock when it is the SUT?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab18-keep-real-validator.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 18 |
+| Mocking everything including validator blindly | Keep pure validator real |
+| Starting the full lab mid-exercise | Finish pre-lab notes first |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab18-keep-real-validator.md`
-- [ ] Repo mock justified
-- [ ] Validator real justified
-- [ ] Notifier mock justified
-
+- [ ] Repo mock decision
+- [ ] Validator real decision
+- [ ] Rule sentence present

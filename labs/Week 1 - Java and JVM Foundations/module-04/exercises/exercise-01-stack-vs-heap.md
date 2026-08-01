@@ -1,9 +1,28 @@
 # Exercise 1 — Stack vs Heap Basics
 
-**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · Checkpoint A · all 7 then lab
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Thread Stack Frames Referencing an Object on the Heap](../../../lab_diagrams/mod04-ex01-stack-vs-heap.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Trace locals/refs on the stack vs objects on the heap |
+| **Skills practiced** | stack frames, references, heap objects |
+| **Expected outcome** | Demo runs; notes map stack vs heap for the sample |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-04-exercises/StackHeapDemo.java` |
+| **Checkpoint** | A (after slides 115–118) |
+
+## What you will learn
+
+- Primitives in frames vs objects on heap
+- A reference variable is not the object
+- Deepens Module 1 stack/heap sketch with code
+
+**Enterprise context:** Request threads hold stack frames; customer objects live on the heap in banking services.
 
 ## Goal
 
@@ -22,6 +41,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -135,6 +157,24 @@ Program prints two lines, and your notes distinguish a local reference from the 
 ## Common mistake
 
 Saying “the object is in the variable.” More precisely, the local variable holds a **reference**; the `Person` object is heap-allocated.
+
+
+
+## Debug / observation challenge
+
+Draw the wrong diagram (object on stack) then correct it.
+
+## Predict the Output / Behavior
+
+Two references to one Person — how many heap objects?
+
+## Troubleshooting
+
+| Problem | Fix |
+| ------- | --- |
+| Blank/`_____` left in code | Replace with real Java |
+| Wrong folder | `cd` to `module-04-exercises` |
+| Empty GC log | Use JDK 21 `-Xlog:gc` before class name |
 
 ## Pass criteria
 

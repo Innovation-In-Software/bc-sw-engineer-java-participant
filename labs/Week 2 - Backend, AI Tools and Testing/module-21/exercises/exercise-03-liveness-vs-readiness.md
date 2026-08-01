@@ -1,14 +1,31 @@
 # Exercise 3 — Liveness vs Readiness
 
-**Module 21** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 21** · Checkpoint C · Exercises 1–6 Pass then Lab 21
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Explain when orchestrators should restart vs stop sending traffic |
+| **Skills practiced** | Probe semantics |
+| **Expected outcome** | notes/lab21-probes.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-21-exercises/` → notes/lab21-probes.md |
+| **Checkpoint** | C (after slides 263) |
+
+## What you will learn
+
+- Liveness fail → restart process
+- Readiness fail → keep process, remove from LB
+- Wrong mix: restarting on DB blip causes death spirals
+
+**Enterprise context:** Restarting every pod because the database blinked removes capacity exactly when you need it.
 
 ## Goal
 
-Create `notes/lab21-probes.md` — explain when Kubernetes (or PaaS) should restart vs stop sending traffic.
+Create `notes/lab21-probes.md` — liveness vs readiness.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,20 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 21 — Liveness vs Readiness
 
-## Step 1 — Liveness
-
-Process stuck → restart. CRM example: deadlocked request threads.
-
-## Step 2 — Readiness
-
-Dependency down (DB) → not ready, keep process, remove from load balancer.
-
-## Step 3 — Wrong mix
-
-One sentence: do not kill the pod on every DB blip if readiness can gate traffic.
+Liveness: process stuck → restart (e.g., deadlocked threads).
+Readiness: dependency down → not ready, keep process.
+Wrong mix: restarting on transient DB outage.
+Lab: toggle CrmReadinessIndicator OUT_OF_SERVICE; liveness stays UP.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +63,20 @@ From `examples/module-21-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 21 — Liveness vs Readiness
 
-## Step 1 — Liveness
+## Liveness
+_____
 
-Process stuck → restart. CRM example: deadlocked request threads.
+## Readiness
+_____
 
-## Step 2 — Readiness
+## Wrong mix
+_____
 
-Dependency down (DB) → not ready, keep process, remove from load balancer.
-
-## Step 3 — Wrong mix
-
-One sentence: do not kill the pod on every DB blip if readiness can gate traffic.
+## Lab expectation
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A liveness/readiness contrast with CRM examples in `notes/lab21-probes.md`.
+Probe contrast in `notes/lab21-probes.md`.
 
-## If it fails
+## Debug / design challenge
+
+If readiness is DOWN and liveness UP, should Kubernetes kill the pod?
+
+## Predict the Output / Behavior
+
+Map CrmReadinessIndicator OUT_OF_SERVICE to which probe?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab21-probes.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 21 |
+| Swapping meanings | Restart = liveness; shed traffic = readiness |
+| No wrong-mix note | Call out DB-blip restarts |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab21-probes.md`
-- [ ] Both probes defined
-- [ ] CRM examples present
-- [ ] Wrong-mix warning written
-
+- [ ] Liveness defined
+- [ ] Readiness defined
+- [ ] Wrong mix noted

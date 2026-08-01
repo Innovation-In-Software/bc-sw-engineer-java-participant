@@ -1,9 +1,28 @@
 # Exercise 6 — Choose the Right Collection
 
-**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · Checkpoint E · all 7 then lab
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 > **Analysis exercise:** No Java code is required. Choose from requirements instead of defaulting to `ArrayList` for everything.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Match library scenarios to List/Set/Map implementations |
+| **Skills practiced** | Collection selection reasoning |
+| **Expected outcome** | Filled decision table in collection-choices.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-05-exercises/collection-choices.md` |
+| **Checkpoint** | E (after slides 146–147) |
+
+## What you will learn
+
+- Ask Map? Set? List? Sorted? Insertion order?
+- Defaulting to ArrayList for everything is a smell
+- Document why
+
+**Enterprise context:** Architects pick structures from access patterns, not habit.
 
 ## Goal
 
@@ -105,6 +124,19 @@ Six choices match the domain requirement, and every explanation mentions the rel
 | `List` for ID lookup | A map expresses direct key lookup |
 | `HashMap` when sorted report is required | Use `TreeMap` or sort a view |
 | Claim all operations are `O(1)` | Complexity depends on operation and implementation |
+
+
+## Debug / design challenge
+
+Wrong pick for unique IDs (ArrayList) — correct to HashSet.
+
+## Troubleshooting
+
+| Problem | Fix |
+| ------- | --- |
+| Blank/`_____` left in code | Replace with real Java |
+| Wrong folder | `cd` to `module-05-exercises` |
+| Unexpected HashSet/HashMap print order | Order is unspecified — do not hard-assert order |
 
 ## Pass criteria
 

@@ -2,6 +2,18 @@
 
 > **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 3 [pre-lab exercises 1–8](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Exercises 1–2 were started on Day 2; finish 3–8 before this lab. Then open **one** OS how-to ([Windows](LAB-3-WINDOWS.md) · [macOS](LAB-3-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Build a packaged banking system with abstract Account hierarchy, polymorphism, and BankService |
+| **Skills practiced** | Encapsulation, inheritance, abstract types, interfaces, menu orchestration |
+| **Expected outcome** | Create customer/accounts, deposit/withdraw, display (interest/charges), evidence saved |
+| **Estimated time** | Timed path ~45 min · Full path 90–240 min |
+| **Prerequisites** | Lab 0–2 · Exercises 1–8 Pass · JDK 21 |
+| **Expected files** | `examples/Lab3-BankingSystem/src/com/academy/bank/*.java` (8 types) |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 3 — Object-Oriented Programming in Java  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-03/lab3/`  
 **Difficulty:** Intermediate (beginner-friendly)  
@@ -18,6 +30,8 @@
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 > **Hard gate — pre-lab exercises:** Complete **all eight** Module 3 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 3 is graded consolidation in a **separate** packaged project (`examples/Lab3-BankingSystem/`), not a replacement for the flat exercises folder (`examples/module-03-exercises/`).
+
+> **Incremental build:** Extends Lab 2 package/`src`/`out` habits and Module 3 Exercises 2–5 banking types into `com.academy.bank` — not a brand-new domain from zero.
 
 ## 45-minute timed path (use starter)
 
@@ -959,14 +973,33 @@ a.displayAccount();                  // runs SavingsAccount version at runtime
 
 ## Troubleshooting
 
-| Problem | Likely cause | Fix |
-| ------- | ------------ | --- |
-| Abstract instantiation | Design mistake | Only construct Savings/Current |
-| Fee ignored | `calculateCharges` not overridden / not used | Fix Current + base withdraw |
-| Wrong display text | Missing `@Override displayAccount` | Implement in both subclasses |
-| Scanner skips | Mixed `nextInt` / `nextLine` | All `nextLine` + parse |
-| Main class missing | Bad `-cp` | `java -cp out com.academy.bank.Main` |
-| IntelliJ run fails | SDK / Sources Root | Set SDK 21; mark `src` |
+### Common errors and fixes
+
+| Problem | Likely cause | Typical message | Fix |
+| ------- | ------------ | --------------- | --- |
+| Abstract instantiation | `new Account(...)` | `Account is abstract; cannot be instantiated` | Construct Savings/Current only |
+| Fee ignored | Charges not applied | Balance wrong after withdraw | Override/use `calculateCharges` on Current |
+| Wrong display text | Missing override | Generic Account text only | `@Override displayAccount` in subclasses |
+| Scanner skips | Mixed nextInt/nextLine | Empty prompts | All `nextLine` + parse |
+| Main class missing | Bad `-cp` | `Could not find or load main class` | `java -cp out com.academy.bank.Main` |
+| IntelliJ run fails | SDK / Sources Root | Run config errors | SDK 21; mark `src` as Sources Root |
+| NPE in loops | Loop to array capacity | NullPointerException | Use `accountCount` / `customerCount` |
+| Missing symbols | Compiled one file alone | `cannot find symbol` | Compile all eight sources together |
+
+### Frequent mistakes
+
+1. Skipping Exercises 1–8 and treating Lab 3 as first OOP contact.
+2. Mutating balance from outside Account methods.
+3. Mixing `module-03-exercises/` with `Lab3-BankingSystem/`.
+4. Dumping all logic into `Main` instead of `BankService`.
+
+### Suggested first-aid order
+
+1. Confirm cwd is `Lab3-BankingSystem`.
+2. `javac -version` → 21.x.
+3. List `src/com/academy/bank/*.java` (expect eight types).
+4. Recompile all named sources into `out/`.
+5. Run with full main class on `-cp out`.
 
 ---
 
@@ -1024,11 +1057,11 @@ Optional — only after core deliverables pass. Pick at most one if time is shor
 
 ## Instructor Notes
 
-**Classroom order (do not reverse):**
+**Classroom order (Learn → Practice → Review — do not reverse):**
 
-1. Module 3 PPT (Day 2 intro + Day 3 completion)
-2. Students complete [Exercises 1–8](../exercises/EXERCISES-INDEX.md) in `module-03-exercises/` (1–2 on Day 2; 3–8 on Day 3)
-3. Students open the OS how-to, then this guide — `Lab3-BankingSystem` with packages
+1. Module 3 PPT in **segments** per [`../PACING.md`](../PACING.md) (Day 2 intro + Day 3 completion)
+2. At each checkpoint, students complete matching [Exercises](../exercises/EXERCISES-INDEX.md) (use `exercises/starter/` where provided)
+3. Only after Exercises 1–8 Pass: OS how-to, then this guide — `Lab3-BankingSystem` with packages
 
 **Before students open this guide:** confirm exercise checkpoint Pass (encapsulation, inheritance/polymorphism, abstract, interface, SOLID notes, mini UML). Lab 3 pacing assumes those skills already exist.
 

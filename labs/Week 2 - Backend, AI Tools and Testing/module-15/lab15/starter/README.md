@@ -2,6 +2,22 @@
 
 **Theme:** Service layer + CustomerValidator status transitions (no persistence leak)
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Implement repo, validator ALLOWED matrix, DefaultCustomerService, and demos |
+| **Skills practiced** | Ctor DI, validate-before-mutate, illegal-transition proof |
+| **Expected outcome** | `mvn -B clean test` green · activate CUS-1002 · reject ACTIVE→PROSPECT |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab15-crm/` copied from this starter |
+
+**Boilerplate reduced:** Baseline CRM + TODOs given — fill `// TODO`; keep Map out of `service`.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-15-GUIDE.md`](../LAB-15-GUIDE.md)
+
+**Honesty:** No `@ControllerAdvice` / Spring MVC error mapping in Lab 15 (Lab 16).
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab15-crm`.
@@ -37,8 +53,6 @@ Full GUIDE: [`../LAB-15-GUIDE.md`](../LAB-15-GUIDE.md)
 
 ```bash
 mvn -B clean test
-# After TODOs: run Main from IntelliJ, or:
-# mvn -B -q -DskipTests package && java -cp "target/classes;target/dependency/*" com.northstar.crm.Main
 ```
 
 Evidence under `~/java-bootcamp/notes/screenshots/lab-15/` (redact secrets).

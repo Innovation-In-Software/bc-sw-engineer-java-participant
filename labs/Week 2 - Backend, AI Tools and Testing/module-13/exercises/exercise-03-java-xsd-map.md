@@ -1,6 +1,25 @@
 # Exercise 3 — Java to XSD Map
 
-**Module 13** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 13** · Checkpoint B · Exercises 1–6 Pass then Lab 13
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map Java CRM fields to XSD types for Amina/Ravi payloads |
+| **Skills practiced** | XSD type mapping |
+| **Expected outcome** | notes/lab13-java-xsd-map.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-13-exercises/` → notes/lab13-java-xsd-map.md |
+| **Checkpoint** | B (after slides 121–123) |
+
+## What you will learn
+
+- XSD is the shared type vocabulary for SOAP payloads
+- Status enums need explicit XSD enumerations or restricted strings
+- Namespace consistency matters as much as field names
+
+**Enterprise context:** Schema drift between Java and XSD breaks bank/partner integrations.
 
 ## Goal
 
@@ -93,7 +112,18 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A Java→XSD map using Amina and Ravi examples in `notes/lab13-java-xsd-map.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Map CustomerStatus ACTIVE/PROSPECT to an XSD restriction list.
+
+## Predict the Output / Behavior
+
+Which XSD type fits customerId string codes like CUS-1001?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

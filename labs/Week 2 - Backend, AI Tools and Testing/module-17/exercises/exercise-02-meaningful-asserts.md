@@ -1,20 +1,37 @@
-# Exercise 3 — Meaningful Asserts
+# Exercise 2 — Meaningful Asserts
 
-**Module 17** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 17** · Checkpoint B · Exercises 1–6 Pass then Lab 17
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Rewrite weak asserts into status/id assertions for fixtures |
+| **Skills practiced** | Assertion quality, assertThrows |
+| **Expected outcome** | notes/lab17-meaningful-asserts.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-17-exercises/` → notes/lab17-meaningful-asserts.md |
+| **Checkpoint** | B (after slides 191–192) |
+
+## What you will learn
+
+- assertNotNull alone is weak
+- Assert CUS-1002 + ACTIVE after activate
+- assertThrows for illegal Amina policy
+
+**Enterprise context:** Green bars with empty asserts hide production defects — partners still break.
 
 ## Goal
 
-Create `notes/lab17-meaningful-asserts.md` — rewrite weak asserts into status/id assertions for fixtures.
+Create `notes/lab17-meaningful-asserts.md` — weak vs strong asserts.
 
 ## Deliverable
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-meaningful-asserts.md` (this file in the course repo) |
+| Guide | `exercises/exercise-02-meaningful-asserts.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-meaningful-asserts.md` |
 
 ## Worked example (read first)
@@ -24,24 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 17 — Meaningful Asserts
 
-## Step 1 — Weak
-
-`assertNotNull(result)` after activate — label weak.
-
-## Step 2 — Strong
-
-Assert Ravi id CUS-1002 and status ACTIVE after activate.
-
-## Step 3 — Exception assert
-
-Plan `assertThrows` for activating Amina under your illegal policy.
-
-## Step 4 — Prep only
-
-Write: *Prepare for Lab 17; do not complete full suite now.*
+Weak: assertNotNull(result) after activate.
+Strong: assertEquals CUS-1002 and ACTIVE.
+Exception: assertThrows(BusinessException) for Amina illegal.
+Prepare for Lab 17; do not complete full suite now.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +63,17 @@ From `examples/module-17-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 17 — Meaningful Asserts
 
-## Step 1 — Weak
+## Weak
+_____
 
-`assertNotNull(result)` after activate — label weak.
+## Strong (Ravi)
+_____
 
-## Step 2 — Strong
-
-Assert Ravi id CUS-1002 and status ACTIVE after activate.
-
-## Step 3 — Exception assert
-
-Plan `assertThrows` for activating Amina under your illegal policy.
-
-## Step 4 — Prep only
-
-Write: *Prepare for Lab 17; do not complete full suite now.*
+## Exception assert (Amina)
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +82,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Strong assert examples including assertThrows plan in `notes/lab17-meaningful-asserts.md`.
+Weak→strong rewrite in `notes/lab17-meaningful-asserts.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rewrite assertTrue(true) after activate into two meaningful asserts.
+
+## Predict the Output / Behavior
+
+Should you assert Exception.class or BusinessException.class for not-found?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab17-meaningful-asserts.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 17 |
+| Keeping only assertNotNull | Add id/status asserts |
+| Claiming Mockito required | Real collaborators OK until Lab 18 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab17-meaningful-asserts.md`
-- [ ] Weak vs strong shown
+- [ ] Weak labeled
+- [ ] Strong asserts listed
 - [ ] assertThrows planned
-- [ ] Pre-lab boundary present
-

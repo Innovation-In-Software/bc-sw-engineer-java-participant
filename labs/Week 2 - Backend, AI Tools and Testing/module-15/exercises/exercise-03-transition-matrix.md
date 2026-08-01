@@ -1,14 +1,31 @@
 # Exercise 3 — Transition Matrix
 
-**Module 15** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 15** · Checkpoint C · Exercises 1–6 Pass then Lab 15
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Tabulate allowed and forbidden customer status transitions |
+| **Skills practiced** | Business-rule documentation, fixture implications |
+| **Expected outcome** | notes/lab15-transition-matrix.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-15-exercises/` → notes/lab15-transition-matrix.md |
+| **Checkpoint** | C (after slides 157) |
+
+## What you will learn
+
+- PROSPECT → ACTIVE allowed (Ravi activate)
+- ACTIVE → PROSPECT forbidden
+- HTTP mapping of exceptions waits for Lab 16
+
+**Enterprise context:** Support and auditors ask “can we demote an ACTIVE customer?” — the matrix is the contract.
 
 ## Goal
 
-Create `notes/lab15-transition-matrix.md` — tabulate allowed and forbidden customer status transitions.
+Create `notes/lab15-transition-matrix.md` — allowed/forbidden transitions.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,28 +41,24 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 15 — Transition Matrix
 
-## Reference
-
 | From | To | Allowed? |
 | --- | --- | --- |
-| PROSPECT | ACTIVE | yes (Ravi activate) |
-| ACTIVE | ACTIVE | no-op or reject — decide |
+| PROSPECT | ACTIVE | yes (Ravi) |
+| ACTIVE | ACTIVE | reject or no-op — decide |
 | ACTIVE | PROSPECT | no |
 
-## Step 2 — Amina
+## Amina
+CUS-1001 already ACTIVE — activate rejected/no-op per policy.
 
-Note CUS-1001 already ACTIVE — activate should be rejected or no-op per your policy.
+## Illegal list
+1. ACTIVE → PROSPECT
+2. (your second illegal)
 
-## Step 3 — Illegal list
-
-List two illegal transitions you will throw on later.
-
-## Step 4 — Boundary
-
-Mark: exception HTTP mapping waits for Lab 16.
+## Boundary
+Exception HTTP mapping waits for Lab 16.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -61,28 +74,24 @@ From `examples/module-15-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 15 — Transition Matrix
 
-## Reference
-
 | From | To | Allowed? |
 | --- | --- | --- |
-| PROSPECT | ACTIVE | yes (Ravi activate) |
-| ACTIVE | ACTIVE | no-op or reject — decide |
-| ACTIVE | PROSPECT | no |
+| PROSPECT | ACTIVE | _____ |
+| ACTIVE | ACTIVE | _____ |
+| ACTIVE | PROSPECT | _____ |
 
-## Step 2 — Amina
+## Amina (CUS-1001)
+_____
 
-Note CUS-1001 already ACTIVE — activate should be rejected or no-op per your policy.
+## Illegal list
+1. _____
+2. _____
 
-## Step 3 — Illegal list
-
-List two illegal transitions you will throw on later.
-
-## Step 4 — Boundary
-
-Mark: exception HTTP mapping waits for Lab 16.
+## Boundary
+Lab that maps exceptions to HTTP: _____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,13 +102,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A transition matrix with Amina/Ravi implications in `notes/lab15-transition-matrix.md`.
 
-## If it fails
+## Debug / design challenge
+
+If ACTIVE→ACTIVE is reject, what should happen to Amina’s status after a failed activate?
+
+## Predict the Output / Behavior
+
+Is ACTIVE→PROSPECT a validation annotation failure or a domain transition failure?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab15-transition-matrix.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 15 |
+| No illegal transitions listed | Add at least ACTIVE→PROSPECT |
+| Claiming Lab 15 does @ControllerAdvice | Defer HTTP mapping to Lab 16 |
 
 ## Pass criteria
 
@@ -109,4 +128,3 @@ Self-check before marking Pass:
 - [ ] Matrix filled
 - [ ] Amina case noted
 - [ ] Lab 16 mapping deferred
-

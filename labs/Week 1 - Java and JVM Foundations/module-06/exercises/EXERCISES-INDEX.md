@@ -1,31 +1,36 @@
 # Module 6 — Pre-Lab Exercises
 
-
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
-> **Start here for Module 6:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Learn → Practice → Review:** Do **not** wait until every Module 6 slide is finished. Work each checkpoint when the instructor pauses ([`../PACING.md`](../PACING.md)).  
+> **Tip:** Each exercise starts with an **Activity card** + **What you will learn**. Prefer [`starter/`](starter/README.md).  
+> **Start here for Module 6:** [`../README.md`](../README.md)
 
 **Module:** 6 — Streams and Functional Programming  
-**Source:** Module 6 slides: Lab Overview (Streams and Lambdas)  
-**Next (after Exercises 1–7 Pass):** OS how-to → [`../lab6/LAB-6-WINDOWS.md`](../lab6/LAB-6-WINDOWS.md) or [`../lab6/LAB-6-MACOS.md`](../lab6/LAB-6-MACOS.md) → then [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Next (after Exercises 1–7 Pass):** OS how-to → [`../lab6/LAB-6-WINDOWS.md`](../lab6/LAB-6-WINDOWS.md) or [`../lab6/LAB-6-MACOS.md`](../lab6/LAB-6-MACOS.md) → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** and **before** the full lab.
-> **Gate for Lab 6:** Exercises **1–7** must be Pass. Exercise 8 is recommended parallel bonus.
-> **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).
-> Keep practice separate from the graded lab (`examples/Lab6-EmployeeAnalytics/`).
-> Each exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and Windows / macOS commands.
-> Replace every `_____` and `// TODO` with your own code, then compile and run.
-> Exercises 2–7 reuse the five-employee dataset created in Exercise 1, so work in order.
+> **Gate for Lab 6:** Exercises **1–7** must be Pass. Exercise 8 is recommended stretch (Checkpoint E).  
+> **JDK:** 21 · Practice: `examples/module-06-exercises/` · Graded lab: `examples/Lab6-EmployeeAnalytics/`  
+> Do **not** reuse a `Stream` after a terminal operation — create a new stream from the source list.
+
+## Checkpoint map
+
+| When (after slides) | Do these | Pattern |
+| ------------------- | -------- | ------- |
+| Checkpoint A (152–157) | Ex 1 lambda / FI | Learn → Practice |
+| Checkpoint B (158–159) | Ex 2–3 filter + map | Learn → Practice |
+| Checkpoint C (160–162) | Ex 4–5 min/max + raise | Learn → Practice |
+| Checkpoint D (163–166) | Ex 6–7 grouping + pipeline | Learn → Practice |
+| Checkpoint E (167–168) | Ex 8 parallel *(stretch)* | Learn → Practice |
+| Checkpoint F (169–171) | Lab 6 | Practice → Lab |
 
 ## Already covered — do not redo
 
 | Topic | Where you did it |
 | ----- | ---------------- |
-| Classes, records, methods, and interfaces | Modules 2–3 |
+| Classes, records, methods, interfaces | Modules 2–3 |
 | `List` and collection iteration | Module 5 |
 | Collection choice and mutability | Module 5 exercises |
 
-Module 6 focuses on **declarative data processing**: describe what to select,
-transform, aggregate, or group while the Streams API handles iteration.
+Module 6 focuses on **declarative data processing**: describe what to select, transform, aggregate, or group while the Streams API handles iteration.
 
 ## Stream pipeline vocabulary
 
@@ -37,71 +42,31 @@ transform, aggregate, or group while the Streams API handles iteration.
 | Stateless lambda | Uses only its input; safe and predictable | `e -> e.salary() > 60_000` |
 | Reduction | Combines many values into one result | `count`, `min`, `max`, `reduce` |
 
-Do not reuse a stream after a terminal operation. Create a new stream from the
-source collection for each question.
-
-## Workspace
-
-| Item | Windows | macOS |
-| ---- | ------- | ----- |
-| Lab 0 workspace | `%USERPROFILE%\java-bootcamp` | `~/java-bootcamp` |
-| Exercises folder | `%USERPROFILE%\java-bootcamp\examples\module-06-exercises` | `~/java-bootcamp/examples/module-06-exercises` |
-| Shell | IntelliJ **Terminal** (PowerShell) | IntelliJ **Terminal** (zsh) |
-
-### Setup — create the folder once
-
-**Windows (PowerShell):**
+## Workspace setup
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
 New-Item -ItemType Directory -Force -Path examples\module-06-exercises | Out-Null
 cd examples\module-06-exercises
-pwd
 ```
-
-**macOS (zsh/bash):**
 
 ```bash
-cd ~/java-bootcamp
-mkdir -p examples/module-06-exercises
-cd examples/module-06-exercises
-pwd
+cd ~/java-bootcamp && mkdir -p examples/module-06-exercises && cd examples/module-06-exercises
 ```
 
-Stay in this folder for all eight exercises.
-
-### How to create each `.java` file (IntelliJ)
-
-1. Right-click `module-06-exercises` → **New → File**.
-2. Enter the complete filename, such as `Employee.java`.
-3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**).
-4. Compile and run from the IntelliJ Terminal with `javac` / `java`.
-
-**How the starter works:** scaffolding (shared `Employee` / `EmployeeData` dataset, imports, print loops) is given; the learning parts are blanks marked `_____` or `// TODO`. Stream pipelines are left for you to compose — filter, map, collect, min/max, grouping, and parallel count. Your finished file must compile — blanks are not valid Java.
-
-**Do not:**
-
-| Avoid | Why |
-| ----- | --- |
-| **New → Java Class** | Often missing on hyphenated folders |
-| Mark `examples` as **Sources Root** | Conflicts with Lab 0 `HelloJava/src` |
-| Click **Move to source root** on the yellow banner | Moves the file into Lab 0 — ignore the banner; use Terminal `javac` / `java` |
+Prefer copy from [`starter/`](starter/README.md). Ignore yellow *outside source root* banner. Work **in order** — Ex 1 creates the shared dataset.
 
 ## Exercise index
 
-Numbered to match the order these topics appear in the Module 6 slides — work in order.
+| # | Exercise | Est. | Type | File |
+| - | -------- | ---- | ---- | ---- |
+| 1 | Lambda + Functional Interface | 15–18 min | TODO coding | [`exercise-01-lambda-functional-interface.md`](exercise-01-lambda-functional-interface.md) |
+| 2 | Filter by Salary | 12–15 min | TODO coding | [`exercise-02-filter-salary.md`](exercise-02-filter-salary.md) |
+| 3 | Map to Names | 10–12 min | TODO coding | [`exercise-03-list-names.md`](exercise-03-list-names.md) |
+| 4 | Highest / Lowest Salary | 12–15 min | TODO coding | [`exercise-04-minmax.md`](exercise-04-minmax.md) |
+| 5 | Map a 10% Raise | 12–15 min | TODO coding | [`exercise-05-map-raise.md`](exercise-05-map-raise.md) |
+| 6 | Count by Department | 12–15 min | TODO coding | [`exercise-06-group-count.md`](exercise-06-group-count.md) |
+| 7 | HR Department Names | 12–15 min | TODO coding | [`exercise-07-hr-names.md`](exercise-07-hr-names.md) |
+| 8 | `parallelStream` Bonus | 10–15 min | Stretch | [`exercise-08-parallel-bonus.md`](exercise-08-parallel-bonus.md) |
 
-| # | Exercise | New stream skill | File |
-| - | -------- | ---------------- | ---- |
-| 1 | Lambda and a Custom Functional Interface | Functional contract, anonymous class, lambda, shared dataset | [`exercise-01-lambda-functional-interface.md`](exercise-01-lambda-functional-interface.md) |
-| 2 | Filter by Salary | `filter` + predicate + `toList` | [`exercise-02-filter-salary.md`](exercise-02-filter-salary.md) |
-| 3 | List All Names | `map` + method reference | [`exercise-03-list-names.md`](exercise-03-list-names.md) |
-| 4 | Highest and Lowest Salary | `Comparator`, `min`, `max`, `Optional` | [`exercise-04-minmax.md`](exercise-04-minmax.md) |
-| 5 | Map a 10% Raise | Transform values without mutating source objects | [`exercise-05-map-raise.md`](exercise-05-map-raise.md) |
-| 6 | Count by Department | `groupingBy` + `counting` | [`exercise-06-group-count.md`](exercise-06-group-count.md) |
-| 7 | HR Department Names | Compose `filter`, `map`, `sorted`, `toList` | [`exercise-07-hr-names.md`](exercise-07-hr-names.md) |
-| 8 | `parallelStream` Bonus | Correctness first; cautious performance interpretation | [`exercise-08-parallel-bonus.md`](exercise-08-parallel-bonus.md) |
-
-Work in order. Keep practice sources separate from the graded lab submission.
-
-When Exercises **1–7** Pass criteria are **Pass**, open your OS how-to and then [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md). Do not start Lab 6 GUIDE Steps mid-exercise list. Complete Exercise 8 (parallel bonus) when time allows — bring notes to lab stretch options.
+When Exercises **1–7** Pass → OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md).

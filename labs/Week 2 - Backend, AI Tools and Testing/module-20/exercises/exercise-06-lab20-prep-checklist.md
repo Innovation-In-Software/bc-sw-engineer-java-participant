@@ -1,14 +1,31 @@
 # Exercise 6 — Lab 20 Prep Checklist
 
-**Module 20** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 20** · Checkpoint D · Exercises 1–6 Pass then Lab 20
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 20 |
+| **Skills practiced** | Readiness gate |
+| **Expected outcome** | notes/lab20-prep-checklist.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-20-exercises/` → notes/lab20-prep-checklist.md |
+| **Checkpoint** | D (after slides 248–250) |
+
+## What you will learn
+
+- Gate Lab 20 on Ex 1–5 notes
+- Fixtures ready; no PII in planned log lines
+- Actuator deferred to Lab 21
+
+**Enterprise context:** Teams that skip MDC-clear notes ship filters that poison thread pools.
 
 ## Goal
 
-Create `notes/lab20-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 20 without finishing it now.
+Create `notes/lab20-prep-checklist.md` — readiness for Lab 20.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,27 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 20 prep checklist
 
-## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/lab20-level-quiz.md | (your note here) |
-| notes/lab20-safe-logs.md | (your note here) |
-| notes/lab20-mdc-lifecycle.md | (your note here) |
-| notes/lab20-mdc-clear.md | (your note here) |
-| notes/lab20-forbidden-pii-todos.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/lab20-level-quiz.md | yes |
+| notes/lab20-safe-logs.md | yes |
+| notes/lab20-mdc-lifecycle.md | yes |
+| notes/lab20-mdc-clear.md | yes |
+| notes/lab20-forbidden-pii-todos.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 20 now.
-
-## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+Actuator now? no (Lab 21)
+Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -60,7 +66,6 @@ From `examples/module-20-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 20 prep checklist
 
-## Earlier exercise files present?
 | File | Present? (yes/no) |
 | ---- | ----------------- |
 | notes/lab20-level-quiz.md | _____ |
@@ -69,18 +74,12 @@ From `examples/module-20-exercises/`, create `notes/` if needed, then create `no
 | notes/lab20-mdc-clear.md | _____ |
 | notes/lab20-forbidden-pii-todos.md | _____ |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 20 now.
+## Scope
+Pre-lab only. Metrics/Actuator lab: _____
 
 ## Self mark
 Overall prep: Pass / Fail
-If Fail, revisit exercise(s): _____
+If Fail, revisit: _____
 ```
 
 ### Step 3 — Self-check
@@ -89,15 +88,25 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Readiness with Lab 21 metrics deferred in `notes/lab20-prep-checklist.md`.
+Readiness checklist in `notes/lab20-prep-checklist.md`.
 
-## If it fails
+## Debug / design challenge
+
+If safe-logs still contains an email, which exercise do you reopen?
+
+## Predict the Output / Behavior
+
+What IT class name will assert no PII in Lab 20?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab20-prep-checklist.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 20 |
+| Marking Pass with blanks | Fill every yes/no |
+| Starting Lab 20 mid-checklist | Finish Ex 1–5 first |
 
 ## Pass criteria
 
@@ -105,6 +114,5 @@ Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab20-prep-checklist.md`
 - [ ] Artifacts confirmed
-- [ ] Lab 21 deferral stated
+- [ ] Lab 21 noted
 - [ ] Pass/Fail marked
-

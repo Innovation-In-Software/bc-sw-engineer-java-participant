@@ -1,5 +1,19 @@
 # Lab 21: Observability and Monitoring — Northstar CRM Actuator & Metrics
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 21 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-21-WINDOWS.md) · [macOS](LAB-21-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship Actuator probes + CrmReadinessIndicator + low-cardinality create/get metrics |
+| **Skills practiced** | Actuator exposure, liveness/readiness, Micrometer counters, ActuatorIT |
+| **Expected outcome** | Green `ActuatorIT` · readiness toggle · metrics after traffic · monitoring-report.md |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 20 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab21-crm/` — probes, metrics, IT, monitoring-report |
+| **Validation checkpoints** | Starter smoke `ActuatorIT` · GUIDE Implementation Checkpoints |
+
 **Module:** 21 — Observability and Monitoring  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-21/lab21/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-21-WINDOWS.md](LAB-21-WINDOWS.md) |
 | macOS | [LAB-21-MACOS.md](LAB-21-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 21 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer copying `lab20-crm` → `lab21-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-21-exercises/`; graded work is `examples/lab21-crm/`.
+
+> **Incremental build:** Cardinality → allow-list → probes → metric/alert sketches → Lab 21.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** **Low-cardinality** tags only. **Liveness ≠ readiness**. Document that **lab Actuator exposure is not production**. Full tracing stacks are awareness-only.
 
 ## 45-minute timed path (use starter)
 
@@ -678,6 +698,10 @@ Metric name spelling in Prometheus may differ from Actuator JSON (`crm.customer.
 | Config ignored | Wrong profile / YAML indent | Validate YAML; active profile |
 | High cardinality | ID/name tags | Use result/operation tags only |
 | Cannot connect | Port / process down | Check 8080 and health first |
+| Liveness DOWN when only readiness toggled | Wrong probe wiring | Keep liveness independent of CrmReadinessIndicator |
+| Working in `module-21-exercises` for the lab | Wrong project | Lab lives in `examples/lab21-crm` |
+| `/actuator/env` open in “prod-like” demo | Allow-list ignored | Lock env/beans; note in monitoring-report |
+| Added full Jaeger stack mid-lab | Scope creep | Keep tracing as awareness; finish ActuatorIT first |
 
 ---
 

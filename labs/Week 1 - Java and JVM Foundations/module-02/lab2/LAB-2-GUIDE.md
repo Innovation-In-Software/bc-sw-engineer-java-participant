@@ -2,6 +2,18 @@
 
 > **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 2 [core pre-lab exercises 1–7](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Exercises 8–9 are challenge/bonus — strongly recommended before the display/`printf` steps. Then open **one** OS how-to ([Windows](LAB-2-WINDOWS.md) · [macOS](LAB-2-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Build a menu-driven Student Management console using packages, Scanner, and printf |
+| **Skills practiced** | `com.academy.student` packages, model/manager/`Main` split, menu `switch`, array storage, `%.2f` |
+| **Expected outcome** | Add / display / search / average / exit work; smoke-test evidence saved |
+| **Estimated time** | Timed path ~45 min · Full path 90–180 min |
+| **Prerequisites** | Lab 0 · Module 1 · Exercises 1–7 Pass · JDK 21 |
+| **Expected files** | `examples/Lab2-JavaSyntax/src/com/academy/student/{Student,StudentManager,Main}.java` |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints · Pass criteria |
+
 **Module:** 2 — Java Syntax and Core Constructs  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-02/lab2/`  
 **Difficulty:** Beginner  
@@ -18,6 +30,8 @@
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 > **Hard gate — pre-lab exercises:** Complete Module 2 **Exercises 1–7** under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 2 is graded consolidation in a **separate** packaged project (`examples/Lab2-JavaSyntax/`), not a replacement for the flat exercises folder (`examples/module-02-exercises/`).
+
+> **Incremental build:** Extends Module 1 workspace + Module 2 exercise skills into a **packaged** menu app. You do **not** start a new CRM — same `java-bootcamp`, new folder `examples/Lab2-JavaSyntax/`.
 
 ## 45-minute timed path (use starter)
 
@@ -915,14 +929,33 @@ java -cp out com.academy.student.Main
 
 ## Troubleshooting
 
-| Problem | Likely cause | Fix |
-| ------- | ------------ | --- |
-| Package mismatch | Folders wrong | Recreate `src/com/academy/student` |
-| Main class not found | Bad classpath | `java -cp out com.academy.student.Main` |
-| Skipped input | Mixed Scanner APIs | Use `nextLine()` only |
-| NPE on display | Loop too far | Loop `i < studentCount` |
-| IntelliJ cannot run | `src` not Sources Root / SDK ≠ 21 | Project Structure + mark `src` |
-| VS Code cannot find `javac` | PATH from Lab 0 broken | Open new terminal; re-check Lab 0 |
+### Common errors and fixes
+
+| Problem | Likely cause | Typical message | Fix |
+| ------- | ------------ | --------------- | --- |
+| Package mismatch | Folders ≠ `package` line | `package … does not match` / class not found | Recreate `src/com/academy/student` |
+| Main class not found | Bad classpath / wrong name | `Could not find or load main class` | `java -cp out com.academy.student.Main` |
+| Skipped input / empty name | Mixed `nextInt` + `nextLine` | Prompts appear to “skip” | Prefer all-`nextLine` + parse (Exercises 5–6) |
+| NPE / blank rows on display | Loop uses full array length | NPE or empty slots printed | Loop `i < studentCount` |
+| IntelliJ cannot run | `src` not Sources Root / SDK ≠ 21 | Run config fails | Project Structure → SDK 21; mark `src` as Sources Root |
+| VS Code / Terminal missing tools | PATH from Lab 0 | `javac: command not found` | New terminal; re-check Lab 0 |
+| `*.java` glob fails (PowerShell) | Globbing quirks | Unexpected file list | Name each `.java` explicitly |
+| Wrong project folder | Coding under exercises tree | Can't find packages | Use `examples/Lab2-JavaSyntax/`, not `module-02-exercises` |
+
+### Frequent mistakes
+
+1. Skipping Exercises 1–7 and treating Lab 2 as first contact with Scanner.
+2. Mixing exercise flat files with the packaged lab project.
+3. Forgetting `-d out` / `-cp out`.
+4. Relying on `students.length` instead of `studentCount`.
+
+### Suggested first-aid order
+
+1. Confirm cwd is `Lab2-JavaSyntax`.
+2. `javac -version` / `java -version` → 21.x.
+3. List `src/com/academy/student/*.java`.
+4. Recompile with explicit file names into `out/`.
+5. Run with full main class name on `-cp out`.
 
 ---
 
@@ -981,13 +1014,13 @@ Optional — only after core deliverables pass. Pick at most one if time is shor
 
 ## Instructor Notes
 
-**Classroom order (do not reverse):**
+**Classroom order (Learn → Practice → Review — do not reverse):**
 
-1. Module 2 PPT (+ any live demos during slides)
-2. Students complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) in `module-02-exercises/` (8–9 challenge/bonus as time allows)
-3. Students open the OS how-to, then this guide — `Lab2-JavaSyntax` with packages
+1. Module 2 PPT in **segments** per [`../PACING.md`](../PACING.md) (+ live demos during slides)
+2. At each checkpoint, students complete matching [Exercises](../exercises/EXERCISES-INDEX.md) (use `exercises/starter/`)
+3. Only after Exercises 1–7 Pass: OS how-to, then this guide — `Lab2-JavaSyntax` with packages
 
-**Before students open this guide:** confirm exercise checkpoint Pass (arithmetic, decisions/loops, methods, `Scanner`+parse, `printf`). Lab 2 pacing assumes those skills already exist.
+**Before students open this guide:** confirm exercise checkpoint Pass (arithmetic, decisions/loops, methods, `Scanner`+parse, leftover newline, `printf`). Lab 2 pacing assumes those skills already exist.
 
 * **Reference solution:** [`solution/Lab2-JavaSyntax/`](solution/Lab2-JavaSyntax/) includes core features plus bonus menu options 6–10. Guide students toward helpers (`readValidMarks`, `findStudentIndex`) before revealing full files. **Students must not copy the solution blindly**—use it as a last resort and require them to explain their code.
 * **Scanner pitfalls:** Mixing `nextInt()`/`nextDouble()` with `nextLine()` skips prompts. Enforce one shared `Scanner` injected into `StudentManager` (Exercises 5–6 already warned them).

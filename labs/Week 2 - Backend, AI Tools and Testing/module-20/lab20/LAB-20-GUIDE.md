@@ -1,5 +1,19 @@
 # Lab 20: Structured Logging — Northstar CRM Traceable Operations
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 20 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-20-WINDOWS.md) · [macOS](LAB-20-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship Logback structured pattern + CorrelationFilter MDC + PII-free service logs |
+| **Skills practiced** | SLF4J/Logback, MDC put/clear, safe INFO lines, logging IT asserts |
+| **Expected outcome** | Green `CustomerLoggingIT` · corr/cust/op in logs · no Amina/email PII |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 19 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab20-crm/` — logback-spring.xml, filter, service logs, IT, docs |
+| **Validation checkpoints** | Starter smoke `CustomerLoggingIT` · GUIDE Implementation Checkpoints |
+
 **Module:** 20 — Structured Logging  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-20/lab20/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-20-WINDOWS.md](LAB-20-WINDOWS.md) |
 | macOS | [LAB-20-MACOS.md](LAB-20-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 20 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer copying `lab19-crm` → `lab20-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-20-exercises/`; graded work is `examples/lab20-crm/`.
+
+> **Incremental build:** Levels → safe logs → MDC lifecycle/clear → PII checklist → Lab 20.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** MDC **clear in finally**. Never log **fullName/email**. Pattern includes **%X{corr}/%X{cust}/%X{op}**. Actuator/metrics are **Lab 21**.
 
 ## 45-minute timed path (use starter)
 
@@ -664,6 +684,10 @@ Do **not** commit unsanitized consoles. If grep hits, scrub the excerpt and fix 
 | IT sees no output | File-only appender | Assert console or ListAppender |
 | Too verbose | Root DEBUG | Root INFO; package INFO |
 | Cannot connect | App down / port | Check `spring-boot:run` and 8080 |
+| “Amina” or email in IT output | Unsafe log still present | Rewrite to customerId only; re-run IT |
+| Working in `module-20-exercises` for the lab | Wrong project | Lab lives in `examples/lab20-crm` |
+| corr missing though header sent | Filter not putting MDC key names used in pattern | Align `corr`/`cust`/`op` keys |
+| Added Actuator early | Scope creep | Defer metrics/health to Lab 21 |
 
 ---
 

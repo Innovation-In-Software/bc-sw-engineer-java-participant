@@ -1,6 +1,25 @@
 # Exercise 2 — Activate Build Profiles
 
-**Module 9** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 9** · Checkpoint D · Exercises 1–6 Pass then Lab 9
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Explain dev/prod profiles, -P, and activeByDefault |
+| **Skills practiced** | Maven profiles |
+| **Expected outcome** | notes/profiles-notes.md with activation rules |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-09-exercises/` → notes/profiles-notes.md |
+| **Checkpoint** | D (after slides 52–53) |
+
+## What you will learn
+
+- Profiles customize build/config without forking the whole POM
+- -P selects a profile; activeByDefault needs care in CI
+- Do not hide secrets inside committed profile properties
+
+**Enterprise context:** Banks often use profiles for environment-specific endpoints — secrets stay outside Git.
 
 ## Goal
 
@@ -91,6 +110,19 @@ Never store real production secrets in `pom.xml` profiles.
 ## Expected result
 
 You can name the default profile, activate `prod` deliberately, and refuse secrets in POM properties.
+
+
+## Debug / design challenge
+
+Both dev and prod activeByDefault — what goes wrong?
+
+## Predict the Output / Behavior
+
+Which flag activates profile prod?
+
+## Troubleshooting
+
+See steps above if Maven commands fail. Prefer full logs (no `-q`) while learning.
 
 ## Pass criteria
 

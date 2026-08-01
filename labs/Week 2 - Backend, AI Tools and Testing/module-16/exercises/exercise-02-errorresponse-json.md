@@ -1,14 +1,31 @@
 # Exercise 2 — ErrorResponse JSON Draft
 
-**Module 16** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 16** · Checkpoint B · Exercises 1–6 Pass then Lab 16
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Draft JSON fields for a not-found error including correlation |
+| **Skills practiced** | Error envelope design, hygiene |
+| **Expected outcome** | notes/lab16-errorresponse-json.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-16-exercises/` → notes/lab16-errorresponse-json.md |
+| **Checkpoint** | B (after slides 174) |
+
+## What you will learn
+
+- Fields: status, error/code, message, correlationId (+ optional path/timestamp/errors)
+- CUS-9999 sample with lab-request-001
+- No stack traces or SQL in the message
+
+**Enterprise context:** Support cannot triage partner tickets without a correlationId on every Fail JSON.
 
 ## Goal
 
-Create `notes/lab16-errorresponse-json.md` — draft JSON fields for a not-found error including correlation.
+Create `notes/lab16-errorresponse-json.md` — draft not-found ErrorResponse JSON.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,14 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 16 — ErrorResponse JSON Draft
 
-## Step 1 — Fields
-
 Fields: timestamp, status, error, message, path, correlationId.
 
-## Step 2 — Sample
-
-Sketch JSON for CUS-9999 not found with correlationId lab-request-001.
-
-## Step 3 — Hygiene
-
+Sample CUS-9999 not found with correlationId lab-request-001.
 Message must not include stack traces or SQL.
-
-## Step 4 — Boundary
-
-Note: paper draft only; advice controller wiring is lab-time.
+Paper draft only — handler wiring is lab-time.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +64,19 @@ From `examples/module-16-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 16 — ErrorResponse JSON Draft
 
-## Step 1 — Fields
+## Fields
+_____
 
-Fields: timestamp, status, error, message, path, correlationId.
+## Sample (CUS-9999)
+```json
+{ "status": _____, "message": _____, "correlationId": _____ }
+```
 
-## Step 2 — Sample
-
-Sketch JSON for CUS-9999 not found with correlationId lab-request-001.
-
-## Step 3 — Hygiene
-
-Message must not include stack traces or SQL.
-
-## Step 4 — Boundary
-
-Note: paper draft only; advice controller wiring is lab-time.
+## Hygiene
+Forbidden in message: _____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A sample ErrorResponse JSON using lab-request-001 in `notes/lab16-errorresponse-json.md`.
+Not-found ErrorResponse sketch with correlation in `notes/lab16-errorresponse-json.md`.
 
-## If it fails
+## Debug / design challenge
+
+Someone puts e.getMessage() with a JDBC URL into JSON — rewrite the client message.
+
+## Predict the Output / Behavior
+
+Is correlationId required on success responses too, or only Fail? (Lab insists on Fail always.)
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab16-errorresponse-json.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 16 |
+| Missing correlationId | Add lab-request-001 |
+| Including stack trace in sample | Remove; keep safe message only |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab16-errorresponse-json.md`
-- [ ] Required fields listed
-- [ ] CUS-9999 sample sketched
-- [ ] No stack-trace in message
-
+- [ ] Fields listed
+- [ ] CUS-9999 sample present
+- [ ] Hygiene noted

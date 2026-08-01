@@ -7,18 +7,28 @@ Full course rule: [Which file do I open?](../../_PARTICIPANT-FILE-GUIDE.md) · [
 
 ---
 
-## Your sequence today
+## Your sequence today (Learn → Practice → Review)
+
+Do **not** sit through the entire Module 1 deck before coding. Practice at each checkpoint.
 
 | Step | When | Open this (only) |
 | ---- | ---- | ---------------- |
-| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) (terms & full forms in plain language) |
+| — | Optional → [`ACRONYM-CHEATSHEET.md`](ACRONYM-CHEATSHEET.md) · pacing → [`PACING.md`](PACING.md) |
 | A | After Lab 0 is done | Stay in IntelliJ with `java-bootcamp` open |
-| B | After Module 1 **slides** (+ instructor demo) | [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md) → then `exercise-01` … `exercise-08` **in order** |
+| B1 | After slides **1–9** (Checkpoint A) | [`exercises/exercise-01`](exercises/exercise-01-hello-world.md) + [`exercise-02`](exercises/exercise-02-wora.md) |
+| B2 | After slides **10–16** (Checkpoint B) | In-class Predict the Output (instructor-led) |
+| B3 | After slides **17–24** (Checkpoint C) | [`exercise-03`](exercises/exercise-03-control-flow.md) + [`exercise-04`](exercises/exercise-04-class-loading.md) |
+| B4 | After slides **25–30** (Checkpoint D) | [`exercise-05`](exercises/exercise-05-variables.md) … [`exercise-07`](exercises/exercise-07-objects.md) |
+| B5 | After slides **31–41** (Checkpoints E–F) | Short discussions (no new files) |
+| B6 | After demos / lab brief (Checkpoint G) | [`exercise-08`](exercises/exercise-08-javap.md) |
 | C | After Exercises 1–8 Pass | **One** OS how-to: [`lab1/LAB-1-WINDOWS.md`](lab1/LAB-1-WINDOWS.md) **or** [`lab1/LAB-1-MACOS.md`](lab1/LAB-1-MACOS.md) |
-| D | Graded lab (post-exercise consolidation) | [`lab1/LAB-1-GUIDE.md`](lab1/LAB-1-GUIDE.md) — in class use [`lab1/starter/`](lab1/starter/README.md) (~45 min); full path = every Step |
-| E | Done | Mark Pass/Fail in your notes |
+| D | Graded lab | [`lab1/LAB-1-GUIDE.md`](lab1/LAB-1-GUIDE.md) — timed path [`lab1/starter/`](lab1/starter/README.md) (~45 min) |
+| E | Done | Mark Pass/Fail in your notes · Kahoot if scheduled |
 
-**Do not skip from Lab 0 or slides straight to Lab 1.** Lab 1 assumes Exercises 1–8 are already Pass.
+Full exercise list: [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md)  
+Instructor pacing (for facilitators): [`PACING.md`](PACING.md)
+
+**Do not skip from Lab 0 or “all slides done” straight to Lab 1.** Lab 1 assumes Exercises 1–8 are already Pass.
 
 ---
 
@@ -33,12 +43,12 @@ You use **two places** — do not mix them:
 
 **Day-of workflow (verified on Windows + IntelliJ PowerShell):**
 
-1. Keep **IntelliJ** open on `java-bootcamp` (Project pane shows `examples`, `notes`, maybe `HelloJava`).
-2. Keep **guides** open beside it: browser tab on GitHub **or** a second window on this participant clone (or optional copy under `java-bootcamp/labs/` if your instructor set that up).
-3. Exercises → code in `examples/module-01-exercises/` until all eight Pass.
-4. Then OS how-to → GUIDE → code in `examples/jvm-compilation-lab/` (flat `.java` files — **not** inside `labs/`).
+1. Keep **IntelliJ** open on `java-bootcamp`.
+2. Keep **guides** open beside it (browser or second window on this clone).
+3. At each checkpoint → code in `examples/module-01-exercises/` (starters in `exercises/starter/`).
+4. Then OS how-to → GUIDE → code in `examples/jvm-compilation-lab/`.
 
-**IntelliJ Terminal rule:** Before every `javac` / `java` / `javap`, `cd` into the folder that holds the `.java` file. Wrong directory is the #1 failure.
+**IntelliJ Terminal rule:** Before every `javac` / `java` / `javap`, `cd` into the folder that holds the `.java` file.
 
 ```powershell
 # Exercises
@@ -55,17 +65,16 @@ cd $env:USERPROFILE\java-bootcamp\examples\jvm-compilation-lab
 | File / folder | For you? |
 | ------------- | -------- |
 | `README.md` (this file) | **Yes — start** |
-| `exercises/EXERCISES-INDEX.md` + `exercise-0N-*.md` | **Yes** — practice before the lab |
+| `exercises/EXERCISES-INDEX.md` + `exercise-0N-*.md` | **Yes** — practice at checkpoints |
+| `exercises/starter/` | **Yes** — TODO skeletons to copy |
 | `lab1/LAB-1-WINDOWS.md` or `LAB-1-MACOS.md` | **Yes** — pick your OS |
-| `lab1/LAB-1-GUIDE.md` | **Yes** — main steps |
-| `lab1/INSTRUCTOR-DEMO.md` | **No** — instructor live demo (may be absent in participant clone) |
-| `lab1/solution/` | **No** — absent in participant clone; try first |
+| `lab1/LAB-1-GUIDE.md` | **Yes** — main graded steps |
+| `lab1/INSTRUCTOR-DEMO.md` | **No** — instructor live demo |
+| `lab1/solution/` | **No** — absent in participant clone |
 
 ---
 
 ## Workspace reminder
-
-Code goes in **your** laptop folder:
 
 | Work | Folder |
 | ---- | ------ |
@@ -73,4 +82,4 @@ Code goes in **your** laptop folder:
 | Graded Lab 1 | `java-bootcamp/examples/jvm-compilation-lab/` |
 | Screenshots | `java-bootcamp/notes/screenshots/lab-1/` |
 
-**IntelliJ tip:** create sources with **New → File** → `ClassName.java`. Do **not** use **New → Java Class** or mark `module-01-exercises` / `jvm-compilation-lab` as Sources Root. Details: [`exercises/EXERCISES-INDEX.md`](exercises/EXERCISES-INDEX.md).
+**IntelliJ tip:** create sources with **New → File** → `ClassName.java`, or copy from `exercises/starter/`. Do **not** use **New → Java Class** or mark exercise/lab folders as Sources Root.

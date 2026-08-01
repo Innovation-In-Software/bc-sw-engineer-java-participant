@@ -1,5 +1,19 @@
 # Lab 14: DTOs and Validation — Northstar CRM API Contract Boundary
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 14 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-14-WINDOWS.md) · [macOS](LAB-14-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship Customer request/response DTOs + Jakarta validation + no-leak mapper |
+| **Skills practiced** | DTO design, Bean Validation, ValidatorFactory, manual mapping, facade gate |
+| **Expected outcome** | Green `mvn test` · response DTOs only · invalid paths show `lab-request-001` |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab14-crm/` — DTOs, mapper, facade, tests, boundary notes |
+| **Validation checkpoints** | Starter smoke `mvn -B clean test` · GUIDE Implementation Checkpoints |
+
 **Module:** 14 — DTOs, Validation and API Contracts  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-14/lab14/`  
 **Difficulty:** Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-14-WINDOWS.md](LAB-14-WINDOWS.md) |
 | macOS | [LAB-14-MACOS.md](LAB-14-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 14 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`.
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-14-exercises/`; graded work is `examples/lab14-crm/`.
+
+> **Incremental build:** Entity/DTO notes → mapper rules → paper annotations → invalid catalog → Lab 14 `lab14-crm`.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** Jakarta packages + programmatic `Validator`. Do **not** add Spring Boot / `@Valid` controllers. Service transitions deepen in **Lab 15**.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -806,6 +828,11 @@ git status
 | Status parse failures | Wrong case / typo | Match `CustomerStatus` names |
 | Entity returned from API | Facade shortcut | Return mapper response only |
 | Tests flaky | Shared mutable DTO | Reset in `@BeforeEach` / fresh instances |
+| `NoClassDefFoundError: jakarta/validation/Validation` on `java -cp` | Runtime missing deps | Use `dependency:build-classpath` or IntelliJ run |
+| Invalid email still hits service | Facade skipped validate | Fail-fast before `CustomerService` |
+| Working in `module-14-exercises` for the lab | Wrong project | Lab lives in `examples/lab14-crm` |
+| Added Spring Boot by accident | Scope creep | Remove; Lab 14 is plain Maven + ValidatorFactory |
+| Blank name passes `@NotNull` only | Wrong annotation | Prefer `@NotBlank` for names |
 
 ---
 

@@ -1,11 +1,30 @@
 # Exercise 7 — Library Collections Warm-up
 
-**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · Checkpoint E · all 7 then lab
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections Warm-Up: Library Checkout Workflow](../../../lab_diagrams/mod05-ex07-library-warmup.png)
 
 > **Bridge to Lab 5:** Coordinate two collections around one checkout rule without yet building the full library application.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Coordinate a List catalog with a Map of book→borrower |
+| **Skills practiced** | Combining List + Map, domain rules |
+| **Expected outcome** | Warm-up borrow/return style flow runs |
+| **Estimated time** | 15–18 minutes |
+| **File to create** | `examples/module-05-exercises/LibraryWarmup.java` |
+| **Checkpoint** | E |
+
+## What you will learn
+
+- One structure rarely enough
+- Keep IDs consistent across structures
+- Prep for Lab 5 LibraryService
+
+**Enterprise context:** Real libraries combine catalogs (List) with loans (Map) and unique IDs (Set).
 
 ## Goal
 
@@ -30,6 +49,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -176,7 +198,9 @@ This warm-up intentionally simplifies the domain. Lab 5 will improve it with:
 
 First checkout succeeds, the same member’s second checkout fails, and the title appears in exactly one current-state structure.
 
-## If it fails
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

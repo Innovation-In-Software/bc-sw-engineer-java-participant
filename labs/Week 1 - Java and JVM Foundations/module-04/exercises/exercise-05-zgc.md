@@ -1,11 +1,30 @@
 # Exercise 5 — Select and Verify ZGC
 
-**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · Checkpoint B · all 7 then lab
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Selecting ZGC and Comparing Its Log with G1](../../../lab_diagrams/mod04-ex05-zgc.png)
 
 > **Reuse Exercise 3:** No new Java file is needed. Run `GcObserve` again with ZGC selected instead of G1.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Select ZGC and compare the goal vs G1 in notes |
+| **Skills practiced** | -XX:+UseZGC, low-pause intent |
+| **Expected outcome** | Notes contrast G1 vs ZGC purpose |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-04-exercises/notes + GcObserve rerun` |
+| **Checkpoint** | B |
+
+## What you will learn
+
+- ZGC targets low pause on large heaps
+- Choosing a collector is a workload decision
+- Still no OOM experiments
+
+**Enterprise context:** Latency-sensitive payment/trading apps may evaluate ZGC/Shenandoah for pause goals.
 
 ## Goal
 
@@ -96,7 +115,9 @@ so it does not report the same kind of stop-the-world "Evacuation Pause" G1 does
 
 The JVM starts successfully, prints `Using The Z Garbage Collector`, and the bounded allocation program completes — with a visibly different collector log shape than the G1 run in Exercise 4.
 
-## If it fails
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

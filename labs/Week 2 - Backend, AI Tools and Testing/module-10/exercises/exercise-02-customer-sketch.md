@@ -1,6 +1,25 @@
 # Exercise 2 — Customer Sketch for Amina
 
-**Module 10** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 10** · Checkpoint B · Exercises 1–6 Pass then Lab 10
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch Customer fields for CUS-1001 Amina Khan without inventing Spring/JPA |
+| **Skills practiced** | AI-assisted class/DTO planning, scope control |
+| **Expected outcome** | notes/customer-sketch-notes.md with plain-Java field plan |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-10-exercises/` → notes/customer-sketch-notes.md |
+| **Checkpoint** | B (after slides 66–69) |
+
+## What you will learn
+
+- Generation slides (class/DTO/service) share one habit: constrain then sketch
+- Entity fields can differ from request/response DTO needs
+- Documentation generation is optional — correctness first
+
+**Enterprise context:** Onboarding demos use fixed fixtures (Amina ACTIVE) so reviews are comparable.
 
 ## Goal
 
@@ -76,6 +95,19 @@ Boundary: sketch only — pre-lab.
 ## Expected result
 
 Two fixture rows and a correlation placement note in `notes/customer-sketch-notes.md`.
+
+
+## Debug / design challenge
+
+AI adds @Entity — write the reject reason and a corrected prompt line.
+
+## Predict the Output / Behavior
+
+Should email live on every DTO even if the entity stores it?
+
+## Troubleshooting
+
+If Copilot is unavailable, complete the notes analysis manually — do not block on license issues for pre-lab Pass.
 
 ## Pass criteria
 

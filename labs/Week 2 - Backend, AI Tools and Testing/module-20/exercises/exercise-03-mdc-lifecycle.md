@@ -1,14 +1,31 @@
 # Exercise 3 — MDC Lifecycle
 
-**Module 20** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 20** · Checkpoint C · Exercises 1–6 Pass then Lab 20
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch put → use → clear MDC for correlation across a request |
+| **Skills practiced** | MDC request scoping |
+| **Expected outcome** | notes/lab20-mdc-lifecycle.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-20-exercises/` → notes/lab20-mdc-lifecycle.md |
+| **Checkpoint** | C (after slides 245–247) |
+
+## What you will learn
+
+- Put correlation on request entry
+- Service logs pick up MDC via pattern
+- Clear in finally to prevent leaks
+
+**Enterprise context:** Without MDC, grepping one partner outage means reading every INFO line manually.
 
 ## Goal
 
-Create `notes/lab20-mdc-lifecycle.md` — sketch put → use → clear MDC for correlation across a request.
+Create `notes/lab20-mdc-lifecycle.md` — MDC put/use/clear.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 20 — MDC Lifecycle
 
-## Step 1 — Put
-
-On request entry: MDC.put("correlationId", "lab-request-001").
-
-## Step 2 — Use
-
-Service logs automatically include correlation via pattern.
-
-## Step 3 — Clear
-
-finally { MDC.clear(); } or remove key — prevent leak to next request.
-
-## Step 4 — Boundary
-
-Note metrics/alerts deepen in Lab 21; here focus logs/MDC.
+Put: MDC.put("corr", "lab-request-001") on entry.
+Use: service logs include corr via %X{corr}.
+Clear: finally { MDC.clear(); }
+Metrics/Actuator wait for Lab 21.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +63,20 @@ From `examples/module-20-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 20 — MDC Lifecycle
 
-## Step 1 — Put
+## Put
+_____
 
-On request entry: MDC.put("correlationId", "lab-request-001").
+## Use
+_____
 
-## Step 2 — Use
+## Clear
+_____
 
-Service logs automatically include correlation via pattern.
-
-## Step 3 — Clear
-
-finally { MDC.clear(); } or remove key — prevent leak to next request.
-
-## Step 4 — Boundary
-
-Note metrics/alerts deepen in Lab 21; here focus logs/MDC.
+## Lab 21 boundary
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-An MDC lifecycle sketch with clear-in-finally in `notes/lab20-mdc-lifecycle.md`.
+MDC lifecycle sketch in `notes/lab20-mdc-lifecycle.md`.
 
-## If it fails
+## Debug / design challenge
+
+Where should put happen — controller method body only, or a filter wrapping all requests?
+
+## Predict the Output / Behavior
+
+Does Logback pattern %X{corr} work if you never MDC.put?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab20-mdc-lifecycle.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 20 |
+| Skipping clear | Add finally clear |
+| Claiming Actuator required now | Defer to Lab 21 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab20-mdc-lifecycle.md`
-- [ ] Put documented
-- [ ] Clear in finally documented
-- [ ] Lab 21 boundary noted
-
+- [ ] Put step
+- [ ] Use step
+- [ ] Clear step

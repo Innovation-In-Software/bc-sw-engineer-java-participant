@@ -1,11 +1,30 @@
 # Exercise 7 — Area of Circle
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint F · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Math: Calculating the Area of a Circle](../../../lab_diagrams/mod02-ex07-circle-area.png)
 
 > **New for Module 2:** `Math.PI` and `printf` decimal formatting (Lab 2 uses `printf` for tables).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Compute area with Math.PI and print with printf decimals |
+| **Skills practiced** | Math.PI, double math, %.2f / %.4f |
+| **Expected outcome** | Area printed with required decimal formatting |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-02-exercises/CircleArea.java` |
+| **Checkpoint** | F |
+
+## What you will learn
+
+- Use library constants (Math.PI)
+- Format floating results for humans
+- Radius from Scanner
+
+**Enterprise context:** Logistics coverage radius / geo fencing demos use the same formula.
 
 ## Goal
 
@@ -24,6 +43,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/CircleArea.java`](starter/CircleArea.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -96,7 +118,14 @@ Area: 78.54
 
 Area matches π × r × r and prints with two decimals.
 
-## If it fails
+
+## Predict the Output
+
+Radius 2 → area ≈ ?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

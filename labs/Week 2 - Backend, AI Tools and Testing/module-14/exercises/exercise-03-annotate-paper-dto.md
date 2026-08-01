@@ -1,14 +1,31 @@
 # Exercise 3 — Annotate Paper DTO
 
-**Module 14** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 14** · Checkpoint C · Exercises 1–6 Pass then Lab 14
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Mark required/optional Bean Validation constraints on a paper CreateCustomerRequest |
+| **Skills practiced** | @NotNull / @NotBlank / @Email / @Size naming (paper only) |
+| **Expected outcome** | notes/lab14-annotate-dto.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-14-exercises/` → notes/lab14-annotate-dto.md |
+| **Checkpoint** | C (after slides 139–143) |
+
+## What you will learn
+
+- @NotBlank vs @NotNull for strings
+- Paper annotations document the contract before wiring Spring
+- Correlation stays in headers/logs, not as a business DTO field
+
+**Enterprise context:** Contract docs that name annotations make later `@Valid` / OpenAPI work faster and less ambiguous.
 
 ## Goal
 
-Create `notes/lab14-annotate-dto.md` — mark required/optional constraints on a paper CreateCustomerRequest.
+Create `notes/lab14-annotate-dto.md` — mark constraints on a paper CreateCustomerRequest.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -25,27 +42,24 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 # Lab 14 — Annotate Paper DTO
 
 ## Reference
-
 | Field | Constraint idea |
 | --- | --- |
-| fullName | required, non-blank |
+| fullName | @NotBlank + @Size |
+| email | @Email (if present) |
 | status | optional on create; default PROSPECT |
-| customerId | server-assigned or pattern CUS-#### |
+| customerId | server-assigned or pattern |
 
 ## Step 2 — Paper annotations
-
-Write pseudo `@NotBlank` / `@Pattern` names — documentation only.
+Write pseudo annotation names — documentation only.
 
 ## Step 3 — No Spring yet
-
-Explicit: do not wire `@Valid` on a controller in this pre-lab.
+Do not wire `@Valid` on a controller in this pre-lab.
 
 ## Step 4 — Correlation
-
-Note correlation `lab-request-001` stays in headers/logs, not as a DTO business field.
+`lab-request-001` stays in headers/logs.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,27 +76,24 @@ From `examples/module-14-exercises/`, create `notes/` if needed, then create `no
 # Lab 14 — Annotate Paper DTO
 
 ## Reference
-
-| Field | Constraint idea |
+| Field | Constraint / annotation |
 | --- | --- |
-| fullName | required, non-blank |
-| status | optional on create; default PROSPECT |
-| customerId | server-assigned or pattern CUS-#### |
+| fullName | _____ |
+| email | _____ |
+| status | _____ |
+| customerId | _____ |
 
 ## Step 2 — Paper annotations
-
-Write pseudo `@NotBlank` / `@Pattern` names — documentation only.
+List annotation names you would use: _____
 
 ## Step 3 — No Spring yet
-
-Explicit: do not wire `@Valid` on a controller in this pre-lab.
+Spring `@Valid` in this pre-lab? _____
 
 ## Step 4 — Correlation
-
-Note correlation `lab-request-001` stays in headers/logs, not as a DTO business field.
+Where does `lab-request-001` live? _____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,13 +104,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Paper DTO constraints without live Spring validation in `notes/lab14-annotate-dto.md`.
 
-## If it fails
+## Debug / design challenge
+
+`@NotNull` on a String still allows `"   "` — which annotation closes that gap?
+
+## Predict the Output / Behavior
+
+Will `@Email` accept an empty string if the field is optional?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab14-annotate-dto.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 14 |
+| Wiring a Spring controller | Paper annotations only; Lab 14 uses ValidatorFactory |
+| Putting correlation in the DTO body | Keep it in headers/logs |
 
 ## Pass criteria
 
@@ -109,4 +130,3 @@ Self-check before marking Pass:
 - [ ] Constraint table filled
 - [ ] No `@Valid` wiring claimed
 - [ ] Correlation placement noted
-

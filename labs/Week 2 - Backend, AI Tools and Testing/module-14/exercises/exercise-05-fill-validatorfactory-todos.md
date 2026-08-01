@@ -1,14 +1,31 @@
 # Exercise 5 — Fill ValidatorFactory TODOs
 
-**Module 14** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 14** · Checkpoint D · Exercises 1–6 Pass then Lab 14
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete ValidatorFactory checklist (no Spring `@Valid`) |
+| **Skills practiced** | Validation.buildDefaultValidatorFactory, programmatic validate |
+| **Expected outcome** | notes/lab14-validatorfactory-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-14-exercises/` → notes/lab14-validatorfactory-todos.md |
+| **Checkpoint** | D (after slides 144–147) |
+
+## What you will learn
+
+- Bootstrap ValidatorFactory → Validator
+- Invalid payloads yield ConstraintViolation sets
+- Spring `@Valid` is out of scope for Module 14 pre-lab/lab
+
+**Enterprise context:** Plain Java services and batch jobs validate the same DTO annotations without an HTTP stack.
 
 ## Goal
 
-Create `notes/lab14-validatorfactory-todos.md` — complete fill-in blanks for a ValidatorFactory checklist (no Spring `@Valid`).
+Create `notes/lab14-validatorfactory-todos.md` — fill ValidatorFactory TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -25,28 +42,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 # Lab 14 — Fill ValidatorFactory TODOs
 
 ## Step 1 — Copy TODOs
+Bootstrap: ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+Validator validator = factory.getValidator();
+Invalid blank name → expect ≥1 violations
+Valid Amina ACTIVE sketch → expect 0 violations
+Spring @Valid in this pre-lab? no
 
-Bootstrap: ValidatorFactory factory = (your note here);
-Validator validator = (your note here);
-Invalid blank name → expect (your note here) violations
-Invalid status TYPO → expect (your note here)
-Valid Amina ACTIVE sketch → expect (your note here) violations
-Spring @Valid in this pre-lab? (your note here)
-
-## Step 2 — Fill blanks
-
-Fill with Validation.buildDefaultValidatorFactory(), factory.getValidator(), counts/messages ideas, and `no` for Spring `@Valid`.
-
-## Step 3 — Invalid cases list
-
-Add bullets: blank fullName; unknown status; null customerId on activate.
-
-## Step 4 — Self-check
-
-Confirm Spring `@Valid` blank is no / not in this pre-lab.
+## Step 2 — Invalid cases list
+blank fullName; unknown status; null customerId on activate
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -63,7 +69,6 @@ From `examples/module-14-exercises/`, create `notes/` if needed, then create `no
 # Lab 14 — Fill ValidatorFactory TODOs
 
 ## Step 1 — Copy TODOs
-
 Bootstrap: ValidatorFactory factory = _____;
 Validator validator = _____;
 Invalid blank name → expect _____ violations
@@ -72,19 +77,15 @@ Valid Amina ACTIVE sketch → expect _____ violations
 Spring @Valid in this pre-lab? _____
 
 ## Step 2 — Fill blanks
-
-Fill with Validation.buildDefaultValidatorFactory(), factory.getValidator(), counts/messages ideas, and `no` for Spring `@Valid`.
+Use Validation.buildDefaultValidatorFactory(), factory.getValidator(), counts/messages, and `no` for Spring `@Valid`.
 
 ## Step 3 — Invalid cases list
-
-Add bullets: blank fullName; unknown status; null customerId on activate.
-
-## Step 4 — Self-check
-
-Confirm Spring `@Valid` blank is no / not in this pre-lab.
+1. _____
+2. _____
+3. _____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -95,13 +96,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Filled ValidatorFactory TODOs plus invalid case bullets in `notes/lab14-validatorfactory-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+`NoProviderFoundException` at runtime — which Maven deps are missing?
+
+## Predict the Output / Behavior
+
+Does calling `validator.validate(dto)` mutate the DTO?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab14-validatorfactory-todos.md` |
 | Assuming @Valid works without Spring MVC | Use ValidatorFactory narrative for prep |
-| Putting entities on the wire | Map through DTOs only |
+| Using javax.validation | Lab 14 is jakarta.validation.* |
 
 ## Pass criteria
 
@@ -111,4 +122,3 @@ Self-check before marking Pass:
 - [ ] All _____ replaced
 - [ ] Three invalid cases listed
 - [ ] No Spring @Valid claimed
-

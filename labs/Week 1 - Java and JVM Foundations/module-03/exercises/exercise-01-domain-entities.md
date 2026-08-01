@@ -1,11 +1,30 @@
 # Exercise 1 — Identify Domain Entities
 
-**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · Checkpoint A · all 8 then lab
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Banking Domain Entities and Responsibilities](../../../lab_diagrams/mod03-ex01-domain-entities.png)
 
 > **Design before code:** Lab 3 is a banking system. First translate the business description into objects with focused responsibilities.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Identify Customer, Account, Transaction entities with attributes and responsibilities |
+| **Skills practiced** | Domain modeling, entity vs attribute, relationships |
+| **Expected outcome** | notes.md entity table + relationships |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-03-exercises/notes.md` |
+| **Checkpoint** | A (after slides 82–89) |
+
+## What you will learn
+
+- Nouns in requirements often become classes
+- One clear responsibility per entity
+- Design notes before coding Lab 3
+
+**Enterprise context:** Banking core systems start with Customer/Account/Transaction models before any UI.
 
 ## Goal
 
@@ -120,6 +139,13 @@ Suggested idea: `Account` owns the balance and its rules, while `Main` should on
 | `Main` owns every business rule | Keep `Main` as a thin coordinator |
 | “Database” is modeled as a banking entity | Treat storage as infrastructure, not domain identity |
 | Responsibility says only “stores data” | State useful behavior or ownership |
+
+## Troubleshooting
+
+| Problem | Fix |
+| ------- | --- |
+| Blank/`_____` left in code | Replace with real Java |
+| Wrong folder | `cd` to `module-03-exercises` |
 
 ## Pass criteria
 

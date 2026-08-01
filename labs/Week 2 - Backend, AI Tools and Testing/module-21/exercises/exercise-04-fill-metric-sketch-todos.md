@@ -1,14 +1,31 @@
 # Exercise 4 — Fill Metric Sketch TODOs
 
-**Module 21** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 21** · Checkpoint D · Exercises 1–6 Pass then Lab 21
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete fill-in blanks for metrics and an alert on create_failure_total |
+| **Skills practiced** | Metric + alert sketching |
+| **Expected outcome** | notes/lab21-metric-sketch-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-21-exercises/` → notes/lab21-metric-sketch-todos.md |
+| **Checkpoint** | D (after slides 264–269) |
+
+## What you will learn
+
+- create_success_total / create_failure_total
+- Forbidden label: customerId
+- Alert + first responder checks logs for lab-request-001
+
+**Enterprise context:** Alerts without a triage path become ignored noise — sketch the action with the counter.
 
 ## Goal
 
-Create `notes/lab21-metric-sketch-todos.md` — complete fill-in blanks for metrics and an alert on create_failure_total.
+Create `notes/lab21-metric-sketch-todos.md` — metric/alert TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,29 +41,14 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 21 — Fill Metric Sketch TODOs
 
-## Step 1 — Copy TODOs
-
-Success counter: (your note here)
-Failure counter: (your note here)
-Forbidden label: (your note here)
-Alert name: (your note here)
-Alert when create_failure_total rises above: (your note here)
-First responder action: (your note here)
-
-## Step 2 — Fill blanks
-
-Fill create_success_total, create_failure_total, customerId (forbidden), CrmCreateFailuresHigh, a numeric threshold you choose, and check logs for lab-request-001.
-
-## Step 3 — Alert narrative
-
-Write: page on sustained create_failure_total; correlate with recent CUS-1001/CUS-1002 traffic via logs, not metric labels.
-
-## Step 4 — Self-check
-
-Confirm failure counter blank is create_failure_total.
+Success: create_success_total / crm.customer.create success
+Failure: create_failure_total
+Forbidden label: customerId
+Alert: CrmCreateFailuresHigh when failure rises above threshold
+Action: check logs for lab-request-001
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,29 +64,15 @@ From `examples/module-21-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 21 — Fill Metric Sketch TODOs
 
-## Step 1 — Copy TODOs
-
 Success counter: _____
 Failure counter: _____
 Forbidden label: _____
 Alert name: _____
-Alert when create_failure_total rises above: _____
+Alert threshold idea: _____
 First responder action: _____
 
-## Step 2 — Fill blanks
-
-Fill create_success_total, create_failure_total, customerId (forbidden), CrmCreateFailuresHigh, a numeric threshold you choose, and check logs for lab-request-001.
-
-## Step 3 — Alert narrative
-
-Write: page on sustained create_failure_total; correlate with recent CUS-1001/CUS-1002 traffic via logs, not metric labels.
-
-## Step 4 — Self-check
-
-Confirm failure counter blank is create_failure_total.
-
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,22 +81,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Filled metric/alert TODOs anchored on create_failure_total in `notes/lab21-metric-sketch-todos.md`.
+Filled metric/alert TODOs in `notes/lab21-metric-sketch-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should the alert threshold use a raw forever-total or a rate over N minutes?
+
+## Predict the Output / Behavior
+
+Why must the first responder look at logs instead of metric labels for CUS-1001?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab21-metric-sketch-todos.md` |
-| Alerting on customerId label cardinality | Alert on aggregated failure_total |
-| No runbook action | Always name first log/query step |
+| Using customerId as label | Mark forbidden |
+| No responder action | Point to correlation logs |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab21-metric-sketch-todos.md`
-- [ ] All _____ replaced
-- [ ] create_failure_total used
-- [ ] Responder action named
-
+- [ ] Both counters
+- [ ] Forbidden label
+- [ ] Alert + action

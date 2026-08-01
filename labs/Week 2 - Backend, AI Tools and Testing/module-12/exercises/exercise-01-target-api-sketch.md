@@ -1,6 +1,25 @@
 # Exercise 1 — Target API Sketch
 
-**Module 12** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 12** · Checkpoint A · Exercises 1–6 Pass then Lab 12
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch the post-cleanup CustomerService API (create/get/updateStatus) |
+| **Skills practiced** | Naming, method design, target API planning |
+| **Expected outcome** | notes/lab12-target-api-sketch.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-12-exercises/` → notes/lab12-target-api-sketch.md |
+| **Checkpoint** | A (after slides 94–99) |
+
+## What you will learn
+
+- Refactor toward intentional method names, not doStuff
+- Sketch the API before rewriting the body
+- Keep SOAP/Spring out of this cleanup lab
+
+**Enterprise context:** CRM refactors start with a named contract so reviews stay comparable.
 
 ## Goal
 
@@ -85,7 +104,18 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A minimal target API with honest exclusions in `notes/lab12-target-api-sketch.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Replace doStuff with createCustomer/getCustomer/updateStatus in your sketch.
+
+## Predict the Output / Behavior
+
+Which method should move Ravi PROSPECT → ACTIVE?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

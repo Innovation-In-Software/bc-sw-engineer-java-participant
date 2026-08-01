@@ -1,14 +1,32 @@
 # Exercise 3 — Failure to Status Map
 
-**Module 16** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 16** · Checkpoint C · Exercises 1–6 Pass then Lab 16
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map Northstar failures to client-facing status classes |
+| **Skills practiced** | HTTP status selection, conflict policy |
+| **Expected outcome** | notes/lab16-status-map.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-16-exercises/` → notes/lab16-status-map.md |
+| **Checkpoint** | C (after slides 175–177) |
+
+## What you will learn
+
+- 404 for CUS-9999
+- 400 for validation
+- 409 (or documented 422) for illegal activate
+- Never 200 with an error payload
+
+**Enterprise context:** Partners automate retries based on status — 200-with-error and 500-for-conflict both break them.
 
 ## Goal
 
-Create `notes/lab16-status-map.md` — map Northstar failures to client-facing status classes.
+Create `notes/lab16-status-map.md` — failure → status map.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,25 +42,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 16 — Failure to Status Map
 
-## Reference
-
-| Failure | Status idea |
+| Failure | Status |
 | --- | --- |
-| CUS-9999 not found | 404 / SOAP Client fault |
-| Activate Amina illegal transition | 409 or 422 |
-| Validation blank name | 400 |
-| Unexpected bug | 500 (generic message) |
+| CUS-9999 not found | 404 |
+| Activate Amina illegal | 409 (or 422 — pick one) |
+| Validation blank/email | 400 |
+| Unexpected bug | 500 |
 
-## Step 2 — Choose conflict
-
-Pick 409 vs 422 for illegal activate and write one reason.
-
-## Step 3 — Never
-
-Write: never return 200 with an error payload for these failures.
+Never return 200 with an error payload.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -58,25 +68,21 @@ From `examples/module-16-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 16 — Failure to Status Map
 
-## Reference
-
-| Failure | Status idea |
+| Failure | Status |
 | --- | --- |
-| CUS-9999 not found | 404 / SOAP Client fault |
-| Activate Amina illegal transition | 409 or 422 |
-| Validation blank name | 400 |
-| Unexpected bug | 500 (generic message) |
+| CUS-9999 not found | _____ |
+| Illegal activate (Amina) | _____ |
+| Validation blank/email | _____ |
+| Unexpected bug | _____ |
 
-## Step 2 — Choose conflict
+## Conflict choice reason
+_____
 
-Pick 409 vs 422 for illegal activate and write one reason.
-
-## Step 3 — Never
-
-Write: never return 200 with an error payload for these failures.
+## Never
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -85,22 +91,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A failure→status map with an explicit never-200 rule in `notes/lab16-status-map.md`.
+Status map with conflict choice in `notes/lab16-status-map.md`.
 
-## If it fails
+## Debug / design challenge
+
+If you choose 422 instead of 409, where must that be documented for graders?
+
+## Predict the Output / Behavior
+
+Does not-found return 400 or 404 when the id format is valid but unknown?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab16-status-map.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 16 |
+| Using 200 for Fail | Replace with 4xx/5xx |
+| Mapping illegal transition to 500 | Use 409/422 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab16-status-map.md`
-- [ ] Table copied
-- [ ] 409/422 decision reasoned
-- [ ] Never-200 rule written
-
+- [ ] Four rows filled
+- [ ] Conflict choice noted
+- [ ] Never-200 rule present

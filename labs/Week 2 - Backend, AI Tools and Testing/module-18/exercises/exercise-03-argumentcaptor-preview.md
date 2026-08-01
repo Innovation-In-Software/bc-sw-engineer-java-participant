@@ -1,14 +1,31 @@
 # Exercise 3 — ArgumentCaptor Preview
 
-**Module 18** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 18** · Checkpoint C · Exercises 1–6 Pass then Lab 18
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch ArgumentCaptor steps for saved Customer without running tests yet |
+| **Skills practiced** | ArgumentCaptor workflow |
+| **Expected outcome** | notes/lab18-argumentcaptor-preview.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-18-exercises/` → notes/lab18-argumentcaptor-preview.md |
+| **Checkpoint** | C (after slides 210–213) |
+
+## What you will learn
+
+- Declare ArgumentCaptor<Customer>
+- verify(repo).save(captor.capture())
+- Assert status ACTIVE for Ravi
+
+**Enterprise context:** verify(save) alone does not prove the entity carried ACTIVE — captors close that gap.
 
 ## Goal
 
-Create `notes/lab18-argumentcaptor-preview.md` — sketch ArgumentCaptor steps for saved Customer without running tests yet.
+Create `notes/lab18-argumentcaptor-preview.md` — paper captor steps.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 18 — ArgumentCaptor Preview
 
-## Step 1 — Declare
-
-Paper: `ArgumentCaptor<Customer> captor = ArgumentCaptor.forClass(Customer.class);`
-
-## Step 2 — Verify
-
-`verify(repo).save(captor.capture());`
-
-## Step 3 — Assert
-
-Assert captor.getValue().getStatus() is ACTIVE for Ravi.
-
-## Step 4 — Prep only
-
-Write: *Prepare for Lab 18; do not complete full Mockito lab now.*
+Declare ArgumentCaptor<Customer>.
+verify(repo).save(captor.capture()).
+Assert captor.getValue().getStatus() == ACTIVE for Ravi.
+Prepare for Lab 18; do not complete full suite now.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +63,17 @@ From `examples/module-18-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 18 — ArgumentCaptor Preview
 
-## Step 1 — Declare
+## Declare
+_____
 
-Paper: `ArgumentCaptor<Customer> captor = ArgumentCaptor.forClass(Customer.class);`
+## Verify + capture
+_____
 
-## Step 2 — Verify
-
-`verify(repo).save(captor.capture());`
-
-## Step 3 — Assert
-
-Assert captor.getValue().getStatus() is ACTIVE for Ravi.
-
-## Step 4 — Prep only
-
-Write: *Prepare for Lab 18; do not complete full Mockito lab now.*
+## Assert
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +82,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A three-step captors sketch with pre-lab boundary in `notes/lab18-argumentcaptor-preview.md`.
+Captor preview steps in `notes/lab18-argumentcaptor-preview.md`.
 
-## If it fails
+## Debug / design challenge
+
+Would any(Customer.class) without a captor catch a PROSPECT left unchanged?
+
+## Predict the Output / Behavior
+
+Where do you place the captor relative to the service.activate call?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab18-argumentcaptor-preview.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 18 |
+| Only verifying save without capture | Add status assert on captor value |
+| Running full Lab 18 here | Paper preview only |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab18-argumentcaptor-preview.md`
-- [ ] Declare/verify/assert sketched
-- [ ] ACTIVE asserted
-- [ ] Pre-lab boundary present
-
+- [ ] Declare step
+- [ ] Capture verify
+- [ ] Status assert

@@ -1,119 +1,79 @@
 # Module 4 — Pre-Lab Exercises
 
-
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
-> **Start here for Module 4:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Learn → Practice → Review:** Do **not** wait until every Module 4 slide is finished. Work each checkpoint when the instructor pauses ([`../PACING.md`](../PACING.md)).  
+> **Tip:** Each exercise starts with an **Activity card** + **What you will learn**. Prefer [`starter/`](starter/README.md).  
+> **Start here for Module 4:** [`../README.md`](../README.md)
 
 **Module:** 4 — Memory Management and Performance  
-**Source:** Module 4 slides: Lab Overview (Memory and Garbage Collection)  
-**Next (after Exercises 1–7 Pass):** OS how-to → [`../lab4/LAB-4-WINDOWS.md`](../lab4/LAB-4-WINDOWS.md) or [`../lab4/LAB-4-MACOS.md`](../lab4/LAB-4-MACOS.md) → then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)
+**Next (after Exercises 1–7 Pass):** OS how-to → [`../lab4/LAB-4-WINDOWS.md`](../lab4/LAB-4-WINDOWS.md) or [`../lab4/LAB-4-MACOS.md`](../lab4/LAB-4-MACOS.md) → [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** (Day 3) and **before** the graded lab (Day 4).  
 > **Gate for Lab 4:** All **seven** exercises must be Pass.  
-> **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
-> Keep practice separate from the graded lab (`examples/Lab4-MemoryManagement/`).  
-> Each coding exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and Windows / macOS commands.  
-> Replace every `_____` and `// TODO` with your own code, then compile and run.  
-> Memory and timing values vary by machine. Explain the **pattern**, not an exact number.  
-> **Lab 4 assumes** you can already sketch stack/heap, lifecycle, GC logs, G1/ZGC, retention, and StringBuilder cost — Lab 4 consolidates them into a shared-monitor suite, not first teaching.
+> **JDK:** 21 · Practice: `examples/module-04-exercises/` · Graded lab: `examples/Lab4-MemoryManagement/`  
+> Explain **patterns**, not exact MB numbers (machines differ).
+
+## Checkpoint map
+
+| When (after slides) | Do these | Pattern |
+| ------------------- | -------- | ------- |
+| Checkpoint A (115–118) | Ex 1–2 stack/heap + lifecycle | Learn → Practice |
+| Checkpoint B (119–121) | Ex 3–5 GC observe + G1/ZGC flags | Learn → Practice |
+| Checkpoint C (122–123) | Ex 6 retention sketch | Learn → Practice |
+| Checkpoint D (124–126) | Ex 7 String vs StringBuilder | Learn → Practice |
+| Checkpoint E (127–129) | Lab 4 | Practice → Lab |
 
 ## Already covered — do not redo
 
 | Topic | Where you did it |
 | ----- | ---------------- |
-| JVM, bytecode, and WORA | Module 1 |
-| Objects, references, encapsulation | Modules 1 and 3 |
-| Loops and arrays | Modules 1 and 2 |
+| JVM / bytecode / WORA | Module 1 |
+| Stack vs heap sketch | Module 1 Ex 7 / Lab 1 |
+| G1/ZGC names | Module 1 awareness slides |
 
-Module 4 focuses on what happens **at runtime**: stack frames, heap objects, reachability, garbage collection, allocation cost, and retained references.
+Module 4 is **runtime evidence**: flags, logs, retention roots, allocation cost.
 
 ## Safety rules
 
-- Use the bounded object counts in these exercises.
+- Use bounded object counts only.
 - Do **not** intentionally trigger `OutOfMemoryError`.
-- Do **not** commit heap dumps (`.hprof`); they can contain secrets or personal data.
+- Do **not** commit heap dumps (`.hprof`).
 - `System.gc()` is a **request**, not a guarantee.
-- Close optional monitoring tools after the exercise.
 
-## Workspace
-
-| Item | Windows | macOS |
-| ---- | ------- | ----- |
-| Lab 0 workspace | `%USERPROFILE%\java-bootcamp` | `~/java-bootcamp` |
-| Exercises folder | `%USERPROFILE%\java-bootcamp\examples\module-04-exercises` | `~/java-bootcamp/examples/module-04-exercises` |
-| Shell | IntelliJ **Terminal** (PowerShell) | IntelliJ **Terminal** (zsh) |
-
-### Setup — create the folder once
-
-**Windows (PowerShell):**
+## Workspace setup
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
 New-Item -ItemType Directory -Force -Path examples\module-04-exercises | Out-Null
 cd examples\module-04-exercises
-pwd
 ```
-
-**macOS (zsh/bash):**
 
 ```bash
-cd ~/java-bootcamp
-mkdir -p examples/module-04-exercises
-cd examples/module-04-exercises
-pwd
+cd ~/java-bootcamp && mkdir -p examples/module-04-exercises && cd examples/module-04-exercises
 ```
 
-Stay in this folder for all seven exercises.
-
-### How to create each `.java` file (IntelliJ)
-
-**Use this only** (same pattern as Module 2):
-
-1. Right-click `module-04-exercises` → **New → File**
-2. Type the full name including extension, e.g. `StackHeapDemo.java`
-3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**)
-4. Compile and run from the IntelliJ **Terminal** with `javac` / `java`
-
-**How the starter works:** scaffolding (imports, class shells, JVM flag instructions) is given; the learning parts are blanks marked `_____` or `// TODO`. Your finished file must compile — blanks are not valid Java.
-
-**Do not:**
-
-| Avoid | Why |
-| ----- | --- |
-| **New → Java Class** | Often missing on hyphenated folders |
-| Mark `examples` as **Sources Root** | Conflicts with Lab 0 `HelloJava/src` |
-| Click **Move to source root** on the yellow banner | Moves the file into Lab 0 — ignore the banner; use Terminal `javac` / `java` |
+Prefer copy from [`starter/`](starter/README.md). Ignore yellow *outside source root* banner.
 
 ## JVM flags used
 
 | Flag | Easy meaning |
 | ---- | ------------ |
-| `-Xms16m` | Start with approximately 16 MB heap |
-| `-Xmx64m` | Limit maximum heap to approximately 64 MB |
-| `-Xlog:gc` | Print garbage-collection events |
-| `-XX:+UseG1GC` | Explicitly select the G1 collector |
-| `-XX:+UseZGC` | Explicitly select the ZGC collector |
+| `-Xms16m` | Start heap ~16 MB |
+| `-Xmx64m` | Max heap ~64 MB |
+| `-Xlog:gc` | Print GC events |
+| `-XX:+UseG1GC` | Select G1 |
+| `-XX:+UseZGC` | Select ZGC |
 
-JVM flags go **before** the class name:
-
-```text
-java -Xmx64m -Xlog:gc GcObserve
-```
+Flags go **before** the class name: `java -Xmx64m -Xlog:gc GcObserve`
 
 ## Exercise index
 
-Numbered to match the order these topics appear in the Module 4 slides — work in order.
+| # | Exercise | Est. | Type | File |
+| - | -------- | ---- | ---- | ---- |
+| 1 | Stack vs Heap | 12–15 min | TODO + sketch | [`exercise-01-stack-vs-heap.md`](exercise-01-stack-vs-heap.md) |
+| 2 | Object Lifecycle | 12–15 min | TODO coding | [`exercise-02-lifecycle.md`](exercise-02-lifecycle.md) |
+| 3 | GC in Action | 12–15 min | TODO + logs | [`exercise-03-gc-observe.md`](exercise-03-gc-observe.md) |
+| 4 | G1 Flag | 8–10 min | Flags + notes | [`exercise-04-g1.md`](exercise-04-g1.md) |
+| 5 | ZGC Flag | 8–10 min | Flags + notes | [`exercise-05-zgc.md`](exercise-05-zgc.md) |
+| 6 | Retention Sketch | 12–15 min | TODO + debug | [`exercise-06-leak-sketch.md`](exercise-06-leak-sketch.md) |
+| 7 | String vs StringBuilder | 12–15 min | TODO coding | [`exercise-07-string-vs-builder.md`](exercise-07-string-vs-builder.md) |
 
-| # | Exercise | New runtime skill | File |
-| - | -------- | ----------------- | ---- |
-| 1 | Stack vs Heap Basics | Trace locals, references, and objects | [`exercise-01-stack-vs-heap.md`](exercise-01-stack-vs-heap.md) |
-| 2 | Object Lifecycle | Follow aliases and GC eligibility | [`exercise-02-lifecycle.md`](exercise-02-lifecycle.md) |
-| 3 | Garbage Collection in Action | Read bounded GC log evidence | [`exercise-03-gc-observe.md`](exercise-03-gc-observe.md) |
-| 4 | G1 Collector Flag | Select and verify G1 | [`exercise-04-g1.md`](exercise-04-g1.md) |
-| 5 | ZGC Flag | Select and verify ZGC; compare against G1 | [`exercise-05-zgc.md`](exercise-05-zgc.md) |
-| 6 | Retention Sketch (safe) | Find and clear a retaining GC root | [`exercise-06-leak-sketch.md`](exercise-06-leak-sketch.md) |
-| 7 | String vs StringBuilder | Measure repeated concatenation | [`exercise-07-string-vs-builder.md`](exercise-07-string-vs-builder.md) |
-
-Work in order. Keep practice sources separate from the graded lab submission.
-
-When all **seven** Pass criteria are **Pass**, open your OS how-to and then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md) on Day 4. Do not start Lab 4 GUIDE Steps mid-exercise list (Day 3 briefing = folder/notes only).
+When all **seven** Pass → Day 4 OS how-to → [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md).

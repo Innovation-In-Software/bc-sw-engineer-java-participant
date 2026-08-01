@@ -2,6 +2,22 @@
 
 **Theme:** GitHub Copilot for plain Java CRM domain
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Strong-prompt Copilot fill for Customer/Status/Service + review log |
+| **Skills practiced** | Constrained generation, phantom reject, Accept/Reject/Edit notes |
+| **Expected outcome** | Smoke path CUS-1001/CUS-1002 + `lab10-001`–`lab10-004` log entries |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab10-crm/` copied from this starter |
+
+**Boilerplate reduced:** Maven tree + stubs given — focus on constrained Copilot fills and the review log.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-10-GUIDE.md`](../LAB-10-GUIDE.md)
+
+**AI hygiene:** “Java 21, no Spring, no JPA” in every prompt. Never paste secrets/PII.
+
 ## Copy into your workspace
 
 **Windows (PowerShell)** — from this lab folder:

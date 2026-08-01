@@ -1,14 +1,31 @@
 # Exercise 1 — Layer Diagram
 
-**Module 15** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 15** · Checkpoint A · Exercises 1–6 Pass then Lab 15
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch API → service → repository for Northstar Customer activate |
+| **Skills practiced** | Layered architecture, call-flow labeling |
+| **Expected outcome** | notes/lab15-layers.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-15-exercises/` → notes/lab15-layers.md |
+| **Checkpoint** | A (after slides 152–155) |
+
+## What you will learn
+
+- Three layers: API adapter, CustomerService, CustomerRepository
+- activate(CUS-1002) flows inward; entity/DTO returns outward
+- Correlation lab-request-001 crosses the API edge
+
+**Enterprise context:** CRM activate must traverse the same layers whether called from REST, SOAP, or a batch job.
 
 ## Goal
 
-Create `notes/lab15-layers.md` — sketch API → service → repository for Northstar Customer activate.
+Create `notes/lab15-layers.md` — sketch API → service → repository for activate.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -25,19 +42,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 # Lab 15 — Layer Diagram
 
 ## Step 1 — Boxes
-
-Draw three boxes: API adapter, CustomerService, CustomerRepository.
+API adapter → CustomerService → CustomerRepository
 
 ## Step 2 — Arrow labels
-
-Label activate(CUS-1002) flowing inward; Customer returned outward.
+activate(CUS-1002) inward; Customer/DTO outward
 
 ## Step 3 — Correlation
-
-Note lab-request-001 crosses the API edge into service logging later.
+lab-request-001 at API edge into service logging
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -54,19 +68,19 @@ From `examples/module-15-exercises/`, create `notes/` if needed, then create `no
 # Lab 15 — Layer Diagram
 
 ## Step 1 — Boxes
-
-Draw three boxes: API adapter, CustomerService, CustomerRepository.
+Layer 1: _____
+Layer 2: _____
+Layer 3: _____
 
 ## Step 2 — Arrow labels
-
-Label activate(CUS-1002) flowing inward; Customer returned outward.
+Inward call: _____
+Outward return: _____
 
 ## Step 3 — Correlation
-
-Note lab-request-001 crosses the API edge into service logging later.
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -77,13 +91,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A three-layer diagram with activate flow labeled in `notes/lab15-layers.md`.
 
-## If it fails
+## Debug / design challenge
+
+If activate logic sits only in the API adapter, which two layers are skipped?
+
+## Predict the Output / Behavior
+
+Does the repository call the service, or the service call the repository?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab15-layers.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 15 |
+| Only two layers drawn | Name API, service, and repository |
+| Starting the full lab mid-exercise | Finish pre-lab notes first |
 
 ## Pass criteria
 
@@ -93,4 +117,3 @@ Self-check before marking Pass:
 - [ ] Three layers named
 - [ ] Activate flow labeled
 - [ ] Correlation edge noted
-

@@ -1,6 +1,25 @@
 # Exercise 2 — Notifier Extract Plan
 
-**Module 11** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 11** · Checkpoint B · Exercises 1–6 Pass then Lab 11
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch extracting CustomerNotifier.notifyStatusChange(...) |
+| **Skills practiced** | AI-assisted refactor planning, smell reduction |
+| **Expected outcome** | notes/lab11-notifier-extract-plan.md |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-11-exercises/` → notes/lab11-notifier-extract-plan.md |
+| **Checkpoint** | B (after slides 84–87) |
+
+## What you will learn
+
+- Extract notifier before adding more status side effects
+- Keep a no-arg CustomerService ctor with no-op notifier for compatibility
+- Readability/maintainability slides collapse into this one extract story
+
+**Enterprise context:** Notification side effects must be testable without Spring messaging yet.
 
 ## Goal
 
@@ -65,7 +84,18 @@ Method name must be `notifyStatusChange` (same as Lab 11), **not** a made-up `no
 
 `notes/lab11-notifier-extract-plan.md` with smell, interface sketch, Copilot sentence, and out-of-scope note.
 
-## If it fails
+
+## Debug / design challenge
+
+Plan puts Kafka in the notifier — strip to plain Java interface for Lab 11.
+
+## Predict the Output / Behavior
+
+Why would tests break if you remove the no-arg service constructor?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

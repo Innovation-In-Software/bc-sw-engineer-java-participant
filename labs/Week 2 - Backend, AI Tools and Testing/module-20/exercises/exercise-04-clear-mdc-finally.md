@@ -1,14 +1,31 @@
 # Exercise 4 — Clear MDC Finally Drill
 
-**Module 20** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 20** · Checkpoint C · Exercises 1–6 Pass then Lab 20
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Document why uncleared MDC corrupts the next CRM request on a thread |
+| **Skills practiced** | Thread-local leak awareness |
+| **Expected outcome** | notes/lab20-mdc-clear.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-20-exercises/` → notes/lab20-mdc-clear.md |
+| **Checkpoint** | C (after slides 245–247) |
+
+## What you will learn
+
+- Request A sets lab-request-001; without clear, B inherits it
+- Filter finally clears MDC
+- IT idea: assert MDC empty after request
+
+**Enterprise context:** Thread pools reuse threads — MDC leaks look like “wrong customer” in prod logs.
 
 ## Goal
 
-Create `notes/lab20-mdc-clear.md` — document why uncleared MDC corrupts the next CRM request on a thread.
+Create `notes/lab20-mdc-clear.md` — clear MDC drill.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,20 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 20 — Clear MDC Finally Drill
 
-## Step 1 — Bug story
-
-Request A sets lab-request-001; without clear, request B logs wrong correlation.
-
-## Step 2 — Fix
-
-Filter/interceptor finally clears MDC.
-
-## Step 3 — Test idea
-
-Later IT: assert MDC empty after request (conceptual).
+Bug: Request A sets lab-request-001; without clear, request B logs wrong correlation.
+Fix: Filter finally clears MDC.
+Test idea: assert MDC empty after request.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +62,17 @@ From `examples/module-20-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 20 — Clear MDC Finally Drill
 
-## Step 1 — Bug story
+## Bug story
+_____
 
-Request A sets lab-request-001; without clear, request B logs wrong correlation.
+## Fix
+_____
 
-## Step 2 — Fix
-
-Filter/interceptor finally clears MDC.
-
-## Step 3 — Test idea
-
-Later IT: assert MDC empty after request (conceptual).
+## Test idea
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,22 +81,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A clear MDC bug/fix story for thread reuse in `notes/lab20-mdc-clear.md`.
+Clear-MDC drill notes in `notes/lab20-mdc-clear.md`.
 
-## If it fails
+## Debug / design challenge
+
+If an exception skips the happy path return, which block still must clear MDC?
+
+## Predict the Output / Behavior
+
+Static String CORRELATION = lastSeen — why is that worse than MDC?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab20-mdc-clear.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 20 |
+| No bug story | Describe A→B leak |
+| Clear only on success | Use finally |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab20-mdc-clear.md`
-- [ ] Bug story written
-- [ ] Finally fix named
-- [ ] Notes saved
-
+- [ ] Bug story
+- [ ] Fix noted
+- [ ] Test idea present

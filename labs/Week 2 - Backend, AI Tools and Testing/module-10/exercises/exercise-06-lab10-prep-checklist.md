@@ -1,6 +1,25 @@
 # Exercise 6 — Lab 10 Prep Checklist
 
-**Module 10** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 10** · Checkpoint D · Exercises 1–6 Pass then Lab 10
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete a Lab 10 prep checklist (scope, review log, no secrets) |
+| **Skills practiced** | Lab readiness, enterprise AI hygiene |
+| **Expected outcome** | notes/lab10-prep-checklist.md |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-10-exercises/` → notes/lab10-prep-checklist.md |
+| **Checkpoint** | D (after slides 72–73) |
+
+## What you will learn
+
+- Prep checklists reduce mid-lab thrash
+- Never paste secrets or production PII into prompts
+- Lab 10 stays plain Java — Module 11 covers tests deeply
+
+**Enterprise context:** Prompt hygiene is an enterprise control, not a style preference.
 
 ## Goal
 
@@ -94,6 +113,19 @@ Pass if prompts + phantom checklist + review TODOs exist; else revisit exercises
 ## Expected result
 
 A readiness checklist at `notes/lab10-prep-checklist.md` with fixtures memorized and scope boundary stated.
+
+
+## Debug / design challenge
+
+Checklist skips review-log path — add it before marking Pass.
+
+## Predict the Output / Behavior
+
+Is pasting a real customer SSN into Copilot Chat acceptable?
+
+## Troubleshooting
+
+If Copilot is unavailable, complete the notes analysis manually — do not block on license issues for pre-lab Pass.
 
 ## Pass criteria
 

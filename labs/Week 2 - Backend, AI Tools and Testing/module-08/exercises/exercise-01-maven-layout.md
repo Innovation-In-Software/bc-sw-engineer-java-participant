@@ -1,6 +1,25 @@
 # Exercise 1 — Read a Maven Project Layout
 
-**Module 8** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 8** · Checkpoint A · Exercises 1–6 Pass then Lab 8
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Classify files into the correct Maven directories (main/test/resources/docs/target) |
+| **Skills practiced** | Maven layout vocabulary, source vs generated output |
+| **Expected outcome** | maven-layout-notes.md with correct destinations |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-08-exercises/` → maven-layout-notes.md |
+| **Checkpoint** | A (after slides 1–8) |
+
+## What you will learn
+
+- src/main/java is production source; target is generated
+- Tests live under src/test; never commit secrets in resources
+- docs/ is for team standards — not compiled code
+
+**Enterprise context:** Banking CRM repos stay reviewable when everyone knows where code, config, and build output belong.
 
 ## Goal
 
@@ -92,6 +111,19 @@ Explain why each is wrong:
 ## Expected result
 
 Every file is assigned to the correct Maven location, and you can distinguish source from generated output.
+
+
+## Debug / design challenge
+
+Someone committed target/ — explain what to delete and add to .gitignore.
+
+## Predict the Output / Behavior
+
+Where does CustomerServiceTest.java belong?
+
+## Troubleshooting
+
+See steps above if something does not compile or match the worked example.
 
 ## Pass criteria
 

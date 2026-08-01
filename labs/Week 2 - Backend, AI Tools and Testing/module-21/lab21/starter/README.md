@@ -2,6 +2,22 @@
 
 **Theme:** Observability — Actuator probes, CrmReadinessIndicator, Micrometer create/get metrics
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete readiness indicator, low-cardinality metrics, and ActuatorIT |
+| **Skills practiced** | Health probes, Micrometer counters, exposure caution |
+| **Expected outcome** | `ActuatorIT` green · monitoring-report.md filled |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab21-crm/` copied from this starter |
+
+**Boilerplate reduced:** App + observability TODOs — fill `// TODO`; no customerId metric tags.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-21-GUIDE.md`](../LAB-21-GUIDE.md)
+
+**Honesty:** Lab Actuator exposure is for learning — document production lockdown in the report.
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab21-crm`.
@@ -37,10 +53,6 @@ Full GUIDE: [`../LAB-21-GUIDE.md`](../LAB-21-GUIDE.md)
 ```bash
 mvn -B -Dtest=ActuatorIT test
 mvn -B clean verify
-# with app running:
-# curl -s http://localhost:8080/actuator/health/liveness
-# curl -s http://localhost:8080/actuator/health/readiness
-# curl -s http://localhost:8080/actuator/metrics/crm.customer.create
 ```
 
 Evidence under `~/java-bootcamp/notes/screenshots/lab-21/` (redact secrets).

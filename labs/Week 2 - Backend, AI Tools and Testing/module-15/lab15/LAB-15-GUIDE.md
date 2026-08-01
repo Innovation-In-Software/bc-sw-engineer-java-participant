@@ -1,5 +1,19 @@
 # Lab 15: Service Layer Design — Northstar CRM Business Rules
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 15 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-15-WINDOWS.md) · [macOS](LAB-15-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship repository + validator + DefaultCustomerService with legal/illegal status transitions |
+| **Skills practiced** | Service/repo boundaries, transition matrix, ctor DI, validate-before-mutate |
+| **Expected outcome** | Green `mvn test` · activate CUS-1002 · reject ACTIVE→PROSPECT with `lab-request-001` |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 14 DTOs preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab15-crm/` — repo, validator, service, tests, notes |
+| **Validation checkpoints** | Starter smoke `mvn -B clean test` · GUIDE Implementation Checkpoints |
+
 **Module:** 15 — Business Logic and Service Layer Design  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-15/lab15/`  
 **Difficulty:** Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-15-WINDOWS.md](LAB-15-WINDOWS.md) |
 | macOS | [LAB-15-MACOS.md](LAB-15-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 15 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`.
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-15-exercises/`; graded work is `examples/lab15-crm/`.
+
+> **Incremental build:** Layer diagram → repo boundary → transition matrix → interface/ctor → activate Ravi → Lab 15 `lab15-crm`.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** Transitions in **service/validator**. Map private inside repository. No `HashMap`/JDBC in `service`. HTTP exception mapping is **Lab 16**.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -747,6 +769,12 @@ git status
 | Status corrupted on error | Mutate before validate | Reorder Step 4 method |
 | Facade compile errors | Old concrete service type | Depend on interface |
 | Flaky tests | Shared static mutable state | Fresh repo per test |
+| HashMap visible in `service` package | Persistence leak | Move Map into `InMemoryCustomerRepository` only |
+| Activating Amina as happy path | Wrong fixture | Activate Ravi `CUS-1002` (PROSPECT) |
+| Illegal transition still changes status | Saved before validate | Validate first; skip save on failure |
+| Working in `module-15-exercises` for the lab | Wrong project | Lab lives in `examples/lab15-crm` |
+| Added `@ControllerAdvice` early | Scope creep | Defer HTTP mapping to Lab 16 |
+| Old `CustomerService` class name clash | Concrete vs interface | Rename to `DefaultCustomerService` |
 
 ### Email case policy
 

@@ -1,9 +1,28 @@
 # Exercise 1 — Recognize Common Unchecked Exceptions
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint A · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Common Java Exceptions](../../../lab_diagrams/mod07-ex01-common-exceptions.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Catch ArithmeticException, NullPointerException, and ArrayIndexOutOfBoundsException specifically |
+| **Skills practiced** | Unchecked exceptions, narrow catch, program continuation |
+| **Expected outcome** | Three Caught: lines + Program continued. |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-07-exercises/` → CommonExceptionsDemo.java |
+| **Checkpoint** | A (after slides 173–177) |
+
+## What you will learn
+
+- Catch the narrowest useful type, not Exception for everything
+- Isolated try blocks keep later demos reachable
+- Unchecked exceptions still deserve intentional handling at boundaries
+
+**Enterprise context:** ATM/PIN handlers must fail one bad op without killing the whole session loop.
 
 ## Goal
 
@@ -129,7 +148,18 @@ Remove the array catch, compile, and run. Observe the raw stack trace and that
 
 All three exception types print, followed by `Program continued.`
 
-## If it fails
+
+## Debug / design challenge
+
+Catch Exception once for all three — split into specific catches and re-run.
+
+## Predict the Output / Behavior
+
+If the NPE catch is missing, does the ArrayIndex demo still run?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

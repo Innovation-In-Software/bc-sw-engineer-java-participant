@@ -1,5 +1,19 @@
 # Lab 19: Integration and UI Testing with Selenium — Northstar CRM Regression Suite
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 19 [pre-lab exercises](../exercises/EXERCISES-INDEX.md) (Pass; classroom order **1 → 2 → 3 → 4 → 6 → 5**). Then open **one** OS how-to ([Windows](LAB-19-WINDOWS.md) · [macOS](LAB-19-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship CustomerApiIT + Selenium Page Object UI IT with correlation and data-testid |
+| **Skills practiced** | API IT, WebDriver, Page Objects, explicit waits, regression evidence |
+| **Expected outcome** | Green ApiIT + UiIT · correlation echo · regression-notes.md |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Lab 18 preferred · Exercises 1–4, 6, 5 Pass · JDK 21 · Maven · Chrome/Chromium |
+| **Expected files** | `examples/lab19-crm/` — controller/static UI, ApiIT, UiIT, notes |
+| **Validation checkpoints** | Starter smoke ApiIT + UiIT · GUIDE Implementation Checkpoints |
+
 **Module:** 19 — Integration and UI Testing with Selenium  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-19/lab19/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-19-WINDOWS.md](LAB-19-WINDOWS.md) |
 | macOS | [LAB-19-MACOS.md](LAB-19-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 19 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21**, **Maven 3.9+**, and **Chrome/Chromium** for Selenium. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, and **Chrome/Chromium**. Work under `~/java-bootcamp`. Prefer copying `lab18-crm` → `lab19-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1 → 2 → 3 → 4 → 6 → 5** before Step 1. Notes stay in `module-19-exercises/`; graded work is `examples/lab19-crm/`.
+
+> **Incremental build:** Pyramid → locators → Page Object → flake/CI → correlation → prep → Lab 19.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** Prefer **data-testid** + Page Objects + explicit waits. Attach **X-Correlation-Id**. Do not replace unit tests with only UI. Actuator is **Lab 21**.
 
 ## 45-minute timed path (use starter)
 
@@ -716,6 +736,11 @@ Content-Type: application/json
 | Static 404 | Resource path wrong | `src/main/resources/static/customers.html` |
 | Duplicate creates | Shared in-memory store | Reset between tests or assert duplicate rule |
 | Config ignored | Wrong profile | Check `application-test.yml` and active profile |
+| Correlation missing on create | Header not set in IT | Send `X-Correlation-Id: lab-request-001` |
+| Working in `module-19-exercises` for the lab | Wrong project | Lab lives in `examples/lab19-crm` |
+| Raw `Thread.sleep` only sync | Flake magnet | Explicit wait for `data-testid` |
+| No Chrome installed | UI IT cannot start | Install Chrome/Chromium or skip UI with instructor note |
+| Added Actuator early | Scope creep | Defer probes to Lab 21 |
 
 ---
 

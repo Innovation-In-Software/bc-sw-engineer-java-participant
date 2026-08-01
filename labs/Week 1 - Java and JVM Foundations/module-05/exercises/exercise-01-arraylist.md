@@ -1,9 +1,28 @@
 # Exercise 1 — Working with `ArrayList`
 
-**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · Checkpoint A · all 7 then lab
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections: Working with ArrayList](../../../lab_diagrams/mod05-ex01-arraylist.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Practice List CRUD with ArrayList: add, get, set, remove, duplicates |
+| **Skills practiced** | List interface, ArrayList, index access |
+| **Expected outcome** | Demo prints catalog operations correctly |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-05-exercises/ArrayListDemo.java` |
+| **Checkpoint** | A (after slides 131–136) |
+
+## What you will learn
+
+- Prefer List on the left, ArrayList on the right
+- Duplicates and index access are List strengths
+- LinkedList is for frequent middle inserts — not default
+
+**Enterprise context:** Library catalogs and shopping carts are classic List use cases.
 
 ## Goal
 
@@ -25,6 +44,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -141,7 +163,19 @@ Run and observe `IndexOutOfBoundsException`. Remove the line afterward.
 
 The final list has three ordered entries. One duplicate remains because only the first matching title was removed.
 
-## If it fails
+
+
+## Debug / design challenge
+
+Use remove by wrong index — fix bounds.
+
+## Predict the Output / Behavior
+
+After add('A'); add('A'); size is?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

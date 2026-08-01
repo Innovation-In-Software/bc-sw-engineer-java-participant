@@ -2,6 +2,20 @@
 
 `Employee` and `EmployeeData` are given. Fill stream pipelines in `EmployeeService` / `ReportService`. Do **not** open `../solution/` first.
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete filter/map/group/reduce TODOs + dashboard |
+| **Skills practiced** | Stream pipelines, Collectors, Optional, menu wiring |
+| **Expected outcome** | Menu 1 → 8 dashboard Average Salary **100680** → 9 Thank You |
+| **Estimated time** | ~45 minutes |
+| **Files** | Packaged suite under `Lab6-EmployeeAnalytics/src/com/academy/analytics/` |
+
+**Boilerplate reduced:** Domain model + seed data + menu `Main` are given — focus on service/report stream TODOs.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-6-GUIDE.md`](../LAB-6-GUIDE.md)
+
 ## Target copy path
 
 `~/java-bootcamp/examples/Lab6-EmployeeAnalytics/`

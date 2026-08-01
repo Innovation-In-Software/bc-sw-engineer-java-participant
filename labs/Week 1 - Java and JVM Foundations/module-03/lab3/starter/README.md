@@ -1,6 +1,18 @@
 # Lab 3 starter — 45-minute timed path
 
-Fill every `// TODO`. Do **not** open `../solution/` first. `Main`, `Printable`, `Customer`, and `Transaction` shells are given.
+Fill every `// TODO`. Do **not** open `../solution/` first.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete Account hierarchy + BankService TODOs for a working banking menu |
+| **Skills practiced** | Abstract Account, subclass overrides, service orchestration |
+| **Expected outcome** | Smoke-test path succeeds |
+| **Estimated time** | ~45 minutes |
+| **Files** | Eight types under `src/com/academy/bank/` |
+
+**Boilerplate reduced:** `Account` / `Customer` getters-setters and shells for `Main`, `Printable`, `Transaction` are provided — focus on validation, subclass behavior, and `BankService` TODOs.
 
 ## Target copy path
 
@@ -62,12 +74,20 @@ Interest : 450
 Thank You
 ```
 
-## Timed-path Pass criteria
+## Validation checkpoint
 
 | # | Criterion | Pass / Fail |
 | - | --------- | ----------- |
 | 1 | Project compiles | |
 | 2 | Create / deposit / withdraw / display work | |
 | 3 | Evidence under `notes/screenshots/lab-3/` | |
+
+## Troubleshooting (quick)
+
+| Error | Fix |
+| ----- | --- |
+| `Account is abstract` | Do not `new Account(...)` |
+| `UnsupportedOperationException: TODO` | Fill remaining TODOs |
+| Main not found | `java -cp out com.academy.bank.Main` |
 
 > Full GUIDE steps (bonus transfer/history/reports) remain for homework / extended work.

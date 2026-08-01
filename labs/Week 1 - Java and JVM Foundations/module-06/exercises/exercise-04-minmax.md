@@ -1,9 +1,28 @@
 # Exercise 4 — Find the Highest and Lowest Salary
 
-**Module 6** · Pre-lab practice · finish Exercises 1–7 Pass, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Pre-lab practice · Checkpoint C · Exercises 1–7 Pass then Lab 6
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Streams: Finding Minimum and Maximum Salary](../../../lab_diagrams/mod06-ex04-minmax.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Find highest and lowest salary with max/min and Comparator |
+| **Skills practiced** | Comparator.comparingDouble, Optional, max/min |
+| **Expected outcome** | Highest and lowest employees print correctly |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-06-exercises/` → SalaryExtremesDemo.java |
+| **Checkpoint** | C (after slides 160–162) |
+
+## What you will learn
+
+- max/min return Optional because a stream may be empty
+- Comparators define the ranking key (salary)
+- Do not reuse a Stream after a terminal operation
+
+**Enterprise context:** Compensation reviews need extremes without writing manual loops over payroll arrays.
 
 ## Goal
 
@@ -159,7 +178,18 @@ you understand the result.
 Diana is the maximum-salary employee and Evan is the minimum-salary employee.
 You can explain why the terminal operations return `Optional<Employee>`.
 
-## If it fails
+
+## Debug / design challenge
+
+Call .get() on Optional without checking — replace with orElse / ifPresent.
+
+## Predict the Output / Behavior
+
+Who has the highest salary in the five-employee sample?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

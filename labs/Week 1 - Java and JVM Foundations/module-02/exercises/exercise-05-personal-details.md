@@ -1,11 +1,30 @@
 # Exercise 5 — Personal Details
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint F · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Console Input with Scanner](../../../lab_diagrams/mod02-ex05-personal-details.png)
 
 > **Not a repeat of Module 1:** Module 1 used hard-coded variables. Here you **read** name, age, and city from the console with `Scanner`.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Read name/age/city with Scanner; handle leftover newline; printf greeting |
+| **Skills practiced** | Scanner, nextInt+nextLine pitfall, printf %s/%d |
+| **Expected outcome** | Greeting line matches worked example |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-02-exercises/PersonalDetails.java` |
+| **Checkpoint** | F (after slides 73–76) |
+
+## What you will learn
+
+- Import java.util.Scanner
+- nextInt leaves a newline — consume it before nextLine
+- printf format specifiers
+
+**Enterprise context:** HR onboarding forms and clinic intake consoles hit the same newline trap.
 
 ## Goal
 
@@ -26,6 +45,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/PersonalDetails.java`](starter/PersonalDetails.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -121,7 +143,19 @@ Temporarily **delete** the extra `nextLine()` after `nextInt()`, recompile, and 
 
 Program prompts for three values and greets with all three.
 
-## If it fails
+
+
+## Debug challenge
+
+Reproduce empty city, then fix with `scanner.nextLine()`.
+
+## Predict the Output
+
+Skip the extra `nextLine` after `nextInt` — what does city become?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

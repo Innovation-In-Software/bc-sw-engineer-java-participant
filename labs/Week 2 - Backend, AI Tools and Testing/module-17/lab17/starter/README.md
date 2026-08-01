@@ -2,6 +2,22 @@
 
 **Theme:** JUnit 5 service tests + parameterized transitions + JaCoCo ≥80%
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete CustomerServiceTests, CsvSource transitions, and JaCoCo gate |
+| **Skills practiced** | AAA, meaningful asserts, parameterized tests, verify gate |
+| **Expected outcome** | `mvn -B clean test` + `mvn -B clean verify` green |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab17-crm/` copied from this starter |
+
+**Boilerplate reduced:** Baseline CRM + test TODOs given — fill `// TODO`; always **clean verify** for JaCoCo.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-17-GUIDE.md`](../LAB-17-GUIDE.md)
+
+**Honesty:** Mockito deep isolation is Lab 18. Review AI-generated tests before Pass.
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab17-crm`.

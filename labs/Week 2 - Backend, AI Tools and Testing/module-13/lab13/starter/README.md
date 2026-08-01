@@ -2,6 +2,22 @@
 
 **Theme:** Contract-first SOAP (XSD + WSDL + samples) — no Java server
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete Customer XSD/WSDL TODOs + success/fault samples + docs |
+| **Skills practiced** | Contract-first artifacts, namespaces, well-formedness checks |
+| **Expected outcome** | 10/10 well-formed XML files + operation-matrix / design notes |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab13-crm/` copied from this starter |
+
+**Boilerplate reduced:** Contract shells + sample names given — fill types/ops/faults; do **not** host `/ws`.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-13-GUIDE.md`](../LAB-13-GUIDE.md)
+
+**Honesty:** `http://localhost:8080/ws` is a placeholder (Lab 24 hosts).
+
 ## Copy into your workspace
 
 **Windows (PowerShell)** — from this lab folder:

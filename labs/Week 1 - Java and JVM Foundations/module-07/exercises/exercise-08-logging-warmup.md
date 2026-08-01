@@ -1,12 +1,31 @@
 # Exercise 8 — Contextual Logging Warm-up
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint E · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Log Details, Show Users a Safe Message](../../../lab_diagrams/mod07-ex08-logging-warmup.png)
 
 > This exercise uses JDK `java.util.logging` so no dependency is required.
 > Later modules introduce SLF4J and structured production logging.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Log context + exception; show a user-safe message (no secrets) |
+| **Skills practiced** | Diagnostic logging, user-safe messaging |
+| **Expected outcome** | Log has context; console message hides sensitive details |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-07-exercises/` → LoggingWarmup.java |
+| **Checkpoint** | E (after slides 184–187) |
+
+## What you will learn
+
+- Logs need context (account id, op) plus exception
+- Users get safe messages; logs get diagnostics
+- Never log PINs, passwords, or full card numbers
+
+**Enterprise context:** Production ATM logs support ops triage without leaking credentials into screenshots.
 
 ## Goal
 
@@ -148,7 +167,18 @@ durable diagnostic context.
 Diagnostic output includes account context and the exception; user output
 remains concise.
 
-## If it fails
+
+## Debug / design challenge
+
+Log the raw PIN — remove it and replace with masked/context-only fields.
+
+## Predict the Output / Behavior
+
+Should e.printStackTrace() alone be enough for production diagnostics? Why or why not?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

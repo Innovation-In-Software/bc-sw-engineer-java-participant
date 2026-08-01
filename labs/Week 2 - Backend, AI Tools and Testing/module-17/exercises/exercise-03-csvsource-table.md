@@ -1,20 +1,37 @@
-# Exercise 2 — CsvSource Table Design
+# Exercise 3 — CsvSource Table Design
 
-**Module 17** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 17** · Checkpoint C · Exercises 1–6 Pass then Lab 17
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Design a CsvSource table for status validation inputs |
+| **Skills practiced** | Parameterized test design |
+| **Expected outcome** | notes/lab17-csvsource-table.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-17-exercises/` → notes/lab17-csvsource-table.md |
+| **Checkpoint** | C (after slides 193) |
+
+## What you will learn
+
+- Valid ACTIVE/PROSPECT rows
+- Invalid typo / blank rows
+- JDK 21 + Surefire will run the table in Lab 17
+
+**Enterprise context:** Table-driven cases catch status typos that copy-paste unit tests miss.
 
 ## Goal
 
-Create `notes/lab17-csvsource-table.md` — design a CsvSource table for status validation inputs.
+Create `notes/lab17-csvsource-table.md` — CsvSource design.
 
 ## Deliverable
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-csvsource-table.md` (this file in the course repo) |
+| Guide | `exercises/exercise-03-csvsource-table.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-csvsource-table.md` |
 
 ## Worked example (read first)
@@ -24,29 +41,19 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 17 — CsvSource Table Design
 
-## Reference
-
 | inputStatus | valid? |
 | --- | --- |
 | ACTIVE | true |
 | PROSPECT | true |
 | ACTVE | false |
-|  | false |
+| (blank) | false |
+| (extra invalid) | false |
 
-## Step 2 — Extra row
-
-Add one more invalid status of your choice.
-
-## Step 3 — JDK/Maven
-
-Note tests will run with JDK 21 via Maven Surefire in the timed lab.
-
-## Step 4 — Boundary
-
-Mark: stubbing collaborators waits for Lab 18.
+Tests run with JDK 21 via Maven Surefire.
+Mockito depth deferred to Lab 18.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,29 +69,19 @@ From `examples/module-17-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 17 — CsvSource Table Design
 
-## Reference
-
 | inputStatus | valid? |
 | --- | --- |
-| ACTIVE | true |
-| PROSPECT | true |
-| ACTVE | false |
-|  | false |
+| ACTIVE | _____ |
+| PROSPECT | _____ |
+| ACTVE | _____ |
+| (blank) | _____ |
+| (your extra invalid) | _____ |
 
-## Step 2 — Extra row
-
-Add one more invalid status of your choice.
-
-## Step 3 — JDK/Maven
-
-Note tests will run with JDK 21 via Maven Surefire in the timed lab.
-
-## Step 4 — Boundary
-
-Mark: stubbing collaborators waits for Lab 18.
+## Runtime note
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,22 +90,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A CsvSource-ready table with an extra invalid row in `notes/lab17-csvsource-table.md`.
+CsvSource table with ≥1 extra invalid in `notes/lab17-csvsource-table.md`.
 
-## If it fails
+## Debug / design challenge
+
+Add a row for lowercase `active` — should it be valid or invalid for your enum?
+
+## Predict the Output / Behavior
+
+Does @CsvSource replace @BeforeEach fixtures for activate demos?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab17-csvsource-table.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 17 |
+| No invalid rows | Add ACTVE / blank / extra |
+| Skipping JDK/Maven note | Note Surefire + JDK 21 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab17-csvsource-table.md`
-- [ ] Base rows present
-- [ ] Extra invalid added
-- [ ] Lab 18 boundary noted
-
+- [ ] Valid rows present
+- [ ] Invalid rows present
+- [ ] Runtime note present

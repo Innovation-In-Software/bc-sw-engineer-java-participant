@@ -1,6 +1,25 @@
 # Exercise 4 — Choose Dependency Scopes
 
-**Module 9** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 9** · Checkpoint C · Exercises 1–6 Pass then Lab 9
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Choose compile, test, runtime, and provided scopes correctly |
+| **Skills practiced** | Dependency scopes |
+| **Expected outcome** | notes/dependency-scopes-notes.md with correct scope choices |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-09-exercises/` → notes/dependency-scopes-notes.md |
+| **Checkpoint** | C (after slides 48–51) |
+
+## What you will learn
+
+- test scope keeps JUnit off the runtime classpath
+- provided means the container/JDK supplies it at runtime
+- Wrong scopes bloat JARs or break tests
+
+**Enterprise context:** Shipping test libraries into a production CRM JAR is a common build smell.
 
 ## Goal
 
@@ -75,6 +94,19 @@ Do not leave JUnit on the default `compile` scope.
 ## Expected result
 
 You can pick scopes for test vs production vs runtime-only vs provided dependencies.
+
+
+## Debug / design challenge
+
+JUnit marked compile — fix the scope and explain the risk.
+
+## Predict the Output / Behavior
+
+Which scope should junit-jupiter use in Module 9?
+
+## Troubleshooting
+
+See steps above if Maven commands fail. Prefer full logs (no `-q`) while learning.
 
 ## Pass criteria
 

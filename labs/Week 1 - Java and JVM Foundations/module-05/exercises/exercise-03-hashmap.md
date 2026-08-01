@@ -1,9 +1,28 @@
 # Exercise 3 — Working with `HashMap`
 
-**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · Checkpoint C · all 7 then lab
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections: HashMap and TreeMap](../../../lab_diagrams/mod05-ex03-hashmap.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Use HashMap for key→value CRUD and iterate entrySet |
+| **Skills practiced** | Map, HashMap, put/get/remove, entrySet |
+| **Expected outcome** | Lookup and entry iteration work |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-05-exercises/MapDemo.java` |
+| **Checkpoint** | C (after slides 140–142) |
+
+## What you will learn
+
+- Maps are not Collections of values alone
+- Keys are unique; values need not be
+- Iterate entrySet for pairs
+
+**Enterprise context:** Book ID → borrower ID is a Map, not two parallel Lists.
 
 ## Goal
 
@@ -26,6 +45,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -182,7 +204,14 @@ Not `Missing ISBN: null`.
 
 The Java count updates to `5`, the clean-code key is removed, and the sorted snapshot contains two mappings.
 
-## If it fails
+
+## Predict the Output / Behavior
+
+put same key twice — what happens to the value?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

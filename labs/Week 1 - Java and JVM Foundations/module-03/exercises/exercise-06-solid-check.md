@@ -1,11 +1,30 @@
 # Exercise 6 — SOLID Spot-Check: SRP
 
-**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · Checkpoint E · all 8 then lab
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Single Responsibility Principle Refactoring](../../../lab_diagrams/mod03-ex06-solid-srp.svg)
 
 > **Focused scope:** SOLID has five principles. This warm-up practices only **S — Single Responsibility Principle (SRP)** before Lab 3 separates model, service, and menu responsibilities.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Spot an SRP violation and propose a split |
+| **Skills practiced** | Single Responsibility Principle |
+| **Expected outcome** | Written note + optional refactored demo showing one reason to change |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-03-exercises/SolidDemo.java / notes` |
+| **Checkpoint** | E (after slides 102–103) |
+
+## What you will learn
+
+- One class → one reason to change
+- God classes mix persistence, UI, and rules
+- SRP prepares Lab 3 BankService boundaries
+
+**Enterprise context:** Mixing ledger rules with console printing makes banking code untestable.
 
 ## Goal
 
@@ -39,6 +58,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy matching files from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished file.
 
@@ -141,7 +163,14 @@ Add one sentence to `notes.md`:
 
 The program prints `500.00`; calculation has no `System.out`, and display code does not contain the interest formula.
 
-## If it fails
+
+## Debug / design challenge
+
+Identify which method does not belong in a god AccountPrinterBankDb class.
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

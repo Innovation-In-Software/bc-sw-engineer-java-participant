@@ -1,6 +1,25 @@
 # Exercise 3 — Separate Entity and DTO
 
-**Module 8** · Small compile exercise · [setup](EXERCISES-INDEX.md)
+**Module 8** · Checkpoint D · Exercises 1–6 Pass then Lab 8
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Compile a mini entity + request/response DTO tree (no Spring/JPA) |
+| **Skills practiced** | Entity vs DTO field/responsibility split |
+| **Expected outcome** | StructureDemo prints a response summary |
+| **Estimated time** | 15–20 minutes |
+| **File to create** | `examples/module-08-exercises/` → mini-src/... entity, dto, StructureDemo |
+| **Checkpoint** | D (after slides 15–21) |
+
+## What you will learn
+
+- Entities model domain state; DTOs shape API/boundary data
+- Request and response DTOs can differ from the entity
+- Plain Java packages prove the boundary before frameworks arrive
+
+**Enterprise context:** CRM APIs must not leak persistence fields (or future DB ids) blindly to every client.
 
 ## Goal
 
@@ -228,7 +247,18 @@ The demo manually maps objects only to illustrate boundaries. Real behavior arri
 
 Change `Customer.java` package to `com.northstar.crm.dto` without moving the file/imports. Compilation should fail. Restore it.
 
-## If it fails
+
+## Debug / design challenge
+
+Put email only on the entity and forget the request DTO — fix the mapping story.
+
+## Predict the Output / Behavior
+
+Can CustomerResponse omit a field that Customer stores internally?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

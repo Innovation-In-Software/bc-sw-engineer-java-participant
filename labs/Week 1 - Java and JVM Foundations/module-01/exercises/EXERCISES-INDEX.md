@@ -1,19 +1,27 @@
 # Module 1 — Pre-Lab Exercises
 
-
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+> **Learn → Practice → Review:** Do **not** wait until every Module 1 slide is finished. Work each checkpoint when the instructor pauses (see pacing below).  
+> **Tip:** Each exercise starts with an **Activity card** + **What you will learn**. Prefer copying from [`starter/`](starter/README.md) over typing blank files.  
 > **Start here for Module 1:** [`../README.md`](../README.md) · **Which file when?** [`../../../_PARTICIPANT-FILE-GUIDE.md`](../../../_PARTICIPANT-FILE-GUIDE.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 1 — JVM Architecture and Runtime Model  
-**Source:** Module 1 slides: Lab Overview / Lab Tasks (JVM and Compilation)  
-**Next (after all 8 exercises Pass):** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
+**Instructor pacing:** [`../PACING.md`](../PACING.md) (Learn → Practice → Review)  
+**Next (after all 8 Pass):** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)
 
-> **When:** Complete these exercises **after the module slides** (and instructor demo) and **before** the graded lab.  
 > **JDK:** 21 · **IDE:** IntelliJ Community (primary) or VS Code (optional).  
-> Keep practice sources separate from the graded lab (`examples/jvm-compilation-lab/`).  
-> Each exercise includes a **TODO / fill-in-the-blank starter** (not complete solutions), a short **why** for each step, and plain-English meanings for commands / bytecode.  
-> Replace every `_____` and `// TODO` with your own code, then compile and run.  
-> **Lab 1 assumes** you can already compile/run, use `-verbose:class`, sketch stack vs heap, and read `javap -c` from these eight exercises — Lab 1 Steps 2–8 are graded consolidation, not first teaching.
+> Practice code: `examples/module-01-exercises/` · Graded lab: `examples/jvm-compilation-lab/` (separate).  
+> Replace every `_____` / `// TODO` / `UnsupportedOperationException("TODO")` with working code.
+
+## Checkpoint map (interleaved with slides)
+
+| When (after slides) | Do these exercises | Pattern |
+| ------------------- | ------------------ | ------- |
+| Checkpoint A (slides 1–9) | 1 Hello · 2 WORA | Learn → Practice |
+| Checkpoint B (slides 10–16) | Predict activity in class (no file) | Learn → Review |
+| Checkpoint C (slides 17–24) | 3 Control flow · 4 Class loading | Learn → Practice |
+| Checkpoint D (slides 25–30) | 5 Variables · 6 Methods · 7 Objects | Learn → Practice |
+| Checkpoints E–F (slides 31–41) | Discussion in class | Learn → Review |
+| Checkpoint G (demos / lab brief) | 8 `javap` → Lab 1 | Practice → Lab |
 
 ## Workspace
 
@@ -25,7 +33,7 @@
 
 ### Setup — create the exercises folder (do once)
 
-**Windows (PowerShell)** — verified:
+**Windows (PowerShell):**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
@@ -34,9 +42,7 @@ cd examples\module-01-exercises
 pwd
 ```
 
-**Expected (Windows):** `pwd` prints `C:\Users\<you>\java-bootcamp\examples\module-01-exercises`; Project pane shows `examples` → `module-01-exercises`.
-
-**macOS (zsh/bash):**
+**macOS:**
 
 ```bash
 cd ~/java-bootcamp
@@ -45,55 +51,29 @@ cd examples/module-01-exercises
 pwd
 ```
 
-**Expected (macOS):** `pwd` prints `/Users/<you>/java-bootcamp/examples/module-01-exercises`; Project pane shows `examples` → `module-01-exercises`.
-
-Stay in this folder for every exercise below (or `cd` back before each compile/run).
-
 ### How to create each `.java` file (IntelliJ)
 
-**Use this only** (verified on Windows with this workspace layout):
+1. Prefer: copy from [`starter/`](starter/README.md) into `module-01-exercises`
+2. Or: right-click `module-01-exercises` → **New → File** → paste starter from the exercise md
+3. Fill every TODO → save → `javac` / `java` from Terminal
 
-1. Right-click `module-01-exercises` → **New → File**
-2. Type the full name including extension, e.g. `Hello.java` or `Variables.java`
-3. Paste the **starter skeleton** → fill every `_____` / `// TODO` → save (**Ctrl+S** / **⌘S**)
-4. Compile and run from the IntelliJ **Terminal** with `javac` / `java` (commands in each exercise)
-
-**How the starter works:** scaffolding (class shell, prompts, method signatures) is given; the learning parts are blanks marked `_____` or `// TODO`. Your finished file must compile — blanks are not valid Java.
-
-**Do not** rely on these for the exercises folder (they often fail or mislead):
-
-| Avoid | Why |
-| ----- | --- |
-| **New → Java Class** | Often missing on `module-01-exercises` (hyphens are not a valid Java package name under a Sources Root) |
-| Mark `examples` or `module-01-exercises` as **Sources Root** | Conflicts with Lab 0’s `HelloJava/src` Sources Root; Mark Directory as may only offer **Excluded** |
-| Leaving `examples` marked as Sources Root | Causes IDE error: *Missing package statement… package name 'module-01-exercises' … is invalid* (hyphens). **Fix:** right-click `examples` → **Mark Directory as → Unmark as Sources Root**. Keep only `HelloJava/src` (and later lab `src/` folders) as Sources Root. |
-| Yellow banner *outside of the module source root* | **Expected** for files in `module-01-exercises`. Ignore it. Do **not** click **Move to source root** (sends the file into Lab 0’s `HelloJava/src`). Use Terminal `javac` / `java`. |
-| Creating files under `examples/HelloJava` | That folder is Lab 0 only — keep Module 1 practice in `module-01-exercises` |
-
-Terminal alternative (same result):
-
-**Windows:** `New-Item -ItemType File -Force -Path Hello.java | Out-Null`  
-**macOS:** `touch Hello.java`
-
-Then open the file in the editor and paste the code.
+**Do not** use **New → Java Class** or mark `module-01-exercises` as Sources Root (see earlier Module 1 notes).
 
 ## Exercise index
 
-Numbered to match the order these topics appear in the Module 1 slides — work in order.
+| # | Exercise | File | Est. time | Type |
+| - | -------- | ---- | --------- | ---- |
+| 1 | Hello World | [`exercise-01-hello-world.md`](exercise-01-hello-world.md) | 8–10 min | TODO coding |
+| 2 | Platform Independence (WORA) | [`exercise-02-wora.md`](exercise-02-wora.md) | 10–12 min | Coding + debug |
+| 3 | Control Flow | [`exercise-03-control-flow.md`](exercise-03-control-flow.md) | 12–15 min | TODO + debug |
+| 4 | Watch Class Loading | [`exercise-04-class-loading.md`](exercise-04-class-loading.md) | 12–15 min | Observe + debug |
+| 5 | Variables and Data Types | [`exercise-05-variables.md`](exercise-05-variables.md) | 8–10 min | TODO coding |
+| 6 | Methods and Parameters | [`exercise-06-methods.md`](exercise-06-methods.md) | 10–12 min | TODO coding |
+| 7 | Objects and Classes | [`exercise-07-objects.md`](exercise-07-objects.md) | 10–12 min | TODO (fields provided) |
+| 8 | Inspect Bytecode | [`exercise-08-javap.md`](exercise-08-javap.md) | 10–12 min | `javap` analysis |
 
-| # | Exercise | File |
-| - | -------- | ---- |
-| 1 | Hello World | [`exercise-01-hello-world.md`](exercise-01-hello-world.md) |
-| 2 | Platform Independence (WORA) | [`exercise-02-wora.md`](exercise-02-wora.md) |
-| 3 | Control Flow | [`exercise-03-control-flow.md`](exercise-03-control-flow.md) |
-| 4 | Watch Class Loading | [`exercise-04-class-loading.md`](exercise-04-class-loading.md) |
-| 5 | Variables and Data Types | [`exercise-05-variables.md`](exercise-05-variables.md) |
-| 6 | Methods and Parameters | [`exercise-06-methods.md`](exercise-06-methods.md) |
-| 7 | Objects and Classes | [`exercise-07-objects.md`](exercise-07-objects.md) |
-| 8 | Inspect Bytecode | [`exercise-08-javap.md`](exercise-08-javap.md) |
+**Total practice (approx.):** 80–100 minutes across the day, interleaved with lecture — not one block after all slides.
 
-Work in order.
+When all eight Pass criteria are **Pass**, run the smoke checks in the OS how-to, then open [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md).
 
-When all eight Pass criteria are **Pass**, run the smoke checks in [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md), then open [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md). Do not start Lab 1 mid-exercise list.
-
-**Remember:** exercise code stays in `examples/module-01-exercises/`; the graded lab uses a **separate** folder `examples/jvm-compilation-lab/`. Keep IntelliJ on `java-bootcamp` and read these guide files from the participant course clone.
+**Remember:** exercise code stays in `examples/module-01-exercises/`; graded lab uses `examples/jvm-compilation-lab/`.

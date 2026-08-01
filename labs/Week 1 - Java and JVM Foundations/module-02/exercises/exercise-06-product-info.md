@@ -1,11 +1,30 @@
 # Exercise 6 — Product Information
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint F · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Input Conversion: From Text to Numbers](../../../lab_diagrams/mod02-ex06-product-info.png)
 
 > **Builds on Exercise 5:** same `Scanner` idea; prefer **`nextLine()` + parse** (Lab 2’s safer style) so leftover newlines do not bite you.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Read String/int/double via nextLine+parse; print product summary |
+| **Skills practiced** | parseInt/parseDouble, mixed types, labeled output |
+| **Expected outcome** | Product name, qty, price printed clearly |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-02-exercises/ProductInfo.java` |
+| **Checkpoint** | F |
+
+## What you will learn
+
+- Prefer nextLine+parse for Lab 2 consistency
+- Choose types: String name, int qty, double price
+- Validate parse errors conceptually
+
+**Enterprise context:** Warehouse SKU entry: name + quantity + unit price.
 
 ## Goal
 
@@ -26,6 +45,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/ProductInfo.java`](starter/ProductInfo.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -104,7 +126,14 @@ Product: Laptop | Qty: 3 | Price: 59.99
 
 Product name, quantity, and price print correctly (price with two decimals).
 
-## If it fails
+
+## Predict the Output
+
+Entering `abc` for quantity — what exception?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

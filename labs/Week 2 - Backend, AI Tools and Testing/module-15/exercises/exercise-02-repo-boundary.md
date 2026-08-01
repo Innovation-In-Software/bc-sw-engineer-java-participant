@@ -1,14 +1,31 @@
 # Exercise 2 — Repository Boundary
 
-**Module 15** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 15** · Checkpoint B · Exercises 1–6 Pass then Lab 15
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | List what belongs in the repository versus the service |
+| **Skills practiced** | Persistence vs business ownership |
+| **Expected outcome** | notes/lab15-repo-boundary.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-15-exercises/` → notes/lab15-repo-boundary.md |
+| **Checkpoint** | B (after slides 156) |
+
+## What you will learn
+
+- Repo owns CRUD, existence, persistence mapping
+- Service owns transition matrix, domain exceptions, notifiers
+- Anti-pattern: repo.activateCustomer hiding rules
+
+**Enterprise context:** Putting activate rules in the repository makes every new adapter re-implement policy — or worse, silently diverge.
 
 ## Goal
 
-Create `notes/lab15-repo-boundary.md` — list what belongs in the repository versus the service.
+Create `notes/lab15-repo-boundary.md` — list repo vs service ownership.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -25,19 +42,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 # Lab 15 — Repository Boundary
 
 ## Step 1 — Repo owns
-
 CRUD by id, existence checks, persistence mapping.
 
 ## Step 2 — Service owns
-
 Transition matrix, notifier calls, domain exceptions.
 
 ## Step 3 — Anti-pattern
-
-Anti-pattern: `repo.activateCustomer` hiding business rules.
+repo.activateCustomer hiding business rules.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -54,19 +68,16 @@ From `examples/module-15-exercises/`, create `notes/` if needed, then create `no
 # Lab 15 — Repository Boundary
 
 ## Step 1 — Repo owns
-
-CRUD by id, existence checks, persistence mapping.
+_____
 
 ## Step 2 — Service owns
-
-Transition matrix, notifier calls, domain exceptions.
+_____
 
 ## Step 3 — Anti-pattern
-
-Anti-pattern: `repo.activateCustomer` hiding business rules.
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -77,13 +88,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A crisp ownership list for repo vs service in `notes/lab15-repo-boundary.md`.
 
-## If it fails
+## Debug / design challenge
+
+Someone adds `repo.changeStatusIfAllowed` — rewrite it as a service responsibility.
+
+## Predict the Output / Behavior
+
+Can the repository throw NotFound for missing id? Can it decide PROSPECT→ACTIVE?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab15-repo-boundary.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 15 |
+| Putting transitions in repo list | Move transitions to service owns |
+| Skipping the anti-pattern | Name repo.activateCustomer explicitly |
 
 ## Pass criteria
 
@@ -93,4 +114,3 @@ Self-check before marking Pass:
 - [ ] Repo responsibilities listed
 - [ ] Service responsibilities listed
 - [ ] Anti-pattern named
-

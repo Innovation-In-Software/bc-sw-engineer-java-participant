@@ -1,11 +1,30 @@
 # Exercise 3 — Loops
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint C · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Loops: for, while, and do-while](../../../lab_diagrams/mod02-ex03-loops.png)
 
 > **New for Module 2:** `for`, `while`, and `do-while` — Java's three ways to repeat.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Practice for, while, and do-while with console-driven counts |
+| **Skills practiced** | for, while, do-while, loop updates |
+| **Expected outcome** | All three loop demos print as in the worked example |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-02-exercises/LoopsDemo.java` |
+| **Checkpoint** | C |
+
+## What you will learn
+
+- Pick for (known count) vs while vs do-while (menu-style at least once)
+- Always update the loop variable
+- Avoid infinite loops
+
+**Enterprise context:** Batch settlement retries (while) and menu loops (do-while) appear in operations tooling.
 
 ## Goal
 
@@ -34,6 +53,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/LoopsDemo.java`](starter/LoopsDemo.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -125,7 +147,19 @@ Type 'menu' to see it again, anything else to quit: quit
 
 Table prints 5x1 through 5x5, countdown prints 3 to 1, and the menu prompt appears again only after typing `menu`.
 
-## If it fails
+
+
+## Debug challenge
+
+Broken `while` without `count--`; fix it so the loop ends.
+
+## Predict the Output
+
+If `while` count never decreases, what happens?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

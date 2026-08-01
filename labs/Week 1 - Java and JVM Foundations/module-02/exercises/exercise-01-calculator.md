@@ -1,11 +1,30 @@
 # Exercise 1 — Calculations
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint B · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Arithmetic: Building a Basic Calculator](../../../lab_diagrams/mod02-ex01-calculator.png)
 
 > **Builds on Module 1 types:** operators you already know; numbers come from **input**, not literals.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Read two doubles and print sum, difference, product, quotient with %.2f |
+| **Skills practiced** | Scanner nextLine+parse, arithmetic, printf |
+| **Expected outcome** | Labeled Sum/Difference/Product/Quotient lines |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-02-exercises/Calculator.java` |
+| **Checkpoint** | B (after slides 53–60) |
+
+## What you will learn
+
+- Read numbers from the console (not hard-coded literals)
+- Why double keeps decimal division results
+- Format money-style output with %.2f
+
+**Enterprise context:** POS / e-commerce line totals use the same arithmetic + formatted money display.
 
 ## Goal
 
@@ -28,6 +47,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/Calculator.java`](starter/Calculator.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -107,7 +129,14 @@ Quotient: 3.00
 
 Four labeled results print for your two inputs.
 
-## If it fails
+
+## Predict the Output
+
+What prints for `7 / 2` as int vs `7.0 / 2` as double?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

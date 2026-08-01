@@ -2,6 +2,18 @@
 
 > **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 6 [pre-lab exercises 1–7](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Exercise 8 (parallel bonus) is recommended but not required for the core gate. Then open **one** OS how-to ([Windows](LAB-6-WINDOWS.md) · [macOS](LAB-6-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Build an employee analytics console with stream filter/map/group/reduce dashboards |
+| **Skills practiced** | Stream pipelines, Collectors, Optional, service-layer reports |
+| **Expected outcome** | Menus 1→8 dashboard (Average Salary **100680**) → 9 exit; evidence under `notes/screenshots/lab-6/` |
+| **Estimated time** | Timed path ~45 min · Full path 90–240 min |
+| **Prerequisites** | Lab 0–5 habits · Exercises 1–7 Pass · JDK 21 |
+| **Expected files** | `examples/Lab6-EmployeeAnalytics/src/com/academy/analytics/*.java` |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 6 — Streams and Functional Programming  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-06/lab6/`  
 **Difficulty:** Intermediate  
@@ -17,6 +29,10 @@
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 > **Hard gate — pre-lab exercises:** Complete **Exercises 1–7** under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. **Exercise 8** (`parallelStream` bonus) is recommended stretch work — bring those notes if you completed it. Lab 6 is graded consolidation in a **separate** packaged project (`examples/Lab6-EmployeeAnalytics/`), not a replacement for the flat exercises folder (`examples/module-06-exercises/`).
+
+> **Incremental build:** Exercises 1–7 (5-employee streams) → Lab 6 packaged `com.academy.analytics` with 25-employee seed, menu, and dashboard. Same `java-bootcamp`, new folder `Lab6-EmployeeAnalytics/`.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).
 
 ## 45-minute timed path (use starter)
 
@@ -1459,13 +1475,16 @@ Perform deliberately, then restore working code (copy files or use git).
 | Public class / filename error | Name mismatch | `EmployeeService.java` ↔ class name |
 | `package does not exist` | Folder ≠ package | Recreate `src/com/academy/analytics` |
 | Cannot load main class | Wrong `-cp` / package | `java -cp out com.academy.analytics.Main` |
-| Stream already closed | Reused Stream instance | New `.stream()` each time |
+| Stream already closed / IllegalStateException | Reused Stream instance | New `.stream()` each query |
 | Method reference will not compile | Wrong getter name | Use `isActive` for boolean; match method signatures |
 | `groupingBy` keys surprise you | Inconsistent dept strings | Normalize `"IT"` vs `"it"` with `equalsIgnoreCase` in filters; keep seed consistent |
 | Average / dashboard numbers differ | Custom seed or incomplete data | Use the 25-employee [`solution/`](solution/) seed for grading parity |
 | Dashboard NPE | Called `.get()` on empty Optional | Use `ifPresent` / `orElse` |
 | Changes not visible | Stale `.class` | Re-run `javac -d out ...` |
 | Menu skips / weird input | Mixed Scanner APIs | Prefer all `nextLine()` parsing |
+| `*.java` glob fails in PowerShell | PowerShell does not expand like bash | Name each `.java` file (see [LAB-6-WINDOWS.md](LAB-6-WINDOWS.md)) |
+| Wrong Sources Root | Marked `module-06-exercises` | Lab uses `Lab6-EmployeeAnalytics/src` only |
+| Parallel results disagree (stretch) | Shared mutable state in parallel | Prefer stateless lambdas; Ex 8 notes |
 
 ---
 

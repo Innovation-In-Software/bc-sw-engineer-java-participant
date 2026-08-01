@@ -1,5 +1,19 @@
 # Lab 10: GitHub Copilot Fundamentals for Java Developers — Northstar CRM
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 10 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-10-WINDOWS.md) · [macOS](LAB-10-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Use Copilot with strong prompts to flesh plain-Java CRM domain code and keep a review log |
+| **Skills practiced** | Prompt constraints, reject phantoms, Accept/Reject/Edit logging, Maven compile smoke |
+| **Expected outcome** | `CUS-1001` ACTIVE + `CUS-1002` PROSPECT→ACTIVE; `copilot-notes/ai-review-notes.md` entries |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 9 habits · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ · Copilot (or instructor alternate) |
+| **Expected files** | `examples/lab10-crm/` + review log `copilot-notes/ai-review-notes.md` |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 10 — GitHub Copilot Fundamentals for Java Developers  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-10/lab10/`  
 **Difficulty:** Beginner–Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-10-WINDOWS.md](LAB-10-WINDOWS.md) |
 | macOS | [LAB-10-MACOS.md](LAB-10-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 10 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab — the index lists every notes filename (no need to dig through the deck). Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21**, **Maven 3.9+**, and **GitHub Copilot** signed in. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, and **GitHub Copilot** signed in. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Lab 10 is graded consolidation in `examples/lab10-crm/`, separate from `module-10-exercises/`.
+
+> **Incremental build:** Prompt/review notes (Ex 1–6) → Lab 10 Copilot-assisted CRM domain + review log.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **AI hygiene:** Restate “Java 21, no Spring, no JPA” in prompts. Reject `@Entity` / `@Id` / `@Column`. Never paste secrets or production PII.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -777,6 +799,10 @@ Perform deliberately; document in `ai-review-notes.md`.
 | `Main` ClassNotFound | Wrong `-cp` / not compiled | `mvn compile` then `java -cp target/classes ...` |
 | Review log empty | Skipped writing | Entries are required deliverables |
 | Edited Lab 9 by mistake | Wrong folder | Work only in `lab10-crm` |
+| Working in `module-10-exercises` for the lab | Wrong project | Lab lives in `examples/lab10-crm` |
+| Infinite re-prompt loop | Vague ask repeated | Reject + edit toward Ex 1 strong-prompt constraints |
+| Copilot unavailable in class | License / network | Use starter TODOs + manual coding; still keep review notes |
+| Pasted real PII into Chat | Hygiene miss | Delete chat/local notes with secrets; use demo fixtures only |
 
 ### Suggestions target wrong Java version
 

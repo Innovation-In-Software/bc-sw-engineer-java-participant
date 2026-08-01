@@ -1,6 +1,25 @@
 # Exercise 4 — Fill Review-Log TODOs
 
-**Module 10** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 10** · Checkpoint C · Exercises 1–6 Pass then Lab 10
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill review-log TODOs before accepting Copilot hunks in Lab 10 |
+| **Skills practiced** | Review logging, Accept/Reject/Edit discipline |
+| **Expected outcome** | notes/lab10-review-log-todos.md with blanks filled |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-10-exercises/` → notes/lab10-review-log-todos.md |
+| **Checkpoint** | C (after slides 70–71) |
+
+## What you will learn
+
+- Review logs prove you did not accept AI blindly
+- Fixture checks catch wrong status defaults early
+- Edit is often better than infinite re-prompting
+
+**Enterprise context:** Audit-friendly AI use means recording what you accepted and why.
 
 ## Goal
 
@@ -67,7 +86,18 @@ Confirm Ravi is PROSPECT and Amina is ACTIVE; fix any swapped blanks.
 
 A completed review-log TODO sheet at `notes/lab10-review-log-todos.md` with correct Northstar statuses.
 
-## If it fails
+
+## Debug / design challenge
+
+Leave Accept/Reject blank — explain why graders fail that entry.
+
+## Predict the Output / Behavior
+
+If phantom annotation found = yes, should Accept still be the default?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

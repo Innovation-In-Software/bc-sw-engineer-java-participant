@@ -1,79 +1,63 @@
-# Exercise — Methods and Parameters
+# Exercise 6 — Methods and Parameters
 
-**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · Checkpoint D  
 **Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Method Calls, Parameters, and Return Values](../../../lab_diagrams/mod01-ex06-methods.png)
 
-## Goal
+## Activity card
 
-Create `Methods.java` with at least two methods that take parameters and return a value; call them from `main`.
+| | |
+| --- | --- |
+| **Objective** | Implement two methods with parameters/returns; call them from `main` |
+| **Skills practiced** | Method signatures, `return`, stack frames (concept) |
+| **Expected outcome** | Prints `30` then `Hello, Aman!` |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-01-exercises/Methods.java` |
 
-## Worked example (read first)
+## What you will learn
 
-Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+- Parameters in, return value out
+- Why each call gets its own stack frame
+- Static methods callable from `static main` without an object
+
+**Enterprise context:** Interest calculators and fee engines in banking are methods with clear inputs/outputs — same idea as `add` / `greet`, with stricter validation later.
+
+## Worked example — expected output
 
 ```text
 30
 Hello, Aman!
 ```
 
-Then follow **Steps** to create your own file.
-
-
 ## Starter (fill in the TODOs)
 
-Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
+Signatures are provided (less boilerplate). Fill bodies and calls — copy [`starter/Methods.java`](starter/Methods.java) or paste:
 
 ```java
 public class Methods {
     public static void main(String[] args) {
-        // TODO: call add(10, 20) and store the result; print it (expect 30)
+        // TODO: call add(10, 20); print the result (expect 30)
         int sum = _____;
         System.out.println(sum);
 
-        // TODO: call greet("Aman") and store the result; print it (expect Hello, Aman!)
+        // TODO: call greet("Aman"); print the result (expect Hello, Aman!)
         String message = _____;
         System.out.println(message);
     }
 
-    // TODO: return the sum of two ints
+    // Scaffolded signature — implement the body only
     public static int add(int a, int b) {
         _____
     }
 
-    // TODO: return a greeting String — "Hello, " + name + "!"
     public static String greet(String name) {
         _____
     }
 }
 ```
 
-| Idea | Easy meaning |
-| ---- | ------------ |
-| Parameter | Input value the method receives (`a`, `b`, `name`) |
-| Return | Value sent back to the caller (`return …`) |
-| Call from `main` | `main` pauses, runs the method, then continues with the result |
-
-**Stack hint:** Each method call gets its own short-lived frame (locals + return address) on the **stack**.
-
 ## Steps
-
-### Step 1 — Create `Methods.java`
-
-**Why:** Methods let you reuse logic and pass data in/out.
-
-1. Create `Methods.java` with **New → File** (not Java Class) under `module-01-exercises`.
-2. Paste the starter, fill every `_____` / `// TODO`. Save.
-
-### Step 2 — Compile and run
-
-| Command | Easy meaning |
-| ------- | ------------ |
-| `javac Methods.java` | Compile |
-| `java Methods` | Run `main` → calls `add` and `greet` |
-
-**Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
@@ -81,41 +65,29 @@ javac Methods.java
 java Methods
 ```
 
-**macOS:**
-
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
 javac Methods.java
 java Methods
 ```
 
-**Expected:** Prints `30` and `Hello, Aman!` (or your equivalent).
+**Success criteria:** Output matches the worked example.
 
-**Verified (Windows):**
+## Predict the Output
 
-```text
-30
-Hello, Aman!
-```
+What does `add(5, 7)` return? Predict `12`, then temporarily change the call and verify.
 
-## Expected result
-
-Method results print; you can explain stack frames for the calls.
-
-## If it fails
+## Troubleshooting
 
 | Problem | Fix |
 | ------- | --- |
-| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
-| `missing return statement` | Every non-void method must `return` a value on every path |
-| `cannot find symbol` on method call | Method must be `static` to call from `static main` without an object |
-| Wrong greeting format | Use `"Hello, " + name + "!"` — `+` joins strings |
+| `missing return statement` | Non-void methods must `return` on every path |
+| `cannot find symbol` on call | Method must be `static` (as in starter) or called on an instance |
+| Wrong greeting | `"Hello, " + name + "!"` |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | Output is `30` then `Hello, Aman!` | Pass / Fail |
+| 2 | You can say “each call gets a stack frame” in one sentence | Pass / Fail |

@@ -1,36 +1,43 @@
-# Exercise — Hello World
+# Exercise 1 — Hello World
 
-**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · Checkpoint A (after slides 1–9)  
 **Folder:** `examples/module-01-exercises/` (see [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup)
 
 ![Understanding Your First Java Program](../../../lab_diagrams/mod01-ex01-hello-world.png)
 
-## Goal
+## Activity card
 
-Write, compile, and run a minimal program that prints `Hello, JVM!`.
+| | |
+| --- | --- |
+| **Objective** | Write, compile, and run a minimal program that prints `Hello, JVM!` |
+| **Skills practiced** | Creating a `.java` file, `javac`, `java`, entry-point `main` |
+| **Expected outcome** | Console prints `Hello, JVM!`; `Hello.class` exists beside the source |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-01-exercises/Hello.java` |
+
+## What you will learn
+
+- How source becomes bytecode (`javac`) and how the JVM runs it (`java`)
+- Why the public class name must match the file name
+- That the JVM starts at `public static void main(String[] args)`
+
+**Enterprise context:** Every Spring Boot / banking microservice still bottoms out in a JVM that loads bytecode and finds a `main` (or container entry) — this is that foundation in miniature.
 
 ## Worked example (read first)
 
-Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
-
-Complete form of the idea (your file should look similar when TODOs are filled):
-
 ```java
 public class Hello {
-    // TODO: program entry point — JVM starts here when you run `java Hello`
     public static void main(String[] args) {
-        // TODO: print one line of text: Hello, JVM! (hint: System.out.println)
-        _____
+        System.out.println("Hello, JVM!");
     }
 }
 ```
 
-Then follow **Steps** to create your own file.
-
+Then follow **Steps** and fill the starter TODOs yourself (do not leave blanks).
 
 ## Starter (fill in the TODOs)
 
-Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
+Optional: copy from [`starter/Hello.java`](starter/Hello.java). Or paste:
 
 ```java
 public class Hello {
@@ -50,11 +57,9 @@ public class Hello {
 
 ## Steps
 
-### Step 1 — Create the exercises folder
+### Step 1 — Confirm the exercises folder
 
-**Why:** Keep Module 1 practice separate from Lab 0’s `HelloJava` and from the graded Lab 1 folder.
-
-Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup.
+**Why:** Keep Module 1 practice separate from Lab 0’s `HelloJava` and from graded Lab 1.
 
 | OS | Confirm terminal cwd |
 | -- | -------------------- |
@@ -63,13 +68,11 @@ Already covered in [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup.
 
 ### Step 2 — Create `Hello.java`
 
-**Why:** Source code lives in a `.java` file before the compiler can turn it into bytecode.
-
 **Do this (IntelliJ):**
 
 1. Right-click `module-01-exercises` → **New → File** (not **Java Class**).
-2. Name it exactly `Hello.java` (include the `.java` extension).
-3. Paste the starter, fill every `_____` / `// TODO`. Save (Windows: **Ctrl+S** · macOS: **⌘S**).
+2. Name it exactly `Hello.java`.
+3. Paste the starter, fill every `_____` / `// TODO`. Save (**Ctrl+S** / **⌘S**).
 
 **Or from Terminal:**
 
@@ -87,28 +90,9 @@ cd ~/java-bootcamp/examples/module-01-exercises
 touch Hello.java
 ```
 
-Then open `Hello.java` in the editor and paste the starter.
-
 **Expected:** `Hello.java` under `module-01-exercises`; editor shows the `Hello` class.
 
-**If it fails / what not to do:**
-
-* **New → Java Class** missing → normal here; use **New → File** instead.
-* **Mark Directory as** only shows **Excluded** on `module-01-exercises` → ignore; you do not need Sources Root for these exercises.
-* Do not mark `examples` as Sources Root for this step (breaks the Lab 0 `HelloJava/src` layout).
-* Red IDE error *package name 'module-01-exercises' … is invalid* → `examples` was marked Sources Root. Right-click `examples` → **Mark Directory as → Unmark as Sources Root**. Your `.java` file is fine; `javac` / `java` still work from Terminal.
-
-### Step 3 — Compile and run from Terminal
-
-**Why:** `javac` turns source into bytecode (`.class`). `java` starts a JVM and runs that bytecode.
-
-| Command | Easy meaning |
-| ------- | ------------ |
-| `cd …\module-01-exercises` | Go to the folder that contains `Hello.java` |
-| `javac Hello.java` | Compile → creates `Hello.class` (no output if success) |
-| `java Hello` | Run the class named `Hello` (not `Hello.java` / not `Hello.class`) |
-
-**Windows:**
+### Step 3 — Compile and run
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
@@ -116,84 +100,48 @@ javac Hello.java
 java Hello
 ```
 
-**macOS:**
-
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
 javac Hello.java
 java Hello
 ```
 
-**Expected:** Console prints `Hello, JVM!`. `Hello.class` appears next to `Hello.java` (list with `dir` / `ls`).
+**Expected console output:**
 
-**Verified (Windows):** From `examples\module-01-exercises`, `javac Hello.java` then `java Hello` prints `Hello, JVM!`.
+```text
+Hello, JVM!
+```
 
-**If it fails:** Confirm `javac -version` / `java -version` are 21.x (Lab 0). Confirm you are in `module-01-exercises`, not `examples/HelloJava`.
-
-**IntelliJ yellow banner** *Java file is located outside of the module source root* → **ignore**. Do **not** click **Move to source root** (that moves the file into `HelloJava/src`). These exercises compile with Terminal `javac`, not IntelliJ’s build. Keep `Hello.java` under `examples/module-01-exercises/`.
+**Success criteria:** Output matches exactly (including punctuation); `Hello.class` appears next to `Hello.java`.
 
 ### Step 4 — Optional: inspect bytecode
-
-**Why:** Prove that the JVM does not run your `.java` text — it runs compiled instructions.
 
 ```text
 javap -c Hello
 ```
 
-| Part of the command | Easy meaning |
-| ------------------- | ------------ |
-| `javap` | Java class file disassembler (reads `.class`) |
-| `-c` | Show bytecode for methods |
-| `Hello` | Class name to inspect |
+**Expected:** Disassembly includes `main` and a `println` call (`getstatic` / `ldc` / `invokevirtual` / `return`).
 
-**Expected:** Disassembly includes `main` and a `println` call.
+## Predict the Output (warm-up)
 
-**Verified (Windows):** `javap -c Hello` shows `main`, with bytecode including `getstatic`, `ldc` (`"Hello, JVM!"`), `invokevirtual` (`println`), and `return`.
+Before you run, what prints if you change the string to `"Hello, Bank!"`?  
+After you run: confirm your prediction. (Change it back to `Hello, JVM!` for Pass criteria.)
 
-#### Easy explanation of what you see
+## Troubleshooting
 
-Your one line of Java...
-
-```java
-System.out.println("Hello, JVM!");
-```
-
-...becomes several tiny steps for the JVM. **The JVM works like a person following a recipe, placing items on a table (the "stack") one at a time, then doing an action.**
-
-Read your `main` output top to bottom:
-
-| Step you saw | Think of it as... |
-| ------------ | ----------------- |
-| `getstatic … System.out` | "Pick up the **printer** (`System.out`) and put it on the table." |
-| `ldc … "Hello, JVM!"` | "Write the note **`Hello, JVM!`** and put it on the table." |
-| `invokevirtual … println` | "Hand the note to the printer → it prints the line." |
-| `return` | "Nothing left to do — finish." |
-
-The first block (`aload_0`, `invokespecial Object."<init>"`, `return`) is just the **empty constructor Java added for you** — it says "set up a basic object." You never wrote it; ignore it for now.
-
-**The one thing to remember:** `javac` turned your readable Java into these small JVM steps. The JVM runs the **steps** (bytecode), not your `.java` text.
-
-You do **not** need to memorize opcode names.
-
-
-## Expected result
-
-Console prints `Hello, JVM!`; `Hello.class` exists.
-
-## If it fails
-
-| Problem | Fix |
-| ------- | --- |
-| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
-| `cannot find symbol` / compile errors in `main` | Class name must match file name (`Hello.java` → `public class Hello`) |
-| `Could not find or load main class Hello` | Run `java Hello` (not `Hello.java`); compile first with `javac Hello.java` |
-| Wrong folder | `cd` to `module-01-exercises`, not `examples/HelloJava` |
+| Problem | Typical message | Fix |
+| ------- | --------------- | --- |
+| Left a blank in source | `illegal start of expression` near `_____` | Replace every blank with real Java |
+| Class/file mismatch | `class Hello is public, should be declared in a file named…` | File must be `Hello.java` |
+| Wrong launch | `Could not find or load main class Hello` | Run `java Hello` (not `Hello.java`); compile first |
+| Wrong folder | `error: file not found: Hello.java` | `cd` to `module-01-exercises` |
+| IDE yellow banner | *outside of the module source root* | Ignore; do **not** Move to source root |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark each row **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | `javac` + `java` produce `Hello, JVM!` | Pass / Fail |
+| 2 | You can explain in one sentence: source → bytecode → JVM | Pass / Fail |

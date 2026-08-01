@@ -1,36 +1,34 @@
 # Module 16 — Pre-Lab Exercises
 
-> **Start here for Module 16:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Start here for Module 16:** [`../README.md`](../README.md) · **Pacing:** [`../PACING.md`](../PACING.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 16 — Exception Handling in Distributed APIs  
 **Next:** [`../lab16/LAB-16-WINDOWS.md`](../lab16/LAB-16-WINDOWS.md) or [`../lab16/LAB-16-MACOS.md`](../lab16/LAB-16-MACOS.md) → [`../lab16/LAB-16-GUIDE.md`](../lab16/LAB-16-GUIDE.md)
 
-> Complete these exercises **in order** after the slides and **before** Lab 16.  
-> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-16-exercises/` — these are **notes files**, not the graded lab project.  
+> Complete these exercises **at the checkpoints** (not all slides first). Order **1 → 2 → 3 → 4 → 5 → 6**.  
+> Use JDK 21. Work under `examples/module-16-exercises/` — **notes files**, not the graded lab.  
 > Lab 16 is the graded consolidation. Do **not** finish Lab 16 during pre-lab.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+> **Tip:** Each exercise has an **Activity card**, **Worked example**, **Predict/Debug**, and **Troubleshooting**. Optional starter shells: [`starter/`](starter/README.md). Status cheat sheet: [`../HTTP-STATUS-CODES.md`](../HTTP-STATUS-CODES.md).
 
 ## What you produce (all exercises)
 
-| # | Your deliverable file | Type |
-| - | --------------------- | ---- |
-| 1 | `notes/lab16-catch-order.md` | Catch Order |
-| 2 | `notes/lab16-errorresponse-json.md` | ErrorResponse JSON Draft |
-| 3 | `notes/lab16-status-map.md` | Failure to Status Map |
-| 4 | `notes/lab16-message-hygiene-todos.md` | Fill Message Hygiene TODOs |
-| 5 | `notes/lab16-correlation-always.md` | Correlation on Every Error |
-| 6 | `notes/lab16-prep-checklist.md` | Lab 16 Prep Checklist |
-
-Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
+| # | Your deliverable file | Type | Checkpoint |
+| - | --------------------- | ---- | ---------- |
+| 1 | `notes/lab16-catch-order.md` | Catch Order | A |
+| 2 | `notes/lab16-errorresponse-json.md` | ErrorResponse JSON Draft | B |
+| 3 | `notes/lab16-status-map.md` | Failure to Status Map | C |
+| 4 | `notes/lab16-message-hygiene-todos.md` | Fill Message Hygiene TODOs | D |
+| 5 | `notes/lab16-correlation-always.md` | Correlation on Every Error | D |
+| 6 | `notes/lab16-prep-checklist.md` | Lab 16 Prep Checklist | D |
 
 ## Scope boundary — do not build later technology yet
 
 | Do now | Do not add yet |
 | --- | --- |
-| Map domain failures to HTTP/SOAP status ideas | Do not complete the full Lab 16 implementation in this pre-lab |
-| Draft ErrorResponse JSON for not-found and conflict | Do not wire live `@ControllerAdvice` in a running app yet |
-| Order catch blocks from specific to general | Do not return raw exception messages with PII |
+| Map domain failures to HTTP status ideas | Do not complete full Lab 16 implementation in pre-lab |
+| Draft ErrorResponse JSON for not-found and conflict | Do not require a live Spring Boot app in pre-lab |
+| Order catch/handlers from specific to general | Do not return raw exception messages with PII |
 | Write message hygiene TODOs (no stack traces to clients) | Do not skip correlation on error paths |
 | Require correlation id on every error response sketch | Do not deepen logging frameworks (Lab 20) beyond error shape |
 
@@ -61,21 +59,19 @@ cd examples/module-16-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available. You create markdown notes here; Lab 16 uses its own `examples/lab16-*/` (or module lab folder) project.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 16 uses `examples/lab16-crm/`.
 
-## Exercise index
+## Exercise index (classroom interleave)
 
-Complete in this sequence (matches Module slide order):
-
-| # | Exercise | New skill | Deliverable | File |
+| # | After slides | Exercise | Deliverable | File |
 | --- | --- | --- | --- | --- |
-| 1 | Catch Order | Architecture exercise | `notes/lab16-catch-order.md` | [`exercise-01-catch-order.md`](exercise-01-catch-order.md) |
-| 2 | ErrorResponse JSON Draft | Documentation exercise | `notes/lab16-errorresponse-json.md` | [`exercise-02-errorresponse-json.md`](exercise-02-errorresponse-json.md) |
-| 3 | Failure to Status Map | Analysis exercise | `notes/lab16-status-map.md` | [`exercise-03-failure-status-map.md`](exercise-03-failure-status-map.md) |
-| 4 | Fill Message Hygiene TODOs | Hands-on exercise | `notes/lab16-message-hygiene-todos.md` | [`exercise-04-fill-message-hygiene-todos.md`](exercise-04-fill-message-hygiene-todos.md) |
-| 5 | Correlation on Every Error | Documentation exercise | `notes/lab16-correlation-always.md` | [`exercise-05-correlation-always.md`](exercise-05-correlation-always.md) |
-| 6 | Lab 16 Prep Checklist | Documentation exercise | `notes/lab16-prep-checklist.md` | [`exercise-06-lab16-prep-checklist.md`](exercise-06-lab16-prep-checklist.md) |
+| 1 | 168–173 (A) | Catch Order | `notes/lab16-catch-order.md` | [`exercise-01-catch-order.md`](exercise-01-catch-order.md) |
+| 2 | 174 (B) | ErrorResponse JSON Draft | `notes/lab16-errorresponse-json.md` | [`exercise-02-errorresponse-json.md`](exercise-02-errorresponse-json.md) |
+| 3 | 175–177 (C) | Failure to Status Map | `notes/lab16-status-map.md` | [`exercise-03-failure-status-map.md`](exercise-03-failure-status-map.md) |
+| 4 | 178–181 (D) | Fill Message Hygiene TODOs | `notes/lab16-message-hygiene-todos.md` | [`exercise-04-fill-message-hygiene-todos.md`](exercise-04-fill-message-hygiene-todos.md) |
+| 5 | 178–181 (D) | Correlation on Every Error | `notes/lab16-correlation-always.md` | [`exercise-05-correlation-always.md`](exercise-05-correlation-always.md) |
+| 6 | 178–181 (D) | Lab 16 Prep Checklist | `notes/lab16-prep-checklist.md` | [`exercise-06-lab16-prep-checklist.md`](exercise-06-lab16-prep-checklist.md) |
 
 ## Done when
 
-All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 16 OS guide.
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep checklist self-mark is **Pass**. Then open the Lab 16 OS guide.

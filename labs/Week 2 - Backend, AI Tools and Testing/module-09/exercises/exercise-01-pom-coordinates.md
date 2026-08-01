@@ -1,6 +1,25 @@
 # Exercise 1 — Read POM Coordinates
 
-**Module 9** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 9** · Checkpoint A · Exercises 1–6 Pass then Lab 9
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Explain groupId, artifactId, version, and packaging from a POM |
+| **Skills practiced** | POM coordinates, packaging jar |
+| **Expected outcome** | notes/pom-coordinates-notes.md filled correctly |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-09-exercises/` → notes/pom-coordinates-notes.md |
+| **Checkpoint** | A (after slides 29–39) |
+
+## What you will learn
+
+- Coordinates uniquely identify an artifact in Maven repos
+- packaging jar is the default for libraries/apps in this course
+- Version SNAPSHOT means work-in-progress local/CI builds
+
+**Enterprise context:** CRM services publish under stable groupId/artifactId so pipelines and other teams can depend on them.
 
 ## Goal
 
@@ -73,6 +92,19 @@ Explain why each is wrong for Northstar CRM Lab 9:
 ## Expected result
 
 You can read a POM header and state the exact GAV plus packaging without guessing.
+
+
+## Debug / design challenge
+
+Two artifacts share artifactId but differ groupId — are they the same library?
+
+## Predict the Output / Behavior
+
+What does 0.1.0-SNAPSHOT signal to consumers?
+
+## Troubleshooting
+
+See steps above if Maven commands fail. Prefer full logs (no `-q`) while learning.
 
 ## Pass criteria
 

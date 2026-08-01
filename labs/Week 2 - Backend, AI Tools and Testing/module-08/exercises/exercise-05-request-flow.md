@@ -1,6 +1,25 @@
 # Exercise 5 — Trace a Customer Request
 
-**Module 8** · Documentation exercise · then start [`../lab8/LAB-8-GUIDE.md`](../lab8/LAB-8-GUIDE.md)
+**Module 8** · Checkpoint E · Exercises 1–6 Pass then Lab 8
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Document an end-to-end create-customer request through the layers |
+| **Skills practiced** | Request processing flow narration |
+| **Expected outcome** | request-flow.md with ordered hops |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-08-exercises/` → request-flow.md |
+| **Checkpoint** | E (after slides 22–24) |
+
+## What you will learn
+
+- A request crosses controller → service → repository → back out via DTOs
+- Flow docs help future Spring mapping without coding HTTP yet
+- Exceptions are handled at a useful boundary later — note the seam
+
+**Enterprise context:** Onboarding a new engineer starts with tracing one customer create path.
 
 ## Goal
 
@@ -113,6 +132,19 @@ Record **Pass** or **Fail** in your notes:
 ## Expected result
 
 One document contains success/failure flows, object transformations, and a truthful now/later boundary.
+
+
+## Debug / design challenge
+
+Draw repository calling controller — reverse the arrows.
+
+## Predict the Output / Behavior
+
+After repository save, which type usually returns toward the client?
+
+## Troubleshooting
+
+See steps above if something does not compile or match the worked example.
 
 ## Pass criteria
 

@@ -1,11 +1,30 @@
 # Exercise 6 — Exception Propagation
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint D · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Exception Propagation Through Layers](../../../lab_diagrams/mod07-ex06-propagation.png)
 
 > **Builds on Exercise 5:** Keep `InsufficientFundsException.java`.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Trace a thrown exception up the call stack to a boundary catch |
+| **Skills practiced** | Propagation, stack frames, boundary handling |
+| **Expected outcome** | Boundary catch prints; intermediate methods do not swallow |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-07-exercises/` → PropagationDemo.java |
+| **Checkpoint** | D (after slides 181–183) |
+
+## What you will learn
+
+- Exceptions unwind the stack until a matching catch
+- Swallowing mid-stack hides root cause
+- Handle at the layer that can recover or translate for users
+
+**Enterprise context:** ATMService catches domain failures; Main shows user-safe text — deep frames should not print PINs.
 
 ## Goal
 
@@ -140,7 +159,18 @@ useful context, or perform required handling.
 Stack trace order shows where the exception was thrown and the call path back
 to the catching boundary.
 
-## If it fails
+
+## Debug / design challenge
+
+Add an empty catch in the middle method — restore propagation.
+
+## Predict the Output / Behavior
+
+Which method name appears at the top of the stack trace for the throw site?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

@@ -1,14 +1,31 @@
 # Exercise 5 — Correlation on Every Error
 
-**Module 16** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 16** · Checkpoint D · Exercises 1–6 Pass then Lab 16
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Checklist that success and failure paths both carry correlation |
+| **Skills practiced** | Tracing discipline |
+| **Expected outcome** | notes/lab16-correlation-always.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-16-exercises/` → notes/lab16-correlation-always.md |
+| **Checkpoint** | D (after slides 178–181) |
+
+## What you will learn
+
+- Success activate still logs/echoes lab-request-001
+- Fail CUS-9999 includes same correlation field
+- Missing header policy: generate later — note for future labs
+
+**Enterprise context:** Without correlation on Fail, on-call cannot join API errors to broker/DB logs.
 
 ## Goal
 
-Create `notes/lab16-correlation-always.md` — checklist that success and failure paths both carry correlation.
+Create `notes/lab16-correlation-always.md` — correlation on every path.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,20 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 16 — Correlation on Every Error
 
-## Step 1 — Success path
-
-Activate Ravi success still echoes/logs lab-request-001.
-
-## Step 2 — Failure path
-
-Not-found CUS-9999 response includes same correlation field.
-
-## Step 3 — Missing header
-
-Policy idea: generate a correlation if missing — note for later labs.
+Success: activate Ravi still echoes/logs lab-request-001.
+Failure: CUS-9999 includes same correlationId.
+Missing header: generate later (note).
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +62,17 @@ From `examples/module-16-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 16 — Correlation on Every Error
 
-## Step 1 — Success path
+## Success path
+_____
 
-Activate Ravi success still echoes/logs lab-request-001.
+## Failure path
+_____
 
-## Step 2 — Failure path
-
-Not-found CUS-9999 response includes same correlation field.
-
-## Step 3 — Missing header
-
-Policy idea: generate a correlation if missing — note for later labs.
+## Missing header policy
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,15 +81,25 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A correlation checklist covering success and failure in `notes/lab16-correlation-always.md`.
+Correlation checklist for success and Fail in `notes/lab16-correlation-always.md`.
 
-## If it fails
+## Debug / design challenge
+
+Facade returns Fail JSON without correlationId — which test should catch it?
+
+## Predict the Output / Behavior
+
+Can correlationId differ between the request header and the Fail body? (It should match.)
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab16-correlation-always.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 16 |
+| Only documenting success | Add Fail CUS-9999 path |
+| Omitting lab-request-001 | Use the course correlation id |
 
 ## Pass criteria
 
@@ -92,5 +108,4 @@ Self-check before marking Pass:
 - [ ] File exists at `notes/lab16-correlation-always.md`
 - [ ] Success path noted
 - [ ] Failure path noted
-- [ ] Missing-header policy idea written
-
+- [ ] Missing-header note present

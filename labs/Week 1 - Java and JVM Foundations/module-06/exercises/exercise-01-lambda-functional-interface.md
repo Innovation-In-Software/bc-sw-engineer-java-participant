@@ -1,12 +1,31 @@
 # Exercise 1 — Lambda and a Custom Functional Interface
 
-**Module 6** · Pre-lab practice · finish Exercises 1–7 Pass, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Pre-lab practice · Checkpoint A · Exercises 1–7 Pass then Lab 6
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Lambdas: From Anonymous Class to Functional Interface](../../../lab_diagrams/mod06-ex01-lambda-functional-interface.png)
 
 > **Start here:** This exercise creates the shared `Employee` model and sample
 > dataset used by Exercises 2–7.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Compare anonymous class vs lambda for a custom SalaryCheck interface |
+| **Skills practiced** | Functional interface, lambda, shared Employee dataset |
+| **Expected outcome** | LambdaDemo prints matching true/true for Alice |
+| **Estimated time** | 15–18 minutes |
+| **File to create** | `examples/module-06-exercises/` → Employee.java, EmployeeData.java, SalaryCheck.java, LambdaDemo.java |
+| **Checkpoint** | A (after slides 152–157) |
+
+## What you will learn
+
+- A functional interface has exactly one abstract method
+- A lambda is a short implementation of that method
+- Same dataset across exercises keeps answers comparable
+
+**Enterprise context:** HR salary-band rules are often expressed as predicates reused by filters and reports.
 
 ## Goal
 
@@ -171,7 +190,18 @@ Expected: both results become `false`. Restore `60_000` before Exercise 2.
 Four source files compile. The anonymous class and lambda produce identical
 results for both tested thresholds.
 
-## If it fails
+
+## Debug / design challenge
+
+Add a second abstract method to SalaryCheck — fix until the lambda compiles again.
+
+## Predict the Output / Behavior
+
+If threshold is 75_000, what do both implementations return for Alice (72_000)?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

@@ -1,6 +1,25 @@
 # Exercise 6 — Check Dependency Direction
 
-**Module 8** · Architecture exercise · [setup](EXERCISES-INDEX.md)
+**Module 8** · Checkpoint E · Exercises 1–6 Pass then Lab 8
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Detect invalid layer dependencies (who may depend on whom) |
+| **Skills practiced** | Dependency direction, coupling smell detection |
+| **Expected outcome** | dependency-direction.md marks legal vs illegal edges |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-08-exercises/` → dependency-direction.md |
+| **Checkpoint** | E (after slides 22–24) |
+
+## What you will learn
+
+- Dependencies should point inward/down toward domain/persistence details carefully
+- Repository must not depend on controller
+- Illegal edges create circular pain and testing friction
+
+**Enterprise context:** Preventing repository→controller imports keeps CRM testable when HTTP arrives later.
 
 ## Goal
 
@@ -88,6 +107,19 @@ Domain/entity and repository packages must not import controller classes.
 ## Expected result
 
 You identify inward flow, two clear violations, one context-sensitive dependency, and one cycle repair.
+
+
+## Debug / design challenge
+
+Service imports controller classes — rewrite the allowed graph.
+
+## Predict the Output / Behavior
+
+Is controller → service → repository a legal chain?
+
+## Troubleshooting
+
+See steps above if something does not compile or match the worked example.
 
 ## Pass criteria
 

@@ -2,6 +2,18 @@
 
 > **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 1 [pre-lab exercises 1–8](../exercises/EXERCISES-INDEX.md). Then open **one** OS how-to ([Windows](LAB-1-WINDOWS.md) · [macOS](LAB-1-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `INSTRUCTOR-DEMO.md` and `solution/`. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Consolidate Exercises 1–8 into graded evidence: compile/run four classes, inspect bytecode, observe class loading and memory stress |
+| **Skills practiced** | `javac` / `java` / `javap`, stack vs heap narrative, `-verbose:class`, basic heap flags, GitHub push of lab sources |
+| **Expected outcome** | Smoke-test output (`Hello, JVM!` · `Sum = 30` · `101 - Aman` · `Created 100000 employees`) + screenshots + short answers |
+| **Estimated time** | Timed path ~45 min · Full path 65–120 min |
+| **Prerequisites** | Lab 0 Pass · Exercises 1–8 Pass · JDK 21 |
+| **Expected files** | `examples/jvm-compilation-lab/{HelloWorld,Calculator,Employee,MemoryDemo}.java` (+ `.class` after compile) |
+| **Validation checkpoints** | Starter smoke test · Checkpoints A–C in this GUIDE · Pass criteria tables |
+
 **Module:** 1 — JVM Architecture and Runtime Model  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-01/lab1/`  
 **Difficulty:** Beginner–Intermediate  
@@ -17,6 +29,8 @@
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 > **Hard gate — pre-lab exercises:** Complete **all eight** Module 1 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** in your notes **before** Step 0 of this lab. Lab 1 is graded consolidation in a **separate** folder (`examples/jvm-compilation-lab/`), not a replacement for the exercises folder (`examples/module-01-exercises/`).
+
+> **Incremental build:** This lab **extends** Lab 0’s `java-bootcamp` workspace and Module 1 exercise skills. You do **not** create a new CRM project — same laptop workspace, new folder `examples/jvm-compilation-lab/`.
 
 ## 45-minute timed path (use starter)
 
@@ -1360,21 +1374,38 @@ You may see `java.lang.OutOfMemoryError: Java heap space`. Restore normal `Memor
 
 ## Troubleshooting
 
-| Symptom | Likely cause | Fix |
-| ------- | ------------ | --- |
-| `javac` / `java` / `javap: command not found` | JDK missing or not on PATH (or JRE-only missing `javap`) | Revisit Lab 0; confirm full JDK 21 and `JAVA_HOME`; new IDE terminal |
-| `class ... should be declared in a file named` | Public class / filename mismatch | Rename file or class so they match exactly |
-| `Could not find or load main class` | Wrong dir, wrong name, missing `.class`, or used `.java` suffix | `cd` to lab folder; `Get-ChildItem` / `ls`; `javac`; `java ClassName` (no `.java`) |
-| Prompt shows `java-bootcamp>` but `javac HelloWorld` fails | Still at workspace root, not in `jvm-compilation-lab` | `cd examples\jvm-compilation-lab` (Windows) or `cd examples/jvm-compilation-lab` (macOS) |
-| Changes not reflected when running | Forgot recompile | `javac` again; see Failure Experiment 3 |
-| `cannot find symbol: class Employee` | `MemoryDemo` compiled alone | `javac Employee.java MemoryDemo.java` |
-| `OutOfMemoryError` | Heap too small for allocation | Raise `-Xmx` or reduce loop |
-| `PrintFlagsFinal` floods terminal | Normal volume | Filter with `Select-String` / `grep` or file |
-| IntelliJ “SDK not defined” | Project SDK unset | **Project Structure → Project → SDK 21** |
-| Yellow *outside of the module source root* | Flat exercises/lab folder (expected) | Ignore banner; do **not** Mark as Sources Root; use Terminal `javac` |
-| *Missing package statement… invalid package name* | `examples` marked Sources Root | Right-click `examples` → **Unmark as Sources Root** |
-| PowerShell `javac *.java` oddities | Globbing differences | Name files explicitly: `javac HelloWorld.java Calculator.java …` |
-| No lab guide visible inside IntelliJ | Guides live in the **participant course clone**, not under `examples/` | Open [`../README.md`](../README.md) from the course clone (browser or second window) |
+### Common errors and fixes
+
+| Symptom | Likely cause | Typical message | Fix |
+| ------- | ------------ | --------------- | --- |
+| Tools missing | JDK missing / JRE-only / PATH | `javac: command not found` | Revisit Lab 0; full JDK 21; new IDE terminal |
+| Name mismatch | Public class ≠ file name | `class X should be declared in a file named X.java` | Rename file or class to match |
+| Wrong launch | Used `.java` suffix or wrong dir | `Could not find or load main class …` | `cd` to lab folder; `javac`; `java ClassName` |
+| Wrong cwd | At `java-bootcamp` root | `error: file not found: HelloWorld.java` | `cd examples\jvm-compilation-lab` |
+| Stale class | Forgot recompile | Old output after edit | `javac` again (see Failure Experiment 3) |
+| Missing dependency | Compiled `MemoryDemo` alone | `cannot find symbol: class Employee` | `javac Employee.java MemoryDemo.java` |
+| Heap pressure | Loop too big / `-Xmx` tiny | `java.lang.OutOfMemoryError: Java heap space` | Raise `-Xmx` or reduce loop |
+| Flag flood | Normal for `PrintFlagsFinal` | Thousands of lines | `Select-String` / `grep` / redirect to file |
+| IDE SDK unset | Project SDK empty | “SDK not defined” | **Project Structure → Project → SDK 21** |
+| Yellow banner | Flat folder (expected) | *outside of the module source root* | Ignore; Terminal `javac` |
+| Invalid package | `examples` marked Sources Root | *package name 'module-01-exercises' … invalid* | **Unmark as Sources Root** on `examples` |
+| PowerShell glob | `javac *.java` quirks | Unexpected expansion | Name files explicitly |
+| Guides missing in IDE | Looking under `examples/` | — | Open guides from the **course clone**, not `examples/` |
+
+### Frequent mistakes (Lab 1)
+
+1. Mixing `Hello` (exercise) with `HelloWorld` (lab) or mixing exercise/lab folders.
+2. Running `java HelloWorld.java` instead of `java HelloWorld`.
+3. Believing objects and locals both live on the heap — sketch Employee again.
+4. Skipping Exercises 1–8 and treating Lab 1 as first contact with `javac`.
+
+### Suggested first-aid order
+
+1. `pwd` / `Get-Location` — are you in the right folder?
+2. `javac -version` / `java -version` — JDK 21?
+3. `Get-ChildItem *.java` / `ls *.java` — sources present?
+4. Recompile explicitly, then run.
+5. Only then ask for help (paste the **exact** error line).
 
 ---
 
@@ -1479,13 +1510,13 @@ Complete only after core deliverables pass.
 
 ## Instructor Notes
 
-**Classroom order (do not reverse):**
+**Classroom order (Learn → Practice → Review — do not reverse):**
 
-1. Module 1 PPT + live [Instructor Demonstration](INSTRUCTOR-DEMO.md) (Demo 1–4, ~30–40 min) during/after the slides
-2. Students complete [Exercises 1–8](../exercises/EXERCISES-INDEX.md) in `module-01-exercises/`
-3. Students open the OS how-to, then this guide — `HelloWorld`, `Calculator`, `Employee`, `MemoryDemo` under `jvm-compilation-lab/`
+1. Module 1 PPT in **segments** per [`../PACING.md`](../PACING.md) + live [Instructor Demonstration](INSTRUCTOR-DEMO.md) during Blocks G/demos
+2. At each checkpoint, students complete the matching [Exercises](../exercises/EXERCISES-INDEX.md) in `module-01-exercises/` (use `exercises/starter/` skeletons)
+3. Only after Exercises 1–8 Pass: OS how-to, then this guide — `HelloWorld`, `Calculator`, `Employee`, `MemoryDemo` under `jvm-compilation-lab/`
 
-**Before students open this guide:** confirm exercise checkpoint Pass (Hello compile/run, class-loading ID, stack vs heap sketch, three `javap` opcodes). Lab 1 pacing assumes those skills already exist.
+**Before students open this guide:** confirm exercise checkpoint Pass (Hello compile/run, WORA debug, class-loading ID + Helper fix, stack vs heap sketch, three `javap` opcodes). Lab 1 pacing assumes those skills already exist.
 
 **Smooth-path coaching (from verified participant run):**
 

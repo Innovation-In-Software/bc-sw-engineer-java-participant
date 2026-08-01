@@ -1,9 +1,28 @@
 # Exercise 4 — `throw` vs `throws`
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint D · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![throw vs throws](../../../lab_diagrams/mod07-ex04-throw-throws.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Distinguish throw (signal) vs throws (declare checked) |
+| **Skills practiced** | throw, throws, caller handling |
+| **Expected outcome** | Invalid amount rejected; caller catches declared failure |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-07-exercises/` → ThrowThrowsDemo.java |
+| **Checkpoint** | D (after slides 181–183) |
+
+## What you will learn
+
+- throw creates/signals an exception instance
+- throws declares checked exceptions a method may propagate
+- Callers must catch or declare checked failures
+
+**Enterprise context:** Service APIs document recoverable failures so UI layers can show safe messages.
 
 ## Goal
 
@@ -129,7 +148,18 @@ may declare `throws`; the menu boundary will catch, log, and recover.
 Both failures are handled, and you can point to `throw` in a body versus
 `throws` in a signature.
 
-## If it fails
+
+## Debug / design challenge
+
+Remove throws from a method that throws IOException — fix the compile error two ways.
+
+## Predict the Output / Behavior
+
+Does throws appear on methods that only throw RuntimeException?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

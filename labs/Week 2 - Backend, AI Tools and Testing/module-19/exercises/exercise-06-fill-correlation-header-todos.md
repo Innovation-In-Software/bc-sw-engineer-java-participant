@@ -1,14 +1,31 @@
 # Exercise 6 — Fill Correlation Header TODOs
 
-**Module 19** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 19** · Checkpoint D · Classroom order **1 → 2 → 3 → 4 → 6 → 5** then Lab 19
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete fill-in blanks for correlation headers in integration tests |
+| **Skills practiced** | API IT observability hooks |
+| **Expected outcome** | notes/lab19-correlation-header-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-19-exercises/` → notes/lab19-correlation-header-todos.md |
+| **Checkpoint** | D (after slides 232) |
+
+## What you will learn
+
+- Header X-Correlation-Id = lab-request-001
+- IT must attach header; UI may log optionally
+- Actuator not in this pre-lab (Lab 21)
+
+**Enterprise context:** Without correlation on create IT, Lab 20 logging demos cannot join UI and API evidence.
 
 ## Goal
 
-Create `notes/lab19-correlation-header-todos.md` — complete fill-in blanks for correlation headers in integration tests.
+Create `notes/lab19-correlation-header-todos.md` — correlation TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,29 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 19 — Fill Correlation Header TODOs
 
-## Step 1 — Copy TODOs
+Header: X-Correlation-Id
+Value: lab-request-001
+IT must attach? yes
+UI logs correlation? yes/optional
+Flake mitigation: explicit waits / testids
+Actuator in this pre-lab? no (Lab 21)
 
-Header name: (your note here)
-Header value for lab: (your note here)
-IT call must attach header? (your note here)
-UI journey logs correlation? (your note here)
-Flake mitigation idea: (your note here)
-Actuator in this pre-lab? (your note here)
-
-## Step 2 — Fill blanks
-
-Fill X-Correlation-Id, lab-request-001, yes, yes/optional, explicit waits/testid stability, and no for Actuator.
-
-## Step 3 — CI note
-
-Write: *CI agents need browser driver management; expect flake without waits.*
-
-## Step 4 — Self-check
-
-Confirm Actuator blank is no (Lab 21).
+CI agents need browser driver management.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,8 +67,6 @@ From `examples/module-19-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 19 — Fill Correlation Header TODOs
 
-## Step 1 — Copy TODOs
-
 Header name: _____
 Header value for lab: _____
 IT call must attach header? _____
@@ -71,20 +74,11 @@ UI journey logs correlation? _____
 Flake mitigation idea: _____
 Actuator in this pre-lab? _____
 
-## Step 2 — Fill blanks
-
-Fill X-Correlation-Id, lab-request-001, yes, yes/optional, explicit waits/testid stability, and no for Actuator.
-
-## Step 3 — CI note
-
-Write: *CI agents need browser driver management; expect flake without waits.*
-
-## Step 4 — Self-check
-
-Confirm Actuator blank is no (Lab 21).
+## CI note
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,15 +87,25 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Filled correlation/flake TODOs with Actuator deferred in `notes/lab19-correlation-header-todos.md`.
+Filled correlation TODOs in `notes/lab19-correlation-header-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+If create IT omits the header, what Lab 20 demo becomes harder?
+
+## Predict the Output / Behavior
+
+Is Actuator required to echo X-Correlation-Id in Lab 19?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab19-correlation-header-todos.md` |
-| Hard sleeps only | Prefer explicit waits + stable testids |
-| Skipping correlation on IT | Attach lab-request-001 on API calls |
+| Claiming Actuator now | Answer no / Lab 21 |
+| Wrong correlation value | Use lab-request-001 |
 
 ## Pass criteria
 
@@ -109,6 +113,5 @@ Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab19-correlation-header-todos.md`
 - [ ] All _____ replaced
-- [ ] CI flake note present
-- [ ] Actuator deferred
-
+- [ ] X-Correlation-Id named
+- [ ] Actuator = no

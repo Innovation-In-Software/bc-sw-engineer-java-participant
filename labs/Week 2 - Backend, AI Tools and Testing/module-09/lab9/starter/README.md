@@ -2,6 +2,22 @@
 
 **Theme:** Maven build, dependencies, plugins, profiles
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill POM TODOs + lifecycle/tree evidence for lab9-crm |
+| **Skills practiced** | Scopes, compiler/Surefire/jar plugins, verify, dependency tree |
+| **Expected outcome** | `mvn -B clean verify` + runnable JAR smoke path |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab9-crm/` copied from this starter |
+
+**Boilerplate reduced:** Layer stubs from Lab 8 style are present — focus on Maven build TODOs and evidence docs.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-9-GUIDE.md`](../LAB-9-GUIDE.md)
+
+**Flags:** Prefer full logs first; never `-q` with `dependency:tree`.
+
 ## Copy into your workspace
 
 **Windows (PowerShell)** — from this lab folder:

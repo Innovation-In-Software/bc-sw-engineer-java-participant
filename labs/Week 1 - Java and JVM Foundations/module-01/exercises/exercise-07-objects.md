@@ -1,75 +1,66 @@
-# Exercise — Objects and Classes
+# Exercise 7 — Objects and Classes
 
-**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · Checkpoint D  
 **Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Classes, Objects, and References](../../../lab_diagrams/mod01-ex07-objects.png)
 
-## Goal
+## Activity card
 
-Create `Person.java` with fields, a constructor, and a method; instantiate in `main`.
+| | |
+| --- | --- |
+| **Objective** | Complete a `Person` class (fields provided) — focus on constructor, method, and `new` |
+| **Skills practiced** | Constructors, instance methods, stack reference vs heap object |
+| **Expected outcome** | Prints `Aman is 21 years old` |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-01-exercises/Person.java` |
 
-## Worked example (read first)
+## What you will learn
 
-Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+- Class = blueprint; object = instance created with `new`
+- Fields live on the **heap**; the variable holding the reference lives on the **stack**
+- `this.field = param` in constructors
+
+**Enterprise context:** A hospital `Patient` or warehouse `Shipment` object is the same pattern — identity fields on the heap, short-lived references in the request thread stack.
+
+## Boilerplate already provided
+
+Fields are **pre-declared** so you spend time on the new idea (construction + display), not rewriting getters/setters.
+
+## Worked example — expected output
 
 ```text
 Aman is 21 years old
 ```
 
-Then follow **Steps** to create your own file.
-
-
 ## Starter (fill in the TODOs)
 
-Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
+Copy [`starter/Person.java`](starter/Person.java) or paste:
 
 ```java
 public class Person {
-    // TODO: declare two instance fields — String name and int age
-    _____
+    // Provided — do not rewrite boilerplate fields
+    String name;
+    int age;
 
-    // TODO: constructor — assign parameters to fields using this.name / this.age
+    // TODO: assign parameters to fields using this.name / this.age
     public Person(String name, int age) {
         _____
     }
 
-    // TODO: print "<name> is <age> years old" using the fields
+    // TODO: print "<name> is <age> years old"
     public void display() {
         _____
     }
 
     public static void main(String[] args) {
-        // TODO: create a Person with name "Aman" and age 21, then call display()
+        // TODO: create Person("Aman", 21) and call display()
         _____
     }
 }
 ```
 
-| Idea | Easy meaning |
-| ---- | ------------ |
-| Class | Blueprint (`Person`) |
-| Object | One instance created with `new` |
-| Field | Data stored in the object (`name`, `age`) — on the **heap** |
-| Reference | Variable `person` points to the object — reference lives on the **stack** |
-
 ## Steps
-
-### Step 1 — Create `Person.java`
-
-**Why:** Objects group data + behavior; this is the core OOP starting point.
-
-1. Create `Person.java` with **New → File** under `module-01-exercises`.
-2. Paste the starter, fill every `_____` / `// TODO`. Save.
-
-### Step 2 — Compile and run
-
-| Command | Easy meaning |
-| ------- | ------------ |
-| `javac Person.java` | Compile class + `main` |
-| `java Person` | Run `main`, create object, print |
-
-**Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
@@ -77,40 +68,33 @@ javac Person.java
 java Person
 ```
 
-**macOS:**
-
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
 javac Person.java
 java Person
 ```
 
-**Expected:** Something like `Aman is 21 years old`.
+**Success criteria:** Output matches the worked example.
 
-**Verified (Windows):**
+## Sketch (required for Pass)
+
+In your notes, draw:
 
 ```text
-Aman is 21 years old
+Stack:  person  ----ref---->  Heap: Person { name="Aman", age=21 }
 ```
 
-## Expected result
-
-Object prints; fields live on the heap and the reference on the stack.
-
-## If it fails
+## Troubleshooting
 
 | Problem | Fix |
 | ------- | --- |
-| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
-| Fields stay null / zero | Constructor must assign `this.name = name` and `this.age = age` |
-| `cannot find symbol` on `display()` | Call on the object: `person.display();` — not `Person.display()` unless static |
-| Class/file name mismatch | File must be `Person.java` with `public class Person` |
+| Fields stay null / 0 | Assign `this.name = name;` and `this.age = age;` |
+| `cannot find symbol` on `display` | Call `person.display();` on the instance |
+| File/class mismatch | File must be `Person.java` |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | Output is `Aman is 21 years old` | Pass / Fail |
+| 2 | Stack vs heap sketch completed | Pass / Fail |

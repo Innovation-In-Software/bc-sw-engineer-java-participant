@@ -1,12 +1,31 @@
 # Exercise 7 — Error Handling Strategies
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint E · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Exception Strategy: Retry, Then Fallback](../../../lab_diagrams/mod07-ex07-error-strategies.png)
 
 > **Independent of Exercise 6:** a different flaky failure this time — the focus
 > is choosing a strategy after you catch, not only where you catch.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Apply retry then fallback around a flaky operation |
+| **Skills practiced** | Retry, fallback, bounded attempts |
+| **Expected outcome** | Demo recovers via retry or fallback without crashing |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-07-exercises/` → StrategyDemo.java |
+| **Checkpoint** | E (after slides 184–187) |
+
+## What you will learn
+
+- Retry only when failures may be transient
+- Fallback returns a safe degraded result
+- Bound attempts — infinite retry is not a strategy
+
+**Enterprise context:** Downstream balance inquiry timeouts may retry; PIN validation failures should not.
 
 ## Goal
 
@@ -148,7 +167,18 @@ Add to `notes.md`, one sentence each:
 when all attempts fail, and you have one real-world sentence for each of the
 four unimplemented strategies.
 
-## If it fails
+
+## Debug / design challenge
+
+Retry forever on IllegalArgumentException — explain why that is wrong.
+
+## Predict the Output / Behavior
+
+After max retries fail, what should the user see: stack trace or fallback message?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

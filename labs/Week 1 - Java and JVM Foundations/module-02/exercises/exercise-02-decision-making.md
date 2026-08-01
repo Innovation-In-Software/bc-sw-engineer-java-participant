@@ -1,11 +1,30 @@
 # Exercise 2 — Decision Making
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint C · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Decisions: if/else-if versus switch](../../../lab_diagrams/mod02-ex02-decision-making.png)
 
 > **New for Module 2:** `if` / `else if` / `else` and `switch` — the two ways Java picks a path.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Grade a score with if/else-if and map day 1–7 with switch |
+| **Skills practiced** | if/else-if/else, switch+break, Scanner |
+| **Expected outcome** | Letter grade + weekday name for sample inputs |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-02-exercises/DecisionDemo.java` |
+| **Checkpoint** | C (after slides 61–66) |
+
+## What you will learn
+
+- Choose if-ladder vs switch for ranges vs discrete values
+- Why break matters in classic switch
+- Drive decisions from user input (not Module 1 hard-coded demos)
+
+**Enterprise context:** Loan eligibility (if ranges) and menu commands (switch) mirror banking/ops consoles.
 
 ## Goal
 
@@ -26,6 +45,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/DecisionDemo.java`](starter/DecisionDemo.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -105,7 +127,19 @@ Wednesday
 
 Correct grade for your score and correct day name for your day number.
 
-## If it fails
+
+
+## Debug challenge
+
+Intentionally omit `break` after a `case`; predict fall-through, then fix.
+
+## Predict the Output
+
+Score 85 → which grade? Day 3 → which name?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

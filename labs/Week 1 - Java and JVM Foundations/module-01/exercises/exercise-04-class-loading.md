@@ -1,62 +1,112 @@
-# Exercise — Watch Class Loading
+# Exercise 4 — Watch Class Loading
 
-**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · Checkpoint C  
 **Folder:** `examples/module-01-exercises/` (see [EXERCISES-INDEX.md](EXERCISES-INDEX.md) setup)
 
 ![Bootstrap, Platform, and Application Class Loading](../../../lab_diagrams/mod01-ex04-class-loading.png)
 
-## Goal
+## Activity card
 
-Run `Hello` with `-verbose:class` and identify which class loader loaded `Hello` versus a core JDK class like `String`.
+| | |
+| --- | --- |
+| **Objective** | Identify which loader loads your class vs `String`, then fix a missing-class failure |
+| **Skills practiced** | `java -verbose:class`, reading load lines, diagnosing `NoClassDefFoundError` / missing `.class` |
+| **Expected outcome** | Loader notes written; `LoadDemo` runs after fix |
+| **Estimated time** | 12–15 minutes |
+| **Files** | Reuse `Hello`; create `LoadDemo.java` (+ temporary missing class) |
 
-## Worked example (read first)
+## What you will learn
 
-Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+- Bootstrap loader owns core JDK types (`java.lang.String`)
+- Application loader owns your project `.class` files
+- What happens when a referenced class file is missing
 
-**Goal reminder:** Run `Hello` with `-verbose:class` and identify which class loader loaded `Hello` versus a core JDK class like `String`.
+**Enterprise context:** Healthcare / claims services often fail at startup with class-path errors. Reading `-verbose:class` (or modern `-Xlog:class+load`) is how ops proves “was this class ever loaded?”
 
-**Done looks like:** The verbose log shows `Hello` loaded from your local classpath, while `String` is already loaded from the JDK's core module before your class ever runs.
+## Part A — Observe loaders (reuse Hello)
 
-Then follow **Steps** to create your own file.
-
-## Starter / reference
-
-Reuse `Hello.java` from Exercise 1 (Hello World) — no new source file needed for this one.
-
-## Do this
-
-**Why:** Connect the Bootstrap / Platform / Application class loaders you just saw to real JVM output.
-
-From the exercises folder (after `javac Hello.java` has produced `Hello.class`):
+From the exercises folder (after `javac Hello.java`):
 
 **Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
-java -verbose:class Hello | Select-String "Hello|String"
+java -verbose:class Hello 2>&1 | Select-String "Hello|String"
 ```
 
 **macOS:**
 
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
-java -verbose:class Hello | grep -E "Hello|String"
+java -verbose:class Hello 2>&1 | grep -E "Hello|String"
 ```
 
 | Line contains | Loaded by | Why |
 | -------------- | --------- | --- |
-| `java.lang.String` | Bootstrap (source: shared objects file / `jrt:/java.base`) | Core JDK class — always loaded first, by the JVM itself |
-| `Hello` | Application (source: your own `.class` file's path) | Your code — loaded by the classpath/application loader |
+| `java.lang.String` | Bootstrap (`jrt:/java.base` / shared objects) | Core JDK |
+| `Hello` | Application (your folder path) | Your code |
 
-## Expected result
+**Write in notes (2 lines):** Which loader loaded `Hello`? Which loaded `String`?
 
-The verbose log shows `Hello` loaded from your local classpath, while `String` is already loaded from the JDK's core module before your class ever runs.
+## Part B — Debug challenge (hands-on)
+
+1. Create `Helper.java`:
+
+```java
+public class Helper {
+    public static String tag() {
+        return "helper-ok";
+    }
+}
+```
+
+2. Create `LoadDemo.java` from [`starter/LoadDemo.java`](starter/LoadDemo.java) or:
+
+```java
+public class LoadDemo {
+    public static void main(String[] args) {
+        // TODO: print Helper.tag()
+        _____
+    }
+}
+```
+
+3. Compile **both**: `javac Helper.java LoadDemo.java`
+4. Run: `java LoadDemo` → expect `helper-ok`
+5. **Break it:** delete `Helper.class` only (keep `Helper.java` and `LoadDemo.class`).
+6. Run `java LoadDemo` again — **predict** the error, then confirm.
+7. **Fix:** recompile `javac Helper.java` (or both) and re-run.
+
+**Expected when broken:** error mentioning `Helper` / `NoClassDefFoundError` or `ClassNotFoundException` (wording varies by JDK).  
+**Expected when fixed:**
+
+```text
+helper-ok
+```
+
+**Sequence diagram (what failed):**
+
+```mermaid
+sequenceDiagram
+    participant JVM as JVM
+    participant App as Application loader
+    JVM->>App: load LoadDemo
+    App-->>JVM: OK
+    JVM->>App: load Helper
+    App-->>JVM: FAIL (Helper.class missing)
+```
+
+## Troubleshooting
+
+| Problem | Fix |
+| ------- | --- |
+| No `Hello` lines in verbose output | Filter wrong; try without filter once |
+| `LoadDemo` fails after delete | Expected — restore with `javac Helper.java` |
+| Compiled only `LoadDemo` | Always compile dependencies together |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | Identified loaders for `Hello` vs `String` | Pass / Fail |
+| 2 | Reproduced missing-`Helper.class` failure and fixed it | Pass / Fail |

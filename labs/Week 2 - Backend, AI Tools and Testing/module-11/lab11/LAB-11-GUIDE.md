@@ -1,5 +1,19 @@
 # Lab 11: GitHub Copilot for Testing and Refactoring — Northstar CRM
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 11 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-11-WINDOWS.md) · [macOS](LAB-11-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Add real JUnit tests, extract `CustomerNotifier`, keep AI review notes |
+| **Skills practiced** | AAA tests, reject trivial asserts, refactor + Mockito verify sample, Copilot notes |
+| **Expected outcome** | `mvn clean test` → **Tests run: 8**, Failures: 0; notes `lab11-001`–`004` |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 10 domain · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ · Copilot (or alternate) |
+| **Expected files** | `examples/lab11-crm/` + `copilot-notes/ai-test-refactor-notes.md` |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 11 — GitHub Copilot for Testing and Refactoring  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-11/lab11/`  
 **Difficulty:** Beginner–Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-11-WINDOWS.md](LAB-11-WINDOWS.md) |
 | macOS | [LAB-11-MACOS.md](LAB-11-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 11 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21**, **Maven 3.9+**, and **GitHub Copilot** signed in. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, and **GitHub Copilot** signed in. Work under `~/java-bootcamp`.
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Pre-lab notes stay in `module-11-exercises/`; graded work is `examples/lab11-crm/`.
+
+> **Incremental build:** AAA/assert/notifier notes → Lab 11 tests + extract + review log (bridge to Labs 17–18).
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Hygiene:** Reject `assertTrue(true)`, JUnit 4 syntax, and `@SpringBootTest`. Keep no-arg `CustomerService()` with no-op notifier after extract.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -883,6 +905,10 @@ git status
 | Suite fails only after refactor | Skipped notifier / signature change | `clean test`; restore then re-apply |
 | CustomerServiceTest breaks after ctor change | Lost no-arg ctor | Restore no-op notifier ctor |
 | Suggestions add Spring Test | Pattern match | Reject; plain Java + JUnit only |
+| `assertTrue(true)` still in suite | Accepted trivial assert | Replace with status/id behavior asserts (Ex 3) |
+| Working in `module-11-exercises` for the lab | Wrong project | Lab lives in `examples/lab11-crm` |
+| Surefire count includes PlaceholderTest | Leftover Lab 9 stub | Remove `assertTrue(true)` placeholder tests |
+| Empty AI notes | Skipped logging | Fill `copilot-notes/ai-test-refactor-notes.md` |
 
 ### Build passes locally but fails later
 

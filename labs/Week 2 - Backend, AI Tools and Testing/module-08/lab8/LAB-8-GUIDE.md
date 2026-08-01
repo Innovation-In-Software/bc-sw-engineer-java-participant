@@ -1,5 +1,19 @@
 # Lab 8: Project Structure and Organization — Northstar CRM Skeleton
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 8 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; classroom order **1 → 2 → 4 → 3 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-8-WINDOWS.md) · [macOS](LAB-8-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Create the Northstar CRM Maven skeleton with seven layer packages (plain Java) |
+| **Skills practiced** | Maven layout, package boundaries, entity/DTO stubs, layer flow docs |
+| **Expected outcome** | `mvn clean compile` + `Main` prints banner, seven packages, `CUS-1001` / `CUS-1002` |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab8-crm/` (`pom.xml`, `src/main/java/com/northstar/crm/…`, docs) |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 8 — Java Project Structure and Modularization  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-08/lab8/`  
 **Difficulty:** Intermediate  
@@ -14,8 +28,13 @@
 
 > **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
-> **Pre-lab exercises:** Complete [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) **in order 1→6** (same sequence as the Module 8 slides) before starting the full CRM skeleton:
-> 1. Maven layout · 2. Package plan · 3. Entity vs DTO (TODO starter) · 4. Layer responsibilities · 5. Request flow · 6. Dependency direction.
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** (classroom order **1 → 2 → 4 → 3 → 5 → 6**) before Step 1. Lab 8 builds the complete CRM skeleton in `examples/lab8-crm/`, separate from `module-08-exercises/`.
+
+> **Incremental build:** Maven/package/layer notes + mini entity/DTO → Lab 8 full `com.northstar.crm` tree.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).
+
+> **Scope:** Do **not** add Spring Boot, JPA, PostgreSQL, Kafka, or React in Lab 8.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -1044,14 +1063,16 @@ Perform deliberately, then restore working code.
 | ------- | ------------ | --- |
 | `mvn: command not found` | Maven not installed / not on PATH | [SETUP-INSTRUCTIONS](../../../SETUP-INSTRUCTIONS.md) / Lab 0 |
 | `javac`/`java` wrong version | Not JDK 21 | Fix `JAVA_HOME` / PATH |
-| Editing locally; laptop empty | Wrong window | Open `~/java-bootcamp` in VS Code |
+| Editing locally; laptop empty | Wrong window | Open `~/java-bootcamp` in VS Code / IntelliJ |
 | Package does not match directory | Folder typo (`Northstar` vs `northstar`) | Recreate lowercase path |
 | Compile cannot find symbol | File not under `src/main/java` | Move sources to Maven layout |
 | `Could not find or load main class` | Wrong `-cp` or package | `java -cp target/classes com.northstar.crm.Main` |
 | Plugin download failures | Network/proxy | Align with SETUP proxy notes; retry |
-| IDE shows red but `mvn compile` works | IDE not imported as Maven project | Re-import Maven project |
+| IDE shows red but `mvn compile` works | IDE not imported as Maven project | Re-import Maven / open `pom.xml` |
 | Accidental Spring imports | Copilot/template overreach | Delete framework imports—Lab 8 is plain Java |
 | Secrets worry | Pasted credentials into properties | Delete; use comments only |
+| Working in `module-08-exercises` for the lab | Wrong project folder | Lab lives in `examples/lab8-crm` |
+| `repository → controller` style imports | Illegal dependency direction | Keep controller → service → repository (Ex 6) |
 
 ---
 

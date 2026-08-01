@@ -9,6 +9,25 @@
 > five-row dataset is intentionally too small for a meaningful performance
 > conclusion.
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Compare stream vs parallelStream counts carefully (correctness first) |
+| **Skills practiced** | parallelStream awareness, when not to parallelize |
+| **Expected outcome** | Counts match; notes on when parallel helps |
+| **Estimated time** | 10–15 minutes (stretch) |
+| **File to create** | `examples/module-06-exercises/` → ParallelStreamDemo.java |
+| **Checkpoint** | E (after slides 167–168) |
+
+## What you will learn
+
+- parallelStream can help large, CPU-bound, independent work
+- Tiny lists and shared mutable state are poor parallel candidates
+- Correctness beats micro-benchmarks on five rows
+
+**Enterprise context:** Nightly HR analytics on millions of rows may parallelize; interactive menus on 25 rows usually should not.
+
 ## Goal
 
 Create `ParallelStreamDemo.java`. Run the same stateless count with `stream`
@@ -148,7 +167,18 @@ value concurrently and lose updates. Use the built-in `count()` reduction.
 Sequential and parallel pipelines both return 4. Timings vary, and your notes
 state that the exercise demonstrates correctness—not a performance win.
 
-## If it fails
+
+## Debug / design challenge
+
+Introduce a shared mutable counter inside forEach — explain why that is unsafe in parallel.
+
+## Predict the Output / Behavior
+
+For five employees, should wall-clock time decide your production choice? Why or why not?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

@@ -1,14 +1,31 @@
 # Exercise 1 — Log Level Quiz
 
-**Module 20** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 20** · Checkpoint A · Exercises 1–6 Pass then Lab 20
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Assign DEBUG/INFO/WARN/ERROR to CRM events |
+| **Skills practiced** | Log level selection |
+| **Expected outcome** | notes/lab20-level-quiz.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-20-exercises/` → notes/lab20-level-quiz.md |
+| **Checkpoint** | A (after slides 237–243) |
+
+## What you will learn
+
+- Activate success → INFO
+- Illegal transition → WARN; unexpected → ERROR
+- DEBUG off by default in prod profiles
+
+**Enterprise context:** Wrong levels bury incidents (everything DEBUG) or page on-call (everything ERROR).
 
 ## Goal
 
-Create `notes/lab20-level-quiz.md` — assign DEBUG/INFO/WARN/ERROR to CRM events.
+Create `notes/lab20-level-quiz.md` — level quiz for CRM events.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,8 +41,6 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 20 — Log Level Quiz
 
-## Reference
-
 | Event | Level |
 | --- | --- |
 | Activate success Ravi | INFO |
@@ -33,20 +48,10 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 | Unexpected repo failure | ERROR |
 | Entering mapper field copy | DEBUG |
 
-## Step 2 — Prod habit
-
-One sentence: DEBUG off by default in prod profiles.
-
-## Step 3 — JDK/Maven
-
-Note logging deps align with Maven BOM/Spring Boot later; prep is level policy.
-
-## Step 4 — Prep only
-
-Write: *Do not complete full Lab 20 retrofit in pre-lab.*
+DEBUG off by default in prod.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,29 +67,18 @@ From `examples/module-20-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 20 — Log Level Quiz
 
-## Reference
-
 | Event | Level |
 | --- | --- |
-| Activate success Ravi | INFO |
-| Illegal transition Amina | WARN |
-| Unexpected repo failure | ERROR |
-| Entering mapper field copy | DEBUG |
+| Activate success Ravi | _____ |
+| Illegal transition Amina | _____ |
+| Unexpected repo failure | _____ |
+| Mapper field copy detail | _____ |
 
-## Step 2 — Prod habit
-
-One sentence: DEBUG off by default in prod profiles.
-
-## Step 3 — JDK/Maven
-
-Note logging deps align with Maven BOM/Spring Boot later; prep is level policy.
-
-## Step 4 — Prep only
-
-Write: *Do not complete full Lab 20 retrofit in pre-lab.*
+## Prod habit
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,22 +87,30 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A level quiz table with prod DEBUG habit in `notes/lab20-level-quiz.md`.
+Filled level table in `notes/lab20-level-quiz.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should blank-name validation be WARN or ERROR? Pick one and say why.
+
+## Predict the Output / Behavior
+
+If root is DEBUG in prod, what operational problem appears first?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab20-level-quiz.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 20 |
+| All events ERROR | Differentiate INFO/WARN/ERROR |
+| Skipping prod DEBUG habit | Note DEBUG off by default |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab20-level-quiz.md`
-- [ ] Table plus custom event
-- [ ] Prod DEBUG habit written
-- [ ] Pre-lab boundary present
-
+- [ ] Four levels assigned
+- [ ] Prod habit present

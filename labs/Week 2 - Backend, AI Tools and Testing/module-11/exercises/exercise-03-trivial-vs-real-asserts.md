@@ -1,6 +1,25 @@
 # Exercise 3 — Trivial vs Real Asserts
 
-**Module 11** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 11** · Checkpoint C · Exercises 1–6 Pass then Lab 11
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Reject trivial asserts (assertTrue(true)) in favor of behavior asserts |
+| **Skills practiced** | Reviewing AI test suggestions |
+| **Expected outcome** | notes/lab11-prelab-asserts.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-11-exercises/` → notes/lab11-prelab-asserts.md |
+| **Checkpoint** | C (after slides 88) |
+
+## What you will learn
+
+- Trivial asserts make green builds that prove nothing
+- Real asserts check status, id, or exception behavior
+- Reject/edit weak Copilot assertions immediately
+
+**Enterprise context:** CI green with assertTrue(true) is a false sense of safety.
 
 ## Goal
 
@@ -86,7 +105,18 @@ Amina = ACTIVE; Ravi = PROSPECT. Do not swap.
 
 `notes/lab11-prelab-asserts.md` with two trivial asserts, two meaningful asserts, and a reject rule.
 
-## If it fails
+
+## Debug / design challenge
+
+Rewrite assertTrue(true) into assertEquals(ACTIVE, customer.getStatus()).
+
+## Predict the Output / Behavior
+
+Does assertNotNull(service) alone prove activate worked?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

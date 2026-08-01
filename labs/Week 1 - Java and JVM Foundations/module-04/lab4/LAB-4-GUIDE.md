@@ -2,6 +2,18 @@
 
 > **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 4 [pre-lab exercises 1–7](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Exercises run on Day 3; this graded lab is Day 4. Day 3 “Lab 4 briefing” is folder/notes prep only — not GUIDE Steps. Then open **one** OS how-to ([Windows](LAB-4-WINDOWS.md) · [macOS](LAB-4-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Run a memory demo suite: stack/heap, GC, retention leak/fix, performance comparison |
+| **Skills practiced** | Reachability narrative, `-Xlog:gc`, bounded allocation, String/list cost patterns |
+| **Expected outcome** | Smoke themes pass; screenshots under `notes/screenshots/lab-4/` |
+| **Estimated time** | Timed path ~45 min · Full path 60–240 min |
+| **Prerequisites** | Lab 0–3 · Exercises 1–7 Pass · JDK 21 |
+| **Expected files** | `examples/Lab4-MemoryManagement/*.java` (flat suite) |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 4 — Memory Management and Performance  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-04/lab4/`  
 **Difficulty:** Intermediate (Beginner-Friendly)  
@@ -17,6 +29,8 @@
 > **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
 
 > **Hard gate — pre-lab exercises:** Complete **all seven** Module 4 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 4 is graded consolidation in a **separate** flat folder (`examples/Lab4-MemoryManagement/`), not a replacement for the exercises folder (`examples/module-04-exercises/`).
+
+> **Incremental build:** Extends Module 1 stack/heap/GC awareness and Module 4 exercise demos into one graded suite — same `java-bootcamp`, new folder `Lab4-MemoryManagement/`.
 
 ## 45-minute timed path (use starter)
 
@@ -849,16 +863,34 @@ Record pass/fail briefly in `../../notes/lab4-answers.md` (from project; or `~/j
 
 ## Troubleshooting
 
-| Symptom | Likely cause | Fix |
-| ------- | ------------ | --- |
-| `javac` / `java` not found | PATH / JAVA_HOME | Lab 0; new terminal |
-| `cannot find symbol` | Missing compile of helper | `javac *.java` in lab folder |
-| Identity hashes look equal | Same object aliased | Expected when two refs point to one object |
-| GC log empty | Wrong flag / old JDK | Use JDK 21 `-Xlog:gc` |
-| Leak does not OOM | GC + OS headroom | Rising used MB is enough evidence |
-| Weak ref still non-null | GC did not run | Re-run; document “hint only” |
-| IntelliJ wrong SDK | Project SDK ≠ 21 | Project Structure → SDK 21 |
-| VS Code terminal wrong cwd | Opened parent only | `cd` into `Lab4-MemoryManagement` |
+### Common errors and fixes
+
+| Symptom | Likely cause | Typical message / clue | Fix |
+| ------- | ------------ | ---------------------- | --- |
+| Tools missing | PATH / JAVA_HOME | `javac: command not found` | Lab 0; new terminal |
+| Missing helper class | Partial compile | `cannot find symbol` | Compile all needed `.java` in the lab folder |
+| Identity hashes equal | Two refs → one object | Same hash printed twice | Expected for aliases |
+| GC log empty | Wrong flag / old JDK | No GC lines | JDK 21 `-Xlog:gc` before class name |
+| Leak does not OOM | GC + OS headroom | Heap still grows slowly | Rising used MB is enough evidence |
+| Weak ref still non-null | GC did not run | `get()` not null | Re-run; document “hint only” |
+| IntelliJ wrong SDK | Project SDK ≠ 21 | Run fails | Project Structure → SDK 21 |
+| Wrong cwd | Opened parent only | file not found | `cd` into `Lab4-MemoryManagement` |
+| Accidental Sources Root | Marked flat folder | package errors | Unmark Sources Root (this lab is flat) |
+
+### Frequent mistakes
+
+1. Skipping Exercises 1–7 and treating Lab 4 as first GC contact.
+2. Mixing `module-04-exercises/` with `Lab4-MemoryManagement/`.
+3. Trusting `System.gc()` to prove collection of tiny objects.
+4. Committing `.hprof` dumps.
+
+### Suggested first-aid order
+
+1. Confirm cwd is `Lab4-MemoryManagement`.
+2. `java -version` → 21.x.
+3. Compile named sources explicitly.
+4. Re-run with `-Xms16m -Xmx64m -Xlog:gc` for GC demos.
+5. Ask for help with the **exact** error line.
 
 ---
 
@@ -933,10 +965,10 @@ Optional — only after core deliverables pass. Pick at most one if time is shor
 
 ## Instructor Notes
 
-**Classroom order (do not reverse):**
+**Classroom order (Learn → Practice → Review — do not reverse):**
 
-1. Module 4 PPT (Day 3)
-2. Students complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) in `module-04-exercises/` (Day 3)
+1. Module 4 PPT in **segments** per [`../PACING.md`](../PACING.md) (Day 3)
+2. At each checkpoint, students complete matching [Exercises](../exercises/EXERCISES-INDEX.md) (use `exercises/starter/`)
 3. Day 3 evening: Lab 4 **briefing/setup only** (folder + notes) — **not** GUIDE Steps until Pass
 4. Day 4: OS how-to → this guide — core checkpoint, then Kahoot 4
 

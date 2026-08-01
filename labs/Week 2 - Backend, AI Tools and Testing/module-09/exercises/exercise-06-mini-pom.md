@@ -1,6 +1,25 @@
 # Exercise 6 — Fill a Mini POM
 
-**Module 9** · Small Maven exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 9** · Checkpoint D · Exercises 1–6 Pass then Lab 9
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill a mini POM: coords, JUnit test scope, compiler/Surefire/jar plugins |
+| **Skills practiced** | Hands-on Maven build, plugins, test packaging |
+| **Expected outcome** | mini-maven builds; notes/mini-maven-notes.md captured |
+| **Estimated time** | 18–25 minutes |
+| **File to create** | `examples/module-09-exercises/` → mini-maven/ + notes/mini-maven-notes.md |
+| **Checkpoint** | D (after slides 52–53) |
+
+## What you will learn
+
+- A minimal POM can compile, test, and package with Main-Class
+- Plugin versions belong in the POM, not tribal memory
+- First runs should omit -q so Surefire output is visible
+
+**Enterprise context:** Lab 9 expands this habit into the Northstar CRM build — same coordinates discipline.
 
 ## Goal
 
@@ -216,7 +235,18 @@ BuildDemo ready for Lab 9
 
 Surefire reports one passing test. `target/build-demo.jar` runs `BuildDemo`.
 
-## If it fails
+
+## Debug / design challenge
+
+JAR has no Main-Class — fix the jar plugin manifest config.
+
+## Predict the Output / Behavior
+
+After mvn package, where is the JAR under mini-maven?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

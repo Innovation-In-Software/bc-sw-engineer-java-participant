@@ -1,14 +1,31 @@
 # Exercise 5 — Mockito Anti-Patterns
 
-**Module 18** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 18** · Checkpoint D · Exercises 1–6 Pass then Lab 18
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | List anti-patterns Copilot might suggest for CRM tests |
+| **Skills practiced** | AI review, mocking hygiene |
+| **Expected outcome** | notes/lab18-anti-patterns.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-18-exercises/` → notes/lab18-anti-patterns.md |
+| **Checkpoint** | D (after slides 214–215) |
+
+## What you will learn
+
+- Never mock the SUT
+- Avoid unnecessary stubbing
+- verifyNoMoreInteractions only when surface is critical
+
+**Enterprise context:** AI often mocks CustomerService while “testing” CustomerService — that tests nothing.
 
 ## Goal
 
-Create `notes/lab18-anti-patterns.md` — list anti-patterns Copilot might suggest for CRM tests.
+Create `notes/lab18-anti-patterns.md` — anti-patterns table.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,28 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 18 — Mockito Anti-Patterns
 
-## Reference
-
 | Anti-pattern | Better |
 | --- | --- |
 | Mock the SUT | Mock collaborators only |
 | Unnecessary stubbing | Stub what is used |
 | verifyNoMoreInteractions always | Use when interaction surface is critical |
 
-## Step 2 — AI reject rule
-
 Reject suggestions that mock CustomerService while testing CustomerService.
-
-## Step 3 — Fixture
-
-Prefer real Customer state objects for Amina/Ravi over mocking getters needlessly.
-
-## Step 4 — Boundary
-
-Note ArgumentCaptor deep practice continues in timed lab; preview next.
+Fixtures: Ravi/Amina/CUS-9999 as appropriate.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -61,28 +67,17 @@ From `examples/module-18-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 18 — Mockito Anti-Patterns
 
-## Reference
-
 | Anti-pattern | Better |
 | --- | --- |
-| Mock the SUT | Mock collaborators only |
-| Unnecessary stubbing | Stub what is used |
-| verifyNoMoreInteractions always | Use when interaction surface is critical |
+| Mock the SUT | _____ |
+| Unnecessary stubbing | _____ |
+| verifyNoMoreInteractions always | _____ |
 
-## Step 2 — AI reject rule
-
-Reject suggestions that mock CustomerService while testing CustomerService.
-
-## Step 3 — Fixture
-
-Prefer real Customer state objects for Amina/Ravi over mocking getters needlessly.
-
-## Step 4 — Boundary
-
-Note ArgumentCaptor deep practice continues in timed lab; preview next.
+## AI reject rule
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -91,22 +86,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-An anti-pattern sheet tuned for AI-assisted Mockito in `notes/lab18-anti-patterns.md`.
+Anti-patterns table + AI reject rule in `notes/lab18-anti-patterns.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rewrite: @Mock DefaultCustomerService sut — what should be mocked instead?
+
+## Predict the Output / Behavior
+
+Does sleeping Thread.sleep(500) belong in a Mockito unit test?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab18-anti-patterns.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 18 |
+| Empty better column | Fill collaborator-only guidance |
+| Accepting SUT mocks | Write explicit reject rule |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab18-anti-patterns.md`
-- [ ] Table plus silly mock row
-- [ ] SUT-mock reject rule
-- [ ] Real fixture preference noted
-
+- [ ] Three anti-patterns
+- [ ] Better column filled
+- [ ] AI reject rule present

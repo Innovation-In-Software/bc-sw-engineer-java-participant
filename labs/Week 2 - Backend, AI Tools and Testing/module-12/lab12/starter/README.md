@@ -2,6 +2,20 @@
 
 **Theme:** Coding standards — smell catalog + refactor messy service
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Freeze baseline, catalog smells, refactor to create/get/updateStatus |
+| **Skills practiced** | Naming, equals/Map, evidence docs, green tests |
+| **Expected outcome** | 8 tests green + `docs/smells.md` / before-after filled |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab12-crm/` copied from this starter |
+
+**Boilerplate reduced:** Messy baseline + test shells given — focus on smell catalog and target API refactor.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-12-GUIDE.md`](../LAB-12-GUIDE.md)
+
 ## Copy into your workspace
 
 **Windows (PowerShell)** — from this lab folder:

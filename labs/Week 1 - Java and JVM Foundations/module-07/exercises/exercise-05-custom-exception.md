@@ -1,9 +1,28 @@
 # Exercise 5 — Custom Checked Exception
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint D · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Build a Custom Checked Exception](../../../lab_diagrams/mod07-ex05-custom-exception.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Create InsufficientFundsException with balance/requested context |
+| **Skills practiced** | Custom checked exception, domain context fields |
+| **Expected outcome** | Withdraw fails with structured message; balance unchanged |
+| **Estimated time** | 15–18 minutes |
+| **File to create** | `examples/module-07-exercises/` → InsufficientFundsException.java, Account.java, CustomExceptionDemo.java |
+| **Checkpoint** | D (after slides 181–183) |
+
+## What you will learn
+
+- Domain exceptions carry fields callers can use (not only getMessage)
+- Checked domain failures force callers to decide
+- Preserve money invariants when rejecting withdraw
+
+**Enterprise context:** Banking withdraw paths need typed insufficient-funds failures for UI and audit logs.
 
 ## Goal
 
@@ -160,7 +179,18 @@ unchanged.
 The exception carries useful domain context, caller recovery is enforced, and
 failed withdrawal does not mutate balance.
 
-## If it fails
+
+## Debug / design challenge
+
+Extend RuntimeException by mistake — change to Exception and update callers.
+
+## Predict the Output / Behavior
+
+After a failed withdraw(150) on balance 100, what is balance?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

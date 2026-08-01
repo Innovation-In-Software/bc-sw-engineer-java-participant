@@ -1,14 +1,31 @@
 # Exercise 1 — Test Pyramid for CRM
 
-**Module 19** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 19** · Checkpoint A · Classroom order **1 → 2 → 3 → 4 → 6 → 5** then Lab 19
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Place activate unit tests, API IT, and Selenium UI on a pyramid |
+| **Skills practiced** | Test strategy, layer placement |
+| **Expected outcome** | notes/lab19-pyramid.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-19-exercises/` → notes/lab19-pyramid.md |
+| **Checkpoint** | A (after slides 220–225) |
+
+## What you will learn
+
+- Base: many JUnit/Mockito service tests (Labs 17–18)
+- Middle: fewer API integration tests
+- Top: few Selenium journeys
+
+**Enterprise context:** Enterprises that invert the pyramid drown in flaky UI suites and still miss domain bugs.
 
 ## Goal
 
-Create `notes/lab19-pyramid.md` — place activate unit tests, API IT, and Selenium UI on a pyramid.
+Create `notes/lab19-pyramid.md` — CRM test pyramid.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,20 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 19 — Test Pyramid for CRM
 
-## Step 1 — Base
-
-Many fast JUnit/Mockito tests for service rules (Labs 17–18).
-
-## Step 2 — Middle
-
-Fewer API integration tests with real Spring slice or Testcontainers later.
-
-## Step 3 — Top
-
-Few Selenium journeys: view Amina ACTIVE, activate Ravi path in UI if exposed.
+Base: many fast JUnit/Mockito tests (Labs 17–18).
+Middle: fewer API IT (create/get + correlation).
+Top: few Selenium journeys (Amina form / status).
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +62,17 @@ From `examples/module-19-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 19 — Test Pyramid for CRM
 
-## Step 1 — Base
+## Base (unit)
+_____
 
-Many fast JUnit/Mockito tests for service rules (Labs 17–18).
+## Middle (API IT)
+_____
 
-## Step 2 — Middle
-
-Fewer API integration tests with real Spring slice or Testcontainers later.
-
-## Step 3 — Top
-
-Few Selenium journeys: view Amina ACTIVE, activate Ravi path in UI if exposed.
+## Top (UI)
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,22 +81,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A pyramid note with Northstar examples at each layer in `notes/lab19-pyramid.md`.
+Pyramid with three layers in `notes/lab19-pyramid.md`.
 
-## If it fails
+## Debug / design challenge
+
+If someone deletes all unit tests and keeps only Selenium, which pyramid problem is that?
+
+## Predict the Output / Behavior
+
+Where do Labs 17–18 suites sit on your diagram?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab19-pyramid.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 19 |
+| Only UI at the base | Invert: units at base |
+| Starting the full lab mid-exercise | Finish pre-lab notes first |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab19-pyramid.md`
-- [ ] Three layers described
-- [ ] Fixtures mentioned at UI layer
-- [ ] Actuator deferred
-
+- [ ] Base named
+- [ ] Middle named
+- [ ] Top named

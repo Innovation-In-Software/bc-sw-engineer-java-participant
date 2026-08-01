@@ -1,6 +1,25 @@
 # Exercise 2 — Plan Package Organization
 
-**Module 8** · Analysis exercise · [setup](EXERCISES-INDEX.md)
+**Module 8** · Checkpoint B · Exercises 1–6 Pass then Lab 8
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan com.northstar.crm package names that match folder paths |
+| **Skills practiced** | Package naming, directory ↔ package mapping |
+| **Expected outcome** | package-plan.md with FQNs and rules |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-08-exercises/` → package-plan.md |
+| **Checkpoint** | B (after slides 9) |
+
+## What you will learn
+
+- Package names are lowercase and match folders
+- Fully qualified names encode layer intent (entity, dto, service…)
+- Avoid default package for enterprise code
+
+**Enterprise context:** Large teams navigate Northstar CRM by package, not by hunting flat folders.
 
 ## Goal
 
@@ -83,7 +102,18 @@ Write the equivalent path for `CustomerRequest`.
 
 All seven types have focused packages, valid fully qualified names, and matching source paths.
 
-## If it fails
+
+## Debug / design challenge
+
+Propose com.Northstar.CRM — fix casing and explain why.
+
+## Predict the Output / Behavior
+
+What folder path matches package com.northstar.crm.service?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

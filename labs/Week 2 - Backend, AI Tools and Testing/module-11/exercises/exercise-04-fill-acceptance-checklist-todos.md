@@ -1,6 +1,25 @@
 # Exercise 4 — Fill Acceptance Checklist TODOs
 
-**Module 11** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 11** · Checkpoint C · Exercises 1–6 Pass then Lab 11
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill acceptance checklist TODOs before accepting AI tests/refactors |
+| **Skills practiced** | Acceptance gates, human review |
+| **Expected outcome** | notes/lab11-acceptance-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-11-exercises/` → notes/lab11-acceptance-todos.md |
+| **Checkpoint** | C (after slides 88) |
+
+## What you will learn
+
+- Acceptance checklists catch JUnit 4 syntax and Spring Test phantoms
+- Suite must stay focused on CRM behavior
+- Notes lab11-001–004 will mirror this discipline in the lab
+
+**Enterprise context:** Teams accept AI hunks only when checklist gates pass.
 
 ## Goal
 
@@ -92,7 +111,18 @@ Replace each `_____` with concrete values. Example (you may use your own honest 
 
 A filled acceptance TODO sheet at `notes/lab11-acceptance-todos.md` with an honest Labs 17–18 boundary.
 
-## If it fails
+
+## Debug / design challenge
+
+Checklist skips 'real asserts' — add it before Pass.
+
+## Predict the Output / Behavior
+
+Should you accept a generated @SpringBootTest in Module 11?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

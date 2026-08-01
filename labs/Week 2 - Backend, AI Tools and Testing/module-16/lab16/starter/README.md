@@ -2,6 +2,22 @@
 
 **Theme:** API exception handling — ErrorResponse + GlobalExceptionHandler + correlation
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Implement ErrorResponse, BusinessException factories, handler, and 400/404/409 demos |
+| **Skills practiced** | Catch order, Fail JSON, correlationId, safe messages |
+| **Expected outcome** | `mvn -B clean test` green · Fail JSON includes `lab-request-001` |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab16-crm/` copied from this starter |
+
+**Boilerplate reduced:** Baseline CRM + TODOs given — fill `// TODO`; catch BusinessException **before** Exception.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-16-GUIDE.md`](../LAB-16-GUIDE.md) · Codes: [`../../HTTP-STATUS-CODES.md`](../../HTTP-STATUS-CODES.md)
+
+**Honesty:** Prefer **409** for illegal transitions (document 422 if chosen). No stack traces to clients.
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab16-crm`.

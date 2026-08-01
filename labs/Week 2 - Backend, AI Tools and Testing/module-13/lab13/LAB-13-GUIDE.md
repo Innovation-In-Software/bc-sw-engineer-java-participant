@@ -1,5 +1,19 @@
 # Lab 13: SOAP API Design — Northstar Customer Contract (Contract-First)
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 13 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-13-WINDOWS.md) · [macOS](LAB-13-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Deliver contract-first Customer SOAP pack: XSD, WSDL, samples, design docs |
+| **Skills practiced** | XSD types, WSDL ops, fault samples, well-formedness, placeholder honesty |
+| **Expected outcome** | Well-formed contracts/samples (10/10) + operation-matrix + soap-design-notes |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Exercises 1–6 Pass · JDK 21 (Maven optional) |
+| **Expected files** | `examples/lab13-crm/contracts/`, `samples/`, `docs/` — **no Java server** |
+| **Validation checkpoints** | Starter smoke-validate XML · GUIDE Implementation Checkpoints |
+
 **Module:** 13 — SOAP API Design with Java  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-13/lab13/`  
 **Difficulty:** Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-13-WINDOWS.md](LAB-13-WINDOWS.md) |
 | macOS | [LAB-13-MACOS.md](LAB-13-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 13 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**. Work under `~/java-bootcamp`.
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-13-exercises/`; graded work is `examples/lab13-crm/`.
+
+> **Incremental build:** Fault/ops/XSD/contract-first notes → Lab 13 contract pack.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** `http://localhost:8080/ws` is a **placeholder**. Do **not** start Spring Boot/Tomcat. Hosting is **Lab 24**. Connection refused is expected.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9 available but unused):**
 
@@ -816,6 +838,9 @@ Do not add MessageDispatcherServlet or JAXB generation requirements in Lab 13.
 | Full envelope XSD validation hard | Tools need wrapper schemas | Document limits; insist well-formedness |
 | Duplicate ops in WSDL | Copy-paste error | One CreateCustomer only |
 | Added Spring Boot by accident | Scope creep | Remove; Lab 13 is contracts only |
+| Working in `module-13-exercises` for the lab | Wrong project | Lab lives in `examples/lab13-crm` |
+| PowerShell XML parse fails | Malformed sample | Fix tags/prefixes; re-run `[xml](Get-Content -Raw …)` |
+| Missing NotFound fault sample | Skipped Ex 1 habit | Add `fault-customerNotFound.xml` for CUS-9999 |
 
 ### Configuration ignored
 

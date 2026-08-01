@@ -2,6 +2,22 @@
 
 Exception classes, `Account`, `Transaction`, `LoggerUtil`, and `Main` are mostly given. Fill `ATMService.login` / `deposit` / `withdraw`. Do **not** open `../solution/` first.
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete ATM login + deposit/withdraw failure paths with domain exceptions |
+| **Skills practiced** | Boundary catch, insufficient funds, invalid PIN/account, logging |
+| **Expected outcome** | Smoke path: login → failed withdraw message → deposit → balance `12000` → Thank You |
+| **Estimated time** | ~45 minutes |
+| **Files** | Packaged suite under `Lab7-ATMSystem/src/com/academy/atm/` |
+
+**Boilerplate reduced:** Exception types, account model, logger, and menu are given — focus on `ATMService` TODOs.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-7-GUIDE.md`](../LAB-7-GUIDE.md)
+
+**Security:** Do not log the PIN. Run `java` from the **project root** so `transactions.txt` / `logs/` resolve.
+
 ## Target copy path
 
 `~/java-bootcamp/examples/Lab7-ATMSystem/`

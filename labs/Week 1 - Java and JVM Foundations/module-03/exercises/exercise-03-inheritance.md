@@ -1,11 +1,30 @@
 # Exercise 3 — Inheritance and Polymorphism
 
-**Module 3** · Pre-lab practice · finish all 8 Pass, then [`../lab3/LAB-3-GUIDE.md`](../lab3/LAB-3-GUIDE.md)  
+**Module 3** · Pre-lab practice · Checkpoint C · all 8 then lab
 **Folder:** `examples/module-03-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Inheritance and Runtime Polymorphism](../../../lab_diagrams/mod03-ex03-inheritance-polymorphism.svg)
 
 > **Builds on Exercise 2:** Keep `Account.java`. Add two specialized account types and call overridden behavior through `Account` references.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Extend Account; override behavior; use base-type references |
+| **Skills practiced** | extends, super, override, polymorphism |
+| **Expected outcome** | Demo runs savings/current via Account references |
+| **Estimated time** | 18–20 minutes |
+| **File to create** | `examples/module-03-exercises/SavingsAccount.java / CurrentAccount.java (+ demo)` |
+| **Checkpoint** | C (after slides 93–98) |
+
+## What you will learn
+
+- Inheritance shares common account state
+- Override specializes withdraw/interest
+- Base references enable polymorphic calls
+
+**Enterprise context:** Savings vs current products share Account contracts but differ in overdraft/interest rules.
 
 ## Goal
 
@@ -24,6 +43,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy matching files from [`starter/`](starter/README.md). Or paste:
+
 
 Paste these skeletons, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs or blanks in your finished files.
 
@@ -172,7 +194,19 @@ Method chosen:  CurrentAccount.withdraw
 
 One `Account[]` holds both subclasses. The same `withdraw(20)` call produces different balances because the current account override adds a fee.
 
-## If it fails
+
+
+## Debug / design challenge
+
+Forget super(...) in subclass constructor — fix the compile error.
+
+## Predict the Output / Behavior
+
+Account a = new SavingsAccount(...); which withdraw runs?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

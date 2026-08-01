@@ -1,6 +1,25 @@
 # Exercise 1 — AAA Template for Status
 
-**Module 11** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 11** · Checkpoint A · Exercises 1–6 Pass then Lab 11
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Write an Arrange–Act–Assert outline for activating Ravi (CUS-1002) |
+| **Skills practiced** | AAA test design, fixture discipline |
+| **Expected outcome** | notes/lab11-aaa-template.md with concrete AAA steps |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-11-exercises/` → notes/lab11-aaa-template.md |
+| **Checkpoint** | A (after slides 78–83) |
+
+## What you will learn
+
+- AAA forces Copilot prompts toward real behavior checks
+- Fixtures must match Lab 10/11 Northstar IDs and statuses
+- Mocks are awareness here — deep Mockito comes in Lab 18
+
+**Enterprise context:** CRM status changes need reproducible tests before AI drafts assertions.
 
 ## Goal
 
@@ -90,7 +109,18 @@ Confirm: Ravi = `CUS-1002` / `PROSPECT` → `ACTIVE`. Do **not** swap with Amina
 
 `notes/lab11-aaa-template.md` exists with AAA table, proposed test name, Lab 18 boundary, and pre-lab-only note.
 
-## If it fails
+
+## Debug / design challenge
+
+AAA Act says 'call something' — replace with the exact service method + args.
+
+## Predict the Output / Behavior
+
+After activate, what status must Assert require for CUS-1002?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

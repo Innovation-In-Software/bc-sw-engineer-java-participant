@@ -1,9 +1,28 @@
 # Exercise 2 — Working with `HashSet`
 
-**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · Checkpoint B · all 7 then lab
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections: HashSet and TreeSet](../../../lab_diagrams/mod05-ex02-hashset.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Enforce uniqueness with HashSet; contrast sorted TreeSet view |
+| **Skills practiced** | Set, HashSet, TreeSet uniqueness/order |
+| **Expected outcome** | Duplicates rejected; notes on order differences |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-05-exercises/SetDemo.java` |
+| **Checkpoint** | B (after slides 137–139) |
+
+## What you will learn
+
+- Set rejects duplicates
+- HashSet order is unspecified
+- TreeSet sorts elements
+
+**Enterprise context:** Registered ISBN/book IDs must be unique — Set fits.
 
 ## Goal
 
@@ -25,6 +44,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -138,7 +160,14 @@ Add to `notes.md`:
 
 The set contains three unique categories; the duplicate add returns `false`; `TreeSet` prints them sorted.
 
-## If it fails
+
+## Predict the Output / Behavior
+
+add('X'); add('X'); size is?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

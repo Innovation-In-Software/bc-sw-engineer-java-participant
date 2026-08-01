@@ -1,5 +1,19 @@
 # Lab 16: API Exception Handling — Northstar CRM Error Model
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 16 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-16-WINDOWS.md) · [macOS](LAB-16-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship ErrorResponse + GlobalExceptionHandler + Fail demos (400/404/409) with correlation |
+| **Skills practiced** | Catch order, BusinessException mapping, safe messages, ApiResult Fail JSON |
+| **Expected outcome** | Green `mvn test` · 400/404/409 demos · `lab-request-001` on every Fail |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 15 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab16-crm/` — ErrorResponse, handler, facade, tests, notes |
+| **Validation checkpoints** | Starter smoke `mvn -B clean test` · GUIDE Implementation Checkpoints |
+
 **Module:** 16 — Exception Handling in Distributed APIs  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-16/lab16/`  
 **Difficulty:** Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-16-WINDOWS.md](LAB-16-WINDOWS.md) |
 | macOS | [LAB-16-MACOS.md](LAB-16-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 16 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`.
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-16-exercises/`; graded work is `examples/lab16-crm/`.
+
+> **Incremental build:** Catch order → ErrorResponse JSON → status map → hygiene/correlation → Lab 16 `lab16-crm`.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E). Status cheat sheet: [`../HTTP-STATUS-CODES.md`](../HTTP-STATUS-CODES.md).
+
+> **Critical scope:** Catch **BusinessException before Exception**. Prefer **409** for illegal transitions (document if you choose 422). No stack traces / SQL / PII in client JSON. Deep logging → Lab 20.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -708,6 +730,11 @@ Full HTTP + diagram code catalog: [`../HTTP-STATUS-CODES.md`](../HTTP-STATUS-COD
 | Double-wrapped errors | Fail mapped again as unexpected | Return Fail once |
 | Flaky timestamp asserts | Exact Instant equality | Assert status/fields only |
 | JSON broken quotes | Manual escape of messages | Keep messages free of raw quotes or escape |
+| Stack trace in Fail JSON | Message hygiene skipped | Return safe message; log stack server-side |
+| 200 with error payload | Wrong success path | Return Fail / non-2xx status for failures |
+| Working in `module-16-exercises` for the lab | Wrong project | Lab lives in `examples/lab16-crm` |
+| Illegal transition still mutates Amina | Saved before conflict mapping | Validate/transition check before mutate |
+| Using Amina for 404 demo | Wrong fixture | Use `CUS-9999` for not-found |
 
 ---
 

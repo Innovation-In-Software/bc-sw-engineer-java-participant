@@ -1,197 +1,97 @@
-# Exercise — Inspect Bytecode
+# Exercise 8 — Inspect Bytecode
 
-**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · Checkpoint G (after demos / before Lab 1)  
 **Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Inspecting Person Bytecode with javap](../../../lab_diagrams/mod01-ex08-javap-bytecode.png)
 
-## Goal
+## Activity card
 
-Disassemble `Person` (or `Hello`) with `javap` and note three bytecode instructions.
+| | |
+| --- | --- |
+| **Objective** | Disassemble `Person` with `javap -c` and explain three opcodes |
+| **Skills practiced** | `javap`, reading bytecode, linking opcodes to Java source |
+| **Expected outcome** | Notes name three of: `new`, `ldc`, `invokevirtual`, `aload`, `return` |
+| **Estimated time** | 10–12 minutes |
+| **File** | Reuse compiled `Person.class` from Exercise 7 |
 
-## What each command piece means
+## What you will learn
 
-| Piece | Easy meaning |
-| ----- | ------------ |
-| `javap` | Read a `.class` file and show its structure |
-| `-c` | Include bytecode for each method (**use this**) |
-| `-v` | Optional advanced detail; skip for this beginner exercise |
-| `Person` | Class name to inspect (must already be compiled) |
+- `javac` produces instructions the JVM runs; `javap` only *shows* them
+- How `new Person(...)` and `display()` look as bytecode chapters
+- That you do **not** need to memorize every opcode — pattern recognition matters
 
-## Big picture (diagram)
+**Enterprise context:** When a production jar “behaves oddly,” engineers sometimes `javap` a class to confirm what was actually shipped (wrong overload, missing method) without guessing from source alone.
+
+## Big picture
 
 ```mermaid
 flowchart LR
-    A["Person.java<br/>(your source)"] -->|javac| B["Person.class<br/>(bytecode)"]
-    B -->|javap -c| C["Readable<br/>instructions"]
-    B -->|java Person| D["JVM runs<br/>the steps"]
-    D --> E["Output:<br/>Aman is 21 years old"]
+    A["Person.java"] -->|javac| B["Person.class"]
+    B -->|javap -c| C["Readable instructions"]
+    B -->|java Person| D["JVM runs steps"]
 ```
 
-`javac` compiles once. `javap` just *shows* the bytecode; `java` *runs* it.
-
-## Worked example (read first)
-
-Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
-
-**Goal reminder:** Disassemble `Person` (or `Hello`) with `javap` and note three bytecode instructions.
-
-**Done looks like:** You can name what three instructions do from your listing.
-
-Then follow **Steps** to create your own file.
-
 ## Do this
-
-**Why:** Connect your Java source to the instructions the JVM actually runs.
-
-From the exercises folder (after `javac` produced the `.class`):
-
-**Windows:**
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
 javap -c Person
 ```
 
-**macOS:**
-
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
 javap -c Person
 ```
-
-**Verified (Windows) — your output has three sections.** Read them like chapters of a short story.
-
-### Chapter 1 — Constructor `Person(String, int)`
-
-Matches your Java:
-
-```java
-public Person(String name, int age) {
-    this.name = name;
-    this.age = age;
-}
-```
-
-| Bytecode | Plain English |
-| -------- | ------------- |
-| `aload_0` | Pick up **this** (the new object) |
-| `invokespecial Object."<init>"` | Call Object’s empty constructor first (every class does this) |
-| `aload_0` / `aload_1` / `putfield name` | Put the **name** parameter into the object’s `name` field |
-| `aload_0` / `iload_2` / `putfield age` | Put the **age** number into the object’s `age` field |
-| `return` | Constructor finished |
-
-**One sentence:** The constructor stores `"Aman"` and `21` inside the new Person.
-
-### Chapter 2 — Method `display()`
-
-Matches your Java:
-
-```java
-public void display() {
-    System.out.println(name + " is " + age + " years old");
-}
-```
-
-| Bytecode | Plain English |
-| -------- | ------------- |
-| `getstatic System.out` | Pick up the console printer |
-| `aload_0` / `getfield name` | Read this Person’s `name` |
-| `aload_0` / `getfield age` | Read this Person’s `age` |
-| `invokedynamic … makeConcat…` | Join them into one sentence (modern Java’s way to do `name + " is " + age + …`) |
-| `invokevirtual println` | Print that sentence |
-| `return` | Done |
-
-**One sentence:** `display` reads the fields, builds the sentence, and prints it.
-
-### Chapter 3 — Method `main` (start here if you feel lost)
-
-Matches your Java:
-
-```java
-Person person = new Person("Aman", 21);
-person.display();
-```
-
-| Bytecode | Plain English |
-| -------- | ------------- |
-| `new Person` | Make space for a new Person object |
-| `dup` | Keep an extra copy of that object (needed for the constructor call) |
-| `ldc "Aman"` | Put the text **Aman** on the table |
-| `bipush 21` | Put the number **21** on the table |
-| `invokespecial "<init>"` | Run the constructor with those values |
-| `astore_1` | Save the finished Person in variable `person` |
-| `aload_1` | Pick up `person` again |
-| `invokevirtual display` | Call `person.display()` |
-| `return` | Finish `main` |
-
-**One sentence:** Create Person(Aman, 21) → save it → call display → stop.
-
-#### `main` as a flow
-
-```mermaid
-flowchart TD
-    N["new Person"] --> L["ldc &quot;Aman&quot; + bipush 21"]
-    L --> I["invokespecial &lt;init&gt;<br/>(run constructor)"]
-    I --> S["astore_1<br/>(save as person)"]
-    S --> C["invokevirtual display<br/>(person.display())"]
-    C --> R["return"]
-```
-
-#### How the object sits in memory
-
-```mermaid
-flowchart LR
-    subgraph Stack["Stack (local variables)"]
-        P["person (reference)"]
-    end
-    subgraph Heap["Heap (objects)"]
-        O["Person<br/>name = &quot;Aman&quot;<br/>age = 21"]
-    end
-    P -->|points to| O
-```
-
-The variable `person` (a reference) lives on the **stack**; the actual Person object lives on the **heap**.
-
-### What you can ignore for now
-
-- Numbers like `#7`, `#13`, `#33` — just labels inside the class file
-- Types like `Ljava/lang/String;` — “this is a String”
-- `invokedynamic` details — “join text for printing”
-- `javap -c -v` constant pool / checksums — advanced; not needed here
 
 ### Three opcodes to remember
 
 | Opcode | Everyday meaning |
 | ------ | ---------------- |
 | `new` | Create a new object |
-| `ldc` | Put a constant value (like `"Aman"`) on the table |
-| `invokevirtual` | Call a method (like `display` or `println`) |
-| `aload` / `aload_0` | Put an object you already have on the table |
+| `ldc` | Load a constant (e.g. `"Aman"`) |
+| `invokevirtual` | Call an instance method (`display`, `println`) |
+| `aload` / `aload_0` | Load an object reference (`this` / local) |
 | `return` | Done |
 
-You do **not** need to memorize every line. The point: **`javac` turned your Java into small JVM steps, and `java` runs those steps.**
+**Before vs After (mental model):**
 
-- Save text or a local screenshot under `notes/screenshots/` (keep screenshots on your laptop only)
-- Explain three of: `new`, `ldc`, `invokevirtual`, `aload`, `return`
+| Before | After |
+| ------ | ----- |
+| “The JVM runs my `.java` file” | “The JVM runs bytecode steps produced by `javac`” |
 
-**Verified (Windows):** `javap -c Person` shows constructor, `display()`, and `main` with the opcodes above (use `-c` only; skip `-v` for beginners).
+### Hands-on completion (not passive reading)
 
-## Expected result
+In `notes/javap-person.md` (under `java-bootcamp/notes/`), write:
 
-You can name what three instructions do from your listing.
+1. One sentence for what the constructor bytecode does
+2. One sentence for what `display` bytecode does
+3. Three opcodes you saw and what each means
+
+Optional: screenshot under `notes/screenshots/` (laptop only).
+
+## Predict the Output
+
+If you change `"Aman"` to `"Riya"` in source but **forget** `javac` before `java Person`, what still prints? Why?  
+Then recompile and confirm.
+
+## Troubleshooting
+
+| Problem | Fix |
+| ------- | --- |
+| `Error: class not found: Person` | Compile first; `cd` to exercises folder |
+| Overwhelmed by `-v` output | Use `javap -c` only (skip `-v` for now) |
+| Cannot find three opcodes | Look in `main` for `new`, `ldc`, `invokevirtual` |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | `javap -c Person` ran successfully | Pass / Fail |
+| 2 | Three opcodes explained in notes | Pass / Fail |
 
 ---
 
 ## Next
 
-Exercises 1–8 complete → open **one** OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → then graded [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md) (builds on these eight; separate folder `examples/jvm-compilation-lab/`).
+Exercises 1–8 complete → OS how-to → [`../lab1/LAB-1-WINDOWS.md`](../lab1/LAB-1-WINDOWS.md) or [`../lab1/LAB-1-MACOS.md`](../lab1/LAB-1-MACOS.md) → graded [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md) (`examples/jvm-compilation-lab/`).

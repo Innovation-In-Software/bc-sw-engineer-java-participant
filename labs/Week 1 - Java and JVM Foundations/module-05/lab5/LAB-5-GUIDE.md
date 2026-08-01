@@ -2,6 +2,18 @@
 
 > **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 5 [pre-lab exercises 1–7](../exercises/EXERCISES-INDEX.md) (Pass in your notes). Then open **one** OS how-to ([Windows](LAB-5-WINDOWS.md) · [macOS](LAB-5-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Build a library console: List catalog, Set IDs, Map loans, TreeSet/TreeMap reports |
+| **Skills practiced** | Collection choice, borrow/return invariants, safe iteration, sorted views |
+| **Expected outcome** | Smoke path: add → register → borrow → reports → exit; evidence under `notes/screenshots/lab-5/` |
+| **Estimated time** | Timed path ~45 min · Full path 90–240 min |
+| **Prerequisites** | Lab 0–3 habits · Exercises 1–7 Pass · JDK 21 |
+| **Expected files** | `examples/Lab5-LibraryManagement/src/com/academy/library/*.java` |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 5 — Java Collections Framework  
 **Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-05/lab5/`  
 **Difficulty:** Intermediate (Beginner-Friendly)  
@@ -18,7 +30,9 @@
 
 > **Hard gate — pre-lab exercises:** Complete **all seven** Module 5 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 5 is graded consolidation in a **separate** packaged project (`examples/Lab5-LibraryManagement/`), not a replacement for the flat exercises folder (`examples/module-05-exercises/`).
 
-## 45-minute timed path (use starter)
+> **Incremental build:** Exercises 1–7 (List/Set/Map/Iterator/choice + warm-up) → Lab 5 packaged `com.academy.library` with domain types and menu. Same `java-bootcamp`, new folder `Lab5-LibraryManagement/`.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).## 45-minute timed path (use starter)
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -804,6 +818,11 @@ Record pass/fail in `../../notes/lab5-answers.md` (from project; or `~/java-boot
 | Reports Available wrong | Map / flag out of sync | Update both on borrow/return |
 | IntelliJ cannot run Main | SDK / sources root | SDK 21; mark `src` as Sources |
 | VS Code terminal wrong folder | cwd | `cd` to `Lab5-LibraryManagement` |
+| `*.java` glob fails in PowerShell | PowerShell does not expand like bash | Name each `.java` file (see [LAB-5-WINDOWS.md](LAB-5-WINDOWS.md)) |
+| `ConcurrentModificationException` | `remove` inside enhanced-for | Use `Iterator.remove` (Exercise 5) |
+| TreeMap/TreeSet “wrong” order | Expecting insertion order | Sorted by natural / Comparator order |
+| HashMap print order differs run-to-run | Unspecified iteration order | Do not assert print order in tests |
+| Wrong project open | Marked `module-05-exercises` as Sources | Lab uses `Lab5-LibraryManagement/src` only |
 
 ---
 

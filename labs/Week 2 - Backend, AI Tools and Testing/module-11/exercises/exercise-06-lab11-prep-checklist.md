@@ -1,6 +1,25 @@
 # Exercise 6 — Lab 11 Prep Checklist
 
-**Module 11** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 11** · Checkpoint D · Exercises 1–6 Pass then Lab 11
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete Lab 11 prep checklist (lab10 base, notes path, no secrets) |
+| **Skills practiced** | Lab readiness |
+| **Expected outcome** | notes/lab11-prep-checklist.md |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-11-exercises/` → notes/lab11-prep-checklist.md |
+| **Checkpoint** | D (after slides 89) |
+
+## What you will learn
+
+- lab11-crm builds on lab10-crm domain
+- Review notes path is a graded deliverable
+- No secrets/PII in Copilot prompts
+
+**Enterprise context:** Prep checklists keep timed AI labs from devolving into environment firefighting.
 
 ## Goal
 
@@ -110,7 +129,18 @@ Write **Pass** only if all five files exist and fixtures are correct. Otherwise 
 
 `notes/lab11-prep-checklist.md` with correct fixtures, file presence checks, pre-lab-only scope, and Pass/Fail mark.
 
-## If it fails
+
+## Debug / design challenge
+
+Missing lab10-crm — note starter copy plan before marking Pass.
+
+## Predict the Output / Behavior
+
+Where do lab11-001 notes live in the graded project?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

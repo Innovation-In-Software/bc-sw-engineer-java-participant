@@ -1,6 +1,25 @@
 # Exercise 2 — Operation Matrix
 
-**Module 13** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 13** · Checkpoint B · Exercises 1–6 Pass then Lab 13
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Build an operation matrix (in/out/fault) for create/get/update |
+| **Skills practiced** | WSDL operation design |
+| **Expected outcome** | notes/lab13-operation-matrix.md |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-13-exercises/` → notes/lab13-operation-matrix.md |
+| **Checkpoint** | B (after slides 121–123) |
+
+## What you will learn
+
+- Each operation needs request, response, and fault stories
+- WSDL documents the operations consumers can call
+- Matrix prevents inventing ops mid-lab
+
+**Enterprise context:** Partner teams integrate from the operation matrix before Java exists.
 
 ## Goal
 
@@ -85,7 +104,18 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A two-operation matrix with Northstar happy path noted in `notes/lab13-operation-matrix.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Add getCustomer → CustomerNotFound fault to the matrix if missing.
+
+## Predict the Output / Behavior
+
+How many primary Customer ops does Lab 13 expect (create/get/update)?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

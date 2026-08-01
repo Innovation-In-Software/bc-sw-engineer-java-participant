@@ -1,14 +1,31 @@
 # Exercise 4 — Flake and CI Note
 
-**Module 19** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 19** · Checkpoint D · Classroom order **1 → 2 → 3 → 4 → 6 → 5** then Lab 19
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Document two flake sources and one CI constraint for Selenium |
+| **Skills practiced** | Flake mitigation, CI readiness |
+| **Expected outcome** | notes/lab19-flake-ci.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-19-exercises/` → notes/lab19-flake-ci.md |
+| **Checkpoint** | D (after slides 232) |
+
+## What you will learn
+
+- Flake: timing, animations, shared mutable data
+- Mitigation: testids, explicit waits, isolated fixtures
+- CI: headless browser + driver version alignment
+
+**Enterprise context:** CI agents without matching Chrome/driver versions fail green laptops mysteriously.
 
 ## Goal
 
-Create `notes/lab19-flake-ci.md` — document two flake sources and one CI constraint for Selenium.
+Create `notes/lab19-flake-ci.md` — flake and CI notes.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,20 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 19 — Flake and CI Note
 
-## Step 1 — Flake sources
-
-Timing, animations, shared mutable CRM data across tests.
-
-## Step 2 — Mitigation
-
-Isolated fixtures (Amina/Ravi), testids, explicit waits.
-
-## Step 3 — CI constraint
-
-Headless browser + driver version alignment on the agent.
+Flake: timing, animations, shared CRM data.
+Mitigation: isolated fixtures, testids, explicit waits.
+CI: headless + WebDriverManager / aligned driver.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +62,18 @@ From `examples/module-19-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 19 — Flake and CI Note
 
-## Step 1 — Flake sources
+## Flake sources
+1. _____
+2. _____
 
-Timing, animations, shared mutable CRM data across tests.
+## Mitigation
+_____
 
-## Step 2 — Mitigation
-
-Isolated fixtures (Amina/Ravi), testids, explicit waits.
-
-## Step 3 — CI constraint
-
-Headless browser + driver version alignment on the agent.
+## CI constraint
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,15 +82,25 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A short flake/CI readiness note in `notes/lab19-flake-ci.md`.
+Flake/CI note in `notes/lab19-flake-ci.md`.
 
-## If it fails
+## Debug / design challenge
+
+Why is Thread.sleep(2000) a flake magnet compared to waiting for customer-status?
+
+## Predict the Output / Behavior
+
+Name one reason committed chromedriver.exe breaks CI.
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab19-flake-ci.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 19 |
+| Only one flake source | List two |
+| Skipping CI constraint | Note headless/driver alignment |
 
 ## Pass criteria
 
@@ -91,6 +108,5 @@ Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab19-flake-ci.md`
 - [ ] Two flake sources
-- [ ] Mitigations listed
-- [ ] CI constraint named
-
+- [ ] Mitigation present
+- [ ] CI constraint present

@@ -1,6 +1,25 @@
 # Exercise 5 — Fill Correlation One-Liner TODOs
 
-**Module 12** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 12** · Checkpoint C · Exercises 1–6 Pass then Lab 12
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill correlation one-liner TODOs for lab-request-001 logging/review |
+| **Skills practiced** | Reviewability, correlation habit |
+| **Expected outcome** | notes/lab12-correlation-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-12-exercises/` → notes/lab12-correlation-todos.md |
+| **Checkpoint** | C (after slides 105–107) |
+
+## What you will learn
+
+- Correlation ids make demos and logs reviewable
+- Static analysis/IDE inspections are awareness — human review still required
+- One-liners document intent without rewriting the world
+
+**Enterprise context:** Support teams need correlation across create/get/update failures.
 
 ## Goal
 
@@ -93,7 +112,18 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Filled correlation TODOs ready for Lab 12 notes in `notes/lab12-correlation-todos.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Blank correlationId in a failure path — fill lab-request-001.
+
+## Predict the Output / Behavior
+
+Where should correlationId appear in Main demo output?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

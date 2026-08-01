@@ -1,20 +1,37 @@
-# Exercise 5 — AAA Service Tests Plan
+# Exercise 1 — AAA Service Tests Plan
 
-**Module 17** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 17** · Checkpoint A · Exercises 1–6 Pass then Lab 17
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Outline three AAA service tests you will write in Lab 17 |
+| **Skills practiced** | Arrange-Act-Assert planning |
+| **Expected outcome** | notes/lab17-aaa-plan.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-17-exercises/` → notes/lab17-aaa-plan.md |
+| **Checkpoint** | A (after slides 186–190) |
+
+## What you will learn
+
+- Happy path: activate Ravi PROSPECT→ACTIVE
+- Not found: CUS-9999 throws
+- Illegal: Amina ACTIVE transition rejected
+
+**Enterprise context:** Service tests are the fastest safety net for CRM status rules before UI or HTTP layers.
 
 ## Goal
 
-Create `notes/lab17-aaa-plan.md` — outline three AAA service tests you will write in Lab 17.
+Create `notes/lab17-aaa-plan.md` — outline three AAA service tests.
 
 ## Deliverable
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-aaa-service-tests-plan.md` (this file in the course repo) |
+| Guide | `exercises/exercise-01-aaa-service-tests-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-aaa-plan.md` |
 
 ## Worked example (read first)
@@ -24,20 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 17 — AAA Service Tests Plan
 
-## Step 1 — Happy path
-
+## Happy path
 AAA for activate Ravi PROSPECT → ACTIVE.
 
-## Step 2 — Not found
-
+## Not found
 AAA for CUS-9999 throws not found.
 
-## Step 3 — Illegal
-
+## Illegal
 AAA for illegal transition on Amina ACTIVE.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -53,20 +67,17 @@ From `examples/module-17-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 17 — AAA Service Tests Plan
 
-## Step 1 — Happy path
+## Happy path (Arrange / Act / Assert)
+_____
 
-AAA for activate Ravi PROSPECT → ACTIVE.
+## Not found
+_____
 
-## Step 2 — Not found
-
-AAA for CUS-9999 throws not found.
-
-## Step 3 — Illegal
-
-AAA for illegal transition on Amina ACTIVE.
+## Illegal
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -75,22 +86,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Three AAA outlines covering happy/not-found/illegal in `notes/lab17-aaa-plan.md`.
+Three AAA outlines in `notes/lab17-aaa-plan.md`.
 
-## If it fails
+## Debug / design challenge
+
+If Arrange reuses a static repo across tests, which flaky symptom appears?
+
+## Predict the Output / Behavior
+
+Does Act for illegal Amina call activate or changeStatus to PROSPECT?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab17-aaa-plan.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 17 |
+| Only happy path listed | Add not-found and illegal |
+| Starting the full lab mid-exercise | Finish pre-lab notes first |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab17-aaa-plan.md`
-- [ ] Three AAA outlines
-- [ ] Fixtures used
-- [ ] Notes saved
-
+- [ ] Happy path AAA
+- [ ] Not-found AAA
+- [ ] Illegal AAA

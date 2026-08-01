@@ -1,14 +1,31 @@
 # Exercise 4 — Interface and Constructor Sketch
 
-**Module 15** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 15** · Checkpoint D · Exercises 1–6 Pass then Lab 15
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch CustomerService methods and constructor dependencies on paper |
+| **Skills practiced** | Interface design, constructor DI |
+| **Expected outcome** | notes/lab15-interface-ctor-sketch.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-15-exercises/` → notes/lab15-interface-ctor-sketch.md |
+| **Checkpoint** | D (after slides 158–163) |
+
+## What you will learn
+
+- Methods such as findById / activate / changeStatus
+- Ctor deps: repository + validator (+ optional notifier)
+- Prefer explicit ctor over field injection
+
+**Enterprise context:** Constructor injection makes DefaultCustomerService testable with a fake repository — no Spring required for Lab 15.
 
 ## Goal
 
-Create `notes/lab15-interface-ctor-sketch.md` — sketch CustomerService methods and constructor dependencies on paper.
+Create `notes/lab15-interface-ctor-sketch.md` — interface + ctor sketch.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -25,23 +42,19 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 # Lab 15 — Interface and Constructor Sketch
 
 ## Step 1 — Interface
-
-Methods: findById, activate(customerId).
+Methods: findById, activate(customerId) / changeStatus.
 
 ## Step 2 — Constructor
-
-Deps: CustomerRepository, optional CustomerNotifier — JDK-style ctor injection sketch.
+Deps: CustomerRepository, CustomerValidator (optional notifier).
 
 ## Step 3 — No framework magic
-
-Note: prefer explicit ctor over field injection in standards.
+Prefer explicit ctor over field injection.
 
 ## Step 4 — Prep boundary
-
-Write: *Prepare for Lab 15; do not complete full service implementation now.*
+Prepare for Lab 15; do not complete full service implementation now.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -58,23 +71,19 @@ From `examples/module-15-exercises/`, create `notes/` if needed, then create `no
 # Lab 15 — Interface and Constructor Sketch
 
 ## Step 1 — Interface
-
-Methods: findById, activate(customerId).
+Methods: _____
 
 ## Step 2 — Constructor
-
-Deps: CustomerRepository, optional CustomerNotifier — JDK-style ctor injection sketch.
+Deps: _____
 
 ## Step 3 — No framework magic
-
-Note: prefer explicit ctor over field injection in standards.
+Prefer _____ over field injection.
 
 ## Step 4 — Prep boundary
-
-Write: *Prepare for Lab 15; do not complete full service implementation now.*
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -85,13 +94,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 Interface + ctor sketch ready for the timed lab in `notes/lab15-interface-ctor-sketch.md`.
 
-## If it fails
+## Debug / design challenge
+
+If you `new` the repository inside DefaultCustomerService, what test ability do you lose?
+
+## Predict the Output / Behavior
+
+Should activate take a full Customer entity from the client, or a customerId?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab15-interface-ctor-sketch.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 15 |
+| Field injection only | Sketch constructor parameters |
+| Implementing the full lab class here | Paper sketch only |
 
 ## Pass criteria
 
@@ -101,4 +120,3 @@ Self-check before marking Pass:
 - [ ] Methods listed
 - [ ] Deps listed
 - [ ] Pre-lab boundary present
-

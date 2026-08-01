@@ -1,14 +1,31 @@
 # Exercise 2 — Actuator Allow-List
 
-**Module 21** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 21** · Checkpoint B · Exercises 1–6 Pass then Lab 21
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Draft which Actuator endpoints may be exposed in lab vs locked down |
+| **Skills practiced** | Management endpoint security mindset |
+| **Expected outcome** | notes/lab21-actuator-allowlist.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-21-exercises/` → notes/lab21-actuator-allowlist.md |
+| **Checkpoint** | B (after slides 261–262) |
+
+## What you will learn
+
+- Candidates: health, info, metrics, prometheus
+- Lab may allow health/metrics; lock env/beans/configprops
+- Prod needs auth/network controls
+
+**Enterprise context:** Open `/actuator/env` on the public internet is a credential leak waiting to happen.
 
 ## Goal
 
-Create `notes/lab21-actuator-allowlist.md` — draft which Actuator endpoints may be exposed in lab vs locked down.
+Create `notes/lab21-actuator-allowlist.md` — allow-list notes.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 21 — Actuator Allow-List
 
-## Step 1 — Candidates
-
-health, info, metrics, prometheus — list in this notes file.
-
-## Step 2 — Allow-list
-
-Lab allow: health (and maybe info); lock env/beans/configprops.
-
-## Step 3 — Auth note
-
-One sentence: production metrics scrapes need network policy/auth.
-
-## Step 4 — Prep only
-
-Write: *Prepare for Lab 21; do not open all Actuator endpoints in prep.*
+Candidates: health, info, metrics, prometheus.
+Lab allow: health (+ metrics for demos); lock env/beans/configprops.
+Prod: authenticate/network-restrict management port.
+Lab exposure ≠ production exposure.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +63,20 @@ From `examples/module-21-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 21 — Actuator Allow-List
 
-## Step 1 — Candidates
+## Candidates
+_____
 
-health, info, metrics, prometheus — list in this notes file.
+## Lab allow
+_____
 
-## Step 2 — Allow-list
+## Lock / deny
+_____
 
-Lab allow: health (and maybe info); lock env/beans/configprops.
-
-## Step 3 — Auth note
-
-One sentence: production metrics scrapes need network policy/auth.
-
-## Step 4 — Prep only
-
-Write: *Prepare for Lab 21; do not open all Actuator endpoints in prep.*
+## Prod auth note
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-An Actuator allow-list with lockdown items in `notes/lab21-actuator-allowlist.md`.
+Allow-list with lab vs prod caution in `notes/lab21-actuator-allowlist.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should /actuator/beans be on the lab allow-list for the graded demo?
+
+## Predict the Output / Behavior
+
+What happens if exposure.include=* in production YAML?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab21-actuator-allowlist.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 21 |
+| Allowing env in lab casually | Lock env/beans/configprops |
+| No prod caution | Write auth/network note |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab21-actuator-allowlist.md`
-- [ ] Allow items listed
-- [ ] Lockdown items listed
-- [ ] Auth/network note present
-
+- [ ] Candidates listed
+- [ ] Lab allow stated
+- [ ] Prod caution present

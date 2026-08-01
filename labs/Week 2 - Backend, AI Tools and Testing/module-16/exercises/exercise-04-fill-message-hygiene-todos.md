@@ -1,14 +1,31 @@
 # Exercise 4 — Fill Message Hygiene TODOs
 
-**Module 16** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 16** · Checkpoint D · Exercises 1–6 Pass then Lab 16
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete fill-in blanks for safe vs unsafe error messages |
+| **Skills practiced** | Client-safe messaging, log vs response |
+| **Expected outcome** | notes/lab16-message-hygiene-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-16-exercises/` → notes/lab16-message-hygiene-todos.md |
+| **Checkpoint** | D (after slides 178–181) |
+
+## What you will learn
+
+- Safe not-found vs unsafe SQL/PII messages
+- Stack traces in server logs only
+- correlationId always; live Spring advice not required in pre-lab
+
+**Enterprise context:** Leaking SQL or emails in error JSON is a security incident waiting for a ticket.
 
 ## Goal
 
-Create `notes/lab16-message-hygiene-todos.md` — complete fill-in blanks for safe vs unsafe error messages.
+Create `notes/lab16-message-hygiene-todos.md` — safe vs unsafe messages.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,29 +41,14 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 16 — Fill Message Hygiene TODOs
 
-## Step 1 — Copy TODOs
-
-Safe not-found message: (your note here)
-Unsafe message anti-pattern: (your note here)
-Correlation always field: (your note here)
-Log stack trace? (your note here) (server logs yes/no)
-Return stack trace to client? (your note here)
-@ControllerAdvice live in this pre-lab? (your note here)
-
-## Step 2 — Fill blanks
-
-Fill safe message for unknown customer, unsafe SQL/PII example, `correlationId`, yes for server logs, no for client, no for live advice.
-
-## Step 3 — Correlation always
-
-Write: *Every error sketch includes lab-request-001 (or request header value).*
-
-## Step 4 — Self-check
-
-Confirm client stack-trace blank is no.
+Safe not-found: Customer not found.
+Unsafe: SQLException: ... email=...
+Correlation field: correlationId
+Log stack trace? yes (server) · Return stack to client? no
+Live @ControllerAdvice in pre-lab? no
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,29 +64,15 @@ From `examples/module-16-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 16 — Fill Message Hygiene TODOs
 
-## Step 1 — Copy TODOs
-
 Safe not-found message: _____
 Unsafe message anti-pattern: _____
 Correlation always field: _____
-Log stack trace? _____ (server logs yes/no)
+Log stack trace (server)? _____
 Return stack trace to client? _____
 @ControllerAdvice live in this pre-lab? _____
 
-## Step 2 — Fill blanks
-
-Fill safe message for unknown customer, unsafe SQL/PII example, `correlationId`, yes for server logs, no for client, no for live advice.
-
-## Step 3 — Correlation always
-
-Write: *Every error sketch includes lab-request-001 (or request header value).*
-
-## Step 4 — Self-check
-
-Confirm client stack-trace blank is no.
-
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,15 +81,25 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Filled hygiene TODOs with correlation-always rule in `notes/lab16-message-hygiene-todos.md`.
+Filled hygiene TODOs in `notes/lab16-message-hygiene-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rewrite: "User admin@corp.com password hash mismatch" into a safe client message.
+
+## Predict the Output / Behavior
+
+If the client sees a stack trace, which Pass criterion already failed?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab16-message-hygiene-todos.md` |
-| Returning e.getMessage() blindly | Map to stable client messages |
-| Omitting correlation on 500s | Always include correlationId |
+| Allowing client stack traces | Set client stack blank to no |
+| Skipping correlation field | Name correlationId |
 
 ## Pass criteria
 
@@ -109,6 +107,5 @@ Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab16-message-hygiene-todos.md`
 - [ ] All _____ replaced
-- [ ] Correlation rule written
-- [ ] No live @ControllerAdvice claimed
-
+- [ ] Client stack = no
+- [ ] Correlation named

@@ -1,20 +1,37 @@
-# Exercise 4 — Fill JaCoCo Gate Narrative TODOs
+# Exercise 5 — Fill JaCoCo Gate Narrative TODOs
 
-**Module 17** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 17** · Checkpoint D · Exercises 1–6 Pass then Lab 17
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete fill-in blanks for a JaCoCo gate narrative (no live report required) |
+| **Skills practiced** | Coverage gate literacy |
+| **Expected outcome** | notes/lab17-jacoco-gate-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-17-exercises/` → notes/lab17-jacoco-gate-todos.md |
+| **Checkpoint** | D (after slides 194–198) |
+
+## What you will learn
+
+- Tool JaCoCo; phase verify; LINE ≥ ~80%
+- Package com.northstar.crm.service
+- Mockito depth = no in this pre-lab
+
+**Enterprise context:** CI gates on service coverage stop silent deletions of transition tests.
 
 ## Goal
 
-Create `notes/lab17-jacoco-gate-todos.md` — complete fill-in blanks for a JaCoCo gate narrative (no live report required).
+Create `notes/lab17-jacoco-gate-todos.md` — JaCoCo narrative TODOs.
 
 ## Deliverable
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-fill-jacoco-gate-todos.md` (this file in the course repo) |
+| Guide | `exercises/exercise-05-fill-jacoco-gate-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-jacoco-gate-todos.md` |
 
 ## Worked example (read first)
@@ -24,29 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 17 — Fill JaCoCo Gate Narrative TODOs
 
-## Step 1 — Copy TODOs
+Tool: JaCoCo
+Maven phase: verify (clean verify)
+Target LINE %: 80 (0.80)
+Package: com.northstar.crm.service
+Gap example: rare branch still missed
+Mockito depth in this pre-lab? no
 
-Tool: (your note here)
-Maven phase idea: (your note here)
-Target line coverage % (lab goal): (your note here)
-Package to measure: (your note here)
-Gap you still expect: (your note here)
-Mockito depth in this pre-lab? (your note here)
-
-## Step 2 — Fill blanks
-
-Fill JaCoCo, verify/test phase idea, a % goal (e.g. 70), service package name idea, one gap, and `no` for Mockito depth.
-
-## Step 3 — AAA plan line
-
-Add: *AAA service tests planned; collaborators real or simple fakes until Lab 18.*
-
-## Step 4 — Self-check
-
-Confirm Mockito depth blank is no.
+AAA service tests planned; collaborators real or simple fakes until Lab 18.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,8 +67,6 @@ From `examples/module-17-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 17 — Fill JaCoCo Gate Narrative TODOs
 
-## Step 1 — Copy TODOs
-
 Tool: _____
 Maven phase idea: _____
 Target line coverage % (lab goal): _____
@@ -71,20 +74,11 @@ Package to measure: _____
 Gap you still expect: _____
 Mockito depth in this pre-lab? _____
 
-## Step 2 — Fill blanks
-
-Fill JaCoCo, verify/test phase idea, a % goal (e.g. 70), service package name idea, one gap, and `no` for Mockito depth.
-
-## Step 3 — AAA plan line
-
-Add: *AAA service tests planned; collaborators real or simple fakes until Lab 18.*
-
-## Step 4 — Self-check
-
-Confirm Mockito depth blank is no.
+## AAA line
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,15 +87,25 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Filled JaCoCo narrative TODOs with Mockito deferral in `notes/lab17-jacoco-gate-todos.md`.
+Filled JaCoCo narrative in `notes/lab17-jacoco-gate-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+Why does mvn test alone sometimes skip the JaCoCo check rule?
+
+## Predict the Output / Behavior
+
+If include package is wrong, what ratio do you often see?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab17-jacoco-gate-todos.md` |
-| Chasing 100% in prep | Set a realistic lab gate and list gaps |
-| Mixing UI Selenium here | UI automation is Lab 19 |
+| Claiming Mockito required now | Answer no for Mockito depth |
+| Omitting package name | Use com.northstar.crm.service |
 
 ## Pass criteria
 
@@ -109,6 +113,5 @@ Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab17-jacoco-gate-todos.md`
 - [ ] All _____ replaced
-- [ ] AAA plan line present
-- [ ] Mockito deferred
-
+- [ ] Package named
+- [ ] Mockito = no

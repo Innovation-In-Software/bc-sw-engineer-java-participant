@@ -2,6 +2,20 @@
 
 **Theme:** Copilot for tests + refactoring (JUnit 5 / Mockito)
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete real tests + notifier extract + AI review notes |
+| **Skills practiced** | AAA asserts, Mockito verify sample, refactor compatibility ctor |
+| **Expected outcome** | `mvn clean test` → 8 tests green; notes lab11-001–004 |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab11-crm/` copied from this starter |
+
+**Boilerplate reduced:** Domain from Lab 10 style + test shells given — reject trivial asserts; finish notifier wiring.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-11-GUIDE.md`](../LAB-11-GUIDE.md)
+
 ## Copy into your workspace
 
 **Windows (PowerShell)** — from this lab folder:

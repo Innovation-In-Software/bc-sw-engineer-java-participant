@@ -1,6 +1,25 @@
 # Exercise 1 — Weak vs Strong Prompts
 
-**Module 10** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 10** · Checkpoint A · Exercises 1–6 Pass then Lab 10
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Contrast a weak Copilot prompt with a strong Northstar-scoped prompt |
+| **Skills practiced** | Prompt engineering, constraint writing |
+| **Expected outcome** | notes/lab10-prelab-prompts.md with weak/strong + constraints |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-10-exercises/` → notes/lab10-prelab-prompts.md |
+| **Checkpoint** | A (after slides 58–65) |
+
+## What you will learn
+
+- Vague prompts invite wrong packages, JDK APIs, and phantom frameworks
+- Strong prompts name package, JDK, and explicit exclusions (no Spring/JPA)
+- Constraints belong in the prompt, not only in your head
+
+**Enterprise context:** Banking CRM prompts must keep AI inside approved stack boundaries.
 
 ## Goal
 
@@ -83,7 +102,18 @@ Why weak: ...
 
 Paired weak/strong prompts with three explicit constraints in `notes/lab10-prelab-prompts.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Strengthen: 'make a service' into a Northstar CustomerService prompt with three constraints.
+
+## Predict the Output / Behavior
+
+What wrong annotation might appear if you omit 'no JPA'?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

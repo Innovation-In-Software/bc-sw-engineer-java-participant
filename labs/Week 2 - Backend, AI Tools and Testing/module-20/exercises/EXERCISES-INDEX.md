@@ -1,28 +1,26 @@
 # Module 20 — Pre-Lab Exercises
 
-> **Start here for Module 20:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Start here for Module 20:** [`../README.md`](../README.md) · **Pacing:** [`../PACING.md`](../PACING.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 20 — Logging Frameworks and Diagnostics  
 **Next:** [`../lab20/LAB-20-WINDOWS.md`](../lab20/LAB-20-WINDOWS.md) or [`../lab20/LAB-20-MACOS.md`](../lab20/LAB-20-MACOS.md) → [`../lab20/LAB-20-GUIDE.md`](../lab20/LAB-20-GUIDE.md)
 
-> Complete these exercises **in order** after the slides and **before** Lab 20.  
-> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-20-exercises/` — these are **notes files**, not the graded lab project.  
+> Complete these exercises **at the checkpoints** (not all slides first). Order **1 → 2 → 3 → 4 → 5 → 6**.  
+> Use JDK 21. Work under `examples/module-20-exercises/` — **notes files**, not the graded lab.  
 > Lab 20 is the graded consolidation. Do **not** finish Lab 20 during pre-lab.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+> **Tip:** Each exercise has an **Activity card**, **Worked example**, **Predict/Debug**, and **Troubleshooting**. Optional starter shells: [`starter/`](starter/README.md).
 
 ## What you produce (all exercises)
 
-| # | Your deliverable file | Type |
-| - | --------------------- | ---- |
-| 1 | `notes/lab20-level-quiz.md` | Log Level Quiz |
-| 2 | `notes/lab20-safe-logs.md` | Rewrite Unsafe Logs |
-| 3 | `notes/lab20-mdc-lifecycle.md` | MDC Lifecycle |
-| 4 | `notes/lab20-mdc-clear.md` | Clear MDC Finally Drill |
-| 5 | `notes/lab20-forbidden-pii-todos.md` | Fill Forbidden PII Checklist TODOs |
-| 6 | `notes/lab20-prep-checklist.md` | Lab 20 Prep Checklist |
-
-Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
+| # | Your deliverable file | Type | Checkpoint |
+| - | --------------------- | ---- | ---------- |
+| 1 | `notes/lab20-level-quiz.md` | Log Level Quiz | A |
+| 2 | `notes/lab20-safe-logs.md` | Rewrite Unsafe Logs | B |
+| 3 | `notes/lab20-mdc-lifecycle.md` | MDC Lifecycle | C |
+| 4 | `notes/lab20-mdc-clear.md` | Clear MDC Finally Drill | C |
+| 5 | `notes/lab20-forbidden-pii-todos.md` | Fill Forbidden PII Checklist TODOs | D |
+| 6 | `notes/lab20-prep-checklist.md` | Lab 20 Prep Checklist | D |
 
 ## Scope boundary — do not build later technology yet
 
@@ -61,21 +59,19 @@ cd examples/module-20-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available. You create markdown notes here; Lab 20 uses its own `examples/lab20-*/` (or module lab folder) project.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 20 uses `examples/lab20-crm/`.
 
-## Exercise index
+## Exercise index (classroom interleave)
 
-Complete in this sequence (matches Module slide order):
-
-| # | Exercise | New skill | Deliverable | File |
+| # | After slides | Exercise | Deliverable | File |
 | --- | --- | --- | --- | --- |
-| 1 | Log Level Quiz | Analysis exercise | `notes/lab20-level-quiz.md` | [`exercise-01-level-quiz.md`](exercise-01-level-quiz.md) |
-| 2 | Rewrite Unsafe Logs | Analysis exercise | `notes/lab20-safe-logs.md` | [`exercise-02-rewrite-unsafe-logs.md`](exercise-02-rewrite-unsafe-logs.md) |
-| 3 | MDC Lifecycle | Architecture exercise | `notes/lab20-mdc-lifecycle.md` | [`exercise-03-mdc-lifecycle.md`](exercise-03-mdc-lifecycle.md) |
-| 4 | Clear MDC Finally Drill | Documentation exercise | `notes/lab20-mdc-clear.md` | [`exercise-04-clear-mdc-finally.md`](exercise-04-clear-mdc-finally.md) |
-| 5 | Fill Forbidden PII Checklist TODOs | Hands-on exercise | `notes/lab20-forbidden-pii-todos.md` | [`exercise-05-fill-forbidden-pii-todos.md`](exercise-05-fill-forbidden-pii-todos.md) |
-| 6 | Lab 20 Prep Checklist | Documentation exercise | `notes/lab20-prep-checklist.md` | [`exercise-06-lab20-prep-checklist.md`](exercise-06-lab20-prep-checklist.md) |
+| 1 | 237–243 (A) | Log Level Quiz | `notes/lab20-level-quiz.md` | [`exercise-01-level-quiz.md`](exercise-01-level-quiz.md) |
+| 2 | 244 (B) | Rewrite Unsafe Logs | `notes/lab20-safe-logs.md` | [`exercise-02-rewrite-unsafe-logs.md`](exercise-02-rewrite-unsafe-logs.md) |
+| 3 | 245–247 (C) | MDC Lifecycle | `notes/lab20-mdc-lifecycle.md` | [`exercise-03-mdc-lifecycle.md`](exercise-03-mdc-lifecycle.md) |
+| 4 | 245–247 (C) | Clear MDC Finally Drill | `notes/lab20-mdc-clear.md` | [`exercise-04-clear-mdc-finally.md`](exercise-04-clear-mdc-finally.md) |
+| 5 | 248–250 (D) | Fill Forbidden PII Checklist TODOs | `notes/lab20-forbidden-pii-todos.md` | [`exercise-05-fill-forbidden-pii-todos.md`](exercise-05-fill-forbidden-pii-todos.md) |
+| 6 | 248–250 (D) | Lab 20 Prep Checklist | `notes/lab20-prep-checklist.md` | [`exercise-06-lab20-prep-checklist.md`](exercise-06-lab20-prep-checklist.md) |
 
 ## Done when
 
-All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 20 OS guide.
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep checklist self-mark is **Pass**. Then open the Lab 20 OS guide.

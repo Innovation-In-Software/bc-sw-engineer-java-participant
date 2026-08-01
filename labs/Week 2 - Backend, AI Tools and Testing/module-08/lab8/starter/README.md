@@ -2,6 +2,20 @@
 
 **Theme:** Maven layered project structure (Northstar CRM skeleton)
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill layer stubs + Main banner in the CRM Maven skeleton |
+| **Skills practiced** | Packages, entity/DTO, service/repository/controller stubs, docs |
+| **Expected outcome** | Smoke test prints Lab 8 banner + seven packages + sample IDs |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab8-crm/` copied from this starter |
+
+**Boilerplate reduced:** `pom.xml`, package folders, and stub class shells are given — fill `// TODO`s; no Spring/JPA.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-8-GUIDE.md`](../LAB-8-GUIDE.md)
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab8-crm`.

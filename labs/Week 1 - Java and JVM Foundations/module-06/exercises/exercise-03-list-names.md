@@ -1,11 +1,30 @@
 # Exercise 3 — Map Employees to Names
 
-**Module 6** · Pre-lab practice · finish Exercises 1–7 Pass, then OS how-to → [`../lab6/LAB-6-GUIDE.md`](../lab6/LAB-6-GUIDE.md)
+**Module 6** · Pre-lab practice · Checkpoint B · Exercises 1–7 Pass then Lab 6
 **Folder:** `examples/module-06-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Streams: Mapping Employees to Names](../../../lab_diagrams/mod06-ex03-list-names.png)
 
 > **Builds on Exercise 1:** Reuse the shared employee model and dataset.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map Employee objects to names with map and a method reference |
+| **Skills practiced** | map, method reference Employee::name |
+| **Expected outcome** | List of five names prints in source order |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-06-exercises/` → NamesDemo.java |
+| **Checkpoint** | B (after slides 158–159) |
+
+## What you will learn
+
+- map transforms each element to another value
+- Method references replace simple lambdas like e -> e.name()
+- Result type changes from Employee to String
+
+**Enterprise context:** Directory exports often project full records down to display names or emails.
 
 ## Goal
 
@@ -144,7 +163,18 @@ Confirm all five names print in uppercase, then restore `Employee::name`.
 All five employees produce exactly five names. The method-reference and lambda
 versions give the same result.
 
-## If it fails
+
+## Debug / design challenge
+
+Use map(Employee::salary) by mistake — fix so the list is names, not doubles.
+
+## Predict the Output / Behavior
+
+Does map change the number of elements when every employee has a name?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

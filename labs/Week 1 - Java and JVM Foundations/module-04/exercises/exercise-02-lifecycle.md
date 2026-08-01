@@ -1,9 +1,28 @@
 # Exercise 2 — Object Lifecycle and Reachability
 
-**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · Checkpoint A · all 7 then lab
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Object References and Garbage-Collection Eligibility](../../../lab_diagrams/mod04-ex02-object-lifecycle.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Follow aliases until an object becomes GC-eligible |
+| **Skills practiced** | reachability, aliases, nulling references |
+| **Expected outcome** | Lifecycle notes show when the object becomes unreachable |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-04-exercises/ObjectLifecycleDemo.java` |
+| **Checkpoint** | A |
+
+## What you will learn
+
+- GC cares about reachability, not scope alone
+- Aliases keep objects alive
+- Nulling the last root enables collection
+
+**Enterprise context:** Caches and session maps keep objects reachable long after a request ends.
 
 ## Goal
 
@@ -24,6 +43,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -139,6 +161,19 @@ You can explain the difference between removing one alias, losing all strong ref
 | `first = null` destroys the object | The object remains reachable through `alias` |
 | `System.gc()` immediately frees it | Collection timing is controlled by the JVM |
 | Two references mean two objects | Both references can point to one object |
+
+
+## Predict the Output / Behavior
+
+After a = b = null, is the Person eligible for GC?
+
+## Troubleshooting
+
+| Problem | Fix |
+| ------- | --- |
+| Blank/`_____` left in code | Replace with real Java |
+| Wrong folder | `cd` to `module-04-exercises` |
+| Empty GC log | Use JDK 21 `-Xlog:gc` before class name |
 
 ## Pass criteria
 

@@ -1,11 +1,30 @@
 # Exercise 4 — Methods
 
-**Module 2** · Pre-lab practice · finish core 1–7 Pass, then [`../lab2/LAB-2-GUIDE.md`](../lab2/LAB-2-GUIDE.md)  
+**Module 2** · Pre-lab practice · Checkpoint D · core 1–7 then lab
 **Folder:** `examples/module-02-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Methods: Return Values and Overloading](../../../lab_diagrams/mod02-ex04-methods.png)
 
 > **New for Module 2:** declaring your own methods, passing parameters, returning a value, and overloading.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Implement methods with params/returns and a simple overload |
+| **Skills practiced** | method signatures, return, overloading |
+| **Expected outcome** | Calls print expected results for add/multiply (or overload pair) |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-02-exercises/MethodsDemo.java` |
+| **Checkpoint** | D (after slides 67–69) |
+
+## What you will learn
+
+- Parameters in / return out
+- Overloading = same name, different parameter lists
+- Return type alone cannot overload
+
+**Enterprise context:** Fee calculators expose overload-friendly APIs (int cents vs double amount).
 
 ## Goal
 
@@ -24,6 +43,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/MethodsDemo.java`](starter/MethodsDemo.java). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -94,7 +116,14 @@ square(2.5) = 6.25
 
 Both calls print the correct square, and the program compiles even though two methods share the name `square`.
 
-## If it fails
+
+## Predict the Output
+
+Which overload runs for `add(2, 3)` vs `add(2.5, 3.5)`?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

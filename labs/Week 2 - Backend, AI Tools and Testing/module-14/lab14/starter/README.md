@@ -2,6 +2,22 @@
 
 **Theme:** DTOs + Jakarta Bean Validation at the API boundary
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete DTO annotations, mapper, facade validation, and tests |
+| **Skills practiced** | Bean Validation, no-leak mapping, correlation on failures |
+| **Expected outcome** | `mvn -B clean test` green · response DTOs only |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab14-crm/` copied from this starter |
+
+**Boilerplate reduced:** Baseline CRM + DTO shells given — fill `// TODO`; do **not** add Spring Boot.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-14-GUIDE.md`](../LAB-14-GUIDE.md)
+
+**Honesty:** No Spring `@Valid` controllers in Lab 14 — use `ValidatorFactory` in the facade.
+
 ## Copy into your workspace
 
 **Windows (PowerShell)** — from this lab folder:

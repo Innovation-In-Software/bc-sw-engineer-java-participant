@@ -1,14 +1,31 @@
 # Exercise 1 — Cardinality Anti-Patterns
 
-**Module 21** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 21** · Checkpoint A · Exercises 1–6 Pass then Lab 21
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Reject labels that explode time-series for Northstar traffic |
+| **Skills practiced** | Metric label hygiene |
+| **Expected outcome** | notes/lab21-cardinality-antipatterns.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-21-exercises/` → notes/lab21-cardinality-antipatterns.md |
+| **Checkpoint** | A (after slides 255–260) |
+
+## What you will learn
+
+- outcome=success|failure is OK
+- customerId / correlationId as labels = no
+- Ids belong in logs/traces
+
+**Enterprise context:** One label per customerId can create millions of Prometheus series and take down scrapers.
 
 ## Goal
 
-Create `notes/lab21-cardinality-antipatterns.md` — reject labels that explode time-series for Northstar traffic.
+Create `notes/lab21-cardinality-antipatterns.md` — label OK/not table.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,29 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 21 — Cardinality Anti-Patterns
 
-## Reference
-
 | Label | OK? |
 | --- | --- |
 | outcome=success|failure | yes |
-| status=ACTIVE|PROSPECT | careful / limited |
-| customerId=CUS-1001 | no — high cardinality |
-| correlationId=lab-request-001 | no — use logs/traces |
+| customerId=CUS-1001 | no |
+| correlationId=lab-request-001 | no — use logs |
 
-## Step 2 — Where ids go
-
-customerId and correlation belong in logs/traces, not metric labels.
-
-## Step 3 — Good metric
-
-Name idea: `customer_create_failure_total` with reason=validation|conflict.
-
-## Step 4 — Boundary
-
-Prep sketch only — do not complete full Lab 21 dashboards now.
+Ids go in logs/traces. Good metric: crm.customer.create with outcome tag.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -62,29 +66,20 @@ From `examples/module-21-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 21 — Cardinality Anti-Patterns
 
-## Reference
-
 | Label | OK? |
 | --- | --- |
-| outcome=success|failure | yes |
-| status=ACTIVE|PROSPECT | careful / limited |
-| customerId=CUS-1001 | no — high cardinality |
-| correlationId=lab-request-001 | no — use logs/traces |
+| outcome=success|failure | _____ |
+| customerId=CUS-1001 | _____ |
+| correlationId=lab-request-001 | _____ |
 
-## Step 2 — Where ids go
+## Where ids go
+_____
 
-customerId and correlation belong in logs/traces, not metric labels.
-
-## Step 3 — Good metric
-
-Name idea: `customer_create_failure_total` with reason=validation|conflict.
-
-## Step 4 — Boundary
-
-Prep sketch only — do not complete full Lab 21 dashboards now.
+## Good metric sketch
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -93,22 +88,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A cardinality do/don't table tied to CRM ids in `notes/lab21-cardinality-antipatterns.md`.
+Cardinality table in `notes/lab21-cardinality-antipatterns.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rewrite metric customer_create{customerId="CUS-1001"} into a safe design.
+
+## Predict the Output / Behavior
+
+Is status=ACTIVE|PROSPECT always safe as a label? When might it still hurt?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab21-cardinality-antipatterns.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 21 |
+| Allowing customerId labels | Mark no — high cardinality |
+| Skipping where-ids-go | Send ids to logs/traces |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab21-cardinality-antipatterns.md`
-- [ ] Table plus URL anti-pattern
-- [ ] Ids routed to logs/traces
-- [ ] Good metric named
-
+- [ ] Three label rows
+- [ ] Ids placement noted
+- [ ] Good metric sketched

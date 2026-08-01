@@ -1,5 +1,19 @@
 # Lab 12: Coding Standards and Refactoring — Northstar CRM Cleanup
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 12 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-12-WINDOWS.md) · [macOS](LAB-12-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Catalog smells and refactor messy `CustomerService` to a clean target API |
+| **Skills practiced** | Smell docs, naming, equals/Map lookups, before/after evidence, tests green |
+| **Expected outcome** | `mvn -B clean test` → **Tests run: 8**; `docs/smells.md` + before-after notes |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 11 habits · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab12-crm/` + `docs/smells.md`, `before-after.md`, standards check |
+| **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
+
 **Module:** 12 — Java Coding Standards and Best Practices  
 **Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-12/lab12/`  
 **Difficulty:** Intermediate  
@@ -12,7 +26,15 @@
 | Windows | [LAB-12-WINDOWS.md](LAB-12-WINDOWS.md) |
 | macOS | [LAB-12-MACOS.md](LAB-12-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 12 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21**, **Maven 3.9+**, and **GitHub Copilot** signed in. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`.
+
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-12-exercises/`; graded work is `examples/lab12-crm/`.
+
+> **Incremental build:** API sketch + smell bingo + equals notes → Lab 12 freeze/refactor/evidence docs.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–D).
+
+> **Hygiene:** Freeze baseline as `CustomerService.before.java.txt`. Prefer `Map` + `equals` for ids. No Spring/SOAP.
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11; Maven 3.9.9):**
 
@@ -751,6 +773,9 @@ unknown CUS-9999 -> IllegalArgumentException (+ correlationId)
 | Copilot adds Spring | Pattern match | Reject; document in ai-review-notes |
 | IDE red after renames | Stale index | Reimport Maven / Reload Window |
 | Verify fails | Missing Surefire/JUnit | Copy Lab 11 test plugin/deps |
+| Working in `module-12-exercises` for the lab | Wrong project | Lab lives in `examples/lab12-crm` |
+| Empty `docs/smells.md` | Skipped catalog | ≥8 smells required (Ex 3 habit) |
+| SOAP / controller advice sneaking in | Over-eager future labs | Keep Module 12 plain Java cleanup only |
 
 ### Cannot connect
 

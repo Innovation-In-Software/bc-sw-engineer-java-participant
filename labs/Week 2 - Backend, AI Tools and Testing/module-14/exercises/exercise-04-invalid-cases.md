@@ -1,14 +1,31 @@
 # Exercise 4 — Invalid Cases Catalog
 
-**Module 14** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 14** · Checkpoint D · Exercises 1–6 Pass then Lab 14
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Catalog invalid requests you will assert later in Lab 14 |
+| **Skills practiced** | Negative-path design, valid control fixture |
+| **Expected outcome** | notes/lab14-invalid-cases.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-14-exercises/` → notes/lab14-invalid-cases.md |
+| **Checkpoint** | D (after slides 144–147) |
+
+## What you will learn
+
+- Invalid email / blank name fail before service
+- Unknown id (CUS-9999) is a not-found story, not a happy path
+- Keep one valid control (Ravi-shaped PROSPECT)
+
+**Enterprise context:** QA and contract tests need an explicit invalid catalog — ad hoc typos are not a test plan.
 
 ## Goal
 
-Create `notes/lab14-invalid-cases.md` — catalog invalid requests you will assert later in Lab 14.
+Create `notes/lab14-invalid-cases.md` — catalog invalid requests for Lab 14.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,16 +41,19 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 14 — Invalid Cases Catalog
 
-## Step 2 — Activate invalids
+## Step 1 — Create invalids
+1. blank fullName
+2. invalid email
+3. missing activate id / CUS-9999 unknown
 
-Activate missing id; activate CUS-9999 unknown (tie to API errors later).
+## Step 2 — Activate invalids
+Activate missing id; activate CUS-9999 unknown.
 
 ## Step 3 — Valid control
-
 Control: create Ravi-shaped PROSPECT with non-blank name.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -49,16 +69,19 @@ From `examples/module-14-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 14 — Invalid Cases Catalog
 
-## Step 2 — Activate invalids
+## Step 1 — Create invalids
+1. _____
+2. _____
+3. _____
 
-Activate missing id; activate CUS-9999 unknown (tie to API errors later).
+## Step 2 — Activate invalids
+_____
 
 ## Step 3 — Valid control
-
-Control: create Ravi-shaped PROSPECT with non-blank name.
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -69,13 +92,23 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 A negative/positive case list ready for the timed lab in `notes/lab14-invalid-cases.md`.
 
-## If it fails
+## Debug / design challenge
+
+Is CUS-9999 a Bean Validation failure or a service/not-found failure? Say which layer.
+
+## Predict the Output / Behavior
+
+If invalid email still reaches `CustomerService`, which facade step was skipped?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab14-invalid-cases.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 14 |
+| Only happy-path cases | Add at least three invalids + one valid control |
+| Using Amina as not-found | Keep Amina valid; use CUS-9999 for unknown |
 
 ## Pass criteria
 
@@ -85,4 +118,3 @@ Self-check before marking Pass:
 - [ ] At least three invalids
 - [ ] One valid control
 - [ ] Notes saved
-

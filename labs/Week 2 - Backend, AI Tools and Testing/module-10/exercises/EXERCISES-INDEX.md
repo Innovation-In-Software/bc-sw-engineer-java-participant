@@ -1,52 +1,37 @@
 # Module 10 — Pre-Lab Exercises
 
-> **Start here for Module 10:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Learn → Practice → Review:** Do **not** wait until every Module 10 slide is finished. Work each checkpoint when the instructor pauses ([`../PACING.md`](../PACING.md)).  
+> **Tip:** Each exercise starts with an **Activity card** + **What you will learn**. Prefer [`starter/`](starter/README.md).  
+> **Start here for Module 10:** [`../README.md`](../README.md)
 
 **Module:** 10 — GitHub Copilot Fundamentals for Java Developers  
-**Next:** [`../lab10/LAB-10-WINDOWS.md`](../lab10/LAB-10-WINDOWS.md) or [`../lab10/LAB-10-MACOS.md`](../lab10/LAB-10-MACOS.md) → [`../lab10/LAB-10-GUIDE.md`](../lab10/LAB-10-GUIDE.md)
+**Next (after all 6 Pass):** OS how-to → [`../lab10/LAB-10-WINDOWS.md`](../lab10/LAB-10-WINDOWS.md) or [`../lab10/LAB-10-MACOS.md`](../lab10/LAB-10-MACOS.md) → [`../lab10/LAB-10-GUIDE.md`](../lab10/LAB-10-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** as they appear in the Module 10 slides, then start Lab 10.  
-> Use JDK 21 and Maven 3.9+.  
-> These exercises design and test small pieces; Lab 10 builds the full graded deliverable.  
-> Exercise 4 includes a **TODO / fill-in-the-blank starter** (not a complete solution). Replace every `_____` before moving on.
+> **Gate for Lab 10:** All **six** exercises must be Pass.  
+> **JDK:** 21 · **Maven:** 3.9+ · Practice: `examples/module-10-exercises/` · Lab: `examples/lab10-crm/`  
+> **Classroom order:** **1 → 2 → 3 → 4 → 5 → 6**  
+> If Copilot is unavailable, complete notes analysis manually for pre-lab Pass.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+## Checkpoint map
 
-## Everything in one place — guide file vs your notes file
+| When (after slides) | Do these | Pattern |
+| ------------------- | -------- | ------- |
+| Checkpoint A (58–65) | Ex 1 weak vs strong prompts | Learn → Practice |
+| Checkpoint B (66–69) | Ex 2 customer sketch | Learn → Practice |
+| Checkpoint C (70–71) | Ex 3–4 phantoms + review log | Learn → Practice |
+| Checkpoint D (72–73) | Ex 5–6 JDK/Maven + prep | Learn → Practice |
+| Checkpoint E (74–76) | Lab 10 | Practice → Lab |
 
-You do **not** need the slideshow to know what to create. For each exercise:
-
-| # | Open this guide | Create / save this notes file |
-| - | --------------- | ----------------------------- |
-| 1 | [`exercise-01-weak-vs-strong-prompts.md`](exercise-01-weak-vs-strong-prompts.md) | `notes/lab10-prelab-prompts.md` |
-| 2 | [`exercise-02-customer-sketch.md`](exercise-02-customer-sketch.md) | `notes/customer-sketch-notes.md` |
-| 3 | [`exercise-03-phantom-annotation-hunt.md`](exercise-03-phantom-annotation-hunt.md) | `notes/phantom-annotation-notes.md` |
-| 4 | [`exercise-04-fill-review-log-todos.md`](exercise-04-fill-review-log-todos.md) | `notes/lab10-review-log-todos.md` |
-| 5 | [`exercise-05-jdk-maven-habit.md`](exercise-05-jdk-maven-habit.md) | `notes/jdk-maven-checklist.md` |
-| 6 | [`exercise-06-lab10-prep-checklist.md`](exercise-06-lab10-prep-checklist.md) | `notes/lab10-prep-checklist.md` |
-
-All paths are relative to `examples/module-10-exercises/` (created in Setup below).
-
-## Scope boundary — do not build later technology yet
+## Scope boundary
 
 | Do now | Do not add yet |
-| --- | --- |
-| Compare weak vs strong Copilot prompts for Northstar CRM sketches | Do not complete the full Lab 10 deliverable in this pre-lab |
-| Spot phantom annotations and invented APIs in AI suggestions | Do not invent Spring Boot SOAP hosting (Labs 13/24) |
-| Draft a Customer sketch for CUS-1001 Amina Khan | Do not generate full JUnit suites yet (Labs 11, 17–18) |
-| Plan review-log TODOs before accepting any Copilot hunk | Do not paste secrets or production PII into prompts |
-| Confirm JDK 21 and Maven habits for the upcoming lab workspace | Do not skip human review of every accepted suggestion |
+| ------ | -------------- |
+| Strong prompts + phantom hunt | Full Lab 10 deliverable in pre-lab |
+| Review-log TODOs | Spring Boot / JPA to “make Copilot happy” |
+| JDK/Maven checklist | Full JUnit suites (Module 11+) |
+| Prep checklist | Secrets / production PII in prompts |
 
-## Workspace
-
-| Item | Windows | macOS |
-| ---- | ------- | ----- |
-| Exercises folder | `%USERPROFILE%\java-bootcamp\examples\module-10-exercises` | `~/java-bootcamp/examples/module-10-exercises` |
-| Notes folder (all six `.md` deliverables) | `notes\` | `notes/` |
-
-### Setup
-
-**Windows (PowerShell):**
+## Workspace setup
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
@@ -56,29 +41,22 @@ java -version
 mvn -version
 ```
 
-**macOS (zsh/bash):**
-
 ```bash
-cd ~/java-bootcamp
-mkdir -p examples/module-10-exercises/notes
-cd examples/module-10-exercises
-java -version
-mvn -version
+cd ~/java-bootcamp && mkdir -p examples/module-10-exercises/notes && cd examples/module-10-exercises
+java -version && mvn -version
 ```
 
-**Expected:** Java 21 and Maven 3.9+ are available. If not, return to Lab 0 / setup before continuing.
+Prefer copy from [`starter/`](starter/README.md).
 
 ## Exercise index
 
-Complete in this sequence (matches Module 10 slide order):
+| # | Exercise | Est. | Type | Guide | Notes file |
+| - | -------- | ---- | ---- | ----- | ---------- |
+| 1 | Weak vs Strong Prompts | 10–12 min | Analysis | [`exercise-01-weak-vs-strong-prompts.md`](exercise-01-weak-vs-strong-prompts.md) | `notes/lab10-prelab-prompts.md` |
+| 2 | Customer Sketch | 12–15 min | Architecture | [`exercise-02-customer-sketch.md`](exercise-02-customer-sketch.md) | `notes/customer-sketch-notes.md` |
+| 3 | Phantom Annotation Hunt | 10–12 min | Analysis | [`exercise-03-phantom-annotation-hunt.md`](exercise-03-phantom-annotation-hunt.md) | `notes/phantom-annotation-notes.md` |
+| 4 | Review-Log TODOs | 10–12 min | Hands-on | [`exercise-04-fill-review-log-todos.md`](exercise-04-fill-review-log-todos.md) | `notes/lab10-review-log-todos.md` |
+| 5 | JDK / Maven Habit | 8–10 min | Checklist | [`exercise-05-jdk-maven-habit.md`](exercise-05-jdk-maven-habit.md) | `notes/jdk-maven-checklist.md` |
+| 6 | Lab 10 Prep Checklist | 8–10 min | Checklist | [`exercise-06-lab10-prep-checklist.md`](exercise-06-lab10-prep-checklist.md) | `notes/lab10-prep-checklist.md` |
 
-| # | Exercise | New skill | Guide | Your notes file |
-| --- | --- | --- | --- | --- |
-| 1 | Weak vs Strong Prompts | Analysis | [`exercise-01-weak-vs-strong-prompts.md`](exercise-01-weak-vs-strong-prompts.md) | `notes/lab10-prelab-prompts.md` |
-| 2 | Customer Sketch for Amina | Architecture | [`exercise-02-customer-sketch.md`](exercise-02-customer-sketch.md) | `notes/customer-sketch-notes.md` |
-| 3 | Phantom Annotation Hunt | Analysis | [`exercise-03-phantom-annotation-hunt.md`](exercise-03-phantom-annotation-hunt.md) | `notes/phantom-annotation-notes.md` |
-| 4 | Fill Review-Log TODOs | Hands-on (starter) | [`exercise-04-fill-review-log-todos.md`](exercise-04-fill-review-log-todos.md) | `notes/lab10-review-log-todos.md` |
-| 5 | JDK 21 / Maven Habit | Documentation | [`exercise-05-jdk-maven-habit.md`](exercise-05-jdk-maven-habit.md) | `notes/jdk-maven-checklist.md` |
-| 6 | Lab 10 Prep Checklist | Documentation | [`exercise-06-lab10-prep-checklist.md`](exercise-06-lab10-prep-checklist.md) | `notes/lab10-prep-checklist.md` |
-
-Keep all work separate from `examples/lab10-crm`; that project begins in the full lab.
+When all **six** Pass → OS how-to → [`../lab10/LAB-10-GUIDE.md`](../lab10/LAB-10-GUIDE.md).

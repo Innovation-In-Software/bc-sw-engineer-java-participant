@@ -1,6 +1,25 @@
 # Exercise 5 — JDK 21 / Maven Habit
 
-**Module 10** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 10** · Checkpoint D · Exercises 1–6 Pass then Lab 10
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm JDK 21 / Maven habits for the Lab 10 workspace |
+| **Skills practiced** | Toolchain verification before AI coding |
+| **Expected outcome** | notes/jdk-maven-checklist.md |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-10-exercises/` → notes/jdk-maven-checklist.md |
+| **Checkpoint** | D (after slides 72–73) |
+
+## What you will learn
+
+- AI speed does not replace a working JDK/Maven PATH
+- Record java -version and mvn -version evidence
+- Wrong toolchain makes Copilot suggestions harder to validate
+
+**Enterprise context:** CI and laptops must agree on JDK 21 before AI-generated code is trusted.
 
 ## Goal
 
@@ -70,6 +89,19 @@ Example shape:
 ## Expected result
 
 A short toolchain checklist in `notes/jdk-maven-checklist.md` with PATH awareness and pre-lab boundary.
+
+
+## Debug / design challenge
+
+java -version shows 17 — what do you fix before Lab 10?
+
+## Predict the Output / Behavior
+
+Can Copilot hide a wrong JAVA_HOME?
+
+## Troubleshooting
+
+If Copilot is unavailable, complete the notes analysis manually — do not block on license issues for pre-lab Pass.
 
 ## Pass criteria
 

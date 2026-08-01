@@ -1,9 +1,28 @@
 # Exercise 5 — Safe Removal During Iteration
 
-**Module 5** · Pre-lab practice · finish all 7 Pass, then OS how-to → [`../lab5/LAB-5-GUIDE.md`](../lab5/LAB-5-GUIDE.md)  
+**Module 5** · Pre-lab practice · Checkpoint D · all 7 then lab
 **Folder:** `examples/module-05-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Collections: Safe Removal with Iterator](../../../lab_diagrams/mod05-ex05-iteration.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Remove elements safely with Iterator.remove() |
+| **Skills practiced** | Iterator, ConcurrentModificationException awareness |
+| **Expected outcome** | Safe removal demo; notes why enhanced-for remove fails |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-05-exercises/IteratorDemo.java` |
+| **Checkpoint** | D (after slides 143–145) |
+
+## What you will learn
+
+- Do not remove via for-each
+- Iterator.remove is the safe path
+- Fail-fast iterators detect structural mods
+
+**Enterprise context:** Batch cleanup of expired holds must not corrupt the catalog mid-iteration.
 
 ## Goal
 
@@ -21,6 +40,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `_____` and `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -138,7 +160,19 @@ This exercise uses `Iterator` because Lab 5 requires understanding its safe-remo
 
 Both deprecated titles are removed without `ConcurrentModificationException`.
 
-## If it fails
+
+
+## Debug / design challenge
+
+Reproduce CME then fix with Iterator.
+
+## Predict the Output / Behavior
+
+list.remove inside for-each — what exception?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

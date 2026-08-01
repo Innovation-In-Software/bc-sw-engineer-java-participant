@@ -1,9 +1,28 @@
 # Exercise 2 — `try-catch-finally`
 
-**Module 7** · Pre-lab practice · finish all 8 Pass, then OS how-to → [`../lab7/LAB-7-GUIDE.md`](../lab7/LAB-7-GUIDE.md)
+**Module 7** · Pre-lab practice · Checkpoint B · Exercises 1–8 Pass then Lab 7
 **Folder:** `examples/module-07-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![finally Runs on Both Paths](../../../lab_diagrams/mod07-ex02-try-catch-finally.png)
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Prove finally runs on both success and failure paths |
+| **Skills practiced** | try / catch / finally cleanup |
+| **Expected outcome** | Success and failure demos both print finally |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-07-exercises/` → FinallyDemo.java |
+| **Checkpoint** | B (after slides 178–179) |
+
+## What you will learn
+
+- finally runs whether or not an exception was thrown
+- Cleanup belongs in finally (or better: try-with-resources)
+- Catch recovers; finally releases
+
+**Enterprise context:** Closing files/sockets after a failed withdraw attempt still matters for ops hygiene.
 
 ## Goal
 
@@ -141,7 +160,18 @@ preserves suppressed exceptions.
 
 The cleanup line appears exactly twice—once after each path.
 
-## If it fails
+
+## Debug / design challenge
+
+Return inside try before finally — observe that finally still runs.
+
+## Predict the Output / Behavior
+
+Does finally run when catch rethrows?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

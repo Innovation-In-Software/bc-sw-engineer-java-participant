@@ -1,11 +1,30 @@
 # Exercise 6 — Retained References (Safe Leak Sketch)
 
-**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · Checkpoint C · all 7 then lab
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Retained References Before and After Clearing a Static Cache](../../../lab_diagrams/mod04-ex06-retained-references.png)
 
 > **Safety:** This bounded demo retains about 10 MB of payload, then clears it. Do not turn it into an unbounded loop and do not attempt to crash the JVM.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Find a retaining static list and clear it safely |
+| **Skills practiced** | GC roots, retention vs leak sketch, clear() |
+| **Expected outcome** | Used memory rises then drops after clearing retention |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-04-exercises/RetentionDemo.java` |
+| **Checkpoint** | C (after slides 122–123) |
+
+## What you will learn
+
+- Static collections are common accidental roots
+- Leak = reachable but unused
+- Fix by dropping references, not System.gc alone
+
+**Enterprise context:** Unbounded static caches are a classic production leak pattern.
 
 ## Goal
 
@@ -26,6 +45,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -154,7 +176,19 @@ appropriate lifecycle. Weak references are not a universal cache fix.
 
 The list reaches exactly 10,000 entries, memory usage rises approximately, and clearing the list removes the retaining references. Post-GC memory is observational and nondeterministic.
 
-## If it fails
+
+
+## Debug / observation challenge
+
+Leave the list uncleared first; observe rise; then fix.
+
+## Predict the Output / Behavior
+
+If the static List is never cleared, can GC reclaim the objects?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

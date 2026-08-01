@@ -1,6 +1,18 @@
 # Lab 4 starter — 45-minute timed path
 
-Fill measurement / comparison `// TODO`s. Do **not** open `../solution/` first. `Person`, `MemoryMonitor`, `StackExample`, `HeapExample`, and `ObjectLifecycle` are mostly given.
+Fill measurement / comparison `// TODO`s. Do **not** open `../solution/` first.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete GC / leak-fix / performance TODOs in the memory suite |
+| **Skills practiced** | Allocation demos, retention clear, timing comparisons |
+| **Expected outcome** | Smoke themes pass |
+| **Estimated time** | ~45 minutes |
+| **Files** | Flat suite under `Lab4-MemoryManagement/` |
+
+**Boilerplate reduced:** `Person`, `MemoryMonitor`, `StackExample`, `HeapExample`, and `ObjectLifecycle` are mostly given — focus on GC demo, leak/fix, and performance TODOs.
 
 ## Target copy path
 
@@ -12,7 +24,7 @@ Fill measurement / comparison `// TODO`s. Do **not** open `../solution/` first. 
 $src = "<path-to-course-repo>\labs\Week 1 - Java and JVM Foundations\module-04\lab4\starter\Lab4-MemoryManagement"
 $dst = "$env:USERPROFILE\java-bootcamp\examples\Lab4-MemoryManagement"
 New-Item -ItemType Directory -Force -Path $dst | Out-Null
-Copy-Item "$src\*" $dst -Recurse -Force
+Copy-Item "$src\*" $dst -Force
 cd $dst
 ```
 
@@ -22,7 +34,7 @@ cd $dst
 SRC="<path-to-course-repo>/labs/Week 1 - Java and JVM Foundations/module-04/lab4/starter/Lab4-MemoryManagement"
 DST="$HOME/java-bootcamp/examples/Lab4-MemoryManagement"
 mkdir -p "$DST"
-cp -R "$SRC"/. "$DST"/
+cp "$SRC"/*.java "$DST"/
 cd "$DST"
 ```
 
@@ -38,32 +50,28 @@ cd "$DST"
 ## Smoke test
 
 ```powershell
-javac Person.java MemoryMonitor.java StackExample.java HeapExample.java ObjectLifecycle.java GarbageCollectionDemo.java MemoryLeakDemo.java PerformanceTest.java
+javac StackExample.java HeapExample.java ObjectLifecycle.java Person.java MemoryMonitor.java GarbageCollectionDemo.java MemoryLeakDemo.java PerformanceTest.java
 java StackExample
-java GarbageCollectionDemo
-java MemoryLeakDemo fix
+java HeapExample
+java -Xms16m -Xmx64m -Xlog:gc GarbageCollectionDemo
 ```
 
-**Expected output snippet:**
+**Expected themes:** nested stack frames; heap identity hashes; GC reclaim after null; G1/GC log lines; leak rise / fix drop.
 
-```text
-===== Stack Memory Demonstration =====
-...
-===== Garbage Collection Demonstration =====
-Objects Created : 100000
-Garbage Collection Completed
-...
-===== Memory Leak Fix Demonstration =====
-...
-Used Memory drops after GC (After GC report)
-```
-
-## Timed-path Pass criteria
+## Validation checkpoint
 
 | # | Criterion | Pass / Fail |
 | - | --------- | ----------- |
-| 1 | Core demos compile and run | |
-| 2 | GC + leak-fix measurement TODOs complete | |
+| 1 | Core demos compile | |
+| 2 | GC + leak/fix + performance TODOs run | |
 | 3 | Evidence under `notes/screenshots/lab-4/` | |
 
-> Full GUIDE steps (jvisualvm, OOM, string comparison) remain for homework / extended work.
+## Troubleshooting (quick)
+
+| Error | Fix |
+| ----- | --- |
+| Empty GC log | JDK 21 `-Xlog:gc` before class name |
+| `UnsupportedOperationException: TODO` | Fill remaining TODOs |
+| OOM on GC demo | Raise `-Xmx` slightly or reduce loop — do not force OOM for fun |
+
+> Full GUIDE steps (extra tools/demos) remain for homework / extended work.

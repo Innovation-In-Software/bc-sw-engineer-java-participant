@@ -1,17 +1,29 @@
-# Exercise — Control Flow
+# Exercise 3 — Control Flow
 
-**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · Checkpoint C (after slides 17–24)  
 **Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Java Control Flow with Decisions and Loops](../../../lab_diagrams/mod01-ex03-control-flow.png)
 
-## Goal
+## Activity card
 
-Create `ControlFlow.java` using `if`, `for`, `while`, and `switch` with simple examples.
+| | |
+| --- | --- |
+| **Objective** | Implement `if`, `for`, `while`, and `switch` in one program; fix a broken variant |
+| **Skills practiced** | Branching, loops, switch cases, reading compiler errors |
+| **Expected outcome** | Exact console output below; debug challenge compiles and runs |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-01-exercises/ControlFlow.java` |
 
-## Worked example (read first)
+## What you will learn
 
-Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+- When to use `if`/`else`, counted `for`, condition `while`, and `switch`
+- Why `break` matters in classic `switch`
+- How an infinite loop looks when you forget to update the loop variable
+
+**Enterprise context:** Loan eligibility (`if`), batch settlement retries (`while`), and status codes (`switch`) appear in banking workflows — same structures, larger scale.
+
+## Worked example — expected output
 
 ```text
 even
@@ -26,12 +38,9 @@ countdown 1
 Tuesday
 ```
 
-Then follow **Steps** to create your own file.
-
-
 ## Starter (fill in the TODOs)
 
-Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
+Copy [`starter/ControlFlow.java`](starter/ControlFlow.java) or paste:
 
 ```java
 public class ControlFlow {
@@ -39,50 +48,27 @@ public class ControlFlow {
         int number = 4;
 
         // TODO: if / else — print "even" when number is even, "odd" otherwise
-        //   hint: number % 2 == 0 means even
         _____
 
         // TODO: for loop — print 1 through 5 (one number per line)
-        //   hint: for (int i = 1; i <= 5; i++) { ... }
         _____
 
-        // TODO: while loop — countdown from 3 to 1
-        //   print "countdown " + count each time; decrease count so the loop ends
+        // TODO: while loop — countdown from 3 to 1 ("countdown " + count)
         int count = 3;
         _____
 
-        // TODO: switch on day (value 2) — case 1 -> Monday, case 2 -> Tuesday
-        //   default -> "Other day"; remember break after each case
+        // TODO: switch on day (value 2) — 1 Monday, 2 Tuesday, default Other day
         int day = 2;
         _____
     }
 }
 ```
 
-| Structure | Easy meaning |
-| --------- | ------------ |
-| `if` / `else` | Do A or B based on a condition |
-| `for` | Loop with a counter |
-| `while` | Loop while condition is true |
-| `switch` | Jump to a matching case |
-
 ## Steps
 
-### Step 1 — Create `ControlFlow.java`
-
-**Why:** Real programs branch and repeat; these four structures are the basics.
-
-1. Create `ControlFlow.java` with **New → File** under `module-01-exercises`.
-2. Paste the starter, fill every `_____` / `// TODO`. Save.
-
-### Step 2 — Compile and run
-
-| Command | Easy meaning |
-| ------- | ------------ |
-| `javac ControlFlow.java` | Compile |
-| `java ControlFlow` | Run all four demos |
-
-**Windows:**
+1. Create `ControlFlow.java` with **New → File**.
+2. Fill every `_____` / `// TODO`. Save.
+3. Compile and run:
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\module-01-exercises
@@ -90,49 +76,46 @@ javac ControlFlow.java
 java ControlFlow
 ```
 
-**macOS:**
-
 ```bash
 cd ~/java-bootcamp/examples/module-01-exercises
 javac ControlFlow.java
 java ControlFlow
 ```
 
-**Expected:** Even/odd line, numbers 1–5, a short countdown, and a day label.
+**Success criteria:** Output matches the worked example exactly.
 
-**Verified (Windows):**
+## Debug challenge (hands-on)
 
-```text
-even
-1
-2
-3
-4
-5
-countdown 3
-countdown 2
-countdown 1
-Tuesday
+Create `ControlFlowBug.java` with this **broken** code, then fix it (do not leave the infinite loop):
+
+```java
+public class ControlFlowBug {
+    public static void main(String[] args) {
+        int count = 3;
+        // BUG: loop never decreases count — will hang if you run as-is
+        while (count > 0) {
+            System.out.println("countdown " + count);
+            // TODO: fix — decrease count so the loop ends
+        }
+    }
+}
 ```
 
-## Expected result
+**Predict:** What happens if you run before fixing? (Hang / flood of the same line.)  
+**Fix:** add `count--;` inside the loop. Expected: three countdown lines, then exit.
 
-All four control structures run and print clear output.
-
-## If it fails
+## Troubleshooting
 
 | Problem | Fix |
 | ------- | --- |
-| `illegal start of expression` near `_____` | Replace every blank with real Java — blanks are not valid code |
-| Infinite loop on countdown | Decrease `count` inside the `while` body (`count--`) |
-| Wrong day or fall-through in `switch` | Add `break;` after each `case` (except when you intend fall-through) |
-| Always prints `odd` | Check `% 2 == 0` for even — `%` is remainder, not division |
+| `illegal start of expression` near `_____` | Replace blanks with real Java |
+| Infinite countdown | Decrease `count` inside `while` (`count--`) |
+| Wrong day / fall-through | Add `break;` after each `case` |
+| Always prints `odd` | Use `number % 2 == 0` for even |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | `ControlFlow` output matches worked example | Pass / Fail |
+| 2 | `ControlFlowBug` fixed and terminates | Pass / Fail |

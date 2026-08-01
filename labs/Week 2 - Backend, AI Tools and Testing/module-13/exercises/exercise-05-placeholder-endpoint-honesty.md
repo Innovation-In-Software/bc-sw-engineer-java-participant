@@ -1,6 +1,25 @@
 # Exercise 5 — Placeholder Endpoint Honesty
 
-**Module 13** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 13** · Checkpoint D · Exercises 1–6 Pass then Lab 13
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Document that http://localhost:8080/ws is a placeholder (not live) |
+| **Skills practiced** | Scope honesty, security awareness |
+| **Expected outcome** | notes/lab13-placeholder-honesty.md |
+| **Estimated time** | 8–10 minutes |
+| **File to create** | `examples/module-13-exercises/` → notes/lab13-placeholder-honesty.md |
+| **Checkpoint** | D (after slides 127–128) |
+
+## What you will learn
+
+- Placeholder addresses are design-time, not proof of hosting
+- Connection refused to :8080 is expected in Lab 13
+- Security considerations apply even to sample contracts
+
+**Enterprise context:** Falsely claiming a live endpoint fails audits and partner onboarding.
 
 ## Goal
 
@@ -77,7 +96,18 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 An honesty note separating design from hosting in `notes/lab13-placeholder-honesty.md`.
 
-## If it fails
+
+## Debug / design challenge
+
+Write one sentence: Lab 24 hosts /ws; Lab 13 does not.
+
+## Predict the Output / Behavior
+
+Is starting Tomcat required to Pass Lab 13?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |

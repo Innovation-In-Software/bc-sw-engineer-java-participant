@@ -1,11 +1,30 @@
 # Exercise 3 — Garbage Collection in Action
 
-**Module 4** · Pre-lab practice · finish all 7 Pass, then [`../lab4/LAB-4-GUIDE.md`](../lab4/LAB-4-GUIDE.md)  
+**Module 4** · Pre-lab practice · Checkpoint B · all 7 then lab
 **Folder:** `examples/module-04-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Temporary Allocations Reclaimed by Garbage Collection](../../../lab_diagrams/mod04-ex03-gc-observe.png)
 
 > **Safe bounded experiment:** The program allocates temporary batches and completes under a 64 MB heap. Do not increase the batch size to force an OOM.
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Run a bounded allocation loop with -Xlog:gc and read the evidence |
+| **Skills practiced** | -Xmx/-Xms, -Xlog:gc, observing GC lines |
+| **Expected outcome** | GC log snippet captured; pattern explained (not exact counts) |
+| **Estimated time** | 12–15 minutes |
+| **File to create** | `examples/module-04-exercises/GcObserve.java` |
+| **Checkpoint** | B (after slides 119–121) |
+
+## What you will learn
+
+- System.gc is a hint
+- Small heaps make GC easier to see
+- Never force OOM in class
+
+**Enterprise context:** Ops watches GC logs before blaming the app for latency spikes.
 
 ## Goal
 
@@ -28,6 +47,9 @@ Then follow **Steps** to create your own file.
 
 
 ## Starter (fill in the TODOs)
+
+Optional: copy from [`starter/`](starter/README.md). Or paste:
+
 
 Paste this skeleton, then replace each `// TODO` with working code. Do **not** leave TODOs in your finished file.
 
@@ -145,7 +167,14 @@ shows that memory was reclaimed. Exact pause times varied on my machine.
 
 The program reaches round 20, reports `262144000` allocated bytes over time, and GC log entries appear.
 
-## If it fails
+
+## Predict the Output / Behavior
+
+What happens to GC frequency if you raise -Xmx a lot?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | ------- | --- |

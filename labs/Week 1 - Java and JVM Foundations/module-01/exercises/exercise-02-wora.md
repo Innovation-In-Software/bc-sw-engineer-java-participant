@@ -1,52 +1,57 @@
-# Exercise — Platform Independence (WORA)
+# Exercise 2 — Platform Independence (WORA)
 
-**Module 1** · Pre-lab practice · finish all 8, then [`../lab1/LAB-1-GUIDE.md`](../lab1/LAB-1-GUIDE.md)  
+**Module 1** · Pre-lab practice · Checkpoint A (with Exercise 1)  
 **Folder:** `examples/module-01-exercises/` ([setup](EXERCISES-INDEX.md))
 
 ![Write Once, Run Anywhere with OS-Specific JVMs](../../../lab_diagrams/mod01-ex02-wora.png)
 
-## Goal
+## Activity card
 
-Run an existing `.class` with `java`. Note why recompile is not required for another OS JVM.
+| | |
+| --- | --- |
+| **Objective** | Prove the JVM runs **bytecode**, not source — and fix a broken launch path |
+| **Skills practiced** | Re-running `.class`, diagnosing wrong `java` usage, short WORA notes |
+| **Expected outcome** | Program runs without recompile; debug challenge fixed; `notes/wora-notes.md` written |
+| **Estimated time** | 10–12 minutes |
+| **Files** | Reuse `Hello.class`; create `notes/wora-notes.md`; debug `WoraProbe.java` |
+
+## What you will learn
+
+- Difference between `.java` (source), `.class` (bytecode), and JVM (`java`)
+- Why the same `.class` can run on Windows/macOS/Linux without recompile
+- How to spot the common mistake `java Hello.java`
+
+**Enterprise context:** CI builds a JAR once; OpenShift/Kubernetes pods pull the same image across nodes. WORA is why “it compiled on my laptop” still fails only when the **runtime** (JDK version / flags) differs — not because the OS needs a new compile of your source.
 
 ## Easy idea (WORA)
 
 | Piece | What it is | Portable? |
 | ----- | ---------- | --------- |
-| `.java` source | What you type | Yes (text), but not what the OS runs |
+| `.java` source | What you type | Text is portable; OS does not execute it |
 | `.class` bytecode | Output of `javac` | Yes — same bytes on Windows/macOS/Linux |
-| JVM (`java`) | Runtime that understands bytecode | Installed per OS, but reads the same `.class` |
-
-**Write once, run anywhere:** compile once to bytecode; any matching JVM can run that `.class` without changing your source for each OS.
+| JVM (`java`) | Runtime that understands bytecode | Installed per OS |
 
 ```mermaid
 flowchart LR
-    S["Hello.java<br/>source"] -->|javac| C["Hello.class<br/>bytecode"]
-    C -->|java on Windows| W["JVM runs"]
-    C -->|java on macOS| M["JVM runs"]
-    C -->|java on Linux| L["JVM runs"]
-    W --> O["Same program behavior"]
+    S["Hello.java"] -->|javac| C["Hello.class"]
+    C -->|java on Windows| W["JVM"]
+    C -->|java on macOS| M["JVM"]
+    C -->|java on Linux| L["JVM"]
+    W --> O["Same behavior"]
     M --> O
     L --> O
 ```
 
-## Worked example (read first)
+## Predict the Output
 
-Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
+You already have `Hello.class` from Exercise 1. **Without** running `javac` again:
 
-```text
-Hello, JVM!
-```
+1. Predict: does `java Hello` still print `Hello, JVM!`?
+2. Predict: if you **delete** `Hello.java` but keep `Hello.class`, does `java Hello` still work?
 
-Then follow **Steps** to create your own file.
+Then verify both predictions (restore `Hello.java` afterward if you deleted it).
 
-## Do this
-
-**Why:** Prove you are running bytecode, not re-interpreting the `.java` file each time.
-
-| Command | Easy meaning |
-| ------- | ------------ |
-| `java Hello` | Start JVM, load `Hello.class`, run `main` (no `javac` needed if `.class` already exists) |
+## Part A — Re-run bytecode (hands-on)
 
 **Windows:**
 
@@ -62,35 +67,62 @@ cd ~/java-bootcamp/examples/module-01-exercises
 java Hello
 ```
 
-**Expected:** Something like `Hello, JVM!` (same as Exercise 1 — no `javac` needed if `.class` already exists).
-
-**Verified (Windows):** `java Hello` prints:
+**Expected:**
 
 ```text
 Hello, JVM!
 ```
 
-(Re-run without recompiling proves you are executing bytecode, not re-reading the `.java` file.)
+## Part B — Debug challenge (not copy-only)
 
-- Write 2–3 sentences: source vs bytecode vs JVM (save as `notes/wora-notes.md` under the workspace)
+Create `WoraProbe.java` from [`starter/WoraProbe.java`](starter/WoraProbe.java) **or** paste:
 
-**Sample note:**
+```java
+public class WoraProbe {
+    public static void main(String[] args) {
+        // TODO: print the OS name (hint: System.getProperty("os.name"))
+        _____
+        // TODO: print "Bytecode runs on: " + that OS name
+        _____
+    }
+}
+```
+
+**Do this:**
+
+1. Fill TODOs so the program prints two lines (OS name, then a labeled line).
+2. Compile: `javac WoraProbe.java`
+3. **Broken command (intentional):** run `java WoraProbe.java`  
+   - **Expected failure:** launcher error / wrong usage — note the message.
+4. **Fix:** run `java WoraProbe` (no `.java`).
+5. Save notes under `java-bootcamp/notes/wora-notes.md`:
 
 ```text
 javac turned Hello.java into Hello.class (bytecode).
-The java command starts a JVM that runs that bytecode — I did not need to recompile to run it again.
-Any OS with a compatible JVM can run the same .class file without changing the source — that is Write Once, Run Anywhere.
+The java command starts a JVM that runs that bytecode — I did not need to recompile to run Hello again.
+Any OS with a compatible JVM can run the same .class without changing the source — Write Once, Run Anywhere.
+Mistake I hit: java ClassName.java is wrong; use java ClassName after javac.
 ```
 
-## Expected result
+**Sample success output (OS name varies):**
 
-Short note explains WORA using your `.class` experience.
+```text
+Windows 11
+Bytecode runs on: Windows 11
+```
+
+## Troubleshooting
+
+| Problem | Fix |
+| ------- | --- |
+| `Could not find or load main class Hello` | Confirm `Hello.class` exists; `cd` to exercises folder |
+| `java WoraProbe.java` fails | Correct — use `java WoraProbe` after `javac` |
+| Property prints `null` | Use `"os.name"` exactly |
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Code compiles and runs (or notes complete if analysis-only) | Pass / Fail |
-| 2 | You can explain the result in one sentence | Pass / Fail |
+| 1 | Re-ran `Hello` without recompiling | Pass / Fail |
+| 2 | `WoraProbe` runs with `java WoraProbe`; wrong `.java` launch documented | Pass / Fail |
+| 3 | `notes/wora-notes.md` explains source vs bytecode vs JVM | Pass / Fail |

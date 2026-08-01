@@ -1,6 +1,16 @@
 # Lab 2 starter — 45-minute timed path
 
-Fill every `// TODO`. Do **not** open `../solution/` first. `Student.java` is mostly complete.
+Fill every `// TODO`. Do **not** open `../solution/` first. `Student.java` is mostly complete (**boilerplate getters/setters provided** — focus on manager logic).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete StudentManager TODOs so the menu app runs end-to-end |
+| **Skills practiced** | Array storage, menu switch, search/average, printf-style display |
+| **Expected outcome** | Smoke-test path succeeds |
+| **Estimated time** | ~45 minutes |
+| **Files** | `Student.java` (mostly done), `StudentManager.java`, `Main.java` |
 
 ## Target copy path
 
@@ -28,7 +38,7 @@ cd "$DST"
 
 ## 45-minute checklist (ordered TODOs)
 
-1. Skim `Student.java` (fields, getters, `display`, pass/fail).
+1. Skim `Student.java` (fields, getters, `display`, pass/fail) — do not rewrite getters.
 2. Implement `StudentManager.addStudent`.
 3. Implement `displayStudents`, `searchStudent`, `calculateAverage`.
 4. Confirm `Main` menu cases 1–5 work (bonus 6–10 optional).
@@ -52,12 +62,20 @@ Average Marks : 91.00
 Thank You
 ```
 
-## Timed-path Pass criteria
+## Validation checkpoint
 
 | # | Criterion | Pass / Fail |
 | - | --------- | ----------- |
 | 1 | Project compiles | |
 | 2 | Add / display / search / average / exit work | |
 | 3 | Evidence under `notes/screenshots/lab-2/` | |
+
+## Troubleshooting (quick)
+
+| Error | Fix |
+| ----- | --- |
+| `UnsupportedOperationException: TODO` | Fill remaining TODOs in `StudentManager` |
+| Skipped prompts | Prefer `nextLine` + parse |
+| Main not found | `java -cp out com.academy.student.Main` |
 
 > Full GUIDE steps (bonus menus, polish) remain for homework / extended work.

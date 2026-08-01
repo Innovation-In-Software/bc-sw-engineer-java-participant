@@ -2,6 +2,22 @@
 
 **Theme:** Structured logging — Logback pattern, CorrelationFilter MDC, PII-free service logs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete CorrelationFilter, safe service logs, and CustomerLoggingIT |
+| **Skills practiced** | MDC put/clear, %X pattern, PII-free INFO lines |
+| **Expected outcome** | `CustomerLoggingIT` green · no Amina/email in logs |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab20-crm/` copied from this starter |
+
+**Boilerplate reduced:** App + logging TODOs — fill `// TODO`; always clear MDC in finally.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-20-GUIDE.md`](../LAB-20-GUIDE.md)
+
+**Honesty:** Actuator/Micrometer wait for Lab 21. Never log fullName/email.
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab20-crm`.

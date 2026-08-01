@@ -1,49 +1,37 @@
 # Module 11 — Pre-Lab Exercises
 
-> **Start here for Module 11:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Learn → Practice → Review:** Do **not** wait until every Module 11 slide is finished. Work each checkpoint when the instructor pauses ([`../PACING.md`](../PACING.md)).  
+> **Tip:** Each exercise starts with an **Activity card** + **What you will learn**. Prefer [`starter/`](starter/README.md).  
+> **Start here for Module 11:** [`../README.md`](../README.md)
 
 **Module:** 11 — GitHub Copilot for Testing and Refactoring  
-**Next:** [`../lab11/LAB-11-WINDOWS.md`](../lab11/LAB-11-WINDOWS.md) or [`../lab11/LAB-11-MACOS.md`](../lab11/LAB-11-MACOS.md) → [`../lab11/LAB-11-GUIDE.md`](../lab11/LAB-11-GUIDE.md)
+**Next (after all 6 Pass):** OS how-to → [`../lab11/LAB-11-WINDOWS.md`](../lab11/LAB-11-WINDOWS.md) or [`../lab11/LAB-11-MACOS.md`](../lab11/LAB-11-MACOS.md) → [`../lab11/LAB-11-GUIDE.md`](../lab11/LAB-11-GUIDE.md)
 
-> Complete these exercises **in order (1→6)** after the slides and **before** Lab 11.  
-> Use JDK 21. Work under `examples/module-11-exercises/` — these are **notes files**, not a Maven project.  
-> Lab 11 is the graded consolidation (tests + notifier + Copilot notes). Do **not** finish Lab 11 during pre-lab.
+> **Gate for Lab 11:** All **six** exercises must be Pass.  
+> **JDK:** 21 · Practice notes: `examples/module-11-exercises/` · Lab: `examples/lab11-crm/`  
+> **Classroom order:** **1 → 2 → 3 → 4 → 5 → 6**  
+> Pre-lab is **notes-only** — do not finish Lab 11 here.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+## Checkpoint map
 
-## What you produce (all six)
+| When (after slides) | Do these | Pattern |
+| ------------------- | -------- | ------- |
+| Checkpoint A (78–83) | Ex 1 AAA template | Learn → Practice |
+| Checkpoint B (84–87) | Ex 2 notifier extract | Learn → Practice |
+| Checkpoint C (88) | Ex 3–4 asserts + acceptance | Learn → Practice |
+| Checkpoint D (89) | Ex 5–6 gaps + prep | Learn → Practice |
+| Checkpoint E (90–92) | Lab 11 | Practice → Lab |
 
-| # | Your deliverable file | Type |
-| - | --------------------- | ---- |
-| 1 | `notes/lab11-aaa-template.md` | AAA outline for Ravi activate |
-| 2 | `notes/lab11-notifier-extract-plan.md` | `CustomerNotifier` extract sketch |
-| 3 | `notes/lab11-prelab-asserts.md` | Trivial vs real asserts |
-| 4 | `notes/lab11-acceptance-todos.md` | Filled acceptance checklist |
-| 5 | `notes/lab11-coverage-gaps.md` | Lab 11 vs Labs 17–18 map |
-| 6 | `notes/lab11-prep-checklist.md` | Readiness Pass/Fail |
-
-Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
-
-## Scope boundary — do not build later technology yet
+## Scope boundary
 
 | Do now | Do not add yet |
-| --- | --- |
-| Write the six `notes/lab11-*.md` files with the templates provided | Do not complete the full Lab 11 suite in this pre-lab |
-| Draft AAA for Ravi `CUS-1002` PROSPECT → ACTIVE | Do not deep-dive Mockito (Lab 18) or full JUnit curriculum (Lab 17) |
-| Sketch `CustomerNotifier.notifyStatusChange(...)` | Do not claim 100% coverage from Copilot alone |
-| Fill acceptance TODOs; reject trivial asserts | Do not implement Spring/Kafka notifiers |
-| Name coverage gaps for Labs 17–18 | Do not skip human review of generated assertions |
+| ------ | -------------- |
+| Six `notes/lab11-*.md` files | Full Lab 11 Maven suite in pre-lab |
+| AAA for Ravi activate | Deep Mockito curriculum (Lab 18) |
+| Reject trivial asserts | Claim 100% coverage from Copilot |
+| Coverage gaps map | Spring/Kafka notifiers |
 
-## Workspace
-
-| Item | Windows | macOS |
-| ---- | ------- | ----- |
-| Exercises folder | `%USERPROFILE%\java-bootcamp\examples\module-11-exercises` | `~/java-bootcamp/examples/module-11-exercises` |
-| Notes / mini work | `notes\` | `notes/` |
-
-### Setup
-
-**Windows (PowerShell):**
+## Workspace setup
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
@@ -52,30 +40,22 @@ cd examples\module-11-exercises
 java -version
 ```
 
-**macOS (zsh/bash):**
-
 ```bash
-cd ~/java-bootcamp
-mkdir -p examples/module-11-exercises/notes
-cd examples/module-11-exercises
+cd ~/java-bootcamp && mkdir -p examples/module-11-exercises/notes && cd examples/module-11-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available. You create markdown notes here; Lab 11 later uses `examples/lab11-crm/`.
+Prefer copy from [`starter/`](starter/README.md).
 
 ## Exercise index
 
-Complete in this sequence (matches Module slide order):
+| # | Exercise | Est. | Type | Guide | Notes file |
+| - | -------- | ---- | ---- | ----- | ---------- |
+| 1 | AAA Template | 10–12 min | Docs | [`exercise-01-aaa-template.md`](exercise-01-aaa-template.md) | `notes/lab11-aaa-template.md` |
+| 2 | Notifier Extract Plan | 12–15 min | Architecture | [`exercise-02-notifier-extract.md`](exercise-02-notifier-extract.md) | `notes/lab11-notifier-extract-plan.md` |
+| 3 | Trivial vs Real Asserts | 10–12 min | Analysis | [`exercise-03-trivial-vs-real-asserts.md`](exercise-03-trivial-vs-real-asserts.md) | `notes/lab11-prelab-asserts.md` |
+| 4 | Acceptance Checklist TODOs | 10–12 min | Hands-on | [`exercise-04-fill-acceptance-checklist-todos.md`](exercise-04-fill-acceptance-checklist-todos.md) | `notes/lab11-acceptance-todos.md` |
+| 5 | Coverage Gaps Map | 8–10 min | Analysis | [`exercise-05-coverage-gaps.md`](exercise-05-coverage-gaps.md) | `notes/lab11-coverage-gaps.md` |
+| 6 | Lab 11 Prep Checklist | 8–10 min | Checklist | [`exercise-06-lab11-prep-checklist.md`](exercise-06-lab11-prep-checklist.md) | `notes/lab11-prep-checklist.md` |
 
-| # | Exercise | New skill | Deliverable | File |
-| --- | --- | --- | --- | --- |
-| 1 | AAA Template for Status | Documentation | `notes/lab11-aaa-template.md` | [`exercise-01-aaa-template.md`](exercise-01-aaa-template.md) |
-| 2 | Notifier Extract Plan | Architecture | `notes/lab11-notifier-extract-plan.md` | [`exercise-02-notifier-extract.md`](exercise-02-notifier-extract.md) |
-| 3 | Trivial vs Real Asserts | Analysis | `notes/lab11-prelab-asserts.md` | [`exercise-03-trivial-vs-real-asserts.md`](exercise-03-trivial-vs-real-asserts.md) |
-| 4 | Fill Acceptance Checklist TODOs | Hands-on | `notes/lab11-acceptance-todos.md` | [`exercise-04-fill-acceptance-checklist-todos.md`](exercise-04-fill-acceptance-checklist-todos.md) |
-| 5 | Coverage Gaps Map | Analysis | `notes/lab11-coverage-gaps.md` | [`exercise-05-coverage-gaps.md`](exercise-05-coverage-gaps.md) |
-| 6 | Lab 11 Prep Checklist | Documentation | `notes/lab11-prep-checklist.md` | [`exercise-06-lab11-prep-checklist.md`](exercise-06-lab11-prep-checklist.md) |
-
-## Done when
-
-All six files exist under `notes/`, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT`, and Exercise 6 self-mark is **Pass**. Then open the Lab 11 OS guide.
+When all **six** Pass → OS how-to → [`../lab11/LAB-11-GUIDE.md`](../lab11/LAB-11-GUIDE.md).
