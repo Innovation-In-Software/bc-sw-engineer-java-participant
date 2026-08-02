@@ -1,14 +1,31 @@
 # Exercise 4 — Transfer Pseudocode (TODOs)
 
-**Module 27** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 27** · Checkpoint C · Exercises 1–6 Pass then Lab 27
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill transfer pseudocode TODOs for debit, credit, log, and force-fail |
+| **Skills practiced** | Transfer design |
+| **Expected outcome** | notes/lab27-transfer-pseudocode.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-27-exercises/` → notes/lab27-transfer-pseudocode.md |
+| **Checkpoint** | C (after slides 152–156a) |
+
+## What you will learn
+
+- Load accounts
+- If dest == ACC-FORCE-FAIL throw
+- Debit, credit, write log inside same TX
+
+**Enterprise context:** Pseudocode prevents AI from inventing two commits or controller-side SQL.
 
 ## Goal
 
-Create `notes/lab27-transfer-pseudocode.md` — complete pseudocode showing rollback when destination is ACC-FORCE-FAIL.
+Create `notes/lab27-transfer-pseudocode.md` — transfer TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -22,9 +39,18 @@ Create `notes/lab27-transfer-pseudocode.md` — complete pseudocode showing roll
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 27 — Transfer Pseudocode (TODOs)
+# Lab 27 — Transfer Pseudocode
 
-## Step 2 — Fill TODOs
+@Transactional
+transfer(from, to, amount, correlation):
+  load accounts
+  if to == ACC-FORCE-FAIL: throw
+  debit from; credit to
+  write TransactionLog(correlation)
+  // commit via Spring
+
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -38,64 +64,55 @@ From `examples/module-27-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 27 — Transfer Pseudocode (TODOs)
+# Lab 27 — Transfer Pseudocode
 
-## Step 2 — Fill TODOs
+## Annotation / method
+_____
 
-```java
-// Sketch only — not a full Spring project
-class TransferService {
-    // TODO: Spring annotation for one unit of work
-    @_____
-    void transfer(String fromId, String toId, long amount) {
-        Account from = load(fromId);
-        Account to = load(toId);
-        if ("ACC-FORCE-FAIL".equals(toId)) {
-            // TODO: throw a runtime exception to trigger rollback
-            throw new _____("forced failure");
-        }
-        from.debit(_____);   // TODO: amount
-        to.credit(_____);    // TODO: amount
-        logSuccess(fromId, toId, amount);
-    }
-}
-```
-Hints: `@Transactional`, `IllegalStateException` (or RuntimeException), `amount`.
+## Force-fail check
+_____
 
-## Step 3 — Self-check
+## Money steps
+_____
 
-Explain in one sentence why a caught-and-ignored exception would break atomicity.
-
-## Step 4 — Reflect
-
-Customers `CUS-1001` / `CUS-1002` own the seeded accounts — do not invent Kafka outbox here.
+## Log step
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`, Ravi `CUS-1002`, accounts `ACC-1001-MAIN` / `ACC-1001-LOYALTY`, force id `ACC-FORCE-FAIL`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Pseudocode blanks filled; atomicity reflection written in `notes/lab27-transfer-pseudocode.md`.
+Transfer pseudocode in `notes/lab27-transfer-pseudocode.md`.
 
-## If it fails
+## Debug / design challenge
+
+Where should insufficient-funds validation throw relative to debit?
+
+## Predict the Output / Behavior
+
+Can the controller write TransactionLog directly?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab27-transfer-pseudocode.md` |
-| `@Transactional` on controller | Put it on TransferService |
-| Checked exception swallowed | Let runtime failures roll back / configure rollbackFor |
+| Missing force-fail | Include ACC-FORCE-FAIL |
+| Log outside TX in notes | Same transactional method |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab27-transfer-pseudocode.md`
-- [ ] `@Transactional` filled
-- [ ] Force-fail throw present
-- [ ] Swallowing danger explained
-
+- [ ] TX annotation
+- [ ] Force-fail
+- [ ] Debit/credit/log

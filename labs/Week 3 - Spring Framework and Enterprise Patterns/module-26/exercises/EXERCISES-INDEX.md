@@ -1,28 +1,26 @@
 # Module 26 — Pre-Lab Exercises
 
-> **Start here for Module 26:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Start here for Module 26:** [`../README.md`](../README.md) · **Pacing:** [`../PACING.md`](../PACING.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 26 — Spring Profiles and Configuration  
 **Next:** [`../lab26/LAB-26-WINDOWS.md`](../lab26/LAB-26-WINDOWS.md) or [`../lab26/LAB-26-MACOS.md`](../lab26/LAB-26-MACOS.md) → [`../lab26/LAB-26-GUIDE.md`](../lab26/LAB-26-GUIDE.md)
 
-> Complete these exercises **in order** after the slides and **before** Lab 26.  
-> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-26-exercises/` — these are **notes files**, not the graded lab project.  
+> Complete these exercises **at the checkpoints** (not all slides first). Order **1 → 2 → 3 → 4 → 5 → 6**.  
+> Use JDK 21. Work under `examples/module-26-exercises/` — **notes files**, not the graded lab.  
 > Lab 26 is the graded consolidation. Do **not** finish Lab 26 during pre-lab.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+> **Tip:** Each exercise has an **Activity card**, **Worked example**, **Predict/Debug**, and **Troubleshooting**. Optional starter shells: [`starter/`](starter/README.md).
 
 ## What you produce (all exercises)
 
-| # | Your deliverable file | Type |
-| - | --------------------- | ---- |
-| 1 | `notes/profiles.md` | Profile Purposes |
-| 2 | `notes/lab26-profile-yaml-todos.md` | Profile YAML TODOs |
-| 3 | `notes/northstar-props.md` | ConfigurationProperties Sketch |
-| 4 | `notes/override-order.md` | Property Override Order |
-| 5 | `notes/activation-commands.md` | Activation Command Drill |
-| 6 | `notes/lab26-readiness.md` | Lab 26 Readiness Checklist |
-
-Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
+| # | Your deliverable file | Type | Checkpoint |
+| - | --------------------- | ---- | ---------- |
+| 1 | `notes/profiles.md` | Profile Purposes | A |
+| 2 | `notes/lab26-profile-yaml-todos.md` | Profile YAML TODOs | A |
+| 3 | `notes/northstar-props.md` | ConfigurationProperties Sketch | B |
+| 4 | `notes/override-order.md` | Property Override Order | B |
+| 5 | `notes/activation-commands.md` | Activation Command Drill | C |
+| 6 | `notes/lab26-readiness.md` | Lab 26 Readiness Checklist | C |
 
 ## Scope boundary — do not build later technology yet
 
@@ -61,21 +59,19 @@ cd examples/module-26-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available. You create markdown notes here; Lab 26 uses its own `examples/lab26-*/` (or module lab folder) project.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 26 uses `examples/lab26-crm/`.
 
-## Exercise index
+## Exercise index (classroom interleave)
 
-Complete in this sequence (matches Module slide order):
-
-| # | Exercise | New skill | Deliverable | File |
+| # | After slides | Exercise | Deliverable | File |
 | --- | --- | --- | --- | --- |
-| 1 | Profile Purposes | Analysis exercise | `notes/profiles.md` | [`exercise-01-profile-purposes.md`](exercise-01-profile-purposes.md) |
-| 2 | Profile YAML TODOs | Hands-on exercise | `notes/lab26-profile-yaml-todos.md` | [`exercise-02-profile-yaml-todos.md`](exercise-02-profile-yaml-todos.md) |
-| 3 | ConfigurationProperties Sketch | Documentation exercise | `notes/northstar-props.md` | [`exercise-03-config-properties-sketch.md`](exercise-03-config-properties-sketch.md) |
-| 4 | Property Override Order | Architecture exercise | `notes/override-order.md` | [`exercise-04-override-order.md`](exercise-04-override-order.md) |
-| 5 | Activation Command Drill | Analysis exercise | `notes/activation-commands.md` | [`exercise-05-activation-drill.md`](exercise-05-activation-drill.md) |
-| 6 | Lab 26 Readiness Checklist | Documentation exercise | `notes/lab26-readiness.md` | [`exercise-06-lab26-readiness.md`](exercise-06-lab26-readiness.md) |
+| 1 | 115–125 (A) | Profile Purposes | `notes/profiles.md` | [`exercise-01-profile-purposes.md`](exercise-01-profile-purposes.md) |
+| 2 | 115–125 (A) | Profile YAML TODOs | `notes/lab26-profile-yaml-todos.md` | [`exercise-02-profile-yaml-todos.md`](exercise-02-profile-yaml-todos.md) |
+| 3 | 126–128 (B) | ConfigurationProperties Sketch | `notes/northstar-props.md` | [`exercise-03-config-properties-sketch.md`](exercise-03-config-properties-sketch.md) |
+| 4 | 126–128 (B) | Property Override Order | `notes/override-order.md` | [`exercise-04-override-order.md`](exercise-04-override-order.md) |
+| 5 | 129–132 (C) | Activation Command Drill | `notes/activation-commands.md` | [`exercise-05-activation-drill.md`](exercise-05-activation-drill.md) |
+| 6 | 129–132 (C) | Lab 26 Readiness Checklist | `notes/lab26-readiness.md` | [`exercise-06-lab26-readiness.md`](exercise-06-lab26-readiness.md) |
 
 ## Done when
 
-All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 26 OS guide.
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep checklist self-mark is **Pass**. Then open the Lab 26 OS guide.

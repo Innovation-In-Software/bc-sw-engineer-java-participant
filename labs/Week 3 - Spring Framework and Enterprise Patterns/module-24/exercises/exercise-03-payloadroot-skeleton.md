@@ -1,14 +1,31 @@
-# Exercise 4 — PayloadRoot Skeleton (TODOs)
+# Exercise 3 — PayloadRoot Skeleton (TODOs)
 
-**Module 24** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 24** · Checkpoint B · Exercises 1–6 Pass then Lab 24
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill a @PayloadRoot skeleton for getCustomer |
+| **Skills practiced** | PayloadRoot sketching |
+| **Expected outcome** | notes/lab24-payloadroot-skeleton.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-24-exercises/` → notes/lab24-payloadroot-skeleton.md |
+| **Checkpoint** | B (after slides 75–78) |
+
+## What you will learn
+
+- @Endpoint on CustomerEndpoint
+- namespace + localPart must match XSD
+- Delegate to CustomerService after mapping
+
+**Enterprise context:** A one-character namespace drift means the dispatcher never finds your method.
 
 ## Goal
 
-Create `notes/lab24-payloadroot-skeleton.md` — complete a pseudocode endpoint skeleton showing delegation to CustomerService.
+Create `notes/lab24-payloadroot-skeleton.md` — PayloadRoot TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -22,9 +39,17 @@ Create `notes/lab24-payloadroot-skeleton.md` — complete a pseudocode endpoint 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 24 — PayloadRoot Skeleton (TODOs)
+# Lab 24 — PayloadRoot Skeleton
 
-## Step 2 — Fill TODOs
+@Endpoint class CustomerEndpoint
+@PayloadRoot(namespace = NAMESPACE, localPart = "GetCustomerRequest")
+method getCustomer(@RequestPayload GetCustomerRequest req)
+→ map → customerService.get(...) → map response
+
+NAMESPACE must match customer.xsd targetNamespace.
+
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -38,65 +63,55 @@ From `examples/module-24-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 24 — PayloadRoot Skeleton (TODOs)
+# Lab 24 — PayloadRoot Skeleton
 
-## Step 2 — Fill TODOs
+## Class annotation
+_____
 
-```java
-// TODO annotations — replace blanks
-@_____
-public class CustomerEndpoint {
-    private final CustomerService service;
+## @PayloadRoot localPart
+_____
 
-    public CustomerEndpoint(CustomerService service) {
-        this.service = service;
-    }
+## Method inputs/outputs
+_____
 
-    @PayloadRoot(namespace = "http://northstar.example/customer", localPart = "_____")
-    @ResponsePayload
-    public GetCustomerResponse get(@RequestPayload GetCustomerRequest request) {
-        // TODO: call service.get(request.getCustomerId()) then map to JAXB response
-        var customer = service._____(request.getCustomerId());
-        return CustomerSoapMapper.toGetResponse(customer);
-    }
-}
-```
-Hints: class annotation `@Endpoint`; localPart `GetCustomerRequest`; method `get`.
-
-## Step 3 — Self-check
-
-Confirm no business rules live inside the endpoint beyond mapping/delegation.
-
-## Step 4 — Reflect
-
-Write: UsernameToken interceptor is Lab 24 work — not completed in pre-lab.
+## Delegation line (words)
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab24-001` (or `lab-request-001` on REST). Replace every `_____` before Pass.
 
 ## Expected result
 
-Endpoint sketch blanks filled; delegation rule clear in `notes/lab24-payloadroot-skeleton.md`.
+PayloadRoot skeleton in `notes/lab24-payloadroot-skeleton.md`.
 
-## If it fails
+## Debug / design challenge
+
+If localPart is GetCustomer but XSD says GetCustomerRequest, what happens?
+
+## Predict the Output / Behavior
+
+Does @PayloadRoot replace the need for MessageDispatcherServlet config?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab24-payloadroot-skeleton.md` |
-| Putting uniqueness rules in endpoint | Keep rules in CustomerService |
-| Using `@RestController` for SOAP | Spring-WS uses `@Endpoint` |
+| Using @GetMapping | This is SOAP — @PayloadRoot |
+| No delegation note | Call CustomerService |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab24-payloadroot-skeleton.md`
-- [ ] `@Endpoint` and GetCustomer localPart filled
-- [ ] Service `get` delegation present
-- [ ] No rule logic invented in the endpoint
-
+- [ ] @Endpoint noted
+- [ ] localPart noted
+- [ ] Service delegation

@@ -1,14 +1,31 @@
-# Exercise 3 — SOAP Fault Versus REST Error
+# Exercise 4 — SOAP Fault Versus REST Error
 
-**Module 24** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 24** · Checkpoint C · Exercises 1–6 Pass then Lab 24
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Contrast SOAP fault shapes with REST JSON/HTTP errors |
+| **Skills practiced** | Fault vs REST error analysis |
+| **Expected outcome** | notes/fault-vs-rest.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-24-exercises/` → notes/fault-vs-rest.md |
+| **Checkpoint** | C (after slides 79–82) |
+
+## What you will learn
+
+- Not-found: SOAP fault vs HTTP 404 JSON
+- Same BusinessException can drive both mappings
+- Do not return REST bodies on the SOAP channel
+
+**Enterprise context:** Partners parse SOAP faults with XML tools — HTTP 404 JSON on /ws confuses them.
 
 ## Goal
 
-Create `notes/fault-vs-rest.md` — document how business exceptions become SOAP faults without leaking stacks.
+Create `notes/fault-vs-rest.md` — fault vs REST table.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 24 — SOAP Fault Versus REST Error
 
-## Step 1 — Contrast table
+| Case | SOAP | REST |
+| --- | --- | --- |
+| Missing CUS-9999 | SOAP Fault (Client/business) | 404 JSON problem details |
+| Validation fail | SOAP Fault | 400 JSON |
+| Auth missing | WS-Security fault | 401/403 (later Lab 28) |
 
-In `notes/fault-vs-rest.md`, columns: Concern | SOAP | REST. Rows: not-found, validation, missing UsernameToken.
-
-## Step 2 — Answer sketch
-
-Not-found → SOAP fault vs HTTP 404 JSON; missing token → security fault vs 401 later on REST.
-
-## Step 3 — No stack traces
-
-Rule: partner-facing faults never include stack traces or secrets.
-
-## Step 4 — Lab 16 link
-
-Note Lab 16 exception ideas feed Lab 24 fault mapping.
+Same CustomerService exception; different protocol adapters.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +66,49 @@ From `examples/module-24-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 24 — SOAP Fault Versus REST Error
 
-## Step 1 — Contrast table
+| Case | SOAP | REST |
+| --- | --- | --- |
+| Missing customer | _____ | _____ |
+| Validation fail | _____ | _____ |
+| Missing UsernameToken | _____ | _____ |
 
-In `notes/fault-vs-rest.md`, columns: Concern | SOAP | REST. Rows: not-found, validation, missing UsernameToken.
-
-## Step 2 — Answer sketch
-
-Not-found → SOAP fault vs HTTP 404 JSON; missing token → security fault vs 401 later on REST.
-
-## Step 3 — No stack traces
-
-Rule: partner-facing faults never include stack traces or secrets.
-
-## Step 4 — Lab 16 link
-
-Note Lab 16 exception ideas feed Lab 24 fault mapping.
+## One rule
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab24-001` (or `lab-request-001` on REST). Replace every `_____` before Pass.
 
 ## Expected result
 
-Contrast table and safe-fault rule exist in `notes/fault-vs-rest.md`.
+Fault vs REST notes in `notes/fault-vs-rest.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should CustomerEndpoint catch Exception and always return a generic SERVER fault?
+
+## Predict the Output / Behavior
+
+Where should NotFoundException be translated for SOAP?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/fault-vs-rest.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 24 |
+| Same HTTP codes on SOAP | Use SOAP faults |
+| No shared-exception note | One service exception, two adapters |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/fault-vs-rest.md`
-- [ ] Three concern rows filled
-- [ ] No-stack-trace rule written
-- [ ] Lab 16 connection noted
-
+- [ ] Table filled
+- [ ] Shared exception rule

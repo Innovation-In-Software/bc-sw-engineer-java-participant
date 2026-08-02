@@ -1,14 +1,31 @@
 # Exercise 2 — Transaction Boundary Placement
 
-**Module 27** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 27** · Checkpoint B · Exercises 1–6 Pass then Lab 27
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Decide where @Transactional belongs for CRM transfers |
+| **Skills practiced** | TX boundary design |
+| **Expected outcome** | notes/tx-boundary.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-27-exercises/` → notes/tx-boundary.md |
+| **Checkpoint** | B (after slides 147–151) |
+
+## What you will learn
+
+- On TransferService.transfer
+- Not on TransferController
+- Public method on a Spring bean
+
+**Enterprise context:** Controller-owned transactions couple HTTP to persistence and break reuse from other adapters.
 
 ## Goal
 
-Create `notes/tx-boundary.md` — decide where the transfer transaction boundary belongs.
+Create `notes/tx-boundary.md` — boundary placement.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,32 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 27 — Transaction Boundary Placement
 
-## Reference
-
-| Location | Verdict |
-| --- | --- |
-| `TransferService.transfer(...)` | Preferred |
-| Controller method | Avoid |
-| Repository only | Too narrow for multi-step business |
-
-## Step 1 — Choose
-
-In `notes/tx-boundary.md`, pick the boundary for debit+credit+log.
-
-## Step 2 — Check the reference
-
-Service method is preferred.
-
-## Step 3 — Steps inside
-
-Order: load accounts → debit → credit → write TransactionLog.
-
-## Step 4 — Correlation
-
-Happy-path evidence uses `lab-request-001`.
+Place: TransferService.transfer(...) with @Transactional
+Avoid: @Transactional on controller
+Why: proxy on Spring service bean; HTTP stays thin
+Self-invocation warning: this.transfer() inside same class skips proxy
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -65,56 +63,53 @@ From `examples/module-27-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 27 — Transaction Boundary Placement
 
-## Reference
+## Place annotation on
+_____
 
-| Location | Verdict |
-| --- | --- |
-| `TransferService.transfer(...)` | Preferred |
-| Controller method | Avoid |
-| Repository only | Too narrow for multi-step business |
+## Avoid
+_____
 
-## Step 1 — Choose
+## Why (one sentence)
+_____
 
-In `notes/tx-boundary.md`, pick the boundary for debit+credit+log.
-
-## Step 2 — Check the reference
-
-Service method is preferred.
-
-## Step 3 — Steps inside
-
-Order: load accounts → debit → credit → write TransactionLog.
-
-## Step 4 — Correlation
-
-Happy-path evidence uses `lab-request-001`.
+## Self-invocation risk
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`, Ravi `CUS-1002`, accounts `ACC-1001-MAIN` / `ACC-1001-LOYALTY`, force id `ACC-FORCE-FAIL`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Service-level boundary and step order documented in `notes/tx-boundary.md`.
+Boundary notes in `notes/tx-boundary.md`.
 
-## If it fails
+## Debug / design challenge
+
+Does a private @Transactional method participate in Spring AOP?
+
+## Predict the Output / Behavior
+
+Should SOAP and REST both call the same transactional TransferService?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/tx-boundary.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 27 |
+| Putting TX on controller | Move to service |
+| No self-invocation note | Call out proxy skip |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/tx-boundary.md`
-- [ ] Service chosen over controller
-- [ ] Four internal steps ordered
-- [ ] Correlation noted
-
+- [ ] Service placement
+- [ ] Controller avoided
+- [ ] Self-invocation noted

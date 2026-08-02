@@ -1,28 +1,26 @@
 # Module 22 — Pre-Lab Exercises
 
-> **Start here for Module 22:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Start here for Module 22:** [`../README.md`](../README.md) · **Pacing:** [`../PACING.md`](../PACING.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 22 — Spring Core and Inversion of Control (IoC)  
 **Next:** [`../lab22/LAB-22-WINDOWS.md`](../lab22/LAB-22-WINDOWS.md) or [`../lab22/LAB-22-MACOS.md`](../lab22/LAB-22-MACOS.md) → [`../lab22/LAB-22-GUIDE.md`](../lab22/LAB-22-GUIDE.md)
 
-> Complete these exercises **in order** after the slides and **before** Lab 22.  
-> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-22-exercises/` — these are **notes files**, not the graded lab project.  
+> Complete these exercises **at the checkpoints** (not all slides first). Order **1 → 2 → 3 → 4 → 5 → 6**.  
+> Use JDK 21. Work under `examples/module-22-exercises/` — **notes files**, not the graded lab.  
 > Lab 22 is the graded consolidation. Do **not** finish Lab 22 during pre-lab.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+> **Tip:** Each exercise has an **Activity card**, **Worked example**, **Predict/Debug**, and **Troubleshooting**. Optional starter shells: [`starter/`](starter/README.md).
 
 ## What you produce (all exercises)
 
-| # | Your deliverable file | Type |
-| - | --------------------- | ---- |
-| 1 | `notes/ioc-vs-new.md` | IoC Versus Manual Wiring |
-| 2 | `notes/constructor-di.md` | Constructor Injection Preference |
-| 3 | `notes/lab22-lifecycle-notes.md` | Bean Lifecycle Callbacks |
-| 4 | `notes/stereotype-map.md` | Stereotype Annotation Map |
-| 5 | `notes/bean-graph-sketch.md` | Bean Graph Skeleton (TODOs) |
-| 6 | `notes/lab22-readiness.md` | Lab 22 Readiness Checklist |
-
-Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
+| # | Your deliverable file | Type | Checkpoint |
+| - | --------------------- | ---- | ---------- |
+| 1 | `notes/ioc-vs-new.md` | IoC Versus Manual Wiring | A |
+| 2 | `notes/constructor-di.md` | Constructor Injection Preference | B |
+| 3 | `notes/lab22-lifecycle-notes.md` | Bean Lifecycle Callbacks | C |
+| 4 | `notes/stereotype-map.md` | Stereotype Annotation Map | D |
+| 5 | `notes/bean-graph-sketch.md` | Bean Graph Skeleton (TODOs) | E |
+| 6 | `notes/lab22-readiness.md` | Lab 22 Readiness Checklist | E |
 
 ## Scope boundary — do not build later technology yet
 
@@ -61,21 +59,19 @@ cd examples/module-22-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available. You create markdown notes here; Lab 22 uses its own `examples/lab22-*/` (or module lab folder) project.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 22 uses `examples/lab22-crm/`.
 
-## Exercise index
+## Exercise index (classroom interleave)
 
-Complete in this sequence (matches Module slide order):
-
-| # | Exercise | New skill | Deliverable | File |
+| # | After slides | Exercise | Deliverable | File |
 | --- | --- | --- | --- | --- |
-| 1 | IoC Versus Manual Wiring | Analysis exercise | `notes/ioc-vs-new.md` | [`exercise-01-ioc-vs-new.md`](exercise-01-ioc-vs-new.md) |
-| 2 | Constructor Injection Preference | Documentation exercise | `notes/constructor-di.md` | [`exercise-02-constructor-injection.md`](exercise-02-constructor-injection.md) |
-| 3 | Bean Lifecycle Callbacks | Analysis exercise | `notes/lab22-lifecycle-notes.md` | [`exercise-03-lifecycle-notes.md`](exercise-03-lifecycle-notes.md) |
-| 4 | Stereotype Annotation Map | Architecture exercise | `notes/stereotype-map.md` | [`exercise-04-stereotype-map.md`](exercise-04-stereotype-map.md) |
-| 5 | Bean Graph Skeleton (TODOs) | Hands-on exercise | `notes/bean-graph-sketch.md` | [`exercise-05-bean-graph-skeleton.md`](exercise-05-bean-graph-skeleton.md) |
-| 6 | Lab 22 Readiness Checklist | Documentation exercise | `notes/lab22-readiness.md` | [`exercise-06-lab22-readiness.md`](exercise-06-lab22-readiness.md) |
+| 1 | 1–13 (A) | IoC Versus Manual Wiring | `notes/ioc-vs-new.md` | [`exercise-01-ioc-vs-new.md`](exercise-01-ioc-vs-new.md) |
+| 2 | 14–18 (B) | Constructor Injection Preference | `notes/constructor-di.md` | [`exercise-02-constructor-injection.md`](exercise-02-constructor-injection.md) |
+| 3 | 19–23 (C) | Bean Lifecycle Callbacks | `notes/lab22-lifecycle-notes.md` | [`exercise-03-lifecycle-notes.md`](exercise-03-lifecycle-notes.md) |
+| 4 | 24–28 (D) | Stereotype Annotation Map | `notes/stereotype-map.md` | [`exercise-04-stereotype-map.md`](exercise-04-stereotype-map.md) |
+| 5 | 29–31 (E) | Bean Graph Skeleton (TODOs) | `notes/bean-graph-sketch.md` | [`exercise-05-bean-graph-skeleton.md`](exercise-05-bean-graph-skeleton.md) |
+| 6 | 29–31 (E) | Lab 22 Readiness Checklist | `notes/lab22-readiness.md` | [`exercise-06-lab22-readiness.md`](exercise-06-lab22-readiness.md) |
 
 ## Done when
 
-All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 22 OS guide.
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep checklist self-mark is **Pass**. Then open the Lab 22 OS guide.

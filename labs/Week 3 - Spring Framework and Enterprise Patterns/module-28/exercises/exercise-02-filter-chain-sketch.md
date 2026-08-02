@@ -1,14 +1,31 @@
 # Exercise 2 — SecurityFilterChain Sketch
 
-**Module 28** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 28** · Checkpoint B · Exercises 1–6 Pass then Lab 28
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch matchers for login, customers, and admin routes |
+| **Skills practiced** | Filter-chain design |
+| **Expected outcome** | notes/filter-chain.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-28-exercises/` → notes/filter-chain.md |
+| **Checkpoint** | B (after slides 167–175) |
+
+## What you will learn
+
+- Stateless session
+- permitAll /api/auth/login
+- customers AGENT|ADMIN; admin ADMIN-only
+
+**Enterprise context:** Open-by-default chains ship new controllers unprotected — default deny is the enterprise baseline.
 
 ## Goal
 
-Create `notes/filter-chain.md` — sketch Lab 28 security components without implementing them.
+Create `notes/filter-chain.md` — chain sketch.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,33 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 28 — SecurityFilterChain Sketch
 
-## Reference
+Session: STATELESS
+/api/auth/login → permitAll
+/api/customers/** → hasAnyRole(AGENT, ADMIN)
+/api/admin/** → hasRole(ADMIN)
+Other APIs → authenticated (default deny extras)
 
-| Component | Role |
-| --- | --- |
-| SecurityFilterChain | Authorize HTTP requests |
-| JwtService | Issue/parse tokens |
-| JwtAuthenticationFilter | Read Bearer header |
-| CrmUserDetailsService | Load lab users/roles |
-
-## Step 1 — Component list
-
-In `notes/filter-chain.md`, list the four components from the reference.
-
-## Step 2 — Session policy
-
-Write: session creation policy STATELESS for JWT APIs.
-
-## Step 3 — Route rules
-
-`/api/auth/login` permitAll; `/api/customers/**` AGENT/ADMIN; `/api/admin/**` ADMIN only.
-
-## Step 4 — CSRF note
-
-For stateless Bearer APIs, CSRF is typically disabled — confirm in lab guide.
+JWT filter before UsernamePasswordAuthenticationFilter.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -66,57 +66,53 @@ From `examples/module-28-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 28 — SecurityFilterChain Sketch
 
-## Reference
+## Session policy
+_____
 
-| Component | Role |
-| --- | --- |
-| SecurityFilterChain | Authorize HTTP requests |
-| JwtService | Issue/parse tokens |
-| JwtAuthenticationFilter | Read Bearer header |
-| CrmUserDetailsService | Load lab users/roles |
+## Login matcher
+_____
 
-## Step 1 — Component list
+## Customers matcher + roles
+_____
 
-In `notes/filter-chain.md`, list the four components from the reference.
-
-## Step 2 — Session policy
-
-Write: session creation policy STATELESS for JWT APIs.
-
-## Step 3 — Route rules
-
-`/api/auth/login` permitAll; `/api/customers/**` AGENT/ADMIN; `/api/admin/**` ADMIN only.
-
-## Step 4 — CSRF note
-
-For stateless Bearer APIs, CSRF is typically disabled — confirm in lab guide.
+## Admin matcher + roles
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`, lab users `agent1`/`admin1`. Replace every `_____` before Pass. **Never write real JWT secrets.**
 
 ## Expected result
 
-Filter-chain sketch and route rules ready in `notes/filter-chain.md`.
+Filter-chain sketch in `notes/filter-chain.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should CSRF stay enabled for a pure Bearer JWT API?
+
+## Predict the Output / Behavior
+
+What goes wrong if /api/customers/** is permitAll?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/filter-chain.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 28 |
+| permitAll on customers | Require roles |
+| No admin rule | ADMIN-only admin routes |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/filter-chain.md`
-- [ ] Four components listed
-- [ ] STATELESS noted
-- [ ] Route role rules written
-
+- [ ] Login permitAll
+- [ ] Customers roles
+- [ ] Admin ADMIN

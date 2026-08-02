@@ -1,14 +1,31 @@
 # Exercise 2 — Package Sketch
 
-**Module 25** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 25** · Checkpoint B · Exercises 1–6 Pass then Lab 25
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch com.northstar.crm packages for api/service/repository/model |
+| **Skills practiced** | Package architecture |
+| **Expected outcome** | notes/package-tree.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-25-exercises/` → notes/package-tree.md |
+| **Checkpoint** | B (after slides 97–104) |
+
+## What you will learn
+
+- api = controllers
+- service = CustomerService
+- repository = interface + InMemory impl
+
+**Enterprise context:** Reviewers navigate by package — mixed layers in one folder hide seams.
 
 ## Goal
 
-Create `notes/package-tree.md` — sketch `api`/`controller`, `service`, `repository`, `model` packages.
+Create `notes/package-tree.md` — package sketch.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 25 — Package Sketch
 
-## Step 1 — Tree
-
-In `notes/package-tree.md`, draw `com.northstar.crm` with controller, service, repository, model (and optional dto).
-
-## Step 2 — Types
-
-Place `CustomerController`, `CustomerService`, `CustomerRepository`, `InMemoryCustomerRepository`, `Customer`.
-
-## Step 3 — SOAP note
-
-If SOAP exists from Lab 24, endpoints stay adapters; still call the same service.
-
-## Step 4 — JPA readiness
-
-One sentence: later JPA repo should keep the same service method signatures.
+com.northstar.crm
+  api/CustomerController
+  service/CustomerService
+  repository/CustomerRepository
+  repository/InMemoryCustomerRepository
+  model/Customer
+  CrmApplication
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +66,17 @@ From `examples/module-25-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 25 — Package Sketch
 
-## Step 1 — Tree
+## Tree
+_____
 
-In `notes/package-tree.md`, draw `com.northstar.crm` with controller, service, repository, model (and optional dto).
+## Where does the controller live?
+_____
 
-## Step 2 — Types
-
-Place `CustomerController`, `CustomerService`, `CustomerRepository`, `InMemoryCustomerRepository`, `Customer`.
-
-## Step 3 — SOAP note
-
-If SOAP exists from Lab 24, endpoints stay adapters; still call the same service.
-
-## Step 4 — JPA readiness
-
-One sentence: later JPA repo should keep the same service method signatures.
+## Where does InMemoryCustomerRepository live?
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +85,30 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Package tree supports layered Boot CRM in `notes/package-tree.md`.
+Package tree in `notes/package-tree.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should SOAP endpoints sit under repository?
+
+## Predict the Output / Behavior
+
+Why keep model free of Spring Web annotations?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/package-tree.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 25 |
+| Putting repo under api | Use repository package |
+| Skipping CrmApplication root | Keep scan root clear |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/package-tree.md`
-- [ ] Four packages present
-- [ ] Five types placed
-- [ ] JPA readiness sentence written
-
+- [ ] api/service/repository/model
+- [ ] Application root noted

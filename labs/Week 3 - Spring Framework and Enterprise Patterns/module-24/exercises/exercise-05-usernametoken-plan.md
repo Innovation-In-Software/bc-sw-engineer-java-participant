@@ -1,14 +1,31 @@
 # Exercise 5 — UsernameToken Plan
 
-**Module 24** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 24** · Checkpoint D · Exercises 1–6 Pass then Lab 24
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan minimal WS-Security UsernameToken for the lab |
+| **Skills practiced** | Message-level security planning |
+| **Expected outcome** | notes/usernametoken-plan.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-24-exercises/` → notes/usernametoken-plan.md |
+| **Checkpoint** | D (after slides 83–86) |
+
+## What you will learn
+
+- Token lives in SOAP Header
+- Lab secret / PasswordText teaching mode
+- Not a substitute for Lab 28 JWT on REST
+
+**Enterprise context:** Message-level auth proves the partner presented credentials inside the envelope — still use TLS in production.
 
 ## Goal
 
-Create `notes/usernametoken-plan.md` — outline UsernameToken evidence without implementing JWT.
+Create `notes/usernametoken-plan.md` — UsernameToken plan.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 24 — UsernameToken Plan
 
-## Step 1 — Happy path
-
-In `notes/usernametoken-plan.md`: secured GetCustomer for `CUS-1001` succeeds.
-
-## Step 2 — Failure path
-
-Missing/invalid token produces a distinct fault from not-found.
-
-## Step 3 — Secret hygiene
-
-Lab secrets stay in local config / `.env.example` placeholders — never real prod passwords.
-
-## Step 4 — Not JWT
-
-Explicitly defer Bearer JWT filter chains to Lab 28.
+Header: wsse UsernameToken (lab user + lab password).
+Success: secured GetCustomer for CUS-1001.
+Failure: missing/wrong token → security fault before service call.
+Not in scope: full signatures, SAML, OAuth IdP.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +63,53 @@ From `examples/module-24-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 24 — UsernameToken Plan
 
-## Step 1 — Happy path
+## Where credentials live
+_____
 
-In `notes/usernametoken-plan.md`: secured GetCustomer for `CUS-1001` succeeds.
+## Success case
+_____
 
-## Step 2 — Failure path
+## Failure case
+_____
 
-Missing/invalid token produces a distinct fault from not-found.
-
-## Step 3 — Secret hygiene
-
-Lab secrets stay in local config / `.env.example` placeholders — never real prod passwords.
-
-## Step 4 — Not JWT
-
-Explicitly defer Bearer JWT filter chains to Lab 28.
+## Out of scope
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab24-001` (or `lab-request-001` on REST). Replace every `_____` before Pass.
 
 ## Expected result
 
-UsernameToken plan distinguishes security faults from not-found in `notes/usernametoken-plan.md`.
+UsernameToken plan in `notes/usernametoken-plan.md`.
 
-## If it fails
+## Debug / design challenge
+
+Is PasswordText UsernameToken enough without HTTPS in production?
+
+## Predict the Output / Behavior
+
+Does UsernameToken replace constructor DI on CustomerService?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/usernametoken-plan.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 24 |
+| Planning JWT here | JWT is Lab 28 — UsernameToken for SOAP lab |
+| No failure case | Missing token → security fault |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/usernametoken-plan.md`
-- [ ] Happy and failure paths listed
-- [ ] Secret hygiene stated
-- [ ] JWT deferred to Lab 28
-
+- [ ] Header location
+- [ ] Success + failure
+- [ ] Out of scope noted

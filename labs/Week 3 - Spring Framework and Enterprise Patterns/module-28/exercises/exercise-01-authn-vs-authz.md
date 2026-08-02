@@ -1,14 +1,31 @@
 # Exercise 1 — Authentication Versus Authorization
 
-**Module 28** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 28** · Checkpoint A · Exercises 1–6 Pass then Lab 28
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Contrast authn vs authz with CRM 401/403 examples |
+| **Skills practiced** | Authn vs authz analysis |
+| **Expected outcome** | notes/authn-authz.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-28-exercises/` → notes/authn-authz.md |
+| **Checkpoint** | A (after slides 161–166) |
+
+## What you will learn
+
+- Authn = who (agent1 login / JWT)
+- Authz = what (AGENT vs ADMIN routes)
+- 401 vs 403 mapping
+
+**Enterprise context:** Support tickets often say “security broken” when the real issue is 403 vs 401 confusion.
 
 ## Goal
 
-Create `notes/authn-authz.md` — explain 401 vs 403 with Northstar agent/admin examples.
+Create `notes/authn-authz.md` — authn vs authz.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,32 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 28 — Authentication Versus Authorization
 
-## Reference
+| Concept | Question | CRM example | HTTP |
+| --- | --- | --- | --- |
+| Authentication | Who are you? | Missing/bad JWT | 401 |
+| Authorization | What may you do? | agent1 hits /api/admin | 403 |
 
-| Status | Meaning | CRM example |
-| --- | --- | --- |
-| 401 | Not authenticated | No/invalid Bearer token |
-| 403 | Authenticated but forbidden | `agent1` hits `/api/admin/**` |
-| 200 | Allowed | `agent1` GET `CUS-1001` |
-
-## Step 1 — Define
-
-In `notes/authn-authz.md`, define authentication and authorization in one sentence each.
-
-## Step 2 — Check the reference
-
-Fill a 401/403/200 example row matching the table.
-
-## Step 3 — Lab users
-
-Record `agent1` (AGENT) and `admin1` (ADMIN).
-
-## Step 4 — Correlation ≠ auth
-
-`lab-request-001` is operational metadata — never treat it as a credential.
+Correlation lab-request-001 ≠ authentication.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -65,56 +65,49 @@ From `examples/module-28-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 28 — Authentication Versus Authorization
 
-## Reference
+| Concept | Question | CRM example | HTTP |
+| --- | --- | --- | --- |
+| Authentication | _____ | _____ | _____ |
+| Authorization | _____ | _____ | _____ |
 
-| Status | Meaning | CRM example |
-| --- | --- | --- |
-| 401 | Not authenticated | No/invalid Bearer token |
-| 403 | Authenticated but forbidden | `agent1` hits `/api/admin/**` |
-| 200 | Allowed | `agent1` GET `CUS-1001` |
-
-## Step 1 — Define
-
-In `notes/authn-authz.md`, define authentication and authorization in one sentence each.
-
-## Step 2 — Check the reference
-
-Fill a 401/403/200 example row matching the table.
-
-## Step 3 — Lab users
-
-Record `agent1` (AGENT) and `admin1` (ADMIN).
-
-## Step 4 — Correlation ≠ auth
-
-`lab-request-001` is operational metadata — never treat it as a credential.
+## Correlation vs auth
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`, lab users `agent1`/`admin1`. Replace every `_____` before Pass. **Never write real JWT secrets.**
 
 ## Expected result
 
-401/403/200 CRM examples and lab users documented in `notes/authn-authz.md`.
+Authn/authz notes in `notes/authn-authz.md`.
 
-## If it fails
+## Debug / design challenge
+
+Expired JWT on a permitted role — 401 or 403?
+
+## Predict the Output / Behavior
+
+Valid AGENT token on /api/admin — 401 or 403?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/authn-authz.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 28 |
+| Swapping 401/403 | Fix status mapping |
+| Treating correlation as auth | Call out it is not |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/authn-authz.md`
-- [ ] Authn vs authz defined
-- [ ] 401/403 examples correct
-- [ ] Correlation-not-auth stated
-
+- [ ] Both concepts
+- [ ] 401/403 mapped
+- [ ] Correlation note

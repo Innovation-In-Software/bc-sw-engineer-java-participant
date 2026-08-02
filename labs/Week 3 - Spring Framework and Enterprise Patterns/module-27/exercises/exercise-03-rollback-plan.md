@@ -1,14 +1,31 @@
 # Exercise 3 — Rollback Evidence Plan
 
-**Module 27** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 27** · Checkpoint B · Exercises 1–6 Pass then Lab 27
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan how you will prove rollback with ACC-FORCE-FAIL |
+| **Skills practiced** | Rollback evidence design |
+| **Expected outcome** | notes/rollback-plan.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-27-exercises/` → notes/rollback-plan.md |
+| **Checkpoint** | B (after slides 147–151) |
+
+## What you will learn
+
+- Record MAIN balance before
+- Transfer to ACC-FORCE-FAIL
+- Assert MAIN unchanged + no TransactionLog success row
+
+**Enterprise context:** Without before/after balances, “it rolled back” is unverifiable in peer review.
 
 ## Goal
 
-Create `notes/rollback-plan.md` — document what must remain unchanged after forced failure.
+Create `notes/rollback-plan.md` — evidence plan.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 27 — Rollback Evidence Plan
 
-## Step 1 — Happy path
-
-In `notes/rollback-plan.md`: MAIN→LOYALTY updates both balances and writes a log.
-
-## Step 2 — Force fail
-
-Transfer to `ACC-FORCE-FAIL`: MAIN balance unchanged; no success log row.
-
-## Step 3 — Test idea
-
-Automated test asserts balances after failure — plan only.
-
-## Step 4 — AI caution
-
-Reject AI drafts that catch Exception and swallow it inside `@Transactional` methods.
+1. Note ACC-1001-MAIN balance before
+2. POST transfer destination ACC-FORCE-FAIL
+3. Expect error response
+4. MAIN balance unchanged
+5. No success TransactionLog row
+6. Screenshot/notes under lab-27/
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +65,53 @@ From `examples/module-27-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 27 — Rollback Evidence Plan
 
-## Step 1 — Happy path
+## Before measurement
+_____
 
-In `notes/rollback-plan.md`: MAIN→LOYALTY updates both balances and writes a log.
+## Force-fail action
+_____
 
-## Step 2 — Force fail
+## After assertions
+_____
 
-Transfer to `ACC-FORCE-FAIL`: MAIN balance unchanged; no success log row.
-
-## Step 3 — Test idea
-
-Automated test asserts balances after failure — plan only.
-
-## Step 4 — AI caution
-
-Reject AI drafts that catch Exception and swallow it inside `@Transactional` methods.
+## Evidence location
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`, Ravi `CUS-1002`, accounts `ACC-1001-MAIN` / `ACC-1001-LOYALTY`, force id `ACC-FORCE-FAIL`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Rollback evidence plan and AI caution recorded in `notes/rollback-plan.md`.
+Rollback plan in `notes/rollback-plan.md`.
 
-## If it fails
+## Debug / design challenge
+
+If the log uses REQUIRES_NEW, what misleading evidence might you see?
+
+## Predict the Output / Behavior
+
+Why reset seeds between automated tests?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/rollback-plan.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 27 |
+| No before balance | Measure before |
+| Skipping log assertion | No success log on fail |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/rollback-plan.md`
-- [ ] Happy and fail paths contrasted
-- [ ] No-log-on-fail stated
-- [ ] Swallowed-exception reject rule written
-
+- [ ] Before/after
+- [ ] ACC-FORCE-FAIL
+- [ ] Log assertion

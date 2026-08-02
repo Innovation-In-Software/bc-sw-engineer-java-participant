@@ -1,14 +1,31 @@
 # Exercise 1 — IoC Versus Manual Wiring
 
-**Module 22** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 22** · Checkpoint A · Exercises 1–6 Pass then Lab 22
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Explain why Northstar CRM should stop constructing repositories with new inside services |
+| **Skills practiced** | IoC vs manual wiring analysis |
+| **Expected outcome** | notes/ioc-vs-new.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-22-exercises/` → notes/ioc-vs-new.md |
+| **Checkpoint** | A (after slides 1–13) |
+
+## What you will learn
+
+- Manual new hard-wires InMemoryCustomerRepository
+- IoC supplies collaborators so tests can pass fakes
+- Smell: service owns construction of its dependencies
+
+**Enterprise context:** Teams that keep new inside services cannot swap stores or isolate unit tests without editing production code.
 
 ## Goal
 
-Create `notes/ioc-vs-new.md` — explain why Northstar CRM should stop constructing repositories inside services with `new`.
+Create `notes/ioc-vs-new.md` — contrast manual new vs IoC for CRM.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,16 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 22 — IoC Versus Manual Wiring
 
-## Reference
-
 | Approach | Who creates collaborators? | Test impact |
 | --- | --- | --- |
-| Manual `new` | Service constructs `InMemoryCustomerRepository` | Hard to swap fakes |
+| Manual `new` | Service constructs InMemoryCustomerRepository | Hard to swap fakes |
 | IoC / DI | Spring (or test) supplies collaborators | Constructor takes a fake repo |
 
-## Step 1 — Spot the smell
+Smell: CustomerService owns `new InMemoryCustomerRepository()`.
+Fix: declare CustomerRepository in the constructor; let the container (or test) supply it.
 
-In `notes/ioc-vs-new.md`, rewrite this anti-pattern in one sentence:
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -49,39 +66,19 @@ From `examples/module-22-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 22 — IoC Versus Manual Wiring
 
-## Reference
-
 | Approach | Who creates collaborators? | Test impact |
 | --- | --- | --- |
-| Manual `new` | Service constructs `InMemoryCustomerRepository` | Hard to swap fakes |
-| IoC / DI | Spring (or test) supplies collaborators | Constructor takes a fake repo |
+| Manual `new` | _____ | _____ |
+| IoC / DI | _____ | _____ |
 
-## Step 1 — Spot the smell
+## Smell (one sentence)
+_____
 
-In `notes/ioc-vs-new.md`, rewrite this anti-pattern in one sentence:
-
-```java
-public class CustomerService {
-    private final CustomerRepository repo = new InMemoryCustomerRepository();
-}
-```
-
-Name one problem for swapping persistence later.
-
-## Step 2 — Check the reference
-
-Compare your note to the reference table. IoC means the **container** owns lifecycle; the service declares needs via constructor parameters.
-
-## Step 3 — CRM fixtures
-
-List three evidence IDs Lab 22 will use: `CUS-1001` (Amina Khan, ACTIVE), `CUS-1002` (Ravi Singh, PROSPECT), correlation `lab-request-001`.
-
-## Step 4 — Pre-lab boundary
-
-Write one line: this exercise prepares for bean wiring only — you will **not** finish the full Lab 22 starter TODOs here.
+## Fix (one sentence)
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -90,22 +87,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A short note explains IoC vs `new` and lists the three CRM fixtures in `notes/ioc-vs-new.md`.
+IoC vs new contrast in `notes/ioc-vs-new.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rewrite a service that news NotificationService so a unit test can assert notify was called without Spring.
+
+## Predict the Output / Behavior
+
+If two places each `new` a repository, how many in-memory maps exist at runtime?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/ioc-vs-new.md` |
-| Calling IoC 'magic statics' | IoC is injection of dependencies, not global lookup |
-| Skipping fixtures | Keep Amina/Ravi IDs consistent for later labs |
+| Saying new is fine forever | Call out test/swapability smell |
+| Skipping the fix sentence | Constructor + supplied collaborator |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/ioc-vs-new.md`
-- [ ] Anti-pattern problem is named (testability or swapability)
-- [ ] IoC ownership is stated clearly
-- [ ] CUS-1001, CUS-1002, and lab-request-001 appear in notes
-
+- [ ] Table filled
+- [ ] Smell noted
+- [ ] Fix noted

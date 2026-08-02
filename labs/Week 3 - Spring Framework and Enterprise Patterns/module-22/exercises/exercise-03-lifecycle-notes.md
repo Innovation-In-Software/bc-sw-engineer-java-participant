@@ -1,14 +1,31 @@
-# Exercise 2 — Bean Lifecycle Callbacks
+# Exercise 3 — Bean Lifecycle Callbacks
 
-**Module 22** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 22** · Checkpoint C · Exercises 1–6 Pass then Lab 22
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Note when @PostConstruct and @PreDestroy run on CustomerService |
+| **Skills practiced** | Bean lifecycle awareness |
+| **Expected outcome** | notes/lab22-lifecycle-notes.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-22-exercises/` → notes/lab22-lifecycle-notes.md |
+| **Checkpoint** | C (after slides 19–23) |
+
+## What you will learn
+
+- Order: create → inject → @PostConstruct → use → @PreDestroy
+- Singleton: init once per context
+- Do not put request logic in PostConstruct
+
+**Enterprise context:** Lifecycle logs prove the container — not your main method — owns startup/shutdown of CRM services.
 
 ## Goal
 
-Create `notes/lab22-lifecycle-notes.md` — predict when lifecycle callbacks fire for a singleton `CustomerService`.
+Create `notes/lab22-lifecycle-notes.md` — lifecycle callbacks.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,31 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 22 — Bean Lifecycle Callbacks
 
-## Reference
-
-| Callback | When |
-| --- | --- |
-| `@PostConstruct` | After injection, before traffic |
-| `@PreDestroy` | During orderly context shutdown |
-
-## Step 1 — Order the phases
-
-Number these: inject dependencies → create bean → `@PostConstruct` → serve requests → `@PreDestroy`.
-
-## Step 2 — Check the reference
-
-Correct order: create → inject → `@PostConstruct` → serve → `@PreDestroy`.
-
-## Step 3 — Evidence plan
-
-Write what log lines you expect once per context start/stop for Lab 22 (no secrets/PII in logs — Lab 20 rules).
-
-## Step 4 — Scope note
-
-State that default scope is singleton unless annotated otherwise.
+Order: Create → Inject → @PostConstruct → Use → @PreDestroy.
+CustomerService: log init once; log destroy on context close.
+Do not create CUS-1001 inside @PostConstruct for every request.
+Singleton scope: one shared service instance.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -64,31 +63,20 @@ From `examples/module-22-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 22 — Bean Lifecycle Callbacks
 
-## Reference
+## Lifecycle order
+_____
 
-| Callback | When |
-| --- | --- |
-| `@PostConstruct` | After injection, before traffic |
-| `@PreDestroy` | During orderly context shutdown |
+## @PostConstruct purpose
+_____
 
-## Step 1 — Order the phases
+## @PreDestroy purpose
+_____
 
-Number these: inject dependencies → create bean → `@PostConstruct` → serve requests → `@PreDestroy`.
-
-## Step 2 — Check the reference
-
-Correct order: create → inject → `@PostConstruct` → serve → `@PreDestroy`.
-
-## Step 3 — Evidence plan
-
-Write what log lines you expect once per context start/stop for Lab 22 (no secrets/PII in logs — Lab 20 rules).
-
-## Step 4 — Scope note
-
-State that default scope is singleton unless annotated otherwise.
+## What not to do in init
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -97,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Lifecycle order and PII-safe evidence plan are documented in `notes/lab22-lifecycle-notes.md`.
+Lifecycle notes in `notes/lab22-lifecycle-notes.md`.
 
-## If it fails
+## Debug / design challenge
+
+If @PostConstruct runs before constructor injection finishes, is that possible in Spring?
+
+## Predict the Output / Behavior
+
+How many @PostConstruct logs do you expect for a singleton CustomerService per SpringBootTest context?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab22-lifecycle-notes.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 22 |
+| Wrong order | Inject before PostConstruct |
+| Business logic in init | Keep init to one-time setup/logging |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab22-lifecycle-notes.md`
-- [ ] Phase order is correct
-- [ ] Evidence plan avoids PII
-- [ ] Singleton default is mentioned
-
+- [ ] Order stated
+- [ ] Both callbacks
+- [ ] Anti-pattern noted

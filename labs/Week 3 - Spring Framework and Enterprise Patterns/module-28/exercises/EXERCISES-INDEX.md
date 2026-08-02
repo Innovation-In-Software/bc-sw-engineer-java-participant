@@ -1,28 +1,26 @@
 # Module 28 — Pre-Lab Exercises
 
-> **Start here for Module 28:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Start here for Module 28:** [`../README.md`](../README.md) · **Pacing:** [`../PACING.md`](../PACING.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 28 — Spring Security Fundamentals  
 **Next:** [`../lab28/LAB-28-WINDOWS.md`](../lab28/LAB-28-WINDOWS.md) or [`../lab28/LAB-28-MACOS.md`](../lab28/LAB-28-MACOS.md) → [`../lab28/LAB-28-GUIDE.md`](../lab28/LAB-28-GUIDE.md)
 
-> Complete these exercises **in order** after the slides and **before** Lab 28.  
-> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-28-exercises/` — these are **notes files**, not the graded lab project.  
+> Complete these exercises **at the checkpoints** (not all slides first). Order **1 → 2 → 3 → 4 → 5 → 6**.  
+> Use JDK 21. Work under `examples/module-28-exercises/` — **notes files**, not the graded lab.  
 > Lab 28 is the graded consolidation. Do **not** finish Lab 28 during pre-lab.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+> **Tip:** Each exercise has an **Activity card**, **Worked example**, **Predict/Debug**, and **Troubleshooting**. Optional starter shells: [`starter/`](starter/README.md).
 
 ## What you produce (all exercises)
 
-| # | Your deliverable file | Type |
-| - | --------------------- | ---- |
-| 1 | `notes/authn-authz.md` | Authentication Versus Authorization |
-| 2 | `notes/filter-chain.md` | SecurityFilterChain Sketch |
-| 3 | `notes/lab28-jwt-login-todos.md` | JWT Login TODOs |
-| 4 | `notes/mockmvc-matrix.md` | MockMvc Evidence Matrix |
-| 5 | `notes/security-notes-outline.md` | Production IdP Checklist |
-| 6 | `notes/lab28-readiness.md` | Lab 28 Readiness Checklist |
-
-Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
+| # | Your deliverable file | Type | Checkpoint |
+| - | --------------------- | ---- | ---------- |
+| 1 | `notes/authn-authz.md` | Authentication Versus Authorization | A |
+| 2 | `notes/filter-chain.md` | SecurityFilterChain Sketch | B |
+| 3 | `notes/lab28-jwt-login-todos.md` | JWT Login TODOs | C |
+| 4 | `notes/mockmvc-matrix.md` | MockMvc Evidence Matrix | C |
+| 5 | `notes/security-notes-outline.md` | Production IdP Checklist | D |
+| 6 | `notes/lab28-readiness.md` | Lab 28 Readiness Checklist | D |
 
 ## Scope boundary — do not build later technology yet
 
@@ -61,21 +59,19 @@ cd examples/module-28-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available. You create markdown notes here; Lab 28 uses its own `examples/lab28-*/` (or module lab folder) project.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 28 uses `examples/lab28-crm/`.
 
-## Exercise index
+## Exercise index (classroom interleave)
 
-Complete in this sequence (matches Module slide order):
-
-| # | Exercise | New skill | Deliverable | File |
+| # | After slides | Exercise | Deliverable | File |
 | --- | --- | --- | --- | --- |
-| 1 | Authentication Versus Authorization | Analysis exercise | `notes/authn-authz.md` | [`exercise-01-authn-vs-authz.md`](exercise-01-authn-vs-authz.md) |
-| 2 | SecurityFilterChain Sketch | Architecture exercise | `notes/filter-chain.md` | [`exercise-02-filter-chain-sketch.md`](exercise-02-filter-chain-sketch.md) |
-| 3 | JWT Login TODOs | Hands-on exercise | `notes/lab28-jwt-login-todos.md` | [`exercise-03-jwt-login-todos.md`](exercise-03-jwt-login-todos.md) |
-| 4 | MockMvc Evidence Matrix | Documentation exercise | `notes/mockmvc-matrix.md` | [`exercise-04-mockmvc-matrix.md`](exercise-04-mockmvc-matrix.md) |
-| 5 | Production IdP Checklist | Documentation exercise | `notes/security-notes-outline.md` | [`exercise-05-production-checklist.md`](exercise-05-production-checklist.md) |
-| 6 | Lab 28 Readiness Checklist | Documentation exercise | `notes/lab28-readiness.md` | [`exercise-06-lab28-readiness.md`](exercise-06-lab28-readiness.md) |
+| 1 | 161–166 (A) | Authentication Versus Authorization | `notes/authn-authz.md` | [`exercise-01-authn-vs-authz.md`](exercise-01-authn-vs-authz.md) |
+| 2 | 167–175 (B) | SecurityFilterChain Sketch | `notes/filter-chain.md` | [`exercise-02-filter-chain-sketch.md`](exercise-02-filter-chain-sketch.md) |
+| 3 | 176–179 (C) | JWT Login TODOs | `notes/lab28-jwt-login-todos.md` | [`exercise-03-jwt-login-todos.md`](exercise-03-jwt-login-todos.md) |
+| 4 | 176–179 (C) | MockMvc Evidence Matrix | `notes/mockmvc-matrix.md` | [`exercise-04-mockmvc-matrix.md`](exercise-04-mockmvc-matrix.md) |
+| 5 | 180–182 (D) | Production IdP Checklist | `notes/security-notes-outline.md` | [`exercise-05-production-checklist.md`](exercise-05-production-checklist.md) |
+| 6 | 180–182 (D) | Lab 28 Readiness Checklist | `notes/lab28-readiness.md` | [`exercise-06-lab28-readiness.md`](exercise-06-lab28-readiness.md) |
 
 ## Done when
 
-All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 28 OS guide.
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep checklist self-mark is **Pass**. Then open the Lab 28 OS guide.

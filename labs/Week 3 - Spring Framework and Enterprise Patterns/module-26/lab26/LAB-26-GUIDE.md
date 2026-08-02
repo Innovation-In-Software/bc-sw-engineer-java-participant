@@ -1,5 +1,19 @@
 # Lab 26: Spring Profiles and Configuration — Northstar CRM Environments
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 26 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-26-WINDOWS.md) · [macOS](LAB-26-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Externalize CRM config with dev/test/prod profiles, typed properties, and secret hygiene |
+| **Skills practiced** | Profile YAML, activation (-D + env), override order, @ConfigurationProperties |
+| **Expected outcome** | Profile files · ConfigProperties · activation evidence · prod fail-fast · no secrets in Git |
+| **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
+| **Prerequisites** | Lab 0 · Lab 25 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab26-crm/` — YAML profiles, properties class, .env.example, notes |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 26 — Spring Configuration, Profiles and Environments  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-26/lab26/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-26-WINDOWS.md](LAB-26-WINDOWS.md) |
 | macOS | [LAB-26-MACOS.md](LAB-26-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 26 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 25 CRM forward or the Module 26 starter as `lab26-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-26-exercises/`; graded work is `examples/lab26-crm/`.
+
+> **Incremental build:** Profile purposes → YAML TODOs → ConfigProperties → override order → activation → Lab 26.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–D).
+
+> **Critical scope:** **Never commit real secrets**. `.env.example` placeholders only. Prove **`-D` and env** activation. **prod fail-fast** without required env vars. Vault/JWT/`@Transactional` → later.
 
 ## 45-minute timed path (use starter)
 
@@ -721,6 +741,10 @@ git status --short
 | Prod starts empty password | Default `${VAR:}` used | Remove secret defaults |
 | Binding null | Prefix/enable missing | `@EnableConfigurationProperties` |
 | CRM seeds gone | Datasource URL changed | Align seeder with profile DB |
+| Working in `module-26-exercises` for the lab | Wrong project | Lab lives in `examples/lab26-crm` |
+| Real password committed | Secret hygiene failure | Remove, rotate, use `.env.example` only |
+| Installing Vault mid-lab | Scope creep | Env vars are enough for Pass |
+| CLI override “ignored” | Wrong property key / wrong process | Confirm process args; remeasure order |
 
 ---
 

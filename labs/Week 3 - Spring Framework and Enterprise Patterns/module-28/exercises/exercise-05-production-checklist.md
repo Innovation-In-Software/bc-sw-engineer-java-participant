@@ -1,14 +1,31 @@
 # Exercise 5 — Production IdP Checklist
 
-**Module 28** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 28** · Checkpoint D · Exercises 1–6 Pass then Lab 28
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Outline production IdP / key-rotation checklist items (awareness) |
+| **Skills practiced** | Production security planning |
+| **Expected outcome** | notes/security-notes-outline.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-28-exercises/` → notes/security-notes-outline.md |
+| **Checkpoint** | D (after slides 180–182) |
+
+## What you will learn
+
+- External IdP preferred in prod
+- Rotate signing keys
+- Short TTL + HTTPS
+
+**Enterprise context:** Lab JWT is teaching mode — production still needs IdP ownership and rotation runbooks.
 
 ## Goal
 
-Create `notes/security-notes-outline.md` — draft `docs/security-notes.md` outline items for IdP and key rotation.
+Create `notes/security-notes-outline.md` — IdP checklist.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,14 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 28 — Production IdP Checklist
 
-## Step 1 — Outline
-
-In `notes/security-notes-outline.md`: replace lab users with IdP; rotate signing keys; short token TTL; HTTPS only.
-
-## Step 2 — Lab vs prod
-
-In-memory `agent1`/`admin1` are lab-only.
-
-## Step 3 — Transfers
-
-Note Lab 27 money routes must stay behind auth in production narratives.
-
-## Step 4 — Boundary
-
-Do not implement OAuth2 Authorization Server here.
+- Prefer enterprise IdP / OAuth2 in production (lab JWT is teaching)
+- Store signing keys in a secret manager; rotate on schedule/incident
+- Short token TTL; HTTPS only
+- Audit failed logins; never log raw bearer tokens
+- Least privilege roles; review admin grants
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +64,54 @@ From `examples/module-28-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 28 — Production IdP Checklist
 
-## Step 1 — Outline
+## IdP note
+_____
 
-In `notes/security-notes-outline.md`: replace lab users with IdP; rotate signing keys; short token TTL; HTTPS only.
+## Key rotation
+_____
 
-## Step 2 — Lab vs prod
+## Transport / TTL
+_____
 
-In-memory `agent1`/`admin1` are lab-only.
-
-## Step 3 — Transfers
-
-Note Lab 27 money routes must stay behind auth in production narratives.
-
-## Step 4 — Boundary
-
-Do not implement OAuth2 Authorization Server here.
+## Logging hygiene
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only. No real secrets.
+
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`, lab users `agent1`/`admin1`. Replace every `_____` before Pass. **Never write real JWT secrets.**
 
 ## Expected result
 
-Production checklist outline exists in `notes/security-notes-outline.md`.
+IdP checklist in `notes/security-notes-outline.md`.
 
-## If it fails
+## Debug / design challenge
+
+Does Lab 28 require standing up Keycloak for Pass?
+
+## Predict the Output / Behavior
+
+What do you do if a JWT signing secret was committed?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/security-notes-outline.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 28 |
+| Saying lab JWT is production-ready forever | Mark teaching mode |
+| Planning to commit secrets | Forbidden |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/security-notes-outline.md`
-- [ ] Four checklist items present
-- [ ] Lab users marked non-prod
-- [ ] OAuth server deferred
-
+- [ ] IdP note
+- [ ] Rotation
+- [ ] No secrets

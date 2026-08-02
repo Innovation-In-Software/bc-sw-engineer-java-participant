@@ -1,5 +1,19 @@
 # Lab 22: Spring IoC and Dependency Injection — Northstar CRM Bean Graph
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 22 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-22-WINDOWS.md) · [macOS](LAB-22-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Replace manual `new` wiring with Spring stereotypes + constructor DI for the CRM graph |
+| **Skills practiced** | IoC, constructor injection, stereotypes, lifecycle callbacks, dependency-graph.md |
+| **Expected outcome** | App starts · unit + Spring tests · graph matches constructors · CUS-1001 path works |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Lab 21 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab22-crm/` — beans, DI, lifecycle, tests, dependency-graph |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 22 — Spring IoC and Dependency Injection  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-22/lab22/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-22-WINDOWS.md](LAB-22-WINDOWS.md) |
 | macOS | [LAB-22-MACOS.md](LAB-22-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 22 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer copying Lab 21 CRM forward or the Module 22 starter into `lab22-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-22-exercises/`; graded work is `examples/lab22-crm/`.
+
+> **Incremental build:** IoC vs new → constructor DI → lifecycle → stereotypes → bean graph → Lab 22.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).
+
+> **Critical scope:** **Constructor injection** with `final` fields. **No** `new` of Spring-managed collaborators inside services. **No** field `@Autowired` as primary. Boot Initializr / profiles / SOAP / Security → later labs.
 
 ## 45-minute timed path (use starter)
 
@@ -670,6 +690,10 @@ git status
 | Circular dependency | A↔B constructors | Break cycle; avoid field-inject “fix” |
 | Flaky IT | Shared in-memory map | Reset or isolate test data |
 | Cannot connect | Port in use | Stop prior Boot process |
+| Working in `module-22-exercises` for the lab | Wrong project | Lab lives in `examples/lab22-crm` |
+| Dual stores / IT sees empty map | `new` repo inside service | Remove `new`; inject the bean |
+| `@PostConstruct` never logs | Method not public / wrong annotation import | Use `jakarta.annotation.PostConstruct` |
+| Diving into Initializr/Security mid-lab | Scope creep | Finish constructor DI + graph first |
 
 ---
 

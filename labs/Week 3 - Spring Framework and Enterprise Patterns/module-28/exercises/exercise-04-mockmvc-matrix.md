@@ -1,14 +1,31 @@
-# Exercise 3 — MockMvc Evidence Matrix
+# Exercise 4 — MockMvc Evidence Matrix
 
-**Module 28** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 28** · Checkpoint C · Exercises 1–6 Pass then Lab 28
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan MockMvc cases for 401, 403, and 200 on CRM routes |
+| **Skills practiced** | Security test planning |
+| **Expected outcome** | notes/mockmvc-matrix.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-28-exercises/` → notes/mockmvc-matrix.md |
+| **Checkpoint** | C (after slides 176–179) |
+
+## What you will learn
+
+- No token → 401
+- AGENT on admin → 403
+- AGENT on customers CUS-1001 → 200
+
+**Enterprise context:** Automated 401/403 proofs stop regressions when someone adds a new open controller.
 
 ## Goal
 
-Create `notes/mockmvc-matrix.md` — draft the status matrix Lab 28 tests must cover.
+Create `notes/mockmvc-matrix.md` — evidence matrix.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 28 — MockMvc Evidence Matrix
 
-## Step 1 — Matrix
-
-In `notes/mockmvc-matrix.md`, rows: anonymous GET customers; bad token; agent GET customer; agent GET admin; admin GET admin.
-
-## Step 2 — Expected statuses
-
-Fill expected 401/403/200 for each row.
-
-## Step 3 — Fixture
-
-Successful customer read uses `CUS-1001` Amina.
-
-## Step 4 — Boundary
-
-Do not write full MockMvc tests in pre-lab.
+| Case | Auth | Route | Expect |
+| --- | --- | --- | --- |
+| Anonymous customers | none | GET /api/customers/CUS-1001 | 401 |
+| Agent admin | AGENT | GET /api/admin/... | 403 |
+| Agent customer | AGENT Bearer | GET /api/customers/CUS-1001 | 200 |
+| Bad token | garbage Bearer | GET customers | 401 |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +65,48 @@ From `examples/module-28-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 28 — MockMvc Evidence Matrix
 
-## Step 1 — Matrix
-
-In `notes/mockmvc-matrix.md`, rows: anonymous GET customers; bad token; agent GET customer; agent GET admin; admin GET admin.
-
-## Step 2 — Expected statuses
-
-Fill expected 401/403/200 for each row.
-
-## Step 3 — Fixture
-
-Successful customer read uses `CUS-1001` Amina.
-
-## Step 4 — Boundary
-
-Do not write full MockMvc tests in pre-lab.
+| Case | Auth | Route | Expect |
+| --- | --- | --- | --- |
+| Anonymous customers | _____ | _____ | _____ |
+| Agent admin | _____ | _____ | _____ |
+| Agent customer | _____ | _____ | _____ |
+| Bad token | _____ | _____ | _____ |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`, lab users `agent1`/`admin1`. Replace every `_____` before Pass. **Never write real JWT secrets.**
 
 ## Expected result
 
-Status matrix prepared for Lab 28 automation in `notes/mockmvc-matrix.md`.
+MockMvc matrix in `notes/mockmvc-matrix.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should login success be part of the matrix or a separate test?
+
+## Predict the Output / Behavior
+
+Why test bad token separately from missing token?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/mockmvc-matrix.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 28 |
+| Only 200 cases | Include 401 and 403 |
+| Wrong status for agent admin | 403 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/mockmvc-matrix.md`
-- [ ] Five scenarios listed
-- [ ] Statuses assigned
-- [ ] CUS-1001 mentioned
-
+- [ ] 401 case
+- [ ] 403 case
+- [ ] 200 case

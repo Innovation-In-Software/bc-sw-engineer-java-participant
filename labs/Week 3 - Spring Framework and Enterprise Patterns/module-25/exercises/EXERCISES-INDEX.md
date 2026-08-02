@@ -1,28 +1,26 @@
 # Module 25 — Pre-Lab Exercises
 
-> **Start here for Module 25:** [`../README.md`](../README.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
+> **Start here for Module 25:** [`../README.md`](../README.md) · **Pacing:** [`../PACING.md`](../PACING.md) · **Clone + own repo:** [`../../../CLONE-AND-OWN-REPO-GUIDE.md`](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Module:** 25 — Service and Repository Layers  
 **Next:** [`../lab25/LAB-25-WINDOWS.md`](../lab25/LAB-25-WINDOWS.md) or [`../lab25/LAB-25-MACOS.md`](../lab25/LAB-25-MACOS.md) → [`../lab25/LAB-25-GUIDE.md`](../lab25/LAB-25-GUIDE.md)
 
-> Complete these exercises **in order** after the slides and **before** Lab 25.  
-> Use JDK 21 (and any tools named in the exercises). Work under `examples/module-25-exercises/` — these are **notes files**, not the graded lab project.  
+> Complete these exercises **at the checkpoints** (not all slides first). Order **1 → 2 → 3 → 4 → 5 → 6**.  
+> Use JDK 21. Work under `examples/module-25-exercises/` — **notes files**, not the graded lab.  
 > Lab 25 is the graded consolidation. Do **not** finish Lab 25 during pre-lab.
 
-> **Tip:** Each exercise starts with a **Worked example** — read it, then produce your own file. Submit only the files listed under **What you produce**.
+> **Tip:** Each exercise has an **Activity card**, **Worked example**, **Predict/Debug**, and **Troubleshooting**. Optional starter shells: [`starter/`](starter/README.md).
 
 ## What you produce (all exercises)
 
-| # | Your deliverable file | Type |
-| - | --------------------- | ---- |
-| 1 | `notes/layers.md` | Layer Boundary Quiz |
-| 2 | `notes/package-tree.md` | Package Sketch |
-| 3 | `notes/lab25-service-todo-skeleton.md` | Service Layer Skeleton (TODOs) |
-| 4 | `notes/ai-review-policy.md` | AI Review Policy |
-| 5 | `notes/service-test-plan.md` | Service Test Plan |
-| 6 | `notes/lab25-readiness.md` | Lab 25 Readiness Checklist |
-
-Each exercise page has: **Goal → Deliverable → Steps (copy/paste template) → Expected result → If it fails → Pass criteria**.
+| # | Your deliverable file | Type | Checkpoint |
+| - | --------------------- | ---- | ---------- |
+| 1 | `notes/layers.md` | Layer Boundary Quiz | A |
+| 2 | `notes/package-tree.md` | Package Sketch | B |
+| 3 | `notes/lab25-service-todo-skeleton.md` | Service Layer Skeleton (TODOs) | B |
+| 4 | `notes/ai-review-policy.md` | AI Review Policy | C |
+| 5 | `notes/service-test-plan.md` | Service Test Plan | C |
+| 6 | `notes/lab25-readiness.md` | Lab 25 Readiness Checklist | C |
 
 ## Scope boundary — do not build later technology yet
 
@@ -61,21 +59,19 @@ cd examples/module-25-exercises
 java -version
 ```
 
-**Expected:** Java 21 is available. You create markdown notes here; Lab 25 uses its own `examples/lab25-*/` (or module lab folder) project.
+**Expected:** Java 21 is available. You create markdown notes here; Lab 25 uses `examples/lab25-crm/`.
 
-## Exercise index
+## Exercise index (classroom interleave)
 
-Complete in this sequence (matches Module slide order):
-
-| # | Exercise | New skill | Deliverable | File |
+| # | After slides | Exercise | Deliverable | File |
 | --- | --- | --- | --- | --- |
-| 1 | Layer Boundary Quiz | Analysis exercise | `notes/layers.md` | [`exercise-01-layer-boundaries.md`](exercise-01-layer-boundaries.md) |
-| 2 | Package Sketch | Architecture exercise | `notes/package-tree.md` | [`exercise-02-package-sketch.md`](exercise-02-package-sketch.md) |
-| 3 | Service Layer Skeleton (TODOs) | Hands-on exercise | `notes/lab25-service-todo-skeleton.md` | [`exercise-03-service-todo-skeleton.md`](exercise-03-service-todo-skeleton.md) |
-| 4 | AI Review Policy | Documentation exercise | `notes/ai-review-policy.md` | [`exercise-04-ai-review-policy.md`](exercise-04-ai-review-policy.md) |
-| 5 | Service Test Plan | Analysis exercise | `notes/service-test-plan.md` | [`exercise-05-test-plan.md`](exercise-05-test-plan.md) |
-| 6 | Lab 25 Readiness Checklist | Documentation exercise | `notes/lab25-readiness.md` | [`exercise-06-lab25-readiness.md`](exercise-06-lab25-readiness.md) |
+| 1 | 91–96 (A) | Layer Boundary Quiz | `notes/layers.md` | [`exercise-01-layer-boundaries.md`](exercise-01-layer-boundaries.md) |
+| 2 | 97–104 (B) | Package Sketch | `notes/package-tree.md` | [`exercise-02-package-sketch.md`](exercise-02-package-sketch.md) |
+| 3 | 97–104 (B) | Service Layer Skeleton (TODOs) | `notes/lab25-service-todo-skeleton.md` | [`exercise-03-service-todo-skeleton.md`](exercise-03-service-todo-skeleton.md) |
+| 4 | 105–110a (C) | AI Review Policy | `notes/ai-review-policy.md` | [`exercise-04-ai-review-policy.md`](exercise-04-ai-review-policy.md) |
+| 5 | 105–110a (C) | Service Test Plan | `notes/service-test-plan.md` | [`exercise-05-test-plan.md`](exercise-05-test-plan.md) |
+| 6 | 105–110a (C) | Lab 25 Readiness Checklist | `notes/lab25-readiness.md` | [`exercise-06-lab25-readiness.md`](exercise-06-lab25-readiness.md) |
 
 ## Done when
 
-All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep/readiness checklist self-mark is **Pass**. Then open the Lab 25 OS guide.
+All notes files in **What you produce** exist, fixtures match Amina `CUS-1001`/`ACTIVE` and Ravi `CUS-1002`/`PROSPECT` when used, and the prep checklist self-mark is **Pass**. Then open the Lab 25 OS guide.

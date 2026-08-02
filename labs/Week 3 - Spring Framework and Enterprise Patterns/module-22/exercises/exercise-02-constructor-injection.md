@@ -1,14 +1,31 @@
-# Exercise 4 — Constructor Injection Preference
+# Exercise 2 — Constructor Injection Preference
 
-**Module 22** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 22** · Checkpoint B · Exercises 1–6 Pass then Lab 22
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Document why Lab 22 prefers constructor injection with final fields |
+| **Skills practiced** | DI style selection |
+| **Expected outcome** | notes/constructor-di.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-22-exercises/` → notes/constructor-di.md |
+| **Checkpoint** | B (after slides 14–18) |
+
+## What you will learn
+
+- Constructor + final = required deps, immutable after build
+- Field @Autowired hides deps and blocks final
+- Setter is for optional deps — not the CRM primary path
+
+**Enterprise context:** On-call reviews fail when dependencies are invisible private fields — constructors are the public contract.
 
 ## Goal
 
-Create `notes/constructor-di.md` — document why constructor injection with `final` fields is the Northstar standard.
+Create `notes/constructor-di.md` — prefer constructor DI.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,35 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 22 — Constructor Injection Preference
 
-## Reference
-
-| Style | Verdict |
-| --- | --- |
-| Constructor + `final` | Preferred — required deps, testable |
-| Setter injection | Optional deps only |
-| Field `@Autowired` | Avoid as primary pattern |
-
-## Step 1 — Write the rule
-
-In `notes/constructor-di.md`, complete:
-
-> Northstar prefers (your note here) injection because dependencies are (your note here) and fields can be (your note here).
-
-## Step 2 — Check the reference
-
-Answer key: constructor / required (explicit) / final (immutable after construction).
-
-## Step 3 — Sketch signature
-
-Write the constructor signature only (no method bodies):
-`CustomerService(CustomerRepository repo, NotificationService notifier)`.
-
-## Step 4 — Unit-test implication
-
-One sentence: a pure unit test can `new CustomerService(fakeRepo, fakeNotifier)` without starting Spring.
+Preferred: constructor with final CustomerRepository + NotificationService.
+Why: required deps explicit; unit test = new CustomerService(fakeRepo, fakeNotifier).
+Avoid: field @Autowired as primary pattern.
+Setter: optional only — not Lab 22 primary wiring.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -68,35 +63,20 @@ From `examples/module-22-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 22 — Constructor Injection Preference
 
-## Reference
+## Preferred pattern
+_____
 
-| Style | Verdict |
-| --- | --- |
-| Constructor + `final` | Preferred — required deps, testable |
-| Setter injection | Optional deps only |
-| Field `@Autowired` | Avoid as primary pattern |
+## Why (testability)
+_____
 
-## Step 1 — Write the rule
+## Avoid
+_____
 
-In `notes/constructor-di.md`, complete:
-
-> Northstar prefers _____ injection because dependencies are _____ and fields can be _____.
-
-## Step 2 — Check the reference
-
-Answer key: constructor / required (explicit) / final (immutable after construction).
-
-## Step 3 — Sketch signature
-
-Write the constructor signature only (no method bodies):
-`CustomerService(CustomerRepository repo, NotificationService notifier)`.
-
-## Step 4 — Unit-test implication
-
-One sentence: a pure unit test can `new CustomerService(fakeRepo, fakeNotifier)` without starting Spring.
+## Setter role (one line)
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -105,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Constructor-DI rule and signature sketch are recorded in `notes/constructor-di.md`.
+Constructor DI preference in `notes/constructor-di.md`.
 
-## If it fails
+## Debug / design challenge
+
+Can CustomerRepository be final if injected only via field @Autowired?
+
+## Predict the Output / Behavior
+
+What happens at startup if a constructor dependency bean is missing?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/constructor-di.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 22 |
+| Preferring field injection | Mark constructor + final |
+| No testability note | Show new Service(fake…) |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/constructor-di.md`
-- [ ] Fill-in sentence is correct
-- [ ] Constructor lists both collaborators
-- [ ] Unit-test-without-Spring point is stated
-
+- [ ] Preferred pattern
+- [ ] Avoid noted
+- [ ] Testability noted

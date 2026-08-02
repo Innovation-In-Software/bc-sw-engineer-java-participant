@@ -1,6 +1,20 @@
 # Lab 22 starter — timed path (~45 minutes)
 
-**Theme:** @Component/@Service DI wiring
+**Theme:** Spring IoC — stereotypes, constructor DI, lifecycle, dependency graph
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Annotate CRM beans and wire CustomerService via constructor injection |
+| **Skills practiced** | @Service/@Repository, constructor DI, @PostConstruct/@PreDestroy |
+| **Expected outcome** | App starts · tests green · dependency-graph.md filled |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab22-crm/` copied from this starter |
+
+**Boilerplate reduced:** Baseline CRM + `// TODO` for stereotypes/DI/lifecycle — no field `@Autowired` as primary.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-22-GUIDE.md`](../LAB-22-GUIDE.md)
 
 ## Copy into your workspace
 
@@ -21,6 +35,8 @@ mkdir -p ~/java-bootcamp/examples/lab22-crm
 cp -R starter/. ~/java-bootcamp/examples/lab22-crm/
 cd ~/java-bootcamp/examples/lab22-crm
 ```
+
+Full GUIDE: [`../LAB-22-GUIDE.md`](../LAB-22-GUIDE.md)
 
 ## 45-minute checklist
 

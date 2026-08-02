@@ -1,5 +1,19 @@
 # Lab 24: SOAP Web Service Endpoints — Northstar CRM Spring-WS
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 24 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-24-WINDOWS.md) · [macOS](LAB-24-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship contract-first Spring-WS SOAP beside REST, sharing CustomerService |
+| **Skills practiced** | XSD/WSDL, @Endpoint/@PayloadRoot, mapper, SOAP faults, UsernameToken |
+| **Expected outcome** | WSDL live · getCustomer works · REST still works · faults/security evidence |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Lab 23 preferred · Lab 13 contract preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab24-crm/` — XSD, endpoint, mapper, requests/, tests |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 24 — SOAP Web Services with Spring WS  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-24/lab24/`  
 **Difficulty:** Advanced  
@@ -12,9 +26,15 @@
 | Windows | [LAB-24-WINDOWS.md](LAB-24-WINDOWS.md) |
 | macOS | [LAB-24-MACOS.md](LAB-24-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 24 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 23 CRM forward or the Module 24 starter as `lab24-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-24-exercises/`; graded work is `examples/lab24-crm/`.
+
+> **Incremental build:** Contract-first → ops map → PayloadRoot → fault vs REST → UsernameToken → Lab 24.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** **Contract-first** XSD. **Keep REST**. Thin `@Endpoint` delegates to **one** `CustomerService`. **UsernameToken** lab security only — not JWT (Lab 28) or full WS-Security suite.
 
 ## 45-minute timed path (use starter)
 
@@ -700,6 +720,10 @@ mvn -q test
 | WSS rejects valid-looking XML | Wrong wsse URI / password / Content-Type | Copy secured sample exactly |
 | XJC empty | Plugin source path | Point at `src/main/resources/customer.xsd` |
 | REST/SOAP diverge | Two services/stores | One injected `CustomerService` |
+| Working in `module-24-exercises` for the lab | Wrong project | Lab lives in `examples/lab24-crm` |
+| Deleted REST controller “to focus on SOAP” | Scope misunderstanding | Keep both protocols |
+| Building JWT filter mid-lab | Scope creep | UsernameToken only; JWT is Lab 28 |
+| Hand-built XML strings in endpoint | Skipping mapper/JAXB | Use CustomerSoapMapper + generated types |
 
 ---
 

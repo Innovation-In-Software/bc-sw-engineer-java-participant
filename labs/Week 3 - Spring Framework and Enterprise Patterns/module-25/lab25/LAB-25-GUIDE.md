@@ -1,5 +1,19 @@
 # Lab 25: Service and Repository Layers with AI Assistance — Northstar CRM Layering
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 25 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-25-WINDOWS.md) · [macOS](LAB-25-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Formalize Controller → Service → Repository with seeded CRM fixtures and service tests |
+| **Skills practiced** | Layer seams, in-memory repository, service rules, AI review notes |
+| **Expected outcome** | Thin controller · service-owned rules · seeded GET · CustomerServiceTest · lab25-001 notes |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Labs 23–24 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab25-crm/` — layers, tests, docs/lab25-001.md |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 25 — Service and Repository Layers with AI Assistance  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-25/lab25/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-25-WINDOWS.md](LAB-25-WINDOWS.md) |
 | macOS | [LAB-25-MACOS.md](LAB-25-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 25 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 24/23 CRM forward or the Module 25 starter as `lab25-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-25-exercises/`; graded work is `examples/lab25-crm/`.
+
+> **Incremental build:** Boundaries → packages → service TODOs → AI policy → test plan → Lab 25.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–D).
+
+> **Critical scope:** **No** controller→repository imports. **No** HTTP types in the service. In-memory repo only. AI drafts need **human review** (`lab25-001`). JPA / `@Transactional` / profiles → later.
 
 ## 45-minute timed path (use starter)
 
@@ -712,6 +732,10 @@ git status
 | Always 500 on duplicate | No exception mapping | Map to 4xx |
 | Component scan miss | Wrong package | Stay under `com.northstar.crm` |
 | AI invented JPA APIs | Underspecified prompt | Reject; restating interface-only |
+| Working in `module-25-exercises` for the lab | Wrong project | Lab lives in `examples/lab25-crm` |
+| ResponseEntity inside CustomerService | Layer leak / bad AI draft | Move HTTP mapping to controller |
+| Adding @Transactional transfer entities mid-lab | Scope creep | Lab 27 — finish seams first |
+| Missing lab25-001 notes | Skipped AI/manual review log | Add accept/reject/N/A with reason |
 
 ---
 

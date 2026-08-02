@@ -1,14 +1,31 @@
 # Exercise 5 — Service Test Plan
 
-**Module 25** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 25** · Checkpoint C · Exercises 1–6 Pass then Lab 25
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan CustomerServiceTest cases for create/get/duplicate/not-found |
+| **Skills practiced** | Service unit-test planning |
+| **Expected outcome** | notes/service-test-plan.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-25-exercises/` → notes/service-test-plan.md |
+| **Checkpoint** | C (after slides 105–110a) |
+
+## What you will learn
+
+- Use fake or fresh in-memory repo
+- Assert exceptions from the service
+- Do not require MockMvc for service unit tests
+
+**Enterprise context:** Layered design pays off when service tests run without starting Tomcat.
 
 ## Goal
 
-Create `notes/service-test-plan.md` — list three service tests Lab 25 should prove.
+Create `notes/service-test-plan.md` — test plan.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 25 — Service Test Plan
 
-## Step 1 — Cases
+| Case | Setup | Expect |
+| --- | --- | --- |
+| get CUS-1001 | seeded repo | ACTIVE Amina |
+| duplicate create | existing id | conflict/exception |
+| get CUS-9999 | empty/missing | not-found |
+| create CUS-new | fresh | saved |
 
-In `notes/service-test-plan.md`: get seeded Amina; duplicate create fails; missing id fails; optional PROSPECT→ACTIVE.
-
-## Step 2 — Fake vs in-memory
-
-State either a fake repo or the in-memory impl is acceptable for unit tests.
-
-## Step 3 — Dual green
-
-Lab expects `mvn test` green twice — note that as a lab habit, not pre-lab work.
-
-## Step 4 — Boundary
-
-Do not write the full JUnit class here.
+No Spring Boot required for pure unit tests.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +67,18 @@ From `examples/module-25-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 25 — Service Test Plan
 
-## Step 1 — Cases
+| Case | Setup | Expect |
+| --- | --- | --- |
+| get CUS-1001 | _____ | _____ |
+| duplicate create | _____ | _____ |
+| get CUS-9999 | _____ | _____ |
+| create new | _____ | _____ |
 
-In `notes/service-test-plan.md`: get seeded Amina; duplicate create fails; missing id fails; optional PROSPECT→ACTIVE.
-
-## Step 2 — Fake vs in-memory
-
-State either a fake repo or the in-memory impl is acceptable for unit tests.
-
-## Step 3 — Dual green
-
-Lab expects `mvn test` green twice — note that as a lab habit, not pre-lab work.
-
-## Step 4 — Boundary
-
-Do not write the full JUnit class here.
+## Spring Boot required for unit test?
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +87,30 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Test plan lists core service cases without full JUnit in `notes/service-test-plan.md`.
+Service test plan in `notes/service-test-plan.md`.
 
-## If it fails
+## Debug / design challenge
+
+Why prefer a fresh repository per @BeforeEach?
+
+## Predict the Output / Behavior
+
+Should these unit tests call CustomerController?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/service-test-plan.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 25 |
+| Only MockMvc tests | Plan pure service tests |
+| Missing duplicate case | Include conflict |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/service-test-plan.md`
-- [ ] At least three cases listed
-- [ ] Fake/in-memory option stated
-- [ ] Full JUnit deferred
-
+- [ ] Four cases
+- [ ] No Boot required noted

@@ -1,14 +1,31 @@
-# Exercise 2 — Auto-Config Versus Ownership
+# Exercise 1 — Auto-Config Versus Ownership
 
-**Module 23** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 23** · Checkpoint A · Exercises 1–6 Pass then Lab 23
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | List what Boot auto-configures versus what Northstar still owns |
+| **Skills practiced** | Auto-config vs ownership analysis |
+| **Expected outcome** | notes/autoconfig-ownership.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-23-exercises/` → notes/autoconfig-ownership.md |
+| **Checkpoint** | A (after slides 36–46) |
+
+## What you will learn
+
+- Gifts: embedded server, MVC, Jackson, health endpoint wiring
+- Ownership: CRM create rules, fixtures, Actuator exposure policy
+- Auto-config does not invent business validation
+
+**Enterprise context:** Leadership asks: if Boot wires Tomcat, who still owns duplicate CUS-1001 rules? You do.
 
 ## Goal
 
-Create `notes/autoconfig-ownership.md` — produce a three-and-three list Lab 23 expects in notes.
+Create `notes/autoconfig-ownership.md` — gifts vs ownership table.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,32 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 23 — Auto-Config Versus Ownership
 
-## Reference
-
-| Auto-config gift | You still own |
+| Boot / auto-config gift | Still owned by the team |
 | --- | --- |
-| Embedded Tomcat | API paths and status codes |
-| DispatcherServlet wiring | Domain validation rules |
-| Jackson JSON converters | DTO field exposure policy |
+| Embedded Tomcat + DispatcherServlet | Customer create/get rules |
+| Jackson JSON mapping | Fixture IDs CUS-1001 / CUS-1002 |
+| Actuator health infrastructure | Which endpoints to expose |
 
-## Step 1 — Draft three gifts
-
-In `notes/autoconfig-ownership.md`, list three Boot auto-config gifts.
-
-## Step 2 — Draft three ownerships
-
-List three items Northstar still designs (rules, exposure, fixtures).
-
-## Step 3 — Check the reference
-
-Align wording with the reference table.
-
-## Step 4 — CRM fixtures
-
-Mention smoke targets: POST/GET `CUS-1001`, `CUS-1002`, correlation `lab-request-001`.
+Auto-config ≠ business rules.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -65,32 +66,17 @@ From `examples/module-23-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 23 — Auto-Config Versus Ownership
 
-## Reference
-
-| Auto-config gift | You still own |
+| Boot / auto-config gift | Still owned by the team |
 | --- | --- |
-| Embedded Tomcat | API paths and status codes |
-| DispatcherServlet wiring | Domain validation rules |
-| Jackson JSON converters | DTO field exposure policy |
+| _____ | _____ |
+| _____ | _____ |
+| _____ | _____ |
 
-## Step 1 — Draft three gifts
-
-In `notes/autoconfig-ownership.md`, list three Boot auto-config gifts.
-
-## Step 2 — Draft three ownerships
-
-List three items Northstar still designs (rules, exposure, fixtures).
-
-## Step 3 — Check the reference
-
-Align wording with the reference table.
-
-## Step 4 — CRM fixtures
-
-Mention smoke targets: POST/GET `CUS-1001`, `CUS-1002`, correlation `lab-request-001`.
+## One-sentence rule
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -99,22 +85,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Balanced gift/ownership note ready for Lab 23 evidence in `notes/autoconfig-ownership.md`.
+Gifts vs ownership table in `notes/autoconfig-ownership.md`.
 
-## If it fails
+## Debug / design challenge
+
+If health is UP but POST create always returns 500, is that an auto-config failure or ownership?
+
+## Predict the Output / Behavior
+
+Name one thing removing starter-web would take away from Lab 23.
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/autoconfig-ownership.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 23 |
+| Claiming Boot owns CRM rules | Rules stay team-owned |
+| Empty table | At least three gift/ownership pairs |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/autoconfig-ownership.md`
-- [ ] Three gifts listed
-- [ ] Three ownership items listed
-- [ ] Fixtures named
-
+- [ ] Three pairs
+- [ ] Ownership of CRM rules clear
+- [ ] One-sentence rule

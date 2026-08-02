@@ -1,5 +1,19 @@
 # Lab 23: Spring Boot Setup and Auto-Configuration — Northstar CRM First Boot App
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 23 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-23-WINDOWS.md) · [macOS](LAB-23-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship an Initializr-style Boot CRM app with REST customers + Actuator health |
+| **Skills practiced** | Starters, CrmApplication, application.yml, embedded server, health smoke |
+| **Expected outcome** | App on 8080 · health UP · CUS-1001/CUS-1002 evidence · autoconfig notes |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Lab 22 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab23-crm/` — pom, YAML, API, tests, ownership notes |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 23 — Spring Boot Setup and Auto-Configuration  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-23/lab23/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-23-WINDOWS.md](LAB-23-WINDOWS.md) |
 | macOS | [LAB-23-MACOS.md](LAB-23-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 23 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 22 CRM forward or the Module 23 starter as `lab23-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-23-exercises/`; graded work is `examples/lab23-crm/`.
+
+> **Incremental build:** Ownership → starters → CrmApplication stub → YAML → smoke plan → Lab 23.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** Starters **web + actuator + test**. Document **auto-config gifts vs ownership**. Profiles = **teaser** (Lab 26). Health smoke — do not rebuild Lab 21 metrics. SOAP/Security later.
 
 ## 45-minute timed path (use starter)
 
@@ -776,6 +796,10 @@ git status
 | YAML ignored | Indent/typo / no restart | Fix YAML; restart |
 | Bean not found | Wrong package scan | Keep types under `com.northstar.crm` |
 | Validation never fires | Missing starter-validation | Add dependency; `@Valid` on body |
+| Working in `module-23-exercises` for the lab | Wrong project | Lab lives in `examples/lab23-crm` |
+| App starts but no REST mapping | Missing `@RestController` / wrong path | Confirm `/api/customers` mapping |
+| Diving into SOAP or Security mid-lab | Scope creep | Finish Boot REST + health first |
+| Secrets committed in profile YAML | Prod teaser misunderstood | Logging level only — Lab 26 for secrets |
 
 ---
 

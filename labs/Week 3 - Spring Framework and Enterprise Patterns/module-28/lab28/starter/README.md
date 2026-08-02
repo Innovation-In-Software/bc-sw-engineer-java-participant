@@ -1,6 +1,20 @@
 # Lab 28 starter — timed path (~45 minutes)
 
-**Theme:** SecurityFilterChain / JWT stubs
+**Theme:** SecurityFilterChain + JWT — AGENT/ADMIN CRM API protection
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete JWT/filter TODOs and prove 401 vs 403 vs 200 |
+| **Skills practiced** | SecurityFilterChain, JwtService, role matchers, security notes |
+| **Expected outcome** | Login token · Bearer CUS-1001 · agent admin 403 · no secrets in Git |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab28-crm/` copied from this starter |
+
+**Boilerplate reduced:** Security stubs + `// TODO` — keep prior CRM layering.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-28-GUIDE.md`](../LAB-28-GUIDE.md)
 
 ## Copy into your workspace
 
@@ -21,6 +35,8 @@ mkdir -p ~/java-bootcamp/examples/lab28-crm
 cp -R starter/. ~/java-bootcamp/examples/lab28-crm/
 cd ~/java-bootcamp/examples/lab28-crm
 ```
+
+Full GUIDE: [`../LAB-28-GUIDE.md`](../LAB-28-GUIDE.md)
 
 ## 45-minute checklist
 
@@ -46,6 +62,7 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-28/` (redact secrets).
 | SecurityFilterChain bean present and stateless | Pass / Fail |
 | Login endpoint issues a token stub | Pass / Fail |
 | 401 vs 403 distinguished in notes or tests | Pass / Fail |
+| Bearer GET CUS-1001 works for AGENT (or documented) | Pass / Fail |
 | No real secrets committed | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.

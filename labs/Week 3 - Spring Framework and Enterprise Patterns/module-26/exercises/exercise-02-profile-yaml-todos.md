@@ -1,14 +1,31 @@
-# Exercise 4 — Profile YAML TODOs
+# Exercise 2 — Profile YAML TODOs
 
-**Module 26** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 26** · Checkpoint A · Exercises 1–6 Pass then Lab 26
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch which keys belong in base vs profile YAML files |
+| **Skills practiced** | Profile YAML design |
+| **Expected outcome** | notes/lab26-profile-yaml-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-26-exercises/` → notes/lab26-profile-yaml-todos.md |
+| **Checkpoint** | A (after slides 115–125) |
+
+## What you will learn
+
+- Base: application name / shared defaults
+- dev: logging / local datasource teasers
+- prod: no secret defaults — ${ENV} refs
+
+**Enterprise context:** Reviewers expect application-dev.yml naming — wrong filenames mean the profile never loads.
 
 ## Goal
 
-Create `notes/lab26-profile-yaml-todos.md` — complete a YAML sketch distinguishing `dev` vs `prod` without secrets.
+Create `notes/lab26-profile-yaml-todos.md` — YAML TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,9 +41,14 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 26 — Profile YAML TODOs
 
-## Step 2 — Fill TODOs
+Files: application.yml, application-dev.yml, application-test.yml, application-prod.yml
+Base: spring.application.name, server.port
+dev: logging.level DEBUG (example)
+prod: spring.datasource.password: ${DB_PASSWORD} (no default)
+Never commit real DB_PASSWORD.
 
-**application.yml**
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -42,69 +64,54 @@ From `examples/module-26-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 26 — Profile YAML TODOs
 
-## Step 2 — Fill TODOs
+## Required files
+_____
 
-**application.yml**
-```yaml
-spring:
-  application:
-    name: _____
-server:
-  port: _____
-```
+## Base keys
+_____
 
-**application-dev.yml**
-```yaml
-northstar:
-  integration:
-    api-base-url: http://localhost:_____
-logging:
-  level:
-    com.northstar: _____
-```
+## dev example key
+_____
 
-**application-prod.yml**
-```yaml
-# TODO: do NOT put real passwords here — reference env vars only
-northstar:
-  integration:
-    api-base-url: ${NORTHSTAR_API_BASE_URL:_____}
-```
-Hints: name `northstar-crm`, port `8080`, debug logging `DEBUG`, prod default placeholder `CHANGE_ME` or empty with fail-fast elsewhere.
-
-## Step 3 — Self-check
-
-Confirm prod file has no literal password strings.
-
-## Step 4 — Reflect
-
-Correlation for lab evidence: `lab26-001` (or `lab-request-001`).
+## prod secret pattern
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only. No real passwords.
+
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab26-001` / `lab-request-001`. Replace every `_____` before Pass. **Never write real passwords.**
 
 ## Expected result
 
-YAML sketches filled; prod stays secret-free in `notes/lab26-profile-yaml-todos.md`.
+YAML TODOs in `notes/lab26-profile-yaml-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+What happens if you name the file application.dev.yml instead of application-dev.yml?
+
+## Predict the Output / Behavior
+
+Is ${DB_PASSWORD:} with empty default acceptable in prod?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
-| Password in application-prod.yml | Use env var placeholders only |
-| Same config for all profiles | Split dev/test/prod files |
+| No file / wrong name | Must be `notes/lab26-profile-yaml-todos.md` |
+| Real password in notes | Use placeholder language only |
+| Missing prod file | Include application-prod.yml |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab26-profile-yaml-todos.md`
-- [ ] Base name/port filled
-- [ ] Dev logging set
-- [ ] Prod has no real secrets
-
+- [ ] Four files listed
+- [ ] prod secret pattern
+- [ ] No real secrets

@@ -1,14 +1,31 @@
-# Exercise 5 — Stereotype Annotation Map
+# Exercise 4 — Stereotype Annotation Map
 
-**Module 22** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 22** · Checkpoint D · Exercises 1–6 Pass then Lab 22
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map CRM classes to the correct Spring stereotypes |
+| **Skills practiced** | Stereotype selection |
+| **Expected outcome** | notes/stereotype-map.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-22-exercises/` → notes/stereotype-map.md |
+| **Checkpoint** | D (after slides 24–28) |
+
+## What you will learn
+
+- @RestController for CustomerController
+- @Service for CustomerService / NotificationService
+- @Repository for InMemoryCustomerRepository
+
+**Enterprise context:** Wrong stereotypes confuse scanners and reviewers — layer names should match annotations.
 
 ## Goal
 
-Create `notes/stereotype-map.md` — map each Northstar CRM type to `@Service`, `@Repository`, `@RestController`, or plain domain.
+Create `notes/stereotype-map.md` — class → annotation table.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,35 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 22 — Stereotype Annotation Map
 
-## Reference
-
-| Type | Stereotype / note |
+| Class | Stereotype |
 | --- | --- |
-| CustomerService | `@Service` |
-| InMemoryCustomerRepository | `@Repository` (implements interface) |
-| CustomerController | `@RestController` |
-| Customer (model) | Plain Java — no Spring unless required |
-| NotificationService | `@Service` |
-
-## Step 1 — Fill the blank table
-
-Create `notes/stereotype-map.md` with columns Type | Annotation | Why.
-Fill for: `CustomerService`, `CustomerRepository` interface, `InMemoryCustomerRepository`, `CustomerController`, `Customer`, `NotificationService`.
-
-## Step 2 — Check the reference
-
-Compare against the reference table. Domain `Customer` stays free of Spring.
-
-## Step 3 — Singleton caution
-
-Write two sentences: default Spring beans are singletons; mutable instance fields on `CustomerService` are dangerous for concurrent requests.
-
-## Step 4 — Lab prep
-
-Note that Lab 22 requires `docs/dependency-graph.md` naming these beans — you only sketch names here.
+| CustomerController | @RestController |
+| CustomerService | @Service |
+| NotificationService | @Service |
+| InMemoryCustomerRepository | @Repository |
+| Customer (model) | none — plain type |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -68,35 +66,16 @@ From `examples/module-22-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 22 — Stereotype Annotation Map
 
-## Reference
-
-| Type | Stereotype / note |
+| Class | Stereotype |
 | --- | --- |
-| CustomerService | `@Service` |
-| InMemoryCustomerRepository | `@Repository` (implements interface) |
-| CustomerController | `@RestController` |
-| Customer (model) | Plain Java — no Spring unless required |
-| NotificationService | `@Service` |
-
-## Step 1 — Fill the blank table
-
-Create `notes/stereotype-map.md` with columns Type | Annotation | Why.
-Fill for: `CustomerService`, `CustomerRepository` interface, `InMemoryCustomerRepository`, `CustomerController`, `Customer`, `NotificationService`.
-
-## Step 2 — Check the reference
-
-Compare against the reference table. Domain `Customer` stays free of Spring.
-
-## Step 3 — Singleton caution
-
-Write two sentences: default Spring beans are singletons; mutable instance fields on `CustomerService` are dangerous for concurrent requests.
-
-## Step 4 — Lab prep
-
-Note that Lab 22 requires `docs/dependency-graph.md` naming these beans — you only sketch names here.
+| CustomerController | _____ |
+| CustomerService | _____ |
+| NotificationService | _____ |
+| InMemoryCustomerRepository | _____ |
+| Customer (model) | _____ |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -105,22 +84,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Stereotype map matches Spring roles; domain model stays plain in `notes/stereotype-map.md`.
+Stereotype map in `notes/stereotype-map.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should CustomerRepository (the interface) get @Repository?
+
+## Predict the Output / Behavior
+
+What exception do you see if InMemoryCustomerRepository lacks @Repository and no @Bean?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/stereotype-map.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 22 |
+| Annotating the model | Customer stays plain |
+| @Service on the repository | Use @Repository |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/stereotype-map.md`
-- [ ] Service/repository/controller annotations are correct
-- [ ] `Customer` is marked as plain domain
-- [ ] Singleton caution is written
-
+- [ ] Five rows filled
+- [ ] Model is plain
+- [ ] Controller is RestController

@@ -1,14 +1,31 @@
-# Exercise 4 — ErrorResponse Envelope
+# Exercise 3 — ErrorResponse Envelope
 
-**Module 29** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 29** · Checkpoint B · Practice order **1 → 2 → 3 → 4 → 6 → 5** then Lab 29
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Define ErrorResponse fields including correlation and violations |
+| **Skills practiced** | Error envelope design |
+| **Expected outcome** | notes/error-envelope.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-29-exercises/` → notes/error-envelope.md |
+| **Checkpoint** | B (after slides 198–204) |
+
+## What you will learn
+
+- status, code, message
+- correlationId lab-request-001
+- violations[] for field errors
+
+**Enterprise context:** A single envelope lets every client render one error component.
 
 ## Goal
 
-Create `notes/error-envelope.md` — specify `ErrorResponse` fields clients can rely on.
+Create `notes/error-envelope.md` — envelope fields.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,36 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 29 — ErrorResponse Envelope
 
-## Reference
-
-| Field | Purpose |
-| --- | --- |
-| timestamp | ISO-8601 UTC |
-| status | HTTP status code |
-| error | Short reason phrase |
-| message | Safe human message |
-| path | Request path |
-| correlationId | e.g. lab-request-001 |
-| violations | Optional field errors |
-
-## Step 1 — Sketch JSON
-
-In `notes/error-envelope.md`, sketch a 400 validation example including `correlationId: lab-request-001`.
-
-## Step 2 — Check the reference
-
-Ensure required fields from the table appear.
-
-## Step 3 — 404 example
-
-Sketch envelope for `CUS-9999` not-found.
-
-## Step 4 — Safety
-
-No stack traces or SQL in `message`.
+Fields: status, code, message, correlationId, violations[{field, message}]
+Example code: VALIDATION_FAILED
+Always echo lab-request-001 when provided.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -69,60 +62,50 @@ From `examples/module-29-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 29 — ErrorResponse Envelope
 
-## Reference
+## Fields
+_____
 
-| Field | Purpose |
-| --- | --- |
-| timestamp | ISO-8601 UTC |
-| status | HTTP status code |
-| error | Short reason phrase |
-| message | Safe human message |
-| path | Request path |
-| correlationId | e.g. lab-request-001 |
-| violations | Optional field errors |
+## Violation item shape
+_____
 
-## Step 1 — Sketch JSON
-
-In `notes/error-envelope.md`, sketch a 400 validation example including `correlationId: lab-request-001`.
-
-## Step 2 — Check the reference
-
-Ensure required fields from the table appear.
-
-## Step 3 — 404 example
-
-Sketch envelope for `CUS-9999` not-found.
-
-## Step 4 — Safety
-
-No stack traces or SQL in `message`.
+## Correlation rule
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, not-found `CUS-9999`, correlation `lab-request-001`. Replace every `_____` before Pass. **Never put secrets or stack traces in client envelopes.**
 
 ## Expected result
 
-400 and 404 envelope sketches exist in `notes/error-envelope.md`.
+Envelope notes in `notes/error-envelope.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should rejected passwords appear in violations.rejectedValue?
+
+## Predict the Output / Behavior
+
+Is returning only a string body enough for Lab 29 Pass?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/error-envelope.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 29 |
+| Missing correlation | Require correlationId |
+| No violations list | Include field errors |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/error-envelope.md`
-- [ ] Validation example includes violations/correlation
-- [ ] 404 example present
-- [ ] No stack traces
-
+- [ ] Core fields
+- [ ] Violations
+- [ ] Correlation

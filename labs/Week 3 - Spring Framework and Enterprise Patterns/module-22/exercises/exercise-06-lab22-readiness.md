@@ -1,14 +1,31 @@
 # Exercise 6 — Lab 22 Readiness Checklist
 
-**Module 22** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 22** · Checkpoint E · Exercises 1–6 Pass then Lab 22
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 22 |
+| **Skills practiced** | Readiness gate |
+| **Expected outcome** | notes/lab22-readiness.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-22-exercises/` → notes/lab22-readiness.md |
+| **Checkpoint** | E (after slides 29–31) |
+
+## What you will learn
+
+- Gate Lab 22 on Ex 1–5 notes
+- Constructor DI + stereotypes clear
+- No Boot Initializr / Security detour planned
+
+**Enterprise context:** Teams that skip the graph sketch invent field injection mid-lab and fail the timed path.
 
 ## Goal
 
-Create `notes/lab22-readiness.md` — confirm prior notes exist and you are ready for Lab 22 without finishing it now.
+Create `notes/lab22-readiness.md` — readiness for Lab 22.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -22,29 +39,17 @@ Create `notes/lab22-readiness.md` — confirm prior notes exist and you are read
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 22 prep checklist
+# Lab 22 readiness checklist
 
-## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/ioc-vs-new.md | (your note here) |
-| notes/constructor-di.md | (your note here) |
-| notes/lab22-lifecycle-notes.md | (your note here) |
-| notes/stereotype-map.md | (your note here) |
-| notes/bean-graph-sketch.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/ioc-vs-new.md | yes |
+| notes/constructor-di.md | yes |
+| notes/lab22-lifecycle-notes.md | yes |
+| notes/stereotype-map.md | yes |
+| notes/bean-graph-sketch.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 22 now.
-
-## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+Primary DI style: constructor + final. Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -58,9 +63,8 @@ From `examples/module-22-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 22 prep checklist
+# Lab 22 readiness checklist
 
-## Earlier exercise files present?
 | File | Present? (yes/no) |
 | ---- | ----------------- |
 | notes/ioc-vs-new.md | _____ |
@@ -69,18 +73,12 @@ From `examples/module-22-exercises/`, create `notes/` if needed, then create `no
 | notes/stereotype-map.md | _____ |
 | notes/bean-graph-sketch.md | _____ |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 22 now.
+## Scope
+Pre-lab only. Primary DI style for lab? _____
 
 ## Self mark
 Overall prep: Pass / Fail
-If Fail, revisit exercise(s): _____
+If Fail, revisit: _____
 ```
 
 ### Step 3 — Self-check
@@ -89,22 +87,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Readiness note proves tools and paths without completing Lab 22 in `notes/lab22-readiness.md`.
+Readiness checklist in `notes/lab22-readiness.md`.
 
-## If it fails
+## Debug / design challenge
+
+If constructor-di notes still prefer field @Autowired, which exercise do you reopen?
+
+## Predict the Output / Behavior
+
+Which package should CrmApplication live in so component scan finds CRM beans?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab22-readiness.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 22 |
+| Marking Pass with blanks | Fill every yes/no |
+| Starting Lab 22 mid-checklist | Finish Ex 1–5 first |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab22-readiness.md`
-- [ ] Java 21 and Maven versions recorded
-- [ ] lab22-crm path is written
-- [ ] Clear statement that full lab is not done yet
-
+- [ ] Artifacts confirmed
+- [ ] DI style noted
+- [ ] Pass/Fail marked

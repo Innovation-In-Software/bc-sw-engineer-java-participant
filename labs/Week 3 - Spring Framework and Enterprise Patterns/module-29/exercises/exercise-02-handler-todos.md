@@ -1,14 +1,32 @@
-# Exercise 3 — GlobalExceptionHandler TODOs
+# Exercise 2 — GlobalExceptionHandler TODOs
 
-**Module 29** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 29** · Checkpoint B · Practice order **1 → 2 → 3 → 4 → 6 → 5** then Lab 29
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | List @ExceptionHandler methods the advice must implement |
+| **Skills practiced** | Global handler design |
+| **Expected outcome** | notes/lab29-handler-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-29-exercises/` → notes/lab29-handler-todos.md |
+| **Checkpoint** | B (after slides 198–204) |
+
+## What you will learn
+
+- MethodArgumentNotValidException → 400
+- Not-found → 404
+- Duplicate → 409
+- Safe 500 fallback
+
+**Enterprise context:** Without a global handler, each controller invents different error JSON and React breaks.
 
 ## Goal
 
-Create `notes/lab29-handler-todos.md` — complete a handler sketch that builds ErrorResponse for validation and not-found.
+Create `notes/lab29-handler-todos.md` — handler TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,7 +42,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 29 — GlobalExceptionHandler TODOs
 
-## Step 2 — Fill TODOs
+@RestControllerAdvice class GlobalExceptionHandler
+- handleMethodArgumentNotValid → 400
+- handleNotFound → 404
+- handleDuplicate → 409
+- handleIllegalTransition → 400/422
+- handleGeneric → 500 (no stack trace body)
+
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -40,62 +66,50 @@ From `examples/module-29-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 29 — GlobalExceptionHandler TODOs
 
-## Step 2 — Fill TODOs
+## Advice annotation
+_____
 
-```java
-@_____
-public class GlobalExceptionHandler {
+## Handlers (list)
+_____
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus._____)
-    ErrorResponse validation(MethodArgumentNotValidException ex) {
-        // TODO: build envelope with field violations + correlation
-        return ErrorResponse.validation(_____, ex);
-    }
-
-    @ExceptionHandler(CustomerNotFoundException.class)
-    @ResponseStatus(HttpStatus._____)
-    ErrorResponse notFound(CustomerNotFoundException ex) {
-        return ErrorResponse.notFound(ex.getCustomerId());
-    }
-}
-```
-Hints: `@RestControllerAdvice`; `BAD_REQUEST`; correlation `"lab-request-001"`; `NOT_FOUND`.
-
-## Step 3 — Controller reminder
-
-Controllers need `@Valid` on `@RequestBody` — write that reminder in notes.
-
-## Step 4 — Reflect
-
-Happy GETs for `CUS-1001` / `CUS-1002` must still return 200 after handlers exist.
+## 500 rule
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, not-found `CUS-9999`, correlation `lab-request-001`. Replace every `_____` before Pass. **Never put secrets or stack traces in client envelopes.**
 
 ## Expected result
 
-Handler sketch blanks filled; `@Valid` reminder written in `notes/lab29-handler-todos.md`.
+Handler TODOs in `notes/lab29-handler-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should CustomerNotFoundException be handled before Exception?
+
+## Predict the Output / Behavior
+
+Where must the advice class live for component scanning?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab29-handler-todos.md` |
-| Returning ex.getMessage() with SQL | Use safe, stable messages |
-| Forgetting `@Valid` | Without it, Bean Validation never runs |
+| Only a generic handler | List specific types |
+| Stack trace in 500 body | Forbid it |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab29-handler-todos.md`
-- [ ] `@RestControllerAdvice` and statuses filled
-- [ ] `@Valid` reminder present
-- [ ] Happy-path 200 called out
-
+- [ ] Advice type
+- [ ] 400/404/409
+- [ ] Safe 500

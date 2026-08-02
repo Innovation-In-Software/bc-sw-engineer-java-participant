@@ -1,14 +1,31 @@
 # Exercise 6 — Lab 25 Readiness Checklist
 
-**Module 25** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 25** · Checkpoint C · Exercises 1–6 Pass then Lab 25
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 25 |
+| **Skills practiced** | Readiness gate |
+| **Expected outcome** | notes/lab25-readiness.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-25-exercises/` → notes/lab25-readiness.md |
+| **Checkpoint** | C (after slides 105–110a) |
+
+## What you will learn
+
+- Gate Lab 25 on Ex 1–5 notes
+- Layer seams + AI policy clear
+- No JPA/transaction detour planned
+
+**Enterprise context:** Teams that skip boundary notes accept AI drafts that wire controllers to maps.
 
 ## Goal
 
-Create `notes/lab25-readiness.md` — confirm prior notes exist and you are ready for Lab 25 without finishing it now.
+Create `notes/lab25-readiness.md` — readiness for Lab 25.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -22,29 +39,17 @@ Create `notes/lab25-readiness.md` — confirm prior notes exist and you are read
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 25 prep checklist
+# Lab 25 readiness checklist
 
-## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/layers.md | (your note here) |
-| notes/package-tree.md | (your note here) |
-| notes/lab25-service-todo-skeleton.md | (your note here) |
-| notes/ai-review-policy.md | (your note here) |
-| notes/service-test-plan.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/layers.md | yes |
+| notes/package-tree.md | yes |
+| notes/lab25-service-todo-skeleton.md | yes |
+| notes/ai-review-policy.md | yes |
+| notes/service-test-plan.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 25 now.
-
-## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+Controller may import repository? no. Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -58,9 +63,8 @@ From `examples/module-25-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 25 prep checklist
+# Lab 25 readiness checklist
 
-## Earlier exercise files present?
 | File | Present? (yes/no) |
 | ---- | ----------------- |
 | notes/layers.md | _____ |
@@ -69,18 +73,12 @@ From `examples/module-25-exercises/`, create `notes/` if needed, then create `no
 | notes/ai-review-policy.md | _____ |
 | notes/service-test-plan.md | _____ |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 25 now.
+## Scope
+Pre-lab only. Controller may import repository? _____
 
 ## Self mark
 Overall prep: Pass / Fail
-If Fail, revisit exercise(s): _____
+If Fail, revisit: _____
 ```
 
 ### Step 3 — Self-check
@@ -89,22 +87,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Readiness checklist keeps Lab 25 focused on layering in `notes/lab25-readiness.md`.
+Readiness checklist in `notes/lab25-readiness.md`.
 
-## If it fails
+## Debug / design challenge
+
+If layers.md still allows controller→repository, which exercise do you reopen?
+
+## Predict the Output / Behavior
+
+Is Lab 27 @Transactional required for Lab 25 timed-path Pass?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab25-readiness.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 25 |
+| Marking Pass with blanks | Fill every yes/no |
+| Starting Lab 25 mid-checklist | Finish Ex 1–5 first |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab25-readiness.md`
-- [ ] Path written
-- [ ] Dependencies named
-- [ ] Later labs deferred
-
+- [ ] Artifacts confirmed
+- [ ] No controller→repo
+- [ ] Pass/Fail marked

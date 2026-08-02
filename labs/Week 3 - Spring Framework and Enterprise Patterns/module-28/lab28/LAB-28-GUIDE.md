@@ -1,5 +1,19 @@
 # Lab 28: Spring Security Basics — Northstar CRM JWT and Roles
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 28 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-28-WINDOWS.md) · [macOS](LAB-28-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Add JWT login + SecurityFilterChain with AGENT/ADMIN protection and 401/403 proofs |
+| **Skills practiced** | SecurityFilterChain, JwtService, roles, MockMvc security matrix |
+| **Expected outcome** | Login token · Bearer GET CUS-1001 · 401/403 evidence · security-notes · no secrets in Git |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Labs 25–27 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab28-crm/` — security config, JWT, tests, docs/security-notes.md |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 28 — Spring Security Basics  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-28/lab28/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-28-WINDOWS.md](LAB-28-WINDOWS.md) |
 | macOS | [LAB-28-MACOS.md](LAB-28-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 28 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 27 CRM forward or the Module 28 starter as `lab28-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-28-exercises/`; graded work is `examples/lab28-crm/`.
+
+> **Incremental build:** Authn/authz → filter chain → JWT login → MockMvc matrix → IdP checklist → Lab 28.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
+
+> **Critical scope:** Distinguish **401 vs 403**. Roles **AGENT** / **ADMIN**. **Never commit JWT secrets**. Full OAuth2 Authorization Server / React token UI → later. Lab 29 adds validation polish.
 
 ## 45-minute timed path (use starter)
 
@@ -679,6 +699,10 @@ git status
 | Tests flaky on expiry | Real clock skew | Fixed TTL or Clock bean in tests |
 | Double auth errors | Duplicate filter registration | Register once; keep login `permitAll` |
 | Secret change ignored | Env not reloaded | Restart JVM after changing `CRM_JWT_SECRET` |
+| Working in `module-28-exercises` for the lab | Wrong project | Lab lives in `examples/lab28-crm` |
+| Real JWT secret committed | Secret hygiene failure | Remove, rotate, use `.env.example` only |
+| Installing Keycloak mid-lab | Scope creep | Lab JWT + IdP checklist notes are enough |
+| Using correlation header as auth | Misunderstanding | Require Bearer JWT |
 
 ---
 

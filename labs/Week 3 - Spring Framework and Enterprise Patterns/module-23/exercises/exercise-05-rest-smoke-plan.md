@@ -1,14 +1,31 @@
 # Exercise 5 — REST Smoke Plan
 
-**Module 23** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 23** · Checkpoint C · Exercises 1–6 Pass then Lab 23
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan create/get smoke for CUS-1001/CUS-1002 plus health |
+| **Skills practiced** | API smoke planning |
+| **Expected outcome** | notes/rest-smoke-plan.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-23-exercises/` → notes/rest-smoke-plan.md |
+| **Checkpoint** | C (after slides 53–59) |
+
+## What you will learn
+
+- POST then GET for Amina CUS-1001
+- Include Ravi CUS-1002 and correlation lab-request-001
+- Health UP before claiming Pass
+
+**Enterprise context:** Reviewers want a repeatable smoke script — not ad-hoc clicks without IDs.
 
 ## Goal
 
-Create `notes/rest-smoke-plan.md` — document the Lab 23 HTTP smoke sequence without executing the full lab.
+Create `notes/rest-smoke-plan.md` — smoke checklist.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 23 — REST Smoke Plan
 
-## Step 1 — Sequence
-
-In `notes/rest-smoke-plan.md`, list: start app → POST Amina → GET `CUS-1001` → GET `CUS-1002` or create Ravi → GET missing → check health.
-
-## Step 2 — Correlation
-
-Specify header `X-Correlation-Id: lab-request-001` on create evidence.
-
-## Step 3 — Failure case
-
-Note expected 404 for `CUS-MISSING` (or equivalent missing id).
-
-## Step 4 — Boundary
-
-State SOAP partner calls wait for Lab 24.
+1. Start: mvn spring-boot:run
+2. GET /actuator/health → UP
+3. POST /api/customers for CUS-1001 (Amina, ACTIVE) with correlation lab-request-001
+4. GET /api/customers/CUS-1001
+5. Repeat create/get for CUS-1002 (Ravi, PROSPECT)
+6. Capture screenshots under notes/screenshots/lab-23/
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,24 +65,23 @@ From `examples/module-23-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 23 — REST Smoke Plan
 
-## Step 1 — Sequence
+## Start command
+_____
 
-In `notes/rest-smoke-plan.md`, list: start app → POST Amina → GET `CUS-1001` → GET `CUS-1002` or create Ravi → GET missing → check health.
+## Health check
+_____
 
-## Step 2 — Correlation
+## CUS-1001 steps
+_____
 
-Specify header `X-Correlation-Id: lab-request-001` on create evidence.
+## CUS-1002 steps
+_____
 
-## Step 3 — Failure case
-
-Note expected 404 for `CUS-MISSING` (or equivalent missing id).
-
-## Step 4 — Boundary
-
-State SOAP partner calls wait for Lab 24.
+## Correlation header/id
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -83,22 +90,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Ordered smoke plan with correlation and failure case in `notes/rest-smoke-plan.md`.
+REST/health smoke plan in `notes/rest-smoke-plan.md`.
 
-## If it fails
+## Debug / design challenge
+
+If health is DOWN, should you still grade the REST steps as Pass?
+
+## Predict the Output / Behavior
+
+Where do screenshots go for evidence?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/rest-smoke-plan.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 23 |
+| Missing health step | Health before Pass |
+| Wrong fixture IDs | CUS-1001 / CUS-1002 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/rest-smoke-plan.md`
-- [ ] Happy path for CUS-1001 present
-- [ ] Correlation header specified
-- [ ] Missing-id failure planned
-
+- [ ] Health step
+- [ ] Both customers
+- [ ] Correlation noted

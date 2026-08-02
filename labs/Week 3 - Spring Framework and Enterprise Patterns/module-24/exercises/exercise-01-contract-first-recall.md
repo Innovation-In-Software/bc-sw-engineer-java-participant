@@ -1,14 +1,31 @@
 # Exercise 1 — Contract-First Recall
 
-**Module 24** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 24** · Checkpoint A · Exercises 1–6 Pass then Lab 24
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Recall why XSD is the source of truth before Java endpoints |
+| **Skills practiced** | Contract-first analysis |
+| **Expected outcome** | notes/contract-first.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-24-exercises/` → notes/contract-first.md |
+| **Checkpoint** | A (after slides 66–74) |
+
+## What you will learn
+
+- XSD defines elements/types first
+- WSDL exposes operations to partners
+- Java/@Endpoint come after the contract
+
+**Enterprise context:** Partner billing tools bind to XML names — changing only Java breaks them silently.
 
 ## Goal
 
-Create `notes/contract-first.md` — explain why the partner XSD—not Java classes—owns the SOAP contract.
+Create `notes/contract-first.md` — contract-first recall.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,32 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 24 — Contract-First Recall
 
-## Reference
-
-| Artifact | Role |
-| --- | --- |
-| `customer.xsd` | Source of truth |
-| Generated JAXB types | Derived from XSD |
-| Dynamic WSDL | Published from XSD + Spring-WS |
-
-## Step 1 — One-paragraph rule
-
-In `notes/contract-first.md`, write why editing Java first would drift the partner contract.
-
-## Step 2 — Check the reference
-
-Align with XSD → JAXB → WSDL order.
-
-## Step 3 — Lab 13 link
-
-Note Lab 24 implements Lab 13’s customer operations over Spring-WS.
-
-## Step 4 — Boundary
-
-State you will not author the full XSD in this pre-lab.
+Order: XSD → generate JAXB → implement @Endpoint → serve WSDL.
+Source of truth: customer.xsd (not hand-written DTO fields alone).
+Why: partners depend on stable element names (GetCustomerRequest, etc.).
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -65,56 +62,53 @@ From `examples/module-24-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 24 — Contract-First Recall
 
-## Reference
+## Order (fill)
+1. _____
+2. _____
+3. _____
+4. _____
 
-| Artifact | Role |
-| --- | --- |
-| `customer.xsd` | Source of truth |
-| Generated JAXB types | Derived from XSD |
-| Dynamic WSDL | Published from XSD + Spring-WS |
+## Source of truth
+_____
 
-## Step 1 — One-paragraph rule
-
-In `notes/contract-first.md`, write why editing Java first would drift the partner contract.
-
-## Step 2 — Check the reference
-
-Align with XSD → JAXB → WSDL order.
-
-## Step 3 — Lab 13 link
-
-Note Lab 24 implements Lab 13’s customer operations over Spring-WS.
-
-## Step 4 — Boundary
-
-State you will not author the full XSD in this pre-lab.
+## Why partners care
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab24-001` (or `lab-request-001` on REST). Replace every `_____` before Pass.
 
 ## Expected result
 
-Contract-first rule and Lab 13 link are documented in `notes/contract-first.md`.
+Contract-first notes in `notes/contract-first.md`.
 
-## If it fails
+## Debug / design challenge
+
+If someone adds a Java field without updating the XSD, what breaks for SOAP clients?
+
+## Predict the Output / Behavior
+
+Is code-first WSDL export the Lab 24 primary approach?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/contract-first.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 24 |
+| Saying Java is source of truth | XSD first |
+| Skipping partner why | Stable XML names |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/contract-first.md`
-- [ ] XSD named as source of truth
-- [ ] JAXB/WSDL called derived
-- [ ] Pre-lab boundary clear
-
+- [ ] Order listed
+- [ ] XSD as source of truth
+- [ ] Partner reason

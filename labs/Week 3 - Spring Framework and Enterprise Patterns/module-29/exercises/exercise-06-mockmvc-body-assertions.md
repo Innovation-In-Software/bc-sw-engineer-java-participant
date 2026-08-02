@@ -1,14 +1,31 @@
-# Exercise 5 — MockMvc Body Assertions Plan
+# Exercise 6 — MockMvc Body Assertions Plan
 
-**Module 29** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 29** · Checkpoint C · Practice order **1 → 2 → 3 → 4 → 6 → 5** then Lab 29
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan MockMvc assertions for status and ErrorResponse body shape |
+| **Skills practiced** | API contract testing |
+| **Expected outcome** | notes/mockmvc-body-plan.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-29-exercises/` → notes/mockmvc-body-plan.md |
+| **Checkpoint** | C (after slides 205–210) |
+
+## What you will learn
+
+- Assert status
+- Assert code / message / correlationId
+- Assert violations for 400
+
+**Enterprise context:** Status-only tests miss envelope regressions that break React error screens.
 
 ## Goal
 
-Create `notes/mockmvc-body-plan.md` — plan tests that check JSON fields, not only HTTP status.
+Create `notes/mockmvc-body-plan.md` — assertion plan.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 29 — MockMvc Body Assertions Plan
 
-## Step 1 — Cases
-
-In `notes/mockmvc-body-plan.md`: invalid POST; GET `CUS-9999`; duplicate `CUS-1001`; happy GET Amina.
-
-## Step 2 — Assertions
-
-For failures, assert `status`, `message`/`error`, and `correlationId` exist.
-
-## Step 3 — Security coexistence
-
-If Lab 28 is complete, note tests may need auth headers — do not remove security.
-
-## Step 4 — Boundary
-
-Do not implement full MockMvc classes in pre-lab.
+| Case | Status | Body asserts |
+| --- | --- | --- |
+| Bad email | 400 | code=VALIDATION_FAILED; violations not empty; correlationId |
+| CUS-9999 | 404 | code=CUSTOMER_NOT_FOUND |
+| Duplicate | 409 | code=DUPLICATE_CUSTOMER |
+| GET CUS-1001 | 200 | happy path (not error envelope) |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +65,47 @@ From `examples/module-29-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 29 — MockMvc Body Assertions Plan
 
-## Step 1 — Cases
-
-In `notes/mockmvc-body-plan.md`: invalid POST; GET `CUS-9999`; duplicate `CUS-1001`; happy GET Amina.
-
-## Step 2 — Assertions
-
-For failures, assert `status`, `message`/`error`, and `correlationId` exist.
-
-## Step 3 — Security coexistence
-
-If Lab 28 is complete, note tests may need auth headers — do not remove security.
-
-## Step 4 — Boundary
-
-Do not implement full MockMvc classes in pre-lab.
+| Case | Status | Body asserts |
+| --- | --- | --- |
+| Bad email | _____ | _____ |
+| CUS-9999 | _____ | _____ |
+| Duplicate | _____ | _____ |
+| GET CUS-1001 | _____ | _____ |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, not-found `CUS-9999`, correlation `lab-request-001`. Replace every `_____` before Pass. **Never put secrets or stack traces in client envelopes.**
 
 ## Expected result
 
-Body-assertion test plan ready in `notes/mockmvc-body-plan.md`.
+MockMvc body plan in `notes/mockmvc-body-plan.md`.
 
-## If it fails
+## Debug / design challenge
+
+Why sort field violations in the handler or loosen order asserts?
+
+## Predict the Output / Behavior
+
+Should 401 from Lab 28 be tested in the same class?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/mockmvc-body-plan.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 29 |
+| Status only | Include body fields |
+| Skipping correlation | Assert correlationId |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/mockmvc-body-plan.md`
-- [ ] Four cases listed
-- [ ] Envelope field assertions named
-- [ ] Security coexistence noted
-
+- [ ] 400/404/409 cases
+- [ ] Body asserts

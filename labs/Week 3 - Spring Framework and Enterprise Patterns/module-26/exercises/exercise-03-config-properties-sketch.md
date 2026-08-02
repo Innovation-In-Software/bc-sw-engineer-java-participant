@@ -1,14 +1,31 @@
 # Exercise 3 — ConfigurationProperties Sketch
 
-**Module 26** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 26** · Checkpoint B · Exercises 1–6 Pass then Lab 26
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch NorthstarIntegrationProperties binding prefix and fields |
+| **Skills practiced** | Typed configuration binding |
+| **Expected outcome** | notes/northstar-props.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-26-exercises/` → notes/northstar-props.md |
+| **Checkpoint** | B (after slides 126–128) |
+
+## What you will learn
+
+- @ConfigurationProperties prefix
+- Prefer typed bean over scattered @Value
+- Enable the properties class
+
+**Enterprise context:** Typed properties catch typos at startup instead of shipping null API base URLs.
 
 ## Goal
 
-Create `notes/northstar-props.md` — sketch `NorthstarIntegrationProperties` fields without real secrets.
+Create `notes/northstar-props.md` — ConfigProperties sketch.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,13 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 26 — ConfigurationProperties Sketch
 
-## Step 1 — Fields
-
-In `notes/northstar-props.md`, list placeholder fields: `apiBaseUrl`, `apiKey` (env-only in prod), `connectTimeoutMs`.
-
-## Step 2 — Prefix
-
-Propose YAML prefix `northstar.integration`.
-
-## Step 3 — Fail-fast
-
-Write: prod must fail startup if `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY` missing.
-
-## Step 4 — .env.example
-
-List placeholder keys only — never real values.
+Class: NorthstarIntegrationProperties
+Prefix: northstar.integration (example)
+Fields: apiBaseUrl, apiKey (apiKey from env in prod)
+Enable: @EnableConfigurationProperties or @ConfigurationPropertiesScan
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +63,53 @@ From `examples/module-26-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 26 — ConfigurationProperties Sketch
 
-## Step 1 — Fields
+## Class name
+_____
 
-In `notes/northstar-props.md`, list placeholder fields: `apiBaseUrl`, `apiKey` (env-only in prod), `connectTimeoutMs`.
+## Prefix
+_____
 
-## Step 2 — Prefix
+## Fields
+_____
 
-Propose YAML prefix `northstar.integration`.
-
-## Step 3 — Fail-fast
-
-Write: prod must fail startup if `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY` missing.
-
-## Step 4 — .env.example
-
-List placeholder keys only — never real values.
+## How enabled
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab26-001` / `lab-request-001`. Replace every `_____` before Pass. **Never write real passwords.**
 
 ## Expected result
 
-Typed config sketch and fail-fast rule documented in `notes/northstar-props.md`.
+ConfigProperties sketch in `notes/northstar-props.md`.
 
-## If it fails
+## Debug / design challenge
+
+Why prefer @ConfigurationProperties over five unrelated @Value fields?
+
+## Predict the Output / Behavior
+
+If prefix mismatches YAML, what do you observe at runtime?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/northstar-props.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 26 |
+| Hard-coding apiKey in class | Bind from config/env |
+| No enable note | Mention EnableConfigurationProperties/scan |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/northstar-props.md`
-- [ ] Three fields listed
-- [ ] Fail-fast prod rule written
-- [ ] No real secrets
-
+- [ ] Prefix
+- [ ] Fields
+- [ ] Enable path

@@ -1,50 +1,55 @@
-# Exercise 6 — Lab 29 Readiness Checklist
+# Exercise 5 — Lab 29 Readiness Checklist
 
-**Module 29** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 29** · Checkpoint C · Practice order **1 → 2 → 3 → 4 → 6 → 5** then Lab 29
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 29 |
+| **Skills practiced** | Readiness gate |
+| **Expected outcome** | notes/lab29-readiness.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-29-exercises/` → notes/lab29-readiness.md |
+| **Checkpoint** | C (after slides 205–210) |
+
+## What you will learn
+
+- Gate Lab 29 on Ex 1–4 and 6 notes
+- Envelope + status map clear
+- No stack-trace HTML planned
+
+**Enterprise context:** Teams that skip the MockMvc body plan only assert statuses and ship broken envelopes.
 
 ## Goal
 
-Create `notes/mockmvc-body-plan.md` — confirm prior notes exist and you are ready for Lab 29 without finishing it now.
+Create `notes/lab29-readiness.md` — readiness for Lab 29.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
 | Guide | `exercises/exercise-05-lab29-readiness.md` (this file in the course repo) |
-| Your notes file | `notes/mockmvc-body-plan.md` |
+| Your notes file | `notes/lab29-readiness.md` |
 
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 29 prep checklist
+# Lab 29 readiness checklist
 
-## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/dto-constraints.md | (your note here) |
-| notes/lab29-handler-todos.md | (your note here) |
-| notes/error-envelope.md | (your note here) |
-| notes/exception-status-map.md | (your note here) |
-| notes/mockmvc-body-plan.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/dto-constraints.md | yes |
+| notes/lab29-handler-todos.md | yes |
+| notes/error-envelope.md | yes |
+| notes/exception-status-map.md | yes |
+| notes/mockmvc-body-plan.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 29 now.
-
-## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+Stack traces to clients? no. Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -58,9 +63,8 @@ From `examples/module-29-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 29 prep checklist
+# Lab 29 readiness checklist
 
-## Earlier exercise files present?
 | File | Present? (yes/no) |
 | ---- | ----------------- |
 | notes/dto-constraints.md | _____ |
@@ -69,42 +73,45 @@ From `examples/module-29-exercises/`, create `notes/` if needed, then create `no
 | notes/exception-status-map.md | _____ |
 | notes/mockmvc-body-plan.md | _____ |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 29 now.
+## Scope
+Pre-lab only. Stack traces to clients? _____
 
 ## Self mark
 Overall prep: Pass / Fail
-If Fail, revisit exercise(s): _____
+If Fail, revisit: _____
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, not-found `CUS-9999`, correlation `lab-request-001`. Replace every `_____` before Pass. **Never put secrets or stack traces in client envelopes.**
 
 ## Expected result
 
-Readiness checklist closes Week 3 pre-lab preparation in `notes/lab29-readiness.md`.
+Readiness checklist in `notes/lab29-readiness.md`.
 
-## If it fails
+## Debug / design challenge
+
+If mockmvc-body-plan is missing, which exercise do you reopen?
+
+## Predict the Output / Behavior
+
+Does Lab 29 replace Lab 28 SecurityFilterChain?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab29-readiness.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 29 |
+| Marking Pass with blanks | Fill every yes/no |
+| Using mockmvc-body-plan as readiness filename | Readiness is lab29-readiness.md |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab29-readiness.md`
-- [ ] Prior lab dependencies listed
-- [ ] lab29-crm path written
-- [ ] Week 4 explicitly out of scope
-
+- [ ] Artifacts confirmed
+- [ ] No stack traces
+- [ ] Pass/Fail marked

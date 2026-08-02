@@ -1,6 +1,20 @@
 # Lab 25 starter — timed path (~45 minutes)
 
-**Theme:** Repository + service layer
+**Theme:** Controller → Service → Repository seams with seeded CRM fixtures
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Implement in-memory repository + service rules; keep controller thin |
+| **Skills practiced** | Layer boundaries, seeding, service tests, AI review notes |
+| **Expected outcome** | GET CUS-1001/1002 · duplicate fails in service · lab25-001 notes |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab25-crm/` copied from this starter |
+
+**Boilerplate reduced:** Layer stubs + `// TODO` — reject AI drafts that break seams.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-25-GUIDE.md`](../LAB-25-GUIDE.md)
 
 ## Copy into your workspace
 
@@ -21,6 +35,8 @@ mkdir -p ~/java-bootcamp/examples/lab25-crm
 cp -R starter/. ~/java-bootcamp/examples/lab25-crm/
 cd ~/java-bootcamp/examples/lab25-crm
 ```
+
+Full GUIDE: [`../LAB-25-GUIDE.md`](../LAB-25-GUIDE.md)
 
 ## 45-minute checklist
 
@@ -46,5 +62,6 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-25/` (redact secrets).
 | Duplicate create fails in service | Pass / Fail |
 | Controller does not import repository types | Pass / Fail |
 | `mvn -B test` green (or documented remaining TODOs) | Pass / Fail |
+| lab25-001 AI/manual review notes present | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.

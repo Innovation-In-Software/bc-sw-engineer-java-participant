@@ -1,14 +1,31 @@
 # Exercise 1 — Layer Boundary Quiz
 
-**Module 25** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 25** · Checkpoint A · Exercises 1–6 Pass then Lab 25
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Assign CRM responsibilities to Controller, Service, or Repository |
+| **Skills practiced** | Layer boundary analysis |
+| **Expected outcome** | notes/layers.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-25-exercises/` → notes/layers.md |
+| **Checkpoint** | A (after slides 91–96) |
+
+## What you will learn
+
+- HTTP mapping → controller
+- Uniqueness / lifecycle → service
+- save/find by id → repository
+
+**Enterprise context:** Leadership rejects PRs where controllers talk to maps — seams must be obvious in review.
 
 ## Goal
 
-Create `notes/layers.md` — classify CRM tasks into the correct layer.
+Create `notes/layers.md` — boundary quiz.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,33 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 25 — Layer Boundary Quiz
 
-## Reference
-
-| Task | Layer |
+| Responsibility | Layer |
 | --- | --- |
-| Parse JSON / return ResponseEntity | Controller |
+| Map JSON ↔ HTTP status | Controller |
+| Reject duplicate CUS-1001 | Service |
+| Store Customer by id | Repository |
 | PROSPECT → ACTIVE rule | Service |
-| Map/store lookup by id | Repository |
-| Duplicate id rejection | Service |
-
-## Step 1 — Classify
-
-In `notes/layers.md`, classify: HTTP mapping, uniqueness check, in-memory save, status transition, JSON serialization.
-
-## Step 2 — Check the reference
-
-Compare to the reference table; fix any controller-owns-rules mistakes.
-
-## Step 3 — Import rule
-
-Write: controllers must not import repository types.
-
-## Step 4 — Fixtures
-
-Seed plan: `CUS-1001` ACTIVE, `CUS-1002` PROSPECT.
+| Import CustomerRepository | Service (not Controller) |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -66,33 +66,16 @@ From `examples/module-25-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 25 — Layer Boundary Quiz
 
-## Reference
-
-| Task | Layer |
+| Responsibility | Layer (Controller / Service / Repository) |
 | --- | --- |
-| Parse JSON / return ResponseEntity | Controller |
-| PROSPECT → ACTIVE rule | Service |
-| Map/store lookup by id | Repository |
-| Duplicate id rejection | Service |
-
-## Step 1 — Classify
-
-In `notes/layers.md`, classify: HTTP mapping, uniqueness check, in-memory save, status transition, JSON serialization.
-
-## Step 2 — Check the reference
-
-Compare to the reference table; fix any controller-owns-rules mistakes.
-
-## Step 3 — Import rule
-
-Write: controllers must not import repository types.
-
-## Step 4 — Fixtures
-
-Seed plan: `CUS-1001` ACTIVE, `CUS-1002` PROSPECT.
+| Map JSON ↔ HTTP status | _____ |
+| Reject duplicate CUS-1001 | _____ |
+| Store Customer by id | _____ |
+| PROSPECT → ACTIVE rule | _____ |
+| May import CustomerRepository? | _____ |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -101,22 +84,30 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Layer classifications and import rule are correct in `notes/layers.md`.
+Boundary quiz in `notes/layers.md`.
 
-## If it fails
+## Debug / design challenge
+
+Rewrite a controller that calls map.put directly into proper layers.
+
+## Predict the Output / Behavior
+
+If ResponseEntity appears inside CustomerService, which layer leaked?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/layers.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 25 |
+| Putting uniqueness in repository only | Service owns the rule |
+| Allowing controller→repository | Mark as forbidden |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/layers.md`
-- [ ] Five tasks classified correctly
-- [ ] No-controller-repo-import rule written
-- [ ] Fixtures named
-
+- [ ] Five rows filled
+- [ ] Controller cannot import repository

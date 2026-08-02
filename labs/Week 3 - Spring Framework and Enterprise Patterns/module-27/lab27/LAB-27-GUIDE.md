@@ -1,5 +1,19 @@
 # Lab 27: Transaction Management with AI Assistance — Northstar CRM Transfers
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 27 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 5 → 6**). Then open **one** OS how-to ([Windows](LAB-27-WINDOWS.md) · [macOS](LAB-27-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Implement atomic TransferService (debit + credit + log) with proven rollback |
+| **Skills practiced** | @Transactional, ACID evidence, ACC-FORCE-FAIL, AI TX review |
+| **Expected outcome** | Happy MAIN→LOYALTY · forced-fail rollback · ACID notes · tests green |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Labs 25–26 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab27-crm/` — TransferService, accounts, log, acid-notes, tests |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 27 — Transaction Management with AI Assistance  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-27/lab27/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-27-WINDOWS.md](LAB-27-WINDOWS.md) |
 | macOS | [LAB-27-MACOS.md](LAB-27-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 27 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 26 CRM forward or the Module 27 starter as `lab27-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-27-exercises/`; graded work is `examples/lab27-crm/`.
+
+> **Incremental build:** ACID → TX boundary → rollback plan → pseudocode → propagation warnings → Lab 27.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–D).
+
+> **Critical scope:** `@Transactional` on **service** only. Prove **`ACC-FORCE-FAIL`**. ACID notes cite **evidence**. Reject AI drafts that swallow exceptions or split commits. JWT / XA → later.
 
 ## 45-minute timed path (use starter)
 
@@ -707,6 +727,10 @@ git status
 | Seeds missing | `data.sql` timing | Defer datasource init / runner |
 | `@Transactional` ignored | Not public / wrong bean | Public method on Spring bean |
 | Controllers “own” TX | Misplaced annotation | Move to service |
+| Working in `module-27-exercises` for the lab | Wrong project | Lab lives in `examples/lab27-crm` |
+| AI draft catches Exception and returns null | Swallowed failure | Rethrow unchecked; keep rollback |
+| Building JWT filters mid-lab | Scope creep | Lab 28 — finish transfer TX first |
+| Tuning isolation levels instead of proving rollback | Scope creep | Prove ACC-FORCE-FAIL evidence first |
 
 ---
 

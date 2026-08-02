@@ -1,14 +1,31 @@
-# Exercise 3 — Bean Graph Skeleton (TODOs)
+# Exercise 5 — Bean Graph Skeleton (TODOs)
 
-**Module 22** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 22** · Checkpoint E · Exercises 1–6 Pass then Lab 22
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Sketch constructor edges for the Northstar CRM bean graph |
+| **Skills practiced** | Bean graph sketching |
+| **Expected outcome** | notes/bean-graph-sketch.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-22-exercises/` → notes/bean-graph-sketch.md |
+| **Checkpoint** | E (after slides 29–31) |
+
+## What you will learn
+
+- Controller → CustomerService
+- CustomerService → CustomerRepository + NotificationService
+- Edges must match constructors for the lab doc
+
+**Enterprise context:** Reviewers reject mystery wiring — dependency-graph.md must match real constructors.
 
 ## Goal
 
-Create `notes/bean-graph-sketch.md` — complete a plain-Java skeleton that mimics constructor DI for CRM collaborators (no Spring runtime yet).
+Create `notes/bean-graph-sketch.md` — graph TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -22,11 +39,17 @@ Create `notes/bean-graph-sketch.md` — complete a plain-Java skeleton that mimi
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 22 — Bean Graph Skeleton (TODOs)
+# Lab 22 — Bean Graph Skeleton
 
-## Step 2 — Fill TODOs
+CustomerController → CustomerService
+CustomerService → CustomerRepository
+CustomerService → NotificationService
+(optional) CustomerService → CustomerMetrics if present from Lab 21
 
-Paste and complete:
+Unit test: construct CustomerService with fakes — no Spring required.
+
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -40,66 +63,19 @@ From `examples/module-22-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 22 — Bean Graph Skeleton (TODOs)
+# Lab 22 — Bean Graph Skeleton
 
-## Step 2 — Fill TODOs
+## Edges (fill TODOs)
+CustomerController → _____
+CustomerService → _____
+CustomerService → _____
+Optional metrics edge: _____
 
-Paste and complete:
-
-```java
-package com.northstar.crm;
-
-interface CustomerRepository {
-    String findName(String id);
-}
-
-class InMemoryCustomerRepository implements CustomerRepository {
-    public String findName(String id) {
-        // TODO: return "Amina Khan" when id equals "CUS-1001", else "UNKNOWN"
-        if ("CUS-1001".equals(id)) return _____;
-        return "UNKNOWN";
-    }
-}
-
-class CustomerService {
-    private final CustomerRepository _____;  // TODO: field name repo
-
-    CustomerService(CustomerRepository repo) {
-        this._____ = _____;  // TODO: assign
-    }
-
-    String describe(String id) {
-        return id + " | " + repo.findName(id);
-    }
-}
-
-public class IocDemo {
-    public static void main(String[] args) {
-        // TODO: wire repo → service without Spring (manual DI demo)
-        CustomerRepository repo = new _____;
-        CustomerService service = new CustomerService(_____);
-        System.out.println(service.describe("CUS-1001"));
-    }
-}
-```
-
-## Step 3 — Compile and run
-
-From `module-22-exercises`:
-
-```text
-javac -d mini-out mini-src/com/northstar/crm/*.java
-java -cp mini-out com.northstar.crm.IocDemo
-```
-
-Expected: `CUS-1001 | Amina Khan`
-
-## Step 4 — Reflect
-
-In `notes/bean-graph-sketch.md`, draw arrows: `IocDemo` → `CustomerService` → `CustomerRepository`. Note: Lab 22 lets Spring create this graph.
+## Unit-test construction (one line)
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -108,22 +84,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Demo prints `CUS-1001 | Amina Khan` after filling blanks in `notes/bean-graph-sketch.md`.
+Bean graph sketch in `notes/bean-graph-sketch.md`.
 
-## If it fails
+## Debug / design challenge
+
+If NotificationService also depended on CustomerService, what problem appears?
+
+## Predict the Output / Behavior
+
+Does the graph include `new` edges inside CustomerService after IoC refactor?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/bean-graph-sketch.md` |
-| Leaving `_____` in source | Blanks are not valid Java — replace them |
-| `new` inside CustomerService | Inject via constructor parameter instead |
+| Missing notifier edge | Service → NotificationService |
+| Keeping new edges | Remove them after IoC |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/bean-graph-sketch.md`
-- [ ] Every `_____` / TODO is replaced
-- [ ] Compile and run succeed with expected output
-- [ ] Notes show the dependency arrow
-
+- [ ] Controller→Service
+- [ ] Service→Repo
+- [ ] Service→Notifier

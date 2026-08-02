@@ -1,14 +1,31 @@
 # Exercise 6 — Lab 27 Readiness Checklist
 
-**Module 27** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 27** · Checkpoint C · Exercises 1–6 Pass then Lab 27
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Confirm prior notes exist and you are ready for Lab 27 |
+| **Skills practiced** | Readiness gate |
+| **Expected outcome** | notes/lab27-readiness.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-27-exercises/` → notes/lab27-readiness.md |
+| **Checkpoint** | C (after slides 152–156a) |
+
+## What you will learn
+
+- Gate Lab 27 on Ex 1–5 notes
+- Service TX + rollback plan clear
+- No JWT/XA detour planned
+
+**Enterprise context:** Teams that skip rollback plans cannot show ACC-FORCE-FAIL evidence during grading.
 
 ## Goal
 
-Create `notes/lab27-readiness.md` — confirm prior notes exist and you are ready for Lab 27 without finishing it now.
+Create `notes/lab27-readiness.md` — readiness for Lab 27.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -22,29 +39,17 @@ Create `notes/lab27-readiness.md` — confirm prior notes exist and you are read
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 27 prep checklist
+# Lab 27 readiness checklist
 
-## Earlier exercise files present?
-| File | Present? (yes/no) |
-| ---- | ----------------- |
-| notes/acid-crm.md | (your note here) |
-| notes/tx-boundary.md | (your note here) |
-| notes/rollback-plan.md | (your note here) |
-| notes/lab27-transfer-pseudocode.md | (your note here) |
-| notes/propagation-warnings.md | (your note here) |
+| File | Present? |
+| ---- | -------- |
+| notes/acid-crm.md | yes |
+| notes/tx-boundary.md | yes |
+| notes/rollback-plan.md | yes |
+| notes/lab27-transfer-pseudocode.md | yes |
+| notes/propagation-warnings.md | yes |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 27 now.
-
-## Self mark
-Overall prep: Pass / Fail
-If Fail, revisit exercise(s): (your note here)
+@Transactional on controller? no. Overall prep: Pass
 ```
 
 Then follow **Steps** to create your own file.
@@ -58,9 +63,8 @@ From `examples/module-27-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 27 prep checklist
+# Lab 27 readiness checklist
 
-## Earlier exercise files present?
 | File | Present? (yes/no) |
 | ---- | ----------------- |
 | notes/acid-crm.md | _____ |
@@ -69,42 +73,45 @@ From `examples/module-27-exercises/`, create `notes/` if needed, then create `no
 | notes/lab27-transfer-pseudocode.md | _____ |
 | notes/propagation-warnings.md | _____ |
 
-## Fixtures (verify)
-| ID | Name | Status |
-| -- | ---- | ------ |
-| CUS-1001 | Amina Khan | ACTIVE |
-| CUS-1002 | Ravi Singh | PROSPECT |
-
-## Scope statement
-Pre-lab only — prepare for lab; do not complete full Lab 27 now.
+## Scope
+Pre-lab only. @Transactional on controller? _____
 
 ## Self mark
 Overall prep: Pass / Fail
-If Fail, revisit exercise(s): _____
+If Fail, revisit: _____
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`, Ravi `CUS-1002`, accounts `ACC-1001-MAIN` / `ACC-1001-LOYALTY`, force id `ACC-FORCE-FAIL`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-Readiness checklist defers security correctly in `notes/lab27-readiness.md`.
+Readiness checklist in `notes/lab27-readiness.md`.
 
-## If it fails
+## Debug / design challenge
+
+If tx-boundary still puts TX on the controller, which exercise do you reopen?
+
+## Predict the Output / Behavior
+
+Is Kafka saga required for Lab 27 timed-path Pass?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab27-readiness.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 27 |
+| Marking Pass with blanks | Fill every yes/no |
+| Starting Lab 27 mid-checklist | Finish Ex 1–5 first |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab27-readiness.md`
-- [ ] Dependencies named
-- [ ] Path written
-- [ ] Lab 28 deferred for JWT
-
+- [ ] Artifacts confirmed
+- [ ] No controller TX
+- [ ] Pass/Fail marked

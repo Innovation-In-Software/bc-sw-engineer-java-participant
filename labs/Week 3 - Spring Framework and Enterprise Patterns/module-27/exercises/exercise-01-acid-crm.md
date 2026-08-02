@@ -1,14 +1,31 @@
 # Exercise 1 — ACID for CRM Transfers
 
-**Module 27** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 27** · Checkpoint A · Exercises 1–6 Pass then Lab 27
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map each ACID letter to a CRM transfer observation you will prove |
+| **Skills practiced** | ACID evidence planning |
+| **Expected outcome** | notes/acid-crm.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-27-exercises/` → notes/acid-crm.md |
+| **Checkpoint** | A (after slides 137–146) |
+
+## What you will learn
+
+- Atomicity = debit+credit+log together
+- Consistency = valid balances after success/fail
+- Isolation/Durability = short notes tied to lab evidence
+
+**Enterprise context:** Finance review rejects ACID buzzwords without balances/log screenshots.
 
 ## Goal
 
-Create `notes/acid-crm.md` — tie each ACID letter to a Northstar transfer observation.
+Create `notes/acid-crm.md` — ACID ↔ CRM table.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,33 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 27 — ACID for CRM Transfers
 
-## Reference
-
-| Letter | CRM meaning |
+| Letter | CRM observation |
 | --- | --- |
-| Atomicity | Debit+credit+log all succeed or none |
-| Consistency | Balances never violate invariants after commit/rollback |
-| Isolation | Concurrent transfers do not see half-updates |
-| Durability | Committed transfer log survives restart |
-
-## Step 1 — Fill ACID
-
-In `notes/acid-crm.md`, write one CRM sentence per ACID letter.
-
-## Step 2 — Check the reference
-
-Align with the reference table.
-
-## Step 3 — Accounts
-
-List accounts: `ACC-1001-MAIN`, `ACC-1001-LOYALTY`, `ACC-1002-MAIN`, force id `ACC-FORCE-FAIL`.
-
-## Step 4 — Boundary
-
-Pre-lab explains ACID; Lab 27 proves rollback with code.
+| A | Forced fail leaves MAIN unchanged; no success log |
+| C | After happy path, balances and log agree |
+| I | Default isolation; no dirty mid-transfer reads required for Pass |
+| D | Committed happy path survives restart (note H2 mode) |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -66,57 +65,47 @@ From `examples/module-27-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 27 — ACID for CRM Transfers
 
-## Reference
-
-| Letter | CRM meaning |
+| Letter | CRM observation |
 | --- | --- |
-| Atomicity | Debit+credit+log all succeed or none |
-| Consistency | Balances never violate invariants after commit/rollback |
-| Isolation | Concurrent transfers do not see half-updates |
-| Durability | Committed transfer log survives restart |
-
-## Step 1 — Fill ACID
-
-In `notes/acid-crm.md`, write one CRM sentence per ACID letter.
-
-## Step 2 — Check the reference
-
-Align with the reference table.
-
-## Step 3 — Accounts
-
-List accounts: `ACC-1001-MAIN`, `ACC-1001-LOYALTY`, `ACC-1002-MAIN`, force id `ACC-FORCE-FAIL`.
-
-## Step 4 — Boundary
-
-Pre-lab explains ACID; Lab 27 proves rollback with code.
+| A | _____ |
+| C | _____ |
+| I | _____ |
+| D | _____ |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`, Ravi `CUS-1002`, accounts `ACC-1001-MAIN` / `ACC-1001-LOYALTY`, force id `ACC-FORCE-FAIL`, correlation `lab-request-001`. Replace every `_____` before Pass.
 
 ## Expected result
 
-ACID mapped to CRM transfer language in `notes/acid-crm.md`.
+ACID table in `notes/acid-crm.md`.
 
-## If it fails
+## Debug / design challenge
+
+If a success log row exists after ACC-FORCE-FAIL, which ACID letter failed?
+
+## Predict the Output / Behavior
+
+Is “we used @Transactional” enough evidence for Atomicity?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/acid-crm.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 27 |
+| Only definitions, no CRM tie-in | Cite balances/log |
+| Skipping Isolation note | Write at least awareness |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/acid-crm.md`
-- [ ] Four letters explained
-- [ ] Force-fail account listed
-- [ ] Pre-lab vs lab boundary clear
-
+- [ ] All four letters
+- [ ] CRM observations

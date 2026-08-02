@@ -1,6 +1,20 @@
 # Lab 23 starter — timed path (~45 minutes)
 
-**Theme:** Boot auto-config / application.yml basics
+**Theme:** Spring Boot — starters, application.yml, REST customers, health smoke
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete Boot YAML/API TODOs and prove health + CUS-1001 smoke |
+| **Skills practiced** | Starters, CrmApplication, profiles teaser, Actuator health |
+| **Expected outcome** | App on 8080 · health UP · ownership notes filled |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab23-crm/` copied from this starter |
+
+**Boilerplate reduced:** Initializr-style baseline + `// TODO` — keep constructor DI from Lab 22.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-23-GUIDE.md`](../LAB-23-GUIDE.md)
 
 ## Copy into your workspace
 
@@ -21,6 +35,8 @@ mkdir -p ~/java-bootcamp/examples/lab23-crm
 cp -R starter/. ~/java-bootcamp/examples/lab23-crm/
 cd ~/java-bootcamp/examples/lab23-crm
 ```
+
+Full GUIDE: [`../LAB-23-GUIDE.md`](../LAB-23-GUIDE.md)
 
 ## 45-minute checklist
 
@@ -48,5 +64,6 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-23/` (redact secrets).
 | /actuator/health returns UP | Pass / Fail |
 | CUS-1001 create/get evidence (or IT green) | Pass / Fail |
 | YAML + profile teasers present | Pass / Fail |
+| Autoconfig vs ownership notes present | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.

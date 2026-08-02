@@ -1,5 +1,19 @@
 # Lab 29: Validation and Exception Handling — Northstar CRM Error Contracts
 
+> **Participants:** Module sequence is in [`../README.md`](../README.md). **Do not start this guide until** you have finished Module 29 [pre-lab exercises 1–6](../exercises/EXERCISES-INDEX.md) (Pass in your notes; order **1 → 2 → 3 → 4 → 6 → 5**). Then open **one** OS how-to ([Windows](LAB-29-WINDOWS.md) · [macOS](LAB-29-MACOS.md)). In class, prefer the **45-minute timed path** with [`starter/`](starter/README.md); the **full path** is every Step below (homework / extended). Skip `solution/` unless your instructor says otherwise. See [Which file do I open?](../../../_PARTICIPANT-FILE-GUIDE.md).
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Ship Bean Validation + GlobalExceptionHandler + stable ErrorResponse for CRM REST |
+| **Skills practiced** | @Valid DTOs, @RestControllerAdvice, 400/404/409 envelopes, MockMvc body asserts |
+| **Expected outcome** | Invalid → 400 · CUS-9999 → 404 · duplicate → 409 · happy GET · tests green |
+| **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
+| **Prerequisites** | Lab 0 · Labs 14/16 concepts · Labs 25–28 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
+| **Expected files** | `examples/lab29-crm/` — DTOs, advice, ErrorResponse, tests, error-contract notes |
+| **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
+
 **Module:** 29 — Validation and Exception Handling  
 **Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-29/lab29/`  
 **Difficulty:** Intermediate  
@@ -12,9 +26,15 @@
 | Windows | [LAB-29-WINDOWS.md](LAB-29-WINDOWS.md) |
 | macOS | [LAB-29-MACOS.md](LAB-29-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 29 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **JDK 21** and **Maven 3.9+** (Spring Boot 3.x via Maven). Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
+> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 28 CRM forward or the Module 29 starter as `lab29-crm`.
 
----
+> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1 (order **1 → 2 → 3 → 4 → 6 → 5**). Notes stay in `module-29-exercises/`; graded work is `examples/lab29-crm/`.
+
+> **Incremental build:** DTO constraints → handler TODOs → envelope → status map → MockMvc body plan → readiness → Lab 29.
+
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–D).
+
+> **Critical scope:** **`@Valid` + ErrorResponse**. Map **400/404/409**. Keep **`lab-request-001`**. Assert status **and** body. **No stack-trace HTML**. Keep Lab 28 security. Optional Week 3 review slides 215–220 after Kahoot.
 
 ## 45-minute timed path (use starter)
 
@@ -697,6 +717,10 @@ git status
 | Violation order flake | Unsorted field errors | Sort in handler or loosen asserts |
 | Duplicate returns 200 | Unique check missing / after side effects | Enforce after validation, before persist |
 | 500 for not-found | Exception type not handled | Map `CustomerNotFoundException` → 404 |
+| Working in `module-29-exercises` for the lab | Wrong project | Lab lives in `examples/lab29-crm` |
+| Stack trace in JSON body | Unsafe 500 handler | Return generic message only |
+| Removing SecurityFilterChain “to test validation” | Scope misunderstanding | Keep Lab 28; use JWT on curls |
+| Asserting status only in tests | Incomplete contract | Assert ErrorResponse fields too |
 
 ---
 

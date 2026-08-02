@@ -1,14 +1,31 @@
 # Exercise 1 — Profile Purposes
 
-**Module 26** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 26** · Checkpoint A · Exercises 1–6 Pass then Lab 26
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Explain what each of dev / test / prod is for in Northstar CRM |
+| **Skills practiced** | Profile purpose analysis |
+| **Expected outcome** | notes/profiles.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-26-exercises/` → notes/profiles.md |
+| **Checkpoint** | A (after slides 115–125) |
+
+## What you will learn
+
+- dev = local demos / H2-friendly
+- test = isolated automated tests
+- prod = strict + secrets from env
+
+**Enterprise context:** Incidents happen when prod runs with dev verbosity and blank passwords in YAML.
 
 ## Goal
 
-Create `notes/profiles.md` — describe `dev`, `test`, and `prod` goals for Northstar CRM.
+Create `notes/profiles.md` — profile purposes.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,32 +41,14 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 26 — Profile Purposes
 
-## Reference
-
-| Profile | Goal |
+| Profile | Purpose |
 | --- | --- |
-| `dev` | Local H2-friendly / verbose-safe settings |
-| `test` | Deterministic automated tests |
-| `prod` | Fail-fast; secrets from environment |
-
-## Step 1 — Write goals
-
-In `notes/profiles.md`, one sentence each for `dev`, `test`, `prod`.
-
-## Step 2 — Check the reference
-
-Align with the reference table.
-
-## Step 3 — Incident story
-
-Explain why blank prod passwords in YAML are unacceptable.
-
-## Step 4 — Fixtures
-
-Under `dev`, `CUS-1001` / `CUS-1002` must still be callable.
+| dev | Local CRM smoke; relaxed logging; H2-friendly |
+| test | Surefire / BootTest isolation |
+| prod | Deployed settings; secrets via env; fail fast |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -65,56 +64,49 @@ From `examples/module-26-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 26 — Profile Purposes
 
-## Reference
-
-| Profile | Goal |
+| Profile | Purpose |
 | --- | --- |
-| `dev` | Local H2-friendly / verbose-safe settings |
-| `test` | Deterministic automated tests |
-| `prod` | Fail-fast; secrets from environment |
+| dev | _____ |
+| test | _____ |
+| prod | _____ |
 
-## Step 1 — Write goals
-
-In `notes/profiles.md`, one sentence each for `dev`, `test`, `prod`.
-
-## Step 2 — Check the reference
-
-Align with the reference table.
-
-## Step 3 — Incident story
-
-Explain why blank prod passwords in YAML are unacceptable.
-
-## Step 4 — Fixtures
-
-Under `dev`, `CUS-1001` / `CUS-1002` must still be callable.
+## One risk if prod uses dev YAML
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab26-001` / `lab-request-001`. Replace every `_____` before Pass. **Never write real passwords.**
 
 ## Expected result
 
-Profile purposes and secret incident lesson are clear in `notes/profiles.md`.
+Profile purposes in `notes/profiles.md`.
 
-## If it fails
+## Debug / design challenge
+
+Should test profile point at a shared teammate’s laptop H2 file?
+
+## Predict the Output / Behavior
+
+Name one setting that must differ between dev and prod.
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/profiles.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 26 |
+| Saying all profiles are identical | Call out differences |
+| Putting real passwords in notes | Describe secrets as env-only |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/profiles.md`
-- [ ] Three profiles described
-- [ ] YAML-secret anti-pattern called out
-- [ ] Dev fixtures mentioned
-
+- [ ] Three purposes
+- [ ] Prod risk noted

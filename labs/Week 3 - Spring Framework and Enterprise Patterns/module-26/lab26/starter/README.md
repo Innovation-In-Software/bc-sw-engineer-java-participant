@@ -1,6 +1,20 @@
 # Lab 26 starter — timed path (~45 minutes)
 
-**Theme:** Profiles (dev/test/prod yml)
+**Theme:** Spring profiles — dev/test/prod YAML, ConfigProperties, secret hygiene
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete profile YAML + NorthstarIntegrationProperties; prove activation |
+| **Skills practiced** | Profiles, override awareness, env placeholders, fail-fast prod |
+| **Expected outcome** | dev smoke · prod refuses missing secrets · no secrets in Git |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab26-crm/` copied from this starter |
+
+**Boilerplate reduced:** Profile stubs + `// TODO` — keep Lab 25 layering.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-26-GUIDE.md`](../LAB-26-GUIDE.md)
 
 ## Copy into your workspace
 
@@ -21,6 +35,8 @@ mkdir -p ~/java-bootcamp/examples/lab26-crm
 cp -R starter/. ~/java-bootcamp/examples/lab26-crm/
 cd ~/java-bootcamp/examples/lab26-crm
 ```
+
+Full GUIDE: [`../LAB-26-GUIDE.md`](../LAB-26-GUIDE.md)
 
 ## 45-minute checklist
 
@@ -47,5 +63,6 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-26/` (redact secrets).
 | `prod` refuses missing DB_PASSWORD / NORTHSTAR_API_KEY (or documented) | Pass / Fail |
 | Profile YAML files present for dev/test/prod | Pass / Fail |
 | No real secrets in Git | Pass / Fail |
+| CUS-1001 smoke under `dev` | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.

@@ -1,14 +1,31 @@
-# Exercise 4 — Service Layer Skeleton (TODOs)
+# Exercise 3 — Service Layer Skeleton (TODOs)
 
-**Module 25** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 25** · Checkpoint B · Exercises 1–6 Pass then Lab 25
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill TODOs for CustomerService create/get rules |
+| **Skills practiced** | Service skeleton design |
+| **Expected outcome** | notes/lab25-service-todo-skeleton.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-25-exercises/` → notes/lab25-service-todo-skeleton.md |
+| **Checkpoint** | B (after slides 97–104) |
+
+## What you will learn
+
+- Constructor takes CustomerRepository
+- create checks duplicate then save
+- get throws not-found for CUS-9999
+
+**Enterprise context:** Service skeletons become the contract SOAP/REST both trust.
 
 ## Goal
 
-Create `notes/lab25-service-todo-skeleton.md` — complete a tiny layered demo that rejects duplicate `CUS-1001` creates.
+Create `notes/lab25-service-todo-skeleton.md` — service TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -22,13 +39,16 @@ Create `notes/lab25-service-todo-skeleton.md` — complete a tiny layered demo t
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 25 — Service Layer Skeleton (TODOs)
+# Lab 25 — Service Layer Skeleton
 
-## Step 1 — Files
+CustomerService(CustomerRepository repo)
+create(customer): if exists → conflict; else save
+get(id): find or not-found
+Seeds used by repo: CUS-1001 ACTIVE, CUS-1002 PROSPECT
+No ResponseEntity here.
 
-Under `module-25-exercises/mini-src/com/northstar/crm/`, create `CustomerRepository.java`, `InMemoryCustomerRepository.java`, `CustomerService.java`, `LayerDemo.java`.
-
-## Step 2 — Fill TODOs
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -42,73 +62,22 @@ From `examples/module-25-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 25 — Service Layer Skeleton (TODOs)
+# Lab 25 — Service Layer Skeleton
 
-## Step 1 — Files
+## Constructor deps
+_____
 
-Under `module-25-exercises/mini-src/com/northstar/crm/`, create `CustomerRepository.java`, `InMemoryCustomerRepository.java`, `CustomerService.java`, `LayerDemo.java`.
+## create TODO
+_____
 
-## Step 2 — Fill TODOs
+## get TODO
+_____
 
-```java
-package com.northstar.crm;
-
-import java.util.*;
-
-interface CustomerRepository {
-    boolean exists(String id);
-    void save(String id, String name);
-    String getName(String id);
-}
-
-class InMemoryCustomerRepository implements CustomerRepository {
-    private final Map<String, String> store = new HashMap<>();
-    InMemoryCustomerRepository() {
-        // TODO: seed CUS-1001 → Amina Khan
-        store.put(_____, _____);
-    }
-    public boolean exists(String id) { return store.containsKey(id); }
-    public void save(String id, String name) { store.put(id, name); }
-    public String getName(String id) { return store.get(id); }
-}
-
-class CustomerService {
-    private final CustomerRepository repo;
-    CustomerService(CustomerRepository repo) { this.repo = repo; }
-    void create(String id, String name) {
-        // TODO: if exists, throw IllegalStateException("duplicate")
-        if (repo._____(id)) throw new IllegalStateException("duplicate");
-        repo.save(id, name);
-    }
-}
-
-public class LayerDemo {
-    public static void main(String[] args) {
-        CustomerService svc = new CustomerService(new InMemoryCustomerRepository());
-        try {
-            svc.create("CUS-1001", "Amina Khan");
-            System.out.println("UNEXPECTED");
-        } catch (IllegalStateException ex) {
-            System.out.println("duplicate blocked");
-        }
-    }
-}
-```
-
-## Step 3 — Compile and run
-
-```text
-javac -d mini-out mini-src/com/northstar/crm/*.java
-java -cp mini-out com.northstar.crm.LayerDemo
-```
-Expected: `duplicate blocked`
-
-## Step 4 — Reflect
-
-Note: HTTP/controller is intentionally absent — that is Lab 25 starter work.
+## Forbidden in this class
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -117,22 +86,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Demo prints `duplicate blocked` after filling blanks in `notes/lab25-service-todo-skeleton.md`.
+Service skeleton in `notes/lab25-service-todo-skeleton.md`.
 
-## If it fails
+## Debug / design challenge
+
+Where should seeding of CUS-1001 live — service or repository?
+
+## Predict the Output / Behavior
+
+Can create return ResponseEntity.ok(...) from the service?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab25-service-todo-skeleton.md` |
-| Saving without exists check | Service must reject duplicates |
-| Using ResponseEntity in service | Keep HTTP types in controllers (lab) |
+| HTTP types in service | Mark forbidden |
+| No duplicate check | Add create rule |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab25-service-todo-skeleton.md`
-- [ ] Seed and exists TODOs completed
-- [ ] Expected console output
-- [ ] Reflection notes HTTP is deferred
-
+- [ ] Constructor deps
+- [ ] create/get TODOs
+- [ ] Forbidden HTTP noted

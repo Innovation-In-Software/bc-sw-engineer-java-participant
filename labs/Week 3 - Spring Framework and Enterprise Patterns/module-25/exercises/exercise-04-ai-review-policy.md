@@ -1,14 +1,31 @@
-# Exercise 3 — AI Review Policy
+# Exercise 4 — AI Review Policy
 
-**Module 25** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 25** · Checkpoint C · Exercises 1–6 Pass then Lab 25
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Write a short policy for reviewing Copilot/AI service-repo drafts |
+| **Skills practiced** | AI-assisted coding hygiene |
+| **Expected outcome** | notes/ai-review-policy.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-25-exercises/` → notes/ai-review-policy.md |
+| **Checkpoint** | C (after slides 105–110a) |
+
+## What you will learn
+
+- Reject controller→repository shortcuts
+- Reject secrets or PII logging
+- Record accept/reject in lab25-001
+
+**Enterprise context:** AI accelerates scaffolding — unchecked drafts recreate the layering bugs this lab exists to stop.
 
 ## Goal
 
-Create `notes/ai-review-policy.md` — document accept/reject criteria for AI drafts in Lab 25.
+Create `notes/ai-review-policy.md` — review policy.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,33 +41,12 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 25 — AI Review Policy
 
-## Reference
-
-| Suggestion | Verdict |
-| --- | --- |
-| Service returns ResponseEntity | Reject |
-| Controller calls Map store directly | Reject |
-| Service uses repository interface | Accept after review |
-| Hard-coded prod password | Reject |
-
-## Step 1 — Write policy
-
-Create `notes/ai-review-policy.md` with correlation id `lab25-001` header.
-
-## Step 2 — Accept/reject rows
-
-Copy the reference table and add one row of your own.
-
-## Step 3 — Manual fallback
-
-Note: if Copilot is unavailable, mark N/A and complete layering manually.
-
-## Step 4 — Boundary
-
-Pre-lab does not generate production code via AI — policy only.
+Must reject: ResponseEntity in service; controller importing repository; invented JPA mid-lab.
+Must check: fixtures CUS-1001/CUS-1002; constructor DI; tests still meaningful.
+Record: docs/lab25-001.md accept/reject + reason (or N/A if unused).
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -66,33 +62,17 @@ From `examples/module-25-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 25 — AI Review Policy
 
-## Reference
+## Must reject
+_____
 
-| Suggestion | Verdict |
-| --- | --- |
-| Service returns ResponseEntity | Reject |
-| Controller calls Map store directly | Reject |
-| Service uses repository interface | Accept after review |
-| Hard-coded prod password | Reject |
+## Must check
+_____
 
-## Step 1 — Write policy
-
-Create `notes/ai-review-policy.md` with correlation id `lab25-001` header.
-
-## Step 2 — Accept/reject rows
-
-Copy the reference table and add one row of your own.
-
-## Step 3 — Manual fallback
-
-Note: if Copilot is unavailable, mark N/A and complete layering manually.
-
-## Step 4 — Boundary
-
-Pre-lab does not generate production code via AI — policy only.
+## Where to record review
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -101,22 +81,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-AI review policy with lab25-001 is ready in `notes/ai-review-policy.md`.
+AI review policy in `notes/ai-review-policy.md`.
 
-## If it fails
+## Debug / design challenge
+
+Copilot suggests @Autowired fields on CustomerService — accept or reject?
+
+## Predict the Output / Behavior
+
+If you did not use AI, what do you write in lab25-001?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/ai-review-policy.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 25 |
+| Saying AI needs no review | Mandatory human review |
+| No record location | docs/lab25-001.md |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/ai-review-policy.md`
-- [ ] lab25-001 present
-- [ ] At least four accept/reject rows
-- [ ] Manual fallback noted
-
+- [ ] Reject list
+- [ ] Check list
+- [ ] Record location

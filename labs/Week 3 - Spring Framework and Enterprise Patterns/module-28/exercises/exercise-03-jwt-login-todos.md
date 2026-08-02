@@ -1,14 +1,31 @@
-# Exercise 4 — JWT Login TODOs
+# Exercise 3 — JWT Login TODOs
 
-**Module 28** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 28** · Checkpoint C · Exercises 1–6 Pass then Lab 28
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill login/issue/parse TODOs for the JWT flow |
+| **Skills practiced** | JWT login design |
+| **Expected outcome** | notes/lab28-jwt-login-todos.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-28-exercises/` → notes/lab28-jwt-login-todos.md |
+| **Checkpoint** | C (after slides 176–179) |
+
+## What you will learn
+
+- POST /api/auth/login
+- JwtService issue + parse
+- Authorization: Bearer on later calls
+
+**Enterprise context:** Without a clear login contract, MockMvc matrices invent inconsistent paths and fail peer review.
 
 ## Goal
 
-Create `notes/lab28-jwt-login-todos.md` — complete a JWT login/filter sketch with TODOs (no real secret values).
+Create `notes/lab28-jwt-login-todos.md` — JWT login TODOs.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,7 +41,14 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 28 — JWT Login TODOs
 
-## Step 2 — Fill TODOs
+POST /api/auth/login {username,password} → {token, roles}
+JwtService.issue(user) / parse(token)
+Client: Authorization: Bearer <token>
+Lab users: agent1 (AGENT), admin1 (ADMIN)
+Secret: env CRM_JWT_SECRET (placeholder in .env.example)
+
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -40,65 +64,58 @@ From `examples/module-28-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 28 — JWT Login TODOs
 
-## Step 2 — Fill TODOs
+## Login path + body
+_____
 
-```java
-class AuthController {
-    // POST /api/auth/login
-    Map<String, String> login(String username, String password) {
-        // TODO: validate lab user then return token map
-        String token = jwtService._____(username); // issue/create
-        return Map.of("accessToken", _____);
-    }
-}
+## Token response
+_____
 
-class JwtAuthenticationFilter {
-    void doFilter(String authorizationHeader) {
-        // TODO: header must start with Bearer
-        if (authorizationHeader == null || !authorizationHeader.startsWith(_____)) {
-            return; // unauthenticated
-        }
-        String token = authorizationHeader.substring(7);
-        // TODO: parse and set SecurityContext (lab implements fully)
-    }
-}
-```
-Hints: `issue`/`createToken` method name per your notes; return `token`; prefix `"Bearer "`.
+## Bearer header form
+_____
 
-## Step 3 — Secret hygiene
+## Lab users/roles
+_____
 
-In `.env.example` style notes, write `JWT_SECRET=_____` placeholder only — never a real production secret.
-
-## Step 4 — Reflect
-
-Soap UsernameToken from Lab 24 is separate from REST JWT — do not conflate them.
+## Secret handling
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only. No real secrets.
+
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`, lab users `agent1`/`admin1`. Replace every `_____` before Pass. **Never write real JWT secrets.**
 
 ## Expected result
 
-JWT sketch blanks and secret placeholder completed in `notes/lab28-jwt-login-todos.md`.
+JWT login TODOs in `notes/lab28-jwt-login-todos.md`.
 
-## If it fails
+## Debug / design challenge
+
+Where should password encoding happen relative to token issue?
+
+## Predict the Output / Behavior
+
+Is putting the JWT in a query string a good default?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/lab28-jwt-login-todos.md` |
-| Hard-coding signing key in Git | Use env placeholder / local secret |
-| Using correlation id as password | Use real auth credentials / tokens |
+| Real secret in notes | Placeholder/env only |
+| Missing Bearer form | Authorization: Bearer … |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab28-jwt-login-todos.md`
-- [ ] Login token return filled
-- [ ] Bearer prefix filled
-- [ ] No real JWT secret committed
-
+- [ ] Login path
+- [ ] Bearer form
+- [ ] Users/roles
+- [ ] No real secrets

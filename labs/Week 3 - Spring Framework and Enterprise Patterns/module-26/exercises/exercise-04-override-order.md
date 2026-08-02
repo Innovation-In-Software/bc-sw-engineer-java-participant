@@ -1,14 +1,31 @@
-# Exercise 2 — Property Override Order
+# Exercise 4 — Property Override Order
 
-**Module 26** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 26** · Checkpoint B · Exercises 1–6 Pass then Lab 26
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | State Boot property-source precedence for the lab |
+| **Skills practiced** | Override-order analysis |
+| **Expected outcome** | notes/override-order.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-26-exercises/` → notes/override-order.md |
+| **Checkpoint** | B (after slides 126–128) |
+
+## What you will learn
+
+- CLI > env > profile YAML > base YAML
+- Prove with a measurable property in the lab
+- Document winners in notes
+
+**Enterprise context:** On-call wastes hours when someone “fixed YAML” but a CLI flag still wins.
 
 ## Goal
 
-Create `notes/override-order.md` — order CLI, env, profile YAML, and base YAML by precedence.
+Create `notes/override-order.md` — precedence list.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,33 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 26 — Property Override Order
 
-## Reference
+Highest → lowest:
+1. Command-line args (-D / --)
+2. Environment variables
+3. application-{profile}.yml
+4. application.yml
+5. Code defaults
 
-| Rank (highest first) | Source |
-| --- | --- |
-| 1 | Command-line args / `-D` |
-| 2 | Environment variables |
-| 3 | Profile-specific YAML |
-| 4 | Base `application.yml` |
-
-## Step 1 — Rank
-
-In `notes/override-order.md`, number the four sources highest→lowest.
-
-## Step 2 — Check the reference
-
-Compare to the reference table; correct mistakes.
-
-## Step 3 — Activation pair
-
-Write example activations: `-Dspring.profiles.active=dev` and `SPRING_PROFILES_ACTIVE=prod`.
-
-## Step 4 — Measurement plan
-
-Lab 26 asks for measured override evidence — note you will capture it in lab, not here.
+Lab: measure one property across sources.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -66,57 +67,50 @@ From `examples/module-26-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 26 — Property Override Order
 
-## Reference
+## Highest to lowest
+1. _____
+2. _____
+3. _____
+4. _____
+5. _____
 
-| Rank (highest first) | Source |
-| --- | --- |
-| 1 | Command-line args / `-D` |
-| 2 | Environment variables |
-| 3 | Profile-specific YAML |
-| 4 | Base `application.yml` |
-
-## Step 1 — Rank
-
-In `notes/override-order.md`, number the four sources highest→lowest.
-
-## Step 2 — Check the reference
-
-Compare to the reference table; correct mistakes.
-
-## Step 3 — Activation pair
-
-Write example activations: `-Dspring.profiles.active=dev` and `SPRING_PROFILES_ACTIVE=prod`.
-
-## Step 4 — Measurement plan
-
-Lab 26 asks for measured override evidence — note you will capture it in lab, not here.
+## Property you will measure in lab
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab26-001` / `lab-request-001`. Replace every `_____` before Pass. **Never write real passwords.**
 
 ## Expected result
 
-Correct precedence and activation examples recorded in `notes/override-order.md`.
+Override order in `notes/override-order.md`.
 
-## If it fails
+## Debug / design challenge
+
+If env sets logging.level.root=INFO and profile YAML sets DEBUG, who wins?
+
+## Predict the Output / Behavior
+
+Where do code `@Value` defaults sit relative to application.yml?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/override-order.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 26 |
+| Putting base YAML above CLI | CLI wins |
+| No measurement plan | Name a property to prove |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/override-order.md`
-- [ ] Order matches reference
-- [ ] Both activation styles listed
-- [ ] Lab measurement deferred explicitly
-
+- [ ] Ordered list
+- [ ] Measurement property

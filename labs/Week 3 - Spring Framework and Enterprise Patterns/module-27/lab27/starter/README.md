@@ -1,6 +1,20 @@
 # Lab 27 starter — timed path (~45 minutes)
 
-**Theme:** @Transactional boundaries
+**Theme:** @Transactional TransferService — atomic debit/credit/log with rollback proof
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete transfer TX TODOs and prove ACC-FORCE-FAIL rollback |
+| **Skills practiced** | Service @Transactional, TransactionLog, ACID evidence notes |
+| **Expected outcome** | Happy MAIN→LOYALTY · forced-fail unchanged MAIN · acid-notes filled |
+| **Estimated time** | ~45 minutes |
+| **Files** | `examples/lab27-crm/` copied from this starter |
+
+**Boilerplate reduced:** Accounts + TransferService stubs + `// TODO` — review AI drafts for TX safety.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-27-GUIDE.md`](../LAB-27-GUIDE.md)
 
 ## Copy into your workspace
 
@@ -21,6 +35,8 @@ mkdir -p ~/java-bootcamp/examples/lab27-crm
 cp -R starter/. ~/java-bootcamp/examples/lab27-crm/
 cd ~/java-bootcamp/examples/lab27-crm
 ```
+
+Full GUIDE: [`../LAB-27-GUIDE.md`](../LAB-27-GUIDE.md)
 
 ## 45-minute checklist
 

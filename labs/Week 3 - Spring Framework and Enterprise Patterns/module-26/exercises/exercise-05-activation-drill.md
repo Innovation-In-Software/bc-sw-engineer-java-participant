@@ -1,14 +1,31 @@
 # Exercise 5 — Activation Command Drill
 
-**Module 26** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 26** · Checkpoint C · Exercises 1–6 Pass then Lab 26
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Write -D and env activation commands for Windows and macOS |
+| **Skills practiced** | Profile activation practice |
+| **Expected outcome** | notes/activation-commands.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-26-exercises/` → notes/activation-commands.md |
+| **Checkpoint** | C (after slides 129–132) |
+
+## What you will learn
+
+- -Dspring.profiles.active / spring-boot.run.profiles
+- SPRING_PROFILES_ACTIVE env
+- test profile for mvn test
+
+**Enterprise context:** Peers must reproduce your environment — vague “I set the profile somehow” is not evidence.
 
 ## Goal
 
-Create `notes/activation-commands.md` — produce Windows and macOS activation command examples for notes.
+Create `notes/activation-commands.md` — activation drill.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,24 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 26 — Activation Command Drill
 
-## Step 1 — -D form
+Maven run (dev):
+mvn -B spring-boot:run -Dspring-boot.run.profiles=dev
 
-In `notes/activation-commands.md`, write `mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=dev` or equivalent `-Dspring.profiles.active=dev` style used in your lab guide.
+Env (PowerShell example):
+$env:SPRING_PROFILES_ACTIVE='dev'
 
-## Step 2 — Env form
-
-Windows: `$env:SPRING_PROFILES_ACTIVE="test"` · macOS: `export SPRING_PROFILES_ACTIVE=test`.
-
-## Step 3 — Prod caution
-
-Do not run prod profile without required env vars — expect fail-fast.
-
-## Step 4 — Boundary
-
-Do not start the full Lab 26 app in this exercise unless instructor asks.
+Tests:
+mvn -B test -Dspring.profiles.active=test
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -57,48 +67,50 @@ From `examples/module-26-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 26 — Activation Command Drill
 
-## Step 1 — -D form
+## -D / Maven run (dev)
+_____
 
-In `notes/activation-commands.md`, write `mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=dev` or equivalent `-Dspring.profiles.active=dev` style used in your lab guide.
+## Env activation (your OS)
+_____
 
-## Step 2 — Env form
-
-Windows: `$env:SPRING_PROFILES_ACTIVE="test"` · macOS: `export SPRING_PROFILES_ACTIVE=test`.
-
-## Step 3 — Prod caution
-
-Do not run prod profile without required env vars — expect fail-fast.
-
-## Step 4 — Boundary
-
-Do not start the full Lab 26 app in this exercise unless instructor asks.
+## Tests (test profile)
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab26-001` / `lab-request-001`. Replace every `_____` before Pass. **Never write real passwords.**
 
 ## Expected result
 
-Activation commands documented for both OS styles in `notes/activation-commands.md`.
+Activation commands in `notes/activation-commands.md`.
 
-## If it fails
+## Debug / design challenge
+
+If you export SPRING_PROFILES_ACTIVE in one terminal and run Maven in another, what happens?
+
+## Predict the Output / Behavior
+
+Which profile should Surefire use by default for this lab?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/activation-commands.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 26 |
+| Only one activation style | Include -D and env |
+| No test command | Include mvn test profile |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/activation-commands.md`
-- [ ] `-D` example present
-- [ ] Env-var example present
-- [ ] Prod fail-fast caution written
-
+- [ ] -D command
+- [ ] Env command
+- [ ] Test command

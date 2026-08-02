@@ -1,14 +1,31 @@
-# Exercise 2 — Exception to Status Map
+# Exercise 4 — Exception to Status Map
 
-**Module 29** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 29** · Checkpoint C · Practice order **1 → 2 → 3 → 4 → 6 → 5** then Lab 29
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map CRM failure cases to HTTP statuses and error codes |
+| **Skills practiced** | Status mapping |
+| **Expected outcome** | notes/exception-status-map.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-29-exercises/` → notes/exception-status-map.md |
+| **Checkpoint** | C (after slides 205–210) |
+
+## What you will learn
+
+- Validation → 400
+- CUS-9999 → 404
+- Duplicate CUS-1001 → 409
+
+**Enterprise context:** Status mismatches break client retry logic and monitoring alerts.
 
 ## Goal
 
-Create `notes/exception-status-map.md` — document handler mappings for Lab 29 / Lab 16 ideas.
+Create `notes/exception-status-map.md` — status map.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,34 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 29 — Exception to Status Map
 
-## Reference
-
-| Case | HTTP |
-| --- | --- |
-| Bean Validation failure | 400 |
-| Customer not found | 404 |
-| Duplicate create | 409 |
-| Illegal status transition | 409 or 422 (pick & justify) |
-| Unhandled | 500 safe fallback |
-
-## Step 1 — Fill map
-
-Create `notes/exception-status-map.md` with the five cases.
-
-## Step 2 — Check the reference
-
-Compare statuses; justify illegal-transition choice in one sentence.
-
-## Step 3 — Handler type
-
-Note `@RestControllerAdvice` / `GlobalExceptionHandler`.
-
-## Step 4 — SOAP optional
-
-Optional note: SOAP faults should stay aligned in spirit with REST envelopes.
+| Case | Status | Code |
+| --- | --- | --- |
+| Invalid email/body | 400 | VALIDATION_FAILED |
+| CUS-9999 | 404 | CUSTOMER_NOT_FOUND |
+| Duplicate CUS-1001 | 409 | DUPLICATE_CUSTOMER |
+| Illegal status transition | 400/422 | ILLEGAL_TRANSITION |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -67,58 +65,47 @@ From `examples/module-29-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 29 — Exception to Status Map
 
-## Reference
-
-| Case | HTTP |
-| --- | --- |
-| Bean Validation failure | 400 |
-| Customer not found | 404 |
-| Duplicate create | 409 |
-| Illegal status transition | 409 or 422 (pick & justify) |
-| Unhandled | 500 safe fallback |
-
-## Step 1 — Fill map
-
-Create `notes/exception-status-map.md` with the five cases.
-
-## Step 2 — Check the reference
-
-Compare statuses; justify illegal-transition choice in one sentence.
-
-## Step 3 — Handler type
-
-Note `@RestControllerAdvice` / `GlobalExceptionHandler`.
-
-## Step 4 — SOAP optional
-
-Optional note: SOAP faults should stay aligned in spirit with REST envelopes.
+| Case | Status | Code |
+| --- | --- | --- |
+| Invalid body | _____ | _____ |
+| CUS-9999 | _____ | _____ |
+| Duplicate CUS-1001 | _____ | _____ |
+| Illegal transition | _____ | _____ |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, not-found `CUS-9999`, correlation `lab-request-001`. Replace every `_____` before Pass. **Never put secrets or stack traces in client envelopes.**
 
 ## Expected result
 
-Exception→status map and handler type documented in `notes/exception-status-map.md`.
+Status map in `notes/exception-status-map.md`.
 
-## If it fails
+## Debug / design challenge
+
+Is 500 acceptable for expected not-found?
+
+## Predict the Output / Behavior
+
+Should duplicate be 400 or 409 in this lab?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/exception-status-map.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 29 |
+| 404 for validation | Use 400 |
+| 200 on duplicate | Use 409 |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/exception-status-map.md`
-- [ ] Five cases mapped
-- [ ] Global handler named
-- [ ] Justification for transition status present
-
+- [ ] 400/404/409 rows
+- [ ] Codes named

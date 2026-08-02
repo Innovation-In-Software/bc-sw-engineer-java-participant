@@ -1,14 +1,31 @@
 # Exercise 1 — DTO Constraint Plan
 
-**Module 29** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 29** · Checkpoint A · Practice order **1 → 2 → 3 → 4 → 6 → 5** then Lab 29
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Plan Bean Validation annotations for CustomerRequest fields |
+| **Skills practiced** | DTO constraint design |
+| **Expected outcome** | notes/dto-constraints.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-29-exercises/` → notes/dto-constraints.md |
+| **Checkpoint** | A (after slides 187–197) |
+
+## What you will learn
+
+- @NotBlank / @Email / @Size on CRM fields
+- Constraints on the request DTO, not the entity only
+- Invalid email → 400 after @Valid
+
+**Enterprise context:** Partners reject APIs that accept blank names and dump SQL errors later.
 
 ## Goal
 
-Create `notes/dto-constraints.md` — plan constraints for `CustomerRequest` / status update fields.
+Create `notes/dto-constraints.md` — constraint plan.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,33 +41,16 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 29 — DTO Constraint Plan
 
-## Reference
-
-| Field | Constraint idea |
+| Field | Constraints |
 | --- | --- |
-| name | `@NotBlank` |
-| email | `@Email` + `@NotBlank` |
-| customerId | `@NotBlank` / pattern for CUS-#### |
-| status | `@NotNull` + allowed values |
+| fullName | @NotBlank, @Size |
+| email | @NotBlank, @Email |
+| status | @NotNull (or allowed values) |
 
-## Step 1 — Field list
-
-In `notes/dto-constraints.md`, list constraints for name, email, id, status.
-
-## Step 2 — Check the reference
-
-Align with the reference table; recall Lab 14 concepts.
-
-## Step 3 — Starter dependency
-
-Note Lab 29 adds `spring-boot-starter-validation`.
-
-## Step 4 — Boundary
-
-Do not implement the full DTO class in pre-lab.
+Trigger: @Valid on controller create method.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -66,57 +66,49 @@ From `examples/module-29-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 29 — DTO Constraint Plan
 
-## Reference
-
-| Field | Constraint idea |
+| Field | Constraints |
 | --- | --- |
-| name | `@NotBlank` |
-| email | `@Email` + `@NotBlank` |
-| customerId | `@NotBlank` / pattern for CUS-#### |
-| status | `@NotNull` + allowed values |
+| fullName | _____ |
+| email | _____ |
+| status | _____ |
 
-## Step 1 — Field list
-
-In `notes/dto-constraints.md`, list constraints for name, email, id, status.
-
-## Step 2 — Check the reference
-
-Align with the reference table; recall Lab 14 concepts.
-
-## Step 3 — Starter dependency
-
-Note Lab 29 adds `spring-boot-starter-validation`.
-
-## Step 4 — Boundary
-
-Do not implement the full DTO class in pre-lab.
+## How triggered
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, not-found `CUS-9999`, correlation `lab-request-001`. Replace every `_____` before Pass. **Never put secrets or stack traces in client envelopes.**
 
 ## Expected result
 
-Constraint plan ready for Lab 29 DTOs in `notes/dto-constraints.md`.
+DTO constraints in `notes/dto-constraints.md`.
 
-## If it fails
+## Debug / design challenge
+
+What happens if annotations exist but @Valid is missing?
+
+## Predict the Output / Behavior
+
+Should uniqueness of CUS-1001 be a Bean Validation annotation or a service rule?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/dto-constraints.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 29 |
+| Putting uniqueness only as @NotNull | Uniqueness stays service/409 |
+| No @Valid note | Say how triggered |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/dto-constraints.md`
-- [ ] Four fields constrained
-- [ ] Validation starter named
-- [ ] Full implementation deferred
-
+- [ ] Three fields
+- [ ] Trigger noted

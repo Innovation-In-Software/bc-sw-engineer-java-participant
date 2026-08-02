@@ -1,14 +1,31 @@
-# Exercise 4 — Boot Starters Inventory
+# Exercise 2 — Boot Starters Inventory
 
-**Module 23** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 23** · Checkpoint B · Exercises 1–6 Pass then Lab 23
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Inventory the starters Lab 23 needs and what each provides |
+| **Skills practiced** | Starter selection |
+| **Expected outcome** | notes/starters.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-23-exercises/` → notes/starters.md |
+| **Checkpoint** | B (after slides 47–52) |
+
+## What you will learn
+
+- web → MVC + embedded server + JSON
+- actuator → health (and more)
+- test → Spring Test / JUnit support
+
+**Enterprise context:** Wrong starters waste hours — peers must start the CRM with a known POM set.
 
 ## Goal
 
-Create `notes/starters.md` — map Boot starters to Northstar CRM capabilities for Lab 23.
+Create `notes/starters.md` — starter inventory.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,32 +41,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 23 — Boot Starters Inventory
 
-## Reference
-
-| Starter | Gives you |
+| Starter | Why for CRM lab |
 | --- | --- |
-| `spring-boot-starter-web` | Embedded server + Spring MVC |
-| `spring-boot-starter-actuator` | Health and ops endpoints |
-| `spring-boot-starter-test` | JUnit / MockMvc / context tests |
-
-## Step 1 — Fill meanings
-
-In `notes/starters.md`, write one sentence each for `web`, `actuator`, and `test`.
-
-## Step 2 — Check the reference
-
-Compare to the reference table; fix any 'starter = whole framework' overclaims.
-
-## Step 3 — Ownership
-
-List three things Boot does **not** own: customer lifecycle rules, validation messages, which endpoints are public.
-
-## Step 4 — Pre-lab boundary
-
-Note you will not run `spring-boot:run` for the full lab here.
+| spring-boot-starter-web | REST /api/customers + embedded Tomcat |
+| spring-boot-starter-actuator | /actuator/health smoke |
+| spring-boot-starter-test | ContextLoads + API IT |
+| spring-boot-starter-validation (optional) | @Valid bodies |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -65,32 +65,15 @@ From `examples/module-23-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 23 — Boot Starters Inventory
 
-## Reference
-
-| Starter | Gives you |
+| Starter | Why for CRM lab |
 | --- | --- |
-| `spring-boot-starter-web` | Embedded server + Spring MVC |
-| `spring-boot-starter-actuator` | Health and ops endpoints |
-| `spring-boot-starter-test` | JUnit / MockMvc / context tests |
-
-## Step 1 — Fill meanings
-
-In `notes/starters.md`, write one sentence each for `web`, `actuator`, and `test`.
-
-## Step 2 — Check the reference
-
-Compare to the reference table; fix any 'starter = whole framework' overclaims.
-
-## Step 3 — Ownership
-
-List three things Boot does **not** own: customer lifecycle rules, validation messages, which endpoints are public.
-
-## Step 4 — Pre-lab boundary
-
-Note you will not run `spring-boot:run` for the full lab here.
+| spring-boot-starter-web | _____ |
+| spring-boot-starter-actuator | _____ |
+| spring-boot-starter-test | _____ |
+| spring-boot-starter-validation (optional) | _____ |
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -99,22 +82,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Starter meanings and ownership boundary are clear in `notes/starters.md`.
+Starters inventory in `notes/starters.md`.
 
-## If it fails
+## Debug / design challenge
+
+Does starter-actuator replace the need for starter-web?
+
+## Predict the Output / Behavior
+
+What breaks in `mvn test` if starter-test is missing?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/starters.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 23 |
+| Skipping actuator | Health smoke requires it |
+| Listing kafka/security starters | Out of Module 23 scope |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/starters.md`
-- [ ] Three starters explained
-- [ ] Three ownership items listed
-- [ ] Pre-lab boundary stated
-
+- [ ] web/actuator/test noted
+- [ ] Optional validation noted
+- [ ] No out-of-scope starters as required

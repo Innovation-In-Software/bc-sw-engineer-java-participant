@@ -1,14 +1,31 @@
 # Exercise 2 — SOAP Operation Map
 
-**Module 24** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 24** · Checkpoint B · Exercises 1–6 Pass then Lab 24
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Map four SOAP operations to CustomerService methods |
+| **Skills practiced** | Operation-to-service mapping |
+| **Expected outcome** | notes/soap-ops.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-24-exercises/` → notes/soap-ops.md |
+| **Checkpoint** | B (after slides 75–78) |
+
+## What you will learn
+
+- get/create/update/delete (or lab’s four ops) → service methods
+- Endpoint stays thin
+- Same service as REST
+
+**Enterprise context:** Dual protocols with forked services create split-brain CRM data for Amina/Ravi.
 
 ## Goal
 
-Create `notes/soap-ops.md` — map four customer SOAP operations to shared `CustomerService` methods.
+Create `notes/soap-ops.md` — operation map.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,33 +41,17 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 24 — SOAP Operation Map
 
-## Reference
-
-| SOAP operation | Service responsibility |
+| SOAP operation | CustomerService method |
 | --- | --- |
-| CreateCustomer | create customer |
-| GetCustomer | get by id |
-| UpdateCustomerStatus | status transition |
-| ListCustomers | list / filter |
+| GetCustomer | getById / find |
+| CreateCustomer | create |
+| UpdateCustomer | update |
+| DeleteCustomer | delete |
 
-## Step 1 — Fill map
-
-Create `notes/soap-ops.md` with the four operations and matching service methods.
-
-## Step 2 — Check the reference
-
-Compare to the reference table.
-
-## Step 3 — Shared service rule
-
-Write: REST and SOAP must share `CustomerService` so rules never fork.
-
-## Step 4 — Fixtures
-
-List evidence IDs: `CUS-1001`, `CUS-1002`, `CUS-9999`, correlation `lab24-001`.
+Shared store: one CustomerService bean for REST + SOAP.
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -66,57 +67,50 @@ From `examples/module-24-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 24 — SOAP Operation Map
 
-## Reference
-
-| SOAP operation | Service responsibility |
+| SOAP operation | CustomerService method |
 | --- | --- |
-| CreateCustomer | create customer |
-| GetCustomer | get by id |
-| UpdateCustomerStatus | status transition |
-| ListCustomers | list / filter |
+| GetCustomer | _____ |
+| CreateCustomer | _____ |
+| UpdateCustomer | _____ |
+| DeleteCustomer | _____ |
 
-## Step 1 — Fill map
-
-Create `notes/soap-ops.md` with the four operations and matching service methods.
-
-## Step 2 — Check the reference
-
-Compare to the reference table.
-
-## Step 3 — Shared service rule
-
-Write: REST and SOAP must share `CustomerService` so rules never fork.
-
-## Step 4 — Fixtures
-
-List evidence IDs: `CUS-1001`, `CUS-1002`, `CUS-9999`, correlation `lab24-001`.
+## Shared service?
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
 
-Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab-request-001`. Replace every `_____` before Pass.
+Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`, correlation `lab24-001` (or `lab-request-001` on REST). Replace every `_____` before Pass.
 
 ## Expected result
 
-Operation map and shared-service rule are ready in `notes/soap-ops.md`.
+Operation map in `notes/soap-ops.md`.
 
-## If it fails
+## Debug / design challenge
+
+What goes wrong if SOAP uses a second InMemoryCustomerRepository?
+
+## Predict the Output / Behavior
+
+Should GetCustomer re-validate business rules already in the service?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/soap-ops.md` |
-| Leaving blanks or skipping steps | Complete every step before claiming Pass |
-| Starting the full lab mid-exercise | Finish pre-lab notes first, then open Lab 24 |
+| Mapping ops to controller only | Map to CustomerService |
+| Two services | One shared service |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/soap-ops.md`
-- [ ] Four operations mapped
-- [ ] Shared CustomerService stated
-- [ ] Fixtures listed
-
+- [ ] Four ops mapped
+- [ ] Shared service noted

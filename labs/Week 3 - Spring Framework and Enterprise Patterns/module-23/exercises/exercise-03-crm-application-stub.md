@@ -1,14 +1,31 @@
-# Exercise 1 — CrmApplication Stub (TODOs)
+# Exercise 3 — CrmApplication Stub (TODOs)
 
-**Module 23** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
+**Module 23** · Checkpoint B · Exercises 1–6 Pass then Lab 23
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Fill a @SpringBootApplication stub and a fake health smoke line |
+| **Skills practiced** | Boot entry point sketching |
+| **Expected outcome** | notes/health-sketch.md |
+| **Estimated time** | 10–12 minutes |
+| **File to create** | `examples/module-23-exercises/` → notes/health-sketch.md |
+| **Checkpoint** | B (after slides 47–52) |
+
+## What you will learn
+
+- @SpringBootApplication on CrmApplication
+- SpringApplication.run(...)
+- Health URL http://localhost:8080/actuator/health
+
+**Enterprise context:** Every peer must know the main class and the first URL to hit after start.
 
 ## Goal
 
-Create `notes/health-sketch.md` — fill blanks on a `@SpringBootApplication` stub and a fake health line (compile as plain notes if Spring jars absent).
+Create `notes/health-sketch.md` — CrmApplication + health stub.
 
 ## Deliverable
-
-**Submit only** the file(s) in the table below (not the full graded lab).
 
 **Submit only** the file(s) in the table below (not the full graded lab).
 
@@ -24,7 +41,20 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 23 — CrmApplication Stub (TODOs)
 
-## Step 2 — Fill TODOs
+```java
+@SpringBootApplication
+public class CrmApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(CrmApplication.class, args);
+  }
+}
+```
+
+Health smoke: GET http://localhost:8080/actuator/health → expect UP
+Package root: com.northstar.crm
+
+## Scope
+Pre-lab only.
 ```
 
 Then follow **Steps** to create your own file.
@@ -40,35 +70,20 @@ From `examples/module-23-exercises/`, create `notes/` if needed, then create `no
 ```markdown
 # Lab 23 — CrmApplication Stub (TODOs)
 
-## Step 2 — Fill TODOs
+## Main class annotation
+_____
 
-```java
-package com.northstar.crm;
+## run(...) line
+_____
 
-// TODO: Spring Boot annotation that enables auto-config + component scan
-@_____
-public class CrmApplication {
-    public static void main(String[] args) {
-        // TODO: method that boots the context — SpringApplication._____(CrmApplication.class, args)
-        SpringApplication._____(CrmApplication.class, args);
-    }
-}
-```
+## Health URL
+_____
 
-Also complete in `notes/health-sketch.md`:
-> Actuator health URL path: `/actuator/_____`
-> Expected status for a healthy process: `_____`
-
-## Step 3 — Answer key self-check
-
-`@SpringBootApplication`, `run`, path `health`, status `UP`. Do not invent JWT or SOAP stubs here.
-
-## Step 4 — Reflect
-
-One sentence: Boot entry point is tiny because auto-configuration supplies infrastructure.
+## Package root
+_____
 
 ## Scope
-Pre-lab only — do not finish the full graded lab in this exercise.
+Pre-lab only.
 ```
 
 ### Step 3 — Self-check
@@ -77,22 +92,31 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Stub blanks and health sketch filled correctly in `notes/health-sketch.md`.
+CrmApplication + health sketch in `notes/health-sketch.md`.
 
-## If it fails
+## Debug / design challenge
+
+If CrmApplication sits in com.demo instead of com.northstar.crm, what fails?
+
+## Predict the Output / Behavior
+
+Does @SpringBootApplication replace the need for component stereotypes on services?
+
+## Troubleshooting
+
+### If it fails
 
 | Problem | Fix |
 | --- | --- |
 | No file / wrong name | Must be `notes/health-sketch.md` |
-| Using `@Component` as entry point | Use `@SpringBootApplication` on the main class |
-| Health at `/health` only | Default Boot Actuator path is `/actuator/health` |
+| Wrong health path | Use /actuator/health |
+| Missing run line | SpringApplication.run(CrmApplication.class, args) |
 
 ## Pass criteria
 
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/health-sketch.md`
-- [ ] `@SpringBootApplication` and `run` filled
-- [ ] Health path and UP recorded
-- [ ] No JWT/SOAP scope creep
-
+- [ ] Annotation noted
+- [ ] run line noted
+- [ ] Health URL noted
