@@ -1,8 +1,6 @@
 # Lab 51: Capstone Security, CI/CD, and Deployment — Northstar CRM Release Gate
 
 **Module:** 51 — Capstone Security, CI/CD, and Deployment  
-**Lab folder:** `labs/Week 6 - Capstone Project/module-51/lab51/`  
-**Difficulty:** Advanced Capstone  
 **Duration:** ~45 minutes (timed path / session block with starter) · Full path: 6–8 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -64,7 +62,7 @@ Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -85,18 +83,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 51 lab makes the CRM **releasable**: harden JWT authorization, protect secrets and headers, enforce gated CI/CD, publish immutable containers, deploy with health probes, run smoke tests (including unauthorized paths), and prove rollback. Treat this as the Week 6 release gate, not an optional polish pass.
 
-**Purpose.** Feature-complete is not release-complete. Leadership freezes merge/promote until access control, delivery automation, image provenance, protected configuration, operational signals, and recovery are evidenced together.
-
-**What you build (this lab).** Threat-model the release; secure HTTP endpoints (JWT resource server, deny-by-default); harden CORS/CSRF/logging/actuators; run security gates (tests, dependency/secret/image scans); multi-stage non-root image with digest; delivery pipeline stages; deploy + verify probes/logs/metrics/Kafka lag; rehearse previous-digest rollback.
-
-**What success looks like.** Pipeline builds a digest-tagged image; cluster rollout healthy; authenticated smoke works for search/`CUS-1001`; anonymous API calls get 401; wrong role gets 403; rollback to previous digest verified; `docs/security-deploy-demo.md` (or reports pack) reproduces the release story.
-
-**Depends on Labs 48–50.** Need running CRM slice, ADRs for auth/deploy, and UI/API fixtures. Finish those labs if smoke targets are missing.
-
-**CRM connection.** Fixtures `CUS-1001` / `CUS-1002` / `lab-request-001` in smoke tests. Lab 52 defends with your digest, pipeline reports, and rollback evidence—keep artifact IDs immutable.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -106,13 +92,6 @@ After completing this lab, you will be able to:
 * Build gated CI/CD stages with verified artifacts
 * Publish immutable multi-stage non-root images
 * Deploy safely to Kubernetes (k3s) with probes
-* Execute authenticated and unauthorized smoke tests
-* Prove rollback to a previous image digest
-* Triage scanner findings with time-bounded exceptions
-* Trace smoke correlation IDs into logs without leaking tokens
-* Document release evidence for Lab 52 defense
-
----
 
 ## Business Scenario
 
@@ -137,7 +116,6 @@ Use these fixtures consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -148,35 +126,6 @@ flowchart TB
   CD --> Sec["JWT/RBAC harden + secrets"]
   CD --> Obs["health / metrics / rollback plan"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Threat-model release<br/>assets / abuse cases"] --> B["JWT secure endpoints<br/>deny by default"]
-    B --> C["Harden app<br/>CORS / logs / actuators"]
-    C --> D["Security gates<br/>tests + scanners"]
-    D --> E["Multi-stage image<br/>non-root + digest"]
-    E --> F["Pipeline stages<br/>approvals + reports"]
-    F --> G["Deploy + verify<br/>probes / smoke"]
-    G --> H["Rollback rehearsal<br/>previous digest"]
-    H --> I["Evidence pack<br/>for Lab 52"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 51 (NOW) | Lab 52 (LATER) |
-| ------ | ------------ | -------------- |
-| Focus | Make release gates real | Narrate and defend them |
-| Auth | JWT enforced + tested | Q&A on claims/roles |
-| Ops | Smoke + rollback proof | Demo run sheet + fallbacks |
-| Scanners | Run and triage | Cite exceptions honestly |
-
-**Lab focus:** JWT harden, CI/CD, Docker provenance, k3s deploy, smoke, rollback.
-
-Keep release identity (tag, digest, pipeline id) stable for Lab 52 citations—do not rebuild silently after smoke passes.
-
----
 
 ## Prerequisites
 
@@ -196,49 +145,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/customer-management-platform/
-├── backend/
-│   ├── src/main/java/.../security/SecurityConfig.java
-│   ├── src/test/java/.../security/AuthorizationTests.java
-│   └── Dockerfile
-├── frontend/
-│   └── Dockerfile                    # if UI containerized
-├── k8s/ or deploy/
-│   ├── deployment-crm-api.yaml
-│   ├── service.yaml
-│   ├── route-or-ingress.yaml
-│   └── kustomization.yaml            # optional
-├── .github/workflows/ci.yml           # or .github/workflows / Jenkinsfile
-├── docs/
-│   ├── security-deploy-demo.md
-│   ├── threat-model.md
-│   └── notes/screenshots/
-├── reports/                          # sanitized scan + smoke logs
-├── .gitignore
-└── README.md
-```
-
-Ignore plaintext secret files, kubeconfig copies, and `*.pem` keys. Prefer platform Secrets/SealedSecrets as instructed.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main release flow (commit → digest → deploy → smoke)
-2. Trust boundary: ingress TLS, JWT validation, DB credentials
-3. Success/failure contracts for smoke (401/403/200)
-4. Stable fixtures in smoke vs production customer data (never)
-5. Idempotency of redeploy same digest
-6. Why image digest beats floating `:latest`
-
----
-
 
 ## Worked example (read before you code)
 
@@ -454,7 +360,7 @@ kubectl rollout status deployment/crm-api --timeout=180s
 
 **Why:** Lab 52 will ask unauthorized and rollback questions under time pressure.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Assemble `docs/security-deploy-demo.md` + `reports/` with digest, pipeline ID, smoke outputs, rollback notes. Ensure `git status` has no secret files.
+**Do this:** Complete Failure Experiments. Assemble `docs/security-deploy-demo.md` + `reports/` with digest, pipeline ID, smoke outputs, rollback notes. Ensure `git status` has no secret files.
 
 Also freeze release identity for Lab 52:
 
@@ -540,17 +446,6 @@ kubectl rollout status deployment/crm-api --timeout=180s
 git status --short
 ```
 
-### Artifact map
-
-| Artifact | Role |
-| -------- | ---- |
-| `SecurityConfig` | HTTP authorize rules |
-| `AuthorizationTests` | 401/403/200 proof |
-| `Dockerfile` | Immutable runtime |
-| Pipeline YAML | Gated delivery |
-| `k8s/*.yaml` | Deploy + probes |
-| `security-deploy-demo.md` | Release runbook |
-
 ### Deployment probe sketch
 
 ```yaml
@@ -570,10 +465,6 @@ livenessProbe:
 
 Adapt paths to your Spring Boot actuator config; never probe a authenticated-only endpoint without a plan.
 
-### `security-deploy-demo.md` outline
-
-```markdown
-# Security + deploy demo — Lab 51
 ## Threat model summary
 ## Authz test evidence
 ## Scan reports (paths)
@@ -584,23 +475,6 @@ Adapt paths to your Spring Boot actuator config; never probe a authenticated-onl
 ## Residual risks / exceptions
 
 ```
-
----
-
-## Manual Verification
-
-1. Anonymous API call returns 401.
-2. AGENT cannot perform MANAGER-only action (403).
-3. AGENT smoke read works; optional `CUS-1001` visible when seeded.
-4. Actuator sensitive endpoints are not public.
-5. Image is non-root and tagged immutably; digest recorded.
-6. Pipeline stores scan reports.
-7. Rollout becomes ready within NFR window.
-8. Logs show smoke correlation without bearer token values.
-9. Rollback previous digest restores health.
-10. No secrets in repo or submitted screenshots.
-11. Threat model maps at least three abuse cases to tests/controls.
-12. Release identity block is complete for Lab 52 handoff.
 
 ---
 
@@ -630,14 +504,6 @@ Adapt paths to your Spring Boot actuator config; never probe a authenticated-onl
 | Rollback breaks DB | Forward-only migration | Document restore strategy |
 | CORS only in browser | Origin mismatch | Update allowed origins |
 | Smoke flaky | DNS/route propagation | Wait/retry with timeout |
-| OOMKilled | Tiny limits | Raise memory request/limit carefully |
-| CrashLoop on secrets | Missing env | Mount Secret keys with correct names |
-| Kafka lag ignored | No consumer metrics | Add lag check to smoke/ops notes |
-| :latest as only identity | No provenance | Pin and record digest |
-| Secrets/kubeconfig in Git | Leak | Remove; rotate; Actions secrets |
-| Lab 52 defense as this lab | Wrong focus | Finish release evidence first |
-
----
 
 ## Security and Production Review
 
@@ -663,14 +529,6 @@ git status --short
 Keep sanitized reports; remove plaintext secrets.
 
 **Keep Lab 51 pipeline, manifests, and digest evidence**—Lab 52 defense depends on them.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -701,54 +559,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add a canary stage with abort thresholds.
-2. Generate and attest an SBOM with the image digest.
-3. Add NetworkPolicy and verify denied paths.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask for anonymous 401 proof, AGENT vs MANAGER 403, and the exact digest in the cluster. Have student show rollback target. Ask why `:latest` is rejected.
-* **Assess:** Security config quality, scan triage honesty, digest provenance, smoke coverage, rollback rehearsal, actuator lockdown.
-* **Continuity:** Prefer `customer-management-platform` deploy path. Keep fixtures. Lab 52 must cite these artifacts unchanged.
-* **Common pitfalls:** `:latest`; root containers; `permitAll`; secrets in YAML; skipping unauthorized smoke; undocumented CSRF disable; exposing `env` actuator.
-* **Timing:** 6–8 hours. Registry/auth issues often burn 45–60 minutes—verify pull secrets early. Time-box scanner rabbit holes once criticals are triaged.
-* **Parity check:** Smoke should use the same customer fixtures as Labs 49–50 when the environment is seeded; otherwise document why list/read smoke is used instead.
-* **Quality bar:** Digest identity + deny smoke + rollback notes beat a “deployed somehow” screenshot.
-
----
-
-### Quick peer reproduction card (attach to PR)
-
-```markdown
-Peer name:
-Auth tests 401/403/200? Y/N
-Image digest recorded? Y/N
-Pipeline run id:
-Smoke 401 anonymous? Y/N
-Rollback digest verified? Y/N
-Secrets absent from Git/reports? Y/N
-```
-
-Paste sanitized results into `docs/security-deploy-demo.md`.
-
----
-
-### Suggested pipeline stage names
-
-```text
-build → verify → secret-scan → dep-scan → image-build → image-scan → publish → deploy (gated) → smoke
-```
-
-Rename to match GitHub/GitHub/Jenkins conventions, but preserve the gate order: **do not deploy unscanned or unverified artifacts**.
-
----
-
-*End of Lab 51 — Capstone Security, CI/CD, and Deployment: Northstar CRM Release Gate. Keep release evidence for Lab 52 and portfolio.*

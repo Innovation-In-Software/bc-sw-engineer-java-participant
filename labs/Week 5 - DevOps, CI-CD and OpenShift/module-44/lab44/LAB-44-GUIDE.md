@@ -1,8 +1,6 @@
 # Lab 44: Continuous Delivery and Environment Promotion — Northstar Release Path
 
 **Module:** 44 — Continuous Delivery and Environment Promotion  
-**Lab folder:** `labs/Week 5 - DevOps, CI-CD and OpenShift/module-44/lab44/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -82,18 +80,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 44 lab turns CI success into **continuous delivery** for the **Customer Management Platform**: one immutable artifact promoted through test → staging → production with objective gates, approvals, release evidence, and rehearsed rollback. You will produce `docs/release-plan.md`, `docs/release-checklist.md`, `docs/rollback-runbook.md`, and `artifact-manifest.json`, plus staging evidence.
 
-**Purpose.** Leadership freezes a release rule: the binary (or image) that passed staging gates is **exactly** what production receives—identified by digest/checksum, not by the mutable tag `latest`. Environment configuration stays outside the artifact. Rollback names a known-good digest and a verification check. A demo deploy without a manifest is not credit-worthy.
-
-**What you build (this lab).** Copy to `lab44-crm`; map the release flow; freeze immutable identity (semver + commit + JAR SHA-256 / image digest); separate environment config and secrets; define objective promotion gates; plan expand-before-contract DB compatibility; rehearse staging promotion with smoke checks (fixtures `CUS-1001` / `CUS-1002`, correlation `lab-request-001`); practice rollback; complete the release record and go/no-go evidence.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab44-crm/` a peer can follow the release plan, verify the manifest digests match staging and the intended prod candidate, walk the rollback runbook against a known-good digest, and see staging smoke results for Amina/Ravi without secrets in Git.
-
-**Depends on Lab 43.** Need `.github/workflows/ci.yml`, package-once checksums, and secured deployment variables. Environments or variables per instructor. If Lab 43 is incomplete, finish CI identity before claiming CD credit.
-
-**CRM connection.** Smoke and synthetic checks may create or read `CUS-1001` (Amina Khan), `CUS-1002` (Ravi Singh), and correlation `lab-request-001` in **non-production** only. Lab 45 shifts to IaC; keep promotion evidence portable and secret-free.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -103,11 +89,6 @@ After completing this lab, you will be able to:
 * Separate environment configuration from immutable application bits
 * Define objective, measurable release gates with evidence links
 * Write release and rollback checklists operators can execute under stress
-* Capture traceable deployment evidence (who, when, which digest, which env)
-* State database expand/contract limits that constrain rollback
-* Make an explicit go / no-go decision with residual risk owners
-
----
 
 ## Business Scenario
 
@@ -130,7 +111,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -141,32 +121,6 @@ flowchart TB
   Stg -->|gates| Prod["production"]
   Man --> Rollback["rollback notes"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Map release flow<br/>approvers + evidence"] --> B["Freeze immutable ID<br/>semver + digest"]
-    B --> C["Separate env config<br/>secrets out of artifact"]
-    C --> D["Objective gates<br/>tests/scan/smoke/approve"]
-    D --> E["DB expand/contract<br/>rollback limits"]
-    E --> F["Rehearse staging<br/>promote exact digest"]
-    F --> G["Practice rollback<br/>to known-good"]
-    G --> H["Release record<br/>GO / NO-GO"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 44 (NOW) | Lab 45+ / production |
-| ------ | ------------ | -------------------- |
-| Infra | Assume Lab 42/43 deploy path | Formal Terraform/Ansible (Lab 45) |
-| Artifact | Manifest + digest promotion | Same discipline + signed provenance |
-| Rollback | Rehearsed digests + checklist | Automated canary / progressive delivery |
-| Docs | Release plan + rollback runbook | Org change-management ticket integration |
-
-**Lab focus:** Continuous delivery—immutable promotion, staging/prod gates, rollback readiness. Treat digest identity as a first-class deliverable equal to the application code.
-
----
 
 ## Prerequisites
 
@@ -186,57 +140,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-Primary training layout:
-
-```text
-~/java-bootcamp/examples/lab44-crm/
-├── .github/workflows/ci.yml       (from Lab 43; extend only if needed)
-├── artifact-manifest.json
-├── scripts/
-│   ├── promote.sh                (digest-based promote; no rebuild)
-│   └── smoke-crm.sh              (CUS-1001 / CUS-1002 / lab-request-001)
-├── docs/
-│   ├── release-plan.md
-│   ├── release-checklist.md
-│   └── rollback-runbook.md
-├── notes/screenshots/            (staging evidence, rollout, smoke)
-├── src/...
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Platform secondary paths:
-
-```text
-~/java-bootcamp/examples/customer-management-platform/
-├── docs/release-plan.md
-├── docs/release-checklist.md
-├── docs/rollback-runbook.md
-├── artifact-manifest.json
-└── reports/                      (sanitized staging evidence)
-```
-
-Ignore `target/`, plaintext secrets, kubeconfig, and production data exports.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main promotion flow (CI artifact → test → staging → prod)
-2. Trust boundary: what staging smoke proves vs what it assumes about traffic mix
-3. Success/failure contracts of a gate (measurable pass/fail)
-4. Stable fixtures (`CUS-1001`) vs production sampling
-5. Idempotency of promoting the same digest twice
-6. Why immutable identity beats `latest`
-
----
-
 
 ## Worked example (read before you code)
 
@@ -435,7 +338,7 @@ export ROLLBACK_DIGEST="sha256:<prior-known-good>"
 
 **Why:** Promotion theater without adverse checks fails production on day one.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Ensure `git status` is clean of secrets. Ask a peer to follow the rollback runbook dry-run. Add this close-out block to `docs/release-checklist.md`:
+**Do this:** Complete Failure Experiments. Ensure `git status` is clean of secrets. Ask a peer to follow the rollback runbook dry-run. Add this close-out block to `docs/release-checklist.md`:
 
 ```markdown
 ## Evidence pack pass criteria
@@ -503,24 +406,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ## Reference Commands, Configuration, and Code
 
-### Artifact manifest
-
-```json
-{
-  "application": "crm-api",
-  "version": "1.4.0",
-  "gitCommit": "${GITHUB_SHA}",
-  "jarSha256": "<calculated-value>",
-  "image": "registry.example.com/training/crm-api:1.4.0",
-  "imageDigest": "sha256:<registry-digest>",
-  "builtBy": "github-actions",
-  "knownGoodPrevious": {
-    "version": "1.3.2",
-    "imageDigest": "sha256:<prior-digest>"
-  }
-}
-```
-
 ### Promotion guard
 
 ```bash
@@ -538,10 +423,6 @@ curl -fsS -H "X-Correlation-Id: lab-request-001" \
   "${CRM_BASE_URL}/api/customers/CUS-1002" | head
 ```
 
-### Rollback runbook outline
-
-```markdown
-# Rollback — crm-api
 ## Triggers
 
 - Readiness failing > 3m
@@ -647,23 +528,6 @@ git status --short
 
 ---
 
-## Manual Verification
-
-1. Manifest digests/checksums match CI and staging deployment.
-2. No rebuild occurs on promotion scripts.
-3. Environment secrets are not inside the JAR or committed YAML values.
-4. Checklist criteria are measurable (not “QA feels good”).
-5. Staging smoke uses `CUS-1001`, `CUS-1002`, and `lab-request-001`.
-6. Rollback runbook names prior digest and verification commands.
-7. DB compatibility limits are explicit.
-8. GO/NO-GO includes approver, timestamp, evidence links.
-9. Peer can rehearse rollback dry-run from docs alone.
-10. Git has no secrets, kubeconfig, or Terraform state.
-11. Watch-window owner and signals (errors, latency, lag) are named.
-12. `knownGoodPrevious` in the manifest matches the rollback rehearsal target.
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
@@ -688,13 +552,6 @@ git status --short
 | Checklist unsigned | Process gap | Require approver field |
 | Smoke passes, agents still fail | Synthetic path ≠ real traffic | Expand smoke; watch error budget |
 | Manifest missing prior digest | Forgot known-good capture | Record prior digest before every promote |
-| Promote script rebuilds | Accidental `mvn package` | Delete rebuild; consume Lab 43 artifact only |
-| GO without watch window | Checklist incomplete | Require 60m monitor owner |
-| Terraform/Ansible in this lab | Wrong module | Lab 45 |
-| Kafka DLT replay procedures | Wrong module | Lab 46 |
-| Secrets inside artifact-manifest.json | Leak / bad design | Env vars/secrets only |
-
----
 
 ## Security and Production Review
 
@@ -719,14 +576,6 @@ git status --short
 Leave staging on instructor-approved version. Delete temporary secret files. Keep sanitized staging evidence.
 
 **Keep `lab44-crm`**—Lab 45 may automate environment setup; do not discard promotion docs.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -756,28 +605,4 @@ Write **1–3 sentence** answers (not essays):
 
 ---
 
-
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add canary decision criteria (error budget / lag).
-2. Create an automated artifact-identity check script.
-3. Model expand-and-contract migration steps for one CRM schema change.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask for the staging digest and the prior rollback digest; have the student explain how they would detect a silent rebuild.
-* **Assess:** Manifest quality, objective gates, staging smoke with fixtures, honest rollback limits, clean secrets hygiene.
-* **Continuity:** Prefer `examples/lab44-crm`. Keep fixture IDs. Lab 45 should not require rewriting promotion docs—only infra automation around them.
-* **Common pitfalls:** `:latest`; rebuild on promote; secrets in manifests; checklist without timestamps; rollback without verification; ignoring migration limits.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Cluster permissions and registry digest lookup often burn 40 minutes—pre-stage credentials.
-
----
-
-*End of Lab 44 — Continuous Delivery and Environment Promotion: Northstar Release Path. Keep `lab44-crm` for Lab 45 and portfolio release evidence.*
 

@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 6 — Streams and Functional Programming  
-**Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-06/lab6/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 90–240 minutes (Day 5 core checkpoint ~75 min; finish remaining menu paths as extended work)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -61,7 +59,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable | Where / what |
 | - | ----------- | ------------ |
@@ -90,7 +88,7 @@ Optional: labeled bonuses; git repo. Do not submit secrets or a verbatim instruc
 | 8 | **Dashboard** (expected numbers below) |
 | 9 | Exit |
 
-Teaching demos and stretch features (menu 10+) come **after** CORE works. See [Bonus Challenges](#bonus-challenges).
+Teaching demos and stretch features (menu 10+) come **after** CORE works. Optional stretch work only after CORE pass criteria.
 
 ---
 
@@ -125,37 +123,15 @@ If any of Exercises 1–7 is still **Fail**, finish that exercise first — then
 
 This Module 6 lab is the **graded consolidation** after Module 6 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md) (Exercise 8 parallel bonus recommended). You already practiced lambdas, filter/map/sort, min/max, grouping, and composed pipelines on a small flat dataset. Here you assemble those skills into an **Employee Analytics System** with 25 employees, a service layer, dashboard, and menu.
 
-**Purpose.** Lab 5 taught *where* to store data (List / Set / Map). Module 6 exercises taught each stream operation in isolation on five employees. Lab 6 locks the **enterprise habit**: build readable filter → map → collect pipelines on a complete analytics console.
-
-**What you build.** An analytics console under package `com.academy.analytics`: load **25** sample employees, run lambda/functional-interface demos, filter and map pipelines, sort / distinct / limit / skip, reduce and summarizing statistics, `groupingBy` / `partitioningBy`, safe `Optional` lookups, a dashboard, and a menu-driven app. Core types: `Employee`, `EmployeeData`, `EmployeeService`, `ReportService`, `Main`.
-
-**What success looks like.** Under `java-bootcamp/examples/Lab6-EmployeeAnalytics/` you compile with `javac -d out ...`, run `java -cp out com.academy.analytics.Main`, exercise **CORE menu options 1–9** (especially Dashboard option **8**), fill stream-operation notes, and submit evidence graders can recompile. Exercise sources remain under `examples/module-06-exercises/`.
-
-**Depends on Lab 0 + Lab 5 skills + Exercises 1–7.** If your IDE, `java`, or `javac` fail, stop and fix [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). Comfort with `List`, packages, and a service layer (Lab 5) will make this lab much faster. IDE paths: [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
-
-**CRM connection (future only).** From Lab 8 onward the **Customer Management Platform** will filter, map, and group customer collections the same way—active customers, department→agents maps, top-N lists. This lab does **not** build CRM APIs, Spring beans, or a database. Treat employee analytics as a **skill bridge**: today’s stream pipelines reappear when you report on CRM customers at scale.
-
----
-
 ## Learning Objectives
 
-After completing this lab, you will be able to **consolidate and extend** what you practiced in Exercises 1–7:
+After completing this lab, you will be able to:
 
 * Write **lambda expressions** that replace anonymous classes for simple behaviors (builds on Exercise 1)
 * Use core **functional interfaces**: `Predicate`, `Function`, `Consumer`, `Supplier` (builds on Exercise 1)
 * Create streams from `List`, arrays, and `Set`
 * Build **stream pipelines** with intermediate and terminal operations
 * Filter collections with single and chained `filter()` predicates (builds on Exercises 2 & 7)
-* Transform data with `map()` and **method references** (`Employee::getName`) (builds on Exercises 3 & 5)
-* Sort with `Comparator` + `sorted()`, including ascending and descending salary (builds on Exercises 4 & 7)
-* Apply `distinct()`, `limit()`, and `skip()` for unique values and top-N / next-N views
-* Aggregate with `count()`, `reduce()`, `sum()`, `average()`, and `Collectors.summarizingDouble()`
-* Collect results into `List`, `Set`, and `Map` with `groupingBy()` and `partitioningBy()` (builds on Exercise 6)
-* Handle missing values safely with **`Optional`** (`ifPresent` / `ifPresentOrElse` / `orElse`) (builds on Exercise 4)
-* Design a menu-driven analytics console following package conventions
-* Compile and run with `javac -d out` / `java -cp out` on your laptop (VS Code or IntelliJ)
-
----
 
 ## Business Scenario
 
@@ -170,7 +146,6 @@ You build and run the app on your **laptop** with plain JDK—no database, no Sp
 ---
 
 ## Architecture Context
-
 ### Stream pipeline shape (NOW)
 
 ```mermaid
@@ -200,33 +175,6 @@ flowchart TB
   Nothing runs until a terminal operation is invoked.
   A stream is typically usable once—rebuild .stream() for each query.
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Create package<br/>folders + stubs"] --> B["Employee + EmployeeData<br/>sample roster"]
-    B --> C["Lambdas + functional<br/>interfaces"]
-    C --> D["filter / map / sorted<br/>distinct / limit / skip"]
-    D --> E["reduce / collectors<br/>group / partition / Optional"]
-    E --> F["ReportService + Dashboard<br/>+ Main menu"]
-    F --> G["javac -d out<br/>java -cp out"]
-    G --> H["Stream notes table<br/>+ reflection submit"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 6 (NOW) | CRM later (Lab 8+) |
-| ------ | ----------- | ------------------ |
-| Domain | Employees, departments, salaries | Customers, agents, tickets |
-| UI | Console menu | REST / React / agents |
-| Data | In-memory `List<Employee>` | DB + Spring repositories |
-| Query style | Streams pipelines | Streams / JPQL / Specs—same *thinking* |
-| Aggregations | `groupingBy`, summarizing | Report services / analytics APIs |
-| Framework | Plain JDK Streams | Spring Boot + persistence |
-| Skills reused | Filter/map/collect, Optional, method refs | Same—applied to CRM scale |
-
----
 
 ## Prerequisites
 
@@ -266,48 +214,6 @@ git version 2....
 Confirm `java-bootcamp` exists and contains (or will contain) `examples/`. Fix environment failures before writing application code.
 
 ---
-
-## Suggested Project Files
-
-Create everything under the bootcamp workspace on your laptop:
-
-```text
-java-bootcamp/examples/Lab6-EmployeeAnalytics/
-├── src/
-│   └── com/
-│       └── academy/
-│           └── analytics/
-│               ├── Main.java
-│               ├── Employee.java
-│               ├── EmployeeData.java
-│               ├── EmployeeService.java
-│               └── ReportService.java
-├── out/                         # created by javac -d out
-│   └── com/academy/analytics/*.class
-└── (answers/tables → ~/java-bootcamp/notes/; screenshots → notes/screenshots/lab-6/)
-```
-
-Ignore build artifacts if committed later: `out/`, `*.class`, `*.log`.
-
-**IDE tip:** In VS Code use **File → Open Folder…** on the project (or `java-bootcamp`). In IntelliJ use **File → Open…**, set Project SDK to **21**, then run `Main` or use the terminal — details in [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
-
-**Instructor reference:** Complete solution (including bonuses) in [`solution/`](solution/) → `Lab6-EmployeeAnalytics/` (`com.academy.analytics`).
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Why do stream pipelines postpone work until a **terminal** operation runs?
-2. When is a lambda clearer than a named method—and when should you extract a method instead?
-3. What is the difference between `filter()` (same type, fewer elements) and `map()` (possibly different type, same count)?
-4. Why prefer `Comparator.comparingDouble(Employee::getSalary).reversed()` over a hand-written `compare` for salary descending?
-5. What does `Collectors.groupingBy(Employee::getDepartment)` give you that a single `List` does not?
-6. Why return `Optional<Employee>` from “highest paid” instead of a nullable `Employee`?
-
----
-
 
 ## Worked example (read before you code)
 
@@ -1310,7 +1216,7 @@ Capture screenshots under `notes/screenshots/lab-6/` (no secrets).
 
 1. Copy the Stream Operations Table into `notes/stream-operations-table.md` and mark each operation you implemented.
 2. List functional interfaces and example lambdas used.
-3. Draft answers to Reflection Questions (finalize after Manual Verification).
+3. Draft answers to Reflection Questions (finalize after Implementation Checkpoints).
 
 **Expected result:** Table mostly checked; reflection bullets started; dashboard screenshot path noted.
 
@@ -1391,52 +1297,6 @@ find src -name '*.java' | sort
 wc -l src/com/academy/analytics/*.java
 ```
 
-### Class / method map
-
-| Class | Responsibility |
-| ----- | -------------- |
-| `Main` | Scanner lifecycle, menu loop, switch dispatch |
-| `Employee` | Domain model (id, name, dept, salary, …) |
-| `EmployeeData` | Static sample roster factory |
-| `EmployeeService` | All stream pipelines and analytics helpers |
-| `ReportService` | Dashboard and composed business reports |
-
-### Stream operations map
-
-| Operation | Kind | Typical use here |
-| --------- | ---- | ---------------- |
-| `filter` | intermediate | salary / dept / active / rating gates |
-| `map` | intermediate | project to name / salary / department |
-| `sorted` | intermediate | salary, name, experience order |
-| `distinct` | intermediate | unique departments |
-| `limit` / `skip` | intermediate | top 5 / next 5 |
-| `forEach` | terminal | print results |
-| `count` | terminal | headcount queries |
-| `reduce` | terminal | max/min salary fold |
-| `collect` | terminal | List / Set / Map / summarizing |
-| `max` / `findFirst` | terminal | Optional lookups |
-
-Maven is **not** required for this lab.
-
----
-
-## Manual Verification
-
-1. Menu 1–9 appears; invalid `abc` → invalid message → menu returns.
-2. Choice `1` lists all employees; total matches seed size (25 in solution data).
-3. Choice `2` prints each department with employee names indented.
-4. Choice `3` shows reductions, summarizing stats, and true/false salary partition.
-5. Choice `4` lists performers with rating ≥ 4.
-6. Choice `5` prints highest paid via Optional path (John Smith with solution seed).
-7. Choice `6` prints per-department count / avg / max / min.
-8. Choice `7` lists only active employees.
-9. Choice `8` dashboard matches sample shape (employees, salaries, top 5, active/inactive).
-10. Choice `9` prints `Thank You`; recompile after edits to avoid stale `.class` files.
-
-Record pass/fail briefly in `../../notes/lab6-answers.md` (from project; or `~/java-bootcamp/notes/lab6-answers.md`).
-
----
-
 ## Failure Experiments
 
 Perform deliberately, then restore working code (copy files or use git).
@@ -1463,15 +1323,6 @@ Perform deliberately, then restore working code (copy files or use git).
 | Stream already closed / IllegalStateException | Reused Stream instance | New `.stream()` each query |
 | Method reference will not compile | Wrong getter name | Use `isActive` for boolean; match method signatures |
 | `groupingBy` keys surprise you | Inconsistent dept strings | Normalize `"IT"` vs `"it"` with `equalsIgnoreCase` in filters; keep seed consistent |
-| Average / dashboard numbers differ | Custom seed or incomplete data | Use the 25-employee [`solution/`](solution/) seed for grading parity |
-| Dashboard NPE | Called `.get()` on empty Optional | Use `ifPresent` / `orElse` |
-| Changes not visible | Stale `.class` | Re-run `javac -d out ...` |
-| Menu skips / weird input | Mixed Scanner APIs | Prefer all `nextLine()` parsing |
-| `*.java` glob fails in PowerShell | PowerShell does not expand like bash | Name each `.java` file (see [LAB-6-WINDOWS.md](LAB-6-WINDOWS.md)) |
-| Wrong Sources Root | Marked `module-06-exercises` | Lab uses `Lab6-EmployeeAnalytics/src` only |
-| Parallel results disagree (stretch) | Shared mutable state in parallel | Prefer stateless lambdas; Ex 8 notes |
-
----
 
 ## Security and Production Review
 
@@ -1494,14 +1345,6 @@ rm -rf out
 ```
 
 Keep `.java` sources, stream notes, and evidence screenshots. Do not delete GitHub credentialss or Lab 0 tooling. Leave [`solution/`](solution/) intact—do not submit it as your own work.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your own work.
 
 ---
 
@@ -1536,41 +1379,6 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Attempt **only after CORE menu options 1–9** (including Dashboard) are solid. Extend the menu (options 10+) if you wish—see [`solution/`](solution/) for a full set including option **21**.
-
-### Challenge 1 — Second Highest Salary
-
-Find the second highest salary using streams (`distinct`, descending sort, `skip(1)`, `findFirst`).
-
-### Challenge 2 — Longest Name
-
-Find the employee with the longest name (`max` by `name.length()`).
-
-### Challenge 3 — Highest Average Salary Department
-
-Find the department with the highest average salary (`groupingBy` + `averagingDouble`, then max entry).
-
-### Challenge 4 — Salary Histogram
-
-Generate buckets:
-
-```text
-40K-60K
-60K-80K
-80K-100K
-100K+
-```
-
-Use `Collectors.groupingBy(bucketFn, Collectors.counting())`.
-
-### Challenge 5 — Custom Collector
-
-Create a custom collector (e.g. `Collector.of(...)`) that builds a summary string of `Name(Department)` pairs—see `EmployeeService.collectEmployeeSummary()` in the solution.
-
----
-
 ## Stream Operations Table
 
 Copy into `notes/stream-operations-table.md` and check what you implemented:
@@ -1601,24 +1409,3 @@ Optional: add a second table comparing one report written with a classic `for` l
 
 ---
 
-## Instructor Notes
-
-**Classroom order (do not reverse):**
-
-1. Module 6 PPT (Day 4 intro + Day 5 morning)
-2. Students complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) in `module-06-exercises/` (Exercise 1 on Day 4; 2–7 on Day 5 before lab)
-3. Exercise 8 parallel bonus recommended; not required for core gate
-4. OS how-to → this guide (Day 5, 11:45–1:00 core checkpoint)
-5. Kahoot Module 6 + debrief; Module 7 follows
-
-**Before students open this guide:** confirm exercise checkpoint Pass (lambda, filter, map, min/max/Optional, grouping, composed HR pipeline). Lab 6 pacing assumes those skills already exist on the five-employee dataset.
-
-* **Reference solution:** Full implementation including demo menu options 10–20 and bonus option 21 is in [`solution/`](solution/) under `Lab6-EmployeeAnalytics/` (`com.academy.analytics`). Guide learners to finish **CORE menu 1–9 + dashboard** before revealing bonus collectors. Dashboard expected: 25 employees, avg **100680**, max 165000, min 48000, 5 departments, John Smith top performer, IT highest-paid dept, 23 active / 2 inactive.
-* **API fidelity:** Align teaching with solution signatures—`EmployeeService(List<Employee>)` defensive copy; `ReportService(EmployeeService)`; `EmployeeData.createSampleEmployees()` with 25 rows; messages and dashboard field names as above; `isActive()` boolean getter for method references.
-* **Common pitfalls:** Skipping exercises; reusing a Stream instance; calling `.get()` on empty Optional; confusing `filter` vs `map`; sorting without `.reversed()` for “top” lists; putting all pipelines in `Main`; forgetting `-d out`/`-cp out`; mixing `module-06-exercises/` flat files with packaged lab commands; inconsistent department string casing in seeds.
-* **Classpath / IDE:** Demo wrong compile without `-d out` so Step 19 sticks. Dual IDE on laptop: IntelliJ Community primary, VS Code optional — [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md). Keep streams pedagogy; CRM endpoints start Lab 8+. Score screenshots + operations table + intermediate-vs-terminal explanation. Core path fits ~75 min Day 5; bonuses are stretch.
-* **Teaching emphasis:** Declarative *what* over imperative *how*. Failure experiments (reuse stream; empty Optional) make laziness and null-safety stick. Mention that production systems often stream from DB result sets or reactive APIs—Lab 6 stays in-memory on purpose.
-
----
-
-*End of Lab 6 — Streams and Lambda Expressions: Employee Analytics System. Keep `Lab6-EmployeeAnalytics` for portfolio evidence.*

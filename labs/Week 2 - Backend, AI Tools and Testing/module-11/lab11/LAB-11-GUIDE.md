@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 11 — GitHub Copilot for Testing and Refactoring  
-**Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-11/lab11/`  
-**Difficulty:** Beginner–Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -67,7 +65,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -85,18 +83,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 11 lab continues the **Northstar Customer Service Platform** from `lab10-crm/` into `lab11-crm/`. You still write **plain Java with Maven — no Spring Framework** anywhere in Week 2. What’s new is using GitHub Copilot for two jobs: **generating a first exploratory test class** for Lab 10’s domain/service code, and **generating refactoring suggestions** that clean that code up.
 
-**Purpose.** AI can emit tests and refactors quickly—and also emit **false-confidence assertions**, invented APIs, and refactors that silently skip collaborators. Lab 11 extends Lab 10’s review discipline to **test quality** and **safe change**.
-
-**What you build (exercise).** Copy Lab 10 → Lab 11; add test-scope JUnit 5 + Mockito; generate `CustomerTest` and `CustomerServiceTest` with Copilot; reject a weak assertion; extract `CustomerNotifier` and verify it with a Mockito mock; extract duplicated validation; review coverage gaps; write acceptance guidelines; run `mvn test`.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab11-crm/` you get ~7 green tests, a real collaborator interface (not a JPA guess), notes `lab11-001`–`lab11-004`, and evidence of at least one rejected trivial test.
-
-**Depends on Lab 10.** If `CustomerService` / review notes from Lab 10 are missing, stop and finish [Lab 10](../../module-10/lab10/LAB-10-GUIDE.md). Formal JUnit/Mockito depth arrives in **Labs 17–18**—this lab is a guided **preview**.
-
-**CRM connection.** Sample IDs stay `CUS-1001` / `CUS-1002`. Tests and notifier hooks prepare later DTO/API labs without introducing Spring Boot yet.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -106,10 +92,6 @@ After completing this lab, you will be able to:
 * Extract a collaborator interface and write one Mockito-based test against it
 * Use Copilot to detect and fix a code smell (duplicated validation / long method) in `CustomerService`
 * Review AI-generated tests and refactors against a coverage-and-correctness checklist before accepting them
-* Apply written acceptance guidelines consistent with Lab 10’s review discipline
-* Run a deterministic `mvn test` suite on the CRM project
-
----
 
 ## Business Scenario
 
@@ -133,7 +115,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -144,32 +125,6 @@ flowchart TB
   MockTest["CustomerNotifierMockTest<br/>Mockito preview"] -.-> Notif
   Copilot["Copilot design-time"] -.-> Tests
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab10 -> lab11<br/>+ test-scope deps"] --> B["CustomerTest<br/>via Copilot"]
-    B --> C["CustomerServiceTest<br/>via Copilot"]
-    C --> D["Reject false-confidence<br/>lab11-001"]
-    D --> E["Extract CustomerNotifier<br/>+ Mockito verify"]
-    E --> F["Extract validateCustomerId<br/>lab11-002"]
-    F --> G["Coverage gaps<br/>lab11-003"]
-    G --> H["Acceptance guidelines<br/>lab11-004 + mvn test"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 11 (NOW) | Later (Labs 17–18 / 22+) |
-| ------ | ------------ | ------------------------ |
-| Tests | Exploratory JUnit 5 + one mock | Full methodology, deeper Mockito |
-| Refactors | Extract method + interface | Ongoing with broader suites |
-| Framework | No Spring | Spring Boot / DI later |
-| Coverage | Gaps documented intentionally | Expanded as features grow |
-
-**Lab focus:** Copilot-assisted JUnit preview, first Mockito mock, smell detection, coverage-gap review, acceptance guidelines—not Spring or HTTP.
-
----
 
 ## Prerequisites
 
@@ -189,54 +144,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab11-crm/
-├── src/
-│   ├── main/
-│   │   └── java/com/northstar/crm/
-│   │       ├── Main.java
-│   │       ├── entity/
-│   │       │   ├── Customer.java
-│   │       │   └── CustomerStatus.java
-│   │       └── service/
-│   │           ├── CustomerService.java        (refactored)
-│   │           └── CustomerNotifier.java       (new)
-│   └── test/
-│       └── java/com/northstar/crm/
-│           ├── entity/
-│           │   └── CustomerTest.java
-│           └── service/
-│               ├── CustomerServiceTest.java
-│               └── CustomerNotifierMockTest.java
-├── copilot-notes/
-│   ├── ai-review-notes.md              (from Lab 10 — keep)
-│   └── ai-test-refactor-notes.md       (this lab)
-├── notes/screenshots/
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, and env files with secrets.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Difference between an exploratory Copilot-generated test and a deliberately designed suite?
-2. What makes an assertion “false confidence”?
-3. Why extract `CustomerNotifier` before mocking, instead of mocking concrete `CustomerService`?
-4. What is a code smell, and which Lab 10 smell is the clearest refactor candidate?
-5. Why is high coverage % not the same as meaningful coverage?
-6. What regression risk exists when refactoring without a full suite—and how do today’s tests help?
-
----
-
 
 ## Worked example (read before you code)
 
@@ -739,7 +646,7 @@ mvn -q clean test
 
 **Why:** Graders need to see you can read a Mockito verification failure and refuse invented APIs.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture Surefire excerpts under `notes/screenshots/lab-11/`. Confirm `Main` still runs if present:
+**Do this:** Complete Failure Experiments. Capture Surefire excerpts under `notes/screenshots/lab-11/`. Confirm `Main` still runs if present:
 
 ```bash
 mvn -q -DskipTests compile
@@ -829,34 +736,6 @@ git status
 </dependency>
 ```
 
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `CustomerTest` | Entity equals/toString |
-| `CustomerServiceTest` | Core service rules |
-| `CustomerNotifier` | Status-change collaborator |
-| `CustomerNotifierMockTest` | Verify notifier interaction |
-| `CustomerService` | Refactored production code |
-| `ai-test-refactor-notes.md` | AI decisions audit trail |
-
----
-
-## Manual Verification
-
-1. `mvn -q clean test` passes (≈7 tests, document exact count).
-2. `CustomerTest` proves equals/toString with real assertions.
-3. `CustomerServiceTest` covers add / duplicate / update / unknown-ID.
-4. Mock test verifies notifier args for `CUS-1002`.
-5. `CustomerNotifier` is a useful extraction—not a Spring/JPA paste.
-6. Notes `lab11-001`–`lab11-004` present.
-7. At least one false-confidence assertion rejected.
-8. No secrets / real PII in tests or prompts.
-9. `git status` clean of `target/` junk.
-10. You can explain every accepted AI test/refactor without reopening Chat.
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
@@ -880,15 +759,6 @@ git status
 | CustomerServiceTest breaks after ctor change | Lost no-arg ctor | Restore no-op notifier ctor |
 | Suggestions add Spring Test | Pattern match | Reject; plain Java + JUnit only |
 | `assertTrue(true)` still in suite | Accepted trivial assert | Replace with status/id behavior asserts (Ex 3) |
-| Working in `module-11-exercises` for the lab | Wrong project | Lab lives in `examples/lab11-crm` |
-| Surefire count includes PlaceholderTest | Leftover Lab 9 stub | Remove `assertTrue(true)` placeholder tests |
-| Empty AI notes | Skipped logging | Fill `copilot-notes/ai-test-refactor-notes.md` |
-
-### Build passes locally but fails later
-
-Always prefer `mvn -q clean test` before submitting. Check Surefire reports under `target/surefire-reports/` if a single test fails opaquely.
-
----
 
 ## Security and Production Review
 
@@ -910,14 +780,6 @@ git status
 ```
 
 No containers started. Keep notes and sources. **Keep `lab11-crm`** for Lab 12+ and the later formal testing labs.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -948,27 +810,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Ask Copilot for a `@ParameterizedTest` across all four `CustomerStatus` values; evaluate adopting it yet.
-2. Add a logging `CustomerNotifier` implementation and prove service behavior is identical with either notifier.
-3. Sketch JaCoCo plugin config; record line-coverage % for `CustomerService` without chasing 100%.
-
----
-
-
-## Instructor Notes
-
-* **Scope:** Not a JUnit/Mockito deep dive—don’t penalize limited coverage or basic assertions. Formal methodology is Labs 17–18.
-* **Assess:** Can the student spot trivial assertions? Is `CustomerNotifier` a real design improvement? Do acceptance guidelines sound reusable, not boilerplate?
-* **Live check:** Have them reproduce the “refactor skips notifier” failure and read the Mockito verification error.
-* **Continuity:** Keep `examples/lab11-crm` and sample IDs. Reject Spring Test / JPA sneaking in “for realism.”
-* **Common pitfalls:** JUnit 4 imports; deleting no-arg constructor; accepting invented mock APIs; empty review notes; committing `target/`.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 11 — GitHub Copilot for Testing and Refactoring. Keep `lab11-crm` and `ai-test-refactor-notes.md` for portfolio evidence and Labs 17–18.*

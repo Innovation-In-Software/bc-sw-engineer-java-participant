@@ -1,8 +1,6 @@
 # Lab 39: Spring Data JPA with PostgreSQL — Flyway, Entities, Repositories, Paging, Optimistic Lock
 
 **Module:** 39 — Spring Data JPA with PostgreSQL  
-**Lab folder:** `labs/Week 4 - Kafka, React, PostgreSQL and Resilience/module-39/lab39/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -82,18 +80,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 39 lab wires the **Customer Management Platform** to PostgreSQL with **Spring Data JPA**: Flyway-managed schema, accurate entity mappings, focused repositories, transactional DTO services, deterministic paging, optimistic locking, safe conflict translation, and PostgreSQL-backed integration tests.
 
-**Purpose.** Leadership freezes a persistence gate before security testing (Lab 40) and containers (Lab 41): Hibernate must **validate** schema (not `create-drop`), Open Session in View stays **off**, money uses `BigDecimal`, and duplicate / optimistic conflicts return controlled HTTP **409** without leaking `SQLSTATE/` text.
-
-**What you build (this lab).** Copy forward into `lab39-crm`; start PostgreSQL; add JPA + postgresql + Flyway PostgreSQL; configure env-based datasource; author `V1__crm_schema.sql` (aligned with Lab 37/38); map `CustomerEntity` / `AccountEntity` with `@Version`; build repositories and transactional service; bound paging with sort allow-list + ID tie-breaker; map integrity/optimistic failures; run `CustomerRepositoryIT` (Testcontainers optional) until `mvn clean verify` is green.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab39-crm/` you can create Amina (`CUS-1001`), activate paths for Ravi (`CUS-1002`), page ACTIVE customers stably, get 409 on duplicate email and optimistic conflict, and show IT evidence against PostgreSQL—not H2 pretending to be PostgreSQL.
-
-**Depends on Labs 37–38.** Need CRM tables, normalized email uniqueness, status, timestamps, and preferably Lab 38 indexes. Bring forward column names so Flyway matches measured DDL.
-
-**CRM connection.** Fixtures `CUS-1001` / `CUS-1002` / `CUS-9999`, correlation `lab-request-001`. Lab 40 scans this backend; Lab 41 containerizes it—keep actuator health and env-based secrets from day one.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -103,13 +89,6 @@ After completing this lab, you will be able to:
 * Map customer and account entities to PostgreSQL types accurately
 * Map `NUMERIC(19,2)` to `BigDecimal` and timestamps correctly
 * Create repository lookups, existence checks, and paging queries
-* Keep lazy collections out of equals/hashCode/JSON serialization
-* Write transactional services that map entities to response DTOs
-* Handle unique and optimistic-lock conflicts as safe API errors
-* Test PostgreSQL mappings, constraints, paging, and query counts in IT
-* Propagate `lab-request-001`-style correlation without logging secrets
-
----
 
 ## Business Scenario
 
@@ -134,7 +113,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -146,33 +124,6 @@ flowchart TB
   PG --> Opt["@Version / unique email -> 409"]
   IT["CustomerRepositoryIT"] -.-> Repo
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Start PostgreSQL<br/>+ scaffold lab39-crm"] --> B["POM: JPA + postgresql<br/>+ Flyway PostgreSQL"]
-    B --> C["application.yml<br/>env secrets, OSIV off"]
-    C --> D["Flyway V1<br/>CRM schema"]
-    D --> E["CustomerEntity<br/>+ AccountEntity"]
-    E --> F["Repositories<br/>+ transactional service"]
-    F --> G["Paging API<br/>+ conflict handlers"]
-    G --> H["PostgreSQL IT<br/>mvn clean verify"]
-    H --> I["README runbook<br/>+ evidence"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 39 (NOW) | Lab 40–42 |
-| ------ | ------------ | --------- |
-| Schema | Flyway validate | Same migrations in image/cluster |
-| Security | No ORA leak; env passwords | Dependency-Check + SAST (40) |
-| Packaging | Local `mvn spring-boot:run` | Multi-stage Docker (41), K8s (42) |
-| Tests | PostgreSQL IT | Security regression + container health |
-
-**Lab focus:** PostgreSQL configuration, JPA entities, repositories, DTO mapping, transactions, paging, locking, and integration tests.
-
----
 
 ## Prerequisites
 
@@ -191,61 +142,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-Prefer the examples tree. You may note alignment with `customer-management-platform/backend/` if your cohort integrates into the shared platform later—mirror package/`db/migration` layout.
-
-```text
-~/java-bootcamp/examples/lab39-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/
-│   │   │   ├── customer/
-│   │   │   │   ├── CustomerEntity.java
-│   │   │   │   ├── CustomerRepository.java
-│   │   │   │   ├── CustomerService.java
-│   │   │   │   ├── CustomerController.java
-│   │   │   │   └── CustomerMapper.java
-│   │   │   ├── account/
-│   │   │   │   ├── AccountEntity.java
-│   │   │   │   └── AccountRepository.java
-│   │   │   ├── api/
-│   │   │   │   └── ApiExceptionHandler.java
-│   │   │   └── CrmApplication.java
-│   │   └── resources/
-│   │       ├── application.yml
-│   │       └── db/migration/
-│   │           └── V1__crm_schema.sql
-│   └── test/java/com/northstar/crm/customer/
-│       └── CustomerRepositoryIT.java
-├── docs/
-│   └── jpa-postgres-notes.md
-├── notes/screenshots/
-├── .env.example
-├── compose.yaml                    (optional: PostgreSQL only)
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, `.env`, IDE metadata, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow: HTTP create/find/list → service → JPA → PostgreSQL
-2. Trust boundary: validation at DTO/controller; DB constraints as last line
-3. Success/failure contracts: 201/200 vs 404/409 Problem Details
-4. Stable fixtures (`CUS-1001`) vs generated `public_id` strategies
-5. Idempotency: duplicate create vs safe GET; Flyway migrate once
-6. Why `ddl-auto=validate` + Flyway, never `update` in shared DBs
-
----
-
 
 ## Worked example (read before you code)
 
@@ -637,7 +533,7 @@ Capture Surefire excerpts under `notes/screenshots/lab-39/`.
 
 **Why:** The next engineer must recreate 409 and paging without Slack archaeology.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Document run commands, required env vars, and Flyway notes in README / `docs/jpa-postgres-notes.md`.
+**Do this:** Complete Failure Experiments. Document run commands, required env vars, and Flyway notes in README / `docs/jpa-postgres-notes.md`.
 
 **Expected result:** ≥3 experiments; peer can follow README to green verify; `git status` clean of `.env` / `target/`.
 
@@ -707,16 +603,6 @@ spring:
     enabled: true
 ```
 
-### Repository excerpt
-
-```java
-interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
-  Optional<CustomerEntity> findByPublicId(String publicId);
-  boolean existsByNormalizedEmail(String email);
-  Page<CustomerEntity> findByStatus(CustomerStatus status, Pageable pageable);
-}
-```
-
 ### Commands
 
 ```bash
@@ -728,33 +614,6 @@ export CRM_DB_PASSWORD=...    # never commit
 ./mvnw -q spring-boot:run
 git status
 ```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `CustomerEntity` / `AccountEntity` | JPA mappings + `@Version` |
-| `CustomerRepository` | Lookups + paging |
-| `CustomerService` | Transaction + DTO mapping |
-| `ApiExceptionHandler` | Safe 409 translation |
-| `CustomerRepositoryIT` | PostgreSQL proof |
-
----
-
-## Manual Verification
-
-1. Flyway applies `V1` once; Hibernate validates on startup.
-2. Create/find Amina `CUS-1001`; Ravi status path works per rules.
-3. Duplicate normalized email yields **409** without ORA text.
-4. Optimistic lock conflict yields controlled **409**.
-5. `CUS-9999` not-found behaves explicitly (404/domain error).
-6. Paging bounds size and sorts stably with ID tie-breaker.
-7. Account balance `1250.50` round-trips as `BigDecimal`.
-8. OSIV is false; list customers does not load all accounts accidentally.
-9. `CustomerRepositoryIT` passes against PostgreSQL.
-10. No password or wallet in Git; correlation present on error paths.
-
----
 
 ## Failure Experiments
 
@@ -780,10 +639,6 @@ git status
 | Money drift | `double` mapping | Use `BigDecimal` + precision |
 | N+1 on detail | Missing graph/query | EntityGraph or join fetch |
 | ddl-auto=create-drop in app | Schema drift | Flyway + `validate` |
-| Secrets in application.yml | Leak risk | `.env` / env vars only |
-| Unbounded findAll in API | Memory/DoS | Bounded Pageable + max size |
-
----
 
 ## Security and Production Review
 
@@ -808,14 +663,6 @@ git status
 Do not commit `.env`, wallets, or `target/`.
 
 **Keep `lab39-crm`**—Lab 40 security scans and Lab 41 container builds use this backend.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -846,26 +693,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Assert ProblemDetail code + `lab-request-001` on every conflict path.
-2. Add `@EntityGraph` IT proving one query for customer+accounts detail.
-3. Flyway `V2` additive column with expand/contract notes.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask for the 409 body on duplicate email and confirm no `SQLSTATE/` text. Have the student show `open-in-view: false` and `ddl-auto: validate`.
-* **Assess:** Flyway discipline, `BigDecimal`, `@Version`, paging bounds, PostgreSQL IT reality.
-* **Continuity:** Prefer `examples/lab39-crm`. Keep fixture IDs. Align column names with Lab 38 indexes.
-* **Common pitfalls:** Password in YAML; editing applied migrations; OSIV on; entity JSON; H2-only confidence.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Mapping + first IT often burn 90 minutes—steer early to Flyway apply proof.
-
----
-
-*End of Lab 39 — Spring Data JPA with PostgreSQL. Keep `lab39-crm` for Lab 40 security testing and Lab 41 containerization.*

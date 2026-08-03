@@ -1,8 +1,6 @@
 # Lab 32: Resilience4j for CRM Outbound Calls — Northstar Account Profile
 
 **Module:** 32 — Resilience4j for CRM Outbound Calls  
-**Lab folder:** `labs/Week 4 - Kafka, React, PostgreSQL and Resilience/module-32/lab32/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -83,18 +81,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 32 lab protects **outbound** CRM calls to an account-profile dependency with **Resilience4j**: **Retry**, **CircuitBreaker**, **TimeLimiter**, truthful degraded read fallbacks (`AccountSummary.unavailable`), Actuator observation, and **deterministic WireMock** tests.
 
-**Purpose.** Customer pages that enrich Amina/Ravi with account summaries must not hang the CRM when the account service is slow or failing — and must never pretend a failed write succeeded. Leadership freezes a latency budget and an honest degradation contract for React.
-
-**What you build (this lab).** Copy to `lab32-crm`; add Resilience4j Boot 3 + AOP + Actuator + WireMock test deps; stub success/503/slow Account API for `CUS-1001`; configure retry, circuit breaker, and time limiter instances named `accountProfile`; annotate `AccountProfileService.find` with CB+Retry+TimeLimiter returning `CompletableFuture`; implement `fallback` → `AccountSummary.unavailable(customerId)`; expose health/metrics/events; write `AccountProfileResilienceTest` proving OPEN (no WireMock traffic), timeout, recovery to CLOSED, and truthful fallback JSON.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab32-crm/` healthy calls return `available=true`, failures degrade to `available=false` without false success on writes, OPEN fails fast under ~20ms without hitting WireMock, timeouts fire near 1500ms, recovery reaches CLOSED, and tests pass twice.
-
-**Depends on Labs 25–31 CRM API.** Prefer Lab 31 so Kafka and resilience coexist. Lab 28 JWT may be needed for manual HTTP demos.
-
-**CRM connection.** Fixtures `CUS-1001` Amina / `CUS-1002` Ravi / correlation `lab-request-001` on outbound headers/logs where applicable.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -104,12 +90,6 @@ After completing this lab, you will be able to:
 * Configure a CircuitBreaker and observe CLOSED, OPEN, and HALF_OPEN states
 * Apply a TimeLimiter that enforces the CRM latency budget
 * Write explicit degraded read fallbacks (`AccountSummary.unavailable`)
-* Prevent unsafe retries and false-success fallbacks for writes
-* Expose circuit-breaker health, metrics, and events via Actuator
-* Write deterministic WireMock resilience tests without flaky sleeps
-* Explain local lab thresholds vs production tuning
-
----
 
 ## Business Scenario
 
@@ -134,7 +114,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -147,32 +126,6 @@ flowchart TB
   Client --> Remote["WireMock / remote account API"]
   APS --> FB["fallback -> AccountSummary.unavailable"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab31 -> lab32<br/>+ Resilience4j + AOP"] --> B["WireMock stubs<br/>503 / slow / OK"]
-    B --> C["Retry config<br/>bounded backoff"]
-    C --> D["CircuitBreaker<br/>COUNT_BASED window"]
-    D --> E["TimeLimiter<br/>1500ms budget"]
-    E --> F["Annotate find()<br/>CompletableFuture"]
-    F --> G["fallback -> unavailable<br/>honest banner"]
-    G --> H["Actuator + tests<br/>OPEN / recover CLOSED"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 32 (NOW) | Production |
-| ------ | ------------ | ---------- |
-| Dependency | WireMock stubs | Real account service + SLA |
-| Thresholds | Small windows for demo | Tuned from metrics/SLOs |
-| Fallback | `unavailable` for reads | Same honesty; maybe cached stale reads with TTL |
-| Isolation | Single instance name | Bulkheads / separate pools per dependency |
-
-**Lab focus:** Retry, CircuitBreaker, TimeLimiter, bounded latency, safe fallbacks, and observable failure states.
-
----
 
 ## Prerequisites
 
@@ -190,53 +143,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab32-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/
-│   │   │   ├── CrmApplication.java
-│   │   │   ├── account/
-│   │   │   │   ├── AccountProfileService.java
-│   │   │   │   ├── AccountClient.java
-│   │   │   │   ├── AccountSummary.java
-│   │   │   │   └── TemporaryAccountException.java
-│   │   │   └── ... (prior CRM packages)
-│   │   └── resources/
-│   │       └── application.yml
-│   └── test/
-│       └── java/com/northstar/crm/account/
-│           ├── AccountServiceStub.java
-│           └── AccountProfileResilienceTest.java
-├── docs/
-│   └── resilience-notes.md
-├── notes/screenshots/
-├── .env.example
-├── .gitignore
-├── pom.xml
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow for an account-enriched customer read
-2. Trust boundary: CRM vs remote account service responses
-3. Success vs degraded contracts (`available` flag)
-4. Stable identity (`CUS-1001`) across CRM and account stubs
-5. Why GET retries can be safe and write retries are not by default
-6. Local aggressive thresholds vs production tuning
-
----
-
 
 ## Worked example (read before you code)
 
@@ -510,7 +416,7 @@ Warn boldly: lab CB windows and 10s open-wait are for classroom visibility — p
 
 **Why:** Unsafe write retries and silent “success” fallbacks are the ethical failure modes of this lab.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture Actuator events, WireMock journals, and Surefire under `notes/screenshots/lab-32/`. Run resilience tests twice for determinism.
+**Do this:** Complete Failure Experiments. Capture Actuator events, WireMock journals, and Surefire under `notes/screenshots/lab-32/`. Run resilience tests twice for determinism.
 
 **Expected result:** ≥3 experiments; truthful fallback documented; consecutive green tests; no secrets in Git.
 
@@ -601,21 +507,6 @@ resilience4j:
         cancel-running-future: true
 ```
 
-### Service + fallback (pattern)
-
-```java
-@CircuitBreaker(name = "accountProfile", fallbackMethod = "fallback")
-@Retry(name = "accountProfile")
-@TimeLimiter(name = "accountProfile")
-CompletableFuture<AccountSummary> find(String id) {
-  return CompletableFuture.supplyAsync(() -> client.fetch(id), executor);
-}
-
-CompletableFuture<AccountSummary> fallback(String id, Throwable cause) {
-  return CompletableFuture.completedFuture(AccountSummary.unavailable(id));
-}
-```
-
 ### Actuator / test commands
 
 ```bash
@@ -626,34 +517,6 @@ curl -s localhost:8080/actuator/metrics/resilience4j.circuitbreaker.calls
 curl -s localhost:8080/actuator/circuitbreakerevents
 git status
 ```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `AccountProfileService` | Annotated resilient facade |
-| `AccountClient` | HTTP call to account API |
-| `AccountSummary` | Includes `unavailable(...)` factory |
-| `AccountServiceStub` | WireMock scenarios |
-| `AccountProfileResilienceTest` | Deterministic proofs |
-| `resilience-notes.md` | Tuning + honesty checklist |
-
----
-
-## Manual Verification
-
-1. Healthy account call for `CUS-1001` returns `available=true` (or accounts present).
-2. 503 recovery path retries then succeeds (or degrades honestly if still failing).
-3. CB OPEN fails fast; WireMock journal does not grow on OPEN probes.
-4. 3s stub triggers TimeLimiter near 1500ms then fallback.
-5. Fallback body uses `AccountSummary.unavailable` (`available=false`).
-6. Writes are not marked successful via the same fallback pattern.
-7. Actuator shows state transitions / metrics.
-8. Resilience tests pass twice consecutively.
-9. `lab-request-001` / customer IDs appear in useful logs (no secrets).
-10. Docs warn lab thresholds are not production defaults.
-
----
 
 ## Failure Experiments
 
@@ -680,8 +543,6 @@ git status
 | Fake available=true fallback | Wrong contract | Return `AccountSummary.unavailable` only |
 | Retrying POSTs same as GETs | Non-idempotent | Document: aggressive retry on reads only |
 
----
-
 ## Security and Production Review
 
 Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
@@ -705,14 +566,6 @@ git status
 No Docker required for WireMock tests; if you started Lab 30 Kafka for combined demos, shut it down separately when done.
 
 **Keep `lab32-crm`** as the resilience reference for capstone outbound dependency hardening.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -743,26 +596,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Propagate `lab-request-001` on outbound RestClient/WebClient headers.
-2. Cached-stale read with TTL as an alternative degraded strategy (document trade-offs).
-3. Separate readiness from liveness when CB is OPEN (policy choice).
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask the student to show WireMock journal counts before/during OPEN, then point to `AccountSummary.unavailable` fields React would key off. Ask why write retries are excluded.
-* **Assess:** Deterministic WireMock; OPEN fail-fast; TimeLimiter with Futures; truthful fallback; Actuator literacy.
-* **Continuity:** Prefer `examples/lab32-crm`. Keep fixtures. Do not invent a second degraded contract that Lab 29 React already misunderstands.
-* **Common pitfalls:** Missing AOP; sync methods with TimeLimiter; self-invocation; retrying POSTs; fallback signature mismatch; using lab thresholds as “prod ready.”
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Aspect ordering + CB demo visibility often burn 45–60 minutes—steer students to small windows early.
-
----
-
-*End of Lab 32 — Resilience4j for CRM Outbound Calls: Northstar Account Profile. Keep `lab32-crm` for capstone and portfolio evidence.*

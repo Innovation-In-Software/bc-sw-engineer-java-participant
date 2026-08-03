@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 7 — Exception Handling and Error Management  
-**Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-07/lab7/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 65–240 minutes (Day 5 core checkpoint ~65 min; finish remaining ATM paths as extended work)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -63,7 +61,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable | Where / what |
 | - | ----------- | ------------ |
@@ -108,34 +106,15 @@ If any of Exercises 1–8 is still **Fail**, finish that exercise first — then
 
 This Module 7 lab is the **graded consolidation** after Module 7 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced catching common exceptions, `try-catch-finally`, try-with-resources, `throw`/`throws`, custom exceptions, propagation, retry/fallback, and logging in `module-07-exercises/`. Here you assemble those skills into a fault-tolerant **ATM Banking System**.
 
-**Purpose.** Labs 3–6 focused on *what* the program does (OOP, collections, streams). Module 7 exercises taught each error-handling skill in isolation. Lab 7 locks the **enterprise habit**: domain throws, boundary catches, log detail, short user messages, menu keeps running.
-
-**What you build.** An ATM console under package `com.academy.atm`: login with PIN retry limits, deposit, withdraw, balance, transfer (with optional rollback), mini statement (session + file), unchecked-exception demos, and centralized logging. Core types: `Account`, `Transaction`, `ATMService`, `LoggerUtil`, `Main`, plus four custom exceptions.
-
-**What success looks like.** Under `java-bootcamp/examples/Lab7-ATMSystem/` you compile with `javac -d out ...`, run `java -cp out com.academy.atm.Main` **from the project root**, walk success and failure paths (including withdraw-too-much → insufficient balance), inspect `logs/application.log`, and submit evidence graders can recompile. Exercise sources remain under `examples/module-07-exercises/`.
-
-**Depends on Lab 0 + prior Week 1 skills + Exercises 1–8.** If your IDE, `java`, or `javac` fail, stop and fix [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). Comfort with packages, service layering (Lab 5), and menu + Scanner loops (Labs 5–6) speeds this lab. IDE paths: [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
-
-**CRM connection (future only).** From Lab 8 onward the **Customer Management Platform** will throw domain exceptions (not found, validation failed), map them to API error responses, and log diagnostics. This lab does **not** build CRM APIs, Spring `@ControllerAdvice`, or a database. Treat the ATM as a **skill bridge**: today’s custom exceptions and recovery loops reappear when CRM services reject bad requests without taking down the JVM.
-
----
-
 ## Learning Objectives
 
-After completing this lab, you will be able to **consolidate and extend** what you practiced in Exercises 1–8:
+After completing this lab, you will be able to:
 
 * Distinguish **checked** vs **unchecked** exceptions and choose appropriately (builds on Exercises 1 & 5)
 * Wrap operations in **`try` / `catch` / `finally`** (and multiple catch blocks) (builds on Exercise 2)
 * Create **custom exception** classes with meaningful messages (and optional fields) (builds on Exercise 5)
 * Use **`throw`** to signal rule violations and **`throws`** to declare checked propagation (builds on Exercise 4)
 * Trace **exception propagation** across `Main → ATMService → Account` (builds on Exercise 6)
-* Use **try-with-resources** for `FileReader` / `BufferedReader` without manual `close()` (builds on Exercise 3)
-* Log errors with timestamp, level, type, message, and stack trace via `LoggerUtil` (builds on Exercise 8)
-* Validate numeric input and recover from `InputMismatchException` / `NumberFormatException`
-* Keep the ATM menu running after recoverable failures (**error recovery**) (builds on Exercise 7)
-* Compile and run with `javac -d out` / `java -cp out` **from the project root** on your laptop (VS Code or IntelliJ)
-
----
 
 ## Business Scenario
 
@@ -158,7 +137,6 @@ You build and run the app on your **laptop** with plain JDK—no Spring, no data
 ---
 
 ## Architecture Context
-
 ### Call chain and exception flow (NOW)
 
 ```mermaid
@@ -177,46 +155,6 @@ flowchart TB
 ```
 
 ### Exception hierarchy (lab)
-
-```mermaid
-flowchart TB
-  Ex["Exception checked"] --> IA["InvalidAmountException"]
-  Ex --> IF["InsufficientFundsException"]
-  Ex --> IP["InvalidPinException"]
-  Ex --> AN["AccountNotFoundException"]
-  RT["RuntimeException unchecked"] --> NPE["NullPointerException"]
-  RT --> AE["ArithmeticException"]
-  RT --> AIOOB["ArrayIndexOutOfBoundsException"]
-  Bound["Boundary also handles"] --> IM["InputMismatchException"]
-  Bound --> IO["IOException"]
-```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Create package<br/>folders + logs"] --> B["Custom exceptions<br/>+ Account model"]
-    B --> C["ATMService<br/>login + throw/throws"]
-    C --> D["try / multi-catch<br/>finally on operations"]
-    D --> E["try-with-resources<br/>+ LoggerUtil"]
-    E --> F["Main menu<br/>1-7 core path"]
-    F --> G["javac -d out<br/>java -cp out"]
-    G --> H["Failure scenarios<br/>+ application.log + submit"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 7 (NOW) | CRM later (Lab 8+) |
-| ------ | ----------- | ------------------ |
-| Domain | Accounts, PIN, deposit/withdraw | Customers, tickets, agents |
-| UI | Console menu | REST / React |
-| Errors | Custom exceptions + stdout messages | Problem details / HTTP status + logs |
-| Persistence | In-memory map + `transactions.txt` | DB + Spring repositories |
-| Logging | File append via `LoggerUtil` | SLF4J / centralized observability |
-| Framework | Plain JDK | Spring Boot exception handlers |
-| Skills reused | throw/throws, catch boundaries, recovery | Same—applied to CRM APIs |
-
----
 
 ## Prerequisites
 
@@ -256,64 +194,6 @@ git version 2....
 Confirm `java-bootcamp` exists. Fix environment failures before writing application code.
 
 ---
-
-## Suggested Project Files
-
-Create everything under the bootcamp workspace on your laptop:
-
-```text
-java-bootcamp/examples/Lab7-ATMSystem/
-├── src/
-│   └── com/
-│       └── academy/
-│           └── atm/
-│               ├── Main.java
-│               ├── Account.java
-│               ├── Transaction.java
-│               ├── ATMService.java
-│               ├── LoggerUtil.java
-│               ├── InvalidAmountException.java
-│               ├── InsufficientFundsException.java
-│               ├── InvalidPinException.java
-│               └── AccountNotFoundException.java
-├── out/                         # created by javac -d out
-│   └── com/academy/atm/*.class
-├── transactions.txt             # historical file for try-with-resources
-├── logs/
-│   └── application.log          # created at runtime by LoggerUtil
-└── (answers → ~/java-bootcamp/notes/; screenshots → notes/screenshots/lab-7/)
-```
-
-**Important:** Always `cd` to `java-bootcamp/examples/Lab7-ATMSystem` (the folder that contains `transactions.txt` and `logs/`) before `java -cp out com.academy.atm.Main`. Relative paths break if you start the JVM from a parent directory.
-
-Ignore build artifacts if committed later: `out/`, `*.class`. You **may** submit a sanitized snippet of `logs/application.log` showing ERROR lines (no secrets).
-
-**IDE tip:** In VS Code use **File → Open Folder…** on the project. In IntelliJ use **File → Open…**, set Project SDK to **21**, and set the run configuration’s working directory to the project root — details in [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md).
-
-**Instructor reference:** Complete solution (including bonuses) in [`solution/`](solution/) → `Lab7-ATMSystem/` (`com.academy.atm`).
-
-### Seed accounts (memorize these)
-
-| Account | PIN  | Starting balance |
-| ------- | ---- | ---------------: |
-| `1001`  | `1234` | **$11000** |
-| `1002`  | `5678` | **$5000** |
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Why are `InvalidAmountException` and friends **checked** in this lab, while `NullPointerException` is unchecked?
-2. What does `throws` on `Account.withdraw(...)` force callers to do?
-3. Why catch specific exceptions before a broad `catch (Exception ex)`?
-4. What guarantee does `finally` give you that `catch` alone does not?
-5. Why prefer try-with-resources over `reader.close()` in a `finally` block?
-6. Why log stack traces to a file while showing short messages to the ATM user?
-
----
-
 
 ## Worked example (read before you code)
 
@@ -409,7 +289,7 @@ Create `transactions.txt` in the project root (not under `src/`):
 2026-01-18,TRANSFER,1001,200.00,Transfer to 1002
 ```
 
-Open the project folder in VS Code or IntelliJ. Stub the Java files listed under Suggested Project Files.
+Open the project folder in VS Code or IntelliJ. Stub the Java files listed under starter / Activity card expected files.
 
 **Expected result:** Project root contains `src/`, `logs/`, `transactions.txt`, and `notes/`.
 
@@ -1347,49 +1227,6 @@ tail -n 50 logs/application.log
 grep ERROR logs/application.log | wc -l
 ```
 
-### Class / responsibility map
-
-| Class | Responsibility |
-| ----- | -------------- |
-| `Main` | Menu loop; invalid menu recovery; exit |
-| `ATMService` | Login, transactions, multi-catch boundary, file read |
-| `Account` | Balance mutations; `throw` validation |
-| `Transaction` | Session history row |
-| `LoggerUtil` | Append INFO/ERROR to `logs/application.log` |
-| Custom exceptions | Domain error types + optional context fields |
-
-### Exception map
-
-| Exception | Thrown where | Caught where |
-| --------- | ------------ | ------------ |
-| `InvalidAmountException` | `Account.deposit/withdraw` | `ATMService.executeTransaction` |
-| `InsufficientFundsException` | `Account.withdraw` | `ATMService.executeTransaction` |
-| `InvalidPinException` | `login` / `requireLogin` | `login` or `executeTransaction` |
-| `AccountNotFoundException` | `findAccount` | `login` or `executeTransaction` |
-| `IOException` | file read / log write | `loadTransactionsFromFile` / LoggerUtil |
-| `InputMismatchException` | `readAmount` | `executeTransaction` |
-
-Maven is **not** required for this lab.
-
----
-
-## Manual Verification
-
-1. Menu 1–7 appears; invalid `abc` → invalid menu message → menu returns.
-2. Login `1001` / `1234` → `Login Successful` (balance starts at **$11000**).
-3. Withdraw `20000` → **Insufficient Balance** / Transaction Cancelled; still at menu.
-4. Deposit `-100` → Amount must be greater than zero.
-5. Deposit `abc` → Invalid numeric input messages; still at menu.
-6. Deposit `1000` → Deposit Successful; balance becomes **12000**.
-7. Mini Statement shows session rows and historical file lines (requires project-root cwd).
-8. Login with wrong account `9999` → Account not found; still at menu.
-9. Unchecked demo (menu 8 if added) prints three handled messages.
-10. `logs/application.log` has ERROR entries; Exit `7` → `Thank You`.
-
-Record pass/fail in `../../notes/lab7-answers.md` (from project; or `~/java-bootcamp/notes/lab7-answers.md`).
-
----
-
 ## Testing Scenarios
 
 | Test Case | Expected Result |
@@ -1433,14 +1270,6 @@ Perform deliberately, then restore working code / files.
 | Log file never created | Logger never called / cwd wrong | Trigger an ERROR path; check `logs/` under project root |
 | Unreported exception compile error | Missing `throws` or catch | Declare on `Account` methods; catch in service |
 | App exits on bad input | Uncaught exception | Wrap ops in `executeTransaction` / catch in `login` |
-| Catch order compile error | Broad catch first | Specific catches before `Exception` |
-| Changes not visible | Stale `.class` | Re-run `javac -d out ...` |
-| `*.java` glob fails in PowerShell | PowerShell does not expand like bash | Name each `.java` file (see [LAB-7-WINDOWS.md](LAB-7-WINDOWS.md)) |
-| Wrong Sources Root | Marked `module-07-exercises` | Lab uses `Lab7-ATMSystem/src` only |
-| Balance wrong after failed withdraw | Mutated before throw | Throw insufficient-funds **before** changing balance (Ex 5 habit) |
-| PIN appears in log/screenshot | Logged sensitive field | Log account id + op only — never raw PIN |
-
----
 
 ## Security and Production Review
 
@@ -1465,14 +1294,6 @@ rm -rf out
 ```
 
 Keep `.java` sources, `transactions.txt`, notes, and evidence screenshots. Do not delete GitHub credentialss or Lab 0 tooling. Leave [`solution/`](solution/) intact—do not submit it as your own work.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do not submit secrets or a verbatim instructor [`solution/`](solution/) as your own work.
 
 ---
 
@@ -1507,52 +1328,6 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Attempt after core rubric items are solid. See [`solution/`](solution/) menu options 9–10 and transfer rollback.
-
-### Challenge 1 — Transaction Rollback
-
-Implement transfer rollback when any exception occurs mid-transfer (restore both balances)—already sketched in Step 10.
-
-### Challenge 2 — Daily Error Report
-
-Create a daily error report from `logs/application.log` (count and preview ERROR lines).
-
-### Challenge 3 — Execution Time Logging
-
-Log execution time for every successful transaction (`LoggerUtil.logTransaction`).
-
-### Challenge 4 — Login Retry Mechanism
-
-Enforce max 3 PIN attempts with a clear lock message for the session.
-
-### Challenge 5 — Transaction Summary Report
-
-Generate a session transaction summary (total / successful / failed).
-
----
-
-## Instructor Notes
-
-**Classroom order (do not reverse):**
-
-1. Module 7 PPT (Day 5 afternoon)
-2. Students complete [Exercises 1–8](../exercises/EXERCISES-INDEX.md) in `module-07-exercises/` (Day 5, 3:00–4:30)
-3. OS how-to → this guide (Day 5, 4:30–5:35 core checkpoint)
-4. Kahoot Module 7 + Week 1 review / Week 2 bridge
-
-**Before students open this guide:** confirm all eight exercise Pass rows (common exceptions, try-catch-finally, try-with-resources, throw/throws, custom exception, propagation, retry/fallback, logging). Lab 7 pacing assumes those skills already exist.
-
-* **Reference solution:** Full implementation including menu options 8–10 and transfer rollback is in [`solution/`](solution/) under `Lab7-ATMSystem/` (`com.academy.atm`). Seed accounts: **`1001`/`1234`/$11000** and **`1002`/`5678`/$5000**. Guide learners to finish core menu 1–7 + logging before revealing bonuses. Emphasize withdraw `$20000` → Insufficient Balance as the signature failure demo.
-* **API fidelity:** Align with solution signatures—`Account.deposit/withdraw` checked throws; `InsufficientFundsException(message, requested, available)`; `InvalidPinException(message, attemptsRemaining)`; `ATMService(Scanner)`; `LoggerUtil` path `logs/application.log`; `TRANSACTION_FILE = "transactions.txt"`; user messages for invalid numeric input and insufficient balance as specified.
-* **Common pitfalls:** Skipping exercises; running from the wrong directory; putting catches only in `Main` while leaving `Account` undeclared; catching `Exception` first; forgetting `finally`; logging PINs; crashing on `NumberFormatException` instead of translating to a friendly message; mixing `module-07-exercises/` flat files with packaged lab commands.
-* **Classpath / cwd / IDE:** Demo failure when starting Java outside the project root so try-with-resources + logging paths “click.” Dual IDE on laptop: IntelliJ Community primary, VS Code optional — [`_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md). In IntelliJ, set working directory to project root. Score screenshots of **failure** paths + log evidence, not only happy-path deposits.
-* **Teaching emphasis:** Boundaries catch; domain throws; users get short messages; logs get detail. CRM/Spring exception handlers (Week 2+) reuse this mental model—Lab 7 stays console + file I/O on purpose.
-* **Timing:** Day 5 core ~65 min (login + one success + insufficient funds + log evidence); remaining paths as extended completion. After Lab 7, optionally point students to the Week 1 integrated mini-project below as a portfolio bridge into Week 2.
-
----
-
 ## Week 1 Integrated Mini Project
 
 At the end of Week 1, students may combine module knowledge into:
@@ -1576,4 +1351,3 @@ Coding Standards
 
 ---
 
-*End of Lab 7 — Exception Handling and Error Management: ATM Banking System. Keep `Lab7-ATMSystem` for portfolio evidence.*

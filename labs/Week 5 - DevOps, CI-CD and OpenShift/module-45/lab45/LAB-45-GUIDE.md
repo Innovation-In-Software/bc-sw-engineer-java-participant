@@ -1,8 +1,6 @@
 # Lab 45: Infrastructure as Code with AI Assistance — Northstar CRM Stack Sketches
 
 **Module:** 45 — Infrastructure as Code with AI Assistance  
-**Lab folder:** `labs/Week 5 - DevOps, CI-CD and OpenShift/module-45/lab45/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -82,18 +80,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 45 lab uses an AI coding assistant to draft **Terraform** and **Ansible** infrastructure sketches for the **Customer Management Platform**, then validates, threat-models, corrects, and documents every generated decision. You will produce `infra/terraform/*.tf`, `terraform.tfvars.example`, `infra/ansible/site.yml`, `inventory.example.yml`, and `docs/ai-iac-review.md`.
 
-**Purpose.** Leadership freezes an IaC rule: AI may accelerate scaffolding, but humans remain accountable for exposure, cost, state security, and idempotence. Syntactically valid Terraform that opens a public database still fails the lab. Planned apply without reading the plan fails the lab. Undocumented AI acceptance fails the lab.
-
-**What you build (this lab).** Copy to `lab45-crm`; define an infrastructure contract (env, region, network, runtime, DB, tags, cost limits, forbidden public exposure); draft with constrained prompts; review Terraform structure; secure sensitive variables and remote-state narrative; run `fmt` / `init` / `validate` / `plan`; draft idempotent Ansible; prove syntax/lint and second-run no-change where authorized; write a complete AI review record (`docs/ai-iac-review.md`).
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab45-crm/` a peer can read the contract, reproduce format/validate/plan (or instructor-safe substitute), run Ansible syntax/lint, and see at least one AI suggestion rejected or hardened with rationale—tied to CRM environments that will host APIs for fixtures `CUS-1001` / `CUS-1002` (app data stays out of IaC).
-
-**Depends on Labs 43–44 (delivery narrative).** Need environment naming conventions and secret hygiene from CD work. Terraform/Ansible installed; Copilot optional. Finish prior labs’ secret leaks before claiming IaC credit.
-
-**CRM connection.** IaC provisions platforms for the CRM—it does **not** embed Amina/Ravi PII. Use labels/tags like `application=crm`, `environment=dev`. Application smoke still uses `CUS-1001` / `CUS-1002` / `lab-request-001` in app labs, not in Terraform state.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -103,11 +89,6 @@ After completing this lab, you will be able to:
 * Model variables, validation, providers, and outputs safely
 * Describe encrypted remote state and locking without committing backend credentials
 * Create idempotent Ansible tasks with modules, handlers, ownership, and modes
-* Run format, validate, lint, and plan checks and interpret create/destroy risk
-* Document AI assumptions, corrections, residual risks, and approval status
-* Keep CRM customer fixtures out of infrastructure code and state files
-
----
 
 ## Business Scenario
 
@@ -130,7 +111,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -141,32 +121,6 @@ flowchart TB
   Review --> AN["Ansible syntax-check / lint"]
   Review --> Doc["docs/ai-iac-review.md"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Infrastructure contract<br/>limits + forbid public DB"] --> B["Constrained AI prompts<br/>small modules"]
-    B --> C["Review Terraform<br/>providers/vars/resources"]
-    C --> D["Secure state + inputs<br/>sensitive + examples only"]
-    D --> E["fmt / validate / plan<br/>read every action"]
-    E --> F["Ansible draft<br/>modules + handlers"]
-    F --> G["Syntax + lint<br/>+ idempotence check"]
-    G --> H["ai-iac-review.md<br/>accept/reject evidence"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 45 (NOW) | Production IaC |
-| ------ | ------------ | -------------- |
-| Apply | Prefer plan-only unless instructor approves | Pipeline-gated apply with policy-as-code |
-| State | Document remote backend; often `-backend=false` locally | Encrypted remote state + lock |
-| AI | Draft + mandatory review log | Same + org allow-lists |
-| Scope | Namespace/runtime sketches | Full VPC/DB with modules & sentinel |
-
-**Lab focus:** AI-assisted Terraform + Ansible with accountable human review for CRM infra sketches.
-
----
 
 ## Prerequisites
 
@@ -186,60 +140,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-Primary training layout:
-
-```text
-~/java-bootcamp/examples/lab45-crm/
-├── infra/
-│   ├── terraform/
-│   │   ├── versions.tf
-│   │   ├── providers.tf
-│   │   ├── variables.tf
-│   │   ├── main.tf
-│   │   ├── outputs.tf
-│   │   └── terraform.tfvars.example
-│   └── ansible/
-│       ├── site.yml
-│       ├── inventory.example.yml
-│       └── templates/
-│           └── crm.env.j2
-├── docs/
-│   └── ai-iac-review.md
-├── notes/screenshots/            (plan excerpts, lint, review)
-├── .gitignore                    (must ignore *.tfstate*, *.tfvars, vault)
-├── README.md
-└── (optional) application sources from prior labs
-```
-
-Platform secondary paths:
-
-```text
-~/java-bootcamp/examples/customer-management-platform/
-├── infra/terraform/
-├── infra/ansible/
-└── docs/ai-iac-review.md
-```
-
-Ignore state files, real tfvars, vault passwords, `.env`, and kubeconfig.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main infra flow (contract → draft → validate → plan → config manage)
-2. Trust boundary: what `plan` proves vs what it assumes about provider credentials
-3. Success/failure contracts (`validate` ok but plan destroys prod namespace)
-4. Stable naming (`crm-${environment}`) vs random AI names
-5. Idempotency of Ansible second runs and Terraform plans
-6. Why `-backend=false` may be required in training
-
----
-
 
 ## Worked example (read before you code)
 
@@ -483,7 +383,7 @@ Checklist reminder:
 
 **Why:** Safe hostility to AI output is the learning outcome.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Ensure state/tfvars are gitignored. Capture sanitized plan/lint screenshots.
+**Do this:** Complete Failure Experiments. Ensure state/tfvars are gitignored. Capture sanitized plan/lint screenshots.
 
 **Expected result:** ≥3 experiments; clean `git status`; review doc complete.
 
@@ -537,53 +437,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ## Reference Commands, Configuration, and Code
 
-### Terraform namespace sketch
-
-```hcl
-terraform {
-  required_version = ">= 1.6"
-  required_providers {
-    kubernetes = { source = "hashicorp/kubernetes", version = "~> 2.0" }
-  }
-}
-
-variable "environment" {
-  type = string
-  validation {
-    condition     = contains(["dev", "test", "stage"], var.environment)
-    error_message = "Use an approved non-production environment."
-  }
-}
-
-variable "crm_image_digest" {
-  type      = string
-  default   = ""
-  sensitive = false
-  # Prefer digest promotion from Lab 44 — do not invent :latest
-}
-
-resource "kubernetes_namespace_v1" "crm" {
-  metadata {
-    name = "crm-${var.environment}"
-    labels = {
-      application = "crm"
-      environment = var.environment
-    }
-  }
-}
-
-output "namespace" {
-  value = kubernetes_namespace_v1.crm.metadata[0].name
-}
-```
-
-### `terraform.tfvars.example`
-
-```hcl
-environment = "dev"
-# crm_image_digest = "sha256:replace-me"
-```
-
 ### Idempotent Ansible tasks
 
 ```yaml
@@ -612,16 +465,9 @@ environment = "dev"
         mode: "0640"
       notify: Restart CRM
   handlers:
-    - name: Restart CRM
-      ansible.builtin.service:
-        name: crm
-        state: restarted
+// ... see Steps for full sample
 ```
 
-### `docs/ai-iac-review.md` outline
-
-```markdown
-# AI IaC Review — lab45-001
 ## Contract summary
 
 - Forbidden: public DB, hard-coded secrets, unpinned providers
@@ -688,21 +534,6 @@ ansible-lint site.yml
 
 ---
 
-## Manual Verification
-
-1. Infrastructure contract forbids public DB / hard-coded secrets.
-2. Terraform files separate providers, variables, resources, outputs.
-3. Sensitive inputs marked; only example tfvars committed.
-4. `terraform validate` succeeds; plan actions were read and summarized.
-5. Ansible prefers modules; file modes/owners set deliberately.
-6. Syntax-check (and lint if available) pass or residual risk is owned.
-7. AI review documents prompt, corrections, and at least one rejection/hardening.
-8. No state files or cloud keys in Git.
-9. CRM fixtures `CUS-1001`/`CUS-1002` are not in IaC as personal data.
-10. Peer can re-run validate/plan commands from the README alone.
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
@@ -727,11 +558,6 @@ ansible-lint site.yml
 | State accidentally created | Local backend | Delete local state; ensure ignore rules |
 | Lint not installed | Image gap | Note residual risk; still run syntax-check |
 | Public DB / 0.0.0.0/0 from AI | Exposure | Reject; harden SG; re-validate |
-| tfstate or real tfvars in Git | Secret/state leak | Remove; rotate; gitignore |
-| Unapproved destroy shared infra | Training blast radius | Stop; ask instructor |
-| Kafka DLT in this lab | Wrong module | Lab 46 |
-
----
 
 ## Security and Production Review
 
@@ -757,14 +583,6 @@ git status --short
 Delete any local state created accidentally. Keep sanitized plan excerpts.
 
 **Keep `lab45-crm`**—Capstone and later hardening may reuse these modules as starting points.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -795,26 +613,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add policy-as-code checks forbidding public exposure.
-2. Create a module interface with validated inputs.
-3. Add Ansible check mode and capture idempotence evidence.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask which AI suggestion they rejected and what plan action worried them most. Open `ai-iac-review.md` and the plan excerpt side by side.
-* **Assess:** Contract quality, secret/state hygiene, honest plan reading, Ansible modules vs shell, review discipline.
-* **Continuity:** Prefer `examples/lab45-crm`. Keep environment naming aligned with Lab 44. Do not require real cloud spend.
-* **Common pitfalls:** Committing tfstate; public exposure; unpinned providers; apply without approval; empty AI review; PII in tags/vars.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Provider auth pain is common—steer early to `-backend=false` sketches when sandbox is unavailable.
-
----
-
-*End of Lab 45 — Infrastructure as Code with AI Assistance: Northstar CRM Stack Sketches. Keep `lab45-crm` for portfolio and later policy-as-code work.*

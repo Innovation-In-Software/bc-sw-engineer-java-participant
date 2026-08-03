@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
 
 **Module:** 22 — Spring IoC and Dependency Injection  
-**Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-22/lab22/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -51,7 +49,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -72,18 +70,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 22 lab extends the **Customer Management Platform** by replacing manual `new` wiring with **Spring Inversion of Control (IoC)** and **dependency injection**. You model CRM collaborators as Spring beans, prefer **constructor injection**, apply stereotype annotations, observe bean lifecycle callbacks on `CustomerService`, and document `docs/dependency-graph.md`.
 
-**Purpose.** Prior labs may still construct repositories/services with `new` in places. Leadership freezes: application components are Spring beans; `CustomerService` receives collaborators through a single constructor with `final` fields; no field-`@Autowired` as primary pattern; no `new` of Spring-managed collaborators inside services; graph documented for review.
-
-**What you build (this lab).** Copy to `lab22-crm`; ensure Boot scaffold/`CrmApplication`; keep domain types plain; declare `@Repository` / `@Service` beans; refactor `CustomerService` to constructor DI; wire `@RestController`; add `@PostConstruct`/`@PreDestroy`; prove unit test with fakes **and** `@SpringBootTest` IT; write dependency graph.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab22-crm/` the app starts without missing-bean errors; POST/GET `CUS-1001` works with correlation `lab-request-001`; pure unit test constructs service without Spring; `dependency-graph.md` matches constructors; init/destroy logs appear once per context.
-
-**Depends on Lab 21.** Prefer keeping Actuator/logging; IoC should inject `CustomerMetrics` / services rather than static access. Create/get API from earlier labs required.
-
-**CRM connection.** Fixtures `CUS-1001` / `CUS-1002`, correlation `lab-request-001`. Graph documentation must name these IDs in examples so Labs 19–21 evidence stays continuous.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -93,12 +79,6 @@ After completing this lab, you will be able to:
 * Declare `@Component`, `@Service`, and `@Repository` beans for the customer domain
 * Prefer constructor injection for `CustomerService` dependencies
 * Replace field/`new` coupling with injected `CustomerRepository` and `NotificationService`
-* Observe bean lifecycle (`@PostConstruct` / `@PreDestroy`) for CRM startup/shutdown notes
-* Draw and export a simple dependency graph for review (`dependency-graph.md`)
-* Test beans with Spring’s test context **and** pure unit tests using constructor injection
-* Explain singleton scope implications for mutable instance state
-
----
 
 ## Business Scenario
 
@@ -122,7 +102,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -135,31 +114,6 @@ flowchart TB
   Life["@PostConstruct / @PreDestroy"] -.-> Svc
   Docs["docs/dependency-graph.md"] -.-> App
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab21 -> lab22<br/>Boot scaffold"] --> B["Plain Customer<br/>domain types"]
-    B --> C["at Repository + @Service<br/>notifier beans"]
-    C --> D["CustomerService<br/>constructor DI"]
-    D --> E["Controller wiring<br/>correlation header"]
-    E --> F["@PostConstruct<br/>@PreDestroy logs"]
-    F --> G["Unit + Spring IT<br/>CUS-1001"]
-    G --> H["dependency-graph.md<br/>scopes + anti-new"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 21 (was) | Lab 22 (NOW) | Later Boot/JPA |
-| ------ | ------------ | ------------ | -------------- |
-| Wiring | Possible manual `new` leftovers | Spring stereotypes + constructor DI | Swap `@Repository` impl |
-| Testability | Metrics IT | Pure unit + Spring IT | `@DataJpaTest` etc. |
-| Ops | Actuator probes | Same + bean graph clarity | Profile-specific beans |
-
-**Lab focus:** Replace `new` with Spring beans; constructor injection preferred; `@Component` / `@Service` / `@Repository`; bean lifecycle notes for CRM `CustomerService`; document the graph.
-
----
 
 ## Prerequisites
 
@@ -178,54 +132,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab22-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/
-│   │   │   ├── CrmApplication.java
-│   │   │   ├── api/CustomerController.java
-│   │   │   ├── service/CustomerService.java
-│   │   │   ├── service/NotificationService.java
-│   │   │   ├── repository/CustomerRepository.java
-│   │   │   ├── repository/InMemoryCustomerRepository.java
-│   │   │   ├── metrics/CustomerMetrics.java      (keep if Lab 21 present)
-│   │   │   └── model/Customer.java
-│   │   └── resources/
-│   │       ├── application.yml
-│   │       └── logback-spring.xml
-│   └── test/
-│       └── java/com/northstar/crm/
-│           ├── CustomerServiceTest.java
-│           └── CustomerServiceSpringIT.java
-├── docs/
-│   └── dependency-graph.md
-├── notes/screenshots/
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Ignore build output, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow: HTTP → controller bean → service bean → repository bean
-2. Trust boundary: validation still at edges; DI does not replace auth
-3. Success/failure contracts unchanged from Labs 19–21
-4. Stable bean identities (types/names) vs request fixture IDs
-5. Idempotent context refresh vs request-level create idempotency
-6. Local in-memory `@Repository` vs production JDBC/JPA bean
-
----
-
 
 ## Worked example (read before you code)
 
@@ -529,7 +435,7 @@ Anti-pattern: new InMemoryCustomerRepository() inside CustomerService
 
 Optional: enable Actuator `beans` endpoint **locally** for a screenshot—do not leave unrestricted exposure as a production recommendation (Lab 21 lesson).
 
-Complete [Failure Experiments](#failure-experiments). Run `mvn test` twice.
+Complete Failure Experiments. Run `mvn test` twice.
 
 **Expected result:** Graph matches constructor signatures; reviewer can explain wiring; experiments recorded; suite deterministic.
 
@@ -597,15 +503,6 @@ public class CustomerService {
 }
 ```
 
-### Stereotype map
-
-```text
-@RestController — web
-@Service — business
-@Repository — persistence
-@Component — general
-```
-
 ### Commands
 
 ```bash
@@ -618,36 +515,6 @@ mvn -q test
 mvn -q clean verify
 git status
 ```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `CrmApplication` | Context entry / component scan root |
-| `CustomerController` | MVC bean |
-| `CustomerService` | Business bean + lifecycle |
-| `InMemoryCustomerRepository` | Persistence bean |
-| `NotificationService` | Side-effect collaborator bean |
-| `CustomerServiceTest` | Pure unit DI proof |
-| `CustomerServiceSpringIT` | Container IT |
-| `dependency-graph.md` | Review artifact |
-
----
-
-## Manual Verification
-
-1. Application starts with Spring-managed CRM beans.
-2. Controller and service use constructor injection (no primary field `@Autowired` pattern).
-3. Repository and notification services are stereotype beans—not `new`’d in the service.
-4. POST/GET `CUS-1001` works with `lab-request-001`.
-5. Notification logs include customer ID + correlation without PII names if required by Lab 20.
-6. `@PostConstruct` runs once per context; `@PreDestroy` on graceful stop.
-7. Pure unit test constructs `CustomerService` with fakes/mocks.
-8. Spring IT proves the real graph.
-9. `dependency-graph.md` matches constructors.
-10. No Spring-managed collaborator is instantiated with `new` inside `CustomerService`.
-
----
 
 ## Failure Experiments
 
@@ -673,11 +540,6 @@ git status
 | Flaky IT | Shared in-memory map | Reset or isolate test data |
 | Cannot connect | Port in use | Stop prior Boot process |
 | Working in `module-22-exercises` for the lab | Wrong project | Lab lives in `examples/lab22-crm` |
-| Dual stores / IT sees empty map | `new` repo inside service | Remove `new`; inject the bean |
-| `@PostConstruct` never logs | Method not public / wrong annotation import | Use `jakarta.annotation.PostConstruct` |
-| Diving into Initializr/Security mid-lab | Scope creep | Finish constructor DI + graph first |
-
----
 
 ## Security and Production Review
 
@@ -700,14 +562,6 @@ git status
 ```
 
 **Keep `lab22-crm`**—this bean graph becomes the base for later Boot/JPA labs and portfolio Spring evidence.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -738,27 +592,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Keep structured correlation and customer IDs in notification logs without PII names.
-2. Container-backed IT for a future JDBC repository bean.
-3. Wire readiness/liveness from Lab 21 into the same constructor-injected graph.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Break bean scanning on purpose and have the student interpret the startup error, then restore. Ask why field `@Autowired` is discouraged as the primary pattern.
-* **Assess:** Constructor DI quality, stereotypes, anti-`new` discipline, unit-without-Spring proof, `dependency-graph.md` fidelity.
-* **Continuity:** Prefer `examples/lab22-crm`. Keep fixture IDs from Labs 19–21. Preserve Actuator/logging when present via injection.
-* **Common pitfalls:** App class not at root package; injecting concrete class only; circular deps “fixed” with field injection; stereotyping DTOs; leaving `new` repos “for simplicity.”
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-* **Equivalents:** XML bean definitions OK if constructor injection still wins and student documents differences.
-
----
-
-*End of Lab 22 — Spring IoC and Dependency Injection: Northstar CRM Bean Graph. Keep `lab22-crm` for later persistence labs and portfolio evidence.*

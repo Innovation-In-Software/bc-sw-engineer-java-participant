@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 5 — Java Collections Framework  
-**Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-05/lab5/`  
-**Difficulty:** Intermediate (Beginner-Friendly)  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 90–240 minutes (Day 4 core checkpoint ~90 min; finish remaining menu paths as extended work)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -59,7 +57,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable | Where / what |
 | - | ----------- | ------------ |
@@ -101,36 +99,15 @@ If any of Exercises 1–7 is still **Fail**, finish that exercise first — then
 
 This Module 5 lab is the **graded consolidation** after Module 5 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md). You already practiced List, Set, Map, TreeMap, safe iteration, collection choice, and a library warm-up in `module-05-exercises/`. Here you assemble those skills into a **Library Management System** console with packages, domain types, and a full staff menu.
 
-**Purpose.** OOP design alone (Lab 3) does not tell you *where* to store growing business data in memory. Module 5 exercises taught each collection type in isolation. Lab 5 locks the **enterprise habit**: pick List / Set / Map (and sorted views) per domain concept on a complete app.
-
-**What you build.** A library-staff console under package `com.academy.library`: add books, register members, search and sort the catalog, borrow/return titles, display borrowed books, generate reports, and exit cleanly. Core types: `Book`, `Member`, `BorrowRecord`, `LibraryService`, `ReportService`, `BookComparator`, `Main`.
-
-**What success looks like.** Under `examples/Lab5-LibraryManagement/` you compile with `javac -d out ...`, run `java -cp out com.academy.library.Main`, walk the menu, demonstrate Set/Map/List behavior, fill a performance table, and submit evidence graders can recompile. Exercise sources remain under `examples/module-05-exercises/`.
-
-**Depends on Lab 0 + Lab 2–3 habits + Exercises 1–7.** If VS Code / IntelliJ, `java`, or `javac` fail, fix [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). If exercises are incomplete, open [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
-
-**CRM connection (future only).** From Lab 8 onward the **Customer Management Platform** will use collections heavily—`List` of customers, `Map` of id→customer lookups, uniqueness rules, and sorted reporting. This lab does **not** build CRM APIs, Spring beans, or a database. Treat the library as a **skill bridge**.
-
-**Reference solution:** [`solution/Lab5-LibraryManagement/`](solution/Lab5-LibraryManagement/) — package `com.academy.library`.
-
----
-
 ## Learning Objectives
 
-After completing this lab, you will be able to **consolidate and extend** what you practiced in Exercises 1–7:
+After completing this lab, you will be able to:
 
 * Apply exercise List/Set/Map skills to a packaged library domain (`ArrayList`, `HashSet`, `HashMap`, `TreeSet`, `TreeMap`)
 * Choose an appropriate collection implementation for ordered storage, uniqueness, and key lookups (builds on Exercise 6)
 * Store custom objects in collections and print them with clear `toString()` output
 * Prevent duplicate book/member IDs with `HashSet` before inserts (builds on Exercise 2)
 * Model borrow state with a `HashMap` plus optional `ArrayList<BorrowRecord>` history (builds on Exercises 3 & 7)
-* Search collections by ID, title, author, and category
-* Sort with `Comparable` (`Book` by title) and `Comparator` (`BookComparator` by price)
-* Iterate using traditional `for`, enhanced `for`, `Iterator`, and `forEach` (builds on Exercise 5)
-* Compare `ArrayList` vs `LinkedList` performance with `System.nanoTime()` (extends Exercise 1 habits)
-* Build a menu-driven console app and compile/run with `javac -d out` / `java -cp out` on the laptop (Lab 2–3 pattern)
-
----
 
 ## Business Scenario
 
@@ -147,7 +124,6 @@ Instead of a database, **all data lives in Java Collections** for the life of th
 ---
 
 ## Architecture Context
-
 ### Which collection for which domain concept
 
 ```mermaid
@@ -170,18 +146,6 @@ flowchart TB
 
 ### Beginner decision guide (List / Set / Map)
 
-```mermaid
-flowchart TD
-    Q1{"Need ordered items<br/>and duplicates OK?"}
-    Q1 -->|Yes| L["List -> ArrayList"]
-    Q1 -->|No| Q2{"Need unique values<br/>only - no duplicates?"}
-    Q2 -->|Yes| Q3{"Need sorted order?"}
-    Q3 -->|No| S["Set -> HashSet"]
-    Q3 -->|Yes| TS["Set -> TreeSet"]
-    Q2 -->|"No - need key/value"| Q4{"Need sorted keys?"}
-    Q4 -->|No| M["Map -> HashMap"]
-    Q4 -->|Yes| TM["Map -> TreeMap"]
-```
 
 **Beginner meaning in one sentence each:**
 
@@ -192,18 +156,6 @@ flowchart TD
 | **Map** | Lookup table — give a key, get a value | `HashMap` bookId → memberId |
 
 ### Lab flow
-
-```mermaid
-flowchart TD
-    A["Create package folders<br/>com.academy.library"] --> B["Book + Member"]
-    B --> C["LibraryService fields<br/>List Set Map"]
-    C --> D["Add / register / display"]
-    D --> E["Search + borrow / return"]
-    E --> F["Sort + ReportService"]
-    F --> G["Main menu"]
-    G --> H["javac -d out<br/>java -cp out"]
-    H --> I["Sample session + submit"]
-```
 
 ## Prerequisites
 
@@ -742,46 +694,6 @@ javac -d out src/com/academy/library/*.java
 # PowerShell: Remove-Item -Recurse -Force out
 ```
 
-### Collection types used (solution map)
-
-| Collection | Purpose | Why |
-| ---------- | ------- | --- |
-| `ArrayList<Book>` | Store books | Fast random access / iteration |
-| `ArrayList<Member>` | Store members | Same for roster |
-| `HashSet<String>` | Track IDs | O(1) duplicate detection |
-| `HashMap<String, String>` | Borrow records | Fast book → member lookup |
-| `TreeSet<String>` | Categories | Sorted unique names |
-| `TreeMap<String, Integer>` | Category counts | Sorted reporting |
-| `ArrayList<BorrowRecord>` | Borrow history | Ordered audit trail |
-
-### Class responsibilities
-
-| Class | Responsibility |
-| ----- | ---------------- |
-| `Main` | Menu loop + switch |
-| `LibraryService` | Collections + operations |
-| `ReportService` | Summary (+ optional export) |
-| `Book` / `Member` / `BorrowRecord` | Domain models |
-| `BookComparator` | Price ordering |
-
-Maven is **not** required for this lab.
-
----
-
-## Manual Verification
-
-1. Menu shows options; invalid `abc` → invalid message → menu returns.
-2. Add book `101` / member `1` / borrow / reports match the sample themes above.
-3. Duplicate book ID `101` → `Book already exists.`
-4. Display books shows at least one iteration style with your title.
-5. Sort by title changes order when multiple books exist.
-6. Category insights list `Programming` after the sample add.
-7. Exit `11` → `Thank You` and process ends.
-
-Record pass/fail in `../../notes/lab5-answers.md` (from project; or `~/java-bootcamp/notes/lab5-answers.md`).
-
----
-
 ## Failure Experiments
 
 1. Skip `HashSet` and insert two books with ID `101` → confusing catalog; restore Set guard.  
@@ -803,13 +715,6 @@ Record pass/fail in `../../notes/lab5-answers.md` (from project; or `~/java-boot
 | Reports Available wrong | Map / flag out of sync | Update both on borrow/return |
 | IntelliJ cannot run Main | SDK / sources root | SDK 21; mark `src` as Sources |
 | VS Code terminal wrong folder | cwd | `cd` to `Lab5-LibraryManagement` |
-| `*.java` glob fails in PowerShell | PowerShell does not expand like bash | Name each `.java` file (see [LAB-5-WINDOWS.md](LAB-5-WINDOWS.md)) |
-| `ConcurrentModificationException` | `remove` inside enhanced-for | Use `Iterator.remove` (Exercise 5) |
-| TreeMap/TreeSet “wrong” order | Expecting insertion order | Sorted by natural / Comparator order |
-| HashMap print order differs run-to-run | Unspecified iteration order | Do not assert print order in tests |
-| Wrong project open | Marked `module-05-exercises` as Sources | Lab uses `Lab5-LibraryManagement/src` only |
-
----
 
 ## Security and Cleanup
 
@@ -826,16 +731,7 @@ rm -f library-report.txt
 
 Keep sources and evidence. Leave [`solution/`](solution/) intact.
 
-See [Expected Deliverables](#expected-deliverables) below for the submit list.
-
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Optional bonuses (history, top borrowed, export, multi-sort). Do not submit a verbatim instructor [`solution/`](solution/).
+Use **What you'll submit** at the top for the submit list.
 
 ---
 
@@ -867,27 +763,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Align with [`solution/Lab5-LibraryManagement/`](solution/Lab5-LibraryManagement/): borrow history + top 5 (15–16); partial title search; multi-field sort; export `library-report.txt`; menu 14 ArrayList vs LinkedList timings.
-
----
-
-## Instructor Notes
-
-**Classroom order (do not reverse):**
-
-1. Module 5 PPT (Day 4 morning)
-2. Students complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) in `module-05-exercises/` (Day 4, 1:15–2:45)
-3. OS how-to → this guide (Day 4, 3:00–4:30 core checkpoint)
-4. Kahoot Module 5 + debrief; Module 6 bridge as time allows
-
-**Before students open this guide:** confirm all seven exercise Pass rows (ArrayList CRUD, Set uniqueness, HashMap CRUD, TreeMap sorted keys, safe iteration, collection choice doc, library warm-up invariant). Lab 5 pacing assumes those skills already exist.
-
-Solution under [`solution/Lab5-LibraryManagement/`](solution/Lab5-LibraryManagement/) (`com.academy.library`). Score collection choice + sample Add/Register/Borrow/Reports. Dual IDE on laptop. Pitfalls: skipping exercises; missing `-d out`; `nextInt` newline bugs; List-only duplicate checks; Map/availability flag drift; mixing `module-05-exercises/` flat files with packaged lab commands.
-
-**Timing:** Day 4 core ~90 min (Steps 1–12 + compile + sample session); search/sort/reports/performance as extended completion.
-
----
-
-*End of Lab 5 — Java Collections Framework / Library Management System.*

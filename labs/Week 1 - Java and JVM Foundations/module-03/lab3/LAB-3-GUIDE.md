@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 3 — Object-Oriented Programming in Java  
-**Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-03/lab3/`  
-**Difficulty:** Intermediate (beginner-friendly)  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 90–240 minutes (Day 3 core checkpoint ~90 min; finish remaining menu paths as extended work)  
 **IDE conventions:** See [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
 
@@ -60,7 +58,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable | Where / what |
 | - | ----------- | ------------ |
@@ -106,60 +104,15 @@ If any of Exercises 1–8 is still **Fail**, finish that exercise first — then
 
 This Module 3 lab is the **graded consolidation** after Module 3 slides and [Exercises 1–8](../exercises/EXERCISES-INDEX.md). You already practiced domain modeling, encapsulation, inheritance, abstraction, interfaces, SOLID spot-checks, and mini UML in `module-03-exercises/`. Here you assemble those skills into a **menu-driven Banking Management System** with packages and a clear model / service / `Main` split.
 
-**Purpose.** Lab 2 taught syntax and console I/O. Module 3 exercises taught OOP design pieces. Lab 3 locks the **full design**: type hierarchies, invariants, polymorphic arrays, and a thin `Main` over a coordinating service—with submit-ready evidence.
-
-**What you build.** Classes under package `com.academy.bank`:
-
-| Type | Role |
-| ---- | ---- |
-| `Customer` | Customer profile; implements `Printable` |
-| `Account` | Abstract base: deposit / withdraw / shared fields |
-| `SavingsAccount` | Interest + display; implements `Printable` |
-| `CurrentAccount` | Withdrawal fee + display; implements `Printable` |
-| `Printable` | Interface: `printDetails()` |
-| `Transaction` | Records deposit / withdraw activity |
-| `BankService` | Arrays + create / deposit / withdraw / display |
-| `Main` | Menu loop entry point |
-
-**What success looks like.** Under `java-bootcamp/examples/Lab3-BankingSystem/` you compile with `javac -d out`, run with `java -cp out`, create a customer and savings account, deposit/withdraw, and display accounts polymorphically. Exercise sources remain under `examples/module-03-exercises/`.
-
-**Project path (mirror the solution layout):**
-
-```text
-java-bootcamp/examples/Lab3-BankingSystem/
-  src/com/academy/bank/
-    Customer.java
-    Account.java
-    SavingsAccount.java
-    CurrentAccount.java
-    Printable.java
-    Transaction.java
-    BankService.java
-    Main.java
-  out/                    ← created by javac -d out
-```
-
-**Depends on Lab 0 + Lab 2 habits + Exercises 1–8.** If packages/`Scanner`/menu feel unfamiliar, revisit Lab 2. If OOP exercises are incomplete, open [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
-
-A reference implementation lives in [`solution/Lab3-BankingSystem/`](solution/Lab3-BankingSystem/). Use it only if stuck after a real attempt—**do not copy blindly**; you must explain inheritance and polymorphism.
-
----
-
 ## Learning Objectives
 
-After this lab you will be able to **consolidate and extend** what you practiced in Exercises 1–8:
+After completing this lab, you will be able to:
 
 * Assemble a packaged banking domain from exercise entity notes (Customer, accounts, transactions)
 * Apply encapsulation with `private` fields and protected balance updates on abstract `Account`
 * Model inheritance: abstract `Account` → `SavingsAccount` / `CurrentAccount` (builds on Exercises 3–4)
 * Define and implement `Printable` on Customer and account types (builds on Exercise 5)
 * Use polymorphism: `Account[]` holding both account types; runtime `displayAccount()`
-* Keep `Main` thin and put operations in `BankService` (builds on Exercise 6 SRP)
-* Complete a SOLID design checklist for your console design (builds on Exercises 6–7)
-* Grow your Exercise 8 UML to include `BankService` / `Main`
-* Compile/run packages with `javac -d out` / `java -cp out` in VS Code or IntelliJ
-
----
 
 ## Business Scenario
 
@@ -182,7 +135,6 @@ Demo data matching the reference sample:
 ---
 
 ## Architecture Context
-
 ### Layered console design
 
 ```mermaid
@@ -198,90 +150,15 @@ flowchart TB
 
 ### Inheritance and interface
 
-```mermaid
-classDiagram
-    class Printable {
-        <<interface>>
-        +printDetails()
-    }
-    class Customer {
-        +display()
-        +printDetails()
-    }
-    class Account {
-        <<abstract>>
-        +deposit(amount)
-        +withdraw(amount)
-        +displayAccount()*
-    }
-    class SavingsAccount {
-        +calculateInterest()
-        +displayAccount()
-    }
-    class CurrentAccount {
-        +calculateCharges()
-        +displayAccount()
-    }
-    class BankService
-    class Main
-    class Transaction
-
-    Printable <|.. Customer
-    Printable <|.. SavingsAccount
-    Printable <|.. CurrentAccount
-    Account <|-- SavingsAccount
-    Account <|-- CurrentAccount
-    Account --> Customer : owns
-    BankService --> Customer
-    BankService --> Account
-    BankService --> Transaction
-    Main --> BankService
-```
 
 ### Menu flow
 
-```mermaid
-flowchart TD
-    Start([Start Main]) --> Menu[Show bank menu]
-    Menu --> C{Choice}
-    C -->|1| CreateCust[Create Customer]
-    C -->|2| CreateSav[Create Savings Account]
-    C -->|3| CreateCur[Create Current Account]
-    C -->|4| Dep[Deposit]
-    C -->|5| Wd[Withdraw]
-    C -->|6| DispAcc[Display Accounts]
-    C -->|7| DispCust[Display Customers]
-    C -->|8| Exit([Thank You / exit])
-    CreateCust --> Menu
-    CreateSav --> Menu
-    CreateCur --> Menu
-    Dep --> Menu
-    Wd --> Menu
-    DispAcc --> Menu
-    DispCust --> Menu
-```
 
 ### Lab build order
 
-```mermaid
-flowchart TD
-    A["Package folders"] --> B["Customer + Printable"]
-    B --> C["Abstract Account"]
-    C --> D["Savings + Current"]
-    D --> E["Transaction"]
-    E --> F["BankService"]
-    F --> G["Main menu"]
-    G --> H["javac / java verify"]
-```
 
 ### Compile → run
 
-```mermaid
-flowchart LR
-    S[".java under src/"] --> J["javac -d out"]
-    J --> C[".class under out/"]
-    C --> R["java -cp out<br/>com.academy.bank.Main"]
-```
 
 ---
 
@@ -339,37 +216,6 @@ ls examples/module-03-exercises
 **Expected result:** JDK 21.x; current directory under `java-bootcamp`; exercise sources present.
 
 **If it fails:** Stop and fix Lab 0 (`PATH` / `JAVA_HOME`). If exercises are missing, return to [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
-
----
-
-## Suggested Project Files
-
-| File | Responsibility |
-| ---- | -------------- |
-| `Printable.java` | Interface with `void printDetails()` |
-| `Customer.java` | Id, name, email, phone; `display()` / `printDetails()` |
-| `Account.java` | Abstract; number, balance, customer; deposit/withdraw |
-| `SavingsAccount.java` | Interest rate; override display / interest |
-| `CurrentAccount.java` | Transaction fee; override charges / display |
-| `Transaction.java` | Id, amount, type, date, account number |
-| `BankService.java` | Arrays, counters, all menu operations |
-| `Main.java` | Menu + switch; delegates to `BankService` |
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate essay write-up required.**
-
-Revisit your exercise notes, then discuss:
-
-* Why `Account` is abstract (no generic “account” without a product type) *(Exercises 3–4)*
-* Why `setBalance` is often `protected` (subtypes / base ops update balance safely) *(Exercise 2 → lab extension)*
-* Why `Account[]` can hold Savings and Current (polymorphism) *(Exercise 3)*
-* Why `instanceof` should be rare; prefer overrides *(Exercise 3)*
-* Why `double` is OK for teaching but production money often uses `BigDecimal`
-* SOLID at console scale: thin `Main`, service owns orchestration, models stay focused *(Exercises 6–7)*
-* How Exercise 8’s six-type UML grows when `BankService` / `Main` appear *(Exercise 8 → Step 14)*
 
 ---
 
@@ -927,16 +773,6 @@ javac -d out src/com/academy/bank/*.java
 java -cp out com.academy.bank.Main
 ```
 
-### Class / method map
-
-| Type | Key members |
-| ---- | ----------- |
-| `Account` | `deposit`, `withdraw`, abstract `displayAccount`, `calculateCharges` / `calculateInterest` |
-| `SavingsAccount` | interest rate, interest calc, display |
-| `CurrentAccount` | fee, charges, display |
-| `BankService` | create*, deposit, withdraw, display*, lookups |
-| `Main` | menu + switch |
-
 ### Polymorphism reminder
 
 ```java
@@ -971,37 +807,12 @@ a.displayAccount();                  // runs SavingsAccount version at runtime
 | NPE in loops | Loop to array capacity | NullPointerException | Use `accountCount` / `customerCount` |
 | Missing symbols | Compiled one file alone | `cannot find symbol` | Compile all eight sources together |
 
-### Frequent mistakes
-
-1. Skipping Exercises 1–8 and treating Lab 3 as first OOP contact.
-2. Mutating balance from outside Account methods.
-3. Mixing `module-03-exercises/` with `Lab3-BankingSystem/`.
-4. Dumping all logic into `Main` instead of `BankService`.
-
-### Suggested first-aid order
-
-1. Confirm cwd is `Lab3-BankingSystem`.
-2. `javac -version` → 21.x.
-3. List `src/com/academy/bank/*.java` (expect eight types).
-4. Recompile all named sources into `out/`.
-5. Run with full main class on `-cp out`.
-
----
-
 ## Cleanup
 
 Delete `out/` anytime; keep sources under `examples/Lab3-BankingSystem/` for evidence.
 
 **Windows:** `Remove-Item -Recurse -Force out`  
 **macOS / Linux:** `rm -rf out`
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -1028,36 +839,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. **Transfer money** between accounts
-2. **Transaction history** listing
-3. **Sort accounts by balance**
-
----
-
-
-## Instructor Notes
-
-**Classroom order (Learn → Practice → Review — do not reverse):**
-
-1. Module 3 PPT in **segments** per [`../PACING.md`](../PACING.md) (Day 2 intro + Day 3 completion)
-2. At each checkpoint, students complete matching [Exercises](../exercises/EXERCISES-INDEX.md) (use `exercises/starter/` where provided)
-3. Only after Exercises 1–8 Pass: OS how-to, then this guide — `Lab3-BankingSystem` with packages
-
-**Before students open this guide:** confirm exercise checkpoint Pass (encapsulation, inheritance/polymorphism, abstract, interface, SOLID notes, mini UML). Lab 3 pacing assumes those skills already exist.
-
-* **Reference solution:** [`solution/Lab3-BankingSystem/`](solution/Lab3-BankingSystem/) includes core banking plus bonus menu options 9–13. Coach helpers (`findCustomer`, `findAccount`, `readPositiveAmount`, `recordTransaction`) before releasing full sources. **Students must not copy the solution blindly**—require a walkthrough of inheritance and polymorphism.
-* **API fidelity to solution (when aligning demos):** `protected Account(...)`, `protected setBalance`, `boolean withdraw`, `Printable.printDetails()`, `BankService(Scanner)`, auto account numbers from `10001`.
-* **Common pitfalls:** Skipping exercises; Scanner newline bugs; instantiating abstract `Account`; looping to array capacity; blind casts; logic dumped into `Main`; pasting Exercise 3 fee pattern instead of `calculateCharges()`; mixing `module-03-exercises/` with `Lab3-BankingSystem/`.
-* **Classpath moment:** Show failing run without `-cp out` so Step 15 sticks.
-* **IDEs:** Prefer IntelliJ Community (primary); VS Code is optional (Sources Root + SDK 21 + Run `Main`). Score UML + polymorphic display screenshots.
-* **Money note:** Mention `BigDecimal` for production; keep `double` for teaching speed unless students finish early.
-* **Timing (Day 3):** Core checkpoint ~90 min after Exercises 3–8; full menu + UML + evidence as extended completion. Bonuses are stretch.
-
----
-
-*End of Lab 3 — Object-Oriented Design: Banking Management System. Keep `Lab3-BankingSystem` for portfolio evidence.*

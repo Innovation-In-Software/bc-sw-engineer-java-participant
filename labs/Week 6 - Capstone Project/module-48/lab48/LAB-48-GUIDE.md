@@ -1,8 +1,6 @@
 # Lab 48: Capstone Planning and Architecture — Northstar CRM Executable Plan
 
 **Module:** 48 — Capstone Planning and Architecture  
-**Lab folder:** `labs/Week 6 - Capstone Project/module-48/lab48/`  
-**Difficulty:** Advanced Capstone  
 **Duration:** ~45 minutes (timed path / session block with starter) · Full path: 5–6 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -64,7 +62,7 @@ Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -85,18 +83,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 48 lab turns the Enterprise CRM brief into an **executable architecture and delivery plan**. You produce C4 context and container views, measurable NFRs, ADRs, a prioritized vertical backlog, ownership milestones, and a scored risk register—so Labs 49–52 implement against decisions rather than improvisation.
 
-**Purpose.** Leadership will not fund disconnected demos. Reviewers need traceability from business outcomes → architecture choices → stories → tests → deployment → operations. Ambiguous “fast/scalable” language, missing trust boundaries, and undocumented risks are acceptance-blockers for the Week 6 defense.
-
-**What you build (this lab).** Clarify product outcome and exclusions; draw C4 context and containers (React, Spring Boot, PostgreSQL, Kafka, IdP, observability); define domain/contracts; write measurable NFRs; create a prioritized vertical backlog (include interaction recording for Amina/Ravi fixtures); author ADRs for database, messaging, auth, deployment, and consistency; assign owners and score risks with triggers/mitigations/contingencies.
-
-**What success looks like.** Under your capstone docs tree, a peer can open `context.md`, `container.md`, `nfrs.md`, `adrs/`, `backlog.md`, and `risk-register.md` and reproduce the intended Week 6 plan without Slack archaeology. Fixture IDs `CUS-1001` / `CUS-1002` / `lab-request-001` appear in demo stories and acceptance criteria.
-
-**Depends on Labs 0–47 (stack familiarity).** Need working mental model of CRM service boundaries, Kafka events, React journeys, PostgreSQL persistence, JWT, and pipeline/deploy patterns from prior modules. Finish earlier evidence packs if architecture vocabulary is missing.
-
-**CRM connection.** Planning must name the same enterprise fixtures used in implementation labs: Amina (`CUS-1001`), Ravi (`CUS-1002`), correlation `lab-request-001`. Lab 49 implements the interaction vertical slice; Lab 50 closes UI→PostgreSQL; Lab 51 hardens security/CI/CD/deploy; Lab 52 defends with your evidence index.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -106,13 +92,6 @@ After completing this lab, you will be able to:
 * Design container views placing React, Spring Boot, PostgreSQL, Kafka, identity, and observability
 * Define domain ownership and versioned HTTP/event contracts
 * Write measurable NFRs with method, environment, and thresholds
-* Slice vertical backlog items with acceptance criteria
-* Record architecture decisions as ADRs with alternatives and consequences
-* Plan ownership, critical path, and a scored risk register with mitigations
-* Keep synthetic CRM fixtures consistent across planning and later labs
-* Prove another engineer can reproduce the plan from docs alone
-
----
 
 ## Business Scenario
 
@@ -137,7 +116,6 @@ Use these fixtures consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -150,33 +128,6 @@ flowchart TB
   Backlog --> ADR["ADRs"]
   ADR --> Plan["Delivery plan + risk register"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Clarify product outcome<br/>users / journeys / exclusions"] --> B["C4 context<br/>trust boundaries"]
-    B --> C["C4 containers<br/>React / Spring / PostgreSQL / Kafka"]
-    C --> D["Domain + contracts<br/>HTTP + events"]
-    D --> E["Measurable NFRs<br/>latency / a11y / recovery"]
-    E --> F["Prioritized backlog<br/>vertical stories"]
-    F --> G["ADRs<br/>DB / messaging / auth / deploy"]
-    G --> H["Owners + risk register<br/>triggers / mitigations"]
-    H --> I["Peer review + evidence pack<br/>ready for Lab 49"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 48 (NOW) | Labs 49–52 (LATER) |
-| ------ | ------------ | ------------------- |
-| Output | Docs, diagrams, ADRs, backlog, risks | Code, tests, UI, pipeline, defense |
-| Fixtures | Named in stories and acceptance | Implemented and demonstrated |
-| Decisions | Proposed / Accepted ADRs | Enforced by tests, scanners, deploy |
-| Proof | Peer can reproduce the plan | Peer can reproduce green verify + demo |
-
-**Lab focus:** Executable architecture, measurable quality targets, vertical backlog, ADRs, delivery and risk planning—no production coding required yet.
-
----
 
 ## Prerequisites
 
@@ -193,53 +144,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/customer-management-platform/
-├── backend/                          # Lab 49+
-├── frontend/                         # Lab 50+
-├── k8s/                              # Lab 51+
-├── infra/                            # Lab 51+
-├── docs/
-│   ├── architecture/
-│   │   ├── context.md
-│   │   ├── container.md
-│   │   └── sequence-interaction.md   # optional bonus
-│   ├── nfrs.md
-│   ├── backlog.md
-│   ├── risk-register.md
-│   ├── team-plan.md
-│   ├── adrs/
-│   │   ├── ADR-001-postgresql.md
-│   │   ├── ADR-002-kafka.md
-│   │   ├── ADR-003-consistency.md
-│   │   ├── ADR-004-jwt-auth.md
-│   │   └── ADR-005-deploy.md
-│   └── notes/screenshots/
-├── reports/                          # sanitized evidence
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, `node_modules/`, IDE metadata, tokens, and passwords. Capstone may keep planning-only work under `lab48-crm/docs/` if the instructor requires a separate folder—link it from the platform README.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow planned for Week 6 (agent search → profile → record interaction for `CUS-1001`)
-2. Trust boundary: browser vs API vs IdP vs Kafka consumers
-3. Success/failure contracts that backlog acceptance criteria must encode
-4. Stable fixtures (`CUS-1001`, `CUS-1002`, `lab-request-001`) vs random demo data
-5. Idempotency expectations for interaction create / event consume (preview Lab 49)
-6. Why NFRs need thresholds, measurement method, and environment—not adjectives
-
----
-
 
 ## Worked example (read before you code)
 
@@ -481,7 +385,7 @@ Minimum risks to include: Kafka lag, PostgreSQL migration failure, JWT misconfig
 
 **Why:** Planning without a hostile review leaves false-confidence boxes for Lab 52.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture peer-review notes under `docs/notes/` or `reports/`. Ensure README points to the six core artifacts. Run a peer walkthrough: peer opens docs alone and restates CAP-12 + one ADR consequence.
+**Do this:** Complete Failure Experiments. Capture peer-review notes under `docs/notes/` or `reports/`. Ensure README points to the six core artifacts. Run a peer walkthrough: peer opens docs alone and restates CAP-12 + one ADR consequence.
 
 Also complete an evidence log:
 
@@ -584,6 +488,8 @@ Fixtures: CUS-1001 (Amina), correlation lab-request-001.
 - Status: Proposed | Accepted | Superseded
 - Date: YYYY-MM-DD
 - Owners: ...
+
+
 ## Context
 ## Decision
 ## Alternatives
@@ -617,21 +523,6 @@ git status --short
 
 ---
 
-## Manual Verification
-
-1. Product outcome names users, journeys, exclusions, and success measures.
-2. Context diagram shows IdP and trust boundaries without container spam.
-3. Container diagram includes React, Spring Boot, PostgreSQL, Kafka, observability.
-4. Contracts name versioned HTTP and event shapes; correlation field present.
-5. Every NFR has threshold + measurement method + environment.
-6. Backlog is vertical; CAP-12 (or equivalent) uses `CUS-1001` / `lab-request-001`.
-7. ≥5 ADRs include alternatives and consequences.
-8. Risk register has scores, triggers, mitigations, owners.
-9. Peer can reproduce plan from docs without verbal coaching.
-10. No secrets, real PII, kubeconfigs, or `.env` files committed.
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
@@ -656,11 +547,6 @@ git status --short
 | Secrets in screenshots | Pasted real tokens | Redact, rotate, replace evidence |
 | Fixture drift | Random demo names | Standardize on CUS-1001/1002 |
 | Inherited build red | Pre-existing platform fail | Record baseline; do not hide |
-| Coding Lab 49 during planning | Wrong sequence | Finish planning packet first |
-| Vague 'fast/scalable' NFRs | Not measurable | Add metric, target, evidence |
-| Bitbucket-only plan | Stack drift | Plan GitHub Actions + k3s; Bitbucket comparison only |
-
----
 
 ## Security and Production Review
 
@@ -685,14 +571,6 @@ git status --short
 Stop any exploratory containers started while sketching. Keep sanitized planning docs; delete generated noise.
 
 **Keep the Lab 48 docs tree**—Labs 49–52 implement and defend against it. Do not delete Accepted ADRs without superseding.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -723,26 +601,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add a sequence diagram for interaction recording (`docs/architecture/sequence-interaction.md`).
-2. Create an NFR-to-test traceability matrix linking CAP stories to future test classes.
-3. Write a dedicated outbox-pattern ADR and compare to after-commit publish.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask the student to point to the trust boundary for JWT validation and the backlog item that Lab 49 must implement for `CUS-1001`. Cross-check NFR thresholds against empty adjectives.
-* **Assess:** Vertical backlog quality, ADR alternatives, scored risks with owners, fixture consistency (`CUS-1001`/`CUS-1002`/`lab-request-001`).
-* **Continuity:** Prefer `examples/customer-management-platform/docs`. Keep fixture IDs stable into Labs 49–52. Do not require code for Lab 48 pass.
-* **Common pitfalls:** UI-only backlog; missing IdP; Kafka without consumer story; ADRs as slogans; risks without scores; copying production diagrams with secrets.
-* **Timing:** 5–6 hours. Diagramming + ADR writing often burns 90 minutes—time-box and require one vertical story early.
-
----
-
-*End of Lab 48 — Capstone Planning and Architecture: Northstar CRM Executable Plan. Keep planning docs for Labs 49–52 and portfolio evidence.*

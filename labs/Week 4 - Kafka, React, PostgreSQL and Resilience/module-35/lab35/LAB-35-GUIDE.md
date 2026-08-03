@@ -1,8 +1,6 @@
 # Lab 35: Integrating React with the Spring CRM API
 
 **Module:** 35 — Integrating React with the Spring CRM API  
-**Lab folder:** `labs/Week 4 - Kafka, React, PostgreSQL and Resilience/module-35/lab35/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -83,18 +81,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 35 lab connects the React CRM SPA to the **Spring Boot** customer API: typed `fetch`, normalized `ApiError`, loading/empty/error UX, `AbortController` cancellation, duplicate-submit prevention, backend field-error mapping, restricted CORS, and failure-class tests. In-memory Lab 34 state becomes a cache of server records.
 
-**Purpose.** Leadership freezes a browser↔API contract before frontend security (Lab 36): every request goes through one HTTP helper, every non-2xx becomes `ApiError`, obsolete loads abort cleanly, and CORS allows only the Vite origin. SOAP/XML bridges—if present—stay behind Spring; the browser speaks JSON only.
-
-**What you build (this lab).** Copy to `lab35-crm`; document REST (or SOAP-bridge) shapes with curl; add `VITE_CRM_API_URL`; implement `ApiError` + `http.request` + `customersApi`; load with abortable effects; render request states; map HTTP 400 fields; prevent double POST; restrict Spring CORS; mock 200/400/500/network/abort tests; probe evil Origin.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab35-crm/` React lists Amina/Ravi from Spring, create/update round-trip, CORS denies hostile origins, tests cover response classes, and two consecutive `npm test` / Spring builds stay green.
-
-**Depends on Labs 33–34 + Spring API.** Need controlled UI state and a running `/api/customers` (or equivalent). Finish those first if UI CRUD or API is missing.
-
-**CRM connection.** Fixtures `CUS-1001` / `CUS-1002` must match API seeds where possible; send header `X-Correlation-Id: lab-request-001` on mutating calls. Lab 36 adds tokens—keep the fetch boundary injectable for Authorization.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -104,13 +90,6 @@ After completing this lab, you will be able to:
 * Write a typed fetch client and normalized `ApiError`
 * Render loading, success, empty, and error states distinctly
 * Cancel obsolete requests with `AbortController`
-* Submit customer writes without duplicate POSTs
-* Map backend validation errors to labeled form fields
-* Configure restricted development CORS on Spring
-* Test success, validation, server, network, and abort classes
-* Probe disallowed `Origin` headers and record results
-
----
 
 ## Business Scenario
 
@@ -136,7 +115,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -147,32 +125,6 @@ flowchart TB
   UI["UI states: loading / empty / data / error"] -.-> SPA
   Save["saving flag disables double submit"] -.-> SPA
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab34 -> lab35<br/>+ curl contract"] --> B["VITE_CRM_API_URL<br/>+ .env.example"]
-    B --> C["ApiError + http.request<br/>+ customersApi"]
-    C --> D["Abortable load effect<br/>+ request states UI"]
-    D --> E["Create/update<br/>+ 400 field map"]
-    E --> F["saving flag<br/>no duplicate POST"]
-    F --> G["Spring CORS allowlist"]
-    G --> H["Mock response classes<br/>+ evil Origin probe"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 35 (NOW) | Lab 36 (LATER) |
-| ------ | ------------ | -------------- |
-| Auth | None / open lab API | Bearer in-memory + guards |
-| HTTP | Typed fetch + ApiError | Same + Authorization origin check |
-| CORS | Vite origin allowlist | + CSRF/CSP when cookie mode |
-| Data | Server of record | Same; session expiry UX |
-
-**Lab focus:** typed fetch integration, request states, cancellation, REST or SOAP bridge boundaries, CORS, and error UX.
-
----
 
 ## Prerequisites
 
@@ -191,49 +143,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab35-crm/
-├── crm-ui/                              (Vite SPA)
-│   ├── src/
-│   │   ├── api/
-│   │   │   ├── ApiError.ts
-│   │   │   ├── http.ts
-│   │   │   ├── customers.ts
-│   │   │   └── customers.test.ts
-│   │   ├── hooks/
-│   │   │   └── useCustomers.ts
-│   │   ├── components/ ...
-│   │   ├── App.tsx / pages/CustomerPage.tsx
-│   │   └── ...
-│   ├── .env.example
-│   ├── docs/api-integration-notes.md
-│   ├── notes/screenshots/
-│   ├── package.json
-│   └── README.md
-└── (optional sibling) spring-api notes or link to existing labXX-crm backend
-    └── WebConfig / CorsConfig.java changes documented
-```
-
-If your Spring project lives elsewhere under `examples/`, document the path in README. Ignore `node_modules/`, `dist/`, `target/`, real `.env`.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main request flow (UI event → customersApi → Spring → UI state)
-2. Trust boundary: browser never trusted; server validates again
-3. Success/failure contracts (2xx body vs ApiError kinds)
-4. Stable identity: server `customerId` after create
-5. Retry/idempotency: disable duplicate POST; safe GET retry
-6. Local CORS shortcut vs production allowlist/CDN origins
-
----
-
 
 ## Worked example (read before you code)
 
@@ -523,7 +432,7 @@ npm run build
 curl -i -H "Origin: https://evil.example" http://localhost:8080/api/customers
 ```
 
-Confirm no `Access-Control-Allow-Origin: https://evil.example`. Complete [Failure Experiments](#failure-experiments). Screenshot Network for load/create/400. Run SPA tests twice. Document runbook including Spring start + Vite.
+Confirm no `Access-Control-Allow-Origin: https://evil.example`. Complete Failure Experiments. Screenshot Network for load/create/400. Run SPA tests twice. Document runbook including Spring start + Vite.
 
 **Expected result:** Evil origin denied; ≥3 experiments; consecutive green tests; notes complete.
 
@@ -578,43 +487,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ## Reference Commands, Configuration, and Code
 
-### `http.ts`
-
-```typescript
-export async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const response = await fetch(`${API_URL}${path}`, {
-    ...init,
-    headers: {
-      "Content-Type": "application/json",
-      "X-Correlation-Id": "lab-request-001",
-      ...init.headers,
-    },
-  });
-  if (!response.ok) throw await ApiError.from(response);
-  if (response.status === 204) return undefined as T;
-  return response.json() as Promise<T>;
-}
-```
-
-### `customers.ts`
-
-```typescript
-export const customersApi = {
-  list: (signal?: AbortSignal) =>
-    request<Customer[]>("/customers", { signal }),
-  create: (draft: CustomerDraft) =>
-    request<Customer>("/customers", {
-      method: "POST",
-      body: JSON.stringify(draft),
-    }),
-  update: (id: string, draft: CustomerDraft) =>
-    request<Customer>(`/customers/${encodeURIComponent(id)}`, {
-      method: "PUT",
-      body: JSON.stringify(draft),
-    }),
-};
-```
-
 ### CORS Java
 
 ```java
@@ -640,34 +512,6 @@ curl -i -H "Origin: https://evil.example" http://localhost:8080/api/customers
 git status
 ```
 
-### Class map
-
-| File | Role |
-| ---- | ---- |
-| `ApiError.ts` | Normalized failure type |
-| `http.ts` | fetch boundary |
-| `customers.ts` | Typed CRM operations |
-| `useCustomers.ts` | Abortable load hook |
-| `WebConfig.java` | CORS allowlist |
-| `customers.test.ts` | Response-class mocks |
-
----
-
-## Manual Verification
-
-1. curl list/create matches SPA types.
-2. SPA lists Amina/Ravi from API (or seeded equivalents).
-3. Loading/empty/error states are distinct.
-4. Unmount/abort does not crash or warn.
-5. Create returns server id; double-click → one POST.
-6. Forced 400 maps to Email (or relevant) field.
-7. CORS allows `:5173`; evil Origin denied.
-8. Correlation header present on writes.
-9. Response-class tests + build green twice.
-10. You can explain why secrets never go in `VITE_*`.
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
@@ -692,9 +536,6 @@ git status
 | Duplicate customers | No saving flag | Disable submit while pending |
 | Wrong `/api/api` | Base URL + path both include api | Normalize join |
 | JWT login urge | Wrong module | Keep http injectable — Lab 36 adds tokens |
-| Toast on every abort | AbortError treated as failure | Ignore aborts in UX |
-
----
 
 ## Security and Production Review
 
@@ -718,14 +559,6 @@ git status
 Do not commit `node_modules/`, `dist/`, or secret `.env`.
 
 **Keep `lab35-crm`**—Lab 36 adds threat model, in-memory tokens, route guards, XSS/CSRF/CSP controls.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -756,26 +589,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Send unique `X-Correlation-Id` per request (UUID) while documenting `lab-request-001` in notes.
-2. Add ETag / `If-Match` thought experiment for concurrent edits.
-3. Centralize error → toast mapping without losing field errors.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Open Network: show correlation header, one POST on double-click, abort on unmount. Curl evil Origin and ask what header must be absent.
-* **Assess:** ApiError normalization, abort cleanup, field 400 mapping, CORS allowlist, mock tests for failure classes.
-* **Continuity:** Prefer `examples/lab35-crm/crm-ui`. Keep fixture IDs. Lab 36 should wrap `http.request`, not fork it.
-* **Common pitfalls:** Secrets in `VITE_*`; `*` CORS; ignoring abort as error; optimistic double-append; mismatched DTO names.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. CORS + abort often burn 45 minutes—encourage curl contract evidence before UI polish.
-
----
-
-*End of Lab 35 — Integrating React with the Spring CRM API. Keep `lab35-crm` for Lab 36 and portfolio evidence.*

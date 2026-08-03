@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 12 — Java Coding Standards and Best Practices  
-**Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-12/lab12/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -68,7 +66,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -89,18 +87,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 12 lab improves a **deliberately poor** CRM `CustomerService` using Northstar coding standards: smell detection, renaming, method extraction, and SOLID-inspired cleanup. Optional GitHub Copilot suggestions are welcome **only** with written human review—the same discipline Labs 10–11 introduced.
 
-**Purpose.** Readable services are a prerequisite for Lab 13 SOAP contracts and later Spring/JPA work. Messy code hides identity bugs (`==` on strings), silent `null` returns, and “magic” update paths that support cannot explain. Lab 12 forces a measurable before → after improvement with evidence.
-
-**What you build (this lab).** Scaffold `lab12-crm` with a messy baseline (`doStuff`), freeze `CustomerService.before.java.txt`, catalog ≥8 smells, add characterization tests, refactor to a clean API (`createCustomer` / `getCustomer` / `updateStatus`), fix equality/exceptions/correlation logging, optionally review one Copilot suggestion, and ship a before/after evidence pack.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab12-crm/` you run green tests for `CUS-1001` / `CUS-1002`, unknown/duplicate IDs throw clearly, no `doStuff` remains, and docs map each smell to a fix.
-
-**Depends on Lab 0 + Maven habits.** Prefer copying from Lab 11 (entities + test deps already present). If packages/Maven fail, fix earlier labs / [SETUP](../../../SETUP-INSTRUCTIONS.md) first.
-
-**CRM connection.** Same sample customers and correlation ID `lab-request-001`. Persistence stays **in-memory**; React, Kafka, and PostgreSQL remain future. No Spring required to compile.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -110,10 +96,6 @@ After completing this lab, you will be able to:
 * Apply coding standards consistent with Lab 8’s `CODING-STANDARDS.md`
 * Improve readability without changing documented business behavior (create / get / update status / reject blanks & duplicates)
 * Use optional Copilot assists with mandatory human review notes
-* Capture before/after evidence (diff, line counts, narrative, test output)
-* Explain which SOLID ideas you applied and which you deferred
-
----
 
 ## Business Scenario
 
@@ -136,7 +118,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW vs LATER
 
 **NOW:** Plain Java Maven CRM service with in-memory storage. Refactor inside the service (and small helpers). No Spring MVC, no JPA, no Kafka.
@@ -158,18 +139,6 @@ flowchart TB
   end
 ```
 
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Scaffold lab12-crm<br/>+ messy baseline"] --> B["Freeze<br/>CustomerService.before"]
-    B --> C["Catalog smells<br/>docs/smells.md"]
-    C --> D["Characterization<br/>tests"]
-    D --> E["Rename + extract<br/>typed API"]
-    E --> F["Fix equals / exceptions<br/>+ correlation"]
-    F --> G["Optional Copilot<br/>review notes"]
-    G --> H["before-after evidence<br/>+ standards checklist"]
-```
 
 ### Architecture NOW vs LATER (table)
 
@@ -200,53 +169,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab12-crm/
-├── src/
-│   ├── main/java/com/northstar/crm/
-│   │   ├── Main.java
-│   │   ├── entity/
-│   │   │   ├── Customer.java
-│   │   │   └── CustomerStatus.java
-│   │   ├── service/
-│   │   │   ├── CustomerService.java              (start messy → end clean)
-│   │   │   └── CustomerService.before.java.txt   (frozen snapshot — not compiled)
-│   │   ├── support/
-│   │   │   └── CorrelationContext.java           (optional)
-│   │   └── exception/                            (optional: CustomerNotFoundException)
-│   └── test/java/com/northstar/crm/service/
-│       └── CustomerServiceTest.java
-├── docs/
-│   ├── smells.md
-│   ├── before-after.md
-│   ├── CODING-STANDARDS-check.md
-│   └── ai-review-notes.md                        (if Copilot used)
-├── notes/screenshots/
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, and local env files. The `.before.java.txt` suffix keeps the snapshot out of `javac` compilation.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main data flow after refactor (create / get / update status)
-2. Trust boundary and where validation lives after cleanup
-3. Success/failure contract (duplicate ID, unknown ID, blank name)
-4. Stable identity (`CUS-1001`) vs mutable fields (status, email)
-5. Retry/idempotency implications for `create` vs `get`
-6. Local in-memory shortcut vs production persistence
-
----
-
 
 ## Worked example (read before you code)
 
@@ -614,7 +536,7 @@ mvn -B verify
 
 **Why:** Prove validation and duplicate/unknown paths intentionally.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture screenshots/logs under `notes/screenshots/lab-12/`. Finalize README run instructions.
+**Do this:** Complete Failure Experiments. Capture screenshots/logs under `notes/screenshots/lab-12/`. Finalize README run instructions.
 
 **Expected result:** ≥3 experiments documented; evidence pack complete; `git status` clean of secrets/`target/`.
 
@@ -701,33 +623,6 @@ duplicate CUS-1001 -> IllegalStateException
 unknown CUS-9999 -> IllegalArgumentException (+ correlationId)
 ```
 
-### Class map
-
-| Artifact | Role |
-| -------- | ---- |
-| `CustomerService.before.java.txt` | Frozen messy baseline |
-| `CustomerService.java` | Refactored implementation |
-| `docs/smells.md` | Smell catalog |
-| `docs/before-after.md` | Evidence narrative |
-| `CustomerServiceTest` | Behavior lock |
-
----
-
-## Manual Verification
-
-1. Primary CRM workflow succeeds for `CUS-1001` / `CUS-1002`.
-2. Invalid input rejected with exceptions (not null).
-3. Duplicate ID fails clearly (`IllegalStateException`).
-4. Unknown ID fails clearly with correlation context when configured.
-5. No `doStuff` / raw `List data` / `"UPDATE"` magic remain.
-6. Before snapshot + before-after + smells docs exist.
-7. Restart clears in-memory data (understood and documented).
-8. Second JVM does not share memory (documented).
-9. No secrets in commits; `target/` ignored.
-10. `mvn -B verify` passes.
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
@@ -752,18 +647,6 @@ unknown CUS-9999 -> IllegalArgumentException (+ correlationId)
 | IDE red after renames | Stale index | Reimport Maven / Reload Window |
 | Verify fails | Missing Surefire/JUnit | Copy Lab 11 test plugin/deps |
 | Working in `module-12-exercises` for the lab | Wrong project | Lab lives in `examples/lab12-crm` |
-| Empty `docs/smells.md` | Skipped catalog | ≥8 smells required (Ex 3 habit) |
-| SOAP / controller advice sneaking in | Over-eager future labs | Keep Module 12 plain Java cleanup only |
-
-### Cannot connect
-
-No remote app services in this lab. Maven download issues → [SETUP](../../../SETUP-INSTRUCTIONS.md).
-
-### Flaky tests
-
-Fresh `CustomerService` per test; no static shared lists.
-
----
 
 ## Security and Production Review
 
@@ -787,14 +670,6 @@ git status
 Keep `CustomerService.before.java.txt` and docs evidence. Remove temporary credentials from the environment where practical.
 
 **Keep `lab12-crm`**—Lab 13 designs SOAP contracts against a readable domain.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -825,27 +700,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add structured correlation IDs on every public method without sensitive fields.
-2. Add a Checkstyle/Spotless config sketch matching Lab 8 standards.
-3. Extract a `CustomerRepository` interface with an in-memory impl.
-
----
-
-
-## Instructor Notes
-
-* **Assess reasoning:** Equivalent clean structures are OK when behavior and clarity improve and evidence is complete.
-* **Anti-pattern:** Rewrite-from-scratch with no before snapshot → deduct documentation. Ask students to walk `CUS-1001` create/get and name one deferred SOLID step (e.g. full repository DIP).
-* **Copilot:** Use without review notes should not earn full documentation credit.
-* **Continuity:** Keep packages `com.northstar.crm.*` and sample IDs for Lab 13. Prefer `examples/lab12-crm` path.
-* **Common pitfalls:** Leaving `==` bugs; returning null; keeping `"UPDATE"`; compiling the before file; accepting silent upserts from AI.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 12 — Coding Standards and Refactoring: Northstar CRM Cleanup. Keep `lab12-crm` and the before/after pack for Lab 13 and portfolio evidence.*

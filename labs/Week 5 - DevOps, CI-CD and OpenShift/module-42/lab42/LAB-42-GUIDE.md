@@ -1,8 +1,6 @@
 # Lab 42: Kubernetes (k3s) Deployment — Deployment, Service, ConfigMap, Ingress, Probes, Rollout
 
 **Module:** 42 — Kubernetes (k3s) Deployment  
-**Lab folder:** `labs/Week 5 - DevOps, CI-CD and OpenShift/module-42/lab42/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -82,20 +80,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 42 lab deploys the CRM **declaratively**: Deployment, Service, ConfigMap, Secret references, resource requests/limits, distinct **startup / readiness / liveness** probes, **Traefik Ingress**, rollout observation, smoke test with CRM fixtures, and a practiced **rollback**.
 
-**Purpose.** Platform engineers require consistent labels, least privilege, traffic-safe probes, bounded resources, TLS at the edge, and rollback evidence. Leadership freezes:
-
-**No “it works on my laptop Docker” as the production definition of done without manifests, probes, and a verified rollback.**
-
-**What you build (this lab).** Create `lab42-crm` manifests under `k8s/`; apply ConfigMap + Secret reference pattern; Deployment with non-root, resources, and three probes; ClusterIP Service; Ingress with TLS redirect; deploy and diagnose; smoke health + customer API with `CUS-1001` / `lab-request-001`; rehearse bad revision and `rollout undo`; write `docs/deployment-runbook.md`.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab42-crm/` (or platform `k8s/`) a peer can `kubectl apply -f k8s/`, wait for rollout, hit the Ingress, and roll back—using digest-pinned images and no secrets in Git.
-
-**Depends on Lab 41.** Need a published or cluster-pullable image (`crm-api` version/digest). Finish container health paths first.
-
-**CRM connection.** Fixtures `CUS-1001` (Amina) / `CUS-1002` (Ravi) / correlation `lab-request-001`. ConfigMaps hold non-secret URLs; Secrets hold DB passwords—created out-of-band in the training project.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -105,13 +89,6 @@ After completing this lab, you will be able to:
 * Set realistic CPU/memory requests and limits
 * Implement distinct startup, readiness, and liveness probes
 * Expose the CRM safely through Service + Ingress
-* Verify rollout status, endpoints, events, and logs
-* Rehearse a bad revision and execute rollback to a known-good RS
-* Keep kubeconfig and Secret data out of source control
-* Document operator steps in `deployment-runbook.md`
-* Align labels/selectors so Service endpoints actually populate
-
----
 
 ## Business Scenario
 
@@ -136,7 +113,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -147,33 +123,6 @@ flowchart TB
   Pod --> Sec["non-root + resource limits"]
   Cfg["ConfigMap / Secret"] --> Pod
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Cluster context<br/>+ image pull check"] --> B["ConfigMap + Secret<br/>references"]
-    B --> C["Deployment<br/>labels/resources"]
-    C --> D["Probes<br/>startup/ready/live"]
-    D --> E["Service + Route<br/>or Ingress"]
-    E --> F["Apply + rollout<br/>status/events"]
-    F --> G["Smoke CUS-1001<br/>+ correlation"]
-    G --> H["Bad revision drill<br/>rollout undo"]
-    H --> I["deployment-runbook.md<br/>+ evidence"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 42 (NOW) | Later / production |
-| ------ | ------------ | ------------------ |
-| Delivery | Manual `kubectl apply` | CI/CD GitOps |
-| Config | ConfigMap + Secret objects | External secret operators |
-| Scale | Small replica count | HPA / PDB (bonus) |
-| Network | Ingress | Mesh / NetworkPolicy (bonus) |
-
-**Lab focus:** manifests, probes, Service/Route, rollout and rollback—not Terraform or full mesh.
-
----
 
 ## Prerequisites
 
@@ -192,45 +141,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-Prefer examples. Platform integration cohorts typically use `customer-management-platform/k8s/`—same filenames and runbook expectations.
-
-```text
-~/java-bootcamp/examples/lab42-crm/
-├── k8s/
-│   ├── configmap.yaml
-│   ├── secret.example.yaml          # placeholders ONLY — or omit real Secret
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── ingress.yaml
-├── docs/
-│   └── deployment-runbook.md
-├── notes/screenshots/
-├── .gitignore
-└── README.md
-```
-
-Also keep Lab 41 Dockerfile nearby or reference image coordinates from `lab41-crm`.
-
-Ignore kubeconfig copies, `*-secret.yaml` with data, `.env`, and TLS private keys.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow: Route → Service → Pod → app → PostgreSQL
-2. Trust boundary: cluster auth vs app authz; who can `exec`
-3. Success/failure contracts: Ready vs Live vs Started
-4. Stable image digest vs moving tag
-5. Idempotency of `kubectl apply`; when apply is not enough (Secret rotation)
-6. Why readiness gates traffic but liveness kills processes
-
----
-
 
 ## Worked example (read before you code)
 
@@ -538,7 +448,7 @@ kubectl rollout undo deployment/crm-api
 kubectl rollout status deployment/crm-api --timeout=180s
 ```
 
-Verify previous revision Ready and smoke still works. Write `docs/deployment-runbook.md` with apply order, probe meanings, rollback commands, residual risks. Complete [Failure Experiments](#failure-experiments).
+Verify previous revision Ready and smoke still works. Write `docs/deployment-runbook.md` with apply order, probe meanings, rollback commands, residual risks. Complete Failure Experiments.
 
 **Expected result:** History shows revisions; undo restores known-good; runbook peer-complete; Git clean of secrets.
 
@@ -653,44 +563,7 @@ spec:
             limits: { cpu: 500m, memory: 512Mi }
           startupProbe:
             httpGet: { path: /actuator/health/liveness, port: http }
-            failureThreshold: 30
-            periodSeconds: 5
-          readinessProbe:
-            httpGet: { path: /actuator/health/readiness, port: http }
-            periodSeconds: 10
-          livenessProbe:
-            httpGet: { path: /actuator/health/liveness, port: http }
-            periodSeconds: 20
-```
-
-### Service and Ingress
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata: { name: crm-api }
-spec:
-  selector: { app: crm-api }
-  ports: [{ name: http, port: 80, targetPort: http }]
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: crm-api
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-spec:
-  rules:
-    - host: crm-api.example.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: crm-api
-                port:
-                  name: http
+// ... see Steps for full sample
 ```
 
 ### Deploy and inspect
@@ -708,42 +581,6 @@ kubectl rollout undo deployment/crm-api
 HOST=$(kubectl get route crm-api -o jsonpath='{.spec.host}')
 curl -fsS "https://${HOST}/actuator/health/readiness"
 ```
-
-### Probe excerpt
-
-```yaml
-startupProbe:   { httpGet: { path: /actuator/health/liveness,  port: http }, failureThreshold: 30, periodSeconds: 5 }
-readinessProbe: { httpGet: { path: /actuator/health/readiness, port: http }, periodSeconds: 10 }
-livenessProbe:  { httpGet: { path: /actuator/health/liveness,  port: http }, periodSeconds: 20 }
-```
-
-### Artifact map
-
-| Artifact | Role |
-| -------- | ---- |
-| `configmap.yaml` | Non-secret env |
-| Secret (cluster) | DB password |
-| `deployment.yaml` | Workload + probes |
-| `service.yaml` | Cluster IP exposure |
-| `route.yaml` / Ingress | Edge access |
-| `deployment-runbook.md` | Operator evidence |
-
----
-
-## Manual Verification
-
-1. Context/namespace is the approved training project.
-2. ConfigMap applied; Secret not stored in Git.
-3. Deployment Ready with matching Service Endpoints.
-4. Probes are distinct; startup allows slow boot.
-5. Ingress returns readiness success.
-6. CRM smoke works for `CUS-1001` with `lab-request-001`.
-7. Non-root / resource limits present in live pod spec.
-8. Rollout history exists; undo restores known-good.
-9. Events/logs interpreted for at least one failure drill.
-10. Runbook enables peer apply → smoke → rollback.
-
----
 
 ## Failure Experiments
 
@@ -769,8 +606,6 @@ livenessProbe:  { httpGet: { path: /actuator/health/liveness,  port: http }, per
 | Ingress host DNS fail | Platform lag / wrong domain | Wait; confirm `kubectl get ingress` |
 | Forbidden PSA | Soft privilege request | Non-root UID per PSA docs |
 | Undo no-op | Single revision only | Make a second revision first |
-
----
 
 ## Security and Production Review
 
@@ -801,14 +636,6 @@ Remove local kubeconfig copies and plaintext password files from the jump host.
 
 ---
 
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
-
----
-
 ## Evaluation Rubric (100 Marks)
 
 | Criteria | Marks |
@@ -836,26 +663,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add a PodDisruptionBudget and explain its limits.
-2. Add a NetworkPolicy for API ingress and DB egress.
-3. Use Kustomize overlays for dev vs test images.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Show Endpoints non-empty; curl Route readiness; walk `rollout undo` with history before/after.
-* **Assess:** Label correctness, probe separation, Secret hygiene, rollback evidence, runbook clarity.
-* **Continuity:** Prefer `examples/lab42-crm` or platform `k8s/`. Image must match Lab 41 digest/tag discipline.
-* **Common pitfalls:** Selector typos; liveness=readiness; secrets in Git; wrong context; deleting shared DB Secrets; `latest` image.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Cluster access and first ImagePull often burn 45–60 minutes—validate pull in Step 1 early.
-
----
-
-*End of Lab 42 — Kubernetes (k3s) Deployment. Keep manifests and runbook for portfolio evidence of the CRM container-to-cluster path.*

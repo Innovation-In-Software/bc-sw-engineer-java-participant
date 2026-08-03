@@ -1,8 +1,6 @@
 # Lab 31: Spring Boot Integration with Kafka — Northstar CRM Listeners
 
 **Module:** 31 — Spring Boot Integration with Kafka  
-**Lab folder:** `labs/Week 4 - Kafka, React, PostgreSQL and Resilience/module-31/lab31/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -83,18 +81,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 31 lab integrates **Spring Kafka** into the **Customer Management Platform**: `KafkaTemplate` publish after customer operations, typed `@KafkaListener` consumers, JSON configuration, **idempotent** processing, retry classification, and **dead-letter (DLT)** recovery — verified with Embedded Kafka or Testcontainers.
 
-**Purpose.** Lab 30 proved the broker. Leadership now requires the CRM service itself to emit and consume versioned customer events without losing notifications on poison messages or double-processing replays.
-
-**What you build (this lab).** Copy to `lab31-crm`; add `spring-kafka` (+ test); externalize bootstrap/topic names and trusted packages; define immutable `CustomerEvent`; publish with `KafkaTemplate` keyed by `customerId`; write `@KafkaListener` validating key↔payload; add `ProcessedEventStore` idempotency; configure `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` with non-retryable contract errors; write an integration test that awaits a handled event.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab31-crm/` creating/updating Amina publishes to `crm.customer-events.v1`, the listener handles once, replays are ignored, poison messages land on DLT after bounded retries, and `mvn test` is green twice.
-
-**Depends on Lab 30 (+ CRM API).** Need broker/topics and preferred REST create path. Lab 32 adds Resilience4j for outbound HTTP — keep Kafka concerns separate.
-
-**CRM connection.** Fixtures `CUS-1001` Amina / `CUS-1002` Ravi / correlation `lab-request-001`. Topic `crm.customer-events.v1`; DLT naming per Spring defaults or Lab 30 `.dlq` — document which you use.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -104,12 +90,6 @@ After completing this lab, you will be able to:
 * Publish typed customer events with `KafkaTemplate`
 * Write `@KafkaListener` handlers for CRM events
 * Validate message keys, event versions, and required metadata
-* Configure bounded retries and dead-letter publishing
-* Write idempotent event-processing logic
-* Test Kafka flows with Embedded Kafka or Testcontainers
-* Explain at-least-once delivery vs exactly-once *business* effects via idempotency
-
----
 
 ## Business Scenario
 
@@ -135,7 +115,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -148,32 +127,6 @@ flowchart TB
   Store --> Notif["Notification handler"]
   L --> Err["DefaultErrorHandler -> DLT"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy CRM + Lab30 topics<br/>+ spring-kafka"] --> B["application.yml<br/>JSON + topics"]
-    B --> C["CustomerEvent record<br/>version gate"]
-    C --> D["KafkaTemplate publish<br/>after success"]
-    D --> E["@KafkaListener<br/>key validation"]
-    E --> F["ProcessedEventStore<br/>idempotency"]
-    F --> G["Retry + DLT<br/>error handler"]
-    G --> H["EmbeddedKafka / Testcontainers<br/>await assertion"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 31 (NOW) | Production / Lab 32 |
-| ------ | ------------ | ------------------- |
-| Broker | Lab 30 Docker or EmbeddedKafka tests | Managed cluster |
-| Idempotency | In-memory set OK for lab | DB unique key / outbox |
-| DLT | Spring DLT recoverer | Ops playbooks + alerting |
-| Outbound HTTP | Not this lab | Resilience4j (Lab 32) |
-
-**Lab focus:** Spring Kafka templates, typed listeners, JSON configuration, retry classification, and dead-letter recovery.
-
----
 
 ## Prerequisites
 
@@ -191,60 +144,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab31-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/
-│   │   │   ├── CrmApplication.java
-│   │   │   ├── config/
-│   │   │   │   └── KafkaErrorConfig.java
-│   │   │   ├── event/
-│   │   │   │   ├── CustomerEvent.java
-│   │   │   │   ├── CustomerData.java
-│   │   │   │   ├── CustomerEventPublisher.java
-│   │   │   │   ├── CustomerEventListener.java
-│   │   │   │   ├── ProcessedEventStore.java
-│   │   │   │   └── NotificationHandler.java
-│   │   │   ├── exception/
-│   │   │   │   ├── InvalidCustomerEventException.java
-│   │   │   │   └── UnsupportedEventVersionException.java
-│   │   │   └── ... (controller/service from prior labs)
-│   │   └── resources/
-│   │       └── application.yml
-│   └── test/
-│       └── java/com/northstar/crm/event/
-│           └── CustomerEventIntegrationTest.java
-├── docs/
-│   └── spring-kafka-notes.md
-├── notes/screenshots/
-├── compose.yaml          (optional copy from Lab 30)
-├── .env.example
-├── .gitignore
-├── pom.xml
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow: HTTP success → publish → listen → notify
-2. Trust boundary: key/payload validation before side effects
-3. Success/failure: publish callback vs DLT recoverer
-4. Stable identity: `eventId` for idempotency; `customerId` for keying
-5. Retry vs non-retryable exceptions
-6. Local EmbeddedKafka vs Docker broker vs production cluster
-
----
-
 
 ## Worked example (read before you code)
 
@@ -532,7 +431,7 @@ State explicitly whether dead letters use Spring’s `.DLT` suffix or Lab 30’s
 
 **Why:** DLT without headers and listeners without idempotency are incomplete.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture publish logs, duplicate ignore, and DLT evidence under `notes/screenshots/lab-31/`. Run the integration suite twice.
+**Do this:** Complete Failure Experiments. Capture publish logs, duplicate ignore, and DLT evidence under `notes/screenshots/lab-31/`. Run the integration suite twice.
 
 **Expected result:** ≥3 experiments; green tests twice; documented DLT topic naming; no PII dumps in Git.
 
@@ -614,29 +513,6 @@ spring:
 crm.kafka.customer-topic: crm.customer-events.v1
 ```
 
-### Publisher / listener (pattern)
-
-```java
-template.send("crm.customer-events.v1", event.customerId(), event);
-
-@KafkaListener(topics = "${crm.kafka.customer-topic}")
-void receive(CustomerEvent event,
- @Header(KafkaHeaders.RECEIVED_KEY) String key) {
-  if (!key.equals(event.customerId())) throw new InvalidCustomerEventException("key mismatch");
-  handler.handleOnce(event.eventId(), event);
-}
-```
-
-### Error handler (pattern)
-
-```java
-var recoverer = new DeadLetterPublishingRecoverer(template);
-var handler = new DefaultErrorHandler(recoverer, new FixedBackOff(1000, 2));
-handler.addNotRetryableExceptions(InvalidCustomerEventException.class,
-    UnsupportedEventVersionException.class);
-return handler;
-```
-
 ### Commands
 
 ```bash
@@ -646,34 +522,6 @@ mvn -q test
 mvn -q spring-boot:run
 git status
 ```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `CustomerEvent` | Versioned envelope |
-| `CustomerEventPublisher` | `KafkaTemplate` send |
-| `CustomerEventListener` | Typed consume + key check |
-| `ProcessedEventStore` | Idempotency |
-| `KafkaErrorConfig` | Retry + DLT |
-| `CustomerEventIntegrationTest` | Awaited E2E proof |
-
----
-
-## Manual Verification
-
-1. Create/update Amina publishes an event with key `CUS-1001`.
-2. Listener logs received event with `lab-request-001`.
-3. Replay/duplicate `eventId` does not double-notify.
-4. Key mismatch or bad version goes to DLT without infinite retry.
-5. Transient retries show bounded backoff then recover or DLT.
-6. Integration test awaits specific `eventId` (no bare sleep).
-7. Two consecutive `mvn test` runs match.
-8. Trusted packages restricted to `com.northstar.crm.event`.
-9. Ravi (`CUS-1002`) publish/consume path works.
-10. No secrets or full PII payloads in Git/logs.
-
----
 
 ## Failure Experiments
 
@@ -700,8 +548,6 @@ git status
 | Test flaky on CI | Sleep-based waits | Awaitility on handled flag / store size |
 | Resilience4j urge | Wrong module | Kafka only here — Lab 32 for HTTP resilience |
 
----
-
 ## Security and Production Review
 
 Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
@@ -724,14 +570,6 @@ git status
 ```
 
 **Keep `lab31-crm`**—Lab 32 adds Resilience4j for outbound account-profile calls alongside this event backbone.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -762,26 +600,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Durable idempotency table with unique `event_id`.
-2. Testcontainers Kafka instead of EmbeddedKafka.
-3. Align DLT explicitly to Lab 30 `.dlq` topic name.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask for a duplicate `eventId` demonstration showing a single notification, then a poison message’s DLT headers (original topic/partition/offset).
-* **Assess:** Key validation, idempotency before side effects, non-retryable classification, awaited tests (no sleeps), topic-name continuity with Lab 30.
-* **Continuity:** Prefer `examples/lab31-crm`. Keep fixtures and `crm.customer-events.v1`.
-* **Common pitfalls:** Trusted packages; publish-before-persist; mark-after-notify; EmbeddedKafka port clashes; confusing `.DLT` vs `.dlq` without docs.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Error-handler wiring and deterministic tests often burn 60 minutes.
-
----
-
-*End of Lab 31 — Spring Boot Integration with Kafka: Northstar CRM Listeners. Keep `lab31-crm` for Lab 32 and portfolio evidence.*

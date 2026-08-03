@@ -1,8 +1,6 @@
 # Lab 30: Event-Driven Architecture with Kafka — Northstar CRM Topics
 
 **Module:** 30 — Event-Driven Architecture with Kafka  
-**Lab folder:** `labs/Week 4 - Kafka, React, PostgreSQL and Resilience/module-30/lab30/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -83,18 +81,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 30 lab introduces **event-driven architecture** for the **Customer Management Platform** using a local **Kafka KRaft** broker: versioned topics, partitions, keyed CRM events, producers, consumers, offsets, consumer groups, lag, and a DLQ topic for Lab 31 recovery practice.
 
-**Purpose.** After HTTP APIs (Labs 25–29), Northstar needs asynchronous fan-out for notifications and audit without coupling every consumer to the Customer service JVM. Leadership freezes topic names and keying strategy before Spring Kafka wiring (Lab 31).
-
-**What you build (this lab).** Create `lab30-crm` with Compose KRaft broker; create `crm.customer-events.v1` (3 partitions) and `crm.customer-events.v1.dlq`; write versioned `CustomerCreated` / `CustomerStatusChanged` envelopes for Amina/Ravi; publish and consume keyed records via CLI; write a Java `KafkaProducer` with acks=all / idempotence; compare competing vs independent consumer groups; inspect lag and restart recovery; document replay/idempotency notes.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab30-crm/` the broker is up, both topics exist, keyed events for `CUS-1001`/`CUS-1002` round-trip with visible partitions/offsets, group `crm-notifications` shares partitions while `crm-audit` gets all records, and lag returns to 0 after catch-up.
-
-**Depends on Lab 0 + Docker.** Familiarity with CRM fixtures from Labs 25–29 helps. Lab 31 will wrap these topics with Spring Kafka.
-
-**CRM connection.** Fixtures `CUS-1001` Amina / `CUS-1002` Ravi / correlation `lab-request-001` (also `lab30-001` in sample JSON is fine if documented). Event keys **must** be customer IDs.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -104,22 +90,12 @@ After completing this lab, you will be able to:
 * Design versioned `CustomerCreated` and `CustomerStatusChanged` event envelopes
 * Publish customer-keyed records from Kafka CLI and Java
 * Consume records while displaying keys, partitions, offsets, and timestamps
-* Configure consumer groups and compare competing versus independent consumers
-* Inspect committed offsets and consumer lag
-* Explain ordering-per-key, at-least-once delivery, idempotency, and replay
-* Document why Lab 31 needs the same topic names and keying rules
-
----
 
 ## Business Scenario
 
 The CRM stores customer identity, contact details, lifecycle status, and financial accounts. Its React client talks to Spring Boot; Spring persists and (soon) emits Kafka events for notification and audit consumers. This lab builds the **broker and topic foundation** without requiring PostgreSQL or Resilience4j yet.
 
 Leadership freezes:
-
-**Customer lifecycle facts are published as versioned events on `crm.customer-events.v1`, keyed by `customerId`, with a sibling DLQ topic for poison messages.**
-
-Use these examples consistently:
 
 | ID | Name | Notes |
 | -- | ---- | ----- |
@@ -132,10 +108,7 @@ Use these examples consistently:
 
 **Security note for evidence.** Use fictional PII only. Do not put secrets in event payloads. Prefer PLAINTEXT only on the lab Docker network — document that production needs TLS/SASL.
 
----
-
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -145,32 +118,6 @@ flowchart TB
   Topic --> A["consumer group<br/>crm-audit"]
   DLQ["crm.customer-events.v1.dlq"] -.-> Topic
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Shared Kafka bootstrap<br/>(or optional Compose)"] --> B["Create topics<br/>events.v1 + DLQ"]
-    B --> C["Versioned JSON<br/>envelopes"]
-    C --> D["CLI keyed produce<br/>CUS-1001 / CUS-1002"]
-    D --> E["CLI consume<br/>key/partition/offset"]
-    E --> F["Java KafkaProducer<br/>acks=all + idempotence"]
-    F --> G["Groups:<br/>notifications vs audit"]
-    G --> H["Lag describe<br/>+ restart catch-up"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 30 (NOW) | Lab 31 / production |
-| ------ | ------------ | ------------------- |
-| Client | CLI + plain Java producer | Spring `KafkaTemplate` / `@KafkaListener` |
-| Broker | Single-node KRaft Docker | Cluster, RF≥3, TLS/SASL |
-| Failure | DLQ topic exists | Retry classification + DLT recoverer |
-| Schema | Hand-written JSON samples | Schema Registry / stricter contracts |
-
-**Lab focus:** Kafka topics, partitions, keyed CRM events, producers, consumers, offsets, and consumer groups.
-
----
 
 ## Prerequisites
 
@@ -188,45 +135,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab30-crm/
-├── src/
-│   └── main/java/com/northstar/crm/event/
-│       └── CustomerEventProducer.java
-├── events/
-│   ├── customer-created-amina.json
-│   ├── customer-created-ravi.json
-│   └── customer-status-changed-amina.json
-├── docs/
-│   └── kafka-notes.md
-├── notes/screenshots/
-├── compose.yaml
-├── .env.example
-├── .gitignore
-├── pom.xml
-└── README.md
-```
-
-Ignore `target/`, Docker volume junk if policy forbids it, IDE metadata, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main produce → broker → consume flow for a customer event
-2. Trust boundary: who may publish; why payloads stay free of secrets
-3. Success/failure contracts: ack, offset commit, DLQ purpose
-4. Stable identity: key=`customerId` for ordering of one customer’s events
-5. Retry and idempotency under at-least-once delivery
-6. Local KRaft PLAINTEXT vs production cluster security/RF
-
----
-
 
 ## Worked example (read before you code)
 
@@ -505,7 +413,7 @@ List the exact `docker compose up -d`, topic create, produce, consume, and lag d
 
 **Why:** Wrong keys, wrong topics, and silent auto-create habits become production incidents.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Save `docker compose ps`, topic describe, consume metadata, and lag describe excerpts under `notes/screenshots/lab-30/`. Confirm sample JSON stays fictional PII only.
+**Do this:** Complete Failure Experiments. Save `docker compose ps`, topic describe, consume metadata, and lag describe excerpts under `notes/screenshots/lab-30/`. Confirm sample JSON stays fictional PII only.
 
 **Expected result:** ≥3 experiments; runbook listed; broker still healthy or cleaned up intentionally; evidence under `notes/screenshots/lab-30/`.
 
@@ -587,21 +495,6 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 ```
 
-### Event envelope (excerpt)
-
-```json
-{
-  "eventId": "99f4b885-2f62-44f7-a252-b32d673864b2",
-  "eventType": "CustomerCreated",
-  "eventVersion": 1,
-  "occurredAt": "2026-07-13T05:30:00Z",
-  "customerId": "CUS-1001",
-  "correlationId": "lab-request-001",
-  "source": "customer-service",
-  "data": { "fullName": "Amina Khan", "status": "ACTIVE" }
-}
-```
-
 ### Commands
 
 ```bash
@@ -619,17 +512,6 @@ docker compose ps
 git status
 ```
 
-### Class / artifact map
-
-| Artifact | Role |
-| -------- | ---- |
-| `compose.yaml` | KRaft broker |
-| `events/*.json` | Versioned CRM envelopes |
-| `CustomerEventProducer` | Java keyed publish |
-| `crm.customer-events.v1` | Primary topic |
-| `crm.customer-events.v1.dlq` | DLQ for Lab 31 |
-| `kafka-notes.md` | Ordering, lag, prod checklist |
-
 ### Sample produce lines (copy/paste)
 
 ```text
@@ -641,21 +523,6 @@ Prefer full envelopes from `events/` when demonstrating version fields to Lab 31
 
 Keep `eventVersion: 1` until a formal v2 consumer migration is designed.
 Do not invent parallel topic names for the same stream.
-
----
-
-## Manual Verification
-
-1. `docker compose ps` shows Kafka healthy/up.
-2. Topics `crm.customer-events.v1` and `.dlq` exist with expected partitions.
-3. Console produce/consume shows keys `CUS-1001` / `CUS-1002`.
-4. Amina events share a partition with increasing offsets.
-5. Java producer prints partition and offset.
-6. Competing group splits partitions; audit group is independent.
-7. Lag rises when consumer stopped, falls after restart.
-8. Correlation IDs present in sample envelopes.
-9. Runbook commands listed for a peer.
-10. No secrets committed; PLAINTEXT called out as lab-only.
 
 ---
 
@@ -684,8 +551,6 @@ Do not invent parallel topic names for the same stream.
 | Partition always 0 | Null/empty key | Set record key to CUS-1001 / CUS-1002 |
 | Spring Kafka urge | Wrong module | Use raw producer / CLI only — Lab 31 |
 
----
-
 ## Security and Production Review
 
 Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
@@ -708,14 +573,6 @@ git status
 ```
 
 **Keep `lab30-crm` (and preferably the same topic names)**—Lab 31 Spring Kafka expects `crm.customer-events.v1` and DLQ/DLT conventions.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -746,26 +603,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Structured correlation + customer IDs without sensitive fields.
-2. Small script that creates topics idempotently.
-3. Document readiness vs liveness for the broker in Compose.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask the student to show two `CUS-1001` events on the same partition with increasing offsets, then explain what would happen if the key were missing.
-* **Assess:** Explicit topic create; keying; competing vs independent groups; lag literacy; DLQ topic present for Lab 31.
-* **Continuity:** Prefer `examples/lab30-crm`. Freeze topic names. Fixtures Amina/Ravi/`lab-request-001`.
-* **Common pitfalls:** Advertised listeners; forgetting key parse; using one group for “audit”; RF>1 on single node; auto-create left enabled mentally for prod.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Docker pull + first consume metadata often burn 30–45 minutes on restricted networks.
-
----
-
-*End of Lab 30 — Event-Driven Architecture with Kafka: Northstar CRM Topics. Keep `lab30-crm` and topic names for Lab 31.*

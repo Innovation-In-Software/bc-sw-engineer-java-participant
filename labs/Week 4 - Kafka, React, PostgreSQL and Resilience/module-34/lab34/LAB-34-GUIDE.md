@@ -1,8 +1,6 @@
 # Lab 34: React State and Event Management
 
 **Module:** 34 — React State and Event Management  
-**Lab folder:** `labs/Week 4 - Kafka, React, PostgreSQL and Resilience/module-34/lab34/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -83,18 +81,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 34 lab adds **React state** to the CRM dashboard: `useState` for customers and query, controlled forms, derived filtering, immutable create/update, mutually exclusive form modes, `useEffect` for `document.title`, client validation, and interaction tests. Presentation components from Lab 33 stay props-driven; `App` becomes the single source of truth.
 
-**Purpose.** Leadership freezes an in-browser CRUD contract before API wiring (Lab 35): list/search/create/edit must be immutable, modes must not overlap (create vs edit), and derived filter results must not live in duplicate state. Effects are for external sync only—not for maintaining filtered arrays.
-
-**What you build (this lab).** Copy `lab33-crm` → `lab34-crm`; lift customers, query, mode, draft, and errors into `App`; control search; derive `visible`; implement create/update/cancel immutably; validate before save; sync title with `useEffect`; write RTL flow tests for create/edit/cancel/search; document state decisions.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab34-crm/crm-ui/` you can create, edit, cancel, and filter Amina/Ravi without mutating arrays in place; title updates with visible count; `npm run test -- --run` (≥8 tests) and `npm run build` are green twice.
-
-**Depends on Lab 33.** Need typed components, `CustomerList`, `CustomerForm`, fixtures. Finish Lab 33 first if cards/form shells are missing.
-
-**CRM connection.** Seed `CUS-1001` / `CUS-1002`; correlation `lab-request-001` in handlers/logs. Lab 35 replaces in-memory arrays with fetch—keep `Customer` / draft shapes stable.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -104,13 +90,6 @@ After completing this lab, you will be able to:
 * Derive filtered results during render (no duplicate filtered state)
 * Lift selection and form mode into the page with a discriminated union
 * Write immutable create and update handlers
-* Validate fields and display accessible errors before mutation
-* Synchronize `document.title` with `useEffect` (and clean up)
-* Avoid effects that mirror derived state
-* Test create, edit, cancel, and search flows with React Testing Library
-* Document local-state limits before Lab 35’s API integration
-
----
 
 ## Business Scenario
 
@@ -136,7 +115,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -149,32 +127,6 @@ flowchart TB
   Test["Vitest create / edit / cancel / search"] -.-> App
   Note["No fetch yet - Lab 35"] -.-> App
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab33 -> lab34"] --> B["Lift customers<br/>query / mode / draft"]
-    B --> C["Controlled search<br/>+ derived visible"]
-    C --> D["Mode union<br/>closed/create/edit"]
-    D --> E["Controlled form<br/>+ validation"]
-    E --> F["Immutable create<br/>+ update + cancel"]
-    F --> G["useEffect title<br/>no derived-state effect"]
-    G --> H["RTL flows ≥8<br/>+ build green"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 34 (NOW) | Lab 35 (LATER) |
-| ------ | ------------ | -------------- |
-| Storage | `useState` array | Server of record via fetch |
-| IDs | Client UUID / temp | Server-assigned `CUS-*` |
-| Validation | Client-only | Client + HTTP 400 field map |
-| Loading | Instant | loading / error / abort |
-
-**Lab focus:** `useState`, controlled forms, derived filtering, immutable updates, lifted state, effects, and interaction tests.
-
----
 
 ## Prerequisites
 
@@ -192,47 +144,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab34-crm/
-└── crm-ui/
-    ├── src/
-    │   ├── types/customer.ts
-    │   ├── data/seedCustomers.ts
-    │   ├── validation/
-    │   │   └── customerValidation.ts
-    │   ├── components/          (from Lab 33; props unchanged)
-    │   ├── App.tsx              (lifted state + handlers)
-    │   ├── App.test.tsx         (flow tests)
-    │   └── main.tsx
-    ├── docs/
-    │   └── state-notes.md
-    ├── notes/screenshots/
-    ├── package.json
-    ├── vite.config.ts
-    ├── .gitignore
-    └── README.md
-```
-
-Ignore `node_modules/`, `dist/`, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main state flow (events → setState → derived render)
-2. Trust boundary: client validation is UX; server will re-validate (Lab 35)
-3. Success/failure contracts: invalid submit shows field errors; cancel discards draft
-4. Stable identity: `customerId` for edit mode and list keys
-5. Retry / double-submit: disable Save while “saving” flag (soft) before API
-6. Why derived `visible` must not be a second `useState`
-
----
-
 
 ## Worked example (read before you code)
 
@@ -515,7 +426,7 @@ npm run test -- --run
 npm run build
 ```
 
-Complete [Failure Experiments](#failure-experiments). Capture evidence. Run tests twice.
+Complete Failure Experiments. Capture evidence. Run tests twice.
 
 **Expected result:** ≥8 tests passed; build succeeds; consecutive runs identical.
 
@@ -583,30 +494,6 @@ const visible = customers.filter((c) =>
 );
 ```
 
-### Immutable update
-
-```tsx
-setCustomers((previous) =>
-  previous.map((customer) =>
-    customer.customerId === selectedId
-      ? { ...customer, ...validDraft, customerId: customer.customerId }
-      : customer
-  )
-);
-```
-
-### Title effect
-
-```tsx
-useEffect(() => {
-  const original = document.title;
-  document.title = `CRM (${visible.length})`;
-  return () => {
-    document.title = original;
-  };
-}, [visible.length]);
-```
-
 ### Commands
 
 ```bash
@@ -616,87 +503,6 @@ npm run test -- --run
 npm run build
 git status
 ```
-
-### Class map
-
-| File | Role |
-| ---- | ---- |
-| `App.tsx` | Lifted state + handlers |
-| `customerValidation.ts` | Field error map |
-| `CustomerToolbar.tsx` | Controlled search |
-| `CustomerForm.tsx` | Controlled draft UI |
-| `App.test.tsx` | Create/edit/cancel/search flows |
-
-### Mode union excerpt
-
-```tsx
-type Mode =
-  | { kind: "closed" }
-  | { kind: "create" }
-  | { kind: "edit"; id: string };
-
-const [mode, setMode] = useState<Mode>({ kind: "closed" });
-
-function openCreate() {
-  setDraft(emptyDraft);
-  setErrors({});
-  setMode({ kind: "create" });
-}
-
-function openEdit(id: string) {
-  const row = customers.find((c) => c.customerId === id);
-  if (!row) return;
-  const { customerId: _id, ...draftFields } = row;
-  setDraft(draftFields);
-  setErrors({});
-  setMode({ kind: "edit", id });
-}
-```
-
-### Validation sketch
-
-```typescript
-export function validateCustomer(draft: CustomerDraft): Record<string, string> {
-  const errors: Record<string, string> = {};
-  if (!draft.fullName.trim()) errors.fullName = "Full name is required";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(draft.email)) {
-    errors.email = "Enter a valid email";
-  }
-  return errors;
-}
-```
-
-### Interaction test sketch
-
-```tsx
-it("filters to Amina", async () => {
-  const user = userEvent.setup();
-  render(<App />);
-  await user.type(
-    screen.getByRole("searchbox", { name: /search customers/i }),
-    "amina"
-  );
-  expect(screen.getByText("Amina Khan")).toBeInTheDocument();
-  expect(screen.queryByText("Ravi Singh")).not.toBeInTheDocument();
-});
-```
-
----
-
-## Manual Verification
-
-1. Seeds show Amina (`CUS-1001`) and Ravi (`CUS-1002`).
-2. Search `amina` → one card; clear → two cards.
-3. Create valid customer → appears once; mode closes.
-4. Invalid submit → field alerts; list unchanged.
-5. Edit Ravi → only Ravi changes.
-6. Cancel discards draft; saved rows intact.
-7. Title tracks visible count.
-8. No filtered-state effects in `App`.
-9. ≥8 tests green twice; build green.
-10. You can explain why filter is derived during render.
-
----
 
 ## Failure Experiments
 
@@ -723,8 +529,6 @@ it("filters to Amina", async () => {
 | Create+edit both active | Mode not exclusive | Single discriminated mode state |
 | Fetch in App now | Wrong module | In-memory only — Lab 35 |
 
----
-
 ## Security and Production Review
 
 Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
@@ -747,14 +551,6 @@ git status
 Do not commit `node_modules/` or `dist/`.
 
 **Keep `lab34-crm`**—Lab 35 adds typed fetch, AbortController, and CORS against Spring.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -785,26 +581,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add a `saving` boolean that disables Save (practice for Lab 35).
-2. Debounce search input (document why debounce is UX, not correctness).
-3. Prefer `customerId` exact match boost in filter ranking.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask student to show `visible` derivation and prove there is no `setFiltered` effect. Break immutability live and watch a test fail.
-* **Assess:** Mode union, immutable create/update, validation, cancel, ≥8 meaningful flow tests.
-* **Continuity:** Prefer `examples/lab34-crm/crm-ui`. Keep fixture IDs. Lab 35 should keep mode/draft shapes.
-* **Common pitfalls:** Index keys backsliding; push mutations; dual booleans for mode; effect-synchronized filters; testing implementation state instead of UI.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Mode union + flow tests often burn 60 minutes—encourage tests early after create path works.
-
----
-
-*End of Lab 34 — React State and Event Management. Keep `lab34-crm` for Lab 35 and portfolio evidence.*

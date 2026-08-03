@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints · Pass criteria |
 
 **Module:** 2 — Java Syntax and Core Constructs  
-**Lab folder:** `labs/Week 1 - Java and JVM Foundations/module-02/lab2/`  
-**Difficulty:** Beginner  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 90–180 minutes (Day 2 core checkpoint ~90 min; finish remaining menu paths as extended work)  
 **IDE conventions:** See [`../_IDE-CONVENTIONS.md`](../../_IDE-CONVENTIONS.md)
 
@@ -84,49 +82,15 @@ If any of Exercises 1–7 is still **Fail**, finish that exercise first — then
 
 This Module 2 lab is the **graded consolidation** after Module 2 slides and [Exercises 1–7](../exercises/EXERCISES-INDEX.md) (plus 8–9 when done). You already practiced arithmetic, decisions, loops, methods, `Scanner`, parsing, and `printf` in `module-02-exercises/`. Here you assemble those skills into a **menu-driven Student Management console** with packages and a clear model/manager/`Main` split.
 
-**Purpose.** Before Spring Boot or databases, you must organize packages, read console input safely, separate model from manager logic, and produce readable output. Lab 2 locks that muscle memory with submit-ready evidence.
-
-**What you build.** Classes under package `com.academy.student`:
-
-| Class | Role |
-| ----- | ---- |
-| `Student` | Model: id, name, course, marks |
-| `StudentManager` | Array storage + add / display / search / average |
-| `Main` | Menu loop and entry point |
-
-**What success looks like.** Under `java-bootcamp/examples/Lab2-JavaSyntax/` you compile with `javac -d out`, run with `java -cp out`, walk the menu, and see a formatted student table. Your earlier exercise sources remain under `examples/module-02-exercises/`.
-
-**Project path (mirror the solution layout):**
-
-```text
-java-bootcamp/examples/Lab2-JavaSyntax/
-  src/com/academy/student/
-    Student.java
-    StudentManager.java
-    Main.java
-  out/                    ← created by javac -d out
-```
-
-**Depends on Lab 0 + Exercises 1–7.** If the IDE, `java`, or `javac` fail, stop and fix Lab 0. If exercises are incomplete, open [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md).
-
-A reference implementation lives in [`solution/Lab2-JavaSyntax/`](solution/Lab2-JavaSyntax/). Use it only if you are stuck after trying—**do not copy blindly**; graders expect your own names, comments, and understanding.
-
----
-
 ## Learning Objectives
 
-After this lab you will be able to **consolidate and extend** what you practiced in Exercises 1–7:
+After completing this lab, you will be able to:
 
 * Organize a packaged project (`src` / `out`) that matches `package com.academy.student`
 * Apply exercise `Scanner` / parse habits with **one shared** `Scanner` injected into `StudentManager`
 * Store students in a fixed-size array with a `studentCount` (new lab structure)
 * Implement a `while (true)` menu loop with `switch` (builds on Exercises 2–3)
 * Format a student table with `printf` (builds on Exercises 7–9)
-* Compile packages with `javac -d out` and run with `java -cp out com.academy.student.Main`
-* Validate IDs, non-empty strings, and marks range before storing records
-* Explain why `Main` stays thin and manager methods own operations (builds on Exercise 4)
-
----
 
 ## Business Scenario
 
@@ -141,7 +105,6 @@ Demo data you should use later (matches the reference sample):
 ---
 
 ## Architecture Context
-
 ### Layered console design
 
 ```mermaid
@@ -154,41 +117,12 @@ flowchart TB
 
 ### Lab flow
 
-```mermaid
-flowchart TD
-    A["Create package<br/>folders + files"] --> B["Write Student<br/>model"]
-    B --> C["Write StudentManager<br/>array + ops"]
-    C --> D["Write Main<br/>menu loop"]
-    D --> E["javac -d out<br/>compile"]
-    E --> F["java -cp out<br/>com.academy.student.Main"]
-    F --> G["Walk menu<br/>verify table"]
-```
 
 ### Menu flow
 
-```mermaid
-flowchart LR
-    Start([Start Main]) --> Menu[Display menu]
-    Menu --> Choice{Choice}
-    Choice -->|1| Add[Add Student]
-    Choice -->|2| Disp[Display Students]
-    Choice -->|3| Search[Search by ID]
-    Choice -->|4| Avg[Average Marks]
-    Choice -->|5| Exit([Thank You / exit])
-    Add --> Menu
-    Disp --> Menu
-    Search --> Menu
-    Avg --> Menu
-```
 
 ### Compile → run
 
-```mermaid
-flowchart LR
-    S[".java under src/"] --> J["javac -d out"]
-    J --> C[".class under out/"]
-    C --> R["java -cp out<br/>com.academy.student.Main"]
-```
 
 ---
 
@@ -247,33 +181,6 @@ ls examples/module-02-exercises
 **Expected result:** Both tools report 21.x. `pwd` ends under `java-bootcamp`. Exercise sources appear under `module-02-exercises`.
 
 **If it fails:** Re-do Lab 0 for JDK/workspace. If the exercises folder is missing or empty, return to [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md). Do not invent a second JDK folder “just for this lab.”
-
----
-
-## Suggested Project Files
-
-| File | Responsibility |
-| ---- | -------------- |
-| `Student.java` | Fields, constructor, getters/setters, `display()` |
-| `StudentManager.java` | `Student[]`, count, menu print, CRUD-ish ops, validation helpers |
-| `Main.java` | Create `Scanner` + `StudentManager`, loop, `switch` choices 1–5 |
-
-Optional bonus later: menu items 6–10 (top / lowest / pass-fail / sort / stats)—see Bonus Challenges.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate essay write-up required.**
-
-Revisit your exercise notes, then discuss:
-
-* Why package name must match folder path *(lab-only depth — exercises were flat files)*
-* Why one `Scanner` on `System.in` is shared (not recreated every method) *(Exercises 5–6)*
-* Why `nextLine()` + `Integer.parseInt` avoids leftover-newline bugs *(Exercises 5–6)*
-* Why arrays need a separate `studentCount` (do not loop to `students.length` blindly) *(lab-only)*
-* Why `Main` stays thin and `StudentManager` owns operations *(Exercise 4)*
-* How `printf` column widths from Exercises 7–9 transfer to the student table *(Exercises 7–9)*
 
 ---
 
@@ -886,22 +793,7 @@ java -cp out com.academy.student.Main
 
 ### Method map (suggested)
 
-| Class | Methods |
-| ----- | ------- |
-| `Student` | constructor, getters/setters, `display()` |
-| `StudentManager` | `displayMenu`, `addStudent`, `displayStudents`, `searchStudent`, `calculateAverage`, helpers |
-| `Main` | `main` + switch |
-
-### `printf` cheat sheet
-
-| Pattern | Meaning |
-| ------- | ------- |
-| `%-8d` | Left-aligned int, width 8 |
-| `%-20s` | Left-aligned string, width 20 |
-| `%-8.2f` | Float with 2 decimals |
-| `%n` | Platform newline |
-
----
+| Class | M
 
 ## Failure Experiments (optional learning)
 
@@ -927,37 +819,12 @@ java -cp out com.academy.student.Main
 | `*.java` glob fails (PowerShell) | Globbing quirks | Unexpected file list | Name each `.java` explicitly |
 | Wrong project folder | Coding under exercises tree | Can't find packages | Use `examples/Lab2-JavaSyntax/`, not `module-02-exercises` |
 
-### Frequent mistakes
-
-1. Skipping Exercises 1–7 and treating Lab 2 as first contact with Scanner.
-2. Mixing exercise flat files with the packaged lab project.
-3. Forgetting `-d out` / `-cp out`.
-4. Relying on `students.length` instead of `studentCount`.
-
-### Suggested first-aid order
-
-1. Confirm cwd is `Lab2-JavaSyntax`.
-2. `javac -version` / `java -version` → 21.x.
-3. List `src/com/academy/student/*.java`.
-4. Recompile with explicit file names into `out/`.
-5. Run with full main class name on `-cp out`.
-
----
-
 ## Cleanup
 
 You may delete `out/` anytime; sources stay. Keep `examples/Lab2-JavaSyntax/` for portfolio evidence.
 
 **Windows:** `Remove-Item -Recurse -Force out`  
 **macOS / Linux:** `rm -rf out`
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -985,35 +852,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. **Top student** — highest marks
-2. **Lowest marks**
-3. **Pass / Fail report** (threshold 50)
-
----
-
-
-## Instructor Notes
-
-**Classroom order (Learn → Practice → Review — do not reverse):**
-
-1. Module 2 PPT in **segments** per [`../PACING.md`](../PACING.md) (+ live demos during slides)
-2. At each checkpoint, students complete matching [Exercises](../exercises/EXERCISES-INDEX.md) (use `exercises/starter/`)
-3. Only after Exercises 1–7 Pass: OS how-to, then this guide — `Lab2-JavaSyntax` with packages
-
-**Before students open this guide:** confirm exercise checkpoint Pass (arithmetic, decisions/loops, methods, `Scanner`+parse, leftover newline, `printf`). Lab 2 pacing assumes those skills already exist.
-
-* **Reference solution:** [`solution/Lab2-JavaSyntax/`](solution/Lab2-JavaSyntax/) includes core features plus bonus menu options 6–10. Guide students toward helpers (`readValidMarks`, `findStudentIndex`) before revealing full files. **Students must not copy the solution blindly**—use it as a last resort and require them to explain their code.
-* **Scanner pitfalls:** Mixing `nextInt()`/`nextDouble()` with `nextLine()` skips prompts. Enforce one shared `Scanner` injected into `StudentManager` (Exercises 5–6 already warned them).
-* **Classpath teaching moment:** Demo compiling without `-d out` / running without `-cp out` so Step 11 sticks — this is new relative to flat exercises.
-* **Common misconception:** “I can skip the exercises and jump to Lab 2” — No; send them back to [`../exercises/`](../exercises/EXERCISES-INDEX.md). Also: do not mix `module-02-exercises/` with `Lab2-JavaSyntax/`.
-* **IDEs:** Prefer IntelliJ Community (primary); VS Code is optional (Sources Root on `src` + SDK 21 + Run `Main`). Score table screenshots and a thin `Main`.
-* **Timing (Day 2):** Core checkpoint ~90 min after exercises; full menu + validation + evidence as extended completion. Bonuses are stretch.
-
----
-
-*End of Lab 2 — Java Syntax and Input/Output. Keep `Lab2-JavaSyntax` for portfolio evidence.*

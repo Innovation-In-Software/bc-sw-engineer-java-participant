@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke `mvn -B clean test` · GUIDE Implementation Checkpoints |
 
 **Module:** 14 — DTOs, Validation and API Contracts  
-**Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-14/lab14/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -66,7 +64,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -86,18 +84,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 14 lab extends the **Northstar Customer Management Platform** with a clear **API contract boundary**: request and response DTOs, Jakarta Bean Validation on inbound payloads, and mapping that returns DTOs **without** exposing the `Customer` entity over the API.
 
-**Purpose.** Accepting the entity as the public shape couples callers to internal fields, makes validation ad hoc, and risks leaking persistence-only data. DTOs + Bean Validation push the trust boundary to the edge—before business rules or storage run.
-
-**What you build (this lab).** Copy forward to `lab14-crm`; add Validation API + Hibernate Validator; create `CustomerRequestDTO` / `CustomerResponseDTO`; implement `CustomerMapper`; validate in `CustomerApiFacade` with correlation `lab-request-001`; prove happy path with `CUS-1001` / `CUS-1002`; reject invalid email/blank name in tests; document the contract in README.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab14-crm/` you run green validation tests, a facade create/get demo that returns response DTOs only, and evidence that invalid payloads never reach `CustomerService.addCustomer`.
-
-**Depends on Labs 9–12 domain.** Need `Customer`, `CustomerStatus`, and a working in-memory service/repository. Lab 13 SOAP contracts are parallel design artifacts—reuse status vocabulary, not WSDL hosting.
-
-**CRM connection.** Same fixtures. Later Labs 29+ will reuse these DTOs under Spring `@Valid` / `@ControllerAdvice`. React JSON and PostgreSQL remain future; in-memory store stays.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -107,11 +93,6 @@ After completing this lab, you will be able to:
 * Apply Jakarta Bean Validation annotations (`@NotNull`, `@NotBlank`, `@Email`, `@Size`)
 * Trigger validation programmatically with `Validator` / `ValidatorFactory`
 * Map between entity and DTO without leaking persistence or internal fields
-* Return structured validation failures with field messages the client can act on
-* Keep correlation ID `lab-request-001` visible in logs for invalid requests
-* Prove rejection of invalid payloads with automated tests
-
----
 
 ## Business Scenario
 
@@ -139,7 +120,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -150,32 +130,6 @@ flowchart TB
   Map --> Repo["CustomerRepository"]
   Repo --> Mem["InMemoryCustomerRepository<br/>private Map - no leaks"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab*-crm<br/>-> lab14-crm"] --> B["Add Validation<br/>deps"]
-    B --> C["CustomerRequestDTO<br/>+ annotations"]
-    C --> D["CustomerResponseDTO"]
-    D --> E["CustomerMapper"]
-    E --> F["CustomerApiFacade<br/>validate then service"]
-    F --> G["Validation tests<br/>+ Main demo"]
-    G --> H["README contract<br/>+ failure experiments"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 14 (NOW) | Later (Spring / Lab 29+) |
-| ------ | ------------ | ------------------------ |
-| Trigger | Manual `Validator.validate` | `@Valid` on controllers |
-| Errors | `IllegalArgumentException` + field messages | Problem details / `@ControllerAdvice` |
-| Transport | Facade + Main (no HTTP required) | REST/SOAP adapters |
-| Store | In-memory | JPA/PostgreSQL |
-
-**Lab focus:** DTOs, Bean Validation annotations, mapping without exposing the entity over the API.
-
----
 
 ## Prerequisites
 
@@ -191,55 +145,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab14-crm/
-├── src/
-│   ├── main/java/com/northstar/crm/
-│   │   ├── Main.java
-│   │   ├── dto/
-│   │   │   ├── CustomerRequestDTO.java
-│   │   │   └── CustomerResponseDTO.java
-│   │   ├── entity/
-│   │   │   ├── Customer.java
-│   │   │   └── CustomerStatus.java
-│   │   ├── mapper/
-│   │   │   └── CustomerMapper.java
-│   │   ├── api/
-│   │   │   └── CustomerApiFacade.java
-│   │   ├── service/
-│   │   │   └── CustomerService.java
-│   │   └── repository/
-│   │       └── InMemoryCustomerRepository.java   (or your existing store)
-│   └── test/java/com/northstar/crm/dto/
-│       └── CustomerRequestDTOValidationTest.java
-├── docs/
-│   └── dto-boundary-notes.md
-├── notes/screenshots/
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, tokens, and passwords. Adapt `Customer` constructor/`Instant` vs `LocalDateTime` to your prior labs—mapper must match **your** entity.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main data/request flow (facade → validate → map → service → response DTO)
-2. Trust boundary and input validation point
-3. Success and failure contract (validation vs duplicate ID vs not found)
-4. Stable identity (`CUS-1001`) vs mutable display fields
-5. Retry/idempotency implications at the DTO boundary
-6. Local programmatic Validator vs Spring `@Valid` later
-
----
-
 
 ## Worked example (read before you code)
 
@@ -660,7 +565,7 @@ Include fixtures, `mvn test` / Main commands, and a short entity-vs-DTO note in 
 
 **Why:** Prove provider dependency, validation-before-service, and duplicate vs validation differences.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture Surefire + Main output under `notes/screenshots/lab-14/`.
+**Do this:** Complete Failure Experiments. Capture Surefire + Main output under `notes/screenshots/lab-14/`.
 
 ```bash
 mvn -q clean test
@@ -737,15 +642,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 </dependency>
 ```
 
-### Constraint sample
-
-```java
-@NotBlank(message = "email is required")
-@Email(message = "email must be a valid address")
-@Size(max = 254)
-private String email;
-```
-
 ### Commands
 
 ```bash
@@ -755,33 +651,6 @@ mvn -q test -Dtest=CustomerRequestDTOValidationTest
 mvn -q exec:java -Dexec.mainClass=com.northstar.crm.Main
 git status
 ```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `CustomerRequestDTO` | Inbound contract + constraints |
-| `CustomerResponseDTO` | Outbound contract |
-| `CustomerMapper` | Entity ↔ DTO |
-| `CustomerApiFacade` | Validate + orchestrate |
-| `CustomerRequestDTOValidationTest` | Proves Bean Validation |
-
----
-
-## Manual Verification
-
-1. Create/read workflow succeeds for `CUS-1001` and `CUS-1002`.
-2. Invalid email / blank name / oversized ID rejected at the facade.
-3. API returns `CustomerResponseDTO`, never `Customer`.
-4. Correlation `lab-request-001` appears on validation/not-found errors.
-5. Validation tests pass independently of service tests.
-6. Duplicate create still handled by service rules (distinct from Bean Validation).
-7. No secrets in logs or Git; `target/` ignored.
-8. README lists constraints and run commands.
-9. `mvn -q clean test` succeeds.
-10. You can explain why entities stay behind the mapper.
-
----
 
 ## Failure Experiments
 
@@ -807,12 +676,6 @@ git status
 | Entity returned from API | Facade shortcut | Return mapper response only |
 | Tests flaky | Shared mutable DTO | Reset in `@BeforeEach` / fresh instances |
 | `NoClassDefFoundError: jakarta/validation/Validation` on `java -cp` | Runtime missing deps | Use `dependency:build-classpath` or IntelliJ run |
-| Invalid email still hits service | Facade skipped validate | Fail-fast before `CustomerService` |
-| Working in `module-14-exercises` for the lab | Wrong project | Lab lives in `examples/lab14-crm` |
-| Added Spring Boot by accident | Scope creep | Remove; Lab 14 is plain Maven + ValidatorFactory |
-| Blank name passes `@NotNull` only | Wrong annotation | Prefer `@NotBlank` for names |
-
----
 
 ## Security and Production Review
 
@@ -834,14 +697,6 @@ git status
 ```
 
 No containers required. Keep DTOs/mapper/facade and tests. **Keep `lab14-crm`** for Lab 15+ service-layer work.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -872,26 +727,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Include structured correlation + customerId in every validation error detail object (plain Java record).
-2. Add custom `@ValidCustomerId` matching `CUS-\d{4}`.
-3. Add a list-view response DTO that omits email.
-
----
-
-
-## Instructor Notes
-
-* **Assess:** Reproduce one invalid-email failure with `lab-request-001` and interpret field messages. Confirm no facade path returns `Customer`.
-* **Flexibility:** Entity constructor/`Instant` vs `LocalDateTime` differences are OK when mapping is correct and documented.
-* **Common pitfalls:** `javax` imports; never calling `validate`; mapping status with wrong case; putting `@Entity` on DTOs; skipping correlation on errors.
-* **Continuity:** Prefer `examples/lab14-crm`. Keep sample IDs. Point forward to Spring `@Valid` without requiring Boot here.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 14 — DTOs and Validation: Northstar CRM API Contract Boundary. Keep `lab14-crm` for Lab 15+ and portfolio evidence.*

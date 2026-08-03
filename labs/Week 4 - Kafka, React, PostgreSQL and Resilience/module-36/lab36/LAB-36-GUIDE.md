@@ -1,8 +1,6 @@
 # Lab 36: Frontend Security for the CRM SPA
 
 **Module:** 36 — Frontend Security for the CRM SPA  
-**Lab folder:** `labs/Week 4 - Kafka, React, PostgreSQL and Resilience/module-36/lab36/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -62,7 +60,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -83,18 +81,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 36 lab hardens the CRM SPA: threat model, authentication state, **in-memory** access tokens (not `localStorage`), origin-restricted `Authorization` headers, login UX, route guards as UX-only, 401 vs 403 handling, logout, XSS-safe rendering, cookie-mode CSRF notes, CSP/security headers, and abuse-case tests. Backend authorization remains the source of truth.
 
-**Purpose.** Leadership freezes a browser security gate before PostgreSQL persistence labs expand data exposure: route guards are not authorization; tokens never hit persistent web storage in this exercise; XSS payloads in customer names must render as text; CSRF applies when cookie sessions are used; CSP/headers are configured at server/gateway.
-
-**What you build (this lab).** Copy to `lab36-crm`; write `docs/security-decisions.md`; implement `AuthContext` + in-memory `tokenStore`; attach bearer only to CRM API origin; build safe login; add `ProtectedRoute`; distinguish 401/403; complete logout; prove XSS with RTL; document CSRF for cookie mode; add CSP/headers evidence; run abuse tests.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab36-crm/` anonymous users redirect, authenticated calls send bearer only to the API origin, storage has no token, XSS test passes, CSRF missing-token evidence exists for cookie mode (or N/A with rationale for bearer-only), headers present, abuse tests green.
-
-**Depends on Lab 35.** Need typed `http.request` / `customersApi` and Spring API. Finish API integration first if fetch boundary is missing.
-
-**CRM connection.** Still Amina `CUS-1001` / Ravi `CUS-1002`; correlation `lab-request-001`. Lab 37 designs PostgreSQL storage—security controls here must not assume DB trust.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -104,13 +90,6 @@ After completing this lab, you will be able to:
 * Store short-lived tokens in memory only (exercise pattern)
 * Attach bearer tokens only to the approved CRM API origin
 * Compare memory-token vs HttpOnly cookie session trade-offs in writing
-* Protect navigation while treating guards as UX—not authorization
-* Handle 401 (expire), 403 (forbidden), and logout completely
-* Render customer data without HTML sinks (`dangerouslySetInnerHTML`, etc.)
-* Configure or document CSRF for cookie mode and CSP/security headers
-* Run security abuse tests without leaking secrets in output
-
----
 
 ## Business Scenario
 
@@ -137,7 +116,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -152,33 +130,6 @@ flowchart TB
   API -->|403| Forbid["keep session; forbidden"]
   Card["CustomerCard: JSX text only"] -.-> Browser
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab35 -> lab36<br/>+ threat model doc"] --> B["AuthState + memory tokenStore"]
-    B --> C["Origin-scoped Bearer<br/>on http.request"]
-    C --> D["Login UX + ProtectedRoute"]
-    D --> E["401 logout vs 403 keep"]
-    E --> F["Complete logout<br/>clear cache + history"]
-    F --> G["XSS RTL proof"]
-    G --> H["CSRF cookie mode<br/>+ CSP headers evidence"]
-    H --> I["Abuse tests green"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 36 (NOW) | Production / later modules |
-| ------ | ------------ | -------------------------- |
-| Token storage | In-memory (exercise) | Prefer HttpOnly cookies / BFF where required |
-| Route guards | UX only | Same — never sole authz |
-| XSS | JSX default escaping + tests | + CSP harden |
-| Data | API-backed | PostgreSQL (Lab 37+) still needs authz |
-
-**Lab focus:** tokens and headers, secure session patterns, protected navigation, XSS, CSRF, CSP, and backend authorization.
-
----
 
 ## Prerequisites
 
@@ -197,49 +148,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab36-crm/
-└── crm-ui/
-    ├── src/
-    │   ├── auth/
-    │   │   ├── AuthContext.tsx
-    │   │   ├── tokenStore.ts
-    │   │   └── ProtectedRoute.tsx
-    │   ├── pages/
-    │   │   └── LoginPage.tsx
-    │   ├── api/http.ts              (origin-scoped Authorization)
-    │   ├── security/
-    │   │   ├── xss.test.tsx
-    │   │   └── security.test.tsx
-    │   └── ...
-    ├── docs/
-    │   └── security-decisions.md
-    ├── notes/screenshots/
-    ├── .env.example
-    ├── package.json
-    └── README.md
-```
-
-Document Spring Security / header changes in `docs/security-decisions.md` even if Java files live in a sibling backend project.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main auth flow (login → memory token → bearer on API → logout)
-2. Trust boundary: browser untrusted; API authorizes every call
-3. Success/failure contracts (401 expire vs 403 forbidden)
-4. Stable identity: user id vs customer ids (`CUS-1001`)
-5. Retry implications after 401 (re-auth; do not infinite refresh without design)
-6. Memory token shortcut vs production HttpOnly/BFF
-
----
-
 
 ## Worked example (read before you code)
 
@@ -505,7 +413,7 @@ npm run build
 curl -I http://localhost:8080
 ```
 
-Complete [Failure Experiments](#failure-experiments). Confirm storage has no token. Redacted screenshots under `notes/screenshots/lab-36/`.
+Complete Failure Experiments. Confirm storage has no token. Redacted screenshots under `notes/screenshots/lab-36/`.
 
 **Expected result:** Abuse-case tests pass without secrets in output; docs complete.
 
@@ -561,22 +469,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ## Reference Commands, Configuration, and Code
 
-### `tokenStore.ts`
-
-```typescript
-let accessToken: string | null = null;
-export const tokenStore = {
-  get: () => accessToken,
-  set: (value: string) => {
-    accessToken = value;
-  },
-  clear: () => {
-    accessToken = null;
-  },
-};
-// Never mirror tokens to localStorage, sessionStorage, or logs.
-```
-
 ### `ProtectedRoute.tsx`
 
 ```tsx
@@ -584,20 +476,6 @@ if (status === "checking") return <LoadingPage />;
 if (status === "anonymous")
   return <Navigate to="/login" replace state={{ from: location.pathname }} />;
 return <Outlet />;
-```
-
-### Cookie-mode CSRF request
-
-```typescript
-fetch(`${API_URL}/customers`, {
-  method: "POST",
-  credentials: "include",
-  headers: {
-    "Content-Type": "application/json",
-    "X-XSRF-TOKEN": csrfToken,
-  },
-  body: JSON.stringify(draft),
-});
 ```
 
 ### Commands
@@ -611,34 +489,6 @@ curl -I http://localhost:8080
 git status
 ```
 
-### Class map
-
-| File | Role |
-| ---- | ---- |
-| `security-decisions.md` | Threat model + trade-offs |
-| `tokenStore.ts` | Memory token |
-| `AuthContext.tsx` | Auth state machine |
-| `ProtectedRoute.tsx` | UX navigation guard |
-| `http.ts` | Origin-scoped bearer |
-| `xss.test.tsx` | XSS non-execution proof |
-| `security.test.tsx` | Abuse suite |
-
-### Origin-scoped Authorization sketch
-
-```typescript
-const apiOrigin = new URL(API_URL).origin;
-const token = tokenStore.get();
-const url = new URL(
-  path.startsWith("http") ? path : `${API_URL}${path.replace(/^\//, "")}`
-);
-const headers = new Headers(init.headers);
-headers.set("Content-Type", "application/json");
-headers.set("X-Correlation-Id", "lab-request-001");
-if (url.origin === apiOrigin && token) {
-  headers.set("Authorization", `Bearer ${token}`);
-}
-```
-
 ### Threat-model checklist (paste into decisions doc)
 
 ```text
@@ -649,31 +499,6 @@ Controls: memory token, origin-scoped bearer, JSX escaping, CSP, CSRF (cookie),
           generic login errors, 401≠403, complete logout
 Non-controls: ProtectedRoute alone, hiding buttons by role alone
 ```
-
-### XSS test reminder
-
-```tsx
-expect(document.querySelector("img")).toBeNull();
-expect(document.querySelector("script")).toBeNull();
-// Prefer getByText with a function/matcher for the literal attack string
-```
-
----
-
-## Manual Verification
-
-1. Threat model maps threats → controls; guards ≠ authz.
-2. Login → memory token; storage tabs empty of token.
-3. Bearer only on CRM API requests in Network.
-4. Anonymous deep link redirects to login.
-5. Forced 401 logs out; forced 403 keeps session.
-6. Logout clears token + customer cache.
-7. Malicious `fullName` renders as text; XSS test green.
-8. CSRF evidence or precise bearer-only N/A.
-9. Security headers visible via `curl -I` (or gateway equivalent).
-10. Abuse tests green twice; no secrets in logs/screenshots.
-
----
 
 ## Failure Experiments
 
@@ -700,9 +525,6 @@ expect(document.querySelector("script")).toBeNull();
 | CORS + Authorization fail | Preflight headers | Allow `Authorization` |
 | Open redirect after login | Unvalidated returnUrl | Allowlist internal paths |
 | Treating ProtectedRoute as authz | UI-only control | Backend must deny anonymous/forbidden |
-| Secrets in screenshots | Unredacted JWT | Redact Authorization / tokens |
-
----
 
 ## Security and Production Review
 
@@ -727,14 +549,6 @@ git status
 Do not commit tokens, `.env` secrets, `node_modules/`, or `dist/`.
 
 **Keep `lab36-crm`**—Lab 37 designs PostgreSQL schema for customers/accounts while these browser controls remain in force.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -765,26 +579,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Implement a BFF-style cookie session note with SameSite=Lax/Strict trade-offs.
-2. Add refresh-token rotation thought experiment (no long-lived memory secrets).
-3. CSP report-uri / report-to dry-run documentation.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Application tab empty of tokens after login; Network Authorization only on API host; XSS fullName literal; ask “does ProtectedRoute authorize?”
-* **Assess:** Threat model quality, memory store, origin check, 401≠403, XSS test, CSRF/CSP honesty.
-* **Continuity:** Prefer `examples/lab36-crm/crm-ui`. Keep fixture IDs. Lab 37 should not weaken SPA controls.
-* **Common pitfalls:** `localStorage` tokens; guard-as-authz myth; open redirects; logging JWTs; equating 403 with logout.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Threat model + XSS/CSRF conceptual clarity often need a 20-minute mid-lab reset.
-
----
-
-*End of Lab 36 — Frontend Security for the CRM SPA. Keep `lab36-crm` for Lab 37 continuity and portfolio evidence.*

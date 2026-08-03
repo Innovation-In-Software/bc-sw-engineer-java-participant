@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
 
 **Module:** 26 — Spring Configuration, Profiles and Environments  
-**Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-26/lab26/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -51,7 +49,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -72,18 +70,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 26 lab externalizes **environment-aware configuration** for the Customer Management Platform. You convert shared defaults to `application.yml`, split `application-dev.yml` / `application-test.yml` / `application-prod.yml`, activate profiles two ways, prove property-source override order, bind settings with `@ConfigurationProperties`, and keep real secrets out of Git.
 
-**Purpose.** Incidents from `dev` settings leaking into production (H2 console open, blank DB password in YAML, verbose SQL in prod) are unacceptable. Leadership freezes: running config depends on *where* the app is deployed; `prod` credentials arrive only via environment variables; missing required prod properties **fail fast** at startup.
-
-**What you build (this lab).** Copy to `lab26-crm`; inventory then replace properties with YAML; author three profile files; activate via `-D` and `SPRING_PROFILES_ACTIVE`; demonstrate CLI > env > profile YAML > base YAML precedence; add `NorthstarIntegrationProperties`; `.env.example` only; evidence with fixtures still callable under `dev`; dual green tests under `test`.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab26-crm/` `dev` starts with H2-friendly settings, `prod` refuses to start without `DB_USERNAME`/`DB_PASSWORD`/`NORTHSTAR_API_KEY`, override-order evidence is recorded, no real secrets are staged, and `CUS-1001` still works under `dev`.
-
-**Depends on Lab 25.** Need layered Boot CRM. SOAP from Lab 24 may remain; do not bury secrets in SOAP config either.
-
-**CRM connection.** Fixtures `CUS-1001` / `CUS-1002`, correlation `lab26-001` (or `lab-request-001`). Lab 27 uses profile-friendly datasource settings for transactional demos; Labs 43/45 reuse env-var secret injection patterns.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -93,12 +79,6 @@ After completing this lab, you will be able to:
 * Create and structure `application-dev.yml`, `application-test.yml`, and `application-prod.yml`
 * Activate a profile with `-Dspring.profiles.active` / `spring-boot.run.profiles` and with `SPRING_PROFILES_ACTIVE`
 * Bind externalized configuration with `@ConfigurationProperties` instead of scattered `@Value`
-* Fail fast when a required production property is missing
-* Apply secrets-handling practices: never commit real credentials; use env vars / future secrets managers
-* Explain how env vars foreshadow Lab 43 (CI variables) and Lab 45 (IaC secrets)
-* Keep CRM fixtures working under the `dev` profile
-
----
 
 ## Business Scenario
 
@@ -123,7 +103,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -136,32 +115,6 @@ flowchart TB
   Spring --> DS["DataSource / Logging / Actuator"]
   Spring --> Svc["CustomerService / Repository"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab25 -> lab26<br/>inventory properties"] --> B["application.yml<br/>shared defaults"]
-    B --> C["application-dev.yml"]
-    C --> D["application-test.yml"]
-    D --> E["application-prod.yml<br/>env placeholders"]
-    E --> F["Activate via -D<br/>and SPRING_PROFILES_ACTIVE"]
-    F --> G["Prove override order<br/>timeout-ms"]
-    G --> H["@ConfigurationProperties<br/>+ fail-fast + tests"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 26 (NOW) | Lab 27 / 43 / 45 (LATER) |
-| ------ | ------------ | ------------------------ |
-| Secrets | Env vars + `.env.example` | CI variables / Ansible / Vault patterns |
-| DB | H2 in dev/test; PostgreSQL placeholders in prod | Real TX demos (27); managed infra later |
-| Actuator | Broader in dev; tightened in prod YAML | Security hardening (28) |
-| Binding | `@ConfigurationProperties` | Same style for new feature toggles |
-
-**Lab focus:** Override order, YAML profiles, activation two ways, typed binding, secrets out of Git.
-
----
 
 ## Prerequisites
 
@@ -180,54 +133,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab26-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/
-│   │   │   ├── config/
-│   │   │   │   ├── NorthstarIntegrationProperties.java
-│   │   │   │   └── IntegrationConfig.java
-│   │   │   ├── controller/...
-│   │   │   ├── service/...
-│   │   │   ├── repository/...
-│   │   │   └── ...
-│   │   └── resources/
-│   │       ├── application.yml
-│   │       ├── application-dev.yml
-│   │       ├── application-test.yml
-│   │       └── application-prod.yml
-│   └── test/java/com/northstar/crm/config/
-│       └── ConfigurationPrecedenceTest.java
-├── docs/
-│   └── config-notes.md
-├── notes/screenshots/
-├── .env.example
-├── .gitignore
-├── pom.xml
-└── README.md
-```
-
-Ignore `target/`, `.env`, IDE metadata, and any file holding a real password.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Why CLI beats env, and env beats profile YAML
-2. When `.properties` vs YAML nesting pays off
-3. What “active profile” means if two profiles set the same key
-4. Why prod passwords must never default in YAML
-5. `@Value` vs `@ConfigurationProperties` for `northstar.integration`
-6. Why missing required props fail startup instead of silent nulls
-
----
-
 
 ## Worked example (read before you code)
 
@@ -520,7 +425,7 @@ mvn -q test -Dspring.profiles.active=test
 
 **Why:** The lab’s culture win is catching secrets before commit, not only green `dev`.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments) including staged fake secret detection. `git status --short` shows no `.env`, no real passwords. Capture fail-fast prod startup excerpt.
+**Do this:** Complete Failure Experiments including staged fake secret detection. `git status --short` shows no `.env`, no real passwords. Capture fail-fast prod startup excerpt.
 
 **Expected result:** ≥3 experiments; secrets hygiene clean; evidence saved.
 
@@ -613,17 +518,6 @@ northstar:
     timeout-ms: 3000
 ```
 
-### `@ConfigurationProperties`
-
-```java
-@Validated
-@ConfigurationProperties(prefix = "northstar.integration")
-public record NorthstarIntegrationProperties(
-        @NotBlank String apiKey,
-        @Positive long timeoutMs) {
-}
-```
-
 ### `.env.example`
 
 ```text
@@ -660,47 +554,6 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 git status --short
 ```
 
-### Evidence checklist
-
-```text
-[ ] Inventory of old properties completed before delete
-[ ] Only YAML remains (no application.properties)
-[ ] dev / test / prod files present
-[ ] prod fails without DB_USERNAME / DB_PASSWORD / NORTHSTAR_API_KEY
-[ ] -D activation evidenced
-[ ] SPRING_PROFILES_ACTIVE evidenced
-[ ] Override-order timeout measurements recorded
-[ ] .env.example committed; .env not staged
-[ ] CUS-1001 smoke under dev
-[ ] mvn test under test twice identical
-```
-
-### Class map
-
-| Artifact | Role |
-| -------- | ---- |
-| `application.yml` | Shared defaults |
-| `application-*.yml` | Environment deltas |
-| `NorthstarIntegrationProperties` | Typed binding |
-| `.env.example` | Placeholder contract |
-| `ConfigurationPrecedenceTest` | Optional precedence gate |
----
-
-## Manual Verification
-
-1. `dev` starts; active profile banner shows `dev`.
-2. `test` profile runs Quiet/CI-friendly tests.
-3. `prod` without env vars fails startup (no blank-password connect).
-4. With env vars supplied (fake lab values), prod start either connects or fails for driver/network — **not** for missing placeholders.
-5. CLI `-D` overrides env for the same key (evidence recorded).
-6. `application.properties` gone (YAML only).
-7. GET `CUS-1001` under `dev` with correlation works.
-8. `/actuator/env` exposure is tighter in prod YAML intent.
-9. Two consecutive tests under `test` match.
-10. `git status` shows no secrets / `.env`.
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
@@ -725,10 +578,6 @@ git status --short
 | CRM seeds gone | Datasource URL changed | Align seeder with profile DB |
 | Working in `module-26-exercises` for the lab | Wrong project | Lab lives in `examples/lab26-crm` |
 | Real password committed | Secret hygiene failure | Remove, rotate, use `.env.example` only |
-| Installing Vault mid-lab | Scope creep | Env vars are enough for Pass |
-| CLI override “ignored” | Wrong property key / wrong process | Confirm process args; remeasure order |
-
----
 
 ## Security and Production Review
 
@@ -752,14 +601,6 @@ git status --short
 ```
 
 **Keep `lab26-crm`**—Lab 27 builds transactional services on this config discipline.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -790,26 +631,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Fourth profile `staging` mirroring prod with disposable DB.
-2. Duration converter for timeout instead of raw ms.
-3. `ApplicationContextRunner` test asserting prod fails without `DB_PASSWORD`.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Reproduce missing-`DB_PASSWORD` failure; ask which source won in the timeout experiment; confirm `.env` not staged.
-* **Assess:** Honest prod placeholders; override evidence; typed properties; no secret defaults.
-* **Continuity:** Prefer `examples/lab26-crm` from Lab 25. Keep fixture IDs. Lab 27 should consume profile datasource settings, not invent a second config tree.
-* **Common pitfalls:** `${PASSWORD:}` empty defaults; committing `.env`; assuming env changes apply without restart; testing only `dev`.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 26 — Spring Profiles and Configuration: Northstar CRM Environments. Keep `lab26-crm` for Lab 27 and portfolio evidence.*

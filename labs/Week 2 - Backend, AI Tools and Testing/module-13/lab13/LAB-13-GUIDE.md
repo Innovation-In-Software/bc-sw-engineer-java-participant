@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke-validate XML · GUIDE Implementation Checkpoints |
 
 **Module:** 13 — SOAP API Design with Java  
-**Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-13/lab13/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -67,7 +65,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -88,18 +86,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 13 lab designs a **contract-first** SOAP interface for the Northstar Customer Management Platform: an XML Schema (`customer.xsd`), a WSDL (`CustomerService.wsdl`), and sample SOAP 1.1 request/response envelopes for **CreateCustomer**, **UpdateCustomer**, and **GetCustomer**.
 
-**Purpose.** Partners integrate to published contracts, not to Java method signatures. Before Lab 24 spends time on Spring-WS, architects must freeze what XML is legal, which operations exist, and what faults mean. Contract drift later becomes expensive partner breakage.
-
-**What you build (this lab).** Project `lab13-crm` with `contracts/customer.xsd`, `contracts/CustomerService.wsdl`, `samples/` envelopes (success + faults), and docs (`operation-matrix.md`, `soap-design-notes.md`). Namespace `http://northstar.com/crm/customer`. Samples use `CUS-1001` / `CUS-1002` and correlation `lab-request-001`.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab13-crm/` a partner (or grader) can open the WSDL, understand three operations, copy sample envelopes into SoapUI, and see that `http://localhost:8080/ws` is a **placeholder**—not a live server in this lab.
-
-**Depends on prior CRM domain thinking.** You do not need Lab 12 code on the classpath; you need the shared identity/status vocabulary. If XML tooling fails, fix editor extensions via [SETUP](../../../SETUP-INSTRUCTIONS.md).
-
-**CRM connection.** Same customers and statuses as Labs 10–12. Runtime hosting, React, Kafka, and PostgreSQL remain future. Treat Lab 24 as the first implementation of *this* contract against `CustomerService`.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -109,11 +95,6 @@ After completing this lab, you will be able to:
 * Author a WSDL 1.1 document that references the XSD
 * Define operations CreateCustomer, UpdateCustomer, and GetCustomer
 * Write sample SOAP request/response envelopes aligned with schema intent
-* Document SOAP fault shapes for not-found and validation failures
-* Trace how Lab 24 will host this contract with Spring-WS without rewriting business rules
-* Distinguish design artifacts from running HTTP endpoints
-
----
 
 ## Business Scenario
 
@@ -137,7 +118,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW / SOON / LATER
 
 **NOW:** Contract documents + sample envelopes only. No Spring-WS, no servlet, no generated JAXB required for marks (optional validation tooling welcome).
@@ -163,18 +143,6 @@ flowchart TB
   end
 ```
 
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Create lab13-crm<br/>layout + matrix"] --> B["customer.xsd<br/>types + status"]
-    B --> C["Request/response<br/>elements"]
-    C --> D["WSDL messages<br/>+ portType"]
-    D --> E["SOAP binding<br/>+ placeholder address"]
-    E --> F["Sample envelopes<br/>Create / Update / Get"]
-    F --> G["Fault samples<br/>+ design notes"]
-    G --> H["Partner handoff<br/>checklist + evidence"]
-```
 
 ### Architecture NOW vs LATER (table)
 
@@ -204,49 +172,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab13-crm/
-├── contracts/
-│   ├── customer.xsd
-│   └── CustomerService.wsdl
-├── samples/
-│   ├── createCustomerRequest.xml
-│   ├── createCustomerResponse.xml
-│   ├── updateCustomerRequest.xml
-│   ├── updateCustomerResponse.xml
-│   ├── getCustomerRequest.xml
-│   ├── getCustomerResponse.xml
-│   ├── fault-customerNotFound.xml
-│   └── fault-validation.xml
-├── docs/
-│   ├── soap-design-notes.md
-│   └── operation-matrix.md
-├── notes/screenshots/
-├── pom.xml                    (optional — packaging contracts only)
-├── .gitignore
-└── README.md
-```
-
-Ignore IDE metadata and any accidental early JAXB `target/` output from Lab 24 experiments.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main data flow (partner → SOAP contract → future endpoint → `CustomerService`)
-2. Trust boundary: schema validation vs service business rules
-3. Success/failure contract for GetCustomer unknown IDs
-4. Stable identity (`CUS-1001`) vs display fields
-5. Retry/idempotency: Create vs Get vs Update semantics
-6. Static WSDL files vs generating WSDL only at runtime
-
----
-
 
 ## Worked example (read before you code)
 
@@ -685,7 +610,7 @@ ls -R contracts samples docs
 
 **Why:** Contract authors must know import breakage and idempotency implications before Lab 24.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Finish `docs/soap-design-notes.md` (retry semantics, Lab 24 forward link, security deferrals). Capture evidence under `notes/screenshots/lab-13/`.
+**Do this:** Complete Failure Experiments. Finish `docs/soap-design-notes.md` (retry semantics, Lab 24 forward link, security deferrals). Capture evidence under `notes/screenshots/lab-13/`.
 
 **Expected result:** ≥3 experiments recorded; pack ready for partner handoff.
 
@@ -765,33 +690,6 @@ Lab 24 implements Spring-WS @Endpoint methods against this contract.
 Do not add MessageDispatcherServlet or JAXB generation requirements in Lab 13.
 ```
 
-### Artifact map
-
-| Artifact | Role |
-| -------- | ---- |
-| `customer.xsd` | Types + message payloads |
-| `CustomerService.wsdl` | Operations, binding, placeholder address |
-| `samples/*.xml` | Partner-facing examples |
-| `operation-matrix.md` | Scope table |
-| `soap-design-notes.md` | Semantics, retry, Lab 24 link |
-
----
-
-## Manual Verification
-
-1. Create/get/update workflows represented in XML samples.
-2. Fault samples cover not-found and validation.
-3. Broken `schemaLocation` experiment recorded (and restored).
-4. Identifiers and correlation remain visible in samples.
-5. No server required; contracts are static files.
-6. No secrets in Git.
-7. Second student can open WSDL without your IDE settings.
-8. Optional `xmllint` / IDE validation passes well-formedness.
-9. README states Lab 24 implements runtime SOAP.
-10. Namespace string matches Lab 24 continuity (`http://northstar.com/crm/customer`).
-
----
-
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore / conclude |
@@ -816,17 +714,6 @@ Do not add MessageDispatcherServlet or JAXB generation requirements in Lab 13.
 | Added Spring Boot by accident | Scope creep | Remove; Lab 13 is contracts only |
 | Working in `module-13-exercises` for the lab | Wrong project | Lab lives in `examples/lab13-crm` |
 | PowerShell XML parse fails | Malformed sample | Fix tags/prefixes; re-run `[xml](Get-Content -Raw …)` |
-| Missing NotFound fault sample | Skipped Ex 1 habit | Add `fault-customerNotFound.xml` for CUS-9999 |
-
-### Configuration ignored
-
-Confirm prefixes in samples match `xmlns:cus="http://northstar.com/crm/customer"`.
-
-### Flaky validation
-
-Different XML tools disagree on partial SOAP validation—grade well-formed contracts + coherent samples.
-
----
 
 ## Security and Production Review
 
@@ -848,14 +735,6 @@ git status
 ```
 
 No Docker stack. Keep contracts and samples. **Keep `lab13-crm`**—Lab 24 implements it.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -886,28 +765,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add a SOAP header element for correlation instead of (or in addition to) body field.
-2. Sketch a v2 namespace (`.../customer/v2`) without breaking v1 samples.
-3. Generate a one-page partner onboarding markdown from your samples.
-
----
-
-
-## Instructor Notes
-
-* **Scope gate:** No Spring-WS, JAXB generation requirement, or listening port in Lab 13—those are Lab 24. Penalize “I started Boot to make SoapUI happy” as scope creep unless clearly labeled optional exploration.
-* **Assess:** Open GetCustomer for `CUS-1002` and ask how a Client fault for `CUS-9999` should look; confirm namespace continuity for Lab 24.
-* **Equivalence:** Local XML element casing may differ if operations, imports, and samples stay consistent.
-* **Extras:** Accept Delete/List only when the required three remain correct and documented.
-* **Continuity:** Prefer `~/java-bootcamp/examples/lab13-crm`. Keep `http://northstar.com/crm/customer`.
-* **Common pitfalls:** Broken relative `schemaLocation`; RPC/encoded instead of document/literal; missing faults; treating connection refused as a lab defect; secrets in samples.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 13 — SOAP API Design: Northstar Customer Contract. Keep `lab13-crm` contracts for Lab 24 and portfolio evidence.*

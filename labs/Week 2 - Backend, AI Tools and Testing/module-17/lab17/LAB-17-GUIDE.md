@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints · JaCoCo package rule |
 
 **Module:** 17 — JUnit Testing Fundamentals  
-**Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-17/lab17/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -67,7 +65,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -88,18 +86,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 17 lab formalizes **JUnit 5** testing for the **Customer Management Platform**. You will build `CustomerServiceTests` (and supporting tests), use **parameterized tests** for status transitions, aim for **≥80% line coverage** on the service layer with JaCoCo, and optionally use **GitHub Copilot** to draft tests—with mandatory human review.
 
-**Purpose.** Leadership freezes a quality gate before Mockito (Lab 18) and Spring: no merge of `DefaultCustomerService` changes without JUnit evidence and ≥80% line coverage on `com.northstar.crm.service`. Coverage without meaningful asserts is not enough—reject false-confidence tests.
-
-**What you build (this lab).** Copy to `lab17-crm`; pin Surefire + JaCoCo check; write happy and negative service tests; add parameterized legal/illegal transitions; optional Copilot draft + review log `lab17-001`; run `mvn clean verify` until the 80% gate passes; deliberately fail then restore the gate; document the runbook.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab17-crm/` two consecutive `mvn test` runs are green and deterministic, JaCoCo HTML shows service ≥80%, and you can point to the branch that got you over the line.
-
-**Depends on Labs 15–16.** Need `DefaultCustomerService`, `CustomerValidator`, in-memory repo, and preferably `BusinessException`. Finish those labs first if activation/errors are missing.
-
-**CRM connection.** Fixtures `CUS-1001` / `CUS-1002` / `CUS-9999`, correlation `lab-request-001`. Lab 18 swaps the real repository for Mockito mocks—keep collaborators injectable.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -109,11 +95,6 @@ After completing this lab, you will be able to:
 * Use `@ParameterizedTest` / `@CsvSource` (and optionally `@EnumSource`) for transitions
 * Configure JaCoCo and interpret a coverage report with a ≥80% service-layer goal
 * Generate candidate tests with Copilot (optional) and reject false-confidence assertions
-* Keep tests deterministic, fast, and free of real PII
-* Document gaps honestly when coverage exists but behavior is still under-specified
-* Prove the coverage gate can fail and succeed on purpose
-
----
 
 ## Business Scenario
 
@@ -138,7 +119,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -148,31 +128,6 @@ flowchart TB
   Copilot["Copilot drafts -> human review"] -.-> Tests
   Jacoco["JaCoCo ≥80% service package"] -.-> Tests
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab16 -> lab17<br/>+ Surefire/JaCoCo"] --> B["Happy-path<br/>CustomerServiceTests"]
-    B --> C["Negatives<br/>dup / illegal / 404"]
-    C --> D["Parameterized<br/>transitions"]
-    D --> E["Optional Copilot<br/>+ review log"]
-    E --> F["mvn clean verify<br/>≥80% service"]
-    F --> G["Deliberate gate<br/>fail then restore"]
-    G --> H["README runbook<br/>+ evidence"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 17 (NOW) | Lab 18 / Spring |
-| ------ | ------------ | --------------- |
-| Collaborators | Real in-memory repo | Mockito mocks |
-| Gate | JaCoCo on `service` package | Same gate + isolation tests |
-| AI | Optional draft + review | Same discipline |
-
-**Lab focus:** JUnit 5 fundamentals, parameterized tests, coverage ≥80%, AI-assisted drafting with review.
-
----
 
 ## Prerequisites
 
@@ -191,46 +146,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab17-crm/
-├── src/
-│   ├── main/java/com/northstar/crm/...
-│   └── test/java/com/northstar/crm/
-│       ├── service/
-│       │   ├── CustomerServiceTests.java
-│       │   └── CustomerValidatorParameterizedTest.java
-│       └── exception/
-│           └── GlobalExceptionHandlerTest.java   (keep/expand from Lab 16)
-├── copilot-notes/
-│   └── ai-junit-review.md
-├── docs/
-│   └── coverage-notes.md
-├── notes/screenshots/
-├── pom.xml                         (Surefire + JaCoCo)
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow under test (service use cases, not UI)
-2. Trust boundary: what tests prove vs what they assume about the repo
-3. Success/failure contracts encoded as asserts
-4. Stable fixtures (`CUS-1001`) vs random data
-5. Idempotency of `mvn test` (repeatability)
-6. Why ≥80% on `service` not 100% whole project
-
----
-
 
 ## Worked example (read before you code)
 
@@ -408,7 +323,7 @@ List test classes, coverage goal, Copilot review policy, and which branch closed
 
 **Why:** Flaky patterns and false confidence are the failure modes of this lab’s culture.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture Surefire + JaCoCo excerpts under `notes/screenshots/lab-17/`. Run `mvn -q test` twice for determinism.
+**Do this:** Complete Failure Experiments. Capture Surefire + JaCoCo excerpts under `notes/screenshots/lab-17/`. Run `mvn -q test` twice for determinism.
 
 **Expected result:** ≥3 experiments; identical consecutive runs; evidence saved; `git status` clean of `target/`.
 
@@ -470,12 +385,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 void transition(CustomerStatus from, CustomerStatus to) { ... }
 ```
 
-### JaCoCo minimum
-
-```xml
-<minimum>0.80</minimum>
-```
-
 ### Commands
 
 ```bash
@@ -486,32 +395,6 @@ mvn -q test -Dtest=CustomerServiceTests
 mvn -q test -Dtest=CustomerValidatorParameterizedTest
 git status
 ```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `CustomerServiceTests` | Service use-case suite |
-| `CustomerValidatorParameterizedTest` | Transition matrix |
-| JaCoCo check | Merge gate on `service` package |
-| `ai-junit-review.md` | AI acceptance audit |
-
----
-
-## Manual Verification
-
-1. `CustomerServiceTests` covers add/find/activate/duplicate/illegal/not-found.
-2. Parameterized legal and illegal transitions run.
-3. JaCoCo service package ≥80% and check passes.
-4. Copilot review exists if Copilot was used.
-5. Two consecutive `mvn test` runs match.
-6. Correlation asserted where exceptions include it.
-7. No sensitive values in tests or Git.
-8. Deliberate gate-fail evidence then restore.
-9. README documents verify command.
-10. You can point in JaCoCo HTML to a previously red branch.
-
----
 
 ## Failure Experiments
 
@@ -537,11 +420,6 @@ git status
 | Copilot Spring imports | Underspecified prompt | Reject; restate plain Java |
 | Gate fails at 0.99 after proof | Left minimum too high | Restore `0.80` and re-verify |
 | `assertThrows(Exception)` too broad | Wrong type | Prefer `BusinessException` |
-| Working in `module-17-exercises` for the lab | Wrong project | Lab lives in `examples/lab17-crm` |
-| Committing `target/site/jacoco` | Build artifact | Delete; add to `.gitignore` |
-| Only `mvn test` used for gate evidence | Check bound to verify | Run `mvn clean verify` |
-
----
 
 ## Security and Production Review
 
@@ -565,14 +443,6 @@ git status
 Do not commit `target/site/jacoco` unless your course policy explicitly allows it. Keep notes screenshots/excerpts.
 
 **Keep `lab17-crm`**—Lab 18 introduces Mockito isolation on this suite’s seams.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -603,26 +473,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Assert `BusinessException` code + correlation on every failure path.
-2. Mutation-testing thought experiment: which one-line bug still keeps 80%?
-3. Separate coverage notes for `service` vs `exception` packages.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Open JaCoCo HTML and have the student point to a branch that was red before their last test. If Copilot was used, ask which suggestion they rejected and why.
-* **Assess:** Meaningful negatives, parameterized matrix aligned with Lab 15, honest 80% gate (no cheats), deterministic suite.
-* **Continuity:** Prefer `examples/lab17-crm`. Keep fixture IDs. Lab 18 should not require rewriting fixtures—only collaborator substitution.
-* **Common pitfalls:** Shared static service; `assertThrows(Exception.class)` only; sleeping tests; JaCoCo without `clean`; package include typos; committing huge jacoco sites.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth. Coverage last-mile often burns 45 minutes—steer students to uncovered CLOSED/email branches early.
-
----
-
-*End of Lab 17 — JUnit Testing with AI Assistance: Northstar CRM Service Tests. Keep `lab17-crm` for Lab 18 and portfolio evidence.*

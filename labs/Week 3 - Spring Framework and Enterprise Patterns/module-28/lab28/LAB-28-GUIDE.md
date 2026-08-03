@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
 
 **Module:** 28 — Spring Security Basics  
-**Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-28/lab28/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -51,7 +49,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -72,18 +70,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 28 lab adds **Spring Security** to the **Customer Management Platform**: JWT-based login, a `SecurityFilterChain` that protects APIs by default, CRM roles `AGENT` and `ADMIN`, and **MockMvc** (or WebTestClient) proofs for **401** and **403**.
 
-**Purpose.** Leadership will not expose customer APIs on the open network. Unauthenticated callers must be rejected; agents may work Amina/Ravi records within policy; admins may perform elevated operations you define (for example admin listing or forced status overrides). Authn/authz must be automated so new routes do not silently ship open.
-
-**What you build (this lab).** Copy forward into `lab28-crm`; add `spring-boot-starter-security` and a JWT library; configure a stateless `SecurityFilterChain`; implement `JwtService`, filter, in-memory lab users, and `/api/auth/login`; protect `/api/customers/**` for `AGENT`/`ADMIN` and `/api/admin/**` for `ADMIN` only; prove login + Bearer access to `CUS-1001`; write MockMvc 401/403/200 matrix tests; document IdP / key-rotation production notes.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab28-crm/` the app starts, login issues a JWT, missing/bad tokens return **401**, agent on admin routes returns **403**, agent/admin customer reads succeed for fixtures, and `mvn test` stays green twice in a row.
-
-**Depends on Labs 25–27 (API + layering).** Need a runnable Customer REST API. Finish those labs first if create/get/status endpoints are missing. Lab 29 will layer validation/`ErrorResponse` on this secured surface.
-
-**CRM connection.** Fixtures `CUS-1001` Amina / `CUS-1002` Ravi / correlation `lab-request-001`. Lab users: `agent1` (`AGENT`), `admin1` (`ADMIN`). Correlation headers are operational metadata — never confuse them with authentication.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -93,12 +79,6 @@ After completing this lab, you will be able to:
 * Validate JWTs on subsequent requests with a filter (or resource-server pattern as taught)
 * Protect `/api/customers/**` (and related) routes by default
 * Enforce roles `AGENT` and `ADMIN` with request matchers and/or `@PreAuthorize`
-* Keep CSRF strategy appropriate for a JWT API (typically stateless, CSRF disabled)
-* Explain trust boundaries between login, token issuance, and authorization
-* Prove the 401/403/200 matrix with MockMvc and document local demo users versus production IdP / secret management
-* Keep tokens, secrets, and passwords out of Git and out of logs
-
----
 
 ## Business Scenario
 
@@ -120,7 +100,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -133,32 +112,6 @@ flowchart TB
   Jwt --> Users["agent1 / admin1 in-memory"]
   Filt --> Ctx["SecurityContext + MockMvc tests"]
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy prior CRM -> lab28-crm<br/>+ security + JWT deps"] --> B["SecurityFilterChain<br/>stateless + matchers"]
-    B --> C["UserDetails + BCrypt<br/>agent1 / admin1"]
-    C --> D["JwtService<br/>issue + parse"]
-    D --> E["POST /api/auth/login"]
-    E --> F["JWT filter<br/>Bearer on customers"]
-    F --> G["AGENT vs ADMIN<br/>403 vs 200"]
-    G --> H["MockMvc 401/403/200<br/>+ production notes"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 28 (NOW) | Lab 29 / production |
-| ------ | ------------ | ------------------- |
-| Authn | Login + HS256 JWT, in-memory users | IdP, RSA/ECDSA, rotating keys |
-| Authz | Matcher / `@PreAuthorize` AGENT/ADMIN | Same roles + finer policies |
-| Errors | Default Spring Security status codes | Unified `ErrorResponse` (Lab 29) |
-| Sessions | Stateless JWT | Same model; no sticky sessions |
-
-**Lab focus:** JWT login, `SecurityFilterChain`, roles `AGENT` / `ADMIN`, MockMvc 401/403 proofs for CRM.
-
----
 
 ## Prerequisites
 
@@ -177,63 +130,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab28-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/
-│   │   │   ├── CrmApplication.java
-│   │   │   ├── config/
-│   │   │   │   └── SecurityConfig.java
-│   │   │   ├── security/
-│   │   │   │   ├── JwtService.java
-│   │   │   │   ├── JwtAuthenticationFilter.java
-│   │   │   │   └── CrmUserDetailsService.java
-│   │   │   ├── controller/
-│   │   │   │   ├── AuthController.java
-│   │   │   │   ├── CustomerController.java
-│   │   │   │   └── AdminController.java
-│   │   │   ├── service/
-│   │   │   │   └── CustomerService.java
-│   │   │   └── dto/
-│   │   │       ├── LoginRequest.java
-│   │   │       ├── LoginResponse.java
-│   │   │       ├── CustomerRequest.java
-│   │   │       └── CustomerResponse.java
-│   │   └── resources/
-│   │       └── application.yml
-│   └── test/
-│       └── java/com/northstar/crm/security/
-│           └── SecurityIntegrationTest.java
-├── docs/
-│   └── security-notes.md
-├── notes/screenshots/
-├── .env.example
-├── .gitignore
-├── pom.xml
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, `.env`, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main request flow for login versus an authenticated customer read
-2. Trust boundary: credentials at login, signature/expiry on every Bearer request
-3. Success/failure contracts: 401 vs 403 vs 200
-4. Stable identity (`sub` / username) versus customer IDs (`CUS-1001`)
-5. Idempotency: login vs `GET` with a bearer token; why refresh tokens are a production topic
-6. Local shortcut (in-memory users, HS256 shared secret) versus production (IdP, JWKS, rotation)
-
----
-
 
 ## Worked example (read before you code)
 
@@ -517,7 +413,7 @@ Include: demo users (`agent1`/`admin1`), matcher table (login permitAll, custome
 
 **Why:** Misconfigured secrets, role mistakes, and token logging are the failure modes of this lab’s culture.
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture redacted curl and Surefire excerpts under `notes/screenshots/lab-28/`. Confirm `git status` is clean of secrets and `target/`. Run `mvn -q test` twice for determinism.
+**Do this:** Complete Failure Experiments. Capture redacted curl and Surefire excerpts under `notes/screenshots/lab-28/`. Confirm `git status` is clean of secrets and `target/`. Run `mvn -q test` twice for determinism.
 
 **Expected result:** ≥3 experiments documented; identical consecutive test runs; evidence saved; no JWT/password in Git.
 
@@ -598,20 +494,6 @@ http.csrf(csrf -> csrf.disable())
         .anyRequest().authenticated());
 ```
 
-### Login request / response shape
-
-```json
-{"username":"agent1","password":"agent-pass"}
-{"accessToken":"<jwt>","username":"agent1"}
-```
-
-### MockMvc excerpt
-
-```java
-mockMvc.perform(get("/api/customers/CUS-1001"))
-    .andExpect(status().isUnauthorized());
-```
-
 ### Commands
 
 ```bash
@@ -628,34 +510,6 @@ curl -s http://localhost:8080/api/customers/CUS-1002 \
 mvn -q test
 git status
 ```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `SecurityConfig` | Filter chain + matchers |
-| `JwtService` | Issue / parse / verify JWT |
-| `JwtAuthenticationFilter` | Bearer → SecurityContext |
-| `AuthController` | Login endpoint |
-| `SecurityIntegrationTest` | MockMvc 401/403/200 matrix |
-| `security-notes.md` | Local vs IdP production checklist |
-
----
-
-## Manual Verification
-
-1. Login as `agent1` returns an access token.
-2. `GET /api/customers/CUS-1001` with Bearer succeeds (Amina / ACTIVE).
-3. `GET /api/customers/CUS-1002` with AGENT token succeeds (Ravi / PROSPECT).
-4. Missing or malformed Authorization → **401**.
-5. Wrong password on login → **401** without verbose credential hints.
-6. AGENT on `/api/admin/**` → **403**; ADMIN → **200**.
-7. Correlation `lab-request-001` appears in logs without bearer tokens.
-8. MockMvc suite covers authenticated and forbidden paths.
-9. Two consecutive `mvn test` runs match.
-10. No JWT secret, password, or `.env` committed.
-
----
 
 ## Failure Experiments
 
@@ -681,10 +535,6 @@ git status
 | Secret change ignored | Env not reloaded | Restart JVM after changing `CRM_JWT_SECRET` |
 | Working in `module-28-exercises` for the lab | Wrong project | Lab lives in `examples/lab28-crm` |
 | Real JWT secret committed | Secret hygiene failure | Remove, rotate, use `.env.example` only |
-| Installing Keycloak mid-lab | Scope creep | Lab JWT + IdP checklist notes are enough |
-| Using correlation header as auth | Misunderstanding | Require Bearer JWT |
-
----
 
 ## Security and Production Review
 
@@ -710,14 +560,6 @@ git status
 Do not commit `.env`, tokens, or `target/`. Keep redacted screenshots under `notes/screenshots/lab-28/`.
 
 **Keep `lab28-crm`**—Lab 29 layers Bean Validation and `ErrorResponse` on this secured API.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -748,26 +590,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Structured correlation IDs without logging tokens or passwords.
-2. Refresh-token design notes (even if not fully implemented).
-3. Readiness separate from liveness under Security.
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Ask the student to call an admin route as `agent1`, interpret the **403**, then show the matching security matcher or `@PreAuthorize` rule. Next ask for a missing-token **401** and how the entry point differs from access denied.
-* **Assess:** Distinguishes 401 from 403; tokens/secrets stay out of Git; MockMvc matrix exists; filter order understood.
-* **Continuity:** Prefer `examples/lab28-crm`. Keep fixture IDs `CUS-1001` / `CUS-1002` and `lab-request-001`. Lab 29 must not require inventing new roles.
-* **Common pitfalls:** Form-login redirects for API clients; `hasRole` vs authority mismatch; filter after UsernamePasswordAuthenticationFilter; committing lab secrets; treating correlation ID as auth.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 28 — Spring Security Basics: Northstar CRM JWT and Roles. Keep `lab28-crm` for Lab 29 and portfolio evidence.*

@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 8 — Java Project Structure and Modularization  
-**Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-08/lab8/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -63,7 +61,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -84,18 +82,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 8 lab starts the **Customer Management Platform (CRM)** for **Northstar** by creating a clean **Maven Java skeleton**: standard directory layout, layered packages, compile-ready stub classes, and a short coding-standards document the rest of the bootcamp will follow.
 
-**Purpose.** Week 1 taught language fundamentals (OOP, collections, streams, exceptions). Week 2 needs a **shared project shape** before anyone wires Spring, SOAP, or a database. Without agreed packages and layer rules, every later lab reshuffles folders. Lab 8 makes the structure real—and intentionally boring on purpose.
-
-**What you build (exercise).** A Maven project (`lab8-crm`, also acceptable name: `customer-management-platform`) under package `com.northstar.crm` with layers `controller`, `service`, `repository`, `entity`, `dto`, `config`, and `exception`; stub types such as `CustomerController`, `CustomerService`, `CustomerRepository`, `Customer`, `CustomerRequest` / `CustomerResponse`, `AppConfig`, `CustomerNotFoundException`, and `Main`; plus `docs/CODING-STANDARDS.md` and `docs/layer-flow.md`. Prove `mvn clean compile` and run `Main`.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab8-crm/` (or equivalent) you can list seven layer packages, compile without Spring/JPA/Kafka imports, print the skeleton banner from `Main`, and hand a teammate docs that explain how creating **Amina Khan (`CUS-1001`)** would move through layers once implemented.
-
-**Depends on Lab 0.** If IntelliJ, `java`, `javac`, or `mvn` fail, stop and fix [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md). Week 1 exception design (Lab 7) informs the `exception` package mindset—but you do **not** port the ATM code into CRM.
-
-**CRM connection (THIS lab starts it).** From Lab 8 onward you build the Northstar CRM platform incrementally. Lab 8 is **structure only**: no real create-customer logic, no HTTP, no PostgreSQL, no React, no Kafka. Treat stubs as contracts teammates will fill in Labs 9–12 (Maven deepen + domain), 13+ (SOAP/contracts), and 22+ (Spring Boot).
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -105,27 +91,12 @@ After completing this lab, you will be able to:
 * Explain **layered architecture** and which concerns belong in each layer (presentation, business, persistence, cross-cutting)
 * Separate **DTO** (API/contracts) from **entity** (domain/persistence model)
 * Add stub/empty classes that **compile** and show intended responsibilities
-* Write a short **coding-standards** document for naming, packages, and layer boundaries
-* Distinguish **skeleton structure** from runtime behavior (no Spring/JPA/Kafka yet)
-* Trace a future “create customer” request for `CUS-1001` through the layers on paper
-* Produce evidence that another developer can navigate and extend the project
-* Compile with `mvn clean compile` and run `java -cp target/classes com.northstar.crm.Main` on your laptop
-
----
 
 ## Business Scenario
 
 Northstar is building a **Customer Management Platform**. Product wants engineers to create customers such as **Amina Khan**, look up prospects such as **Ravi Singh**, and later expose REST and partner SOAP APIs.
 
 Before any of that runtime behavior lands, the team needs a **shared project shape** so:
-
-* Lab 9 can attach a richer `pom.xml` (dependencies, plugins, profiles)
-* Labs 10–12 can fill domain and service code without renaming packages weekly
-* Later labs can add Spring, PostgreSQL, React, and Kafka **into** this layout
-
-Your job this lab: create the folder and package skeleton, stub the main types, document coding standards, and prove `mvn -q compile` succeeds on an almost-empty but correctly organized tree.
-
-Use these examples consistently:
 
 | ID | Name | Status |
 | -- | ---- | ------ |
@@ -135,12 +106,7 @@ Use these examples consistently:
 * Correlation ID: `lab-request-001` (for future logging; record in notes)
 * ISO-8601 UTC timestamps (record in notes; no persistence yet)
 
-**Security note for evidence.** Do not paste GitHub credentialss, AWS secrets, or tokens into screenshots. Demo customer names above are fine; do not invent “production” passwords in `application.properties`.
-
----
-
 ## Architecture Context
-
 ### NOW vs LATER
 
 **NOW (this lab):** Maven Java skeleton + layered packages + stubs + standards docs. In-memory lists and real service methods arrive when later labs fill behavior — not required for Lab 8 compile success.
@@ -168,33 +134,6 @@ flowchart TB
 
 ### Layer map
 
-```mermaid
-flowchart TB
-  P["Presentation - controller<br/>transport / API mapping"]
-  B["Business - service<br/>rules, orchestration, validation"]
-  R["Persistence - repository<br/>save/find; hides storage"]
-  D["Domain - entity<br/>Customer fields"]
-  C["Contracts - dto<br/>Request / Response"]
-  X["Cross-cutting - config / exception"]
-  P --> B --> R
-  B --> D
-  P --> C
-  B --> C
-  X -.-> B
-```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Create lab8-crm<br/>+ minimal pom.xml"] --> B["Maven dirs<br/>seven layer packages"]
-    B --> C["Entity + DTO<br/>stubs"]
-    C --> D["Repository + Service<br/>+ Controller stubs"]
-    D --> E["Config + exception<br/>+ Main"]
-    E --> F["docs: layer-flow<br/>+ CODING-STANDARDS"]
-    F --> G["mvn clean compile<br/>+ run Main"]
-    G --> H["Failure experiments<br/>+ evidence submit"]
-```
 
 ### Architecture NOW vs LATER (table)
 
@@ -248,74 +187,6 @@ examples  notes
 Fix environment failures before creating files. Record tool versions in your evidence if the lab asks for screenshots.
 
 ---
-
-## Suggested Project Files
-
-Create everything under the bootcamp workspace:
-
-```text
-~/java-bootcamp/examples/lab8-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── northstar/
-│   │   │           └── crm/
-│   │   │               ├── Main.java
-│   │   │               ├── controller/
-│   │   │               │   └── CustomerController.java
-│   │   │               ├── service/
-│   │   │               │   └── CustomerService.java
-│   │   │               ├── repository/
-│   │   │               │   └── CustomerRepository.java
-│   │   │               ├── entity/
-│   │   │               │   └── Customer.java
-│   │   │               ├── dto/
-│   │   │               │   ├── CustomerRequest.java
-│   │   │               │   └── CustomerResponse.java
-│   │   │               ├── config/
-│   │   │               │   └── AppConfig.java
-│   │   │               └── exception/
-│   │   │                   └── CustomerNotFoundException.java
-│   │   └── resources/
-│   │       └── application.properties   # placeholder only — no secrets
-│   └── test/
-│       └── java/
-│           └── com/northstar/crm/
-│               └── .gitkeep
-├── docs/
-│   ├── CODING-STANDARDS.md
-│   ├── layer-flow.md
-│   └── (optional) observability-notes.md
-├── notes/
-│   ├── lab8-answers.md
-│   └── screenshots/
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, IDE metadata (`.idea/`, `*.iml`), `.env`, tokens, and passwords.
-
-**Alternate root name:** `customer-management-platform` is acceptable if your instructor prefers it — packages and layers must still match `com.northstar.crm.*`.
-
-**Windows local mode (instructor-approved only):** Mirror the same tree under your local `java-bootcamp/examples/`. Prefer laptop for grading parity.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. The main data or request flow once create-customer is implemented (even though stubs only today)
-2. The trust boundary and which layer will own input validation later
-3. The success and failure contract for “create customer” (happy path vs `CustomerNotFoundException` later)
-4. Stable identity (`CUS-1001`) versus display name (`Amina Khan`)
-5. Retry and idempotency implications at the repository boundary
-6. Local development shortcut versus production design (in-memory vs PostgreSQL)
-
----
-
 
 ## Worked example (read before you code)
 
@@ -885,7 +756,7 @@ Screenshot or paste compile success and the `find` listing into `notes/screensho
 
 **Why:** Understanding failure modes of *structure* (wrong dependency direction, missing POM) is part of Lab 8, not an afterthought.
 
-**Do this:** Perform the experiments in [Failure Experiments](#failure-experiments) and record outcomes in notes. Restore working state after each.
+**Do this:** Perform the experiments in Failure Experiments and record outcomes in notes. Restore working state after each.
 
 **Expected result:** At least three experiments documented with observed error text and restore steps.
 
@@ -996,38 +867,6 @@ config     -> (wiring only)
 <version>0.1.0-SNAPSHOT</version>
 ```
 
-### Class map
-
-| Class | Package | Responsibility (Lab 8) |
-| ----- | ------- | ---------------------- |
-| `Main` | `com.northstar.crm` | Prove classpath; print skeleton banner |
-| `CustomerController` | `controller` | Delegate to service |
-| `CustomerService` | `service` | Stub business API |
-| `CustomerRepository` | `repository` | Stub persistence API |
-| `Customer` | `entity` | Domain placeholder |
-| `CustomerRequest` / `CustomerResponse` | `dto` | Contract placeholders |
-| `AppConfig` | `config` | Future wiring placeholder |
-| `CustomerNotFoundException` | `exception` | Domain not-found type |
-
----
-
-## Manual Verification
-
-1. `pwd` is `.../lab8-crm` (or agreed alternate name).
-2. `mvn clean compile` prints `BUILD SUCCESS`.
-3. `find src/main/java -name '*.java' | sort` lists all expected stubs + `Main`.
-4. `java -cp target/classes com.northstar.crm.Main` prints packages + `CUS-1001` / `CUS-1002`.
-5. `docs/CODING-STANDARDS.md` and `docs/layer-flow.md` exist and mention layers.
-6. `rg springframework src` (or equivalent search) finds nothing required.
-7. `git check-ignore -v target` (or `git status`) shows `target/` untracked/ignored.
-8. Stub call intentional failure: repository `findById("CUS-1001")` throws `UnsupportedOperationException` if you exercise it from a temporary harness.
-9. Re-run compile twice—second run still succeeds.
-10. Notes include correlation ID `lab-request-001` and NOW vs FUTURE boundaries.
-
-Record pass/fail in `notes/lab8-answers.md`.
-
----
-
 ## Failure Experiments
 
 Perform deliberately, then restore working code.
@@ -1054,12 +893,6 @@ Perform deliberately, then restore working code.
 | `Could not find or load main class` | Wrong `-cp` or package | `java -cp target/classes com.northstar.crm.Main` |
 | Plugin download failures | Network/proxy | Align with SETUP proxy notes; retry |
 | IDE shows red but `mvn compile` works | IDE not imported as Maven project | Re-import Maven / open `pom.xml` |
-| Accidental Spring imports | Copilot/template overreach | Delete framework imports—Lab 8 is plain Java |
-| Secrets worry | Pasted credentials into properties | Delete; use comments only |
-| Working in `module-08-exercises` for the lab | Wrong project folder | Lab lives in `examples/lab8-crm` |
-| `repository → controller` style imports | Illegal dependency direction | Keep controller → service → repository (Ex 6) |
-
----
 
 ## Security and Production Review
 
@@ -1085,14 +918,6 @@ git status
 Remove any temporary secrets from the environment where practical. Keep `docs/`, sources, and notes. Do not delete Lab 0 tooling.
 
 **Keep this project**—Lab 9 typically copies or continues from `lab8-crm` into `lab9-crm`.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -1125,30 +950,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add structured correlation and customer IDs in `docs/observability-notes.md` without sensitive fields (`lab-request-001`, `CUS-1001`).
-2. Add a one-line `package-info.java` description per layer package.
-3. Add a simple check script that fails if `controller` is imported from `repository` (grep/CI idea).
-
----
-
-
-## Instructor Notes
-
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
-* **Pedagogy:** Lab 8 is intentionally short on runtime behavior. Punish premature Spring/JPA/Kafka. Reward correct dependency direction and clear docs. Ask the student to point at each package and state what must **not** live there.
-* **Naming flexibility:** Equivalent folder name `customer-management-platform` is acceptable only when packages remain `com.northstar.crm.*` and the student documents differences. Prefer `~/java-bootcamp/examples/lab8-crm` for grading parity with Lab 9’s copy step.
-* **CRM continuity:** Enforce sample IDs `CUS-1001` / `CUS-1002` and correlation `lab-request-001` in docs so later labs reconnect instantly.
-* **Common pitfalls:** Sources outside `src/main/java`; uppercase package folders on Linux; adding `@RestController` “to get ready”; putting business rules in `Main`; committing `target/`; secrets in `application.properties`.
-* **Assessment tip:** Have learners temporarily break the layer rule (Step 13 / experiment 4) and explain the review rejection—then restore. Score evidence listings, not vibes.
-* **Next lab:** Lab 9 expands the POM (dependencies, plugins, profiles, lifecycle). Do not steal Lab 9 content here; keep the skeleton boring so Lab 9 has a clean diff.
-* **Week 1 bridge:** Students who completed Labs 0–7 already know packages, services, and custom exceptions—translate ATM `exception` instincts into `CustomerNotFoundException` language without porting ATM classes.
-
----
-
-*End of Lab 8 — Project Structure and Organization: Northstar CRM Skeleton. Keep `lab8-crm` for Lab 9 and portfolio evidence.*

@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke · GUIDE Implementation Checkpoints |
 
 **Module:** 25 — Service and Repository Layers with AI Assistance  
-**Lab folder:** `labs/Week 3 - Spring Framework and Enterprise Patterns/module-25/lab25/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 4–5 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -51,7 +49,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -72,18 +70,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 25 lab formalizes **Controller → Service → Repository** for Customer in the CRM Boot app. Controllers stay thin HTTP adapters; services own lifecycle and uniqueness rules; repositories own persistence access. An in-memory Spring Data–style repository is acceptable now; later labs swap persistence without rewriting the service contract. Optional Copilot drafts are welcome only with mandatory human review.
 
-**Purpose.** Leadership freezes package seams before transactions (Lab 27), profiles/secrets (Lab 26), and security (Lab 28): no controller may import or call a map/store directly, and AI suggestions that place `ResponseEntity` or HTTP types in the service are rejected.
-
-**What you build (this lab).** Copy prior Boot CRM to `lab25-crm`; define `CustomerRepository`; implement `InMemoryCustomerRepository` seeded with `CUS-1001`/`CUS-1002`; put rules in `CustomerService`; thin `CustomerController`; create/list paths; service unit tests with fake/real in-memory repo; AI review log `lab25-001`; dual green `mvn test`.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab25-crm/` GET Amina/Ravi works, duplicates/not-found fail in the service, controller has **zero** repository imports, AI review notes exist (or manual N/A), and tests pass twice.
-
-**Depends on Labs 23–24 (Boot + optional SOAP).** Need a runnable Boot CRM. If SOAP exists, keep endpoint signatures; refactor behind `CustomerService` only.
-
-**CRM connection.** Fixtures `CUS-1001` / `CUS-1002` / `CUS-9999`, correlation `lab-request-001`. Lab 26 externalizes config; Lab 27 adds `@Transactional` transfers on related account entities.
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -93,12 +79,6 @@ After completing this lab, you will be able to:
 * Keep HTTP mapping and JSON serialization out of the service layer
 * Enforce lifecycle rules (for example `PROSPECT` → `ACTIVE`) in the service, not the controller
 * Use Copilot (or similar) productively while reviewing suggestions for correctness and security
-* Seed and retrieve `CUS-1001` / `CUS-1002` through the layered API
-* Write focused unit tests for the service with a fake or in-memory repository
-* Explain what must change when the repository later becomes JPA against PostgreSQL
-* Document accepted vs rejected AI suggestions honestly
-
----
 
 ## Business Scenario
 
@@ -124,7 +104,6 @@ Use these examples consistently:
 ---
 
 ## Architecture Context
-
 ### NOW (this lab)
 
 ```mermaid
@@ -136,32 +115,6 @@ flowchart TB
   Seed["Seed CUS-1001 / CUS-1002"] -.-> Mem
   SOAP["Optional SOAP endpoint"] -.-> Svc
 ```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy Boot CRM -> lab25"] --> B["CustomerRepository<br/>Spring Data-style API"]
-    B --> C["InMemoryCustomerRepository<br/>seed Amina/Ravi"]
-    C --> D["CustomerService<br/>rules only"]
-    D --> E["Thin CustomerController<br/>no repo imports"]
-    E --> F["Create/list + status<br/>HTTP evidence"]
-    F --> G["Service unit tests<br/>fake/in-memory repo"]
-    G --> H["AI review log<br/>+ mvn test ×2"]
-```
-
-### Architecture NOW vs LATER
-
-| Aspect | Lab 25 (NOW) | Lab 26–28 (LATER) |
-| ------ | ------------ | ----------------- |
-| Persistence | In-memory map behind interface | Profiles + JPA/TX (27) |
-| Config | Simple YAML | `application-{dev,test,prod}.yml` |
-| Security | Correlation + validation | Spring Security (28) |
-| AI | Optional draft + review | Same discipline |
-
-**Lab focus:** Thin controller; service rules; repository interface; seeded in-memory impl; mandatory AI review if used.
-
----
 
 ## Prerequisites
 
@@ -180,56 +133,6 @@ Confirm (Lab 0 tools assumed):
 java -version
 mvn -version
 ```
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab25-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/
-│   │   │   ├── CrmApplication.java
-│   │   │   ├── controller/CustomerController.java
-│   │   │   ├── service/CustomerService.java
-│   │   │   ├── repository/
-│   │   │   │   ├── CustomerRepository.java
-│   │   │   │   └── InMemoryCustomerRepository.java
-│   │   │   ├── entity/Customer.java
-│   │   │   ├── entity/CustomerStatus.java
-│   │   │   ├── dto/CustomerRequest.java
-│   │   │   ├── dto/CustomerResponse.java
-│   │   │   └── exception/...
-│   │   └── resources/
-│   │       └── application.yml
-│   └── test/java/com/northstar/crm/service/
-│       └── CustomerServiceTest.java
-├── copilot-notes/
-│   └── ai-layering-review.md
-├── docs/
-│   └── layering-notes.md
-├── notes/screenshots/
-├── pom.xml
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, tokens, and passwords.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. Main flow: HTTP → controller → service → repository
-2. Trust boundary: JSON → DTO validation → domain
-3. Success/failure contracts for create/get/list/status
-4. Stable business IDs (`CUS-1001`) vs generated DB keys later
-5. Idempotency: GET vs POST create
-6. In-memory shortcut vs JPA + PostgreSQL production design
-
----
-
 
 ## Worked example (read before you code)
 
@@ -525,7 +428,7 @@ mvn -q test -Dtest=CustomerServiceTest
 
 **Why:** Layering failures must be distinguishable (not-found vs duplicate vs illegal transition).
 
-**Do this:** Complete [Failure Experiments](#failure-experiments). Capture curls + Surefire under `notes/screenshots/lab-25/`. Run `mvn -q test` twice. Confirm `git status` clean of `target/`.
+**Do this:** Complete Failure Experiments. Capture curls + Surefire under `notes/screenshots/lab-25/`. Run `mvn -q test` twice. Confirm `git status` clean of `target/`.
 
 **Expected result:** ≥3 experiments; dual green verify/test; layering diagram/notes present.
 
@@ -597,40 +500,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 </dependency>
 ```
 
-### `CustomerRepository.java`
-
-```java
-public interface CustomerRepository {
-  Customer save(Customer customer);
-  Optional<Customer> findByCustomerId(String customerId);
-  List<Customer> findAll();
-  boolean existsByCustomerId(String customerId);
-  void deleteByCustomerId(String customerId);
-}
-```
-
-### Seed excerpt (`InMemoryCustomerRepository`)
-
-```java
-store.put("CUS-1001", new Customer(
-    "CUS-1001", "Amina Khan", "amina.khan@example.com", CustomerStatus.ACTIVE));
-store.put("CUS-1002", new Customer(
-    "CUS-1002", "Ravi Singh", "ravi.singh@example.com", CustomerStatus.PROSPECT));
-```
-
-### Service test excerpt
-
-```java
-@Test
-void updateStatus_movesProspectToActive() {
-  var repo = new InMemoryCustomerRepository();
-  var service = new CustomerService(repo);
-  var updated = service.updateStatus("CUS-1002", CustomerStatus.ACTIVE);
-  assertEquals(CustomerStatus.ACTIVE, updated.getStatus());
-  assertEquals("Ravi Singh", updated.getFullName());
-}
-```
-
 ### Commands
 
 ```bash
@@ -650,47 +519,6 @@ mvn -q test
 mvn -q test
 git status
 ```
-
-### Evidence checklist
-
-```text
-[ ] Controller has zero repository imports (instructor probe)
-[ ] Service has zero Spring Web imports
-[ ] GET CUS-1001 ACTIVE / GET CUS-1002 PROSPECT
-[ ] Duplicate CUS-1001 create → 4xx
-[ ] CUS-9999 → not-found
-[ ] CustomerServiceTest green
-[ ] lab25-001 AI review or manual N/A
-[ ] JPA readiness note written
-[ ] mvn test twice identical
-```
-
-### Class map
-
-| Class | Role |
-| ----- | ---- |
-| `CustomerController` | HTTP + DTO only |
-| `CustomerService` | Business rules |
-| `CustomerRepository` | Persistence contract |
-| `InMemoryCustomerRepository` | Lab persistence + seeds |
-| `CustomerServiceTest` | Service unit gate |
-| `ai-layering-review.md` | AI acceptance audit |
----
-
-## Manual Verification
-
-1. GET `CUS-1001` returns Amina ACTIVE.
-2. GET `CUS-1002` returns Ravi PROSPECT.
-3. Activate Ravi PROSPECT→ACTIVE via service/API.
-4. GET `CUS-9999` is explicit not-found.
-5. Duplicate create of `CUS-1001` fails in service.
-6. Controller source has no repository imports.
-7. Service source has no Spring Web imports.
-8. AI review exists if Copilot/Cursor was used.
-9. Two consecutive `mvn test` runs match.
-10. JPA readiness note exists; no secrets in Git.
-
----
 
 ## Failure Experiments
 
@@ -716,10 +544,6 @@ git status
 | AI invented JPA APIs | Underspecified prompt | Reject; restating interface-only |
 | Working in `module-25-exercises` for the lab | Wrong project | Lab lives in `examples/lab25-crm` |
 | ResponseEntity inside CustomerService | Layer leak / bad AI draft | Move HTTP mapping to controller |
-| Adding @Transactional transfer entities mid-lab | Scope creep | Lab 27 — finish seams first |
-| Missing lab25-001 notes | Skipped AI/manual review log | Add accept/reject/N/A with reason |
-
----
 
 ## Security and Production Review
 
@@ -742,14 +566,6 @@ git status
 ```
 
 **Keep `lab25-crm`**—Lab 26 adds profiles/config on this layering.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -780,26 +596,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. MDC correlation + `customerId` without PII.
-2. `@DataJpaTest` plan doc even before JPA wiring.
-3. Actuator readiness reflecting repository health (document-only OK).
-
----
-
-
-## Instructor Notes
-
-* **Live probe:** Open `CustomerController` and confirm zero repository imports; reproduce not-found; ask which AI suggestion was rejected (or why manual).
-* **Assess:** Service owns transitions/duplicates; seeds present; meaningful asserts; honest AI log.
-* **Continuity:** Prefer `examples/lab25-crm`. Keep fixture IDs. Lab 26/27 should extend, not rewrite package layout.
-* **Common pitfalls:** Fat controllers; AI placing Web types in service; shared static map in tests; inventing a second domain for “clean layering.”
-* **Timing:** Timed path ~45 minutes with starter; full path remains 4–5 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 25 — Service and Repository Layers with AI Assistance: Northstar CRM Layering. Keep `lab25-crm` for Lab 26 and portfolio evidence.*

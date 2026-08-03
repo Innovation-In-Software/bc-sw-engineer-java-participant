@@ -15,8 +15,6 @@
 | **Validation checkpoints** | Starter smoke test · GUIDE Implementation Checkpoints |
 
 **Module:** 9 — Build and Dependency Management with Maven  
-**Lab folder:** `labs/Week 2 - Backend, AI Tools and Testing/module-09/lab9/`  
-**Difficulty:** Intermediate  
 **Duration:** ~45 minutes (timed path with starter) · Full path: 3–4 Hours
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
@@ -74,7 +72,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work. Full detail is under [Expected Deliverables](#expected-deliverables) at the end.
+Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
@@ -95,18 +93,6 @@ Keep this checklist visible while you work. Full detail is under [Expected Deliv
 
 This Module 9 lab turns the Lab 8 CRM skeleton into a **build-managed** Maven project: full `pom.xml` coordinates, Spring and JUnit **placeholders**, dependency scopes, plugins, profiles (`dev` / `test` / `prod`), and a disciplined walk through every major lifecycle phase from `validate` to `install`.
 
-**Purpose.** Lab 8 gave you *where* code lives. Lab 9 teaches Maven to *build* that code into a repeatable artifact. Enterprise teams do not email JARs around; they share `groupId:artifactId:version`, run the same lifecycle locally and in CI, and refuse silent dependency sprawl. This lab makes that contract concrete for Northstar CRM.
-
-**What you build (exercise).** Copy `lab8-crm` → `lab9-crm`, expand `pom.xml` (properties, dependencies with scopes, compiler/Surefire/jar plugins, profiles), add `PlaceholderTest`, capture each lifecycle phase in `docs/lifecycle-evidence.md`, save `docs/dependency-tree.txt`, package `target/customer-service.jar`, run `Main` via `java -jar`, and document `mvn -B verify` for CI. Application behavior stays mostly stubs—the deliverable is a **trustworthy build**, not new CRM features.
-
-**What success looks like.** Under `~/java-bootcamp/examples/lab9-crm/` you can prove phase-by-phase evidence (not one rushed `package`), explain scopes from the dependency tree, activate profiles intentionally, and hand a teammate a README that reproduces `mvn -B verify`.
-
-**Depends on Lab 8.** If packages or Lab 8 compile failed, stop and fix [Lab 8](../../module-08/lab8/LAB-8-GUIDE.md). If `java` / `mvn` fail, fix [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md) / [SETUP-INSTRUCTIONS.md](../../../SETUP-INSTRUCTIONS.md).
-
-**CRM connection (build, not CRUD).** Samples remain `CUS-1001` / `CUS-1002` / `lab-request-001` in docs and `application-dev.properties`. Building the JAR does **not** create Amina Khan in a database. React, Kafka, and PostgreSQL remain **future** boundaries. Spring on the classpath is a **learning placeholder**—do not write `@SpringBootApplication` yet (Lab 22+).
-
----
-
 ## Learning Objectives
 
 After completing this lab, you will be able to:
@@ -116,28 +102,12 @@ After completing this lab, you will be able to:
 * Walk the Maven lifecycle: `validate` → `compile` → `test` → `package` → `verify` → `install`
 * Configure **compiler**, **Surefire**, and **jar** plugins for JDK 21 and `Main`
 * Define `dev`, `test`, and `prod` profiles and activate them intentionally (`-P`, activeByDefault)
-* Interpret `mvn dependency:tree` (direct vs transitive; scope columns)
-* Produce a JAR under `target/` and explain what `install` places in `~/.m2`
-* Describe why CI prefers `mvn -B verify` over casual laptop `mvn install` / deploy
-* Record evidence so another engineer can trust the build without watching you type
-
----
 
 ## Business Scenario
 
 Northstar’s CRM (`CUS-1001` Amina Khan, `CUS-1002` Ravi Singh) will eventually pull Spring Boot, JUnit, Kafka clients, and an PostgreSQL driver. Managing JARs by hand is impossible.
 
 Your lead wants every engineer on the same Maven coordinates:
-
-```text
-com.northstar:customer-service:0.1.0-SNAPSHOT
-```
-
-so Lab 10 can add domain code, labs can share the same `mvn test` habit, and later CI pipelines can run one reliable verify command.
-
-In this lab you teach the **build** to tell the truth: dependencies resolve, tests can run (even a placeholder), the JAR packs, and profiles do not silently mix production settings into laptop runs. Correlation ID `lab-request-001` is recorded in notes for future logging; Maven itself does not need it at build time.
-
-Use these examples consistently:
 
 | Item | Value |
 | ---- | ----- |
@@ -148,10 +118,7 @@ Use these examples consistently:
 
 **Security note for evidence.** Do not paste GitHub credentialss, AWS secrets, or repository passwords into `pom.xml` or screenshots. Never put production DB credentials in `dev` profile properties.
 
----
-
 ## Architecture Context
-
 ### NOW vs LATER
 
 **NOW:** Maven build defines how source becomes a JAR. Still layered plain-Java stubs from Lab 8. Spring libraries may appear on the classpath as **learning placeholders**; do not write Spring Boot application code yet.
@@ -174,27 +141,6 @@ flowchart TB
 
 ### Lifecycle (ASCII)
 
-```mermaid
-flowchart LR
-  V["validate<br/>POM/model OK"] --> C["compile<br/>javac -> target/classes"]
-  C --> T["test<br/>Surefire *Test"]
-  T --> P["package<br/>JAR in target/"]
-  P --> Ver["verify<br/>extra checks"]
-  Ver --> I["install<br/>copy to ~/.m2"]
-```
-
-### Lab flow (mermaid)
-
-```mermaid
-flowchart TD
-    A["Copy lab8-crm<br/>to lab9-crm"] --> B["Expand pom.xml<br/>coords + properties"]
-    B --> C["Dependencies<br/>scopes + PlaceholderTest"]
-    C --> D["Plugins<br/>compiler / surefire / jar"]
-    D --> E["Lifecycle walk<br/>validate -> install"]
-    E --> F["dependency:tree<br/>+ profiles"]
-    F --> G["package JAR<br/>+ CI note mvn -B verify"]
-    G --> H["Failure experiments<br/>+ evidence submit"]
-```
 
 ### Architecture NOW vs LATER (table)
 
@@ -242,52 +188,6 @@ Apache Maven 3....
 Fix environment or Lab 8 gaps before changing the POM. Record tool versions in evidence if asked.
 
 ---
-
-## Suggested Project Files
-
-```text
-~/java-bootcamp/examples/lab9-crm/
-├── src/
-│   ├── main/
-│   │   ├── java/com/northstar/crm/...   (copied from Lab 8)
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       └── application-dev.properties
-│   └── test/
-│       └── java/com/northstar/crm/
-│           └── PlaceholderTest.java
-├── docs/
-│   ├── CODING-STANDARDS.md              (from Lab 8)
-│   ├── layer-flow.md                    (from Lab 8)
-│   ├── lifecycle-evidence.md            (this lab)
-│   └── dependency-tree.txt              (captured output)
-├── notes/
-│   ├── lab9-answers.md
-│   └── screenshots/
-├── pom.xml                              (expanded this lab)
-├── .gitignore
-└── README.md
-```
-
-Ignore `target/`, IDE metadata, `.env`, tokens, passwords, and never commit `~/.m2` contents.
-
-**Windows local mode (instructor-approved only):** Mirror under local `java-bootcamp/examples/`. Prefer laptop for grading parity.
-
----
-
-## Key ideas (skim — no write-up)
-
-Skim these ideas before coding. **No separate write-up required** (you will apply them in the Steps).
-
-1. The main data or request flow in this lab (source → compile → package → optional install)
-2. The trust boundary between Maven Central artifacts and your own source
-3. The success and failure contract of each lifecycle phase
-4. Stable identity of the artifact (`groupId:artifactId:version`) versus customer IDs (`CUS-1001`)
-5. Retry and idempotency of `mvn install` (safe to repeat; overwrites snapshot)
-6. Local development shortcut (`dev` profile) versus production design (`prod`)
-
----
-
 
 ## Worked example (read before you code)
 
@@ -802,36 +702,6 @@ java -jar target/customer-service.jar
 <version>0.1.0-SNAPSHOT</version>
 ```
 
-### Phase → output map
-
-| Phase | Primary proof |
-| ----- | ------------- |
-| `validate` | POM accepted |
-| `compile` | `target/classes/**/*.class` |
-| `test` | Surefire reports / test count |
-| `package` | `target/customer-service.jar` |
-| `verify` | Checks after package succeed |
-| `install` | `~/.m2/repository/com/northstar/customer-service/...` |
-
----
-
-## Manual Verification
-
-1. `pwd` ends with `lab9-crm`.
-2. `mvn validate` … `mvn install` each succeed individually (evidence file filled).
-3. `mvn test` runs `PlaceholderTest` with 0 failures.
-4. `mvn dependency:tree` shows `spring-context` (compile) and `junit-jupiter` (test).
-5. `mvn help:active-profiles` shows `dev` by default; `-Pprod` activates `prod`.
-6. `java -jar target/customer-service.jar` prints skeleton banner / example customer IDs.
-7. `mvn -B verify` succeeds non-interactively.
-8. Search POM/properties for passwords → none.
-9. `git status` does not stage `target/` or secrets.
-10. Concepts/reflection drafts mention artifact GAV vs `CUS-1001` distinction.
-
-Record pass/fail in `notes/lab9-answers.md`.
-
----
-
 ## Failure Experiments
 
 Perform deliberately, then restore working state.
@@ -858,24 +728,6 @@ Perform deliberately, then restore working state.
 | Profile not active | Typo / wrong `-P` | `mvn help:active-profiles` |
 | `BUILD SUCCESS` once only | No phase evidence | Fill `lifecycle-evidence.md` |
 | Spring Boot confusion | Over-eager coding | Remove `@SpringBootApplication`; placeholders only |
-| Disk full after install | Local repo growth | Optional purge of this artifact under `~/.m2` |
-| Surefire / compiler version warnings | Plugin older than needed | Align plugin versions with this guide |
-| Empty `dependency:tree` | Used `-q` | Re-run **without** `-q` (Ex 5 habit) |
-| JUnit on runtime classpath / fat issues | Wrong scope | Use `<scope>test</scope>` for junit-jupiter |
-| Working in `module-09-exercises` for the lab | Wrong project | Lab lives in `examples/lab9-crm` |
-| Accidental `mvn deploy` | Followed deploy slide literally | Stop; use `package` / `verify` / local `install` only |
-
-### Cannot connect (Maven Central)
-
-* Check proxy / corporate mirror in `~/.m2/settings.xml` before raising timeouts blindly.
-* Host apps later use `localhost`; Maven uses remote repos **now**.
-
-### Duplicate / version conflict
-
-* Snapshot `install` is meant to overwrite locally.
-* Conflicting transitive versions → inspect tree; introduce `<dependencyManagement>` in a bonus if needed.
-
----
 
 ## Security and Production Review
 
@@ -903,14 +755,6 @@ git status
 Keep sources, `docs/lifecycle-evidence.md`, `docs/dependency-tree.txt`, and notes. Remove temporary credentials from the environment where practical.
 
 **Keep `lab9-crm`**—Lab 10+ typically continues from this Maven-enabled tree.
-
----
-
-## Expected Deliverables
-
-Same checklist as [What you'll submit](#what-youll-submit-read-this-first) at the top. You are done when those items are complete and the Implementation Checkpoints pass.
-
-Do **not** submit `target/`, secrets, or a verbatim instructor `solution/`.
 
 ---
 
@@ -943,28 +787,3 @@ Write **1–3 sentence** answers (not essays):
 ---
 
 
-## Bonus Challenges
-
-Optional — only after core deliverables pass. Pick at most one if time is short.
-
-
-1. Add a `dependencyManagement` BOM-style section for version alignment.
-2. Sketch a second Maven module (`crm-api` / `crm-domain`) in docs—implement only if time allows.
-3. Fail the build if someone adds a `compile`-scoped JUnit dependency (Enforcer rule sketch).
-
----
-
-
-## Instructor Notes
-
-* **Pedagogy:** Require `docs/lifecycle-evidence.md`—students who only run `mvn package` once have not completed Lab 9. Watch for Spring Boot application code sneaking in; placeholders teach **Maven**, not Spring architecture (Lab 22+).
-* **Continuity:** Keep GAV `com.northstar:customer-service:0.1.0-SNAPSHOT` and CRM sample IDs in docs/`application-dev.properties`. Lab 10 should fork from `lab9-crm`, not rebuild packages from scratch.
-* **Equivalence:** Nearby plugin/dependency patch versions are OK if documented. PostgreSQL/Kafka deps should stay commented or out of the default runtime story.
-* **Common pitfalls:** Editing Lab 8 POM instead of Lab 9; missing `test` scope; no `Main-Class`; committing `target/`; putting passwords in profiles; skipping dependency-tree annotations.
-* **CI talking point:** Ask why agents prefer `mvn -B verify` over casual `mvn install` on shared machines. Discuss snapshot overwrite semantics honestly.
-* **Assessment tip:** Have the student explain one transitive Spring dependency from their tree without reading blogs mid-answer.
-* **Timing:** Timed path ~45 minutes with starter; full path remains 3–4 hours. Keep starter TODOs as the in-class core; remaining GUIDE steps are homework/extended depth.
-
----
-
-*End of Lab 9 — Maven Build and Dependencies: Northstar CRM Build Lab. Keep `lab9-crm` for Lab 10+ and portfolio evidence.*
