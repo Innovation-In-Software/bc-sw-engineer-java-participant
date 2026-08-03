@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-10-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab9-crm` → `examples\lab10-crm`; added `CustomerStatus`, fleshed-out `Customer` (no JPA), in-memory `CustomerService`, `Main` harness, and `copilot-notes\ai-review-notes.md` (`lab10-001`–`lab10-004`). `mvn clean compile` → **BUILD SUCCESS**; `java -cp target\classes com.northstar.crm.Main` prints both sample customers, PROSPECT filter for `CUS-1002`, then ACTIVE after `updateStatus`. Blank/duplicate/unknown ID rules verified. Controllers left as Lab 8/9 stubs with thin UOE methods on the service so Maven still compiles.
+**Verified (Sunday, August 2, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 10 `starter/` → `examples\lab10-crm` (or full path: copy `lab9-crm` → `lab10-crm`). Filled `CustomerStatus`, plain-Java `Customer` (no JPA), in-memory `CustomerService`, `Main` harness, and `copilot-notes\ai-review-notes.md` (`lab10-001`–`lab10-004`). `mvn clean compile` → **BUILD SUCCESS**; `java -cp target\classes com.northstar.crm.Main` prints both sample customers, PROSPECT filter for `CUS-1002`, then ACTIVE after `updateStatus`. Blank/duplicate/unknown ID rules verified (`IllegalArgumentException` / `IllegalStateException`). Instructor walkthrough: `docs/instructor-participant-help/week-2/10-service-exercises-and-lab10.md`.
 
 ## Prerequisites (Windows)
 
@@ -96,3 +96,21 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-10/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab10-crm
+mvn -q clean compile
+java -cp target\classes com.northstar.crm.Main
+```
+
+**Verified result (Temurin 21.0.11 / Maven 3.9.9):**
+
+```text
+All customers: [Customer{customerId='CUS-1001', fullName='Amina Khan', status=ACTIVE}, Customer{customerId='CUS-1002', fullName='Ravi Singh', status=PROSPECT}]
+PROSPECT customers: [Customer{customerId='CUS-1002', fullName='Ravi Singh', status=PROSPECT}]
+After activation: Optional[Customer{customerId='CUS-1002', fullName='Ravi Singh', status=ACTIVE}]
+```
+
+Blank ID → `IllegalArgumentException`; duplicate ID → `IllegalStateException`; unknown ID on `updateStatus` → `IllegalArgumentException`. No JPA/Spring on entity/service. Keep `copilot-notes\ai-review-notes.md` entries `lab10-001`–`lab10-004`.

@@ -10,7 +10,7 @@
 **Full lab steps:** [LAB-4-GUIDE.md](LAB-4-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-4-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Flat folder `examples\Lab4-Memory` (alias name `Lab4-MemoryManagement` also OK; no required `src/` / `out/`). Named `javac` of the nine core demos succeeded. Smoke results: `StackExample` nested frames; `HeapExample` identity hashes; `ObjectLifecycle` reachability; `GarbageCollectionDemo` with `-Xms16m -Xmx64m`; `WeakReferenceDemo` after GC; full leak/fix/PerformanceTest path verified on prior pass with `-Xms128m -Xmx512m`.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Module 4 exercises: `StackHeapDemo` → `Aman has 4 letters.`; G1/ZGC `-Xlog:gc` lines present. Lab folder `examples\Lab4-MemoryManagement` (alias `Lab4-Memory` OK); named `javac` of nine core demos EXIT 0. Smoke: `StackExample` nested frames; `HeapExample` identity hashes; `ObjectLifecycle` reachability; `GarbageCollectionDemo` with `-Xms16m -Xmx64m` reclaim (~24 MB → ~1 MB used); `-Xlog:gc` shows `Using G1`; `MemoryLeakDemo leak` rises / `fix` drops after clear+GC; `WeakReferenceDemo` → `get() : null` after GC; `PerformanceTest` with `-Xms128m -Xmx512m`. Instructor walkthrough: `docs/instructor-participant-help/week-1/04-memory-exercises-and-lab4.md`. Do **not** commit `.hprof`.
 
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-04-exercises`
 

@@ -51,9 +51,20 @@ cd examples\lab23-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn spring-boot:run
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab23-crm
+mvn -B test
+mvn -B test
+mvn -B spring-boot:run
+# After Started CrmApplication (second Terminal):
+# Invoke-RestMethod http://localhost:8080/actuator/health
+# Invoke-RestMethod http://localhost:8080/actuator/info
+# $headers = @{ "X-Correlation-Id" = "lab-request-001"; "Content-Type" = "application/json" }
+# Invoke-WebRequest http://localhost:8080/api/customers -Method POST -Headers $headers -Body '{"id":"CUS-1001","name":"Amina Khan","email":"amina.khan@example.com","status":"ACTIVE"}' -UseBasicParsing
+# Profile teaser: mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
 ```
+
+Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS** twice (`CrmApplicationTests` + `CustomerControllerApiTest`); live health **UP**; POST **201** / GET **200** for `CUS-1001` with `lab-request-001`; `CUS-MISSING` **404**; profile `dev` active with health details; `/actuator/info` shows `northstar-crm` when `management.info.env.enabled=true`.
 
 ## Run configurations (IntelliJ)
 

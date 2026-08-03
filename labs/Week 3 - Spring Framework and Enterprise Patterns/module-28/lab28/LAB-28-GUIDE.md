@@ -344,7 +344,7 @@ Start the app and call customers without a token.
 
 **Expected result:** Application starts; unauthenticated `GET /api/customers/CUS-1001` returns **401**; health remains reachable if exposed.
 
-**If it fails:** Browser form login redirects → disable formLogin/httpBasic for API-style responses. Filter not registered → 401 persists even with valid tokens later.
+**If it fails:** Browser form login redirects → disable formLogin/httpBasic for API-style responses. Filter not registered → 401 persists even with valid tokens later. Agent on admin returns **401** instead of **403** on live Tomcat → add `/error` to `permitAll()` (Boot `sendError(403)` dispatches to `/error`; if that path requires auth, the client status becomes 401). MockMvc may still show 403 without this fix — always verify with `spring-boot:run`.
 
 ---
 

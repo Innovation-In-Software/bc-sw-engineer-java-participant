@@ -10,7 +10,7 @@
 **Full lab steps:** [LAB-2-GUIDE.md](LAB-2-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-2-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: create `examples\Lab2-JavaSyntax`, compile with **named** `.java` files (not `*.java` globs), run `java -cp out com.academy.student.Main`. Sample session (add `101`/`John`/`Java`/`91` → display table `91.00` → search → average `91.00` → exit `Thank You`) succeeded; class files land under `out\com\academy\student\`.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Module 2 Exercises 1–9 compile; non-Scanner `MethodsDemo` → `square(4) = 16`. Lab: create `examples\Lab2-JavaSyntax`, mark `src` Sources Root, compile with **named** `.java` files, run `java -cp out com.academy.student.Main`. Sample session (`1`→`101`/`John`/`Java`/`91` → `2` table `91.00` → `4` average `91.00` → `5` `Thank You`) succeeded; search `101` / not-found `999`; duplicate ID rejected; marks `150` rejected then `85` accepted (avg `88.00` with John). Instructor walkthrough: `docs/instructor-participant-help/week-1/02-syntax-exercises-and-lab2.md`.
 
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-02-exercises`
 

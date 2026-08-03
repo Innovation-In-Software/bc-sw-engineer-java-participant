@@ -9,6 +9,8 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-19-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9** + Chrome **150.0.7871.187**. Used Lab 19 Spring Boot starter (`examples\lab19-crm`); WebDriverManager resolved chromedriver **150.0.7871.124**. `CustomerApiIT` (3) + `CustomerUiIT` (2, headless + blank-name). Two consecutive `mvn -B clean verify` / `mvn -B verify` → **Tests run: 5**, Failures: 0 · **BUILD SUCCESS** (Failsafe). Instructor walkthrough: `docs/instructor-participant-help/week-2/19-selenium-exercises-and-lab19.md`.
+
 ## Prerequisites (Windows)
 
 - [Lab 0 (Windows)](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) complete (JDK 21, Maven when needed, Git)
@@ -51,10 +53,16 @@ cd examples\lab19-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn spring-boot:run
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab19-crm
+mvn -B "-Dtest=CustomerApiIT" test
+mvn -B "-Dtest=CustomerUiIT" test
+mvn -B clean verify
+# optional manual UI:
+# mvn spring-boot:run   # then http://localhost:8080/customers.html
 ```
 
+Verified (2026-08-03): **Tests run: 5** (ApiIT 3 + UiIT 2) · **BUILD SUCCESS** via Failsafe on `verify`.
 ## Run configurations (IntelliJ)
 
 1. Open the class with `public static void main` (or use the Spring Boot run config when the lab uses Spring).

@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-9-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab8-crm` → `examples\lab9-crm`, expanded POM (Spring/JUnit placeholders, Surefire, jar `Main-Class`, `dev`/`test`/`prod` profiles). Lifecycle `validate`→`install` and `mvn -B verify` → **BUILD SUCCESS**; `PlaceholderTest` Tests run: **1**; `java -jar target\customer-service.jar` prints the CRM skeleton banner; default profile **`dev`**.
+**Verified (Sunday, August 2, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: copy Lab 9 `starter/` → `examples\lab9-crm` (or full path: copy `lab8-crm` → `lab9-crm` then expand POM). Expanded POM includes Spring/JUnit placeholders, Surefire, jar `Main-Class`, `dev`/`test`/`prod` profiles (`dev` active by default). Lifecycle `validate`→`install` and `mvn -B verify` → **BUILD SUCCESS**; `PlaceholderTest` Tests run: **1**, Failures: **0**; `java -jar target\customer-service.jar` prints the Lab 8 CRM skeleton banner; artifact under `~\.m2\repository\com\northstar\customer-service\0.1.0-SNAPSHOT\`. Instructor walkthrough: `docs/instructor-participant-help/week-2/09-maven-exercises-and-lab9.md`.
 
 ## Prerequisites (Windows)
 
@@ -100,5 +100,16 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Verified smoke commands (participant laptop)
 
-**Verified result (Temurin 21.0.11 / Maven 3.9.9):** `target\customer-service.jar` exists; `java -jar` prints Lab 8 Main banner; Surefire runs `PlaceholderTest`; default active profile is `dev`; artifact installed under `~\.m2\repository\com\northstar\customer-service\0.1.0-SNAPSHOT\`. Finish Lab 8 first if `lab8-crm` is missing.
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab9-crm
+mvn validate
+mvn test
+mvn clean package
+java -jar target\customer-service.jar
+mvn -B verify
+mvn dependency:tree
+mvn help:active-profiles
+```
+
+**Verified result (Temurin 21.0.11 / Maven 3.9.9):** `target\customer-service.jar` exists; MANIFEST `Main-Class: com.northstar.crm.Main`; `java -jar` prints Lab 8 Main banner (`CUS-1001` / `CUS-1002`); Surefire runs `PlaceholderTest` (Tests run: 1, Failures: 0); default active profile is `dev`; `-Pprod` activates `prod`; artifact installed under `~\.m2\repository\com\northstar\customer-service\0.1.0-SNAPSHOT\`. Never use `-q` with `dependency:tree`. Finish Lab 8 first if using the full-path copy and `lab8-crm` is missing (timed path may use Lab 9 starter instead).
 

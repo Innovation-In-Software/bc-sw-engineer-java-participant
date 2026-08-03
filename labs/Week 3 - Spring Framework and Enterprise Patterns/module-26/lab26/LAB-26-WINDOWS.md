@@ -51,9 +51,18 @@ cd examples\lab26-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn spring-boot:run
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab26-crm
+mvn -B test "-Dspring.profiles.active=test"
+mvn -B test "-Dspring.profiles.active=test"
+mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
+# After Started CrmApplication:
+# Invoke-WebRequest http://localhost:8080/api/customers/CUS-1001 -Headers @{"X-Correlation-Id"="lab26-001"} -UseBasicParsing
+# Invoke-RestMethod http://localhost:8080/api/config/integration
+# Fail-fast: mvn -B spring-boot:run "-Dspring-boot.run.profiles=prod"   # expect APPLICATION FAILED TO START
 ```
+
+Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** twice under `test`; `dev` active + H2 `/h2-console` + GET `CUS-1001` **200**; override ladder **100 / 9999 / 1234**; `prod` **APPLICATION FAILED TO START** (blank `apiKey`); `.env` absent.
 
 ## Run configurations (IntelliJ)
 

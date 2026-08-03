@@ -51,9 +51,11 @@ cd examples\lab27-crm
 ### Commands this lab typically uses
 
 ```text
-mvn spring-boot:run
-docker compose
+mvn -B test
+mvn -B spring-boot:run
 ```
+
+Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS** twice; force-fail `ACC-FORCE-FAIL` → HTTP **409**, MAIN unchanged at **1000.00**; happy MAIN→LOYALTY `50.00` → MAIN **950.00** / LOYALTY **150.00** / `correlationId=lab-request-001`; insufficient funds leaves balances unchanged. `@Transactional` on `TransferService` only.
 
 ## Run configurations (IntelliJ)
 
@@ -82,3 +84,19 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-27/` | Pass / Fail |
+
+## Laptop smoke notes (instructor — Monday, August 3, 2026)
+
+Verified on this Windows laptop with IntelliJ Terminal (PowerShell), Temurin **21.0.11**, Maven **3.9.9**, project `%USERPROFILE%\java-bootcamp\examples\lab27-crm`:
+
+| Check | Result |
+| ----- | ------ |
+| Dual `mvn -B test` | **Tests run: 3**, Failures: **0**, Errors: **0** · **BUILD SUCCESS** twice (`TransferServiceTest`) |
+| Seed balances | `ACC-MAIN-1001=1000.00`, `ACC-LOYALTY-1001=100.00`, `ACC-MAIN-1002=250.00` |
+| Force-fail `ACC-FORCE-FAIL` | HTTP **409**; MAIN stays **1000.00** (debit rolled back) |
+| Happy MAIN→LOYALTY `50.00` | MAIN **950.00**, LOYALTY **150.00**, `correlationId=lab-request-001` |
+| Insufficient funds | HTTP **409**; balances unchanged |
+| `@Transactional` | On `TransferService.transfer` only (not controller) |
+| Docs | `docs/acid-notes.md` + `copilot-notes/ai-tx-review.md` |
+
+Full participant-style walkthrough: `docs/instructor-participant-help/week-3/27-tx-exercises-and-lab27.md` (instructor-only).

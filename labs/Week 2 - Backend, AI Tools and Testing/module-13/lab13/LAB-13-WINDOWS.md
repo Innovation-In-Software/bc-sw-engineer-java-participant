@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-13-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11**. Created `examples\lab13-crm` with `contracts\customer.xsd`, `contracts\CustomerService.wsdl` (document/literal; ops Create/Update/Get; placeholder `http://localhost:8080/ws`), eight sample envelopes (CUS-1001 / CUS-1002 / `lab-request-001` + two faults), and docs. PowerShell `[xml]` load → **10/10 well-formed**. Port **8080** was **not** listening (expected — design-only; Lab 24 hosts Spring-WS). No Maven build required for this lab.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11**. Created `examples\lab13-crm` with `contracts\customer.xsd`, `contracts\CustomerService.wsdl` (document/literal; ops Create/Update/Get; placeholder `http://localhost:8080/ws`), eight sample envelopes (CUS-1001 / CUS-1002 / `lab-request-001` + two faults), and docs. PowerShell `[xml]` load → **10/10 well-formed**. Port **8080** was **not** listening (expected — design-only; Lab 24 hosts Spring-WS). No Maven build required for this lab. Instructor walkthrough: `docs/instructor-participant-help/week-2/13-soap-exercises-and-lab13.md`.
 
 ## Prerequisites (Windows)
 
@@ -93,3 +93,15 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-13/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab13-crm
+Get-ChildItem contracts, samples -Recurse -Include *.xsd,*.wsdl,*.xml | ForEach-Object {
+  $null = [xml](Get-Content -Raw $_.FullName)
+  "OK $($_.Name)"
+}
+```
+
+**Verified result:** **10/10 well-formed** (1 XSD + 1 WSDL + 8 samples). Port 8080 not listening; connection failure to `http://localhost:8080/ws` is **expected**. Fill `docs/operation-matrix.md` and `docs/soap-design-notes.md`.

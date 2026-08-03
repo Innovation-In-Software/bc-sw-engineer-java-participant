@@ -10,7 +10,7 @@
 **Full lab steps:** [LAB-3-GUIDE.md](LAB-3-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-3-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Participant path: `examples\Lab3-BankingSystem`, `javac -d out` of eight sources under `src\com\academy\bank`, run `java -cp out com.academy.bank.Main`. Sample: create customer `C101` → create savings `10000`@`5%` (issued account **`10001`**) → deposit `2000` → withdraw `3000` → display balance **`9000`** / interest **`450`** → exit `Thank You`. Use the printed account number (not `1001`) for deposit/withdraw. Class files land under `out\com\academy\bank\`.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Module 3 exercise demos green (`EncapsulationDemo` balance `120.00`, `SolidDemo` interest `500.00`, …). Lab: `examples\Lab3-BankingSystem`, `javac -d out` of eight sources, `java -cp out com.academy.bank.Main`. Sample: customer `C101` → savings `10000`@`5%` (account **`10001`**) → deposit `2000` → withdraw `3000` → display balance **`9000`** / interest **`450`** → `Thank You`. Abstract proof: `Account is abstract; cannot be instantiated`. Current-account fee run: withdraw `100` + fee `25` → balance `4875`. Instructor walkthrough: `docs/instructor-participant-help/week-1/03-oop-exercises-and-lab3.md`.
 
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-03-exercises`
 

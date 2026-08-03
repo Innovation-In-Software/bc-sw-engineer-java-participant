@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-15-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab14-crm` → `examples\lab15-crm`; introduced `CustomerRepository` + `InMemoryCustomerRepository`, `CustomerValidator` transition table, `CustomerService` interface + `DefaultCustomerService` (constructor DI). `mvn -B clean test` → **Tests run: 15**, Failures: 0 · **BUILD SUCCESS**. Main prints Ravi activation + illegal transition with `lab-request-001` while Amina remains ACTIVE. No `HashMap` in the service package.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab14-crm` → `examples\lab15-crm`; introduced `CustomerRepository` + `InMemoryCustomerRepository`, `CustomerValidator` transition table, `CustomerService` interface + `DefaultCustomerService` (constructor DI). `mvn -B clean test` → **Tests run: 15**, Failures: 0 · **BUILD SUCCESS**. Main prints Ravi activation + illegal transition with `lab-request-001` while Amina remains ACTIVE. No `HashMap` in the service package. Instructor walkthrough: `docs/instructor-participant-help/week-2/15-service-exercises-and-lab15.md`.
 
 ## Prerequisites (Windows)
 

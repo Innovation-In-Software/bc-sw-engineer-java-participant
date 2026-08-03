@@ -9,6 +9,8 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-20-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 20 starter `examples\lab20-crm`: Logback pattern `corr/cust/op`, `CorrelationFilter` MDC + finally clear, PII-free service logs. `CustomerLoggingIT` → **Tests run: 2**, Failures: 0. Two consecutive `mvn -B clean verify` / `mvn -B verify` → **BUILD SUCCESS**. Sample lines show `corr=lab-request-001 cust=CUS-1001 op=customer.get` with no Amina/email. Instructor walkthrough: `docs/instructor-participant-help/week-2/20-logging-exercises-and-lab20.md`.
+
 ## Prerequisites (Windows)
 
 - [Lab 0 (Windows)](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) complete (JDK 21, Maven when needed, Git)
@@ -51,10 +53,15 @@ cd examples\lab20-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn spring-boot:run
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab20-crm
+mvn -q dependency:tree | findstr /i "logback slf4j"
+mvn -B "-Dtest=CustomerLoggingIT" test
+mvn -B clean verify
+# optional: mvn spring-boot:run  then curl with X-Correlation-Id: lab-request-001
 ```
 
+Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS**; logs include `lab-request-001` + customer ids + ops; no Amina/email PII.
 ## Run configurations (IntelliJ)
 
 1. Open the class with `public static void main` (or use the Spring Boot run config when the lab uses Spring).

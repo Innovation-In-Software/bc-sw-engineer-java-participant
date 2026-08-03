@@ -22,10 +22,11 @@ public class SecurityConfig {
     http.csrf(csrf -> csrf.disable());
     // TODO: sessionManagement STATELESS
     // TODO: authorizeHttpRequests:
-    //   /api/auth/login permitAll
+    //   /api/auth/login, /actuator/health, /error permitAll
     //   /api/customers/** hasAnyRole("AGENT","ADMIN")
     //   /api/admin/** hasRole("ADMIN")
     //   anyRequest authenticated
+    //   (permit /error so live Tomcat does not rewrite 403 → 401)
     // TODO: addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
     http.httpBasic(Customizer.withDefaults()); // temporary — replace with JWT filter chain
     return http.build();

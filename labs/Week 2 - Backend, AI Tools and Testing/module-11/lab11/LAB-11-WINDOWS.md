@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-11-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab10-crm` → `examples\lab11-crm`; added Mockito (`mockito-core` + `mockito-junit-jupiter` **5.11.0**, test scope); extracted `CustomerNotifier` + `validateCustomerId`; tests `CustomerTest` / `CustomerServiceTest` / `CustomerNotifierMockTest`; notes `copilot-notes\ai-test-refactor-notes.md`. `mvn -q clean test` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS** (twice, deterministic). `Main` still shows `CUS-1001` ACTIVE + `CUS-1002` PROSPECT → ACTIVE. JDK 21 may log Byte Buddy dynamic-agent warnings during Mockito — ignore if Surefire is green.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 11 `starter/` → `examples\lab11-crm` (or copy `lab10-crm` → `lab11-crm`). Mockito (`mockito-core` + `mockito-junit-jupiter` **5.11.0**, test scope); `CustomerNotifier.notifyStatusChange` + `validateCustomerId`; tests `CustomerTest` (2) / `CustomerServiceTest` (5) / `CustomerNotifierMockTest` (1); notes `copilot-notes\ai-test-refactor-notes.md`. `mvn clean test` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS** (twice, deterministic). `Main` still shows `CUS-1001` ACTIVE + `CUS-1002` PROSPECT → ACTIVE. Skipping notifier → Mockito **Wanted but not invoked**. JDK 21 may log Byte Buddy dynamic-agent warnings during Mockito — ignore if Surefire is green. Instructor walkthrough: `docs/instructor-participant-help/week-2/11-testing-exercises-and-lab11.md`.
 
 ## Prerequisites (Windows)
 
@@ -92,3 +92,15 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-11/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab11-crm
+mvn -q clean test
+# Expected: Tests run: 8, Failures: 0 (2 entity + 5 service + 1 Mockito) — BUILD SUCCESS
+mvn -q -DskipTests compile
+java -cp target\classes com.northstar.crm.Main
+```
+
+**Verified result (Temurin 21.0.11 / Maven 3.9.9):** Tests run: **8**, Failures: **0**; `Main` prints both customers, PROSPECT filter, then ACTIVE after `updateStatus`. Prefer GUIDE `notifyStatusChange` over starter `notifyCreated` shell. Fill `copilot-notes\ai-test-refactor-notes.md` (`lab11-001`–`lab11-004`).

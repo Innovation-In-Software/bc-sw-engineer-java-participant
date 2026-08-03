@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-8-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\lab8-crm` with seven `com.northstar.crm.*` packages, stub classes, `docs/`, and minimal `pom.xml`. `mvn -q validate` and `mvn -q clean compile` → **BUILD SUCCESS**; `java -cp target\classes com.northstar.crm.Main` prints the Lab 8 skeleton banner with `CUS-1001` / `CUS-1002`.
+**Verified (Sunday, August 2, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\lab8-crm` with seven `com.northstar.crm.*` packages, stub classes, `docs/`, and minimal `pom.xml`. `mvn -q validate` and `mvn -q clean compile` → **BUILD SUCCESS**; nine `.class` files under `target\classes\com\northstar\crm\…`; `java -cp target\classes com.northstar.crm.Main` prints the Lab 8 skeleton banner with seven packages + `CUS-1001` / `CUS-1002`. Starter `Main` must fill TODOs before run (otherwise `UnsupportedOperationException`). Instructor walkthrough: `docs/instructor-participant-help/week-2/08-structure-exercises-and-lab8.md`.
 
 ## Prerequisites (Windows)
 
@@ -101,5 +101,20 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 
 ### Verified smoke commands (participant laptop)
 
-**Verified result (Temurin 21.0.11 / Maven 3.9.9):** `BUILD SUCCESS`; nine stub `.class` files under `target\classes\com\northstar\crm\…`; Main banner lists all seven packages and example customers. Open `pom.xml` in IntelliJ so Maven imports the module; keep working directory at `examples\lab8-crm`.
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab8-crm
+mvn -q validate
+mvn -q clean compile
+java -cp target\classes com.northstar.crm.Main
+```
+
+**Verified result (Temurin 21.0.11 / Maven 3.9.9):** `BUILD SUCCESS`; nine `.class` files under `target\classes\com\northstar\crm\…`; Main prints:
+
+```text
+Northstar CRM skeleton — Lab 8
+Packages: controller, service, repository, entity, dto, config, exception
+Examples: CUS-1001 Amina Khan ACTIVE | CUS-1002 Ravi Singh PROSPECT
+```
+
+Open `pom.xml` in IntelliJ so Maven imports the module; keep working directory at `examples\lab8-crm`. Failure experiments: missing POM → `MissingProjectException`; wrong package on `Customer` → `cannot find symbol`; upward `controller` import in `repository` still compiles but violates layer rules — remove it.
 

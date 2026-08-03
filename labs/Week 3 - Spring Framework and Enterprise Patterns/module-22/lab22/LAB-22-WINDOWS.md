@@ -51,9 +51,17 @@ cd examples\lab22-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn spring-boot:run
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab22-crm
+mvn -B "-Dtest=CustomerServiceTest,CustomerServiceSpringIT" test
+mvn -B spring-boot:run
+# After Started CrmApplication (second Terminal / PowerShell):
+# $headers = @{ "X-Correlation-Id" = "lab-request-001"; "Content-Type" = "application/json" }
+# Invoke-WebRequest http://localhost:8080/api/customers -Method POST -Headers $headers -Body '{"id":"CUS-1001","name":"Amina Khan","email":"amina.khan@example.com","status":"ACTIVE"}' -UseBasicParsing
+# Invoke-WebRequest http://localhost:8080/api/customers/CUS-1001 -UseBasicParsing
 ```
+
+Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** (unit + `@SpringBootTest` IT via `-Dtest=…`; plain `mvn test` runs `*Test` only); live POST **201** / GET **200** for `CUS-1001` with `lab-request-001`; log `CustomerService ready` + `customer.created id=CUS-1001 correlationId=lab-request-001`; graceful stop shows `CustomerService shutting down`.
 
 ## Run configurations (IntelliJ)
 

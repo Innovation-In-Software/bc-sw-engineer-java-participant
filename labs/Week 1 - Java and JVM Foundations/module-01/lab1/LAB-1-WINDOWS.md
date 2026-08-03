@@ -14,7 +14,7 @@
 
 ## How Lab 1 is performed on Windows (smooth path)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin JDK 21 on a Lab 0 `java-bootcamp` workspace.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin JDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Exercises 1–8 smoke green; Lab Steps 2–11: `Hello, JVM!` · `Sum = 30` · `101 - Aman` · `Created 100000 employees`; `javap -c HelloWorld` shows `getstatic`/`ldc`/`invokevirtual`; `-verbose:class Employee` loads app class from `examples\jvm-compilation-lab`; ergonomic flags showed `UseG1GC=true`. Instructor walkthrough with captured outputs: `docs/instructor-participant-help/week-1/01-jvm-exercises-and-lab1.md`.
 
 | What | Where |
 | ---- | ----- |

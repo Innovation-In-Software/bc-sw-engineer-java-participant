@@ -52,9 +52,11 @@ cd examples\lab28-crm
 ### Commands this lab typically uses
 
 ```text
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+mvn -B test
+mvn -B spring-boot:run
 ```
+
+Verified (2026-08-03): **Tests run: 5** · **BUILD SUCCESS** twice (`SecurityIntegrationTest`); health **200**; no-token customers **401**; bad login **401**; agent login → Bearer GET `CUS-1001` **200** (Amina ACTIVE); agent → `/api/admin/ping` **403**; admin → admin ping **200**; agent GET `CUS-1002` **200**. Lab users `agent1`/`agent1`, `admin1`/`admin1`. Permit `/error` so live Tomcat does not rewrite 403→401. No `.env` committed.
 
 ## Run configurations (IntelliJ)
 
@@ -83,3 +85,20 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-28/` | Pass / Fail |
+
+## Laptop smoke notes (instructor — Monday, August 3, 2026)
+
+Verified on this Windows laptop with IntelliJ Terminal (PowerShell), Temurin **21.0.11**, Maven **3.9.9**, project `%USERPROFILE%\java-bootcamp\examples\lab28-crm`:
+
+| Check | Result |
+| ----- | ------ |
+| Dual `mvn -B test` | **Tests run: 5**, Failures: **0** · **BUILD SUCCESS** twice |
+| Health anon | **200** UP |
+| Customers no token | **401** |
+| Login `agent1`/`agent1` | JWT Bearer issued |
+| Bearer GET `CUS-1001` | **200** Amina ACTIVE |
+| Agent → `/api/admin/ping` | **403** (requires `/error` permitAll on live Tomcat) |
+| Admin → `/api/admin/ping` | **200** |
+| Secrets | `.env` absent; `.gitignore` has `.env`; `.env.example` only |
+
+Full participant-style walkthrough: `docs/instructor-participant-help/week-3/28-security-exercises-and-lab28.md` (instructor-only).

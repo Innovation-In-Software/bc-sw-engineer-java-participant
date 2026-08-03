@@ -52,9 +52,11 @@ cd examples\lab29-crm
 ### Commands this lab typically uses
 
 ```text
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+mvn -B test
+mvn -B spring-boot:run
 ```
+
+Verified (2026-08-03): **Tests run: 6** · **BUILD SUCCESS** twice (`CustomerValidationTest`); GET `CUS-1001`/`CUS-1002` **200**; `CUS-9999` **404** envelope; bad email **400** with `violations[field=email]`; blank fields **400** (≥4 violations); duplicate `CUS-1001` **409**; valid create **201**. Correlation `lab-request-001`. Starter DTO fields `id`/`name`/`email`/`status`.
 
 ## Run configurations (IntelliJ)
 
@@ -83,3 +85,19 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-29/` | Pass / Fail |
+
+## Laptop smoke notes (instructor — Monday, August 3, 2026)
+
+Verified on this Windows laptop with IntelliJ Terminal (PowerShell), Temurin **21.0.11**, Maven **3.9.9**, project `%USERPROFILE%\java-bootcamp\examples\lab29-crm`:
+
+| Check | Result |
+| ----- | ------ |
+| Dual `mvn -B test` | **Tests run: 6**, Failures: **0** · **BUILD SUCCESS** twice |
+| GET `CUS-1001` / `CUS-1002` | **200** Amina ACTIVE / Ravi PROSPECT |
+| GET `CUS-9999` | **404** `ErrorResponse` · `correlationId=lab-request-001` |
+| POST bad email | **400** · `violations[{field:email,...}]` |
+| POST blank fields | **400** · ≥4 violations |
+| POST duplicate `CUS-1001` | **409** |
+| POST valid new customer | **201** |
+
+Full participant-style walkthrough: `docs/instructor-participant-help/week-3/29-validation-exercises-and-lab29.md` (instructor-only).

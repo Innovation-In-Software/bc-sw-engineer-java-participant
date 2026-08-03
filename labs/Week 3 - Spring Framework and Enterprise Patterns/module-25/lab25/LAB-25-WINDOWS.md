@@ -51,9 +51,18 @@ cd examples\lab25-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn spring-boot:run
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab25-crm
+mvn -B test
+mvn -B test
+mvn -B spring-boot:run
+# After Started CrmApplication (second Terminal):
+# Invoke-WebRequest http://localhost:8080/api/customers/CUS-1001 -UseBasicParsing
+# Invoke-WebRequest http://localhost:8080/api/customers/CUS-1002 -UseBasicParsing
+# Invoke-RestMethod http://localhost:8080/api/customers
 ```
+
+Verified (2026-08-03): **Tests run: 6** · **BUILD SUCCESS** twice (`CustomerServiceTest`); GET `CUS-1001`/`CUS-1002` **200**; POST Maya **201**; duplicate **409**; missing **404**; activate Ravi **200**; controller has **no** `repository` imports; `docs/lab25-001.md` present.
 
 ## Run configurations (IntelliJ)
 

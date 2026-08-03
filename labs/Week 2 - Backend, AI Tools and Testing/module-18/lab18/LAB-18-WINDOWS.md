@@ -9,6 +9,8 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-18-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab17-crm` → `examples\lab18-crm`; added Mockito **5.14.2** (`mockito-core` + `mockito-junit-jupiter`); wrote `CustomerServiceMockitoTest` (stub/verify/never/ArgumentCaptor) + `CustomerServiceBddMockTest`. Two consecutive `mvn -B test` → **Tests run: 47**, Failures: 0 · **BUILD SUCCESS**. Not-found path verifies `never().save`. Instructor walkthrough: `docs/instructor-participant-help/week-2/18-mockito-exercises-and-lab18.md`.
+
 ## Prerequisites (Windows)
 
 - [Lab 0 (Windows)](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) complete (JDK 21, Maven when needed, Git)
@@ -51,10 +53,16 @@ cd examples\lab18-crm
 
 ### Commands this lab typically uses
 
-```text
-mvn clean test
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples
+Copy-Item -Recurse lab17-crm lab18-crm   # once
+cd lab18-crm
+mvn -q test "-Dtest=CustomerServiceMockitoTest,CustomerServiceBddMockTest"
+mvn -B clean test
+mvn -q test   # second run for determinism
 ```
 
+Verified (2026-08-03): **Tests run: 47**, Failures: 0 · **BUILD SUCCESS** (Lab 17 suite + Mockito 4 + BDD 2).
 ## Run configurations (IntelliJ)
 
 1. Open the class with `public static void main` (or use the Spring Boot run config when the lab uses Spring).

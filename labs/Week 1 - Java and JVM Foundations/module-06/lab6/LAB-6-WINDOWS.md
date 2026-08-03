@@ -10,7 +10,7 @@
 **Full lab steps:** [LAB-6-GUIDE.md](LAB-6-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-6-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\Lab6-EmployeeAnalytics` with `src\com\academy\analytics\`. Named `javac -d out` of the five sources succeeded. CORE path (1 → 2 → 3 → 8 → 9) matched dashboard: Employees `25`, Average Salary `100680`, Highest `165000`, Lowest `48000`, Departments `5`, Top Performer John Smith, Highest Paid Dept IT, Active `23` / Inactive `2`, then `Thank You`.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Module 6 exercise demos green (`LambdaDemo`, `FilterSalaryDemo`, …). Lab: `examples\Lab6-EmployeeAnalytics` (alias `Lab6-HRStream` OK locally), named `javac -d out` of five sources, `java -cp out com.academy.analytics.Main`. CORE path `1 → 2 → 3 → 8 → 9` matched dashboard: Employees `25`, Average Salary `100680`, Highest `165000`, Lowest `48000`, Departments `5`, Top Performer John Smith, Highest Paid Dept IT, Active `23` / Inactive `2`, then `Thank You`. Extended menus 4–7 and 10–20 also ran. Instructor walkthrough: `docs/instructor-participant-help/week-1/06-streams-exercises-and-lab6.md`. Mark `src` as Sources Root.
 
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-06-exercises`
 

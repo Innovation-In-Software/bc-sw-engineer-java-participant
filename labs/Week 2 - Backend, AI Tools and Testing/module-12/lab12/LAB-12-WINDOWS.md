@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-12-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab11-crm` → `examples\lab12-crm`; froze messy `doStuff` baseline as `CustomerService.before.java.txt`; refactored to `createCustomer` / `getCustomer` / `updateStatus` with `Map<String,Customer>`, exception + `lab-request-001` correlation messages, and validation helpers. Evidence under `docs\` (smells, before-after, AI review, standards checklist). `mvn -B clean test` and `mvn -B verify` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS**. `Main` demo prints create/get/update plus duplicate/unknown failures with correlation ID.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 12 `starter/` → `examples\lab12-crm` (or copy `lab11-crm` → `lab12-crm` then insert messy baseline). Froze messy `doStuff` baseline as `CustomerService.before.java.txt`; refactored to `createCustomer` / `getCustomer` / `updateStatus` with `Map<String,Customer>`, exception + `lab-request-001` correlation messages, and validation helpers. Evidence under `docs\` (smells, before-after, AI review, standards checklist). `mvn -B clean test` and `mvn -B verify` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS**. `Main` demo prints create/get/update plus duplicate/unknown failures with correlation ID. Instructor walkthrough: `docs/instructor-participant-help/week-2/12-refactor-exercises-and-lab12.md`.
 
 ## Prerequisites (Windows)
 
@@ -92,3 +92,14 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-12/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab12-crm
+mvn -B clean test
+mvn -B verify
+java -cp target\classes com.northstar.crm.Main
+```
+
+**Verified result (Temurin 21.0.11 / Maven 3.9.9):** **Tests run: 8**, Failures: 0 · **BUILD SUCCESS**. Main shows `CUS-1001` / `CUS-1002` plus `correlationId=lab-request-001` on duplicate/unknown errors. No `doStuff` in final service; keep `CustomerService.before.java.txt` as evidence. Fill `docs/smells.md` (≥8) and `docs/before-after.md`.

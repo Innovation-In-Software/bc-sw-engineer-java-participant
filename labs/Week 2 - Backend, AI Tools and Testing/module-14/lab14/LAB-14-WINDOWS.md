@@ -9,7 +9,7 @@
 **Pre-lab exercises (1→6):** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-14-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab12-crm` → `examples\lab14-crm`; added Jakarta Validation **3.1.0**, Hibernate Validator **8.0.2.Final**, Expressly **5.0.0**; implemented `CustomerRequestDTO` / `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` (wired to Lab 12 `createCustomer`/`getCustomer`). `mvn -B clean test` → **Tests run: 13**, Failures: 0 · **BUILD SUCCESS**. Main (with Maven runtime classpath) prints response DTOs for Amina/Ravi and rejects invalid email / unknown id with `lab-request-001`.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab12-crm` → `examples\lab14-crm`; added Jakarta Validation **3.1.0**, Hibernate Validator **8.0.2.Final**, Expressly **5.0.0**; implemented `CustomerRequestDTO` / `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` (wired to Lab 12 `createCustomer`/`getCustomer`). `mvn -B clean test` → **Tests run: 13**, Failures: 0 · **BUILD SUCCESS**. Main (with Maven runtime classpath) prints response DTOs for Amina/Ravi and rejects invalid email / unknown id with `lab-request-001`. Bare `java -cp target\classes` fails with `NoClassDefFoundError: jakarta/validation/Validation` — use `dependency:build-classpath` or IntelliJ Run. Instructor walkthrough: `docs/instructor-participant-help/week-2/14-dto-exercises-and-lab14.md`.
 
 ## Prerequisites (Windows)
 
@@ -93,3 +93,15 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
 | 4 | Commands above succeed in the IntelliJ terminal (or as the lab specifies) | Pass / Fail |
 | 5 | Screenshots (if required) saved under `notes/screenshots/lab-14/` | Pass / Fail |
+
+### Verified smoke commands (participant laptop)
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab14-crm
+mvn -B clean test
+# Expected: Tests run: 13, Failures: 0
+mvn -q -DincludeScope=runtime dependency:build-classpath "-Dmdep.outputFile=target\cp.txt"
+java -cp "target\classes;$(Get-Content target\cp.txt -Raw)" com.northstar.crm.Main
+```
+
+**Verified result (Temurin 21.0.11 / Maven 3.9.9):** Tests run: **13**; Main prints `CustomerResponseDTO` for `CUS-1001` / `CUS-1002`; invalid email → `[lab-request-001] email: …`; unknown id → `customer not found [lab-request-001]: CUS-9999`. Do not run Main with `target\classes` alone.
