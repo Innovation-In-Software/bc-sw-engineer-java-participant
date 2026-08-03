@@ -1,0 +1,19 @@
+Per the updated requirements you shared, thanks for that, I have created the following. I will share a Google Sheet with all the login details and will share via Google Docs the student and instructor yaml files. I did include an Instructor account so you can connect and test everything. It's up and running now to give you some breathing room. :slightly_smiling_face:
+I'll share the rest via email shortly
+
+Java Bootcamp — Lab Environment
+Everything runs on one shared server in AWS (us-west-2, IP 100.22.136.97). Students work from desktop VS Code on their laptops and connect out to these services — nothing to install server-side, no SSH needed for students.
+Shared services
+
+PostgreSQL 17 — 100.22.136.97:5432, database bootcamp. Each user gets their own role + schema (default search_path = their schema); users can't see each other's schemas.
+Apache Kafka 4.0 — bootstrap 100.22.136.97:9092. Single broker, shared across the cohort (no per-user topic isolation).
+Kubernetes (k3s) — API https://100.22.136.97:6443. Each user gets their own namespace with admin rights in it; Traefik ingress on :80/:443 for routes. Locked to their namespace.
+Source/CI: GitHub + GitHub Actions. Container images: GHCR.
+What each student gets (one row in the credentials sheet + one kubeconfig file):
+
+DB: jdbc:postgresql://100.22.136.97:5432/bootcamp?currentSchema=studentNN, user studentNN + password
+Kafka: 100.22.136.97:9092
+K8s: kubeconfigs/studentNN.yaml (kubectl from laptop works out of the box)
+Student laptop (Lab 0): desktop VS Code + JDK 21, Maven 3.9.x, Node 22, Git. Point application.properties at the endpoints above. Deploy labs: build image → push to GHCR (or build on the server) → kubectl apply into your namespace.
+Your access: full AWS account admin (separate login I'll send) — resize the box, open ports, restart containers, adjust anything. Shell into the box via EC2 Instance Connect from the console.
+Notes: it's a baseline you can tweak. Sized for 15 concurrent on one box; DB/Kafka are plaintext on a firewall-restricted network (class IPs only). Per the confirmed spec it's PostgreSQL + GitHub Actions + k3s (not Oracle/Bitbucket/OpenShift).
