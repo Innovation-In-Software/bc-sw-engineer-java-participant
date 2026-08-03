@@ -1,5 +1,37 @@
 # Exercise 3 — PR Description Outline
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 215–218) |
+| **Deliverable** | `notes/lab47-pr-description.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · one fact base · no secrets |
+
+### What you will learn
+
+Outline PR description with verify steps, fixtures, and rollback note.
+
+### Enterprise context
+
+Reviewers cannot test without commands and CRM fixture IDs.
+
+### Predict
+
+What verification steps belong in a CRM fix PR?
+
+### Debug
+
+PR says 'fixed stuff' with no test plan — rewrite?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No verify commands | Add mvn/test or curl steps |
+| Secrets in PR body | Scrub tokens/passwords |
+
 **Module 47** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

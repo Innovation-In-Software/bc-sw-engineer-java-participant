@@ -1,5 +1,37 @@
 # Exercise 3 — Package-Once Identity
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 107–110) |
+| **Deliverable** | `notes/lab43-immutable-jar.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic only · no secrets in Git |
+
+### What you will learn
+
+Sketch package-once JAR + SHA-256 tied to commit for later promotion.
+
+### Enterprise context
+
+Lab 44 promotes this identity—do not rebuild silently in deploy.
+
+### Predict
+
+Deploy step runs mvn package again — what breaks?
+
+### Debug
+
+Empty checksum artifact — causes?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Rebuild in deploy | Pass CI artifacts only |
+| Checksum not tied to commit | Record GITHUB_SHA with SHA-256 |
+
 **Module 43** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

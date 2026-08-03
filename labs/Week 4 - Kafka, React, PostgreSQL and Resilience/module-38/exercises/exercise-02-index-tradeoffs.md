@@ -1,5 +1,37 @@
 # Exercise 5 — Index Tradeoffs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 194–197) |
+| **Deliverable** | `notes/lab38-index-tradeoffs.md` |
+| **Fixtures** | Preserve CUS-1001 / CUS-1002 · Lab 37 schema |
+
+### What you will learn
+
+Weigh read speed vs write/storage cost for email and status indexes.
+
+### Enterprise context
+
+Earn every retained index with before/after evidence in the lab.
+
+### Predict
+
+Does a unique email index help inserts?
+
+### Debug
+
+Low-selectivity status index alone — when useless?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Index without measuring | Plan baseline EXPLAIN first |
+| Oracle-only plan tools as primary | Use PostgreSQL EXPLAIN (ANALYZE, BUFFERS) |
+
 **Module 38** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

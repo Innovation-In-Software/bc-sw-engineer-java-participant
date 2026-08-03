@@ -1,5 +1,37 @@
 # Exercise 6 — Lab 34 Readiness
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 114–115) |
+| **Deliverable** | `notes/lab34-prep-checklist.md` |
+| **Fixtures** | CUS-1001 Amina · CUS-1002 Ravi · in-memory only |
+
+### What you will learn
+
+Confirm Lab 33 tree ready; no API/JWT yet.
+
+### Enterprise context
+
+Hard gate before lifting state in crm-ui.
+
+### Predict
+
+Do you need Spring Boot running for Lab 34?
+
+### Debug
+
+Adding Redux without lab need — park it?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No Lab 33 components | Copy lab33-crm or use Module 34 starter |
+| Planning fetch now | Keep shapes stable; wire in Lab 35 |
+
 **Module 34** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

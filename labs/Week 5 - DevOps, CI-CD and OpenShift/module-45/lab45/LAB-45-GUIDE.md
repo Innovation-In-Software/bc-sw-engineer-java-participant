@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Pinned providers · validate · no secrets/state in Git · Ansible syntax · AI review ≥1 harden/reject |
+| **Hard gate** | Pre-lab Pass · contract forbids public DB |
+
+### What you will learn
+
+Draft Terraform + Ansible for CRM non-prod with AI assistance, then human-review for exposure, cost, and idempotence.
+
+### Enterprise context
+
+Valid HCL that opens a public database still fails—humans own the blast radius.
+
+### Predict
+
+Should `*.tfstate` ever be committed?
+
+### Debug
+
+AI invents resources outside the contract — what do you do?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: plan evidence, Ansible lint, complete `docs/ai-iac-review.md`.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -717,6 +746,10 @@ ansible-lint site.yml
 | AI invents resources | Weak prompt | Re-prompt within contract; delete extras |
 | State accidentally created | Local backend | Delete local state; ensure ignore rules |
 | Lint not installed | Image gap | Note residual risk; still run syntax-check |
+| Public DB / 0.0.0.0/0 from AI | Exposure | Reject; harden SG; re-validate |
+| tfstate or real tfvars in Git | Secret/state leak | Remove; rotate; gitignore |
+| Unapproved destroy shared infra | Training blast radius | Stop; ask instructor |
+| Kafka DLT in this lab | Wrong module | Lab 46 |
 
 ---
 

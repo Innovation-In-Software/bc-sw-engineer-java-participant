@@ -1,5 +1,7 @@
 # Module 35 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **4 → 2 → 5 → 1 → 3 → 6**, then Lab 35.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** Frontend and API Integration

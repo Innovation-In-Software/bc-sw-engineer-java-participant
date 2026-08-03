@@ -1,5 +1,37 @@
 # Exercise 6 — Outline CI Runbook
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 111–117) |
+| **Deliverable** | `notes/lab43-ci-runbook-outline.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic only · no secrets in Git |
+
+### What you will learn
+
+Outline how peers re-run failed verify, find artifacts, and locate secrets.
+
+### Enterprise context
+
+Hard gate: peer can re-run CI from runbook without verbal help.
+
+### Predict
+
+Where do you document secret *names* vs values?
+
+### Debug
+
+Terraform apply from CI in this module — wrong lab?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Vague 'check Actions' | Exact job names + artifact paths |
+| Unredacted tokens in evidence | Redact; rotate |
+
 **Module 43** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

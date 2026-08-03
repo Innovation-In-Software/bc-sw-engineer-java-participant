@@ -1,5 +1,37 @@
 # Exercise 6 — Lab 39 Readiness
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 228–230) |
+| **Deliverable** | `notes/lab39-prep-checklist.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · Lab 37/38 column names |
+
+### What you will learn
+
+Confirm Labs 37–38 schema ready; Postgres up; no H2-as-Postgres IT.
+
+### Enterprise context
+
+Hard gate before JPA coding; Week 4 review slides optional after.
+
+### Predict
+
+Can verify pass without a real PostgreSQL?
+
+### Debug
+
+Starting Week 5 Lab 40 SAST early — park it?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No Lab 37/38 columns | Bring forward measured DDL names |
+| Compose/.env missing | Copy starter .env.example |
+
 **Module 39** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

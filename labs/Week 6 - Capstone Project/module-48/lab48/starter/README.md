@@ -1,6 +1,15 @@
 # Lab 48 starter — session block (~45 minutes)
 
 **Theme:** Capstone planning templates (ADRs, context diagram stub, plan docs)  
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | context + fixtures · ≥1 ADR · backlog/risk seeds |
+| **Hard gate** | Pre-lab Pass · docs before Lab 49 code |
+
 **Target tree:** `~/java-bootcamp/examples/customer-management-platform/` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`)
 
 This starter is for the **scheduled class block**. Multi-day architecture depth stays on the full GUIDE path.
@@ -56,3 +65,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-48/` (redact secrets).
 | Backlog includes interaction story for `CUS-1001` | Pass / Fail |
 
 Continue remaining GUIDE steps (all 5 ADRs, NFRs, team plan, full risk register) as homework / multi-day work.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Overwriting existing ADRs | Backup before copy; merge carefully |
+| Vague NFRs in context | Move metrics to nfrs.md with targets |
+| No acceptance on backlog rows | Add Given/When/Then or checklist |
+| Secret in ADR | Remove; rotate if real |

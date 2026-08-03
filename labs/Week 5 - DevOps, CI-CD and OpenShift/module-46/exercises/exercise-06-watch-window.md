@@ -1,5 +1,37 @@
 # Exercise 6 — Tie Observability to Release Watch
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 198–200) |
+| **Deliverable** | `notes/lab46-watch-window.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · correlation lab-request-001 · no PII in metrics |
+
+### What you will learn
+
+Tie Kafka lag/DLT alerts to Lab 44-style release watch windows.
+
+### Enterprise context
+
+Lab 47 will communicate incidents—keep evidence shareable and secret-free.
+
+### Predict
+
+What Kafka signals belong on a post-promote watch checklist?
+
+### Debug
+
+Starting Module 47 slides during this warmup — park?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Watch with no owner | Name on-call / student owner |
+| PII in dashboard screenshots | Redact names/emails |
+
 **Module 46** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

@@ -1,5 +1,7 @@
 # Module 38 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **1 → 2 → 4 → 5 → 3 → 6**, then Lab 38.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** SQL and Query Performance

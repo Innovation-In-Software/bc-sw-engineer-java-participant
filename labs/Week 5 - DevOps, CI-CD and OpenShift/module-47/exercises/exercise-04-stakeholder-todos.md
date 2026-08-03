@@ -1,5 +1,37 @@
 # Exercise 4 — Fill Stakeholder Email TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 205–210) |
+| **Deliverable** | `notes/lab47-stakeholder-todos.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · one fact base · no secrets |
+
+### What you will learn
+
+Fill plain-language stakeholder email TODOs from the same fact base.
+
+### Enterprise context
+
+Business audience needs impact and actions—not stack traces.
+
+### Predict
+
+Should stakeholder email include raw Kafka exception stacks?
+
+### Debug
+
+Email uses real customer emails as examples — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Too much jargon | Lead with customer/agent impact |
+| Oversharing fixture emails | Use CUS-1001 IDs only |
+
 **Module 47** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

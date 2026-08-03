@@ -1,5 +1,37 @@
 # Exercise 6 — Document End-to-End Data Flow
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 83–84) |
+| **Deliverable** | `notes/lab50-data-flow-note.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no real PII |
+
+### What you will learn
+
+Document UI → API → JPA → PostgreSQL flow for one interaction create.
+
+### Enterprise context
+
+Peers and Lab 52 defense need a clear data-flow story.
+
+### Predict
+
+Where can the flow break if datasource profile is wrong?
+
+### Debug
+
+Timeline stale after POST — what step missing?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Vague 'data goes to DB' | Name endpoints, tables, correlation |
+| Lab 51 CI as this warmup | Park deploy/security |
+
 **Module 50** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

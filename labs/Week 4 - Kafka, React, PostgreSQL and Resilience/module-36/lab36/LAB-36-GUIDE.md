@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Memory token · ProtectedRoute · origin-scoped bearer · XSS test |
+| **Hard gate** | Pre-lab Pass · Lab 35 http · no real secrets |
+
+### What you will learn
+
+Harden the CRM SPA with in-memory auth, XSS-safe rendering, and honest 401/403 UX.
+
+### Enterprise context
+
+UI guards improve UX only — Spring Security remains the authorization boundary.
+
+### Predict
+
+If a token appears under Application → Local Storage — does the lab pass?
+
+### Debug
+
+403 response logs the user out — which handler is wrong?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: CSP headers + CSRF evidence/N/A + abuse tests.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -685,6 +714,8 @@ expect(document.querySelector("script")).toBeNull();
 | XSS test finds `img` | HTML sink used | Remove sink; use text |
 | CORS + Authorization fail | Preflight headers | Allow `Authorization` |
 | Open redirect after login | Unvalidated returnUrl | Allowlist internal paths |
+| Treating ProtectedRoute as authz | UI-only control | Backend must deny anonymous/forbidden |
+| Secrets in screenshots | Unredacted JWT | Redact Authorization / tokens |
 
 ---
 

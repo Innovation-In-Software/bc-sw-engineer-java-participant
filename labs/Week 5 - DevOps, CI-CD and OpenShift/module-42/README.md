@@ -1,5 +1,7 @@
 # Module 42 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **1 → 2 → 3 → 4 → 5 → 6**, then Lab 42.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** Kubernetes (k3s) Deployment

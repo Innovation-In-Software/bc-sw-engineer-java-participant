@@ -1,5 +1,7 @@
 # Module 39 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **1 → 2 → 3 → 4 → 5 → 6**, then Lab 39. Optional Week 4 review slides **235–243** after the lab.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** Spring Data JPA and PostgreSQL

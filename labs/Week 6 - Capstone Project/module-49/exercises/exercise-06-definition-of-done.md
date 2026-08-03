@@ -1,5 +1,37 @@
 # Exercise 6 — Backend Slice DoD
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 54–58) |
+| **Deliverable** | `notes/lab49-definition-of-done.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · CUS-9999 not-found |
+
+### What you will learn
+
+Write DoD: verify green, failure path, versioned event, demo.md, no secrets.
+
+### Enterprise context
+
+Hard gate before calling the slice ready for Lab 50 UI attachment.
+
+### Predict
+
+Is 'compiles on my laptop' enough for DoD?
+
+### Debug
+
+Starting Lab 51 JWT deep-dive instead of slice DoD — sequence?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| DoD without tests | Require verify + one failure path |
+| React work now | Lab 50 |
+
 **Module 49** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

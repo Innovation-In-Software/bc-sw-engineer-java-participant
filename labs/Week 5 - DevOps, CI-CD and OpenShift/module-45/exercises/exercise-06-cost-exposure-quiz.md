@@ -1,5 +1,37 @@
 # Exercise 6 — Cost and Exposure Quiz
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 172–173) |
+| **Deliverable** | `notes/lab45-cost-exposure-quiz.md` |
+| **Fixtures** | CRM tags only · no PII in IaC · no tfstate/keys in Git |
+
+### What you will learn
+
+Answer cost/exposure questions: destroy shared infra, public endpoints, runaway resources.
+
+### Enterprise context
+
+Training sandbox: no unapproved destroy of shared infra; watch blast radius.
+
+### Predict
+
+terraform destroy on shared instructor cluster without approval — OK?
+
+### Debug
+
+AI suggests largest instance type 'for prod-like' in student sandbox — response?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Destroy shared training | Ask instructor; never freestyle |
+| Replacing app CI labs | Keep Lab 43–44 delivery narrative |
+
 **Module 45** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

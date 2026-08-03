@@ -2,6 +2,14 @@
 
 **Theme:** PR / peer-review / stakeholder / incident communication templates
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | shared facts · 4 files · consistency · secrecy scrub · peer rewrites |
+| **Hard gate** | Pre-lab Pass · fact base first |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab47-crm`.
@@ -49,3 +57,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-47/` (redact secrets).
 | Peer review has concrete rewrite notes | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Severity mismatch across files | Rebuild `shared-facts.md`; re-copy fields |
+| Empty peer review | Add ≥2 concrete rewrite notes |
+| Secret/token in markdown | Delete; rotate if real |
+| Stakeholder email too technical | Rewrite impact in plain language |

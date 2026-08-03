@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Dry-run manifests · three probes · Secret example empty · runbook apply/undo |
+| **Hard gate** | Pre-lab Pass · Lab 41 digest · no kubeconfig/Secret values in Git |
+
+### What you will learn
+
+Deploy CRM declaratively on k3s with safe probes, ConfigMap/Secret split, and verified rollback.
+
+### Enterprise context
+
+Platform DoD includes manifests, traffic-safe probes, and rollback evidence—not laptop Docker alone.
+
+### Predict
+
+Readiness failing while liveness OK — do users get traffic?
+
+### Debug
+
+ImagePullBackOff after apply — digest, registry, or pull secret?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: live apply + smoke + rollback evidence.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 

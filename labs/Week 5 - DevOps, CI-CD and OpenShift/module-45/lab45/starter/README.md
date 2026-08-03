@@ -2,6 +2,14 @@
 
 **Theme:** Terraform + Ansible sketches — AI draft, human review, no secrets in Git
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | validate · no secrets · Ansible syntax · AI review ≥1 harden |
+| **Hard gate** | Pre-lab Pass · no public DB |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab45-crm`.
@@ -52,3 +60,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-45/` (no state secrets).
 | AI review documents ≥1 rejection/hardening | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| validate fails | Fix HCL; pin providers; check required args |
+| No cloud auth | `terraform init -backend=false` |
+| AI public exposure | Reject; tighten contract; re-prompt |
+| Accidental local state | Delete state; ensure gitignore |

@@ -2,6 +2,14 @@
 
 **Theme:** CD pipeline sketch — promote immutable artifact, gates, rollback
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | manifest identity · plan/checklist · rollback digest · no plaintext secrets |
+| **Hard gate** | Pre-lab Pass · Lab 43 digest |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab44-crm`.
@@ -51,3 +59,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-44/` (redact secrets).
 | CD workflow has no plaintext deploy secrets | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Invalid JSON manifest | Fix commas/quotes; validate with ConvertFrom-Json |
+| Only :latest in manifest | Paste Lab 43 SHA-256 / image digest |
+| Rollback with no prior digest | Add priorKnownGoodDigest before promote |
+| Secrets in cd.yml | Use Actions secrets / env vars |

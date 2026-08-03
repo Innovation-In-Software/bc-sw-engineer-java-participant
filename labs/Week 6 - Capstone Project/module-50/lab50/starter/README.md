@@ -1,6 +1,15 @@
 # Lab 50 starter — session block (~45 minutes)
 
 **Theme:** Data/API checklist + SQL/Flyway stubs for UI→PostgreSQL journey  
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | checklist · SQL TODOs · fixtures · durability SELECT |
+| **Hard gate** | Pre-lab Pass · Lab 49 DTOs |
+
 **Target:** `~/java-bootcamp/examples/customer-management-platform/`
 
 Timed-path policy: [`labs/_STARTER-PATH.md`](../../../../_STARTER-PATH.md)
@@ -53,3 +62,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-50/`.
 | Durability proof query drafted (SELECT … WHERE correlation_id = …) | Pass / Fail |
 
 Full path (multi-day): React components, typed client, a11y, E2E, restart durability — see GUIDE.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Checklist vs Lab 49 mismatch | Re-open Lab 49 DTO/demo.md |
+| Vague SQL TODOs | Name columns, FK, correlation_id |
+| No durability query | Draft SELECT by correlation_id |
+| Overwriting platform files | Merge carefully; backup first |

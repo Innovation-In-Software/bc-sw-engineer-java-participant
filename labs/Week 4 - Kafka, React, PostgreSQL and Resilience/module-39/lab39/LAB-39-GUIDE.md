@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Flyway V1 · entities/@Version · paging · 409 · IT on Postgres |
+| **Hard gate** | Pre-lab Pass · Lab 37/38 DDL · Postgres · no secrets in Git |
+
+### What you will learn
+
+Persist CRM customers/accounts with Flyway + Spring Data JPA against real PostgreSQL.
+
+### Enterprise context
+
+Schema is migration-owned; ORM validates and serves transactional APIs without leaking SQL errors.
+
+### Predict
+
+Two concurrent updates with stale @Version — which HTTP status?
+
+### Debug
+
+IT green on H2 but fails on Postgres types/SQL — what was wrong with the test profile?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: optimistic-lock 409 + sort allow-list. Optional Week 4 review **235–243**.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -770,6 +799,9 @@ git status
 | 500 on duplicate | Unhandled integrity exception | Map to ProblemDetail 409 |
 | Money drift | `double` mapping | Use `BigDecimal` + precision |
 | N+1 on detail | Missing graph/query | EntityGraph or join fetch |
+| ddl-auto=create-drop in app | Schema drift | Flyway + `validate` |
+| Secrets in application.yml | Leak risk | `.env` / env vars only |
+| Unbounded findAll in API | Memory/DoS | Bounded Pageable + max size |
 
 ---
 

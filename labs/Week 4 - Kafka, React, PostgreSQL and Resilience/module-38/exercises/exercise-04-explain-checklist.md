@@ -1,5 +1,37 @@
 # Exercise 3 — EXPLAIN Checklist
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 194–197) |
+| **Deliverable** | `notes/lab38-explain-checklist.md` |
+| **Fixtures** | Preserve CUS-1001 / CUS-1002 · Lab 37 schema |
+
+### What you will learn
+
+Checklist for reading PostgreSQL EXPLAIN: Seq Scan, Index Scan, buffers, rows.
+
+### Enterprise context
+
+No tune without a plan — record before/after.
+
+### Predict
+
+Seq Scan on email equality with unique index — what to check?
+
+### Debug
+
+Stale statistics — what do you run?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Reading estimated-only forever | Use EXPLAIN (ANALYZE, BUFFERS) in lab |
+| Different binds each run | Fix literals/binds in the report |
+
 **Module 38** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

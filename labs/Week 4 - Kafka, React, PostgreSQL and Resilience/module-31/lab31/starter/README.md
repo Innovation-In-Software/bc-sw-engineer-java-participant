@@ -2,6 +2,14 @@
 
 **Theme:** Spring Kafka — publish, listen, DLT, idempotency
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | Publish · listen-once · error/DLT config · `mvn test` ×2 |
+| **Hard gate** | Pre-lab Pass · Kafka bootstrap or EmbeddedKafka |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab31-crm`.
@@ -48,3 +56,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-31/` (redact secrets).
 | Integration test green twice | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Deser errors | Trusted packages / JsonDeserializer config |
+| Listener silent | New group-id or publish new events |
+| DLT empty | Wire DefaultErrorHandler + DeadLetterPublishingRecoverer |
+| Duplicate notify | Mark ProcessedEventStore before side-effect |

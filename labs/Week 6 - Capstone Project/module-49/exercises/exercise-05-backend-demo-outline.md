@@ -1,5 +1,37 @@
 # Exercise 5 — Outline Backend Demo Notes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 54–58) |
+| **Deliverable** | `notes/lab49-backend-demo-outline.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · CUS-9999 not-found |
+
+### What you will learn
+
+Outline docs/backend-demo.md reproduction steps for a peer.
+
+### Enterprise context
+
+Defense needs a peer-reproducible runbook—not tribal knowledge.
+
+### Predict
+
+What commands prove POST + persist + event for CUS-1001?
+
+### Debug
+
+Demo notes with secrets — scrub?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Vague 'run the app' | Exact mvn/curl/topic steps |
+| Missing correlation | Document lab-request-001 |
+
 **Module 49** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

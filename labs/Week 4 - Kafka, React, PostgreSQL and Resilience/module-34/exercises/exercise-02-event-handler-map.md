@@ -1,5 +1,37 @@
 # Exercise 3 — Event Handler Map
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 108–110) |
+| **Deliverable** | `notes/lab34-event-handler-map.md` |
+| **Fixtures** | CUS-1001 Amina · CUS-1002 Ravi · in-memory only |
+
+### What you will learn
+
+Map onChange / onSubmit / onEdit / onCancel to state updates.
+
+### Enterprise context
+
+Create vs edit modes must be mutually exclusive for CRM forms.
+
+### Predict
+
+What happens to draft on Cancel?
+
+### Debug
+
+Create and edit both true — what UI bug?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Mutating array with push | Use immutable [...prev, row] / map |
+| Missing preventDefault | onSubmit must prevent full page reload |
+
 **Module 34** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

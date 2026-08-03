@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→3→2→4→5→6) |
+| **Must prove** | Keyed publish · listener once · DLT config · test green twice |
+| **Hard gate** | Pre-lab Pass · broker or EmbeddedKafka plan |
+
+### What you will learn
+
+Wire Spring Kafka publish/consume with idempotency and DLT on CRM topics.
+
+### Enterprise context
+
+Notifications must survive poison messages and replays without double-sending.
+
+### Predict
+
+Replay the same CustomerCreated — how many notifications if store works?
+
+### Debug
+
+Listener silent after startup — group/topic/offsets checklist?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: poison-message DLT evidence + runbook.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -686,6 +715,8 @@ git status
 | Infinite retries | Missing non-retryable list | Add contract exceptions |
 | DLT empty | Recoverer not wired | Register `DefaultErrorHandler` on factory |
 | Duplicate notifications | Mark-after-side-effect | Mark before notify |
+| Test flaky on CI | Sleep-based waits | Awaitility on handled flag / store size |
+| Resilience4j urge | Wrong module | Kafka only here — Lab 32 for HTTP resilience |
 
 ---
 

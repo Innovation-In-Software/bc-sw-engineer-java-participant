@@ -1,5 +1,37 @@
 # Exercise 4 — Fill Release Checklist TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 139–143) |
+| **Deliverable** | `notes/lab44-checklist-todos.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+
+### What you will learn
+
+Fill go/no-go checklist TODOs: approver, digest match, watch window, rollback owner.
+
+### Enterprise context
+
+Unsigned checklists are a process gap—approver field is required.
+
+### Predict
+
+GO without a watch-window owner — what’s missing?
+
+### Debug
+
+Checklist marks GO while digest ≠ staging — fail?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Empty approver | Require named approver |
+| Terraform apply here | Park Lab 45 |
+
 **Module 44** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

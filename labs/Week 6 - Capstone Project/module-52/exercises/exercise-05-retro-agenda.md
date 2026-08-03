@@ -1,5 +1,37 @@
 # Exercise 5 — Blameless Retro Agenda
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 143–151) |
+| **Deliverable** | `notes/lab52-retro-agenda.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no invented evidence |
+
+### What you will learn
+
+Plan blameless retro: went well, challenges, lessons, owned actions.
+
+### Enterprise context
+
+Retros without owned actions are theater—not professional growth.
+
+### Predict
+
+What makes a retro action 'owned'?
+
+### Debug
+
+Blame creeping into notes — reframe?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No owners/dates | Name person + due date |
+| Skipping retro | Required defense deliverable |
+
 **Module 52** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

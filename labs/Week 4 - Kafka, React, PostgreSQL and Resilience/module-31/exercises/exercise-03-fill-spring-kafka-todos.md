@@ -1,5 +1,37 @@
 # Exercise 5 — Fill Spring Kafka TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 33–36) |
+| **Deliverable** | `notes/lab31-todos.md` |
+| **Fixtures** | CUS-1001 Amina · CUS-1002 Ravi · `crm.customer-events.v1` |
+
+### What you will learn
+
+List bootstrap, topic, serializer, and KafkaTemplate publish TODOs.
+
+### Enterprise context
+
+Externalize broker/topic names — no hard-coded secrets.
+
+### Predict
+
+JsonSerializer without trusted packages — what breaks on consume?
+
+### Debug
+
+Publish without key — partition/order impact?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Missing dependency | spring-kafka (+ test starter for EmbeddedKafka) |
+| Hard-coded localhost only | Use application.yml + env override |
+
 **Module 31** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

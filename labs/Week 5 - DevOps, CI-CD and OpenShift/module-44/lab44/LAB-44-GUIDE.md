@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 3–4 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→5→4→6) |
+| **Must prove** | Manifest digests · release plan/checklist · rollback known-good · no secrets in artifact |
+| **Hard gate** | Pre-lab Pass · Lab 43 package-once identity |
+
+### What you will learn
+
+Promote one immutable CRM artifact through environments with objective gates, evidence, and rehearsed rollback.
+
+### Enterprise context
+
+`:latest` or a rebuild on the deploy host is not a credit-worthy production candidate.
+
+### Predict
+
+Staging digest ≠ manifest digest — promote to prod or stop?
+
+### Debug
+
+Promote script runs `mvn package` again — what broke?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: staging smoke evidence, NO-GO/rollback rehearsal, complete docs.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -682,6 +711,9 @@ git status --short
 | Manifest missing prior digest | Forgot known-good capture | Record prior digest before every promote |
 | Promote script rebuilds | Accidental `mvn package` | Delete rebuild; consume Lab 43 artifact only |
 | GO without watch window | Checklist incomplete | Require 60m monitor owner |
+| Terraform/Ansible in this lab | Wrong module | Lab 45 |
+| Kafka DLT replay procedures | Wrong module | Lab 46 |
+| Secrets inside artifact-manifest.json | Leak / bad design | Env vars/secrets only |
 
 ---
 

@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→4→5→3→6) |
+| **Must prove** | Baseline plan · index re-measure · keyset paging note · report.md |
+| **Hard gate** | Pre-lab Pass · Lab 37 schema · preserve CUS-1001/CUS-1002 |
+
+### What you will learn
+
+Tune CRM SQL with evidence: EXPLAIN before/after, selective indexes, sargable predicates, paging.
+
+### Enterprise context
+
+No “add index because it felt slow” — every retained index must earn its keep.
+
+### Predict
+
+Deep `OFFSET 50000` for CRM lists — what latency/shape problem appears?
+
+### Debug
+
+Index exists but plan still Seq Scan — sargability or stats first?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: join compare + index challenge cycle + full report.md.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -712,6 +741,9 @@ git status
 | Out of space | 50k + indexes + Docker volume | Instructor-approved cleanup; do not wipe peers’ DBs |
 | “Fast enough” debate | No median/buffers | Re-run with `ALLSTATS LAST`; record numbers |
 | Missing Amina | Bulk load wiped seed | Re-insert `CUS-1001` / `CUS-1002` after load |
+| Prefer Oracle-only plan tools | Wrong primary path | Use PostgreSQL `EXPLAIN (ANALYZE, BUFFERS)` |
+| Index everything | Write amplification | Challenge/drop unused indexes |
+| JPA repositories now | Wrong module | SQL scripts only — Lab 39 |
 
 ---
 

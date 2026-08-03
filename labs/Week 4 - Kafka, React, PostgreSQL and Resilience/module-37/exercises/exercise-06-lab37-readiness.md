@@ -1,5 +1,37 @@
 # Exercise 6 — Lab 37 Readiness
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 176–178) |
+| **Deliverable** | `notes/lab37-prep-checklist.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Confirm Docker/shared Postgres plan; no JPA/EXPLAIN yet.
+
+### Enterprise context
+
+Hard gate before applying DDL.
+
+### Predict
+
+Who should own objects — superuser or CRM_APP?
+
+### Debug
+
+Starting Lab 38 indexes early — park EXPLAIN?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Passwords in Git | Use .env only; never commit secrets |
+| No Docker | Use instructor shared PostgreSQL sheet |
+
 **Module 37** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

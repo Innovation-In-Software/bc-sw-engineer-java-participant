@@ -1,5 +1,37 @@
 # Exercise 4 — Flyway Plan
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 225–230) |
+| **Deliverable** | `notes/lab39-flyway-plan.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · Lab 37/38 column names |
+
+### What you will learn
+
+Plan V1__crm_schema.sql aligned to Lab 37/38; no silent checksum hacks.
+
+### Enterprise context
+
+Migrations are the source of truth for CRM tables.
+
+### Predict
+
+Edited applied V1 checksum mismatch — correct fix?
+
+### Debug
+
+Mixing Flyway with ddl-auto=update — why avoid?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Repair as habit | Prefer new V2 migration |
+| Oracle-only DDL as primary | PostgreSQL types/syntax for this lab |
+
 **Module 39** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

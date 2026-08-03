@@ -1,6 +1,15 @@
 # Lab 52 starter — session block (~45 minutes)
 
 **Theme:** Defense slide outline + demo script template  
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | outline · timed demo · ≥5 evidence · deny/fallback |
+| **Hard gate** | Pre-lab Pass · Labs 48–51 paths listed |
+
 **Target:** `~/java-bootcamp/examples/customer-management-platform/defense/`
 
 Timed-path policy: [`labs/_STARTER-PATH.md`](../../../../_STARTER-PATH.md)
@@ -51,3 +60,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-52/`. Scrub secrets from p
 | Failover / deny-path beat documented | Pass / Fail |
 
 Full path (multi-day): PDF export, full Q&A deck, retrospective, self-assessment, panel delivery — see GUIDE.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Evidence rows empty | Paste real Labs 48–51 relative paths |
+| Demo untimed | Add minute marks + speaker/operator |
+| No fallback | Screenshot or curl deny/happy path |
+| Secret in outline | Remove before rehearsal |

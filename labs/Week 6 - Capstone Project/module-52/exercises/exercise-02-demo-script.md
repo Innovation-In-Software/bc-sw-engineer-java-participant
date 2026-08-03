@@ -1,5 +1,37 @@
 # Exercise 2 — Draft Demo Script Skeleton
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **B** (after slides 127–133) |
+| **Deliverable** | `notes/lab52-demo-script.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no invented evidence |
+
+### What you will learn
+
+Time-box demo beats: UI→API→DB→event + deny path using CUS-1001.
+
+### Enterprise context
+
+Deterministic scripts beat improvisation under panel pressure.
+
+### Predict
+
+What is your fallback if live Kafka is down?
+
+### Debug
+
+No deny-path beat — add?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Untimed freeform demo | Add minute marks + roles |
+| Real PII in script | Synthetic fixtures only |
+
 **Module 52** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

@@ -1,5 +1,37 @@
 # Exercise 3 — Design Three Probes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **B** (after slides 74–77) |
+| **Deliverable** | `notes/lab42-probe-design.md` |
+| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+
+### What you will learn
+
+Design distinct startup, readiness, and liveness probe paths/timings.
+
+### Enterprise context
+
+Wrong liveness kills healthy apps during slow startup.
+
+### Predict
+
+Readiness fail vs liveness fail — traffic impact?
+
+### Debug
+
+Same probe for all three — risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| CrashLoop from aggressive liveness | Lengthen startup; separate probes |
+| Health 401 | Permit actuator health in Security |
+
 **Module 42** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

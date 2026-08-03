@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 3–4 h |
+| **Checkpoint** | **E** (after Ex 1→4→2→3→5→6) |
+| **Must prove** | PR/main triggers · verify no skipTests · package-once SHA · secrets not in YAML · runbook |
+| **Hard gate** | Pre-lab Pass · CRM Maven green locally · Actions enabled |
+
+### What you will learn
+
+Ship a reviewable GitHub Actions workflow: verify, optional scan, package-once identity, secrets hygiene, peer runbook.
+
+### Enterprise context
+
+Green demo without artifact identity and secret discipline is not a delivery gate.
+
+### Predict
+
+Should the deploy job rebuild the JAR with Maven?
+
+### Debug
+
+Checksum artifact empty after package job — what failed upstream?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: PR evidence, failure path, package-once checksum, full runbook.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -771,6 +800,9 @@ echo "Would deploy artifact for tag=${TAG} commit=${GITHUB_SHA:-local}"
 | PR slower than laptop | Cold cache / parallel limits | Warm cache on `main`; document expected time |
 | Tag deploy missing vars | Variable not scoped to deployment | Attach secured vars to `test` deployment |
 | Checksum file empty | No JAR produced / wrong glob | Confirm `package` phase ran in verify |
+| Full CD promotions in this lab | Wrong module | Lab 44 |
+| kubeconfig committed | Secret leak | Actions secrets only; never Git |
+| -DskipTests on main verify | False green | Forbid skip on default verify |
 
 ---
 

@@ -1,5 +1,37 @@
 # Exercise 3 — CORS and Headers
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 134–136) |
+| **Deliverable** | `notes/lab35-cors-and-headers.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · `X-Correlation-Id: lab-request-001` |
+
+### What you will learn
+
+Plan Vite origin allowlist and X-Correlation-Id on mutations.
+
+### Enterprise context
+
+Spring CORS must deny evil Origin; browser speaks JSON only.
+
+### Predict
+
+What breaks if allowlist is * in production notes?
+
+### Debug
+
+CORS error but curl works — where to look?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Port mismatch | Match http://localhost:5173 exactly |
+| JWT in pre-lab | Auth headers wait for Lab 36 — keep injectable |
+
 **Module 35** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

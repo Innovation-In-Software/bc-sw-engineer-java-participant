@@ -1,5 +1,37 @@
 # Exercise 6 — Lab 35 Readiness
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 134–136) |
+| **Deliverable** | `notes/lab35-prep-checklist.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · `X-Correlation-Id: lab-request-001` |
+
+### What you will learn
+
+Confirm Lab 34 UI + Spring API available; no JWT UI yet.
+
+### Enterprise context
+
+Hard gate before wiring React to Spring.
+
+### Predict
+
+Can unit tests pass with mocked fetch while API is down?
+
+### Debug
+
+Starting login/JWT screens early — park for Lab 36?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No Spring API | Start CRM backend or use instructor stub |
+| No Lab 34 state | Copy lab34-crm / use Module 35 starter |
+
 **Module 35** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

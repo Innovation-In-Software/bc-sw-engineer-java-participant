@@ -1,5 +1,37 @@
 # Exercise 5 — Rollout and Rollback Checklist
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 74–77) |
+| **Deliverable** | `notes/lab42-rollout-rollback.md` |
+| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+
+### What you will learn
+
+List rollout status checks and rollout undo rehearsal steps.
+
+### Enterprise context
+
+Verified rollback is part of the definition of done.
+
+### Predict
+
+Undo with only one revision — what happens?
+
+### Debug
+
+Starting Lab 43 deploy workflows early — park?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No second revision | Change image/annotation before undo demo |
+| Skipping smoke after rollback | Re-check readiness + CUS-1001 |
+
 **Module 42** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

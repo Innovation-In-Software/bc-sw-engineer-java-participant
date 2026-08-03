@@ -1,5 +1,37 @@
 # Exercise 5 — Outline Security Assessment
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 23–25) |
+| **Deliverable** | `notes/lab40-assessment-outline.md` |
+| **Fixtures** | Synthetic CUS-1001 / CUS-1002 only · no real PII |
+
+### What you will learn
+
+Outline security-assessment.md: scope, tools, findings, residual risks.
+
+### Enterprise context
+
+Peer must reproduce without verbal hand-waving.
+
+### Predict
+
+What belongs in residual risk (owner + expiry)?
+
+### Debug
+
+Vague 'looks fine' assessment — why rejected?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Missing versions/commands | Add reproduce section |
+| Secrets in screenshots | Sanitize HTML/JSON reports |
+
 **Module 40** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

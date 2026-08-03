@@ -1,6 +1,15 @@
 # Lab 51 starter — session block (~45 minutes)
 
 **Theme:** Security / deploy checklist + Dockerfile & k8s stub TODOs  
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | checklist · non-root Dockerfile · probes · 401/403 · rollback digest |
+| **Hard gate** | Pre-lab Pass · no secrets in Git |
+
 **Target:** `~/java-bootcamp/examples/customer-management-platform/`
 
 Timed-path policy: [`labs/_STARTER-PATH.md`](../../../../_STARTER-PATH.md)
@@ -53,3 +62,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-51/`. Redact tokens.
 | Smoke matrix lists 401/403 expectations | Pass / Fail |
 
 Full path (multi-day): JWT resource server, GH Actions, image scan, live k3s rollout + rollback — see GUIDE.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Dry-run schema errors | Fix apiVersion/required probe fields |
+| Dockerfile still root | Add USER non-root after multi-stage |
+| Smoke matrix missing 403 | Add wrong-role case |
+| Digest placeholder empty | Note sha256:TODO until build |

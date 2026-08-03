@@ -1,6 +1,36 @@
 # Exercise 2 — Topic and Key Map
 
-**Module 30** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **B** (after slides 9–14) |
+| **Deliverable** | `notes/lab30-topic-map.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Name topics, partitions, and customer-ID keys for Amina/Ravi.
+
+### Enterprise context
+
+Same customerId key → same partition → per-customer order.
+
+### Predict
+
+What happens if key is null / random?
+
+### Debug
+
+Two topics vs one topic + eventType — trade-offs?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Forgot DLQ name | Plan crm.customer-events.v1.dlq now |
+| Partition count unknown | Lab uses 3 partitions — document why |
 
 ## Goal
 

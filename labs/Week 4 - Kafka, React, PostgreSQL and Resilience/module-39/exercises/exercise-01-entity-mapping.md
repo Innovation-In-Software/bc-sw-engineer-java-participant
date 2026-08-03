@@ -1,5 +1,37 @@
 # Exercise 1 — Entity Mapping
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **A** (after slides 207–216) |
+| **Deliverable** | `notes/lab39-jpa.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · Lab 37/38 column names |
+
+### What you will learn
+
+Map CUSTOMER/ACCOUNT columns to JPA fields, types, and relationships.
+
+### Enterprise context
+
+Align with Lab 37/38 DDL — Hibernate validate, not create-drop.
+
+### Predict
+
+Should money be double or BigDecimal?
+
+### Debug
+
+Exposing entities as API responses — risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| ddl-auto=create forever | Flyway owns schema; validate in app |
+| Skipping @Version | Plan optimistic lock field now |
+
 **Module 39** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

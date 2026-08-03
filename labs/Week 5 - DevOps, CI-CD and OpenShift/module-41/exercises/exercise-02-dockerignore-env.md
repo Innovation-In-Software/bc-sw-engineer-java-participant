@@ -1,5 +1,37 @@
 # Exercise 2 — Plan .dockerignore and Env
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 46–49) |
+| **Deliverable** | `notes/lab41-dockerignore-env.md` |
+| **Fixtures** | Synthetic CUS-1001 smoke · no secrets in notes |
+
+### What you will learn
+
+List ignore rules and .env.example keys (no real secrets).
+
+### Enterprise context
+
+Huge contexts and leaked .env break enterprise builds.
+
+### Predict
+
+If .env is in the build context, where can the password appear?
+
+### Debug
+
+Ignoring nothing — why is build slow/huge?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Committing .env | Commit .env.example only |
+| Ignoring the Dockerfile | Do not ignore Dockerfile itself |
+
 **Module 41** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

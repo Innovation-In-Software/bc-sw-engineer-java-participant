@@ -1,5 +1,37 @@
 # Exercise 5 — Endpoint Map
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 120–125) |
+| **Deliverable** | `notes/lab35-api.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · `X-Correlation-Id: lab-request-001` |
+
+### What you will learn
+
+Map UI actions to Spring REST paths for Amina/Ravi CRM.
+
+### Enterprise context
+
+Freeze /api/customers contract before coding the client.
+
+### Predict
+
+Does the browser call Kafka topics directly?
+
+### Debug
+
+Base URL already has /api and path also /api — symptom?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| SOAP from browser | JSON only; SOAP stays server-side if present |
+| Unknown methods | List GET list/get, POST create, PUT update |
+
 **Module 35** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

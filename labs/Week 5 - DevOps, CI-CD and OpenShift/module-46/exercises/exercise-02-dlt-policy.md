@@ -1,5 +1,37 @@
 # Exercise 2 — Draft DLT Policy
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 195–197) |
+| **Deliverable** | `notes/lab46-dlt-policy.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · correlation lab-request-001 · no PII in metrics |
+
+### What you will learn
+
+Draft bounded retry + DLT policy including diagnostic/correlation headers.
+
+### Enterprise context
+
+DLT without headers is undiagnosable; correlation must survive recoverer.
+
+### Predict
+
+Which exceptions are not-retryable?
+
+### Debug
+
+No DLT messages after poison — handler wiring?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Missing not-retryable list | Classify deserialization/business rejects |
+| Skipping correlation headers | Preserve Spring DLT / custom headers |
+
 **Module 46** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

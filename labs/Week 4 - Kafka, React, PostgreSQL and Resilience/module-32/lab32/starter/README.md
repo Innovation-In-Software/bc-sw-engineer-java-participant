@@ -2,6 +2,14 @@
 
 **Theme:** Resilience4j — retry, circuit breaker, time limiter
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | available=true · fallback false · OPEN/timeout tests |
+| **Hard gate** | Pre-lab Pass · instance `accountProfile` |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab32-crm`.
@@ -48,3 +56,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-32/` (redact secrets).
 | resilience-notes.md mentions instance name accountProfile | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Annotations ignored | Add starter-aop; avoid self-invocation |
+| TimeLimiter no effect | Return CompletableFuture |
+| CB never opens | Match instance name `accountProfile` |
+| Fake success | Fallback must set available=false |

@@ -1,5 +1,37 @@
 # Exercise 2 — Fallback Contract
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **C** (after slides 65–67) |
+| **Deliverable** | `notes/lab32-fallback-contract.md` |
+| **Fixtures** | CUS-1001 Account Profile · instance `accountProfile` |
+
+### What you will learn
+
+Define AccountSummary.unavailable — available=false, never fake success.
+
+### Enterprise context
+
+UI must show degraded read honestly for CUS-1001.
+
+### Predict
+
+Fallback returns available=true with empty data — why is that wrong?
+
+### Debug
+
+Write operations using the same fallback — safe?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Fake 200 success | Degraded read only; never claim write succeeded |
+| Missing customerId in fallback | Always echo requested customerId |
+
 **Module 32** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

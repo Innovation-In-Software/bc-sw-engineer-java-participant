@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 3–4 h |
+| **Checkpoint** | **E** (after Ex 1→4→2→3→5→6) |
+| **Must prove** | `-Psecurity-scan` · triage CSV row · assessment residual risk |
+| **Hard gate** | Pre-lab Pass · Lab 39 verify green · no secrets in Git |
+
+### What you will learn
+
+Run a CRM AppSec gate: Dependency-Check, triage, focused SAST, remediate, re-scan.
+
+### Enterprise context
+
+Scanners alone are not a release decision — every finding needs fix, timed accept, or evidenced FP.
+
+### Predict
+
+Suppressing a Critical CVE with no owner/expiry — does the gate pass?
+
+### Debug
+
+Scan fails only because of high CVSS — delete profile or triage?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: remediation + regression + before/after scan evidence.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -655,6 +684,9 @@ git status --short
 | CPE mismatch noise | Wrong package identity | Confirm artifactId/groupId path |
 | Authz test always 200 | Security filter not applied in `@WebMvcTest` | Use slice/`@SpringBootTest` + security config as designed |
 | Assessment vague | No commands/versions | Add reproduce section from Reference |
+| Silent suppression | No policy | Require CVE + owner + expiry in suppressions |
+| Docker image build now | Wrong module | AppSec gate first — Lab 41 |
+| Real emails in findings | PII | Synthetic fixtures only |
 
 ---
 

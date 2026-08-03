@@ -1,5 +1,37 @@
 # Exercise 1 — Capstone Threat Checklist
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 89–96) |
+| **Deliverable** | `notes/lab51-threat-checklist.md` |
+| **Fixtures** | CUS-1001 smoke · 401/403 negatives · no secrets in Git |
+
+### What you will learn
+
+Threat-model CRM endpoints: authn/authz, secrets, actuators, CORS, logging.
+
+### Enterprise context
+
+Feature-complete is not release-complete without a threat checklist.
+
+### Predict
+
+Should actuators be public by default?
+
+### Debug
+
+Disabling security tests for green CI — gate fail?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Empty threat list | Cover API, UI, Kafka, secrets, admin |
+| Committing .env | Never; use Actions secrets |
+
 **Module 51** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

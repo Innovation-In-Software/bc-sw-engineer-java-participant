@@ -2,6 +2,14 @@
 
 **Theme:** PostgreSQL design — schema, constraints, seeds
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | Tables+constraints · Amina/Ravi seed · negative check |
+| **Hard gate** | Pre-lab Pass · compose/shared Postgres · `.env` secrets |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab37-crm`.
@@ -49,3 +57,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-37/` (redact secrets).
 | Passwords only in .env (not Git) | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Name already exists | Run drop script before recreate |
+| FK violation on seed | Insert CUSTOMER before ACCOUNT |
+| Cannot connect | Check compose port / shared host sheet |
+| Secrets in Git | Keep passwords in `.env` only |

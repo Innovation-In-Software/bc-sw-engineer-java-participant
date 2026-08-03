@@ -1,6 +1,15 @@
 # Lab 49 starter — session block (~45 minutes)
 
 **Theme:** Capstone backend interaction slice (service stub package)  
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | service TODOs · compile · CUS-1001 fixtures · event V1 sketch |
+| **Hard gate** | Pre-lab Pass · Lab 48 story |
+
 **Target:** merge into `~/java-bootcamp/examples/customer-management-platform/` (or standalone `lab49-crm`)
 
 Timed-path policy: [`labs/_STARTER-PATH.md`](../../../../_STARTER-PATH.md)
@@ -55,3 +64,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-49/`.
 | Fixtures `CUS-1001` / `lab-request-001` appear in code or test | Pass / Fail |
 
 Full path (multi-day): Flyway migration, Kafka IT, Problem Details, consumer/DLT, `docs/backend-demo.md` — see GUIDE.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| UnsupportedOperationException left | Fill InteractionService TODOs |
+| Validation missing | Annotate CreateInteractionRequest |
+| Wrong module path | Merge into platform `backend/` carefully |
+| Tests red until TODOs | Expected; then green session tests |

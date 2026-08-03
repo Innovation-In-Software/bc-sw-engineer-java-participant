@@ -1,5 +1,37 @@
 # Exercise 1 — Fill Fetch TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 126–130) |
+| **Deliverable** | `notes/lab35-todos.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · `X-Correlation-Id: lab-request-001` |
+
+### What you will learn
+
+List ApiError, http helper, customersApi, env base URL TODOs.
+
+### Enterprise context
+
+One HTTP boundary so Lab 36 can inject Authorization later.
+
+### Predict
+
+Where does VITE_CRM_API_URL get read?
+
+### Debug
+
+Env change with no Vite restart — what happens?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Axios vs fetch | Lab uses fetch helper; Axios concepts still apply |
+| Missing 204 handling | No JSON parse on empty body |
+
 **Module 35** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

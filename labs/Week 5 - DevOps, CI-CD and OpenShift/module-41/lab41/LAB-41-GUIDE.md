@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 3–4 h |
+| **Checkpoint** | **E** (after Ex 1→4→2→3→5→6) |
+| **Must prove** | Multi-stage build · USER 10001 · no secrets in layers · HEALTHCHECK |
+| **Hard gate** | Pre-lab Pass · Docker engine · bootable CRM JAR |
+
+### What you will learn
+
+Package the Spring CRM as a small non-root image with runtime env and readiness checks.
+
+### Enterprise context
+
+Ops rejects root/`latest`-only images with passwords baked into layers.
+
+### Predict
+
+If `.env` is not dockerignored, where might the DB password appear?
+
+### Debug
+
+HEALTHCHECK fails with 401 — actuator security allowlist?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: digest evidence + graceful stop + full runbook.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -681,6 +710,9 @@ docker tag crm-api:lab41 crm-api:1.0.0-${GIT_SHA}
 | Health 401 | Security locks actuator | Permit `/actuator/health/**` only |
 | Wrong timezone logs | Container TZ unset | Set UTC deliberately if required |
 | Jar is plain not Boot | Wrong classifier/name | Ensure `spring-boot-maven-plugin` repackage |
+| `:latest` as only tag | Non-reproducible pulls | Record digest; use lab41 tag |
+| k3s manifests now | Wrong module | Image first — Lab 42 deploys |
+| Password in ARG/ENV in Dockerfile | Secret in layers | Inject at `docker run` / Secret |
 
 ---
 

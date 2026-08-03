@@ -1,5 +1,37 @@
 # Exercise 4 — Fill SAST Path TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **B** (after slides 9–13) |
+| **Deliverable** | `notes/lab40-sast-todo-notes.md` |
+| **Fixtures** | Synthetic CUS-1001 / CUS-1002 only · no real PII |
+
+### What you will learn
+
+List request→sink paths: injection, authz, secrets, unsafe deserialization.
+
+### Enterprise context
+
+Manual focused SAST complements Dependency-Check.
+
+### Predict
+
+Object-level authz miss on GET /customers/{id} — how prove?
+
+### Debug
+
+DAST-only mindset — what do you miss offline?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No code locations | Record class/method for each finding |
+| CI workflow files now | Park GitHub Actions for Lab 43 |
+
 **Module 40** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

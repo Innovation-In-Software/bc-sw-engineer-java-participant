@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 3–4 h |
+| **Checkpoint** | **E** (after Ex 1→4→3→5→2→6) |
+| **Must prove** | Shared facts · four artifacts · consistent severity/next update · secrecy scrub · ≥2 peer rewrites |
+| **Hard gate** | Pre-lab Pass · one fact base before drafting |
+
+### What you will learn
+
+Communicate one CRM release/incident consistently to responders, reviewers, and stakeholders.
+
+### Enterprise context
+
+Clarity under time pressure is a deliverable equal to code—contradictory facts fail.
+
+### Predict
+
+Incident SEV-2 vs email SEV-1 — what do you fix first?
+
+### Debug
+
+Peer review file says only "LGTM" — pass criteria?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: full packet polish + briefing notes. Optional Week 5 review 234–244.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -711,6 +740,9 @@ git status --short
 | Conflicting next-update times | Copy/paste drift | Single source in shared-facts.md |
 | Oversharing fixture emails | Treat fixtures as real PII | Use IDs only in external email |
 | Statuspage vs Slack mismatch | Dual drafts | Always edit from shared facts first |
+| Finishing Labs 43–46 code here | Wrong focus | Link evidence; write communications |
+| Week review 234–244 as Lab files | Optional deck | Not graded Lab 47 packet |
+| Contradictory next-update times | Drift | Edit from shared-facts.md only |
 
 ---
 

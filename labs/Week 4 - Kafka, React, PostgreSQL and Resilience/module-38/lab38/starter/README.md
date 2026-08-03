@@ -2,6 +2,14 @@
 
 **Theme:** SQL performance — plans, indexes, keyset paging
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | Baseline EXPLAIN · indexes re-measured · report.md |
+| **Hard gate** | Pre-lab Pass · Lab 37 DDL available |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab38-crm`.
@@ -48,3 +56,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-38/` (redact secrets).
 | report.md has experiment ids lab38-001+ | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Index not used | Fix sargable predicate; ANALYZE |
+| Fixtures missing after load | Re-seed CUS-1001 / CUS-1002 |
+| No before plan | Capture baseline before CREATE INDEX |
+| Deep OFFSET slow | Implement keyset paging |

@@ -2,6 +2,14 @@
 
 **Theme:** Spring Data JPA + Flyway + PostgreSQL
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | Flyway · @Version · 409 · Postgres IT |
+| **Hard gate** | Pre-lab Pass · `.env` · compose/shared Postgres |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab39-crm`.
@@ -49,3 +57,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-39/` (redact secrets).
 | CustomerRepositoryIT green | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Flyway checksum | Add V2; avoid editing applied V1 |
+| LazyInitializationException | Fetch inside TX / join fetch |
+| IT on H2 only | Force PostgreSQL / Testcontainers |
+| Duplicate → 500 | Map integrity violation to 409 |

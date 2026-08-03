@@ -1,5 +1,37 @@
 # Exercise 3 — Sketch Vertical Stories
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **D** (after slides 21–30) |
+| **Deliverable** | `notes/lab48-backlog-slice.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no secrets in ADRs |
+
+### What you will learn
+
+Sketch vertical backlog stories with acceptance criteria including interaction for CUS-1001.
+
+### Enterprise context
+
+Lab 49 needs vertical slices—not horizontal 'do all APIs' tasks.
+
+### Predict
+
+Why include interaction recording for Amina/Ravi fixtures?
+
+### Debug
+
+Stories with no acceptance criteria — gate?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Horizontal-only tasks | Rewrite as vertical user outcomes |
+| Random demo names | Use CUS-1001/CUS-1002 |
+
 **Module 48** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

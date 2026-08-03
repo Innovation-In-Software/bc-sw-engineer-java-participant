@@ -1,6 +1,36 @@
 # Exercise 3 — Event Envelope Sketch
 
-**Module 30** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **C** (after slides 15–19) |
+| **Deliverable** | `notes/lab30-envelope-sketch.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Sketch versioned CustomerCreated / CustomerStatusChanged envelopes.
+
+### Enterprise context
+
+Consumers need eventType, version, correlationId, occurredAt.
+
+### Predict
+
+Can a v2 consumer read v1 payloads safely?
+
+### Debug
+
+PII in the event body — what stays out?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No version field | Add schemaVersion or eventVersion |
+| Key vs payload id mismatch | Key must match data.customerId |
 
 ## Goal
 

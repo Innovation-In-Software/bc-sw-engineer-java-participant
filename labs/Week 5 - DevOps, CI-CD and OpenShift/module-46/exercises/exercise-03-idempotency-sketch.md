@@ -1,5 +1,37 @@
 # Exercise 3 — Sketch Idempotent Handling
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 195–197) |
+| **Deliverable** | `notes/lab46-idempotency-sketch.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · correlation lab-request-001 · no PII in metrics |
+
+### What you will learn
+
+Sketch durable idempotency keys for CUS-1001/CUS-1002 event side effects.
+
+### Enterprise context
+
+Replay without idempotency double-applies CRM updates.
+
+### Predict
+
+Replay same event-id twice — what must not happen?
+
+### Debug
+
+Duplicate side effects after DLT replay — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Only in-memory seen-set | Persist processed keys |
+| Email as metric tag | Use low-cardinality ids only |
+
 **Module 46** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

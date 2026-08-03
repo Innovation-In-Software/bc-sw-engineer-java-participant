@@ -1,5 +1,37 @@
 # Exercise 1 — Classify Consumer Failures
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 178–183) |
+| **Deliverable** | `notes/lab46-failure-taxonomy.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · correlation lab-request-001 · no PII in metrics |
+
+### What you will learn
+
+Classify CRM consumer failures: transient vs poison vs business reject vs infrastructure.
+
+### Enterprise context
+
+Poison on the main topic blocks partitions while lag grows unnoticed.
+
+### Predict
+
+Malformed JSON for CUS-1001 — retry forever or DLT?
+
+### Debug
+
+Lag stuck with no DLT traffic — what to check?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Infinite retry as strategy | Bound retries; route poison to DLT |
+| Dumping prod topics for notes | Use training topics only |
+
 **Module 46** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

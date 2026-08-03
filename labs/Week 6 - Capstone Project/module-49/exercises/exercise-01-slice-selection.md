@@ -1,5 +1,37 @@
 # Exercise 1 — Select Backend Vertical Slice
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 35–41) |
+| **Deliverable** | `notes/lab49-slice-selection.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · CUS-9999 not-found |
+
+### What you will learn
+
+Pick one Lab 48 backlog story (e.g. CAP-12 interaction) as the backend vertical slice.
+
+### Enterprise context
+
+Capstone quality needs one end-to-end slice—not a horizontal pile of unfinished APIs.
+
+### Predict
+
+Why prefer interaction recording for CUS-1001 over 'all customers CRUD'?
+
+### Debug
+
+Starting React UI in this warmup — park?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No Lab 48 story | Use CAP-12 equivalent; label assumption |
+| Boiling the ocean | One vertical slice only |
+
 **Module 49** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

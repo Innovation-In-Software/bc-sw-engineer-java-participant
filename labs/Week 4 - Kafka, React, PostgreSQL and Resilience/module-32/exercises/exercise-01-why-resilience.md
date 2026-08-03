@@ -1,5 +1,37 @@
 # Exercise 1 — Why Resilience
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 51–56) |
+| **Deliverable** | `notes/lab32-resilience.md` |
+| **Fixtures** | CUS-1001 Account Profile · instance `accountProfile` |
+
+### What you will learn
+
+Explain why sync Account Profile enrichment must not hang CRM.
+
+### Enterprise context
+
+Amina/Ravi pages call an outbound dependency that can be slow or 503.
+
+### Predict
+
+If Account API hangs 30s with no timeout — what happens to CRM threads?
+
+### Debug
+
+Team retries POST create forever — what duplicate risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Thinking Kafka replaces this | Lab 32 is HTTP outbound; Kafka is Lab 30/31 |
+| Only listing 'retry' | Also name CB, timeout, truthful fallback |
+
 **Module 32** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

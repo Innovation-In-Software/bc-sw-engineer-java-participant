@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→5→4→6) |
+| **Must prove** | create/edit/cancel/search · validation errors · immutable updates · tests |
+| **Hard gate** | Pre-lab Pass · Lab 33 tree or starter · no API required |
+
+### What you will learn
+
+Lift CRM state into App with controlled forms, immutable CRUD, and client validation.
+
+### Enterprise context
+
+Freeze in-browser CRUD contracts so Lab 35 can swap fixtures for fetch safely.
+
+### Predict
+
+If you `customers.push(newRow)` under Strict Mode — what can go wrong?
+
+### Debug
+
+Filtered list stored in useState updated by useEffect — why remove it?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: ≥8 RTL tests + title useEffect + state notes.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -706,6 +735,8 @@ it("filters to Amina", async () => {
 | Double create | Push + Strict Mode | Functional `[...prev, row]` |
 | Test can’t find search | Missing accessible name | `aria-label="Search customers"` |
 | Title wrong | Bad effect deps | Depend on `visible.length` |
+| Create+edit both active | Mode not exclusive | Single discriminated mode state |
+| Fetch in App now | Wrong module | In-memory only — Lab 35 |
 
 ---
 

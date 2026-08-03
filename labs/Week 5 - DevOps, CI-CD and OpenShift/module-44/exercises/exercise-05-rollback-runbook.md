@@ -1,5 +1,37 @@
 # Exercise 5 — Outline Rollback Runbook
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 132–138) |
+| **Deliverable** | `notes/lab44-rollback-runbook.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+
+### What you will learn
+
+Outline rollback to a known-good digest plus post-rollback verification.
+
+### Enterprise context
+
+Rollback without prior digest capture is incomplete—record before every promote.
+
+### Predict
+
+Why capture prior digest before promote, not after failure?
+
+### Debug
+
+DB migrate not backward compatible — rollback limit?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No known-good digest | Record prior before promote |
+| Kafka DLT procedures now | Park Lab 46 |
+
 **Module 44** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

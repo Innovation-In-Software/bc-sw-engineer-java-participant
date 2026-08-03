@@ -1,5 +1,37 @@
 # Exercise 5 — Actions Secrets Checklist
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 111–117) |
+| **Deliverable** | `notes/lab43-secrets-checklist.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic only · no secrets in Git |
+
+### What you will learn
+
+List which names live in Actions secrets vs plain vars; never echo values.
+
+### Enterprise context
+
+Kubeconfig and registry tokens must not appear in workflow YAML or screenshots.
+
+### Predict
+
+CRM_REGISTRY_TOKEN in plain text in ci.yml — gate fail?
+
+### Debug
+
+Secret appears in Actions log — response?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| echo $SECRET | Never print; rotate if leaked |
+| Full CD promotions now | Park Lab 44 |
+
 **Module 43** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

@@ -1,5 +1,37 @@
 # Exercise 5 — Fill useState TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 99–107) |
+| **Deliverable** | `notes/lab34-todos.md` |
+| **Fixtures** | CUS-1001 Amina · CUS-1002 Ravi · in-memory only |
+
+### What you will learn
+
+List App state pieces: customers, query, mode, draft, errors.
+
+### Enterprise context
+
+Lab 33 components stay props-driven; App becomes source of truth.
+
+### Predict
+
+Should filtered results be stored in useState or derived?
+
+### Debug
+
+useEffect to copy customers into filteredCustomers — anti-pattern?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Storing derived filter in state | Derive visible from customers + query |
+| Fetch urge | In-memory only — Lab 35 adds API |
+
 **Module 34** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

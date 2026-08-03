@@ -1,5 +1,37 @@
 # Exercise 2 — Listener Sketch
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **C** (after slides 37–40) |
+| **Deliverable** | `notes/lab31-listener-sketch.md` |
+| **Fixtures** | CUS-1001 Amina · CUS-1002 Ravi · `crm.customer-events.v1` |
+
+### What you will learn
+
+Sketch @KafkaListener signature, topics, group, and key↔payload checks.
+
+### Enterprise context
+
+Notification path must validate CUS-1001 key matches event data.
+
+### Predict
+
+Wrong group-id — do you re-read all history or skip?
+
+### Debug
+
+Listener method returns void vs Acknowledgment — when matters?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No topics attribute | Bind to crm.customer-events.v1 explicitly |
+| Skipping key check | Reject or DLT when key ≠ customerId |
+
 **Module 31** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

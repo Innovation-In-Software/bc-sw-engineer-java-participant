@@ -1,5 +1,37 @@
 # Exercise 5 — Rollback and Smoke Mini-Runbook
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 112–115) |
+| **Deliverable** | `notes/lab51-rollback-smoke.md` |
+| **Fixtures** | CUS-1001 smoke · 401/403 negatives · no secrets in Git |
+
+### What you will learn
+
+Outline smoke (auth + CUS-1001) and previous-digest rollback steps.
+
+### Enterprise context
+
+Release without rollback rehearsal is incomplete.
+
+### Predict
+
+What do you roll back to if only one revision exists?
+
+### Debug
+
+Rollback breaks DB — note?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No prior digest | Record known-good before promote |
+| Smoke without 401/403 | Add negatives |
+
 **Module 51** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

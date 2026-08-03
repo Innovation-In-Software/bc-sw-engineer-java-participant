@@ -1,5 +1,37 @@
 # Exercise 3 — Outline Delivery Gates
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 97–104) |
+| **Deliverable** | `notes/lab51-pipeline-gates.md` |
+| **Fixtures** | CUS-1001 smoke · 401/403 negatives · no secrets in Git |
+
+### What you will learn
+
+Outline GitHub Actions gates: verify, SAST/deps, image build/scan, deploy.
+
+### Enterprise context
+
+Promote only through evidenced gates—not :latest folklore.
+
+### Predict
+
+Which job should fail the pipeline on critical CVEs?
+
+### Debug
+
+Pipeline green with skipped tests — acceptable?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Skip security job | Keep gate; triage exceptions |
+| :latest only identity | Pin digest |
+
 **Module 51** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

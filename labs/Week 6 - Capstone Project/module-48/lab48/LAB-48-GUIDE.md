@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min session block · full path 5–6 h multi-day |
+| **Checkpoint** | **E** (after Ex 2→1→4→3→5→6) |
+| **Must prove** | context + fixtures · ≥1 ADR · backlog seeds · risk seeds · no secrets |
+| **Hard gate** | Pre-lab Pass · measurable NFR mindset · docs before coding Labs 49+ |
+
+### What you will learn
+
+Produce an executable CRM architecture and delivery plan peers can follow into Labs 49–52.
+
+### Enterprise context
+
+Ambiguous NFRs, missing ADRs, and undocumented risks are Week 6 defense blockers.
+
+### Predict
+
+Should Lab 49 start before ADRs and vertical backlog exist?
+
+### Debug
+
+Two Accepted ADRs that pick different databases — what do you do?
+
+---
+
 ## 45-minute timed path (session block — use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: full NFRs, ≥5 ADRs, team plan, complete risk register.
 
 In class, use the starter templates so the **session block** fits **~45 minutes**. Capstone planning remains **multi-day** on the full path below — the starter does not replace ADRs, NFRs, or the complete risk register.
 
@@ -667,6 +696,9 @@ git status --short
 | Secrets in screenshots | Pasted real tokens | Redact, rotate, replace evidence |
 | Fixture drift | Random demo names | Standardize on CUS-1001/1002 |
 | Inherited build red | Pre-existing platform fail | Record baseline; do not hide |
+| Coding Lab 49 during planning | Wrong sequence | Finish planning packet first |
+| Vague 'fast/scalable' NFRs | Not measurable | Add metric, target, evidence |
+| Bitbucket-only plan | Stack drift | Plan GitHub Actions + k3s; Bitbucket comparison only |
 
 ---
 

@@ -2,6 +2,14 @@
 
 **Theme:** Multi-stage Dockerfile — non-root, health, no secrets in layers
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | Multi-stage · USER 10001 · HEALTHCHECK · no password in Dockerfile |
+| **Hard gate** | Pre-lab Pass · Docker · CRM sources beside starter |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab41-crm` (beside your CRM `pom.xml` / `src`).
@@ -52,3 +60,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-41/` (redact secrets).
 | HEALTHCHECK / readiness path documented | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Huge build context | Fix `.dockerignore` |
+| Jar not found | Match Boot jar name in COPY |
+| Permission denied | `--chown` before USER 10001 |
+| Health 401 | Permit actuator health paths |

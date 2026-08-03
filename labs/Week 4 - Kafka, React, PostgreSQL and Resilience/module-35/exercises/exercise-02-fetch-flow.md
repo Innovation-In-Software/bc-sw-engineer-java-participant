@@ -1,5 +1,37 @@
 # Exercise 2 — Fetch Flow
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **B** (after slides 126–130) |
+| **Deliverable** | `notes/lab35-fetch-flow.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · `X-Correlation-Id: lab-request-001` |
+
+### What you will learn
+
+Sketch load → loading → data/empty/error with AbortController.
+
+### Enterprise context
+
+Obsolete loads must cancel when query/unmount changes.
+
+### Predict
+
+Fast typing in search — what happens without abort?
+
+### Debug
+
+Double POST create — what guard?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No loading flag | Distinct loading vs empty vs error states |
+| Fetch in every card | One api layer + hook/cache in App |
+
 **Module 35** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

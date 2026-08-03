@@ -1,5 +1,37 @@
 # Exercise 5 — Outline DLT Replay Runbook
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 195–197) |
+| **Deliverable** | `notes/lab46-replay-runbook.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · correlation lab-request-001 · no PII in metrics |
+
+### What you will learn
+
+Outline dry-run-first DLT replay with rate limits and verification.
+
+### Enterprise context
+
+Blind replay can re-poison or amplify load—dry-run and batch limits first.
+
+### Predict
+
+Why dry-run before live DLT replay?
+
+### Debug
+
+Replay storms rebalance — tune?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Replay all DLT at once | Rate-limit; sample first |
+| No success criteria | Define lag/DLT/CRM checks |
+
 **Module 46** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

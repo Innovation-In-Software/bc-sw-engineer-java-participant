@@ -1,6 +1,36 @@
 # Exercise 1 — Why Async for CRM
 
-**Module 30** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **A** (after slides 1–8) |
+| **Deliverable** | `notes/lab30-prelab-eda.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Contrast sync HTTP fan-out vs event publish for CRM side effects.
+
+### Enterprise context
+
+Notifications/audit must not block customer create.
+
+### Predict
+
+If Notification is down, does create fail under sync vs event?
+
+### Debug
+
+Team wants REST-only — what coupling risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Cannot name a fan-out consumer | List notifications, audit, search — Lab 30 topics feed them |
+| Confused with Lab 31 | This lab is concepts + Compose; Spring Kafka is next |
 
 ## Goal
 

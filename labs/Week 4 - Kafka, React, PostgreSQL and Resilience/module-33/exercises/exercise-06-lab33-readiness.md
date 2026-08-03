@@ -1,5 +1,37 @@
 # Exercise 6 — Lab 33 Readiness
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 93–94) |
+| **Deliverable** | `notes/lab33-prep-checklist.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Confirm Node 22+, fixtures, and no fetch/auth yet.
+
+### Enterprise context
+
+Hard gate before Vite scaffold.
+
+### Predict
+
+Will Lab 33 need the Spring Boot API running?
+
+### Debug
+
+Starting Lab 34 useState early in pre-lab — park it?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Node missing | Install Node 22+; verify node -v / npm -v |
+| Wrong fixtures | CUS-1001 ACTIVE / CUS-1002 PROSPECT |
+
 **Module 33** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

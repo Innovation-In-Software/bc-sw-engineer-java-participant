@@ -1,5 +1,37 @@
 # Exercise 2 — Sketch Artifact Manifest
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 122–127) |
+| **Deliverable** | `notes/lab44-manifest-fields.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+
+### What you will learn
+
+List immutable identity fields: version, commit, JAR SHA / image digest, prior known-good.
+
+### Enterprise context
+
+Promote by digest—not floating :latest. Env secrets stay outside the artifact.
+
+### Predict
+
+Which field proves staging and prod candidates are the same binary?
+
+### Debug
+
+Manifest with passwords inside JSON — gate fail?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Using only :latest | Pin digest/SHA-256 from Lab 43 |
+| Secrets in artifact | Keep config/secrets in env, not JAR |
+
 **Module 44** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

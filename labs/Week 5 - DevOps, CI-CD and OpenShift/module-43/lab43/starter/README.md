@@ -2,6 +2,14 @@
 
 **Theme:** GitHub Actions CI — verify, reports, package-once checksum
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | triggers · no skipTests · package SHA · secrets location in runbook |
+| **Hard gate** | Pre-lab Pass · local Maven verify |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab43-crm`.
@@ -50,3 +58,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-43/` (redact tokens).
 | Runbook explains secret storage | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Workflow never runs | Enable Actions; check `on:` events |
+| Verify skips tests | Remove `-DskipTests` |
+| Package on every PR | Gate package job to main/tags |
+| Token in YAML | Move to Actions secrets |

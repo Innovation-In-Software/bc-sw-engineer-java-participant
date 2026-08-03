@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→4→3→5→6) |
+| **Must prove** | KRaft up · topics+DLQ · keyed produce · acks=all+idempotence · notes |
+| **Hard gate** | Pre-lab notes Pass · Docker or shared bootstrap documented |
+
+### What you will learn
+
+Stand up CRM Kafka topics and a safe Java producer before Spring Kafka.
+
+### Enterprise context
+
+Northstar freezes topic/key contracts so Notification and Audit can consume independently.
+
+### Predict
+
+If two consumers share `crm-notifications`, do both get every record?
+
+### Debug
+
+Consume empty with `--from-beginning` missing — what do you check first?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: competing vs independent groups + lag.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -674,6 +703,8 @@ Do not invent parallel topic names for the same stream.
 | Rebalance storms | Start/stop consumers rapidly | Stabilize membership; wait |
 | Topic missing | Create step skipped | Create explicitly; avoid silent auto-create habit |
 | Java producer hangs | Broker down / wrong bootstrap | Logs + `docker compose logs kafka` |
+| Partition always 0 | Null/empty key | Set record key to CUS-1001 / CUS-1002 |
+| Spring Kafka urge | Wrong module | Use raw producer / CLI only — Lab 31 |
 
 ---
 

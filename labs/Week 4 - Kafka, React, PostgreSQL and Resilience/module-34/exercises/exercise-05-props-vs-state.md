@@ -1,5 +1,37 @@
 # Exercise 2 — Props vs State
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 111–113) |
+| **Deliverable** | `notes/lab34-state.md` |
+| **Fixtures** | CUS-1001 Amina · CUS-1002 Ravi · in-memory only |
+
+### What you will learn
+
+Decide what stays props (Lab 33) vs what App owns as state.
+
+### Enterprise context
+
+StatusBadge stays props; customers list is lifted state.
+
+### Predict
+
+Can a child mutate a prop object in place safely?
+
+### Debug
+
+Duplicating customers in Card local state — sync bugs?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Props downward only | Callbacks upward for child→parent |
+| Edit mutates prop | Clone via immutable update in App |
+
 **Module 34** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

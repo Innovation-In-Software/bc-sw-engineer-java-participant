@@ -1,5 +1,37 @@
 # Exercise 4 — Fill Route Guard TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 153–157) |
+| **Deliverable** | `notes/lab36-todos.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · no real secrets |
+
+### What you will learn
+
+List AuthContext, tokenStore, ProtectedRoute, 401 vs 403 TODOs.
+
+### Enterprise context
+
+Attach bearer only to CRM API origin via Lab 35 http helper.
+
+### Predict
+
+Should 403 clear the session the same as 401?
+
+### Debug
+
+Open redirect via returnUrl — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Bearer on every host | Compare apiOrigin before attaching |
+| Flash of protected UI | Add checking/auth loading state |
+
 **Module 36** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

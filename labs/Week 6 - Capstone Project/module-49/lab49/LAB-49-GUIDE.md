@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min session block · full path 6–8 h multi-day |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Service TODOs · compile · fixture IDs · event V1 sketch |
+| **Hard gate** | Pre-lab Pass · Lab 48 story selected · docs before claiming done |
+
+### What you will learn
+
+Implement a CRM interaction vertical slice: validated API, persistence, versioned Kafka event, tests, demo runbook.
+
+### Enterprise context
+
+A green demo without tests, correlation, or failure-path evidence does not pass capstone quality.
+
+### Predict
+
+Should the publisher run before the DB transaction commits?
+
+### Debug
+
+Entity returned as JSON from the controller — what is missing?
+
+---
+
 ## 45-minute timed path (session block — use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: Flyway, Kafka IT, consumer/DLT, verify twice, `docs/backend-demo.md`.
 
 In class, use the starter service stub so the **session block** fits **~45 minutes**. Backend + messaging depth (Flyway, Kafka IT, consumer/DLT, full verify) remains **multi-day** on the full path.
 
@@ -641,6 +670,9 @@ Adapt field names to your Problem Details implementation; keep status semantics 
 | DLT never fills | Retry infinite / wrong error type | Bound retries; classify poison |
 | Topic exists locally only | CI broker missing | Testcontainers or skip-IT profile documented |
 | Customer id mismatch UI | UUID vs string drift | Freeze contract in demo.md |
+| React UI work in this lab | Wrong module | Lab 50 |
+| Unversioned event as done | Contract drift | Name V1 fields; document |
+| Weaken validation for demo | Quality fail | Keep constraints; fix callers |
 
 ---
 

@@ -1,5 +1,37 @@
 # Exercise 4 — Fill Accessibility TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **A** (after slides 66–73) |
+| **Deliverable** | `notes/lab50-a11y-todos.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no real PII |
+
+### What you will learn
+
+Fill a11y TODOs: labels, keyboard, focus, error announcements for forms.
+
+### Enterprise context
+
+A11y basics are part of capstone quality—not optional polish.
+
+### Predict
+
+Why associate label htmlFor with inputs?
+
+### Debug
+
+Mouse-only form — keyboard fail?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Missing labels | htmlFor / aria-label |
+| Errors only in color | Text + aria-live |
+
 **Module 50** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

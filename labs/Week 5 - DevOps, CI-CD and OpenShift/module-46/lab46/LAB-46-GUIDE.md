@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→4→2→3→5→6) |
+| **Must prove** | Bounded retry + DLT · not-retryable classification · dashboard signals · dry-run replay |
+| **Hard gate** | Pre-lab Pass · basic Kafka produce/consume available |
+
+### What you will learn
+
+Make CRM Kafka consumers failure-tolerant with DLT, idempotency, lag/metrics, and a safe replay runbook.
+
+### Enterprise context
+
+Silent infinite retry while lag grows is a failing grade—poison must be diagnosable.
+
+### Predict
+
+Should malformed events stay on the main topic forever?
+
+### Debug
+
+Poison event produced but DLT empty — what is unwired?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: poison→DLT evidence, metrics/lag, replay dry-run, tests.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -678,6 +707,10 @@ git status --short
 | DLT topic missing | Auto-create disabled | Create `*.DLT` explicitly |
 | Wrong group lag | Observing wrong `group-id` | Match `crm-customer-projection-v1` (or yours) |
 | Test flake on EmbeddedKafka | Shared topic state | Unique topics per test / `@DirtiesContext` |
+| Infinite retry as DoD | Blocks partitions | Bound retries + DLT |
+| PII/email metric tags | Cardinality / privacy | customerId/eventType only |
+| Prod topic dump for evidence | Data leak | Training topics + synthetic ids |
+| Module 47 write-up as this lab | Wrong module | Keep evidence; Lab 47 communicates |
 
 ---
 

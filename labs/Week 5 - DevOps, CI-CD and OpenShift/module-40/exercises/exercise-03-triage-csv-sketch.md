@@ -1,5 +1,37 @@
 # Exercise 3 — Sketch Findings Triage CSV
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 19–22) |
+| **Deliverable** | `notes/lab40-triage-csv-sketch.md` |
+| **Fixtures** | Synthetic CUS-1001 / CUS-1002 only · no real PII |
+
+### What you will learn
+
+Sketch CSV columns: CVE, severity, decision, owner, expiry.
+
+### Enterprise context
+
+Every suppression needs policy justification + expiry.
+
+### Predict
+
+False positive CPE — what evidence do you keep?
+
+### Debug
+
+Accept forever with no owner — gate fail?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Empty decision column | fix / accept / false-positive / defer |
+| Real customer PII in CSV | Synthetic fixtures only |
+
 **Module 40** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

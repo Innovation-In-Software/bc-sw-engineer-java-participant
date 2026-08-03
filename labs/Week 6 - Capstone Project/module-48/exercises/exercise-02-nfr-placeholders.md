@@ -1,5 +1,37 @@
 # Exercise 2 — Draft Measurable NFRs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 5–8) |
+| **Deliverable** | `notes/lab48-nfr-placeholders.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no secrets in ADRs |
+
+### What you will learn
+
+Replace vague 'fast/scalable' with measurable NFRs and evidence ideas.
+
+### Enterprise context
+
+Ambiguous NFR language is an acceptance-blocker for Week 6 defense.
+
+### Predict
+
+Is 'system should be fast' an acceptable NFR?
+
+### Debug
+
+NFR with no measurement method — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Vague adjectives only | Add metric + target + how measured |
+| Skipping NFRs for later | Required before Lab 49 |
+
 **Module 48** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

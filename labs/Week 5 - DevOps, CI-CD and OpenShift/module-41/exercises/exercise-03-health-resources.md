@@ -1,5 +1,37 @@
 # Exercise 3 — Health and Resource Checklist
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 50–54) |
+| **Deliverable** | `notes/lab41-health-resources.md` |
+| **Fixtures** | Synthetic CUS-1001 smoke · no secrets in notes |
+
+### What you will learn
+
+Plan HEALTHCHECK/readiness, memory limits, non-root UID 10001.
+
+### Enterprise context
+
+Ops rejects root images without readiness.
+
+### Predict
+
+Health 401 — what actuator path/security tweak?
+
+### Debug
+
+OOMKill with tight memory — what to tune?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No curl/wget in image | Adjust HEALTHCHECK tool or use actuator via JDK |
+| Running as root for convenience | USER 10001 required |
+
 **Module 41** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

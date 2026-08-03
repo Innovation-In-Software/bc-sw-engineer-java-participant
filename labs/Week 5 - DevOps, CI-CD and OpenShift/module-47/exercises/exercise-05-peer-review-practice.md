@@ -1,5 +1,37 @@
 # Exercise 5 — Peer Review Rewrite Practice
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 219–221) |
+| **Deliverable** | `notes/lab47-peer-review-practice.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · one fact base · no secrets |
+
+### What you will learn
+
+Practice constructive peer review with at least two concrete rewrites.
+
+### Enterprise context
+
+Empty 'LGTM' is not a review—name the fix and suggested wording.
+
+### Predict
+
+What makes feedback actionable vs vague?
+
+### Debug
+
+Peer review file empty — pass criteria?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Only 'looks fine' | Require ≥2 concrete rewrites |
+| Personal attacks | Focus on artifact text |
+
 **Module 47** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

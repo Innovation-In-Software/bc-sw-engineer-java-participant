@@ -1,5 +1,37 @@
 # Exercise 1 — Build Shared Fact Base
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 205–210) |
+| **Deliverable** | `notes/lab47-fact-base.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · one fact base · no secrets |
+
+### What you will learn
+
+Collect one consistent SEV-2 CRM fact base: version, impact, fixtures, next update.
+
+### Enterprise context
+
+All four artifacts must agree—contradictory severity fails the lab.
+
+### Predict
+
+What happens if incident says SEV-2 and email says SEV-1?
+
+### Debug
+
+Starting four drafts with different root causes — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No shared-facts first | Write fact base before other docs |
+| Inventing conflicting RC | One assumed cause; label assumptions |
+
 **Module 47** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

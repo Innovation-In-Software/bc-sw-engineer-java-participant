@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min session block · full path 5–6 h multi-day |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Slide outline · timed demo script · ≥5 evidence links · deny/fallback beat |
+| **Hard gate** | Pre-lab Pass · Labs 48–51 evidence available (gaps labeled) |
+
+### What you will learn
+
+Deliver an evidence-backed CRM defense: narrative, timed demo, Q&A, blameless retro, rubric self-assessment.
+
+### Enterprise context
+
+A lucky happy-path click-through without an evidence index fails professional defense standards.
+
+### Predict
+
+Panel disputes a security claim — what do you open first?
+
+### Debug
+
+Token visible on a projected screenshot — immediate actions?
+
+---
+
 ## 45-minute timed path (session block — use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: PDF export, full Q&A, retrospective, self-assessment, panel delivery.
 
 In class, use the starter slide outline + demo script so the **session block** fits **~45 minutes**. Full panel delivery, PDF export, retrospective, and self-assessment remain **multi-day** on the full path.
 
@@ -646,6 +675,9 @@ git status --short
 | Kafka UI blank | Wrong topic/cluster | Bookmark working consumer command |
 | SQL client timeout | VPN/network | Pre-cache sanitized result screenshot |
 | Two speakers talk over | Role ambiguity | One speaker; one operator rule |
+| Invented evidence | Integrity fail | Retract claim or finish Labs 48–51 |
+| Week wrap-up 157–168 as Lab files | Optional deck | Not graded Lab 52 packet |
+| Blame in retrospective | Facilitation slip | Reframe to system conditions |
 
 ---
 

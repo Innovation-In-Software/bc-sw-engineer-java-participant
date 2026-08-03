@@ -1,5 +1,37 @@
 # Exercise 5 — Repository Sketch
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 217–220) |
+| **Deliverable** | `notes/lab39-repository-sketch.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · Lab 37/38 column names |
+
+### What you will learn
+
+Sketch Spring Data methods for email lookup, status paging, save.
+
+### Enterprise context
+
+Amina/Ravi lookups must use repositories — no string-concat SQL.
+
+### Predict
+
+Derived findByEmailNormalized vs @Query — when each?
+
+### Debug
+
+Business logic in the repository interface — where instead?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Controller→EntityManager | Keep service + repository seams |
+| Unbounded findAll | Pageable with max page size |
+
 **Module 39** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

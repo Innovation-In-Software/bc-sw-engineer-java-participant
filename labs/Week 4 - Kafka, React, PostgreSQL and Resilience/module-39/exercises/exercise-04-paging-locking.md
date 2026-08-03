@@ -1,5 +1,37 @@
 # Exercise 3 — Paging and Locking Notes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **C** (after slides 221–224) |
+| **Deliverable** | `notes/lab39-paging-locking.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · Lab 37/38 column names |
+
+### What you will learn
+
+Plan bounded Pageable, sort allow-list, and @Version conflict behavior.
+
+### Enterprise context
+
+Stable ACTIVE customer lists; concurrent edits → 409.
+
+### Predict
+
+Why add ID tie-breaker to sort?
+
+### Debug
+
+Lazy load after transaction with OSIV off — symptom?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Client-controlled sort on any column | Allow-list sortable fields |
+| Eager everything | Prefer lazy + fetch join when needed |
+
 **Module 39** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

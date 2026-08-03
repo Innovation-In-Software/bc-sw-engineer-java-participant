@@ -1,5 +1,37 @@
 # Exercise 2 — Plan Typed API Client
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 74–76) |
+| **Deliverable** | `notes/lab50-api-client-plan.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no real PII |
+
+### What you will learn
+
+Plan typed client methods, headers (correlation), and error mapping to UI states.
+
+### Enterprise context
+
+Do not invent parallel payload shapes—type against Lab 49 DTOs.
+
+### Predict
+
+What header carries lab-request-001?
+
+### Debug
+
+UI 200 but wrong TypeScript shape — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| any everywhere | Type request/response DTOs |
+| Ignore 401/400 | Map Problem Details to UI |
+
 **Module 50** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

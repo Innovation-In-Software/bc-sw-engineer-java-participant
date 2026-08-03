@@ -1,5 +1,37 @@
 # Exercise 2 — Plan Dependency-Check Gate
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 19–22) |
+| **Deliverable** | `notes/lab40-dependency-check-plan.md` |
+| **Fixtures** | Synthetic CUS-1001 / CUS-1002 only · no real PII |
+
+### What you will learn
+
+Plan Maven `-Psecurity-scan` profile, pin version, fail CVSS threshold.
+
+### Enterprise context
+
+SCA findings need triage — not silent suppressions.
+
+### Predict
+
+Where does the NVD DB live on first run?
+
+### Debug
+
+Unpinned plugin version — what drifts?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| API key in Git | Use env only for NVD key |
+| Deleting the profile to go green | Triage/fix instead |
+
 **Module 40** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

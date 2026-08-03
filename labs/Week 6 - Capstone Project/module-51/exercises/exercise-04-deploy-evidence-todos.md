@@ -1,5 +1,37 @@
 # Exercise 4 — Fill Deploy Evidence TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 108–111) |
+| **Deliverable** | `notes/lab51-deploy-evidence-todos.md` |
+| **Fixtures** | CUS-1001 smoke · 401/403 negatives · no secrets in Git |
+
+### What you will learn
+
+List digests, manifests, probes, and dry-run/apply evidence for k3s.
+
+### Enterprise context
+
+OpenShift Routes are comparison; cohort deploys on k3s/Ingress.
+
+### Predict
+
+What proves the running Pod matches the pipeline image?
+
+### Debug
+
+ImagePullBackOff — checklist?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No digest recorded | Capture sha256 from build |
+| Terraform as graded path | Awareness only; execute GHA+k3s |
+
 **Module 51** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

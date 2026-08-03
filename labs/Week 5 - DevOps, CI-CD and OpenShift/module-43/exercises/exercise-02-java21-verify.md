@@ -1,5 +1,37 @@
 # Exercise 2 — Plan JDK 21 Verify Job
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 107–110) |
+| **Deliverable** | `notes/lab43-java21-verify.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic only · no secrets in Git |
+
+### What you will learn
+
+Plan setup-java 21, Maven cache, and clean verify without skipTests.
+
+### Enterprise context
+
+Local green with different JDK/profile is not CI truth.
+
+### Predict
+
+Why pin temurin 21 (or Wrapper) instead of whatever is on the runner?
+
+### Debug
+
+Tests pass locally, fail in CI — first three checks?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| -DskipTests on verify | Remove; verify must run tests |
+| No Maven cache | Cache ~/.m2/repository with stable key |
+
 **Module 43** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

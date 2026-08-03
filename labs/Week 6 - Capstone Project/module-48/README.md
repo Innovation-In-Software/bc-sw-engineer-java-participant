@@ -1,5 +1,7 @@
 # Module 48 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **2 → 1 → 4 → 3 → 5 → 6**, then Lab 48.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** Capstone Planning and Architecture

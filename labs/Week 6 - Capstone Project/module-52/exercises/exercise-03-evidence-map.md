@@ -1,5 +1,37 @@
 # Exercise 3 — Claim → Evidence Map
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 134–137) |
+| **Deliverable** | `notes/lab52-evidence-map.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no invented evidence |
+
+### What you will learn
+
+Map each major claim to an artifact path (digest, tests, SQL proof, ADR).
+
+### Enterprise context
+
+Disputed claims without evidence rows fail professional defense.
+
+### Predict
+
+Where is the Lab 51 digest cited?
+
+### Debug
+
+Claim with no row — retract or add evidence?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Vague 'we secured it' | Link security-deploy-demo / reports |
+| Missing Lab 48 ADR | Point to Accepted ADR or retract |
+
 **Module 52** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

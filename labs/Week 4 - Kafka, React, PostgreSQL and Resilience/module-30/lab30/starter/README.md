@@ -2,6 +2,14 @@
 
 **Theme:** Kafka EDA — topics, keys, producer
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | Broker · 3-partition topic + DLQ · keyed produce · acks=all |
+| **Hard gate** | Pre-lab Pass · Docker/shared bootstrap |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab30-crm`.
@@ -49,3 +57,12 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-30/` (redact secrets).
 | kafka-notes.md has produce→consume + keying notes | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Port 9092 in use | Stop other Kafka or use instructor bootstrap |
+| Empty consume | `--from-beginning` + correct topic |
+| Always partition 0 | Set key = customerId |

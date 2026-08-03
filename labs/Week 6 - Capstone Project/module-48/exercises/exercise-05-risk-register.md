@@ -1,5 +1,37 @@
 # Exercise 5 — Outline Risk Register
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 21–30) |
+| **Deliverable** | `notes/lab48-risk-register.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no secrets in ADRs |
+
+### What you will learn
+
+Outline scored risks with triggers, mitigations, and contingencies.
+
+### Enterprise context
+
+Undocumented risks become defense failures—score likelihood×impact.
+
+### Predict
+
+What columns belong in a useful risk register?
+
+### Debug
+
+Risks listed with no mitigation — incomplete?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No scores | Add L×I or High/Med/Low + rationale |
+| Only technical risks | Include delivery risks too |
+
 **Module 48** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

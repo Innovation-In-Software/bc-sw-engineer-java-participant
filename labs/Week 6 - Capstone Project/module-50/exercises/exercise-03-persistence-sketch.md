@@ -1,5 +1,37 @@
 # Exercise 3 — Sketch Persistence Changes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 77–82) |
+| **Deliverable** | `notes/lab50-persistence-sketch.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no real PII |
+
+### What you will learn
+
+Sketch migration/entity changes needed for the UI journey durability.
+
+### Enterprise context
+
+UI success without PostgreSQL proof is not done—plan Flyway-friendly SQL.
+
+### Predict
+
+What proves an interaction survived restart?
+
+### Debug
+
+Non-PostgreSQL types in migration — risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No migration plan | Add V50-style stub columns/FKs |
+| Real PII in seeds | Synthetic fixtures only |
+
 **Module 50** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

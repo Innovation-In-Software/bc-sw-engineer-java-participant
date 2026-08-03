@@ -1,5 +1,37 @@
 # Exercise 1 — Map CRM Attack Surfaces
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **A** (after slides 1–8) |
+| **Deliverable** | `notes/lab40-owasp-surface-map.md` |
+| **Fixtures** | Synthetic CUS-1001 / CUS-1002 only · no real PII |
+
+### What you will learn
+
+Map CRM APIs/auth/data paths to OWASP-aligned risks.
+
+### Enterprise context
+
+Release gate before containers (Lab 41) needs a written surface map.
+
+### Predict
+
+Is Dependency-Check enough without looking at authz paths?
+
+### Debug
+
+Only listing XSS — what about broken access control on CUS-1001?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Skipping Lab 39 baseline | App must already verify green |
+| Docker urge | No images yet — Lab 41 |
+
 **Module 40** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

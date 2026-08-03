@@ -1,5 +1,37 @@
 # Exercise 4 — Component Inventory
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **B** (after slides 83–86) |
+| **Deliverable** | `notes/lab33-components.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Inventory StatusBadge, CustomerCard, CustomerList, form, empty/loading/error.
+
+### Enterprise context
+
+Dashboard must compose small props-driven pieces for Amina/Ravi.
+
+### Predict
+
+Which pieces are presentational vs future stateful parents?
+
+### Debug
+
+One giant App.tsx with all markup — what breaks Lab 34?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Forgot empty/error shells | Plan EmptyState / LoadingState / ErrorState |
+| Color-only status | StatusBadge needs text + role, not color alone |
+
 **Module 33** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

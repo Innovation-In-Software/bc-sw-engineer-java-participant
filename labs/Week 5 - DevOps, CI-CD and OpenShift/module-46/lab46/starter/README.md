@@ -2,6 +2,14 @@
 
 **Theme:** Kafka resilience — DefaultErrorHandler, DLT, replay notes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | ErrorHandler+DLT · not-retryable · dashboard · dry-run replay |
+| **Hard gate** | Pre-lab Pass · Kafka path available |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab46-crm` (merge Kafka config into your CRM module).
@@ -51,3 +59,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-46/` (redact PII).
 | Replay runbook has dry-run step | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Config compiles but no DLT | Wire handler on listener container factory |
+| Retries forever | Add not-retryable + max failures |
+| Missing correlation on DLT | Preserve headers in recoverer |
+| Empty dashboard doc | List lag + DLT rate + owner |

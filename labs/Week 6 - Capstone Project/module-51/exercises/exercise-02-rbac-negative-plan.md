@@ -1,5 +1,37 @@
 # Exercise 2 — Plan RBAC Negative Tests
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 89–96) |
+| **Deliverable** | `notes/lab51-rbac-negative-plan.md` |
+| **Fixtures** | CUS-1001 smoke · 401/403 negatives · no secrets in Git |
+
+### What you will learn
+
+Plan JWT deny-by-default negatives: anonymous 401, wrong role 403.
+
+### Enterprise context
+
+Smoke that only proves happy-path 200 is not a release gate.
+
+### Predict
+
+Anonymous GET /api/customers — expected status?
+
+### Debug
+
+Valid token 401 — first checks?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Only 200 smoke | Add 401/403 matrix |
+| Issuer mismatch notes missing | Record issuer-uri/JWKS |
+
 **Module 51** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

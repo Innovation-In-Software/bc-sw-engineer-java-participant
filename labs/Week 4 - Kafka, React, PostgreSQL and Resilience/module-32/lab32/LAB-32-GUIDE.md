@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Healthy read · truthful fallback · OPEN fail-fast · timeout · tests ×2 |
+| **Hard gate** | Pre-lab Pass · fallback forbids fake write success |
+
+### What you will learn
+
+Protect outbound Account Profile reads with Resilience4j and prove behavior with WireMock.
+
+### Enterprise context
+
+CRM pages must degrade honestly when Account API is down — never lie about writes.
+
+### Predict
+
+In OPEN, how many WireMock requests should a burst of finds produce?
+
+### Debug
+
+Annotations ignored on `find` — AOP / self-invocation checklist?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: Actuator evidence + unsafe-write-retry notes.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -664,6 +693,8 @@ git status
 | Flaky tests | Wall-clock sleeps only | Awaitility + WireMock journal asserts |
 | Actuator 404 | Endpoints not exposed | Configure `management.endpoints.web.exposure` for lab |
 | Fallback wrong signature | Missing `Throwable` arg | Match method args + cause |
+| Fake available=true fallback | Wrong contract | Return `AccountSummary.unavailable` only |
+| Retrying POSTs same as GETs | Non-idempotent | Document: aggressive retry on reads only |
 
 ---
 

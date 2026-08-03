@@ -1,5 +1,37 @@
 # Exercise 5 — Seed and Verify Plan
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 176–178) |
+| **Deliverable** | `notes/lab37-seed-and-verify-plan.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Plan seeds for Amina/Ravi and negative verify cases.
+
+### Enterprise context
+
+History may record correlation lab-request-001.
+
+### Predict
+
+Which negative tests prove constraints work?
+
+### Debug
+
+Seed order: account before customer — fails how?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Same email twice | Expect UNIQUE violation |
+| Orphan account FK | Insert account without customer — must fail |
+
 **Module 37** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

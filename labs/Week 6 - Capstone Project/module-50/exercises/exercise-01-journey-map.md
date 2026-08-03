@@ -1,5 +1,37 @@
 # Exercise 1 — Map Agent UI Journey
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 66–73) |
+| **Deliverable** | `notes/lab50-journey-map.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no real PII |
+
+### What you will learn
+
+Map search → profile → timeline → interaction form for Amina/Ravi fixtures.
+
+### Enterprise context
+
+UI that looks done without a coherent agent journey fails the capstone.
+
+### Predict
+
+Where does CUS-1001 enter the journey?
+
+### Debug
+
+Starting Lab 51 deploy work now — park?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No empty/error states | Plan loading/empty/error screens |
+| Skipping Lab 49 contract | Align screens to existing DTOs |
+
 **Module 50** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

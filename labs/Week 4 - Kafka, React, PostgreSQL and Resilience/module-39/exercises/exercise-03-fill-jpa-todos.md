@@ -1,5 +1,37 @@
 # Exercise 2 — Fill JPA TODOs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 217–220) |
+| **Deliverable** | `notes/lab39-todos.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · Lab 37/38 column names |
+
+### What you will learn
+
+List datasource, Flyway, entity, repo, service, 409 mapping TODOs.
+
+### Enterprise context
+
+Env-based secrets; OSIV off; transactional service layer.
+
+### Predict
+
+Where do duplicate email conflicts become HTTP 409?
+
+### Debug
+
+Secrets in committed application.yml — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| H2 pretending to be Postgres in IT | Use Postgres/Testcontainers |
+| Open Session in View on | Keep OSIV false in lab |
+
 **Module 39** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

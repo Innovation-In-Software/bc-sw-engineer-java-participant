@@ -1,5 +1,37 @@
 # Exercise 6 — Rubric Self-Check Warmup
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 143–151) |
+| **Deliverable** | `notes/lab52-rubric-self-check.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · no invented evidence |
+
+### What you will learn
+
+Self-score against rubric dimensions with evidence pointers.
+
+### Enterprise context
+
+Honest gaps beat inflated scores—panels cross-check evidence.
+
+### Predict
+
+Can you score 'exceeds' with no artifact link?
+
+### Debug
+
+Rebuilding the whole platform during warmup — stop?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Self-score without paths | Add evidence-index IDs |
+| Week review as Lab files | Optional deck 157–168 |
+
 **Module 52** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

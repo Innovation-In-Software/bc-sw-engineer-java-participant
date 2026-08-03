@@ -1,5 +1,37 @@
 # Exercise 1 — Props Sketch
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 90–94) |
+| **Deliverable** | `notes/lab33-props-sketch.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Define prop types for CustomerCard / StatusBadge / CustomerList.
+
+### Enterprise context
+
+Stable props shapes let Lab 34 lift state without rewrite.
+
+### Predict
+
+Should CustomerCard fetch its own data?
+
+### Debug
+
+Passing entire CRM store into every badge — coupling risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| any everywhere | Use Customer / CustomerStatus types |
+| Children vs props unclear | Document when children are used |
+
 **Module 33** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

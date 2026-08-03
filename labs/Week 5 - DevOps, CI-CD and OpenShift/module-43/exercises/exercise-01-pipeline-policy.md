@@ -1,5 +1,37 @@
 # Exercise 1 — Define Pipeline Triggers
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **A** (after slides 92–102) |
+| **Deliverable** | `notes/lab43-pipeline-policy.md` |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic only · no secrets in Git |
+
+### What you will learn
+
+Decide what runs on pull_request, main push, and version tags.
+
+### Enterprise context
+
+PRs get fast verify; main/tags get package gates—deploy credentials stay out of YAML.
+
+### Predict
+
+Should PRs typically publish the immutable JAR artifact?
+
+### Debug
+
+One job does verify+package+deploy on every PR — risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Deploy on every PR | Gate package/deploy to main/tags |
+| Treating green Actions as Lab done | Need evidence + runbook still |
+
 **Module 43** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Schema + named constraints · Amina/Ravi seeds · one negative check |
+| **Hard gate** | Pre-lab Pass · Docker/shared Postgres · no secrets in Git |
+
+### What you will learn
+
+Implement a repeatable PostgreSQL CRM schema with constraints and fixture seeds.
+
+### Enterprise context
+
+Freeze identifiers and integrity rules before SQL tuning (38) and JPA (39).
+
+### Predict
+
+Inserting ACCOUNT before its CUSTOMER — which constraint fails?
+
+### Debug
+
+Re-running CREATE without drop — name already exists — what script first?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: full negatives + drop/recreate + design-decisions.md.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -785,6 +814,9 @@ git status
 | SQLSTATE/02292 child records | Delete/drop order | Children before parent |
 | Listener refuse | Port 5432 busy | Stop other PostgreSQL; change publish port |
 | Quota exceeded | Small quota | Raise QUOTA on USERS |
+| FLOAT/double for money | Rounding risk | Use NUMERIC/DECIMAL |
+| JPA entities in this lab | Wrong module | DDL/SQL only — Lab 39 |
+| Password in committed SQL | Secret leak | `.env` only; redact screenshots |
 
 ---
 

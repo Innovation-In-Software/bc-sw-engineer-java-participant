@@ -2,6 +2,14 @@
 
 **Theme:** Frontend security — token memory, protected routes, XSS
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | No web-storage token · ProtectedRoute · XSS test |
+| **Hard gate** | Pre-lab Pass · Lab 35 http boundary |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab36-crm`.
@@ -50,3 +58,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-36/` (redact secrets).
 | XSS test does not use dangerous HTML APIs | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Token in Application tab | Use in-memory tokenStore only |
+| Bearer on wrong host | Attach only when URL matches apiOrigin |
+| 403 logs out | Do not reuse 401 logout handler |
+| XSS test finds HTML nodes | Render text; remove HTML sinks |

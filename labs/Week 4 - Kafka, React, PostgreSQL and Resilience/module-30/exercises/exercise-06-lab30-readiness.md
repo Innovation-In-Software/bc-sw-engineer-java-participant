@@ -1,6 +1,36 @@
 # Exercise 6 — Lab 30 Readiness
 
-**Module 30** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 20–22) |
+| **Deliverable** | `notes/lab30-prep-checklist.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Confirm Docker, topic names, fixtures, and no Spring Kafka yet.
+
+### Enterprise context
+
+Hard gate before Compose broker work.
+
+### Predict
+
+Can you finish Lab 30 without Docker?
+
+### Debug
+
+Starting Lab 31 listeners early — why stop?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Docker missing | Install Desktop / confirm docker compose version |
+| Fixtures wrong | CUS-1001 ACTIVE / CUS-1002 PROSPECT |
 
 ## Goal
 

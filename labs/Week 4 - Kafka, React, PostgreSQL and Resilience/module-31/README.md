@@ -1,5 +1,7 @@
 # Module 31 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **1 → 3 → 2 → 4 → 5 → 6**, then Lab 31.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** Kafka Integration with Spring Boot

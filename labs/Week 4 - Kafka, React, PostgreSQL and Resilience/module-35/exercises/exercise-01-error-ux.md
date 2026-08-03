@@ -1,5 +1,37 @@
 # Exercise 4 — Error UX Copy
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 131–133) |
+| **Deliverable** | `notes/lab35-error-ux.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · `X-Correlation-Id: lab-request-001` |
+
+### What you will learn
+
+Write user-facing copy for network, 400, 500, and abort cases.
+
+### Enterprise context
+
+CRM must not show raw stack traces; map ApiError to honest UX.
+
+### Predict
+
+Should AbortError show a red toast?
+
+### Debug
+
+Treating all failures as 'try again' — what about 400 field errors?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Abort as failure | Ignore AbortError in UI toasts |
+| Leaking server internals | Show safe message + correlation id optionally |
+
 **Module 35** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

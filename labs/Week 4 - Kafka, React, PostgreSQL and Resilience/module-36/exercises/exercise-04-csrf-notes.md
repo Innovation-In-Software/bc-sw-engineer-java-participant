@@ -1,5 +1,37 @@
 # Exercise 5 — CSRF Notes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 149–152) |
+| **Deliverable** | `notes/lab36-csrf-notes.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · no real secrets |
+
+### What you will learn
+
+Explain CSRF for cookie sessions vs bearer-only SPA mode.
+
+### Enterprise context
+
+Document N/A rationale if lab uses bearer-only Authorization.
+
+### Predict
+
+Does CSRF matter the same for Authorization header APIs?
+
+### Debug
+
+Cookie session without CSRF token — risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Ignoring cookie mode | Write evidence or explicit N/A for bearer-only |
+| Confusing CORS with CSRF | Different problems — note both |
+
 **Module 36** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

@@ -1,5 +1,37 @@
 # Exercise 1 — Map k3s Manifests
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **A** (after slides 61–73) |
+| **Deliverable** | `notes/lab42-manifest-map.md` |
+| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+
+### What you will learn
+
+Map Deployment, Service, ConfigMap, Ingress for CRM image from Lab 41.
+
+### Enterprise context
+
+Declarative deploy beats 'works on my Docker laptop' as done.
+
+### Predict
+
+What selects Pods for a Service?
+
+### Debug
+
+Using OpenShift Route YAML on Traefik-only k3s — fix?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No Lab 41 digest | Pin image digest from container lab |
+| Applying to cluster in pre-lab | Notes/dry-run only until Lab 42 |
+
 **Module 42** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

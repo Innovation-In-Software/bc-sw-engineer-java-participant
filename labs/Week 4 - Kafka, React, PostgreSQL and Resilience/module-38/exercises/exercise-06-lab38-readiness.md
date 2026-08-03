@@ -1,5 +1,37 @@
 # Exercise 6 — Lab 38 Readiness
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 201–202) |
+| **Deliverable** | `notes/lab38-prep-checklist.md` |
+| **Fixtures** | Preserve CUS-1001 / CUS-1002 · Lab 37 schema |
+
+### What you will learn
+
+Confirm Lab 37 schema ready; measure-before-index mindset.
+
+### Enterprise context
+
+Hard gate before volume load + EXPLAIN labs.
+
+### Predict
+
+Can you pass without a before plan?
+
+### Debug
+
+Starting JPA repositories early — park Lab 39?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No Lab 37 tables | Copy schema or finish Lab 37 first |
+| Tuning shared prod DB | Use lab/shared instance only |
+
 **Module 38** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

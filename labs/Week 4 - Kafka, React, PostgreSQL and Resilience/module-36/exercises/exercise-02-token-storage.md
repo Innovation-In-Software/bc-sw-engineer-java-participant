@@ -1,5 +1,37 @@
 # Exercise 2 — Token Storage Options
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 12–15 minutes |
+| **Checkpoint** | **B** (after slides 146–148) |
+| **Deliverable** | `notes/lab36-token-storage.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · no real secrets |
+
+### What you will learn
+
+Compare memory vs localStorage/sessionStorage for access tokens.
+
+### Enterprise context
+
+Lab 36 freezes in-memory tokens — no persistent web storage.
+
+### Predict
+
+XSS + localStorage token — what can an attacker do?
+
+### Debug
+
+Refresh token in localStorage 'for convenience' — tradeoff?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Wanting localStorage for demo | Use memory store; document tradeoff |
+| Real production secrets in notes | Use placeholders only |
+
 **Module 36** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

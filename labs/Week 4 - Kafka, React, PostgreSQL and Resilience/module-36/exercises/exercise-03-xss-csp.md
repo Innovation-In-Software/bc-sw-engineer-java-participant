@@ -1,5 +1,37 @@
 # Exercise 3 — XSS and CSP Notes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **C** (after slides 149–152) |
+| **Deliverable** | `notes/lab36-xss-csp.md` |
+| **Fixtures** | CUS-1001 / CUS-1002 · no real secrets |
+
+### What you will learn
+
+Plan text-safe rendering and CSP evidence for customer name payloads.
+
+### Enterprise context
+
+Amina/Ravi names must never execute as HTML/JS.
+
+### Predict
+
+dangerouslySetInnerHTML with API name — pass or fail?
+
+### Debug
+
+XSS test finds an img node — what sink was used?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Relying on CSP alone | Still render as text; CSP is defense-in-depth |
+| Disabling browser security | Never for convenience |
+
 **Module 36** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

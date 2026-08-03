@@ -1,5 +1,37 @@
 # Exercise 5 — A11y Checklist
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **D** (after slides 90–94) |
+| **Deliverable** | `notes/lab33-a11y-checklist.md` |
+| **Fixtures** | CUS-1001 Amina ACTIVE · CUS-1002 Ravi PROSPECT |
+
+### What you will learn
+
+Checklist: labels, roles, status text, keyboard-friendly buttons.
+
+### Enterprise context
+
+RTL tests query by role — UI must be accessible to pass.
+
+### Predict
+
+getByRole('button', { name: /save/i }) fails — what to fix?
+
+### Debug
+
+Status shown only as green/red circle — a11y fail?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No form labels | htmlFor / aria-label on inputs |
+| Testing class names | Prefer role + name queries |
+
 **Module 33** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

@@ -1,5 +1,37 @@
 # Exercise 6 — Lab 31 Readiness
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 8–10 minutes |
+| **Checkpoint** | **D** (after slides 45–46) |
+| **Deliverable** | `notes/lab31-prep-checklist.md` |
+| **Fixtures** | CUS-1001 Amina · CUS-1002 Ravi · `crm.customer-events.v1` |
+
+### What you will learn
+
+Confirm Lab 30 topics, Spring deps plan, and no Resilience4j yet.
+
+### Enterprise context
+
+Hard gate before publisher/listener coding.
+
+### Predict
+
+Can Lab 31 pass without a broker (EmbeddedKafka only)?
+
+### Debug
+
+Starting Lab 32 circuit breakers early — park them?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No Lab 30 topics | Create crm.customer-events.v1 + DLQ first |
+| Fixtures wrong | CUS-1001 / CUS-1002 + correlation lab-request-001 |
+
 **Module 31** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

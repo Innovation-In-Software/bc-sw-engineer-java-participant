@@ -2,6 +2,14 @@
 
 **Theme:** React components — StatusBadge, CustomerCard, list
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | Amina/Ravi · key=customerId · RTL · build |
+| **Hard gate** | Pre-lab Pass · Node 22+ |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab33-crm`.
@@ -53,3 +61,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-33/` (redact secrets).
 | build succeeds | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Vite/npm errors | `cd crm-ui` then npm install |
+| getByRole fails | Add accessible name / label |
+| Index keys warning | key={customer.customerId} |
+| Blank page | Check import paths |

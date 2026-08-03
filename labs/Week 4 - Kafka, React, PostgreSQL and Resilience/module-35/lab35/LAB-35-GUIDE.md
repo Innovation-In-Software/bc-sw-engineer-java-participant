@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 4→2→5→1→3→6) |
+| **Must prove** | Typed http/ApiError · list from Spring · abort · CORS notes/tests |
+| **Hard gate** | Pre-lab Pass · Spring API + Vite env · no JWT UI required |
+
+### What you will learn
+
+Connect CRM React to Spring JSON APIs with one fetch boundary and honest UX states.
+
+### Enterprise context
+
+Freeze browser↔API contracts (errors, CORS, correlation) before Lab 36 auth.
+
+### Predict
+
+If Vite origin is `:5173` but CORS allows `:3000` — what does the browser show?
+
+### Debug
+
+Duplicate `/api/api` in requests — what joined wrong?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: CORS evil-Origin evidence + 400 field mapping.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -680,6 +709,8 @@ git status
 | Abort as error toast | Catch not ignoring abort | Ignore `AbortError` |
 | Duplicate customers | No saving flag | Disable submit while pending |
 | Wrong `/api/api` | Base URL + path both include api | Normalize join |
+| JWT login urge | Wrong module | Keep http injectable — Lab 36 adds tokens |
+| Toast on every abort | AbortError treated as failure | Ignore aborts in UX |
 
 ---
 

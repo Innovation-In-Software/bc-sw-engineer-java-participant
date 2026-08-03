@@ -1,5 +1,7 @@
 # Module 47 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **1 → 4 → 3 → 5 → 2 → 6**, then Lab 47.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** Professional Communication and Collaboration

@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min timed · full path 4–5 h |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Amina+Ravi render · key=customerId · RTL by role · build green |
+| **Hard gate** | Pre-lab Pass · Node 22+ · no API fetch required |
+
+### What you will learn
+
+Build typed, accessible presentational CRM components with Vite + Vitest.
+
+### Enterprise context
+
+Freeze UI contracts so Lab 34/35 can add state and fetch without markup rewrites.
+
+### Predict
+
+If list keys use array index and order changes — what UI bug appears?
+
+### Debug
+
+`getByRole` cannot find Save — what is usually missing on the control?
+
+---
+
 ## 45-minute timed path (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: CustomerForm labels + component notes.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -706,6 +735,9 @@ export default defineConfig({
 | TS error on status | Non-union string | Use `CustomerStatus` |
 | Blank page | Import path typo | Check relative imports |
 | Horizontal scroll | Fixed widths | Responsive grid / minmax |
+| Index as React key | Unstable identity | Use `customer.customerId` |
+| Color-only status | A11y / rubric fail | StatusBadge must include text |
+| Fetch in components | Wrong module | Seed fixtures only — Lab 35 |
 
 ---
 

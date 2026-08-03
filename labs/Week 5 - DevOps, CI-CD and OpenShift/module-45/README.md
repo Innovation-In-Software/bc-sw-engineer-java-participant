@@ -1,5 +1,7 @@
 # Module 45 — Start here
 
+> **Pacing:** [PACING.md](PACING.md) — Learn→Practice checkpoints **A–E**. Order **1 → 2 → 3 → 4 → 5 → 6**, then Lab 45.
+
 **Clone + own repo:** [CLONE-AND-OWN-REPO-GUIDE.md](../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 **Topic:** Infrastructure as Code with Terraform and Ansible

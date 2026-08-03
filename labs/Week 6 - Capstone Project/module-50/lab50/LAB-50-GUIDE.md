@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min session block · full path 6–8 h multi-day |
+| **Checkpoint** | **E** (after Ex 1→4→2→3→5→6) |
+| **Must prove** | Data/API checklist · SQL/Flyway TODOs · journey fixtures · durability SELECT draft |
+| **Hard gate** | Pre-lab Pass · Lab 49 contract known |
+
+### What you will learn
+
+Connect an accessible React agent journey to PostgreSQL with typed API calls and durable proof.
+
+### Enterprise context
+
+Pretty UI without DB restart proof or a11y basics fails the capstone.
+
+### Predict
+
+UI shows success but SQL has no row — first three checks?
+
+### Debug
+
+TypeScript types disagree with Lab 49 DTOs — what do you reconcile?
+
+---
+
 ## 45-minute timed path (session block — use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: React, a11y, E2E, restart durability, `docs/frontend-persistence-demo.md`.
 
 In class, use the starter data/API + Flyway stubs so the **session block** fits **~45 minutes**. React UI, a11y, E2E, and restart durability remain **multi-day** on the full path.
 
@@ -647,6 +676,9 @@ Never paste connection passwords beside the query in evidence files.
 | Hydration mismatch | SSR/data race | Prefer client fetch patterns used in course |
 | PostgreSQL timezone skew | TZ mapping | Align TIMESTAMPTZ + Instant |
 | Empty search always | Seed missing | Re-run fixture seed for Amina/Ravi |
+| Inventing new payload shapes | Contract drift | Type against Lab 49 DTOs |
+| Lab 51 CI/deploy as this lab | Wrong focus | Finish UI→DB journey first |
+| Real PII in fixtures | Privacy | Synthetic CUS-1001/1002 only |
 
 ---
 

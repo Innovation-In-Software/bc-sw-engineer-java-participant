@@ -2,6 +2,14 @@
 
 **Theme:** Frontend ↔ API — http client, hooks, CORS notes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | ApiError · customersApi · abort · CORS note |
+| **Hard gate** | Pre-lab Pass · `.env` from example |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab35-crm`.
@@ -50,3 +58,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-35/` (redact secrets).
 | api-integration-notes.md mentions CORS origin | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| CORS in browser | Match Spring allowlist to Vite origin |
+| Failed to fetch | curl API; fix VITE_CRM_API_URL; restart Vite |
+| Abort toast | Ignore AbortError |
+| /api/api | Normalize base URL + path join |

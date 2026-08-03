@@ -16,7 +16,36 @@
 
 ---
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | ~45 min session block · full path 6–8 h multi-day |
+| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
+| **Must prove** | Security checklist · Dockerfile non-root · k8s probes · 401/403 smoke matrix · rollback digest note |
+| **Hard gate** | Pre-lab Pass · no secrets in Git · Labs 48–50 smoke targets exist |
+
+### What you will learn
+
+Make CRM releasable: JWT/RBAC, gated CI/CD, digest-pinned image, k3s deploy, smoke, rollback.
+
+### Enterprise context
+
+Feature-complete without access control, provenance, and recovery is not release-complete.
+
+### Predict
+
+Should `:latest` be the only image identity in evidence?
+
+### Debug
+
+Pipeline green after skipping security tests — pass or fail the gate?
+
+---
+
 ## 45-minute timed path (session block — use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: JWT, GH Actions, scans, live k3s rollout + rollback, `docs/security-deploy-demo.md`.
 
 In class, use the starter security/deploy checklist plus Dockerfile/k8s stubs so the **session block** fits **~45 minutes**. JWT hardening, pipeline, live k3s rollout, and rollback rehearsal remain **multi-day** on the full path.
 
@@ -646,6 +675,9 @@ Adapt paths to your Spring Boot actuator config; never probe a authenticated-onl
 | OOMKilled | Tiny limits | Raise memory request/limit carefully |
 | CrashLoop on secrets | Missing env | Mount Secret keys with correct names |
 | Kafka lag ignored | No consumer metrics | Add lag check to smoke/ops notes |
+| :latest as only identity | No provenance | Pin and record digest |
+| Secrets/kubeconfig in Git | Leak | Remove; rotate; Actions secrets |
+| Lab 52 defense as this lab | Wrong focus | Finish release evidence first |
 
 ---
 

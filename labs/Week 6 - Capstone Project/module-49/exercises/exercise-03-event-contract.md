@@ -1,5 +1,37 @@
 # Exercise 3 — Sketch Event Contract
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Time** | 10–12 minutes |
+| **Checkpoint** | **B** (after slides 46–50) |
+| **Deliverable** | `notes/lab49-event-contract.md` |
+| **Fixtures** | CUS-1001/CUS-1002 · lab-request-001 · CUS-9999 not-found |
+
+### What you will learn
+
+Sketch versioned Kafka event fields (e.g. CustomerInteractionRecordedV1) + correlation.
+
+### Enterprise context
+
+Unversioned payloads are not done—consumers and Lab 50/52 need a stable contract.
+
+### Predict
+
+Why include eventVersion / V1 in the type name?
+
+### Debug
+
+Publishing before DB commit — risk?
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| No correlation id | Include lab-request-001 / header plan |
+| Unversioned 'done' | Name V1 fields explicitly |
+
 **Module 49** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Goal

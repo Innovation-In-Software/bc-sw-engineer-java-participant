@@ -2,6 +2,14 @@
 
 **Theme:** k3s / Kubernetes manifests — Deployment, Service, ConfigMap, Ingress, probes
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | dry-run · 3 probes · empty Secret example · runbook undo |
+| **Hard gate** | Pre-lab Pass · Lab 41 digest |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab42-crm`.
@@ -51,3 +59,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-42/` (redact kubeconfig/to
 | Runbook lists apply + rollback undo | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Dry-run schema errors | Fix API versions/required fields |
+| Selector mismatch | Align Service selector with Pod labels |
+| Probe copy-paste same | Distinct startup/ready/live |
+| Real password in example | Remove; use placeholders only |

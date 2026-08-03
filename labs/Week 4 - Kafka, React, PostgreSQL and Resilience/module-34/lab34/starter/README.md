@@ -2,6 +2,14 @@
 
 **Theme:** React state & events — lift state, validation, flows
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | create/edit/cancel · field errors · tests green |
+| **Hard gate** | Pre-lab Pass · Node 22+ |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab34-crm`.
@@ -50,3 +58,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-34/` (redact secrets).
 | Cancel discards draft | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| Input not typing | Controlled value + onChange |
+| Stale list after edit | Immutable map/clone |
+| Infinite render | Don’t setState derived filter in useEffect |
+| Cancel leaves draft | Reset draft + errors + mode |

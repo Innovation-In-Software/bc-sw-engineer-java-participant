@@ -2,6 +2,14 @@
 
 **Theme:** AppSec — OWASP Dependency-Check, triage, remediation stubs
 
+## Activity card
+
+| | |
+| --- | --- |
+| **Checkpoint** | **E** |
+| **Must prove** | security-scan profile · CSV triage · residual risk |
+| **Hard gate** | Pre-lab Pass · Lab 39 CRM merge target |
+
 ## Copy into your workspace
 
 Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab40-crm` (merge into your Lab 39 CRM, or start from these scan stubs and wire into your `pom.xml`).
@@ -50,3 +58,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-40/` (sanitize HTML/JSON r
 | Assessment names residual risk + owner | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+
+
+### Troubleshooting
+
+| Symptom | Fix |
+| --- | --- |
+| NVD download slow/fails | Instructor cache; API key in env |
+| Unpinned plugin | Pin dependency-check.version |
+| Build red only on scan | Triage/fix — keep the profile |
+| Bulky HTML in Git | gitignore; keep JSON/CSV excerpts |
