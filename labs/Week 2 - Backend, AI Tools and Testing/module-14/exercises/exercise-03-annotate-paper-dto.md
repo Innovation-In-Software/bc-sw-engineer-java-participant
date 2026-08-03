@@ -21,17 +21,12 @@
 
 **Enterprise context:** Contract docs that name annotations make later `@Valid` / OpenAPI work faster and less ambiguous.
 
-## Goal
-
-Create `notes/lab14-annotate-dto.md` — mark constraints on a paper CreateCustomerRequest.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-annotate-paper-dto.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-annotate-dto.md` |
 
 ## Worked example (read first)

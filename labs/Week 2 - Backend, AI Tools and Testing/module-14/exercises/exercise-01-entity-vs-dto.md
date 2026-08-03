@@ -21,17 +21,12 @@
 
 **Enterprise context:** CRM APIs that return entities couple clients to schema churn and risk leaking PII/internal fields.
 
-## Goal
-
-Create `notes/lab14-entity-vs-dto.md` — explain why Northstar payloads should not be persistence entities.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-entity-vs-dto.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-entity-vs-dto.md` |
 
 ## Worked example (read first)

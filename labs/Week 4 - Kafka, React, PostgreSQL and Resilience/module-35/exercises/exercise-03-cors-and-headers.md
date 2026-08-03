@@ -34,19 +34,12 @@ CORS error but curl works — where to look?
 
 **Module 35** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab35-cors-and-headers.md` — document local CORS and correlation headers for the CRM SPA.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-cors-and-headers.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-cors-and-headers.md` |
 
 ## Worked example (read first)

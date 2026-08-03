@@ -34,19 +34,12 @@ Secrets in committed application.yml — fix?
 
 **Module 39** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab39-todos.md` — fill TODOs in JPA entity and repository pseudocode.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-39-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-fill-jpa-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab39-todos.md` |
 
 ## Worked example (read first)

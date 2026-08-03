@@ -21,17 +21,12 @@
 
 **Enterprise context:** Table-driven cases catch status typos that copy-paste unit tests miss.
 
-## Goal
-
-Create `notes/lab17-csvsource-table.md` — CsvSource design.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-csvsource-table.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-csvsource-table.md` |
 
 ## Worked example (read first)

@@ -32,19 +32,12 @@ Starting Lab 31 listeners early — why stop?
 | Docker missing | Install Desktop / confirm docker compose version |
 | Fixtures wrong | CUS-1001 ACTIVE / CUS-1002 PROSPECT |
 
-## Goal
-
-Create `notes/lab30-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 30 without finishing it now.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab30-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-prep-checklist.md` |
 
 ## Worked example (read first)

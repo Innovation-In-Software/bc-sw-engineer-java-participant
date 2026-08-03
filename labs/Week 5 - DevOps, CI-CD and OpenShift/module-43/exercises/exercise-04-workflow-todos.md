@@ -34,19 +34,12 @@ Pipeline cannot find pom.xml — fix?
 
 **Module 43** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab43-workflow-todos.md` — complete a workflow skeleton with blanks (do not require a passing remote run).
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-43-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-workflow-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab43-workflow-todos.md` |
 
 ## Worked example (read first)

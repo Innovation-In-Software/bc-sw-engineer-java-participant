@@ -34,19 +34,12 @@ Demo notes with secrets — scrub?
 
 **Module 49** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab49-backend-demo-outline.md` — outline `docs/backend-demo.md` so a peer can reproduce.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-backend-demo-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-backend-demo-outline.md` |
 
 ## Worked example (read first)

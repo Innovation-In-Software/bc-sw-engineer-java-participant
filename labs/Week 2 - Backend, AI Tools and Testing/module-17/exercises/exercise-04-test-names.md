@@ -21,17 +21,12 @@
 
 **Enterprise context:** Failure lists in CI are triage tools — `test1` wastes minutes every build.
 
-## Goal
-
-Create `notes/lab17-test-names.md` — three expressive names.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-test-names.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-test-names.md` |
 
 ## Worked example (read first)

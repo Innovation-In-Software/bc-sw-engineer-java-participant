@@ -34,19 +34,12 @@ Env change with no Vite restart — what happens?
 
 **Module 35** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab35-todos.md` — fill TODOs in a TypeScript fetch helper for customers.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-fetch-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-todos.md` |
 
 ## Worked example (read first)

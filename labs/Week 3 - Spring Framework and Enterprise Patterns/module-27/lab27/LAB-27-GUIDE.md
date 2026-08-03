@@ -26,10 +26,6 @@
 | Windows | [LAB-27-WINDOWS.md](LAB-27-WINDOWS.md) |
 | macOS | [LAB-27-MACOS.md](LAB-27-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer Lab 26 CRM forward or the Module 27 starter as `lab27-crm`.
-
-> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-27-exercises/`; graded work is `examples/lab27-crm/`.
-
 > **Incremental build:** ACID → TX boundary → rollback plan → pseudocode → propagation warnings → Lab 27.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–D).
@@ -50,17 +46,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | ---- | ---- | ----- |
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 
@@ -182,7 +167,9 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and Labs [25](../../module-25/lab25/LAB-25-GUIDE.md)–[26](../../module-26/lab26/LAB-26-GUIDE.md). Confirm:
+Prior labs: [25](../../module-25/lab25/LAB-25-GUIDE.md) · [26](../../module-26/lab26/LAB-26-GUIDE.md).
+
+Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Spring Boot 3.x
 * Layered service/repository skills from Lab 25
@@ -196,12 +183,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-git --version
-pwd
-ls ~/java-bootcamp/examples
 ```
-
----
 
 ## Suggested Project Files
 

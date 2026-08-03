@@ -24,11 +24,6 @@
 
 **Enterprise context:** Closing files/sockets after a failed withdraw attempt still matters for ops hygiene.
 
-## Goal
-
-Create `FinallyDemo.java` and compare successful and failed transfer paths.
-Confirm cleanup runs after both.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

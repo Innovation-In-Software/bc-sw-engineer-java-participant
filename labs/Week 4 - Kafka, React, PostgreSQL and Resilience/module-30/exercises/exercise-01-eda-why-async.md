@@ -32,19 +32,12 @@ Team wants REST-only — what coupling risk?
 | Cannot name a fan-out consumer | List notifications, audit, search — Lab 30 topics feed them |
 | Confused with Lab 31 | This lab is concepts + Compose; Spring Kafka is next |
 
-## Goal
-
-Create `notes/lab30-prelab-eda.md` — explain why Northstar notifications should not block the Customer HTTP API.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-eda-why-async.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-prelab-eda.md` |
 
 ## Worked example (read first)

@@ -21,17 +21,12 @@
 
 **Enterprise context:** Enterprises that invert the pyramid drown in flaky UI suites and still miss domain bugs.
 
-## Goal
-
-Create `notes/lab19-pyramid.md` — CRM test pyramid.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-test-pyramid.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-pyramid.md` |
 
 ## Worked example (read first)

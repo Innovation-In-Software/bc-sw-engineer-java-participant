@@ -21,17 +21,12 @@
 
 **Enterprise context:** Controller-owned transactions couple HTTP to persistence and break reuse from other adapters.
 
-## Goal
-
-Create `notes/tx-boundary.md` — boundary placement.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-transaction-boundary.md` (this file in the course repo) |
 | Your notes file | `notes/tx-boundary.md` |
 
 ## Worked example (read first)

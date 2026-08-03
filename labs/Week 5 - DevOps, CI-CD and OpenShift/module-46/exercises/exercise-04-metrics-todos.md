@@ -34,19 +34,12 @@ Metrics empty in Actuator — exposure/security?
 
 **Module 46** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab46-metrics-todos.md` — complete blanks for metrics and dashboard panels.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-metrics-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-metrics-todos.md` |
 
 ## Worked example (read first)

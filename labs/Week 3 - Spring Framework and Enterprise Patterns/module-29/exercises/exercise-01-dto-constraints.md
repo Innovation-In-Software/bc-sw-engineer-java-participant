@@ -21,17 +21,12 @@
 
 **Enterprise context:** Partners reject APIs that accept blank names and dump SQL errors later.
 
-## Goal
-
-Create `notes/dto-constraints.md` — constraint plan.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-dto-constraints.md` (this file in the course repo) |
 | Your notes file | `notes/dto-constraints.md` |
 
 ## Worked example (read first)

@@ -27,12 +27,6 @@
 
 **Enterprise context:** Downstream balance inquiry timeouts may retry; PIN validation failures should not.
 
-## Goal
-
-Implement two of the six error-handling strategies — **Retry** and
-**Fallback / Default** — around a flaky operation, and explain when you would
-reach for the other four.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

@@ -28,12 +28,6 @@
 
 **Enterprise context:** Nightly HR analytics on millions of rows may parallelize; interactive menus on 25 rows usually should not.
 
-## Goal
-
-Create `ParallelStreamDemo.java`. Run the same stateless count with `stream`
-and `parallelStream`, verify identical results, and explain why one small timing
-run is not a benchmark.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

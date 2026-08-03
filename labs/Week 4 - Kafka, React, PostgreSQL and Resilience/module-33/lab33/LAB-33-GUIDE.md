@@ -12,8 +12,6 @@
 | Windows | [LAB-33-WINDOWS.md](LAB-33-WINDOWS.md) |
 | macOS | [LAB-33-MACOS.md](LAB-33-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 33 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) on your laptop with **Node.js 22+** and **npm**. Work under `~/java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
-
 ---
 
 ## Activity card
@@ -59,17 +57,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | ---- | ---- | ----- |
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 
@@ -191,7 +178,7 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md) and [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Confirm:
+Confirm (Lab 0 tools assumed):
 
 * Node.js 22+; npm; Git
 * Browser (Chrome/Edge) with DevTools
@@ -200,16 +187,9 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md) and [Lab 0](../../../Week%201%2
 ### Pre-flight
 
 ```bash
-node --version
-npm --version
-git --version
-pwd
-ls ~/java-bootcamp/examples
+java -version
+mvn -version
 ```
-
-Expected: Node `v20` or newer. Fix environment failures before scaffolding.
-
----
 
 ## Suggested Project Files
 

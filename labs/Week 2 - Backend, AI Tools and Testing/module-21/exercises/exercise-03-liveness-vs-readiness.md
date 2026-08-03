@@ -21,17 +21,12 @@
 
 **Enterprise context:** Restarting every pod because the database blinked removes capacity exactly when you need it.
 
-## Goal
-
-Create `notes/lab21-probes.md` — liveness vs readiness.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-liveness-vs-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-probes.md` |
 
 ## Worked example (read first)

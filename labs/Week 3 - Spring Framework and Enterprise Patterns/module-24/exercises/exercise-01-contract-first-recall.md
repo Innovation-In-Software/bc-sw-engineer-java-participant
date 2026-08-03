@@ -21,17 +21,12 @@
 
 **Enterprise context:** Partner billing tools bind to XML names — changing only Java breaks them silently.
 
-## Goal
-
-Create `notes/contract-first.md` — contract-first recall.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-24-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-contract-first-recall.md` (this file in the course repo) |
 | Your notes file | `notes/contract-first.md` |
 
 ## Worked example (read first)

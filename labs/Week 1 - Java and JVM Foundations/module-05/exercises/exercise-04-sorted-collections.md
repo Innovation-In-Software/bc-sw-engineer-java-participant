@@ -26,10 +26,6 @@
 
 **Enterprise context:** Category → count reports often want alphabetical keys.
 
-## Goal
-
-Create `SortedMapDemo.java`, store book prices in a `HashMap`, then build a `TreeMap` from it and compare iteration order.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

@@ -24,10 +24,6 @@
 
 **Enterprise context:** Log/report builders in batch jobs avoid String + in hot loops.
 
-## Goal
-
-Create `StringBuilderComparison.java` and compare repeated immutable `String` concatenation with mutable `StringBuilder`.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

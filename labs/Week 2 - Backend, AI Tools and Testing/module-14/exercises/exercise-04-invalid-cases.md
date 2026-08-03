@@ -21,17 +21,12 @@
 
 **Enterprise context:** QA and contract tests need an explicit invalid catalog — ad hoc typos are not a test plan.
 
-## Goal
-
-Create `notes/lab14-invalid-cases.md` — catalog invalid requests for Lab 14.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-invalid-cases.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-invalid-cases.md` |
 
 ## Worked example (read first)

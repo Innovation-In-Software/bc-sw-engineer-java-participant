@@ -26,11 +26,6 @@
 
 **Enterprise context:** Directory exports often project full records down to display names or emails.
 
-## Goal
-
-Create `NamesDemo.java`. Transform each `Employee` into a `String` name with
-`map`, collect the names, and print them with a method reference.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

@@ -1,12 +1,12 @@
 # Lab guide style (participant-facing)
 
-Use this structure for `LAB-N-GUIDE.md` files. The script `scripts/improve_all_labs.py` encodes the same rules.
+Make this structure the default for `LAB-N-GUIDE.md` files across **all weeks**. The script `scripts/dedupe_all_lab_instructions.py` applies the lean rules repo-wide.
 
 ## Required order (lean)
 
-1. Title + meta (module, duration, OS how-to links, env reminder)
+1. Title + meta (module, duration, OS how-to links; Participants banner covers Lab 0 / exercises / OS / timed path — do **not** also paste Environment reminder + Hard gate + How to follow when those repeat the banner)
 2. Timed path (if starter exists)
-3. **How to follow this lab** (short checklist)
+3. **How to follow this lab** — omit when the Participants banner + timed path already say the same six bullets
 4. **What you'll submit** — single source of truth (Must / Do not submit)
 5. Lab Overview + Learning Objectives + Business Scenario
 6. Architecture Context (keep diagrams short)
@@ -32,4 +32,4 @@ Use this structure for `LAB-N-GUIDE.md` files. The script `scripts/improve_all_l
 
 ## Pre-lab exercises
 
-Each `exercise-*.md` should open with Goal → Deliverable → **Worked example** → Steps → Expected result.
+Each `exercise-*.md` should open with **Activity card** → Deliverable → **Worked example** → Steps → Expected result. Do **not** also paste a Goal section that restates the Activity card objective.

@@ -34,19 +34,12 @@ Stories with no acceptance criteria — gate?
 
 **Module 48** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab48-backlog-slice.md` — write three vertical stories crossing API/UI/data/events lightly.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-backlog-slice.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-backlog-slice.md` |
 
 ## Worked example (read first)

@@ -24,10 +24,6 @@
 
 **Enterprise context:** Caches and session maps keep objects reachable long after a request ends.
 
-## Goal
-
-Create one object with two references. Remove references one at a time and explain when the object becomes **eligible** for garbage collection.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

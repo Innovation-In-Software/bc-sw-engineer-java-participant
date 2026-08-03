@@ -24,10 +24,6 @@
 
 **Enterprise context:** Request threads hold stack frames; customer objects live on the heap in banking services.
 
-## Goal
-
-Create `StackHeapDemo.java`, run it, then trace which values belong to method stack frames and which object lives on the heap.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -157,7 +153,6 @@ Program prints two lines, and your notes distinguish a local reference from the 
 ## Common mistake
 
 Saying “the object is in the variable.” More precisely, the local variable holds a **reference**; the `Person` object is heap-allocated.
-
 
 
 ## Debug / observation challenge

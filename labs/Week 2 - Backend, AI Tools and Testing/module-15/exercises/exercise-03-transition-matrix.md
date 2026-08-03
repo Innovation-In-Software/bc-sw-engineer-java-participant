@@ -21,17 +21,12 @@
 
 **Enterprise context:** Support and auditors ask “can we demote an ACTIVE customer?” — the matrix is the contract.
 
-## Goal
-
-Create `notes/lab15-transition-matrix.md` — allowed/forbidden transitions.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-transition-matrix.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-transition-matrix.md` |
 
 ## Worked example (read first)

@@ -34,19 +34,12 @@ Terraform apply from CI in this module — wrong lab?
 
 **Module 43** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab43-ci-runbook-outline.md` — outline `docs/ci-runbook.md` so a peer can re-run a failed verify.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-43-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-ci-runbook-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab43-ci-runbook-outline.md` |
 
 ## Worked example (read first)

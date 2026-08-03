@@ -21,17 +21,12 @@
 
 **Enterprise context:** Reviewers reject mystery wiring — dependency-graph.md must match real constructors.
 
-## Goal
-
-Create `notes/bean-graph-sketch.md` — graph TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-bean-graph-skeleton.md` (this file in the course repo) |
 | Your notes file | `notes/bean-graph-sketch.md` |
 
 ## Worked example (read first)

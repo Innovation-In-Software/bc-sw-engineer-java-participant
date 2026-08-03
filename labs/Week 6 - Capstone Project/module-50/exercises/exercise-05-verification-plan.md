@@ -34,19 +34,12 @@ Flaky Selenium only — add component tests?
 
 **Module 50** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab50-verification-plan.md` — plan component/E2E evidence without claiming full coverage.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-50-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-verification-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab50-verification-plan.md` |
 
 ## Worked example (read first)

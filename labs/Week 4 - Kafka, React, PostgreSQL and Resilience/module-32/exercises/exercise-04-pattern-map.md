@@ -34,19 +34,12 @@ Retrying non-idempotent writes — park that pattern?
 
 **Module 32** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab32-pattern-map.md` — assign each pattern to a concrete Northstar outbound behavior.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-pattern-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-pattern-map.md` |
 
 ## Worked example (read first)

@@ -12,8 +12,6 @@
 | Windows | [LAB-51-WINDOWS.md](LAB-51-WINDOWS.md) |
 | macOS | [LAB-51-MACOS.md](LAB-51-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 51 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish Labs 0 and 48–50. Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, **GitHub Actions**, **Docker**, and instructor **k3s** (`kubectl`). Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
-
 ---
 
 ## Activity card
@@ -61,17 +59,6 @@ In class, use the starter security/deploy checklist plus Dockerfile/k8s stubs so
 | **Full (multi-day)** | 6–8 Hours | Every Step in this GUIDE |
 
 Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 
@@ -193,7 +180,9 @@ Keep release identity (tag, digest, pipeline id) stable for Lab 52 citations—d
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and Labs [48](../../module-48/lab48/LAB-48-GUIDE.md)–[50](../../module-50/lab50/LAB-50-GUIDE.md). Confirm:
+Prior labs: [48](../../module-48/lab48/LAB-48-GUIDE.md) · [50](../../module-50/lab50/LAB-50-GUIDE.md).
+
+Confirm (Lab 0 tools assumed):
 
 * Capstone repo builds (backend + frontend as required)
 * Docker available; registry credentials via approved secret store
@@ -206,38 +195,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-docker --version
-kubectl version --client
-git --version
-pwd
-kubectl config current-context 2>/dev/null || true
 ```
-
-Confirm Labs 49–50 evidence pointers exist:
-
-```bash
-ls ~/java-bootcamp/examples/customer-management-platform/docs/backend-demo.md
-ls ~/java-bootcamp/examples/customer-management-platform/docs/frontend-persistence-demo.md 2>/dev/null || true
-```
-
-Record cluster namespace you’ll deploy into (never commit kubeconfig):
-
-```bash
-kubectl config view --minify -o jsonpath='{.contexts[0].context.namespace}{"\n"}' 2>/dev/null || echo "set namespace per instructor"
-```
-
-Branch and baseline:
-
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-git switch -c lab/51-crm 2>/dev/null || git checkout -b lab/51-crm
-./mvnw -B clean verify 2>/dev/null || mvn -B clean verify
-git status --short
-```
-
-If baseline fails, record it; do not skip tests to fake green.
-
----
 
 ## Suggested Project Files
 

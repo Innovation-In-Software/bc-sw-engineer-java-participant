@@ -34,19 +34,12 @@ Base URL already has /api and path also /api — symptom?
 
 **Module 35** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab35-api.md` — connect dashboard actions to Spring CRM endpoints.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-endpoint-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-api.md` |
 
 ## Worked example (read first)

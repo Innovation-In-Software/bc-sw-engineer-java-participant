@@ -21,17 +21,12 @@
 
 **Enterprise context:** Lab JWT is teaching mode — production still needs IdP ownership and rotation runbooks.
 
-## Goal
-
-Create `notes/security-notes-outline.md` — IdP checklist.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-production-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/security-notes-outline.md` |
 
 ## Worked example (read first)

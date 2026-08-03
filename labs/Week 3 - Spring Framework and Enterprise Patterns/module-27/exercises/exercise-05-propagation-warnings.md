@@ -21,17 +21,12 @@
 
 **Enterprise context:** Wrong propagation creates “half committed” audit trails that look fine until finance audits.
 
-## Goal
-
-Create `notes/propagation-warnings.md` — warnings list.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-propagation-warnings.md` (this file in the course repo) |
 | Your notes file | `notes/propagation-warnings.md` |
 
 ## Worked example (read first)

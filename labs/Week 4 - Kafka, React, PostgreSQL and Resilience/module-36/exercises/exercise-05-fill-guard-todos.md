@@ -34,19 +34,12 @@ Open redirect via returnUrl — fix?
 
 **Module 36** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab36-todos.md` — fill TODOs for a RequireAuth wrapper protecting CRM routes.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-guard-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-todos.md` |
 
 ## Worked example (read first)

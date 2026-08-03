@@ -21,17 +21,12 @@
 
 **Enterprise context:** Reviewers expect application-dev.yml naming — wrong filenames mean the profile never loads.
 
-## Goal
-
-Create `notes/lab26-profile-yaml-todos.md` — YAML TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-profile-yaml-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab26-profile-yaml-todos.md` |
 
 ## Worked example (read first)

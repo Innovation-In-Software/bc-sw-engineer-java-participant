@@ -21,12 +21,6 @@
 
 **Enterprise context:** CRM APIs must not leak persistence fields (or future DB ids) blindly to every client.
 
-## Goal
-
-Create a tiny plain-Java package tree proving that a domain entity and boundary DTOs can have different fields and responsibilities.
-
-> No Spring, JPA, Lombok, or validation annotations yet.
-
 ## Files
 
 ```text

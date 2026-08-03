@@ -21,17 +21,12 @@
 
 **Enterprise context:** Without correlation on create IT, Lab 20 logging demos cannot join UI and API evidence.
 
-## Goal
-
-Create `notes/lab19-correlation-header-todos.md` — correlation TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-fill-correlation-header-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-correlation-header-todos.md` |
 
 ## Worked example (read first)

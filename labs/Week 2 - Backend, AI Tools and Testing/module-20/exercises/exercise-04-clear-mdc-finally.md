@@ -21,17 +21,12 @@
 
 **Enterprise context:** Thread pools reuse threads — MDC leaks look like “wrong customer” in prod logs.
 
-## Goal
-
-Create `notes/lab20-mdc-clear.md` — clear MDC drill.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-clear-mdc-finally.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-mdc-clear.md` |
 
 ## Worked example (read first)

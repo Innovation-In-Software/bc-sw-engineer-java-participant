@@ -34,19 +34,12 @@ Starting React Module 33 early — park UI?
 
 **Module 32** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab32-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 32 without finishing it now.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab32-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-prep-checklist.md` |
 
 ## Worked example (read first)

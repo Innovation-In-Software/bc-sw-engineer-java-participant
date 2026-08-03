@@ -34,19 +34,12 @@ Team retries POST create forever — what duplicate risk?
 
 **Module 32** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab32-resilience.md` — explain how a slow Account Profile dependency hurts the CRM API.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-why-resilience.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-resilience.md` |
 
 ## Worked example (read first)
@@ -69,7 +62,6 @@ Write the four Resilience4j ideas: retry, circuit breaker, time limiter, fallbac
 One sentence: resilience wraps calls; it does not fix a permanently wrong URL.
 
 ## Step 4 — Notes file
-
 
 
 ## Scope
@@ -102,7 +94,6 @@ Write the four Resilience4j ideas: retry, circuit breaker, time limiter, fallbac
 One sentence: resilience wraps calls; it does not fix a permanently wrong URL.
 
 ## Step 4 — Notes file
-
 
 
 ## Scope

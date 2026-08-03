@@ -34,19 +34,12 @@ Treating all failures as 'try again' — what about 400 field errors?
 
 **Module 35** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab35-error-ux.md` — draft user-facing messages for common CRM API failures.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-error-ux.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-error-ux.md` |
 
 ## Worked example (read first)

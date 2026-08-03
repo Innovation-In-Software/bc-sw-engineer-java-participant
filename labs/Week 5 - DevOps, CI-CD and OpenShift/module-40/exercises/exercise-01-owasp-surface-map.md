@@ -34,19 +34,12 @@ Only listing XSS — what about broken access control on CUS-1001?
 
 **Module 40** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab40-owasp-surface-map.md` — list Northstar CRM surfaces that matter before scanners run.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-owasp-surface-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-owasp-surface-map.md` |
 
 ## Worked example (read first)

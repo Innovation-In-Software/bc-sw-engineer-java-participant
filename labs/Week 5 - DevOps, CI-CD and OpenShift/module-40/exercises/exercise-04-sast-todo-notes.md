@@ -34,19 +34,12 @@ DAST-only mindset — what do you miss offline?
 
 **Module 40** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab40-sast-todo-notes.md` — complete a fill-in checklist for one request-to-sink path (pre-lab notes only).
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-sast-todo-notes.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-sast-todo-notes.md` |
 
 ## Worked example (read first)

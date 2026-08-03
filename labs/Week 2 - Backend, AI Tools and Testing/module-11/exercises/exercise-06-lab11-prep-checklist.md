@@ -21,19 +21,12 @@
 
 **Enterprise context:** Prep checklists keep timed AI labs from devolving into environment firefighting.
 
-## Goal
-
-Create `notes/lab11-prep-checklist.md` confirming you are ready for Lab 11 practice — without finishing the graded lab in this pre-lab.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab11-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab11-prep-checklist.md` |
 
 ## Required files from earlier exercises

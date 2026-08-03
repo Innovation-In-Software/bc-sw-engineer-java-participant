@@ -26,10 +26,6 @@
 | Windows | [LAB-18-WINDOWS.md](LAB-18-WINDOWS.md) |
 | macOS | [LAB-18-MACOS.md](LAB-18-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`. Prefer copying `lab17-crm` → `lab18-crm`.
-
-> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-18-exercises/`; graded work is `examples/lab18-crm/`.
-
 > **Incremental build:** Real-validator policy → stub/verify → captor → activate sequence → anti-patterns → Lab 18.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
@@ -51,17 +47,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
-
----
 
 ## What you'll submit (read this first)
 
@@ -177,7 +162,9 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and Labs [15](../../module-15/lab15/LAB-15-GUIDE.md)–[17](../../module-17/lab17/LAB-17-GUIDE.md). Confirm:
+Prior labs: [15](../../module-15/lab15/LAB-15-GUIDE.md) · [17](../../module-17/lab17/LAB-17-GUIDE.md).
+
+Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Git
 * Lab 17 suite on `lab17-crm/` → copy to `lab18-crm/`
@@ -189,14 +176,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-git --version
-pwd
-ls ~/java-bootcamp/examples
 ```
-
-If using Copilot: Command Palette → `GitHub Copilot: Check Status` → signed in / active.
-
----
 
 ## Suggested Project Files
 

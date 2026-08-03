@@ -21,10 +21,6 @@
 
 **Enterprise context:** CRM services publish under stable groupId/artifactId so pipelines and other teams can depend on them.
 
-## Goal
-
-Create `notes/pom-coordinates-notes.md` and explain how Maven names a project so teammates and CI resolve the same artifact.
-
 ## Coordinate map
 
 | Element | Meaning | Northstar CRM example |

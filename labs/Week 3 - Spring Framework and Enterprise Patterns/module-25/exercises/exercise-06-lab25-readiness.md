@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip boundary notes accept AI drafts that wire controllers to maps.
 
-## Goal
-
-Create `notes/lab25-readiness.md` — readiness for Lab 25.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab25-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab25-readiness.md` |
 
 ## Worked example (read first)

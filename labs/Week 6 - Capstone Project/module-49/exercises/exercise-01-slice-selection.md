@@ -34,19 +34,12 @@ Starting React UI in this warmup — park?
 
 **Module 49** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab49-slice-selection.md` — pick one coherent backend slice for capstone build day.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-slice-selection.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-slice-selection.md` |
 
 ## Worked example (read first)

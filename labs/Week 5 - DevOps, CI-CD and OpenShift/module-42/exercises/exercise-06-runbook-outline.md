@@ -34,19 +34,12 @@ Terraform/Ansible for cluster now — wrong lab?
 
 **Module 42** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab42-runbook-outline.md` — outline `docs/deployment-runbook.md` for a peer on shared k3s.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-runbook-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-runbook-outline.md` |
 
 ## Worked example (read first)

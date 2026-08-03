@@ -34,19 +34,12 @@ Low-selectivity status index alone — when useless?
 
 **Module 38** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab38-index-tradeoffs.md` — document costs of extra indexes on CRM write paths.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-38-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-index-tradeoffs.md` (this file in the course repo) |
 | Your notes file | `notes/lab38-index-tradeoffs.md` |
 
 ## Worked example (read first)

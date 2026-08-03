@@ -21,17 +21,12 @@
 
 **Enterprise context:** Open-by-default chains ship new controllers unprotected — default deny is the enterprise baseline.
 
-## Goal
-
-Create `notes/filter-chain.md` — chain sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-filter-chain-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/filter-chain.md` |
 
 ## Worked example (read first)

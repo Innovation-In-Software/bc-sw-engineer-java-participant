@@ -34,19 +34,12 @@ AI suggests largest instance type 'for prod-like' in student sandbox — respons
 
 **Module 45** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab45-cost-exposure-quiz.md` — answer short prompts about insecure or expensive IaC.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-cost-exposure-quiz.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-cost-exposure-quiz.md` |
 
 ## Worked example (read first)

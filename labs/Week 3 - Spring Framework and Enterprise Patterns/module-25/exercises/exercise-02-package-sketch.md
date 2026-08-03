@@ -21,17 +21,12 @@
 
 **Enterprise context:** Reviewers navigate by package — mixed layers in one folder hide seams.
 
-## Goal
-
-Create `notes/package-tree.md` — package sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-package-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/package-tree.md` |
 
 ## Worked example (read first)

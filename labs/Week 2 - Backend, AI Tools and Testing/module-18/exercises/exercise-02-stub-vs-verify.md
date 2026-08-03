@@ -21,17 +21,12 @@
 
 **Enterprise context:** A green test that only stubs and never verifies can miss a missing save in production.
 
-## Goal
-
-Create `notes/lab18-stub-verify.md` — stub vs verify for activate.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-stub-vs-verify.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-stub-verify.md` |
 
 ## Worked example (read first)

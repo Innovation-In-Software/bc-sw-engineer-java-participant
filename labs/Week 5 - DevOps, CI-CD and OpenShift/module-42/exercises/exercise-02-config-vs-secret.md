@@ -34,19 +34,12 @@ Secret.example.yaml with real password — gate fail?
 
 **Module 42** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab42-config-vs-secret.md` — classify CRM settings into ConfigMap vs Secret.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-config-vs-secret.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-config-vs-secret.md` |
 
 ## Worked example (read first)

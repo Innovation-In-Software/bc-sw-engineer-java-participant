@@ -24,11 +24,6 @@
 
 **Enterprise context:** ATM/PIN handlers must fail one bad op without killing the whole session loop.
 
-## Goal
-
-Create `CommonExceptionsDemo.java`. Trigger three common runtime exceptions in
-isolated blocks, catch each specifically, and prove `main` continues.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

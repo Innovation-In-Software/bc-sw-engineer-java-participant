@@ -21,19 +21,12 @@
 
 **Enterprise context:** Smell catalogs make code review concrete instead of taste-based.
 
-## Goal
-
-Create `notes/lab12-smell-bingo.md` — mark five smells you expect in a rushed Customer service sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-smell-bingo.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-smell-bingo.md` |
 
 ## Worked example (read first)

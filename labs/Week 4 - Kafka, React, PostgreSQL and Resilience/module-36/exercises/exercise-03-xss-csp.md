@@ -34,19 +34,12 @@ XSS test finds an img node — what sink was used?
 
 **Module 36** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab36-xss-csp.md` — document XSS-safe rendering rules for customer names/notes.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-xss-csp.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-xss-csp.md` |
 
 ## Worked example (read first)

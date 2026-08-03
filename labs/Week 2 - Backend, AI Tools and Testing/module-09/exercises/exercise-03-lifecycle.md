@@ -21,10 +21,6 @@
 
 **Enterprise context:** CI usually runs verify/package; promote artifacts deliberately, do not casual-deploy from laptops.
 
-## Goal
-
-Create `notes/lifecycle-notes.md` mapping each major phase to what it proves for Northstar CRM.
-
 ## Lifecycle (default)
 
 ```text

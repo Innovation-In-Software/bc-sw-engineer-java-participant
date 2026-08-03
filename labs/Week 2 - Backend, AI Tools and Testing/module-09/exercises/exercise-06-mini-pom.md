@@ -21,17 +21,9 @@
 
 **Enterprise context:** Lab 9 expands this habit into the Northstar CRM build — same coordinates discipline.
 
-## Goal
-
-Build a tiny Maven project that compiles, runs one JUnit test, and packages a JAR with a `Main-Class` — before you expand the full Lab 9 CRM POM. Capture results in `notes/mini-maven-notes.md`.
-
-> No Spring Boot, JPA, Kafka, or React. Plain Java + JUnit Jupiter only.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-09-exercises/`) |
 | ---- | --------------------------------------------- |

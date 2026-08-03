@@ -21,17 +21,12 @@
 
 **Enterprise context:** Service skeletons become the contract SOAP/REST both trust.
 
-## Goal
-
-Create `notes/lab25-service-todo-skeleton.md` — service TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-service-todo-skeleton.md` (this file in the course repo) |
 | Your notes file | `notes/lab25-service-todo-skeleton.md` |
 
 ## Worked example (read first)

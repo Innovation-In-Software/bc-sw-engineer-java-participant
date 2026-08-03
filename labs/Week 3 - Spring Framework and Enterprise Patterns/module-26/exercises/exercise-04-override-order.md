@@ -21,17 +21,12 @@
 
 **Enterprise context:** On-call wastes hours when someone “fixed YAML” but a CLI flag still wins.
 
-## Goal
-
-Create `notes/override-order.md` — precedence list.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-override-order.md` (this file in the course repo) |
 | Your notes file | `notes/override-order.md` |
 
 ## Worked example (read first)

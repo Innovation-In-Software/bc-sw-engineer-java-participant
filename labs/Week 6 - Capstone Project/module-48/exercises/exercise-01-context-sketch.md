@@ -34,19 +34,12 @@ Diagram with only 'the cloud' — rewrite?
 
 **Module 48** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab48-context-sketch.md` — identify users, external systems, and trust boundaries for Northstar CRM.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-context-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-context-sketch.md` |
 
 ## Worked example (read first)

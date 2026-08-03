@@ -21,17 +21,12 @@
 
 **Enterprise context:** Lifecycle logs prove the container — not your main method — owns startup/shutdown of CRM services.
 
-## Goal
-
-Create `notes/lab22-lifecycle-notes.md` — lifecycle callbacks.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-lifecycle-notes.md` (this file in the course repo) |
 | Your notes file | `notes/lab22-lifecycle-notes.md` |
 
 ## Worked example (read first)

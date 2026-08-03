@@ -34,19 +34,12 @@ Disabling security tests for green CI — gate fail?
 
 **Module 51** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab51-threat-checklist.md` — list top threats for the CRM release candidate.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-51-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-threat-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab51-threat-checklist.md` |
 
 ## Worked example (read first)

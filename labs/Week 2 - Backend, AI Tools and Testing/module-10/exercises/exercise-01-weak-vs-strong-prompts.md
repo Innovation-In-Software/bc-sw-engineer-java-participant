@@ -21,19 +21,12 @@
 
 **Enterprise context:** Banking CRM prompts must keep AI inside approved stack boundaries.
 
-## Goal
-
-Create `notes/lab10-prelab-prompts.md` and contrast a vague Copilot prompt with a strong Northstar-scoped one.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-weak-vs-strong-prompts.md` (this file in the course repo) |
 | Your notes file | `notes/lab10-prelab-prompts.md` |
 
 ## Worked example (read first)

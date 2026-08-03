@@ -21,17 +21,12 @@
 
 **Enterprise context:** Leaking SQL or emails in error JSON is a security incident waiting for a ticket.
 
-## Goal
-
-Create `notes/lab16-message-hygiene-todos.md` — safe vs unsafe messages.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-16-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-fill-message-hygiene-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab16-message-hygiene-todos.md` |
 
 ## Worked example (read first)

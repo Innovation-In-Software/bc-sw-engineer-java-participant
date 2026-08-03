@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip rollback plans cannot show ACC-FORCE-FAIL evidence during grading.
 
-## Goal
-
-Create `notes/lab27-readiness.md` — readiness for Lab 27.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab27-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab27-readiness.md` |
 
 ## Worked example (read first)

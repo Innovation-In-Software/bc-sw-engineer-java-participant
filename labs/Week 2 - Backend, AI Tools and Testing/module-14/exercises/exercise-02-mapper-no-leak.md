@@ -21,17 +21,12 @@
 
 **Enterprise context:** Integration partners break when mappers copy every entity field into JSON/XML by habit.
 
-## Goal
-
-Create `notes/lab14-mapper-no-leak.md` — sketch toDto/toEntity rules that keep internals out of API responses.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-mapper-no-leak.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-mapper-no-leak.md` |
 
 ## Worked example (read first)

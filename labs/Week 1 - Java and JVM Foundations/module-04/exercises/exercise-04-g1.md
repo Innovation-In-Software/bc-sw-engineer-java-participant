@@ -24,10 +24,6 @@
 
 **Enterprise context:** Most JDK 11+ services still start on G1 unless tuned otherwise.
 
-## Goal
-
-Select the G1 garbage collector explicitly, verify the JVM accepted it, and explain what the flag does—and does not do.
-
 ## Key idea
 
 G1 divides the heap into regions and aims to balance throughput with predictable pause goals. In JDK 21, G1 is commonly the default on typical server-class machines, but this exercise selects it explicitly so the command is unambiguous.

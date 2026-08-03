@@ -21,17 +21,12 @@
 
 **Enterprise context:** Ops demos always activate Ravi (PROSPECT); activating Amina (ACTIVE) is the negative path.
 
-## Goal
-
-Create `notes/lab15-activate-ravi-todos.md` — fill activate pseudocode.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-activate-ravi-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-activate-ravi-todos.md` |
 
 ## Worked example (read first)

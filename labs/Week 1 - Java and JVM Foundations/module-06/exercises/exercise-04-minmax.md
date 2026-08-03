@@ -24,11 +24,6 @@
 
 **Enterprise context:** Compensation reviews need extremes without writing manual loops over payroll arrays.
 
-## Goal
-
-Create `SalaryExtremesDemo.java`. Use one salary comparator with `max` and
-`min`, then handle each potentially empty result explicitly.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

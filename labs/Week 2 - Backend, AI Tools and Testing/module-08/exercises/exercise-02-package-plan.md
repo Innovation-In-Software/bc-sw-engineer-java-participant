@@ -21,10 +21,6 @@
 
 **Enterprise context:** Large teams navigate Northstar CRM by package, not by hunting flat folders.
 
-## Goal
-
-Create `package-plan.md` mapping CRM types to packages and fully qualified class names.
-
 ## Package rules
 
 | Rule | Good example |

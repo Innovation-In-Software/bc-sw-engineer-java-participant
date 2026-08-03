@@ -21,17 +21,12 @@
 
 **Enterprise context:** CI agents without matching Chrome/driver versions fail green laptops mysteriously.
 
-## Goal
-
-Create `notes/lab19-flake-ci.md` — flake and CI notes.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-flake-ci-note.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-flake-ci.md` |
 
 ## Worked example (read first)

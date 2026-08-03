@@ -26,10 +26,6 @@
 
 **Enterprise context:** Unbounded static caches are a classic production leak pattern.
 
-## Goal
-
-Create `RetentionDemo.java`, observe a static collection retaining objects, then clear the collection and explain why those objects become GC-eligible.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -175,7 +171,6 @@ appropriate lifecycle. Weak references are not a universal cache fix.
 ## Expected result
 
 The list reaches exactly 10,000 entries, memory usage rises approximately, and clearing the list removes the retaining references. Post-GC memory is observational and nondeterministic.
-
 
 
 ## Debug / observation challenge

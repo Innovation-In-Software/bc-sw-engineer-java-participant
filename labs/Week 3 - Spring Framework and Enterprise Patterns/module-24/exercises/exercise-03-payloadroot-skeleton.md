@@ -21,17 +21,12 @@
 
 **Enterprise context:** A one-character namespace drift means the dispatcher never finds your method.
 
-## Goal
-
-Create `notes/lab24-payloadroot-skeleton.md` — PayloadRoot TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-24-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-payloadroot-skeleton.md` (this file in the course repo) |
 | Your notes file | `notes/lab24-payloadroot-skeleton.md` |
 
 ## Worked example (read first)

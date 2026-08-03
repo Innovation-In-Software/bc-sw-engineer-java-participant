@@ -34,19 +34,12 @@ Hardcoding API keys in Vite — what threat?
 
 **Module 36** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab36-security.md` — list frontend threats relevant to the Northstar CRM SPA.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-threat-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-security.md` |
 
 ## Worked example (read first)

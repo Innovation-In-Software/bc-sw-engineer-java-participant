@@ -21,19 +21,12 @@
 
 **Enterprise context:** Audit-friendly AI use means recording what you accepted and why.
 
-## Goal
-
-Create `notes/lab10-review-log-todos.md` and complete fill-in blanks for a Copilot review log before the timed lab.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-fill-review-log-todos.md` (this file in the course repo) |
 | Your notes file (starter) | `notes/lab10-review-log-todos.md` |
 
 ## Worked example (read first)

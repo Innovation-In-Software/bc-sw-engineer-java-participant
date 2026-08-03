@@ -34,19 +34,12 @@ TimeLimiter on sync return — what must change?
 
 **Module 32** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab32-todos.md` — fill TODOs in Resilience4j pseudocode for the CRM client.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-resilience-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-todos.md` |
 
 ## Worked example (read first)

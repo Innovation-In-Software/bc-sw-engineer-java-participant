@@ -21,17 +21,12 @@
 
 **Enterprise context:** Without correlation on Fail, on-call cannot join API errors to broker/DB logs.
 
-## Goal
-
-Create `notes/lab16-correlation-always.md` — correlation on every path.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-16-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-correlation-always.md` (this file in the course repo) |
 | Your notes file | `notes/lab16-correlation-always.md` |
 
 ## Worked example (read first)

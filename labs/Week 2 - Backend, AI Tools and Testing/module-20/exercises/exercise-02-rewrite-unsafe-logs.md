@@ -21,17 +21,12 @@
 
 **Enterprise context:** Logging “Amina Khan <email>” is a reportable privacy incident in many enterprises.
 
-## Goal
-
-Create `notes/lab20-safe-logs.md` — rewrite unsafe logs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-rewrite-unsafe-logs.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-safe-logs.md` |
 
 ## Worked example (read first)

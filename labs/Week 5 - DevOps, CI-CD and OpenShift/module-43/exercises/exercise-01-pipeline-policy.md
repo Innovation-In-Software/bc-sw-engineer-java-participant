@@ -34,19 +34,12 @@ One job does verify+package+deploy on every PR — risk?
 
 **Module 43** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab43-pipeline-policy.md` — decide what runs on pull_request, main push, and version tags.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-43-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-pipeline-policy.md` (this file in the course repo) |
 | Your notes file | `notes/lab43-pipeline-policy.md` |
 
 ## Worked example (read first)

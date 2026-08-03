@@ -21,17 +21,12 @@
 
 **Enterprise context:** AI often mocks CustomerService while “testing” CustomerService — that tests nothing.
 
-## Goal
-
-Create `notes/lab18-anti-patterns.md` — anti-patterns table.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-anti-patterns.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-anti-patterns.md` |
 
 ## Worked example (read first)

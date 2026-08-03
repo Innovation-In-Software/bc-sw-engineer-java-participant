@@ -21,17 +21,12 @@
 
 **Enterprise context:** Putting activate rules in the repository makes every new adapter re-implement policy — or worse, silently diverge.
 
-## Goal
-
-Create `notes/lab15-repo-boundary.md` — list repo vs service ownership.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-repo-boundary.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-repo-boundary.md` |
 
 ## Worked example (read first)

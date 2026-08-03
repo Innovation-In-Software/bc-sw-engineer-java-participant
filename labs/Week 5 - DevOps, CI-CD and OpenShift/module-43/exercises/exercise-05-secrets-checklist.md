@@ -34,19 +34,12 @@ Secret appears in Actions log — response?
 
 **Module 43** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab43-secrets-checklist.md` — list what may live in Git vs Actions secrets vs local only.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-43-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-secrets-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab43-secrets-checklist.md` |
 
 ## Worked example (read first)

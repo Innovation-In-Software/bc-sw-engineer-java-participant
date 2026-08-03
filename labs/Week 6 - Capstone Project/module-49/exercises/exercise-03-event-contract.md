@@ -34,19 +34,12 @@ Publishing before DB commit — risk?
 
 **Module 49** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab49-event-contract.md` — draft a versioned event payload outline for the slice.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-event-contract.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-event-contract.md` |
 
 ## Worked example (read first)

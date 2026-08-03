@@ -26,10 +26,6 @@
 
 **Enterprise context:** HR onboarding forms and clinic intake consoles hit the same newline trap.
 
-## Goal
-
-Create `PersonalDetails.java` that prompts for name (`String`), age (`int`), and city (`String`), then prints a formatted greeting.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -142,7 +138,6 @@ Temporarily **delete** the extra `nextLine()` after `nextInt()`, recompile, and 
 ## Expected result
 
 Program prompts for three values and greets with all three.
-
 
 
 ## Debug challenge

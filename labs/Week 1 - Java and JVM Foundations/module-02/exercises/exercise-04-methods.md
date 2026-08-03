@@ -26,10 +26,6 @@
 
 **Enterprise context:** Fee calculators expose overload-friendly APIs (int cents vs double amount).
 
-## Goal
-
-Create `MethodsDemo.java` with a `square` method that takes an `int` and returns its square, plus a second, overloaded `square` that takes a `double`.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

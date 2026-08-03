@@ -26,10 +26,6 @@
 
 **Enterprise context:** Ledger balances must never be set from random UI code — only through validated operations.
 
-## Goal
-
-Create `Account.java` with private balance state and validated operations. Create `EncapsulationDemo.java` to prove valid operations succeed and an invalid withdrawal is rejected.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -189,7 +185,6 @@ Remove the failure-experiment line before continuing.
 ## Expected result
 
 Valid operations change the balance; the oversized withdrawal does not. Outside code cannot directly assign `balance`.
-
 
 
 ## Debug / design challenge

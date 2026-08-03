@@ -21,19 +21,12 @@
 
 **Enterprise context:** Handoff checklists keep contract packs reviewable by integration teams.
 
-## Goal
-
-Create `notes/lab13-prep-checklist.md` — confirm prior notes exist and you are ready for Lab 13 without finishing it now.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab13-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-prep-checklist.md` |
 
 ## Worked example (read first)

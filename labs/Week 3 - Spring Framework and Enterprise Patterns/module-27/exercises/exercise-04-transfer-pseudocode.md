@@ -21,17 +21,12 @@
 
 **Enterprise context:** Pseudocode prevents AI from inventing two commits or controller-side SQL.
 
-## Goal
-
-Create `notes/lab27-transfer-pseudocode.md` — transfer TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-transfer-pseudocode.md` (this file in the course repo) |
 | Your notes file | `notes/lab27-transfer-pseudocode.md` |
 
 ## Worked example (read first)

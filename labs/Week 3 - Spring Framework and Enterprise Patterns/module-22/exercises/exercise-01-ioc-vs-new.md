@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that keep new inside services cannot swap stores or isolate unit tests without editing production code.
 
-## Goal
-
-Create `notes/ioc-vs-new.md` — contrast manual new vs IoC for CRM.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-ioc-vs-new.md` (this file in the course repo) |
 | Your notes file | `notes/ioc-vs-new.md` |
 
 ## Worked example (read first)

@@ -21,19 +21,12 @@
 
 **Enterprise context:** Support teams need correlation across create/get/update failures.
 
-## Goal
-
-Create `notes/lab12-correlation-todos.md` — complete fill-in blanks for correlation one-liners used during refactor notes.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-correlation-oneliner-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-correlation-todos.md` |
 
 ## Worked example (read first)

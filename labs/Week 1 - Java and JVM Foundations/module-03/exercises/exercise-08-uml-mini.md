@@ -26,19 +26,6 @@
 
 **Enterprise context:** Architects align on UML before coding shared banking services.
 
-## Goal
-
-Create `banking-uml.md` with a Mermaid class diagram showing:
-
-- `Printable`
-- `Customer`
-- `Account`
-- `SavingsAccount`
-- `CurrentAccount`
-- `Transaction`
-
-Include visibility, inheritance, interface realization, associations, and multiplicities.
-
 ## UML notation used here
 
 | Notation | Meaning | Example |

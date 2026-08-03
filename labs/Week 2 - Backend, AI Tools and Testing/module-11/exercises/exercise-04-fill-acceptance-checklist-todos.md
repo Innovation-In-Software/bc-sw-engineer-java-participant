@@ -21,19 +21,12 @@
 
 **Enterprise context:** Teams accept AI hunks only when checklist gates pass.
 
-## Goal
-
-Create `notes/lab11-acceptance-todos.md` and complete every fill-in blank for an acceptance checklist before trusting Copilot-generated tests.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-fill-acceptance-checklist-todos.md` (this file in the course repo) |
 | Your notes file (starter) | `notes/lab11-acceptance-todos.md` |
 
 ## Worked example (read first)

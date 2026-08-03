@@ -34,19 +34,12 @@ Using only offset as id — what if rebalance/replay?
 
 **Module 31** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab31-idempotency-plan.md` — define how a consumer ignores a second delivery of Amina's Created event.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-31-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-idempotency-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab31-idempotency-plan.md` |
 
 ## Worked example (read first)

@@ -22,17 +22,12 @@
 
 **Enterprise context:** Without a global handler, each controller invents different error JSON and React breaks.
 
-## Goal
-
-Create `notes/lab29-handler-todos.md` — handler TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-handler-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab29-handler-todos.md` |
 
 ## Worked example (read first)

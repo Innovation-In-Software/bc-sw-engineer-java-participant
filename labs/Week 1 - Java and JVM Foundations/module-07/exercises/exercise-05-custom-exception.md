@@ -24,11 +24,6 @@
 
 **Enterprise context:** Banking withdraw paths need typed insufficient-funds failures for UI and audit logs.
 
-## Goal
-
-Model insufficient balance as a meaningful checked domain exception. Preserve
-balance and requested amount as structured context.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

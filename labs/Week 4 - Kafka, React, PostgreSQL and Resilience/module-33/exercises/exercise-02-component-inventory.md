@@ -34,19 +34,12 @@ One giant App.tsx with all markup — what breaks Lab 34?
 
 **Module 33** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab33-components.md` — list CRM dashboard components you will build in Lab 33.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-33-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-component-inventory.md` (this file in the course repo) |
 | Your notes file | `notes/lab33-components.md` |
 
 ## Worked example (read first)
@@ -69,7 +62,6 @@ List ≥5 components: e.g. `App`, `CustomerList`, `CustomerCard`, `StatusBadge`,
 For each, write a ≤6-word responsibility.
 
 ## Step 4 — Notes
-
 
 
 ## Scope
@@ -102,7 +94,6 @@ List ≥5 components: e.g. `App`, `CustomerList`, `CustomerCard`, `StatusBadge`,
 For each, write a ≤6-word responsibility.
 
 ## Step 4 — Notes
-
 
 
 ## Scope

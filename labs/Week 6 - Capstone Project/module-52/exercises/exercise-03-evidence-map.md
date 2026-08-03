@@ -34,19 +34,12 @@ Claim with no row — retract or add evidence?
 
 **Module 52** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab52-evidence-map.md` — map five claims to artifact paths (placeholders OK if not yet produced).
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-52-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-evidence-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab52-evidence-map.md` |
 
 ## Worked example (read first)

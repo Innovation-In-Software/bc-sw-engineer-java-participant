@@ -34,19 +34,12 @@ Checklist marks GO while digest ≠ staging — fail?
 
 **Module 44** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab44-checklist-todos.md` — complete a release checklist template with blanks.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-checklist-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-checklist-todos.md` |
 
 ## Worked example (read first)

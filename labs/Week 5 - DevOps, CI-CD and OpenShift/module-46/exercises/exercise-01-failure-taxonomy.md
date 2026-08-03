@@ -34,19 +34,12 @@ Lag stuck with no DLT traffic — what to check?
 
 **Module 46** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab46-failure-taxonomy.md` — categorize why CRM consumer processing fails.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-failure-taxonomy.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-failure-taxonomy.md` |
 
 ## Worked example (read first)

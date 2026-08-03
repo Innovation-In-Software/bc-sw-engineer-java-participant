@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip locator/flake prep burn the timed path on ElementNotInteractable.
 
-## Goal
-
-Create `notes/lab19-prep-checklist.md` — readiness for Lab 19 (do this after Ex 6).
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-lab19-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-prep-checklist.md` |
 
 ## Worked example (read first)

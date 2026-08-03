@@ -34,19 +34,12 @@ Calling a green CI build 'released to prod' without promotion evidence — fix?
 
 **Module 44** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab44-cd-vs-cdeploy.md` — explain CD concepts in Northstar CRM language.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-cd-vs-cdeploy.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-cd-vs-cdeploy.md` |
 
 ## Worked example (read first)

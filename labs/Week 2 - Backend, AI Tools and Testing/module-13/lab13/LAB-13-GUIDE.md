@@ -26,10 +26,6 @@
 | Windows | [LAB-13-WINDOWS.md](LAB-13-WINDOWS.md) |
 | macOS | [LAB-13-MACOS.md](LAB-13-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**. Work under `~/java-bootcamp`.
-
-> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-13-exercises/`; graded work is `examples/lab13-crm/`.
-
 > **Incremental build:** Fault/ops/XSD/contract-first notes → Lab 13 contract pack.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
@@ -68,17 +64,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
-
----
 
 ## What you'll submit (read this first)
 
@@ -206,7 +191,7 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md) and [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Confirm:
+Confirm (Lab 0 tools assumed):
 
 * JDK 21 available (Maven optional—contracts can be docs-only)
 * Editor support for WSDL/XSD (VS Code XML extension recommended)
@@ -217,17 +202,8 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md) and [Lab 0](../../../Week%201%2
 
 ```bash
 java -version
-git --version
-# optional:
 mvn -version
-xmllint --version   # if installed
-pwd
-ls ~/java-bootcamp/examples
 ```
-
-Fix environment failures before changing files. Record tool versions in evidence if asked.
-
----
 
 ## Suggested Project Files
 

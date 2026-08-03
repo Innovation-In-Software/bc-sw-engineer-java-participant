@@ -21,17 +21,12 @@
 
 **Enterprise context:** Dual protocols with forked services create split-brain CRM data for Amina/Ravi.
 
-## Goal
-
-Create `notes/soap-ops.md` — operation map.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-24-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-operation-map.md` (this file in the course repo) |
 | Your notes file | `notes/soap-ops.md` |
 
 ## Worked example (read first)

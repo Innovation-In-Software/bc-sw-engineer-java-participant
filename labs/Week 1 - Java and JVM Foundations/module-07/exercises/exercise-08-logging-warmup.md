@@ -27,11 +27,6 @@
 
 **Enterprise context:** Production ATM logs support ops triage without leaking credentials into screenshots.
 
-## Goal
-
-Log operational context and the exception stack trace while showing the user a
-short, safe message.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

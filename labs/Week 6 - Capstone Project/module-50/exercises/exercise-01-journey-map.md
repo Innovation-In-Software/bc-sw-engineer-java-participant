@@ -34,19 +34,12 @@ Starting Lab 51 deploy work now — park?
 
 **Module 50** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab50-journey-map.md` — storyboard the CRM agent journey for demo day.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-50-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-journey-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab50-journey-map.md` |
 
 ## Worked example (read first)

@@ -21,17 +21,12 @@
 
 **Enterprise context:** Support cannot triage partner tickets without a correlationId on every Fail JSON.
 
-## Goal
-
-Create `notes/lab16-errorresponse-json.md` — draft not-found ErrorResponse JSON.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-16-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-errorresponse-json.md` (this file in the course repo) |
 | Your notes file | `notes/lab16-errorresponse-json.md` |
 
 ## Worked example (read first)

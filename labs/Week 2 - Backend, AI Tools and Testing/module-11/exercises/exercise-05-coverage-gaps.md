@@ -21,19 +21,12 @@
 
 **Enterprise context:** Honest coverage maps prevent false audit claims from AI suites.
 
-## Goal
-
-Create `notes/lab11-coverage-gaps.md` that names what Lab 11 prep proves versus what Labs 17–18 deepen later.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-coverage-gaps.md` (this file in the course repo) |
 | Your notes file | `notes/lab11-coverage-gaps.md` |
 
 ## Worked example (read first)

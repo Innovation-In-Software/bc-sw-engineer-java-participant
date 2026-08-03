@@ -34,19 +34,12 @@ Rebuilding on the deploy host during promote — risk?
 
 **Module 44** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab44-promotion-gates.md` — write measurable gates for test → staging → prod.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-promotion-gates.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-promotion-gates.md` |
 
 ## Worked example (read first)

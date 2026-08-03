@@ -21,17 +21,12 @@
 
 **Enterprise context:** On-call reviews fail when dependencies are invisible private fields — constructors are the public contract.
 
-## Goal
-
-Create `notes/constructor-di.md` — prefer constructor DI.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-constructor-injection.md` (this file in the course repo) |
 | Your notes file | `notes/constructor-di.md` |
 
 ## Worked example (read first)

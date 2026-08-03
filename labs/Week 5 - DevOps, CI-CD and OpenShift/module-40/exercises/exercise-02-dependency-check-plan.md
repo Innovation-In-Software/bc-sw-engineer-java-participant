@@ -34,19 +34,12 @@ Unpinned plugin version — what drifts?
 
 **Module 40** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab40-dependency-check-plan.md` — draft how Dependency-Check will run under JDK 21 / Maven without claiming a finished lab.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-dependency-check-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-dependency-check-plan.md` |
 
 ## Worked example (read first)

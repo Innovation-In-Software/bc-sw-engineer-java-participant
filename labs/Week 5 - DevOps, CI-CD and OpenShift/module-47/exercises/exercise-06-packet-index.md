@@ -34,19 +34,12 @@ Week review slides 234–244 as this lab deliverable — park?
 
 **Module 47** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab47-packet-index.md` — index the four artifacts Lab 47 expects.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-47-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-packet-index.md` (this file in the course repo) |
 | Your notes file | `notes/lab47-packet-index.md` |
 
 ## Worked example (read first)

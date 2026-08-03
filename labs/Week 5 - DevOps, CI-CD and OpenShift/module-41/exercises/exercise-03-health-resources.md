@@ -34,19 +34,12 @@ OOMKill with tight memory — what to tune?
 
 **Module 41** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab41-health-resources.md` — define readiness/health and resource expectations for `crm-api`.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-41-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-health-resources.md` (this file in the course repo) |
 | Your notes file | `notes/lab41-health-resources.md` |
 
 ## Worked example (read first)

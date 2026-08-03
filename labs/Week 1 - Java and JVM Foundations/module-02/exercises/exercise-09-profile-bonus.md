@@ -26,10 +26,6 @@
 
 **Enterprise context:** Ops consoles show columnar reports the same way.
 
-## Goal
-
-Create `PersonalProfile.java` that reads name, age, city, and hobby, then prints a simple two-column table with `printf` width specifiers.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

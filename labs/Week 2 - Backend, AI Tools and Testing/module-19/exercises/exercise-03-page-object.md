@@ -21,17 +21,12 @@
 
 **Enterprise context:** Duplicated driver.findElement calls across tests make locator fixes a copy-paste tax.
 
-## Goal
-
-Create `notes/lab19-page-object.md` — Page Object sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-19-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-page-object.md` (this file in the course repo) |
 | Your notes file | `notes/lab19-page-object.md` |
 
 ## Worked example (read first)

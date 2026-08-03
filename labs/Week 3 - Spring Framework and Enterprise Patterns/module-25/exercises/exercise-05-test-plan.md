@@ -21,17 +21,12 @@
 
 **Enterprise context:** Layered design pays off when service tests run without starting Tomcat.
 
-## Goal
-
-Create `notes/service-test-plan.md` — test plan.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-test-plan.md` (this file in the course repo) |
 | Your notes file | `notes/service-test-plan.md` |
 
 ## Worked example (read first)

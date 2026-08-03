@@ -34,19 +34,12 @@ Only red borders, no text — RTL/a11y fail?
 
 **Module 34** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab34-validation-messages.md` — write validation messages for empty/invalid CRM form fields.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-34-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-validation-messages.md` (this file in the course repo) |
 | Your notes file | `notes/lab34-validation-messages.md` |
 
 ## Worked example (read first)

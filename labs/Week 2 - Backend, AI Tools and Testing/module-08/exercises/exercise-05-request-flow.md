@@ -21,10 +21,6 @@
 
 **Enterprise context:** Onboarding a new engineer starts with tracing one customer create path.
 
-## Goal
-
-Create `customer-request-flow.md` showing how a future request to create customer `CUS-1001` moves through layers—without implementing HTTP or persistence.
-
 ## Scenario
 
 Future input:

@@ -12,8 +12,6 @@
 | Windows | [LAB-52-WINDOWS.md](LAB-52-WINDOWS.md) |
 | macOS | [LAB-52-MACOS.md](LAB-52-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 52 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish Labs 48–51 evidence first. Demo lab: **desktop IntelliJ IDEA Community (primary; optional VS Code)** on your laptop plus your team's running CRM demo path (API/UI/DB/events as built). Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
-
 ---
 
 ## Activity card
@@ -61,17 +59,6 @@ In class, use the starter slide outline + demo script so the **session block** f
 | **Full (multi-day)** | 5–6 Hours | Every Step in this GUIDE |
 
 Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 
@@ -193,7 +180,9 @@ Do not open new product scope in Lab 52. If a gap is found, file it as a residua
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and Labs [48](../../module-48/lab48/LAB-48-GUIDE.md)–[51](../../module-51/lab51/LAB-51-GUIDE.md). Confirm:
+Prior labs: [48](../../module-48/lab48/LAB-48-GUIDE.md) · [51](../../module-51/lab51/LAB-51-GUIDE.md).
+
+Confirm (Lab 0 tools assumed):
 
 * Evidence packs from Labs 48–51 accessible
 * Demo environment reachable (UI/API/DB/Kafka or documented fallback)
@@ -205,39 +194,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-docker --version
-git --version
-pwd
-ls ~/java-bootcamp/examples/customer-management-platform/docs
-curl -fsS "$CRM_URL/actuator/health/readiness" 2>/dev/null || echo "NOTE: demo URL not ready — prepare fallback"
 ```
-
-Confirm prior lab evidence hubs are present:
-
-```bash
-ls docs/architecture/context.md docs/backend-demo.md docs/security-deploy-demo.md 2>/dev/null || true
-ls defense 2>/dev/null || mkdir -p defense
-mkdir -p ~/java-bootcamp/notes/screenshots/lab-52
-```
-
-Inventory digest identity from Lab 51 before writing slides:
-
-```bash
-grep -n -i digest docs/security-deploy-demo.md 2>/dev/null | head
-```
-
-Branch and baseline:
-
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-git switch -c lab/52-crm 2>/dev/null || git checkout -b lab/52-crm
-mkdir -p defense
-mkdir -p ~/java-bootcamp/notes/screenshots/lab-52
-./mvnw -B clean verify 2>/dev/null || mvn -B clean verify
-git status --short
-```
-
----
 
 ## Suggested Project Files
 

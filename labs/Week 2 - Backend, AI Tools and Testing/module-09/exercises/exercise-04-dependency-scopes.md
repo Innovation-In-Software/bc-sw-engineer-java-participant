@@ -21,10 +21,6 @@
 
 **Enterprise context:** Shipping test libraries into a production CRM JAR is a common build smell.
 
-## Goal
-
-Create `notes/dependency-scopes-notes.md` and assign the correct Maven scope so libraries land on the right classpath.
-
 ## Scope map
 
 | Scope | On compile classpath? | On runtime classpath? | Typical use |

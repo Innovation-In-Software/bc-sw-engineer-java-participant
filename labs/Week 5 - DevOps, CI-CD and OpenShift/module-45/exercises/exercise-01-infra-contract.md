@@ -34,19 +34,12 @@ Contract allows 0.0.0.0/0 on DB port — reject or accept?
 
 **Module 45** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab45-infra-contract.md` — define what AI-assisted Terraform/Ansible may create for CRM.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-infra-contract.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-infra-contract.md` |
 
 ## Worked example (read first)

@@ -34,19 +34,12 @@ WHERE LOWER(email) = ... without functional index — plan?
 
 **Module 38** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab38-sargability.md` — classify predicates as sargable or not for PostgreSQL.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-38-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-sargability.md` (this file in the course repo) |
 | Your notes file | `notes/lab38-sargability.md` |
 
 ## Worked example (read first)

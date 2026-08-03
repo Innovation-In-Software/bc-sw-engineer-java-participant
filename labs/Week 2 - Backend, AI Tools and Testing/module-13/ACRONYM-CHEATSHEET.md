@@ -106,6 +106,18 @@ Quick meanings in plain language. Full forms match how the Module 13 deck uses e
 
 ---
 
+## Standards bodies & enterprise extras
+
+| Acronym | Full form | Simple meaning |
+| --- | --- | --- |
+| **W3C** | World Wide Web Consortium | Standards body behind core web/XML specs (mentioned alongside OASIS). |
+| **OASIS** | Organization for the Advancement of Structured Information Standards | Standards body behind WS-* specs and UDDI. |
+| **ACID** | Atomicity, Consistency, Isolation, Durability | Guarantees for reliable multi-step transactions — ties to WS-AtomicTransaction. |
+| **B2B** | Business-to-Business | System-to-system integration between companies/partners (orders, invoices, ASNs). |
+| **DOCTYPE** | Document Type Declaration | XML/HTML declaration; disabling it hardens a parser against XXE attacks. |
+
+---
+
 ## One-line memory aid
 
 > **XSD** defines the data · **WSDL** defines the service · **SOAP** carries the XML message · **WS-Security / HTTPS** protect it.

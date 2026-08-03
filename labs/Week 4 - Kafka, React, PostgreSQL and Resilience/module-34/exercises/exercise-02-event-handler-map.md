@@ -34,19 +34,12 @@ Create and edit both true — what UI bug?
 
 **Module 34** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab34-event-handler-map.md` — document which handler updates which piece of CRM UI state.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-34-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-event-handler-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab34-event-handler-map.md` |
 
 ## Worked example (read first)

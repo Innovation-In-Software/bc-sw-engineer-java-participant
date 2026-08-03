@@ -27,10 +27,6 @@
 | Windows | [LAB-2-WINDOWS.md](LAB-2-WINDOWS.md) |
 | macOS | [LAB-2-MACOS.md](LAB-2-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
-
-> **Hard gate — pre-lab exercises:** Complete Module 2 **Exercises 1–7** under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 2 is graded consolidation in a **separate** packaged project (`examples/Lab2-JavaSyntax/`), not a replacement for the flat exercises folder (`examples/module-02-exercises/`).
-
 > **Incremental build:** Extends Module 1 workspace + Module 2 exercise skills into a **packaged** menu app. You do **not** start a new CRM — same `java-bootcamp`, new folder `examples/Lab2-JavaSyntax/`.
 
 ## 45-minute timed path (use starter)
@@ -59,17 +55,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | Smoke-test output | Menu → add John → table row `91.00` → search ID `101` → `Average Marks : 91.00` → `Thank You` |
 
 **If it fails (Windows PowerShell):** Prefer naming each `.java` file in the `javac` line (as in [LAB-2-WINDOWS.md](LAB-2-WINDOWS.md)); do not rely on `*.java` globs. Mark `examples\Lab2-JavaSyntax\src` as Sources Root — not `module-02-exercises`.
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 

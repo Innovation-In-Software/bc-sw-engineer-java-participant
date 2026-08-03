@@ -21,17 +21,12 @@
 
 **Enterprise context:** Every peer must know the main class and the first URL to hit after start.
 
-## Goal
-
-Create `notes/health-sketch.md` — CrmApplication + health stub.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-crm-application-stub.md` (this file in the course repo) |
 | Your notes file | `notes/health-sketch.md` |
 
 ## Worked example (read first)

@@ -34,19 +34,12 @@ PR says 'fixed stuff' with no test plan — rewrite?
 
 **Module 47** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab47-pr-description.md` — structure a PR body for a mitigation/fix related to the incident.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-47-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-pr-description.md` (this file in the course repo) |
 | Your notes file | `notes/lab47-pr-description.md` |
 
 ## Worked example (read first)

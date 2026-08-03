@@ -21,19 +21,12 @@
 
 **Enterprise context:** CRM integrations need predictable SOAP faults, not opaque HTTP-only errors.
 
-## Goal
-
-Create `notes/lab13-fault-todos.md` — complete fill-in blanks for a NotFound fault when CUS-9999 is requested.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-fill-fault-envelope-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-fault-todos.md` |
 
 ## Worked example (read first)

@@ -21,10 +21,6 @@
 
 **Enterprise context:** Preventing repository→controller imports keeps CRM testable when HTTP arrives later.
 
-## Goal
-
-Identify acceptable and problematic package dependencies before they become circular architecture.
-
 ## Intended flow
 
 ```mermaid

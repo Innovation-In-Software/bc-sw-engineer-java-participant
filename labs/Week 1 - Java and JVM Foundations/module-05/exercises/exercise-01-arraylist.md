@@ -24,10 +24,6 @@
 
 **Enterprise context:** Library catalogs and shopping carts are classic List use cases.
 
-## Goal
-
-Create `ArrayListDemo.java` and practice ordered CRUD: add, update, search, remove, index access, and iteration.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -162,7 +158,6 @@ Run and observe `IndexOutOfBoundsException`. Remove the line afterward.
 ## Expected result
 
 The final list has three ordered entries. One duplicate remains because only the first matching title was removed.
-
 
 
 ## Debug / design challenge

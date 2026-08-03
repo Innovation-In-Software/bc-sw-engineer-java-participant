@@ -26,10 +26,6 @@
 | Windows | [LAB-5-WINDOWS.md](LAB-5-WINDOWS.md) |
 | macOS | [LAB-5-MACOS.md](LAB-5-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
-
-> **Hard gate — pre-lab exercises:** Complete **all seven** Module 5 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. Lab 5 is graded consolidation in a **separate** packaged project (`examples/Lab5-LibraryManagement/`), not a replacement for the flat exercises folder (`examples/module-05-exercises/`).
-
 > **Incremental build:** Exercises 1–7 (List/Set/Map/Iterator/choice + warm-up) → Lab 5 packaged `com.academy.library` with domain types and menu. Same `java-bootcamp`, new folder `Lab5-LibraryManagement/`.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).## 45-minute timed path (use starter)
@@ -58,17 +54,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | Smoke-test output | Add `101` → register `1` → borrow → reports `Borrowed : 1` / popular `Programming` → `Thank You` |
 
 **If it fails (Windows PowerShell):** Prefer naming each `.java` file in the `javac` line (as in [LAB-5-WINDOWS.md](LAB-5-WINDOWS.md)); do not rely on `*.java` globs. Mark `examples\Lab5-LibraryManagement\src` as Sources Root — not `module-05-exercises`.
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 

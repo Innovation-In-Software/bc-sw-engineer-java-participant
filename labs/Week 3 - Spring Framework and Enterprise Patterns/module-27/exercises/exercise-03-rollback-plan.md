@@ -21,17 +21,12 @@
 
 **Enterprise context:** Without before/after balances, “it rolled back” is unverifiable in peer review.
 
-## Goal
-
-Create `notes/rollback-plan.md` — evidence plan.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-rollback-plan.md` (this file in the course repo) |
 | Your notes file | `notes/rollback-plan.md` |
 
 ## Worked example (read first)

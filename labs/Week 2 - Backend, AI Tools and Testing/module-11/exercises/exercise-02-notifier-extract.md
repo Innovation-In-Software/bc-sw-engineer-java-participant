@@ -21,19 +21,12 @@
 
 **Enterprise context:** Notification side effects must be testable without Spring messaging yet.
 
-## Goal
-
-Create `notes/lab11-notifier-extract-plan.md` that plans extracting a notifier collaborator so tests can isolate side effects (matches Lab 11’s `CustomerNotifier`).
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-notifier-extract.md` (this file in the course repo) |
 | Your notes file | `notes/lab11-notifier-extract-plan.md` |
 
 ## Worked example (read first)

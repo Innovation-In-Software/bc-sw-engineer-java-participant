@@ -21,19 +21,12 @@
 
 **Enterprise context:** CRM status changes need reproducible tests before AI drafts assertions.
 
-## Goal
-
-Create `notes/lab11-aaa-template.md` with an Arrange–Act–Assert outline Copilot must follow for activating Ravi (`CUS-1002`).
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-aaa-template.md` (this file in the course repo) |
 | Your notes file | `notes/lab11-aaa-template.md` |
 
 ## Northstar fixtures (use these exact values)

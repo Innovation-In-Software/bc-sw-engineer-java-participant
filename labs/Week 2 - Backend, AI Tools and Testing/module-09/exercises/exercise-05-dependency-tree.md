@@ -21,19 +21,12 @@
 
 **Enterprise context:** Security and license reviews start from the resolved dependency tree, not just the POM list.
 
-## Goal
-
-Create `notes/dependency-tree-notes.md` distinguishing direct vs transitive dependencies and recording why CI prefers `mvn -B verify`.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-09-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | this file in the course repo |
 | Your notes file | `notes/dependency-tree-notes.md` |
 
 ## How to read Maven tree symbols

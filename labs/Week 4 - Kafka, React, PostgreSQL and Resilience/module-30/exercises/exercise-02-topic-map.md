@@ -32,19 +32,12 @@ Two topics vs one topic + eventType — trade-offs?
 | Forgot DLQ name | Plan crm.customer-events.v1.dlq now |
 | Partition count unknown | Lab uses 3 partitions — document why |
 
-## Goal
-
-Create `notes/lab30-topic-map.md` — freeze Northstar topic names, partitions, and keying before any broker runs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-30-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-topic-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab30-topic-map.md` |
 
 ## Worked example (read first)

@@ -21,19 +21,12 @@
 
 **Enterprise context:** CI green with assertTrue(true) is a false sense of safety.
 
-## Goal
-
-Create `notes/lab11-prelab-asserts.md` that labels weak Copilot asserts vs asserts that protect Amina/Ravi behavior.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-11-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-trivial-vs-real-asserts.md` (this file in the course repo) |
 | Your notes file | `notes/lab11-prelab-asserts.md` |
 
 ## Northstar fixtures

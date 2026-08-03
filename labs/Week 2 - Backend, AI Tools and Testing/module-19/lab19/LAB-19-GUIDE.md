@@ -26,10 +26,6 @@
 | Windows | [LAB-19-WINDOWS.md](LAB-19-WINDOWS.md) |
 | macOS | [LAB-19-MACOS.md](LAB-19-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, and **Chrome/Chromium**. Work under `~/java-bootcamp`. Prefer copying `lab18-crm` → `lab19-crm`.
-
-> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1 → 2 → 3 → 4 → 6 → 5** before Step 1. Notes stay in `module-19-exercises/`; graded work is `examples/lab19-crm/`.
-
 > **Incremental build:** Pyramid → locators → Page Object → flake/CI → correlation → prep → Lab 19.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
@@ -51,17 +47,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
-
----
 
 ## What you'll submit (read this first)
 
@@ -175,7 +160,9 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and Labs [17](../../module-17/lab17/LAB-17-GUIDE.md)–[18](../../module-18/lab18/LAB-18-GUIDE.md). Confirm:
+Prior labs: [17](../../module-17/lab17/LAB-17-GUIDE.md) · [18](../../module-18/lab18/LAB-18-GUIDE.md).
+
+Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Git
 * Chrome or Chromium installed (or instructor-provided browser)
@@ -188,13 +175,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-git --version
-pwd
-ls ~/java-bootcamp/examples
-google-chrome --version || chromium --version || echo "Confirm Chrome/Chromium path with instructor"
 ```
-
----
 
 ## Suggested Project Files
 

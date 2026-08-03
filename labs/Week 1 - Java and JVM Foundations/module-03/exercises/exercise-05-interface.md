@@ -26,10 +26,6 @@
 
 **Enterprise context:** Statements, receipts, and audit exports often share a printable/reportable contract.
 
-## Goal
-
-Create a `Printable` contract, implement it in `Customer`, and invoke the method through a `Printable` reference.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

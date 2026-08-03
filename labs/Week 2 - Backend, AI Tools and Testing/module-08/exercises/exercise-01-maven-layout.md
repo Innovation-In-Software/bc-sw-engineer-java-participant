@@ -21,10 +21,6 @@
 
 **Enterprise context:** Banking CRM repos stay reviewable when everyone knows where code, config, and build output belong.
 
-## Goal
-
-Create `maven-layout-notes.md` and explain where production code, tests, configuration, documentation, and generated files belong.
-
 ## Reference tree
 
 ```text

@@ -21,17 +21,12 @@
 
 **Enterprise context:** Leadership rejects PRs where controllers talk to maps — seams must be obvious in review.
 
-## Goal
-
-Create `notes/layers.md` — boundary quiz.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-layer-boundaries.md` (this file in the course repo) |
 | Your notes file | `notes/layers.md` |
 
 ## Worked example (read first)

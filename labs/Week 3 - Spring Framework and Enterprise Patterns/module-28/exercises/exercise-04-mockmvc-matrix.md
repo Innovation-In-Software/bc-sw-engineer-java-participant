@@ -21,17 +21,12 @@
 
 **Enterprise context:** Automated 401/403 proofs stop regressions when someone adds a new open controller.
 
-## Goal
-
-Create `notes/mockmvc-matrix.md` — evidence matrix.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-mockmvc-matrix.md` (this file in the course repo) |
 | Your notes file | `notes/mockmvc-matrix.md` |
 
 ## Worked example (read first)

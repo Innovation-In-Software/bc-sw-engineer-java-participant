@@ -21,10 +21,6 @@
 
 **Enterprise context:** Audit and change control need a clear owner when a customer update rule changes.
 
-## Goal
-
-Create `layer-responsibilities.md` and assign each CRM task to the layer that should own it.
-
 ## Layer map
 
 | Layer/package | Owns | Does not own |

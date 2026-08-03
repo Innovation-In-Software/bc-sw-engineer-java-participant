@@ -24,11 +24,6 @@
 
 **Enterprise context:** What-if raise scenarios must not silently rewrite the live employee master file in memory.
 
-## Goal
-
-Create `RaiseDemo.java`. Transform every salary into a proposed value that is
-10% higher while proving that the immutable source employees are unchanged.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

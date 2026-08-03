@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip the prep gate burn class time rediscovering entity leaks and missing deps.
 
-## Goal
-
-Create `notes/lab14-prep-checklist.md` — readiness for Lab 14.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab14-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-prep-checklist.md` |
 
 ## Worked example (read first)

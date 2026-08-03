@@ -21,17 +21,12 @@
 
 **Enterprise context:** A single misplaced catch(Exception) turns every Northstar conflict into a useless 500 for partners.
 
-## Goal
-
-Create `notes/lab16-catch-order.md` — order handlers specific → general.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-16-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-catch-order.md` (this file in the course repo) |
 | Your notes file | `notes/lab16-catch-order.md` |
 
 ## Worked example (read first)

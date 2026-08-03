@@ -21,19 +21,12 @@
 
 **Enterprise context:** CI and laptops must agree on JDK 21 before AI-generated code is trusted.
 
-## Goal
-
-Create `notes/jdk-maven-checklist.md` and record the exact version checks you will run before Lab 10 coding.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-jdk-maven-habit.md` (this file in the course repo) |
 | Your notes file | `notes/jdk-maven-checklist.md` |
 
 ## Worked example (read first)

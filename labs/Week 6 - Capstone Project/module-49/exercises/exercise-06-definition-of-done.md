@@ -34,19 +34,12 @@ Starting Lab 51 JWT deep-dive instead of slice DoD — sequence?
 
 **Module 49** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab49-definition-of-done.md` — write a Definition of Done checklist for Lab 49.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-definition-of-done.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-definition-of-done.md` |
 
 ## Worked example (read first)

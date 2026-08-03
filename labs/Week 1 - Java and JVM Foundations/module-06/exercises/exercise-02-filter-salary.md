@@ -26,11 +26,6 @@
 
 **Enterprise context:** Payroll dashboards filter active / high-band employees without cloning HR master lists.
 
-## Goal
-
-Create `FilterSalaryDemo.java` and use `filter` to select employees whose
-salary is greater than 60,000 without changing the source list.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

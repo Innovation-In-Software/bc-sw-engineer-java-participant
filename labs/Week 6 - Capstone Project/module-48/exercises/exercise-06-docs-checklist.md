@@ -34,19 +34,12 @@ Starting Lab 49 UI without backlog/ADRs — stop?
 
 **Module 48** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab48-docs-checklist.md` — build a Pass/Fail checklist mirroring Week 6 planning portfolio items.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-docs-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-docs-checklist.md` |
 
 ## Worked example (read first)

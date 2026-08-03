@@ -21,19 +21,12 @@
 
 **Enterprise context:** Security reviews treat unexplained framework imports as defects, not features.
 
-## Goal
-
-Create `notes/phantom-annotation-notes.md` and flag Copilot-style annotations that do not belong in a plain Java prep sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-phantom-annotation-hunt.md` (this file in the course repo) |
 | Your notes file | `notes/phantom-annotation-notes.md` |
 
 ## Reference

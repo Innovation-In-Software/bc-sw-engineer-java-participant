@@ -12,8 +12,6 @@
 | Windows | [LAB-48-WINDOWS.md](LAB-48-WINDOWS.md) |
 | macOS | [LAB-48-MACOS.md](LAB-48-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 48 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Planning lab: **desktop IntelliJ IDEA Community (primary; optional VS Code)** on your laptop under `~/java-bootcamp/examples/customer-management-platform/` (or `lab48-crm/`). No cluster or database required for Lab 48 (Windows: `%USERPROFILE%\java-bootcamp`).
-
 ---
 
 ## Activity card
@@ -61,17 +59,6 @@ In class, use the starter templates so the **session block** fits **~45 minutes*
 | **Full (multi-day)** | 5–6 Hours | Every Step in this GUIDE |
 
 Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 
@@ -193,7 +180,7 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and be familiar with CRM patterns from Weeks 1–5. Confirm:
+Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Git; Docker available for later labs
 * Diagram/backlog tooling as instructed (Markdown Mermaid acceptable)
@@ -205,34 +192,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-git --version
-docker --version
-pwd
-ls ~/java-bootcamp/examples
 ```
-
-Create a focused branch and record the baseline:
-
-```bash
-cd ~/java-bootcamp/examples
-# Prefer shared capstone tree when it exists:
-#   customer-management-platform/
-# Otherwise create a planning slice:
-mkdir -p customer-management-platform/docs/architecture \
-  customer-management-platform/docs/adrs \
-  ~/java-bootcamp/notes/screenshots/lab-48
-cd customer-management-platform
-git switch -c lab/48-crm 2>/dev/null || git checkout -b lab/48-crm
-git status --short
-```
-
-If the shared platform build already exists, run a baseline verify and note failures (do not hide inherited red builds):
-
-```bash
-./mvnw -B clean verify 2>/dev/null || mvn -B clean verify
-```
-
----
 
 ## Suggested Project Files
 

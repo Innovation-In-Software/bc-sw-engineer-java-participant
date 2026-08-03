@@ -21,17 +21,12 @@
 
 **Enterprise context:** Security reviews ask for an explicit forbidden list — “be careful” is not a control.
 
-## Goal
-
-Create `notes/lab20-forbidden-pii-todos.md` — PII checklist TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-forbidden-pii-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-forbidden-pii-todos.md` |
 
 ## Worked example (read first)

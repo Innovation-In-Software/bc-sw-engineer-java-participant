@@ -26,10 +26,6 @@
 
 **Enterprise context:** Retail checkout: subtotal → discount → payable.
 
-## Goal
-
-Create `BillSummary.java` that reads product name, quantity, and unit price; computes total, 10% discount, and final amount; prints a short bill with `%.2f`.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

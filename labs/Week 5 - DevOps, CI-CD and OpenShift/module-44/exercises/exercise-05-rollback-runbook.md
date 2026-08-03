@@ -34,19 +34,12 @@ DB migrate not backward compatible — rollback limit?
 
 **Module 44** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab44-rollback-runbook.md` — outline `docs/rollback-runbook.md` for digest Y under stress.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-rollback-runbook.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-rollback-runbook.md` |
 
 ## Worked example (read first)

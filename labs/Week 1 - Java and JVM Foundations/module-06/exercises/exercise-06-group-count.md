@@ -24,11 +24,6 @@
 
 **Enterprise context:** Org charts and headcount dashboards group roster rows by department or cost center.
 
-## Goal
-
-Create `DepartmentCountDemo.java`. Group employees by department, count each
-group, and print the report in deterministic alphabetical key order.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

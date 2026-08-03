@@ -34,19 +34,12 @@ Using OpenShift Route YAML on Traefik-only k3s — fix?
 
 **Module 42** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab42-manifest-map.md` — name the objects required to run `crm-api` on the cohort k3s cluster.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-manifest-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-manifest-map.md` |
 
 ## Worked example (read first)

@@ -21,17 +21,12 @@
 
 **Enterprise context:** CRM activate must traverse the same layers whether called from REST, SOAP, or a batch job.
 
-## Goal
-
-Create `notes/lab15-layers.md` — sketch API → service → repository for activate.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-layer-diagram.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-layers.md` |
 
 ## Worked example (read first)

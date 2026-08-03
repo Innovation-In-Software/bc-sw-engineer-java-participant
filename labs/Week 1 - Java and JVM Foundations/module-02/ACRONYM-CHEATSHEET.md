@@ -31,8 +31,19 @@ _Derived from **34** curriculum slide diagram title(s) plus slide text for this 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
 | **API** | Application Programming Interface | A defined way for one program to call another. |
+| **ID** | Identifier | A short field that uniquely tags a record, e.g. an auto-generated employee ID. |
+| **I/O** | Input/Output | Reading input (Scanner) and producing output (print/printf) — a core Module 2 topic. |
 | **OOP** | Object-Oriented Programming | Design with objects that hold data and behavior. |
 | **UTF-8** | Unicode Transformation Format – 8-bit | Common character encoding so text displays correctly. |
+| **XOR** | Exclusive OR | Logical operator (`^`) that's true only when its two operands differ; never short-circuits. |
+
+---
+
+## Business context
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **HR** | Human Resources | The department requesting the module's running Employee Registration app. |
 
 ---
 

@@ -26,10 +26,6 @@
 
 **Enterprise context:** Loan eligibility (if ranges) and menu commands (switch) mirror banking/ops consoles.
 
-## Goal
-
-Create `DecisionDemo.java` that reads a numeric score and prints a letter grade with `if`/`else if`/`else`, then reads a day number (1–7) and prints its name with `switch`.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -126,7 +122,6 @@ Wednesday
 ## Expected result
 
 Correct grade for your score and correct day name for your day number.
-
 
 
 ## Debug challenge

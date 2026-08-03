@@ -21,19 +21,12 @@
 
 **Enterprise context:** Lookup bugs from == on String ids are classic production defects.
 
-## Goal
-
-Create `notes/lab12-equals-vs-eqeq.md` — document when == is wrong for status strings and customer ids.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-equals-vs-eqeq.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-equals-vs-eqeq.md` |
 
 ## Worked example (read first)

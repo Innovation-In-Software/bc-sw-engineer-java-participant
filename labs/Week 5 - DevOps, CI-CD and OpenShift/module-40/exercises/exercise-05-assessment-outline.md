@@ -34,19 +34,12 @@ Vague 'looks fine' assessment — why rejected?
 
 **Module 40** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab40-assessment-outline.md` — outline `docs/security-assessment.md` sections peers will expect.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-assessment-outline.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-assessment-outline.md` |
 
 ## Worked example (read first)

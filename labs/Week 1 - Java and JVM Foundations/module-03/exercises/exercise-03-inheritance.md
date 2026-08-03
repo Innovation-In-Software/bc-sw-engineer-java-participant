@@ -26,10 +26,6 @@
 
 **Enterprise context:** Savings vs current products share Account contracts but differ in overdraft/interest rules.
 
-## Goal
-
-Create `SavingsAccount` and `CurrentAccount` subclasses. Override account type in both; override withdrawal in current accounts to apply a fee. Demonstrate runtime polymorphism with `Account[]`.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -193,7 +189,6 @@ Method chosen:  CurrentAccount.withdraw
 ## Expected result
 
 One `Account[]` holds both subclasses. The same `withdraw(20)` call produces different balances because the current account override adds a fee.
-
 
 
 ## Debug / design challenge

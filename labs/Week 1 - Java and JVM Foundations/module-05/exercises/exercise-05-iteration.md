@@ -24,10 +24,6 @@
 
 **Enterprise context:** Batch cleanup of expired holds must not corrupt the catalog mid-iteration.
 
-## Goal
-
-Create `IteratorDemo.java` and safely remove matching titles through the active `Iterator`.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -159,7 +155,6 @@ This exercise uses `Iterator` because Lab 5 requires understanding its safe-remo
 ## Expected result
 
 Both deprecated titles are removed without `ConcurrentModificationException`.
-
 
 
 ## Debug / design challenge

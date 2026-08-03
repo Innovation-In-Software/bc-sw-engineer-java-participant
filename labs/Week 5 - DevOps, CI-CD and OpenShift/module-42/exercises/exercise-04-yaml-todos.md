@@ -34,19 +34,12 @@ ImagePullBackOff — checklist?
 
 **Module 42** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab42-yaml-todos.md` — complete a Deployment skeleton with blanks (pre-lab only).
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-yaml-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-yaml-todos.md` |
 
 ## Worked example (read first)

@@ -26,10 +26,6 @@
 
 **Enterprise context:** Warehouse SKU entry: name + quantity + unit price.
 
-## Goal
-
-Create `ProductInfo.java` that reads product name, quantity (`int`), and price (`double`), then prints the details.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

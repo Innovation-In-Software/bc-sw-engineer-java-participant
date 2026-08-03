@@ -21,17 +21,12 @@
 
 **Enterprise context:** Partners parse SOAP faults with XML tools — HTTP 404 JSON on /ws confuses them.
 
-## Goal
-
-Create `notes/fault-vs-rest.md` — fault vs REST table.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-24-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-fault-vs-rest.md` (this file in the course repo) |
 | Your notes file | `notes/fault-vs-rest.md` |
 
 ## Worked example (read first)

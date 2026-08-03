@@ -34,19 +34,12 @@ CB never opens in tests — wrong instance name?
 
 **Module 32** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab32-circuit-states.md` — document closed, open, and half-open for the Account Profile breaker.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-32-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-circuit-states.md` (this file in the course repo) |
 | Your notes file | `notes/lab32-circuit-states.md` |
 
 ## Worked example (read first)

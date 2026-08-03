@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip MDC-clear notes ship filters that poison thread pools.
 
-## Goal
-
-Create `notes/lab20-prep-checklist.md` — readiness for Lab 20.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab20-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-prep-checklist.md` |
 
 ## Worked example (read first)

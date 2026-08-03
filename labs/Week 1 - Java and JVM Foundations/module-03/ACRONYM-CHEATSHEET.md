@@ -12,6 +12,7 @@ _Derived from **36** curriculum slide diagram title(s) plus slide text for this 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
 | **API** | Application Programming Interface | A defined way for one program to call another. |
+| **DB** | Database | Persistent data store; e.g. swapping the `Database` implementation in the DIP example. |
 | **DIP** | Dependency Inversion Principle | Depend on abstractions, not concrete details. |
 | **ISP** | Interface Segregation Principle | Prefer small, focused interfaces over fat ones. |
 | **LSP** | Liskov Substitution Principle | Subtypes must be usable wherever the base type is expected. |
@@ -20,6 +21,7 @@ _Derived from **36** curriculum slide diagram title(s) plus slide text for this 
 | **POJO** | Plain Old Java Object | A simple Java class without framework magic. |
 | **SOLID** | Single responsibility, Open-closed, Liskov substitution, Interface segregation, Dependency inversion | Five design principles for maintainable object-oriented code. |
 | **SRP** | Single Responsibility Principle | A class should have one reason to change. |
+| **UUID** | Universally Unique Identifier | Data type used for entity primary keys in the UML domain model (customerId, orderId, paymentId). |
 
 ---
 
@@ -36,6 +38,7 @@ _Derived from **36** curriculum slide diagram title(s) plus slide text for this 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
 | **UML** | Unified Modeling Language | Standard diagrams for architecture/design. |
+| **UPI** | Unified Payments Interface | Real-world payment method example, alongside CreditCard and PayPal, for the polymorphism demo. |
 
 ---
 

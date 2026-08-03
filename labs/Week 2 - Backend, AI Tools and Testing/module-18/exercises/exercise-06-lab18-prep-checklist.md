@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip prep accept AI SUT mocks and burn the timed path.
 
-## Goal
-
-Create `notes/lab18-prep-checklist.md` — readiness for Lab 18.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab18-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-prep-checklist.md` |
 
 ## Worked example (read first)

@@ -21,17 +21,12 @@
 
 **Enterprise context:** Ops demos fail when save is skipped after a successful-looking activate return.
 
-## Goal
-
-Create `notes/lab18-activate-interaction-todos.md` — fill activate sequence.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-18-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-fill-activate-interaction-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab18-activate-interaction-todos.md` |
 
 ## Worked example (read first)

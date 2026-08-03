@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip cardinality notes ship customerId tags and regret it in Prometheus.
 
-## Goal
-
-Create `notes/lab21-prep-checklist.md` — readiness for Lab 21.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab21-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-prep-checklist.md` |
 
 ## Worked example (read first)

@@ -26,10 +26,6 @@
 | Windows | [LAB-6-WINDOWS.md](LAB-6-WINDOWS.md) |
 | macOS | [LAB-6-MACOS.md](LAB-6-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
-
-> **Hard gate — pre-lab exercises:** Complete **Exercises 1–7** under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** **before** Step 1 of this lab. **Exercise 8** (`parallelStream` bonus) is recommended stretch work — bring those notes if you completed it. Lab 6 is graded consolidation in a **separate** packaged project (`examples/Lab6-EmployeeAnalytics/`), not a replacement for the flat exercises folder (`examples/module-06-exercises/`).
-
 > **Incremental build:** Exercises 1–7 (5-employee streams) → Lab 6 packaged `com.academy.analytics` with 25-employee seed, menu, and dashboard. Same `java-bootcamp`, new folder `Lab6-EmployeeAnalytics/`.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).
@@ -60,17 +56,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | Smoke-test output | Menu 1 (25 rows) → 8 dashboard Average Salary **100680** → 9 `Thank You` |
 
 **If it fails (Windows PowerShell):** Prefer naming each `.java` file in the `javac` line (as in [LAB-6-WINDOWS.md](LAB-6-WINDOWS.md)); do not rely on `*.java` globs. Mark `examples\Lab6-EmployeeAnalytics\src` as Sources Root — not `module-06-exercises`.
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 

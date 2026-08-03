@@ -34,19 +34,12 @@ Seed order: account before customer — fails how?
 
 **Module 37** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab37-seed-and-verify-plan.md` — outline seed and verify queries you will run in the real lab.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-37-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-seed-and-verify-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab37-seed-and-verify-plan.md` |
 
 ## Worked example (read first)

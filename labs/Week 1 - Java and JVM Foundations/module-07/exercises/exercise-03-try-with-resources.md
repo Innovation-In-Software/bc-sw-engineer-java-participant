@@ -24,11 +24,6 @@
 
 **Enterprise context:** Transaction log writers should not leak file handles on IOException.
 
-## Goal
-
-Create and read a small `transactions.txt` file using `BufferedReader` in
-try-with-resources—without calling `close()` manually.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

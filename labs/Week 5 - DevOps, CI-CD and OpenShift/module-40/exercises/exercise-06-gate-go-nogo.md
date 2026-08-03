@@ -34,19 +34,12 @@ Green verify but no triage CSV — pass the gate?
 
 **Module 40** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab40-gate-go-nogo.md` — write leadership questions that freeze a bad merge before Docker.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-gate-go-nogo.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-gate-go-nogo.md` |
 
 ## Worked example (read first)

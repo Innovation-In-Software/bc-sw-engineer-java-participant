@@ -34,19 +34,12 @@ Playbook always 'changed' on second run — likely cause?
 
 **Module 45** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab45-ansible-idempotence.md` — describe idempotent Ansible tasks for a CRM host sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-ansible-idempotence.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-ansible-idempotence.md` |
 
 ## Worked example (read first)

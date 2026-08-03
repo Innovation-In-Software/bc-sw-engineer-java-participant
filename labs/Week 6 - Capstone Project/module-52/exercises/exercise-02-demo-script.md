@@ -34,19 +34,12 @@ No deny-path beat — add?
 
 **Module 52** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab52-demo-script.md` — write a timed demo script that another teammate could run.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-52-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-demo-script.md` (this file in the course repo) |
 | Your notes file | `notes/lab52-demo-script.md` |
 
 ## Worked example (read first)

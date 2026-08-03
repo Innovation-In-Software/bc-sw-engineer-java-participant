@@ -21,17 +21,12 @@
 
 **Enterprise context:** Peers must reproduce your environment — vague “I set the profile somehow” is not evidence.
 
-## Goal
-
-Create `notes/activation-commands.md` — activation drill.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-activation-drill.md` (this file in the course repo) |
 | Your notes file | `notes/activation-commands.md` |
 
 ## Worked example (read first)

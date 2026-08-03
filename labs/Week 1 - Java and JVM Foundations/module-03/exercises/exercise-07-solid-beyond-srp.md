@@ -28,11 +28,6 @@
 
 **Enterprise context:** Adding a new account product should not rewrite every switch in production banking code.
 
-## Goal
-
-For each remaining SOLID principle, write one short justification and prove LSP
-with a working `FrozenAccount` that runs inside the existing polymorphic loop.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

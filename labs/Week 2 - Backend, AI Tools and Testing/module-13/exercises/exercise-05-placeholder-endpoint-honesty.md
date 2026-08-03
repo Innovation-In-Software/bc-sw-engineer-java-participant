@@ -21,19 +21,12 @@
 
 **Enterprise context:** Falsely claiming a live endpoint fails audits and partner onboarding.
 
-## Goal
-
-Create `notes/lab13-placeholder-honesty.md` — document what a placeholder endpoint means before Spring Boot hosting.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-placeholder-endpoint-honesty.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-placeholder-honesty.md` |
 
 ## Worked example (read first)

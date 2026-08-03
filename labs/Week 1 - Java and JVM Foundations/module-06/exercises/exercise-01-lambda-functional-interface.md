@@ -27,12 +27,6 @@
 
 **Enterprise context:** HR salary-band rules are often expressed as predicates reused by filters and reports.
 
-## Goal
-
-Create a five-employee dataset, declare a custom functional interface with one
-abstract method, and implement the same salary rule with an anonymous class and
-a lambda.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

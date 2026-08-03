@@ -21,17 +21,12 @@
 
 **Enterprise context:** Finance review rejects ACID buzzwords without balances/log screenshots.
 
-## Goal
-
-Create `notes/acid-crm.md` — ACID ↔ CRM table.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-27-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-acid-crm.md` (this file in the course repo) |
 | Your notes file | `notes/acid-crm.md` |
 
 ## Worked example (read first)

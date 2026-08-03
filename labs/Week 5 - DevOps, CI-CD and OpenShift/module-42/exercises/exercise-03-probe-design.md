@@ -34,19 +34,12 @@ Same probe for all three — risk?
 
 **Module 42** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab42-probe-design.md` — differentiate startup, readiness, and liveness for CRM pods.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-probe-design.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-probe-design.md` |
 
 ## Worked example (read first)

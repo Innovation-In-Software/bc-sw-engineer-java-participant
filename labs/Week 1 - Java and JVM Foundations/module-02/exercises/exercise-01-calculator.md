@@ -26,10 +26,6 @@
 
 **Enterprise context:** POS / e-commerce line totals use the same arithmetic + formatted money display.
 
-## Goal
-
-Create `Calculator.java` that reads two numbers and prints sum, difference, product, and quotient (use `double` so division keeps decimals).
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

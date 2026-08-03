@@ -21,17 +21,12 @@
 
 **Enterprise context:** Status-only tests miss envelope regressions that break React error screens.
 
-## Goal
-
-Create `notes/mockmvc-body-plan.md` — assertion plan.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-mockmvc-body-assertions.md` (this file in the course repo) |
 | Your notes file | `notes/mockmvc-body-plan.md` |
 
 ## Worked example (read first)

@@ -34,19 +34,12 @@ Valid token 401 — first checks?
 
 **Module 51** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab51-rbac-negative-plan.md` — design deny-by-default proofs before coding.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-51-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-rbac-negative-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab51-rbac-negative-plan.md` |
 
 ## Worked example (read first)

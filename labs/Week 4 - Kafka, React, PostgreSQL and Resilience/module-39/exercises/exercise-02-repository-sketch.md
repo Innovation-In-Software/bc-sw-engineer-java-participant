@@ -34,19 +34,12 @@ Business logic in the repository interface — where instead?
 
 **Module 39** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab39-repository-sketch.md` — list repository methods you will implement in Lab 39.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-39-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-repository-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab39-repository-sketch.md` |
 
 ## Worked example (read first)

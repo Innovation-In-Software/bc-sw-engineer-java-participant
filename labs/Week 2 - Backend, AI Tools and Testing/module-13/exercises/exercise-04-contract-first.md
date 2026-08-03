@@ -21,19 +21,12 @@
 
 **Enterprise context:** Regulated integrations prefer frozen contracts over ad-hoc Java DTOs.
 
-## Goal
-
-Create `notes/lab13-contract-first.md` — explain why Northstar SOAP should start from contract, not Java classes.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-13-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-contract-first.md` (this file in the course repo) |
 | Your notes file | `notes/lab13-contract-first.md` |
 
 ## Worked example (read first)

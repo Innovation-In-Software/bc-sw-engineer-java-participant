@@ -34,19 +34,12 @@ Timeline stale after POST — what step missing?
 
 **Module 50** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab50-data-flow-note.md` — write a short UI→API→JPA→PostgreSQL flow for one action.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-50-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-data-flow-note.md` (this file in the course repo) |
 | Your notes file | `notes/lab50-data-flow-note.md` |
 
 ## Worked example (read first)

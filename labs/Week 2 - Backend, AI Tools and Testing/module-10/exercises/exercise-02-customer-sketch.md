@@ -21,19 +21,12 @@
 
 **Enterprise context:** Onboarding demos use fixed fixtures (Amina ACTIVE) so reviews are comparable.
 
-## Goal
-
-Create `notes/customer-sketch-notes.md` with hand-sketched fields for CUS-1001 before asking Copilot to generate code.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-10-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-customer-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/customer-sketch-notes.md` |
 
 ## Worked example (read first)

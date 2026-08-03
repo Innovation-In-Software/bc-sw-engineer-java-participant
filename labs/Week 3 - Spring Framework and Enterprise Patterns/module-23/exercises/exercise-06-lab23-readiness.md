@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip ownership notes cannot explain what Boot did versus what they designed.
 
-## Goal
-
-Create `notes/lab23-readiness.md` — readiness for Lab 23.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab23-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab23-readiness.md` |
 
 ## Worked example (read first)

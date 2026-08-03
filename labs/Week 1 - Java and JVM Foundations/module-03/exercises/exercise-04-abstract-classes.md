@@ -26,10 +26,6 @@
 
 **Enterprise context:** Banks rarely instantiate a generic Account — only Savings/Current/etc.
 
-## Goal
-
-Turn `Account` into an `abstract class` with one abstract method, and prove it can no longer be created directly.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

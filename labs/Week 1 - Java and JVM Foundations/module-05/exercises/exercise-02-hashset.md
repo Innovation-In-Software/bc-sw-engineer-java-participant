@@ -24,10 +24,6 @@
 
 **Enterprise context:** Registered ISBN/book IDs must be unique — Set fits.
 
-## Goal
-
-Create `SetDemo.java`, prove duplicate rejection with `add`’s return value, and create a sorted `TreeSet` view.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

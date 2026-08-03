@@ -34,19 +34,12 @@ Manifest with passwords inside JSON — gate fail?
 
 **Module 44** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab44-manifest-fields.md` — list fields for `artifact-manifest.json` without inventing real digests.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-44-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-manifest-fields.md` (this file in the course repo) |
 | Your notes file | `notes/lab44-manifest-fields.md` |
 
 ## Worked example (read first)

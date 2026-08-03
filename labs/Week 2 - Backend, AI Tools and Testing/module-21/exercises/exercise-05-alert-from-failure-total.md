@@ -21,17 +21,12 @@
 
 **Enterprise context:** On-call needs a one-pager — “look around” is not a runbook.
 
-## Goal
-
-Create `notes/lab21-alert-runbook.md` — mini runbook.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-alert-from-failure-total.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-alert-runbook.md` |
 
 ## Worked example (read first)

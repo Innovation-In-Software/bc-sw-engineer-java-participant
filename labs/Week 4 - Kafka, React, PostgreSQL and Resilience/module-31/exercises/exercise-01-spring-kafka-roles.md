@@ -34,19 +34,12 @@ Putting KafkaTemplate only in a @RestController — seam risk?
 
 **Module 31** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab31-spring-kafka.md` — connect KafkaTemplate and @KafkaListener to producer/consumer concepts.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-31-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-spring-kafka-roles.md` (this file in the course repo) |
 | Your notes file | `notes/lab31-spring-kafka.md` |
 
 ## Worked example (read first)

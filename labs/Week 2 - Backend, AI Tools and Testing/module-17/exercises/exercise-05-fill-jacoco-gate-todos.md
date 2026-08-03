@@ -21,17 +21,12 @@
 
 **Enterprise context:** CI gates on service coverage stop silent deletions of transition tests.
 
-## Goal
-
-Create `notes/lab17-jacoco-gate-todos.md` — JaCoCo narrative TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-jacoco-gate-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-jacoco-gate-todos.md` |
 
 ## Worked example (read first)

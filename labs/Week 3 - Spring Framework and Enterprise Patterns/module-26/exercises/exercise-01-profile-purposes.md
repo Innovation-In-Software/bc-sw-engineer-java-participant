@@ -21,17 +21,12 @@
 
 **Enterprise context:** Incidents happen when prod runs with dev verbosity and blank passwords in YAML.
 
-## Goal
-
-Create `notes/profiles.md` — profile purposes.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-profile-purposes.md` (this file in the course repo) |
 | Your notes file | `notes/profiles.md` |
 
 ## Worked example (read first)

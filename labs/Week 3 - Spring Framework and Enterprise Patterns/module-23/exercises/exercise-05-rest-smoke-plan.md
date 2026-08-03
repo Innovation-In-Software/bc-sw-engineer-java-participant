@@ -21,17 +21,12 @@
 
 **Enterprise context:** Reviewers want a repeatable smoke script — not ad-hoc clicks without IDs.
 
-## Goal
-
-Create `notes/rest-smoke-plan.md` — smoke checklist.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-rest-smoke-plan.md` (this file in the course repo) |
 | Your notes file | `notes/rest-smoke-plan.md` |
 
 ## Worked example (read first)

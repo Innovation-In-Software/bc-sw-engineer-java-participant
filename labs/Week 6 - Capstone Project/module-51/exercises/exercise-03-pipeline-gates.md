@@ -34,19 +34,12 @@ Pipeline green with skipped tests — acceptable?
 
 **Module 51** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab51-pipeline-gates.md` — list pipeline stages required for capstone delivery.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-51-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-pipeline-gates.md` (this file in the course repo) |
 | Your notes file | `notes/lab51-pipeline-gates.md` |
 
 ## Worked example (read first)

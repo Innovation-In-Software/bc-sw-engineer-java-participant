@@ -34,19 +34,12 @@ Duplicating customers in Card local state — sync bugs?
 
 **Module 34** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab34-state.md` — decide what is prop vs state on a Customer edit form.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-34-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-props-vs-state.md` (this file in the course repo) |
 | Your notes file | `notes/lab34-state.md` |
 
 ## Worked example (read first)

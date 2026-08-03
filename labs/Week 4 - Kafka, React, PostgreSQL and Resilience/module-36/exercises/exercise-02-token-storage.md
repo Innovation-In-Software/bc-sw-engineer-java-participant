@@ -34,19 +34,12 @@ Refresh token in localStorage 'for convenience' — tradeoff?
 
 **Module 36** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab36-token-storage.md` — recommend where the CRM SPA keeps access tokens for the lab.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-36-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-token-storage.md` (this file in the course repo) |
 | Your notes file | `notes/lab36-token-storage.md` |
 
 ## Worked example (read first)

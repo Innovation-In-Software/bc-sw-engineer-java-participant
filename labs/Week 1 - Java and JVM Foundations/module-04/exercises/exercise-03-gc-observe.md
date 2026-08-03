@@ -26,10 +26,6 @@
 
 **Enterprise context:** Ops watches GC logs before blaming the app for latency spikes.
 
-## Goal
-
-Create `GcObserve.java`, run it with a bounded heap and unified GC logging, and identify evidence that the JVM reclaimed temporary allocations.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

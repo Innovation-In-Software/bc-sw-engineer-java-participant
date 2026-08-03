@@ -34,19 +34,12 @@ Duplicate side effects after DLT replay — fix?
 
 **Module 46** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab46-idempotency-sketch.md` — explain how replay must not double-apply CRM side effects.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-idempotency-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-idempotency-sketch.md` |
 
 ## Worked example (read first)

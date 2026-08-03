@@ -34,19 +34,12 @@ AI opens public database — accept because it 'works'?
 
 **Module 45** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab45-ai-prompt-todos.md` — complete a bounded prompt template for scaffolding IaC.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-45-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-ai-prompt-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab45-ai-prompt-todos.md` |
 
 ## Worked example (read first)

@@ -24,10 +24,6 @@
 
 **Enterprise context:** Architects pick structures from access patterns, not habit.
 
-## Goal
-
-Create `collection-choices.md`. For each scenario, choose an interface and implementation, then explain order, duplicates, lookup pattern, and mutation needs.
-
 ## Decision questions
 
 Ask in order:

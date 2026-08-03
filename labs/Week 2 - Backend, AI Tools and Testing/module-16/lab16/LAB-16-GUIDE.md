@@ -26,10 +26,6 @@
 | Windows | [LAB-16-WINDOWS.md](LAB-16-WINDOWS.md) |
 | macOS | [LAB-16-MACOS.md](LAB-16-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md). Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21** and **Maven 3.9+**. Work under `~/java-bootcamp`.
-
-> **Hard gate — pre-lab exercises:** Complete [`../exercises/`](../exercises/EXERCISES-INDEX.md) **1–6** before Step 1. Notes stay in `module-16-exercises/`; graded work is `examples/lab16-crm/`.
-
 > **Incremental build:** Catch order → ErrorResponse JSON → status map → hygiene/correlation → Lab 16 `lab16-crm`.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E). Status cheat sheet: [`../HTTP-STATUS-CODES.md`](../HTTP-STATUS-CODES.md).
@@ -67,17 +63,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
-
----
 
 ## What you'll submit (read this first)
 
@@ -201,7 +186,9 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), and Labs [14](../../module-14/lab14/LAB-14-GUIDE.md)–[15](../../module-15/lab15/LAB-15-GUIDE.md). Confirm:
+Prior labs: [14](../../module-14/lab14/LAB-14-GUIDE.md) · [15](../../module-15/lab15/LAB-15-GUIDE.md).
+
+Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Git
 * Lab 15 service/validator + Lab 14 validation wired
@@ -212,14 +199,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-git --version
-pwd
-ls ~/java-bootcamp/examples
 ```
-
-Fix environment failures before changing application code.
-
----
 
 ## Suggested Project Files
 

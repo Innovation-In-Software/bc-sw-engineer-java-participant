@@ -24,11 +24,6 @@
 
 **Enterprise context:** Staffing lists often need department filter + name projection + alphabetical sort in one report.
 
-## Goal
-
-Create `HrNamesDemo.java`. Compose `filter`, `map`, `sorted`, and `toList` to
-produce an alphabetized list of names for employees in HR.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip override-order notes cannot explain why prod still sees a CLI leftover.
 
-## Goal
-
-Create `notes/lab26-readiness.md` — readiness for Lab 26.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-26-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab26-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab26-readiness.md` |
 
 ## Worked example (read first)

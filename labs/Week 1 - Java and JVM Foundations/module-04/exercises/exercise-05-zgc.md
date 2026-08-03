@@ -26,10 +26,6 @@
 
 **Enterprise context:** Latency-sensitive payment/trading apps may evaluate ZGC/Shenandoah for pause goals.
 
-## Goal
-
-Select the ZGC garbage collector explicitly, verify the JVM accepted it, and contrast what you see in the log with Exercise 4's G1 run.
-
 ## Key idea
 
 ZGC is a low-latency collector designed to keep pause times very short (typically sub-millisecond) even on large heaps, by doing almost all of its work concurrently with the running application. G1 favors balanced throughput and pause goals; ZGC trades some throughput for consistently tiny pauses.

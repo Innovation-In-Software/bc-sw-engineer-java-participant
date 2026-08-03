@@ -21,17 +21,12 @@
 
 **Enterprise context:** Wrong starters waste hours — peers must start the CRM with a known POM set.
 
-## Goal
-
-Create `notes/starters.md` — starter inventory.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-starters-inventory.md` (this file in the course repo) |
 | Your notes file | `notes/starters.md` |
 
 ## Worked example (read first)

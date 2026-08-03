@@ -21,17 +21,12 @@
 
 **Enterprise context:** AI accelerates scaffolding — unchecked drafts recreate the layering bugs this lab exists to stop.
 
-## Goal
-
-Create `notes/ai-review-policy.md` — review policy.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-25-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-ai-review-policy.md` (this file in the course repo) |
 | Your notes file | `notes/ai-review-policy.md` |
 
 ## Worked example (read first)

@@ -21,17 +21,12 @@
 
 **Enterprise context:** Service tests are the fastest safety net for CRM status rules before UI or HTTP layers.
 
-## Goal
-
-Create `notes/lab17-aaa-plan.md` — outline three AAA service tests.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-aaa-service-tests-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-aaa-plan.md` |
 
 ## Worked example (read first)

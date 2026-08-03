@@ -26,11 +26,6 @@
 
 **Enterprise context:** ATMService catches domain failures; Main shows user-safe text — deep frames should not print PINs.
 
-## Goal
-
-Trace a checked exception from account layer → service layer → menu layer →
-`main`, catching it only at the recovery boundary.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

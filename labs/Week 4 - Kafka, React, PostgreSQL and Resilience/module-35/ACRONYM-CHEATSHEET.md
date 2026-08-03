@@ -12,6 +12,8 @@ _Derived from **22** curriculum slide diagram title(s) plus slide text for this 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
 | **React** | — | Library for building UI from components. |
+| **SPA** | Single-Page Application | The CRM UI, which never talks to PostgreSQL directly — only Spring's REST endpoints. |
+| **UX** | User Experience | How usable and clear the app feels, e.g. loading/error states and confirmation UX. |
 
 ---
 
@@ -22,6 +24,18 @@ _Derived from **22** curriculum slide diagram title(s) plus slide text for this 
 | **HTTP** | Hypertext Transfer Protocol | How clients send web/API requests. |
 | **JSON** | JavaScript Object Notation | Lightweight data format common in REST APIs. |
 | **REST** | Representational State Transfer | API style usually over HTTP, focused on resources and verbs. |
+| **URI** | Uniform Resource Identifier | The general name for identifying a resource, e.g. `/customers/{id}` (encoded with `encodeURIComponent`). |
+| **URL** | Uniform Resource Locator | A full web address, e.g. `http://localhost:8080/api/customers`. |
+
+---
+
+## Data formats & legacy APIs
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **SOAP** | Simple Object Access Protocol | Older XML-based API style, contrasted with REST/JSON in this module. |
+| **XML** | Extensible Markup Language | Structured text format; what SOAP-bridged endpoints may still use internally. |
+| **YAML** | YAML Ain't Markup Language | Human-friendly config/data format (a Knowledge Check distractor for API payload format). |
 
 ---
 
@@ -29,7 +43,21 @@ _Derived from **22** curriculum slide diagram title(s) plus slide text for this 
 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
+| **CSP** | Content Security Policy | Restricts which sources of scripts/styles/images a page may load. |
+| **CSRF** | Cross-Site Request Forgery | Tricks a logged-in browser into unwanted requests; explicit-CORS config helps guard against it. |
 | **HTTPS** | HTTP Secure | HTTP over TLS encryption. |
+| **JWT** | JSON Web Token | Auth token; this module explicitly defers Authorization/bearer-token headers to Lab 36. |
+| **PII** | Personally Identifiable Information | Sensitive data (tokens, keys, customer details) that must never leak to the client unnecessarily. |
+| **XSS** | Cross-Site Scripting | Attack that injects malicious scripts into pages. |
+
+---
+
+## Browser & networking
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **DNS** | Domain Name System | Translates a hostname to an address; a DNS failure is one type of network error to handle. |
+| **XHR** | XMLHttpRequest | The browser API Axios wraps under the hood to make HTTP calls. |
 
 ---
 
@@ -69,7 +97,18 @@ _Derived from **22** curriculum slide diagram title(s) plus slide text for this 
 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
+| **DB** | Database | Generic term for the persistent store behind the API; DB passwords must never live in frontend env vars. |
+| **JPA** | Java Persistence API | Maps entities to persistent storage; the Repository layer's data-access technology. |
 | **PostgreSQL** | — | Popular open-source relational database used in this course. |
+| **UUID** | Universally Unique Identifier | A globally unique id; this lab uses a fixed correlation id instead of a real per-request UUID. |
+
+---
+
+## Business context
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **CRM** | Customer Relationship Management | The Northstar Customer Management Platform this lab wires to a real Spring Boot API. |
 
 ---
 

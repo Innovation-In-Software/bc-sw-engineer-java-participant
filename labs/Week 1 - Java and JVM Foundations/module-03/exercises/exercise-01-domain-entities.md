@@ -26,10 +26,6 @@
 
 **Enterprise context:** Banking core systems start with Customer/Account/Transaction models before any UI.
 
-## Goal
-
-Create `notes.md` containing an entity table for `Customer`, `Account`, and `Transaction`. Identify useful attributes, one main responsibility, and relationships.
-
 ## Scenario
 
 A bank employee needs to:

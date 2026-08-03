@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip prep burn the timed path rediscovering weak asserts and wrong packages.
 
-## Goal
-
-Create `notes/lab17-prep-checklist.md` — readiness for Lab 17.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab17-prep-checklist.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-prep-checklist.md` |
 
 ## Worked example (read first)

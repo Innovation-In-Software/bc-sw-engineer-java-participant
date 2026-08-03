@@ -24,11 +24,6 @@
 
 **Enterprise context:** Service APIs document recoverable failures so UI layers can show safe messages.
 
-## Goal
-
-Create `ThrowThrowsDemo.java` to distinguish actively throwing an exception
-from declaring that a method may propagate one.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

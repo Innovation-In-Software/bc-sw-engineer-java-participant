@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip the MockMvc matrix cannot prove AGENT/ADMIN behavior under time pressure.
 
-## Goal
-
-Create `notes/lab28-readiness.md` — readiness for Lab 28.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab28-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab28-readiness.md` |
 
 ## Worked example (read first)

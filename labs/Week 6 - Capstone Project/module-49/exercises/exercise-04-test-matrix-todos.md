@@ -34,19 +34,12 @@ Skipping all failure tests — gate?
 
 **Module 49** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab49-test-matrix-todos.md` — complete a happy/failure test matrix for Lab 49.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-49-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-test-matrix-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab49-test-matrix-todos.md` |
 
 ## Worked example (read first)

@@ -20,6 +20,10 @@ _Derived from **26** curriculum slide diagram title(s) plus slide text for this 
 | **Resilience4j** | — | Java library for circuit breaker, retry, rate limiter, and more. |
 | **Retry** | — | Try again after a failure (often with backoff). |
 | **Timeout** | — | Give up after a time limit instead of waiting forever. |
+| **AOP** | Aspect-Oriented Programming | Resilience4j's annotations (`@Retry`, `@CircuitBreaker`) work via Spring AOP proxies -- calling a method from inside the same class bypasses them. |
+| **MTBF** | Mean Time Between Failures | Availability metric: how often things break in the first place. |
+| **MTTR** | Mean Time To Recover | Availability metric: how fast the system recovers -- the metric resilience patterns most directly improve. |
+| **SLA** | Service Level Agreement | Uptime-percentage commitment that HA architectures and metrics track against. |
 
 ---
 
@@ -28,6 +32,29 @@ _Derived from **26** curriculum slide diagram title(s) plus slide text for this 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
 | **DLQ** | Dead Letter Queue | Place for messages that keep failing so they don’t block the pipeline. |
+
+---
+
+## REST & HTTP
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **API** | Application Programming Interface | The downstream Account Profile API that Resilience4j protects outbound calls to. |
+| **HTTP** | Hypertext Transfer Protocol | Deck weighs returning HTTP 200 (degraded) vs. HTTP 503 from a fallback response. |
+| **REST** | Representational State Transfer | Style of the external APIs being called and protected. |
+| **URL** | Uniform Resource Locator | Resilience patterns wrap a call but can't fix a permanently wrong URL or bad config. |
+
+---
+
+## Tooling & UX
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **YAML** | YAML Ain’t Markup Language | Config format for Resilience4j's retry/circuit-breaker/timeout settings in `application.yml`. |
+| **IDE** | Integrated Development Environment | Readiness checkpoints confirm understanding before students "open an IDE." |
+| **UI** | User Interface | The CRM page/button whose behavior degrades gracefully during a failure. |
+| **UX** | User Experience | Fallbacks and fast failures exist to give users a quick, honest result instead of a long silent wait. |
+| **DNS** | Domain Name System | Named as a common network-failure cause (DNS resolution failure) alongside latency and packet loss. |
 
 ---
 

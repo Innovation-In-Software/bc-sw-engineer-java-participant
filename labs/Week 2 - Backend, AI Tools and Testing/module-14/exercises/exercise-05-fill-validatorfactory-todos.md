@@ -21,17 +21,12 @@
 
 **Enterprise context:** Plain Java services and batch jobs validate the same DTO annotations without an HTTP stack.
 
-## Goal
-
-Create `notes/lab14-validatorfactory-todos.md` — fill ValidatorFactory TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-14-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-fill-validatorfactory-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab14-validatorfactory-todos.md` |
 
 ## Worked example (read first)

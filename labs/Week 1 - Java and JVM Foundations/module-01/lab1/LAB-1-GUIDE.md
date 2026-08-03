@@ -26,10 +26,6 @@
 | Windows | [LAB-1-WINDOWS.md](LAB-1-WINDOWS.md) |
 | macOS | [LAB-1-MACOS.md](LAB-1-MACOS.md) |
 
-> **Environment reminder:** Finish [Lab 0](../../module-00/lab0/LAB-0-GUIDE.md). Use **JDK 21** and **IntelliJ IDEA Community** (primary) or **VS Code** (optional). Workspace: `java-bootcamp` (Windows: `%USERPROFILE%\java-bootcamp`).
-
-> **Hard gate — pre-lab exercises:** Complete **all eight** Module 1 exercises under [`../exercises/`](../exercises/EXERCISES-INDEX.md) and mark their Pass criteria **Pass** in your notes **before** Step 0 of this lab. Lab 1 is graded consolidation in a **separate** folder (`examples/jvm-compilation-lab/`), not a replacement for the exercises folder (`examples/module-01-exercises/`).
-
 > **Incremental build:** This lab **extends** Lab 0’s `java-bootcamp` workspace and Module 1 exercise skills. You do **not** create a new CRM project — same laptop workspace, new folder `examples/jvm-compilation-lab/`.
 
 ## 45-minute timed path (use starter)
@@ -46,17 +42,6 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | ---- | ---- | ----- |
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 

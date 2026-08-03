@@ -17,6 +17,7 @@ _Derived from **22** curriculum slide diagram title(s) plus slide text for this 
 | **List** | — | Ordered collection that allows duplicates. |
 | **Map** | — | Key → value lookup structure. |
 | **Set** | — | Collection of unique elements. |
+| **JDK** | Java Development Kit | The compiler/runtime install (JDK 21) used to build and run the Module 5 lab. |
 
 ---
 
@@ -26,6 +27,20 @@ _Derived from **22** curriculum slide diagram title(s) plus slide text for this 
 | --- | --- | --- |
 | **API** | Application Programming Interface | A defined way for one program to call another. |
 | **Big-O** | Big-O Notation | How runtime/memory grow as input size grows. |
+| **CRUD** | Create, Read, Update, Delete | The four basic operations shown on the HashMap-based library example. |
+| **FIFO** | First In, First Out | Queue processing order — the first element added is the first removed. |
+| **OOP** | Object-Oriented Programming | Prerequisite knowledge (classes, objects) assumed before this module. |
+
+---
+
+## Lab & real-world context
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **ISBN** | International Standard Book Number | Example unique key used for a book catalog HashMap (ISBN → copies). |
+| **SKU** | Stock Keeping Unit | Example unique key used for inventory/catalog lookups. |
+| **LRU** | Least Recently Used | Cache eviction strategy: discard the item used longest ago. |
+| **LMS** | Learning Management System | Where you submit the Module 5 lab write-up. |
 
 ---
 

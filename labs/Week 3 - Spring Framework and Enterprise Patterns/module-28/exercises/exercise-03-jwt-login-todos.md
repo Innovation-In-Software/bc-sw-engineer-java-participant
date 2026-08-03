@@ -21,17 +21,12 @@
 
 **Enterprise context:** Without a clear login contract, MockMvc matrices invent inconsistent paths and fail peer review.
 
-## Goal
-
-Create `notes/lab28-jwt-login-todos.md` — JWT login TODOs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-28-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-jwt-login-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab28-jwt-login-todos.md` |
 
 ## Worked example (read first)

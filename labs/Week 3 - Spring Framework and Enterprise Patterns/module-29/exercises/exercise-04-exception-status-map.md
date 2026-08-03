@@ -21,17 +21,12 @@
 
 **Enterprise context:** Status mismatches break client retry logic and monitoring alerts.
 
-## Goal
-
-Create `notes/exception-status-map.md` — status map.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-29-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-exception-status-map.md` (this file in the course repo) |
 | Your notes file | `notes/exception-status-map.md` |
 
 ## Worked example (read first)

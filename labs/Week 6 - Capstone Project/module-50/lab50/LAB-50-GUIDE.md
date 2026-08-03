@@ -12,8 +12,6 @@
 | Windows | [LAB-50-WINDOWS.md](LAB-50-WINDOWS.md) |
 | macOS | [LAB-50-MACOS.md](LAB-50-MACOS.md) |
 
-> **Environment reminder:** Complete the [Module 50 pre-lab exercises](../exercises/EXERCISES-INDEX.md) after the slides and before this lab.  Finish Labs 0 and 49. Use **IntelliJ IDEA Community** (primary; optional VS Code) with **JDK 21**, **Maven 3.9+**, **Node.js 22+**, and instructor **shared PostgreSQL**. Work under `~/java-bootcamp/examples/customer-management-platform` (Windows: `%USERPROFILE%\java-bootcamp\examples\customer-management-platform`).
-
 ---
 
 ## Activity card
@@ -61,17 +59,6 @@ In class, use the starter data/API + Flyway stubs so the **session block** fits 
 | **Full (multi-day)** | 6–8 Hours | Every Step in this GUIDE |
 
 Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
-
----
-
-## How to follow this lab
-
-1. **In class:** prefer [`starter/README.md`](starter/README.md) when a timed path exists — fill `// TODO`, run the smoke test (~45 min).
-2. Open the **Windows** or **macOS** how-to (links above) in a second tab for OS-specific commands.
-3. Work only under your `java-bootcamp/examples/…` folder (not inside this `labs/` clone unless a step says otherwise).
-4. Read **Worked example** once, then for each **Step**: **Why** → **Do this** → confirm **Expected result**.
-5. When stuck, use **Troubleshooting** / **Failure Experiments** before asking for help.
-6. Capture evidence under `notes/screenshots/` (redact secrets). Mark Pass/Fail in your own notes — GitHub does not support clickable checkboxes.
 
 ---
 
@@ -192,7 +179,9 @@ flowchart TD
 
 ## Prerequisites
 
-Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md), [Lab 48](../../module-48/lab48/LAB-48-GUIDE.md), and [Lab 49](../../module-49/lab49/LAB-49-GUIDE.md). Confirm:
+Prior labs: [Lab 48](../../module-48/lab48/LAB-48-GUIDE.md) · [Lab 49](../../module-49/lab49/LAB-49-GUIDE.md).
+
+Confirm (Lab 0 tools assumed):
 
 * Node 22 + npm (React frontend)
 * PostgreSQL reachable **or** instructor-approved local stand-in with honesty note
@@ -205,26 +194,7 @@ Complete [SETUP](../../../SETUP-INSTRUCTIONS.md), [Lab 0](../../../Week%201%20-%
 ```bash
 java -version
 mvn -version
-node --version
-npm --version
-git --version
-pwd
-ls ~/java-bootcamp/examples/customer-management-platform
 ```
-
-Branch and baseline:
-
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-git switch -c lab/50-crm 2>/dev/null || git checkout -b lab/50-crm
-./mvnw -B clean verify 2>/dev/null || mvn -B clean verify
-cd frontend && npm ci && npm test -- --run && cd ..
-git status --short
-```
-
-If baseline fails, record command/error; do not hide inherited failure.
-
----
 
 ## Suggested Project Files
 

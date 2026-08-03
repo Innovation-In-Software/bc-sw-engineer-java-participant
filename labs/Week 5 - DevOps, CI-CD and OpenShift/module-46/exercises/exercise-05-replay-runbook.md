@@ -34,19 +34,12 @@ Replay storms rebalance — tune?
 
 **Module 46** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab46-replay-runbook.md` — outline `docs/dlt-replay-runbook.md` with dry-run first.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-46-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-replay-runbook.md` (this file in the course repo) |
 | Your notes file | `notes/lab46-replay-runbook.md` |
 
 ## Worked example (read first)

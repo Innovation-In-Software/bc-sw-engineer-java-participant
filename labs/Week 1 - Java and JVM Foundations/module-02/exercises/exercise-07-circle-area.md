@@ -26,10 +26,6 @@
 
 **Enterprise context:** Logistics coverage radius / geo fencing demos use the same formula.
 
-## Goal
-
-Create `CircleArea.java` that reads a radius (`double`) and prints the area using `Math.PI`, formatted to 2 decimal places.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

@@ -34,19 +34,12 @@ Accept forever with no owner — gate fail?
 
 **Module 40** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab40-triage-csv-sketch.md` — practice classifying findings before the lab scanner output arrives.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-triage-csv-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab40-triage-csv-sketch.md` |
 
 ## Worked example (read first)

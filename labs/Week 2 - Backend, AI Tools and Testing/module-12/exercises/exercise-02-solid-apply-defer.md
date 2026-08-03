@@ -21,19 +21,12 @@
 
 **Enterprise context:** Teams ship incremental cleanups with an explicit defer list.
 
-## Goal
-
-Create `notes/lab12-solid-scope.md` — choose one SOLID apply-now item and two defer items before SOAP/Spring labs.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-solid-apply-defer.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-solid-scope.md` |
 
 ## Worked example (read first)

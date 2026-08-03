@@ -21,10 +21,6 @@
 
 **Enterprise context:** Banks often use profiles for environment-specific endpoints — secrets stay outside Git.
 
-## Goal
-
-Create `notes/profiles-notes.md` explaining how `dev` and `prod` profiles keep laptop settings from silently becoming production settings.
-
 ## Profile map
 
 | Idea | Easy meaning |

@@ -21,17 +21,12 @@
 
 **Enterprise context:** Wrong levels bury incidents (everything DEBUG) or page on-call (everything ERROR).
 
-## Goal
-
-Create `notes/lab20-level-quiz.md` — level quiz for CRM events.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-20-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-level-quiz.md` (this file in the course repo) |
 | Your notes file | `notes/lab20-level-quiz.md` |
 
 ## Worked example (read first)

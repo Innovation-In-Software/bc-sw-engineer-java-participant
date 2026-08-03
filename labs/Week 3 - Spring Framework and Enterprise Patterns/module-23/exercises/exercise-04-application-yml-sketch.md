@@ -21,17 +21,12 @@
 
 **Enterprise context:** Ops peers need a predictable port and health exposure before any cloud profile work.
 
-## Goal
-
-Create `notes/lab23-application-yml-sketch.md` — YAML sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-23-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-application-yml-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab23-application-yml-sketch.md` |
 
 ## Worked example (read first)

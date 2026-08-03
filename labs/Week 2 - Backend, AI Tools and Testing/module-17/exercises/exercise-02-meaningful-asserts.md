@@ -21,17 +21,12 @@
 
 **Enterprise context:** Green bars with empty asserts hide production defects — partners still break.
 
-## Goal
-
-Create `notes/lab17-meaningful-asserts.md` — weak vs strong asserts.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-17-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-meaningful-asserts.md` (this file in the course repo) |
 | Your notes file | `notes/lab17-meaningful-asserts.md` |
 
 ## Worked example (read first)

@@ -34,19 +34,12 @@ NFR with no measurement method — fix?
 
 **Module 48** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab48-nfr-placeholders.md` — replace vague quality words with measurable NFR placeholders.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-nfr-placeholders.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-nfr-placeholders.md` |
 
 ## Worked example (read first)

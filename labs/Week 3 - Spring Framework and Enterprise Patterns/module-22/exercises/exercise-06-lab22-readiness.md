@@ -21,17 +21,12 @@
 
 **Enterprise context:** Teams that skip the graph sketch invent field injection mid-lab and fail the timed path.
 
-## Goal
-
-Create `notes/lab22-readiness.md` — readiness for Lab 22.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-06-lab22-readiness.md` (this file in the course repo) |
 | Your notes file | `notes/lab22-readiness.md` |
 
 ## Worked example (read first)

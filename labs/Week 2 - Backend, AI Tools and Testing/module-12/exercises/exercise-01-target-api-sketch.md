@@ -21,19 +21,12 @@
 
 **Enterprise context:** CRM refactors start with a named contract so reviews stay comparable.
 
-## Goal
-
-Create `notes/lab12-target-api-sketch.md` — sketch a small CustomerService API you want after cleanup.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-12-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-01-target-api-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab12-target-api-sketch.md` |
 
 ## Worked example (read first)

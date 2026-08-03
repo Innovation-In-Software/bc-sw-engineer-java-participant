@@ -24,10 +24,6 @@
 
 **Enterprise context:** Book ID → borrower ID is a Map, not two parallel Lists.
 
-## Goal
-
-Create `MapDemo.java` using ISBN-like strings as keys and copy counts as values. Practice put, get, update, remove, default lookup, and entry iteration.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

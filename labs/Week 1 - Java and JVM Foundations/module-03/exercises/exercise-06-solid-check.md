@@ -26,10 +26,6 @@
 
 **Enterprise context:** Mixing ledger rules with console printing makes banking code untestable.
 
-## Goal
-
-Refactor one method that mixes interest calculation and console formatting. Create `SolidDemo.java` with separate calculation and display methods.
-
 ## Before — mixed responsibilities
 
 ```java

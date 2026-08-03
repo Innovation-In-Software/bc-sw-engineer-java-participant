@@ -34,19 +34,12 @@ Mixing Flyway with ddl-auto=update — why avoid?
 
 **Module 39** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab39-flyway-plan.md` — outline Flyway scripts that match the CRM schema.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-39-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-flyway-plan.md` (this file in the course repo) |
 | Your notes file | `notes/lab39-flyway-plan.md` |
 
 ## Worked example (read first)

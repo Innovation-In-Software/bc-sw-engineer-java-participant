@@ -34,19 +34,12 @@ Two accepted ADRs that contradict — fix?
 
 **Module 48** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab48-adr-todos.md` — complete an ADR shortlist with blanks for status/owners.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-48-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-adr-todos.md` (this file in the course repo) |
 | Your notes file | `notes/lab48-adr-todos.md` |
 
 ## Worked example (read first)

@@ -26,14 +26,6 @@
 
 **Enterprise context:** Real libraries combine catalogs (List) with loans (Map) and unique IDs (Set).
 
-## Goal
-
-Create `LibraryWarmup.java` with:
-
-- a `List<String>` of available titles;
-- a `Map<String,String>` from member ID to borrowed title;
-- a checkout operation that keeps both structures consistent.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.

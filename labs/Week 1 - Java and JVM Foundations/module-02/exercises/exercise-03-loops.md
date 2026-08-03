@@ -26,10 +26,6 @@
 
 **Enterprise context:** Batch settlement retries (while) and menu loops (do-while) appear in operations tooling.
 
-## Goal
-
-Create `LoopsDemo.java` that prints a multiplication table with `for`, counts down with `while`, and shows a menu prompt at least once with `do-while`.
-
 ## Worked example (read first)
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
@@ -146,7 +142,6 @@ Type 'menu' to see it again, anything else to quit: quit
 ## Expected result
 
 Table prints 5x1 through 5x5, countdown prints 3 to 1, and the menu prompt appears again only after typing `menu`.
-
 
 
 ## Debug challenge

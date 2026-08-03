@@ -34,19 +34,12 @@ Starting Lab 43 deploy workflows early — park?
 
 **Module 42** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab42-rollout-rollback.md` — list commands/checks for rollout success and undo rehearsal.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-42-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-05-rollout-rollback.md` (this file in the course repo) |
 | Your notes file | `notes/lab42-rollout-rollback.md` |
 
 ## Worked example (read first)

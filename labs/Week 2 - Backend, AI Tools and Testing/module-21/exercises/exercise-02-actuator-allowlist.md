@@ -21,17 +21,12 @@
 
 **Enterprise context:** Open `/actuator/env` on the public internet is a credential leak waiting to happen.
 
-## Goal
-
-Create `notes/lab21-actuator-allowlist.md` — allow-list notes.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-21-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-actuator-allowlist.md` (this file in the course repo) |
 | Your notes file | `notes/lab21-actuator-allowlist.md` |
 
 ## Worked example (read first)

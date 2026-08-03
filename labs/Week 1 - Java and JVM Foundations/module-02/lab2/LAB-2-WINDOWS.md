@@ -1,66 +1,41 @@
 # Lab 2: Java Syntax and Input/Output — Windows
 
-> **Participants:** Start at [`../README.md`](../README.md). Complete [Exercises 1–7](../exercises/EXERCISES-INDEX.md) first (8–9 recommended). This file = Windows paths/shell only. Do the Steps in [`LAB-2-GUIDE.md`](LAB-2-GUIDE.md). [Which file when?](../../../_PARTICIPANT-FILE-GUIDE.md)
-
 **OS:** Windows  
 **Primary IDE:** IntelliJ IDEA Community Edition  
 **Optional IDE:** VS Code  
 **Shell:** Windows PowerShell  
 **Stack hint:** JDK 21 · Maven not required for Lab 2 (Lab 0 installs Maven for later)  
 **Full lab steps:** [LAB-2-GUIDE.md](LAB-2-GUIDE.md)  
+**Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-2-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Module 2 Exercises 1–9 compile; non-Scanner `MethodsDemo` → `square(4) = 16`. Lab: create `examples\Lab2-JavaSyntax`, mark `src` Sources Root, compile with **named** `.java` files, run `java -cp out com.academy.student.Main`. Sample session (`1`→`101`/`John`/`Java`/`91` → `2` table `91.00` → `4` average `91.00` → `5` `Thank You`) succeeded; search `101` / not-found `999`; duplicate ID rejected; marks `150` rejected then `85` accepted (avg `88.00` with John). Instructor walkthrough: `docs/instructor-participant-help/week-1/02-syntax-exercises-and-lab2.md`.
-
-- Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-02-exercises`
 
 ## Prerequisites (Windows)
 
 - [Lab 0 (Windows)](../../module-00/lab0/LAB-0-WINDOWS.md) complete (JDK 21, Maven when needed, Git)
-- Module 2 [Exercises 1–7](../exercises/EXERCISES-INDEX.md) Pass criteria marked **Pass** in your notes
-- IntelliJ IDEA Community with **Project SDK 21**
-- Optional: VS Code + Extension Pack for Java
-
-## Open this lab in IntelliJ (primary)
-
-1. Start **IntelliJ IDEA Community**.
-2. **File → Open…** → `%USERPROFILE%\java-bootcamp` (Lab 0 workspace root — same folder every lab).  
-   If `examples\Lab2-JavaSyntax` does not exist yet, create it as the lab GUIDE describes; keep the workspace open at `%USERPROFILE%\java-bootcamp`.
-3. Trust the project if prompted.
-4. **File → Project Structure → Project** → SDK = **21**, language level **21**.
-5. Mark `examples\Lab2-JavaSyntax\src` as **Sources Root** (right-click → **Mark Directory as → Sources Root**). Do **not** mark `module-02-exercises` as Sources Root.
-6. **View → Tool Windows → Terminal** (PowerShell) → `cd $env:USERPROFILE\java-bootcamp` then `cd examples\Lab2-JavaSyntax` when ready.
-
-## Optional: VS Code
-
-1. **File → Open Folder…** → `%USERPROFILE%\java-bootcamp` (same Lab 0 workspace).
-2. Confirm **Extension Pack for Java** (and Maven for Java when needed) are installed.
-3. **Terminal → New Terminal** (PowerShell) → `cd examples\Lab2-JavaSyntax` for this lab’s commands.
+- IntelliJ with **Project SDK 21** (open/run steps: [IDE conventions](../../_IDE-CONVENTIONS.md))
 
 ## Paths (Windows)
 
 | Item | Windows |
 | ---- | ------- |
 | Workspace (open in IDE) | `%USERPROFILE%\java-bootcamp` |
-| Pre-lab exercises (already done) | `%USERPROFILE%\java-bootcamp\examples\module-02-exercises` |
 | This lab project | `%USERPROFILE%\java-bootcamp\examples\Lab2-JavaSyntax` |
 | Evidence / screenshots | `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-2` |
-| Shell | PowerShell inside IntelliJ |
+| Shell | Windows PowerShell inside IntelliJ |
 | Path style | Backslashes; quote paths with spaces |
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
-Get-ChildItem examples\module-02-exercises
+# Lab 0 layout: evidence at workspace root; code under examples/
 New-Item -ItemType Directory -Force -Path notes\screenshots\lab-2 | Out-Null
-New-Item -ItemType Directory -Force -Path examples\Lab2-JavaSyntax\src\com\academy\student | Out-Null
 cd examples\Lab2-JavaSyntax
 ```
 
 ### Commands this lab typically uses
 
-From `examples\Lab2-JavaSyntax` (PowerShell — name files explicitly; avoid relying on `*.java` globs):
-
 ```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\Lab2-JavaSyntax
 javac -d out `
   src\com\academy\student\Student.java `
   src\com\academy\student\StudentManager.java `
@@ -68,46 +43,24 @@ javac -d out `
 java -cp out com.academy.student.Main
 ```
 
-## Run configurations (IntelliJ)
-
-1. Open `Main` (class with `public static void main`).
-2. Green ▶ → **Run**.
-3. **Run → Edit Configurations…** → set **Working directory** to `examples/Lab2-JavaSyntax` when the lab reads relative files.
-4. Use the IntelliJ terminal for `javac` / `java` proof when the GUIDE asks for CLI output.
 
 ## Do the lab
 
-After Exercises 1–7 Pass, complete **every step** in **[LAB-2-GUIDE.md](LAB-2-GUIDE.md)**.  
-Wherever that guide shows `~/java-bootcamp`, on Windows use `%USERPROFILE%\java-bootcamp`. Prefer IntelliJ for Java editing and runs; use VS Code only if you already prefer it.
+Complete every step in **[LAB-2-GUIDE.md](LAB-2-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  
+Open/run IntelliJ steps are the same every lab — see [IDE conventions](../../_IDE-CONVENTIONS.md).
 
 ## Evidence / screenshots
 
-Save screenshots under `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-2` (Lab 0 workspace layout). Capture IntelliJ (project tree + Run/Terminal) on Windows. Redact passwords, tokens, and kubeconfig contents.
+Save under `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-2`. Capture IntelliJ (project tree + Run/Terminal). Redact secrets.
 
 ## Pass criteria
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 0 | Module 2 Exercises 1–7 Pass before Lab Steps 3+ | Pass / Fail |
 | 1 | Workspace `%USERPROFILE%\java-bootcamp` open in IntelliJ with SDK **21** | Pass / Fail |
 | 2 | Lab project under `examples/Lab2-JavaSyntax` as in [LAB-2-GUIDE.md](LAB-2-GUIDE.md) | Pass / Fail |
-| 3 | Lab pass criteria / deliverables in the GUIDE are complete | Pass / Fail |
-| 4 | `javac -d out` / `java -cp out com.academy.student.Main` succeed in the IntelliJ terminal | Pass / Fail |
-| 5 | Screenshots (if required) saved under `notes/screenshots/lab-2/` | Pass / Fail |
-
-### Verified smoke commands (participant laptop)
-
-From `examples\Lab2-JavaSyntax` in the IntelliJ Terminal (PowerShell):
-
-```powershell
-Remove-Item -Recurse -Force out -ErrorAction SilentlyContinue
-javac -d out `
-  src\com\academy\student\Student.java `
-  src\com\academy\student\StudentManager.java `
-  src\com\academy\student\Main.java
-java -cp out com.academy.student.Main
-```
-
-**Verified result (Temurin 21.0.11):** `out\com\academy\student\*.class` created; interactive sample (`1` → `101`/`John`/`Java`/`91` → `2` → `3`/`101` → `4` → `5`) prints the `printf` table with `91.00`, search `display()`, `Average Marks : 91.00`, then `Thank You`. Marks `150` is rejected; duplicate ID `101` is rejected.
+| 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
+| 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
+| 5 | Screenshots (if required) under `notes/screenshots/lab-2/` | Pass / Fail |

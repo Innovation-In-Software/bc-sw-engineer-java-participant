@@ -22,17 +22,12 @@
 
 **Enterprise context:** Partners automate retries based on status — 200-with-error and 500-for-conflict both break them.
 
-## Goal
-
-Create `notes/lab16-status-map.md` — failure → status map.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-16-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-03-failure-status-map.md` (this file in the course repo) |
 | Your notes file | `notes/lab16-status-map.md` |
 
 ## Worked example (read first)

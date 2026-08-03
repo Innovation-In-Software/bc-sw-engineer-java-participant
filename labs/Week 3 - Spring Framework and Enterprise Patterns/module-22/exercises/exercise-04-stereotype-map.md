@@ -21,17 +21,12 @@
 
 **Enterprise context:** Wrong stereotypes confuse scanners and reviewers — layer names should match annotations.
 
-## Goal
-
-Create `notes/stereotype-map.md` — class → annotation table.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-22-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-stereotype-map.md` (this file in the course repo) |
 | Your notes file | `notes/stereotype-map.md` |
 
 ## Worked example (read first)

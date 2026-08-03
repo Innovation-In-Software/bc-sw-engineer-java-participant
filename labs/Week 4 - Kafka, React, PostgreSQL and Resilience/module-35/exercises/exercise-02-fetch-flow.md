@@ -34,19 +34,12 @@ Double POST create — what guard?
 
 **Module 35** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
-## Goal
-
-Create `notes/lab35-fetch-flow.md` — sketch loading/success/error flow for listing customers.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
-
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-35-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-02-fetch-flow.md` (this file in the course repo) |
 | Your notes file | `notes/lab35-fetch-flow.md` |
 
 ## Worked example (read first)

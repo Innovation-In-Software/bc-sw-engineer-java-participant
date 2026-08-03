@@ -16,6 +16,7 @@ _Derived from **16** curriculum slide diagram title(s) plus slide text for this 
 | **Consumer** | Kafka Consumer | Application that reads messages from Kafka topics. |
 | **Consumer Lag** | — | How far behind a consumer is from the latest messages. |
 | **DLQ** | Dead Letter Queue | Place for messages that keep failing so they don’t block the pipeline. |
+| **DLT** | Dead Letter Topic | The concrete Kafka topic (e.g. `crm.customer.events.DLT`) that implements the DLQ pattern in this module. |
 | **ISR** | In-Sync Replicas | Replicas that are caught up with the leader. |
 | **Kafka** | Apache Kafka | Distributed event streaming platform (topics, brokers, consumers). |
 | **Message Backlog** | — | Queue of unprocessed messages waiting for consumers. |
@@ -42,6 +43,32 @@ _Derived from **16** curriculum slide diagram title(s) plus slide text for this 
 | **Metrics** | — | Numeric measurements over time (RPS, lag, error rate). |
 | **Observability** | — | Ability to understand system health via logs, metrics, and traces. |
 | **Throughput** | — | How much work/messages processed per unit time. |
+| **JMX** | Java Management Extensions | Exporter that collects broker/JVM metrics for Prometheus. |
+
+---
+
+## Infrastructure & security
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **CPU** | Central Processing Unit | Broker resource tracked for bottlenecks and capacity headroom. |
+| **JVM** | Java Virtual Machine | Per-broker health metric tracked alongside disk and network. |
+| **AZ** | Availability Zone | Data-center zone; cross-AZ traffic issues are a named failure category. |
+| **TLS** | Transport Layer Security | Encrypts Kafka traffic in transit — part of the production readiness checklist. |
+| **SASL** | Simple Authentication and Security Layer | Kafka client authentication mechanism checked before go-live. |
+| **ACL** | Access Control List | Rules controlling which clients can read/write which topics. |
+
+---
+
+## Core concepts
+
+| Term | Full form | Simple meaning |
+| --- | --- | --- |
+| **API** | Application Programming Interface | Downstream service calls inside consumer logic that can add latency or cause backlogs. |
+| **CRM** | Customer Relationship Management | Northstar CRM — the customer platform whose crm.customer.events pipeline is this module's running scenario. |
+| **DB** | Database | Shorthand used for one of the named consumer-failure categories (validation, deserialization, timeout, DB, authz). |
+| **PII** | Personally Identifiable Information | Real customer data that must never appear in logs/metrics — only synthetic fixtures (CUS-1001/CUS-1002) are used. |
+| **SLA** | Service Level Agreement | Uptime/latency commitment put at risk when lag or backlogs grow unchecked. |
 
 ---
 

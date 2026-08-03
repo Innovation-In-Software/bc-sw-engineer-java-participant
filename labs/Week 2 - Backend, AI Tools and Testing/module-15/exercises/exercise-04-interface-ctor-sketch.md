@@ -21,17 +21,12 @@
 
 **Enterprise context:** Constructor injection makes DefaultCustomerService testable with a fake repository — no Spring required for Lab 15.
 
-## Goal
-
-Create `notes/lab15-interface-ctor-sketch.md` — interface + ctor sketch.
-
 ## Deliverable
 
-**Submit only** the file(s) in the table below (not the full graded lab).
+**Submit only** the file(s) below (not the graded lab).
 
 | Item | Path (under `examples/module-15-exercises/`) |
 | ---- | --------------------------------------------- |
-| Guide | `exercises/exercise-04-interface-ctor-sketch.md` (this file in the course repo) |
 | Your notes file | `notes/lab15-interface-ctor-sketch.md` |
 
 ## Worked example (read first)
