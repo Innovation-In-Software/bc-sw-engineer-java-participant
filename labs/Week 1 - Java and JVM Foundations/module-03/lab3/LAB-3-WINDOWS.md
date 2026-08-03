@@ -10,7 +10,7 @@
 **Full lab steps:** [LAB-3-GUIDE.md](LAB-3-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-3-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: create `examples\Lab3-BankingSystem`, compile with **named** `.java` files (eight sources under `src\com\academy\bank`), run `java -cp out com.academy.bank.Main`. Sample session (`C101` / savings `10000`@`5%` → deposit `2000` → withdraw `3000` → display balance `9000` / interest `450` → exit `Thank You`) succeeded; Current fee path (`withdraw 100` + fee `10` → balance `4890`) also verified. Class files land under `out\com\academy\bank\`.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Participant path: `examples\Lab3-BankingSystem`, `javac -d out` of eight sources under `src\com\academy\bank`, run `java -cp out com.academy.bank.Main`. Sample: create customer `C101` → create savings `10000`@`5%` (issued account **`10001`**) → deposit `2000` → withdraw `3000` → display balance **`9000`** / interest **`450`** → exit `Thank You`. Use the printed account number (not `1001`) for deposit/withdraw. Class files land under `out\com\academy\bank\`.
 
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-03-exercises`
 

@@ -10,7 +10,7 @@
 **Full lab steps:** [LAB-7-GUIDE.md](LAB-7-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-7-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\Lab7-ATMSystem` with `src\com\academy\atm\` + `transactions.txt` + `logs\`. Named `javac -d out` of the nine sources succeeded. **Must run `java` from the project root.** Sample: login `1001`/`1234` → withdraw `20000` → `Insufficient Balance` (menu continues) → deposit `-100` rejected → deposit `1000` → balance `12000` → mini statement reads file → exit `Thank You`; `logs\application.log` contains ERROR/INFO lines.
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Participant path: `examples\Lab7-ATMSystem` with `src\com\academy\atm\` + `transactions.txt` + `logs\`. Named `javac -d out` of the nine sources succeeded. **Must run `java` from the project root.** Sample: menu **1 Login** → account `1001` / PIN `1234` → menu **3** withdraw `20000` → `Insufficient Balance` → menu **2** deposit `-100` rejected → deposit `1000` → balance **`12000`** → menu **6** mini statement → menu **7** exit `Thank You`; `logs\application.log` contains ERROR/INFO lines.
 
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-07-exercises`
 

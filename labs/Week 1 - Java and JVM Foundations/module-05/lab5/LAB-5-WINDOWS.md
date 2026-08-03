@@ -10,7 +10,7 @@
 **Full lab steps:** [LAB-5-GUIDE.md](LAB-5-GUIDE.md)  
 **Other OS:** [macOS guide](LAB-5-MACOS.md) · [IDE conventions](../../_IDE-CONVENTIONS.md)
 
-**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp`. Participant path: `examples\Lab5-LibraryManagement` with `src\com\academy\library\`. Named `javac -d out` of the seven sources succeeded. Sample session (add `101` / `Java Fundamentals` → register member `1` / `John` → borrow → reports `Borrowed : 1` / `Available : 0` / popular `Programming` → exit `Thank You`) matched the guide. Extended paths verified: return, four-style display, performance table (menu 14).
+**Verified:** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** on Lab 0 workspace `%USERPROFILE%\java-bootcamp` (2026-08-02 participant retest). Participant path: `examples\Lab5-LibraryManagement` with `src\com\academy\library\`. Named `javac -d out` of the seven sources succeeded. Sample: add book `101` / `Java Fundamentals` / author / `Programming` / **price** `49.99` → register member `1` / `John` (+ email/phone) → borrow `101`/`1` → menu **8** borrowed list → menu **10** reports (`Borrowed : 1` / `Available : 0` / popular `Programming`) → menu **11** exit `Thank You`. Extended paths verified earlier: return, four-style display, performance table (menu 14).
 
 - Pre-lab exercises (required before this lab): [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md) — workspace: `%USERPROFILE%\java-bootcamp\examples\module-05-exercises`
 
