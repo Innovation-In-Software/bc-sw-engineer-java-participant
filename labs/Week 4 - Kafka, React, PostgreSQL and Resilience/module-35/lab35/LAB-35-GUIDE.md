@@ -108,7 +108,7 @@ Use these examples consistently:
 | `CUS-1001` | Amina Khan | `ACTIVE` — list/GET fixture |
 | `CUS-1002` | Ravi Singh | `PROSPECT` — update fixture |
 | `lab-request-001` | — | `X-Correlation-Id` on writes |
-| `VITE_CRM_API_URL` | `http://localhost:8080/api` | public base only |
+| `VITE_API_BASE_URL` | `http://localhost:8080` | public host only (paths include `/api/...`) |
 
 **Security note for evidence.** Never put secrets in `VITE_*` (they ship to the browser). Use fictional PII. Do not commit `.env` with non-example values if your policy forbids it—commit `.env.example` only.
 
@@ -201,11 +201,11 @@ Confirm list JSON includes (or can seed) `CUS-1001` / `CUS-1002`. Confirm the br
 **Do this:** Add `.env.example`:
 
 ```text
-VITE_CRM_API_URL=http://localhost:8080/api
+VITE_API_BASE_URL=http://localhost:8080
 # Never place secrets in VITE_* variables — they are embedded in the client bundle.
 ```
 
-Copy to local `.env` (gitignored). Read with `import.meta.env.VITE_CRM_API_URL`. Restart Vite after changes.
+Copy to local `.env` (gitignored). Read with `import.meta.env.VITE_API_BASE_URL`. Restart Vite after changes.
 
 **Expected result:** Vite reads `localhost:8080/api` after restart; `.env.example` committed, secrets absent.
 
@@ -217,7 +217,7 @@ Copy to local `.env` (gitignored). Read with `import.meta.env.VITE_CRM_API_URL`.
 
 **Why:** Callers must not parse ad-hoc `response.text()` in every component.
 
-**Do this:** `src/api/ApiError.ts` with `status`, `code`, `message`, optional `fieldErrors`, and factory `from(response)`. Network failures become `new ApiError(0, "NETWORK", "Cannot reach the CRM service")`.
+**Do this:** Match starter `src/api/ApiError.ts`: `ApiErrorKind = 'network' | 'http' | 'abort' | 'parse'` and `new ApiError(message, kind, status?)`. Network failures become `new ApiError("Cannot reach the CRM service", "network")`.
 
 **Expected result:** Network, validation, and server errors share one safe frontend type.
 
@@ -262,9 +262,9 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
 ```typescript
 export const customersApi = {
   list: (signal?: AbortSignal) =>
-    request<Customer[]>("/customers", { signal }),
+    http<Customer[]>("/api/customers", { signal }),
   create: (draft: CustomerDraft) =>
-    request<Customer>("/customers", {
+    http<Customer>("/api/customers", {
       method: "POST",
       body: JSON.stringify(draft),
     }),
@@ -450,7 +450,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | - | ------- | ---------- |
 | 1 | `lab35-crm/crm-ui` from Lab 34 | Pass / Fail |
 | 2 | Spring API reachable; contract documented via curl | Pass / Fail |
-| 3 | `.env.example` with `VITE_CRM_API_URL` (no secrets) | Pass / Fail |
+| 3 | `.env.example` with `VITE_API_BASE_URL` (no secrets) | Pass / Fail |
 
 ### Checkpoint B — Client core
 
@@ -458,7 +458,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | `ApiError` + `http.request` + `customersApi` | Pass / Fail |
+| 1 | `ApiError` + `http` helper + `customersApi` | Pass / Fail |
 | 2 | Abortable list load; distinct UI states | Pass / Fail |
 | 3 | Create/update with correlation header | Pass / Fail |
 | 4 | 400 field errors mapped; saving disables duplicate POST | Pass / Fail |
@@ -529,7 +529,7 @@ git status
 | Symptom | Likely cause | Fix |
 | ------- | ------------ | --- |
 | Browser CORS error | Spring allowlist / port | Match Vite origin exactly |
-| `Failed to fetch` | API down / wrong URL | curl; fix `VITE_CRM_API_URL` |
+| `Failed to fetch` | API down / wrong URL | curl; fix `VITE_API_BASE_URL` |
 | Env not applied | No restart | Restart Vite |
 | JSON parse on 204 | No status guard | Handle 204 |
 | Abort as error toast | Catch not ignoring abort | Ignore `AbortError` |

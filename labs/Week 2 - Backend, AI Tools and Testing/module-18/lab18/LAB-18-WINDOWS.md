@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-18-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab17-crm` → `examples\lab18-crm`; added Mockito **5.14.2** (`mockito-core` + `mockito-junit-jupiter`); wrote `CustomerServiceMockitoTest` (stub/verify/never/ArgumentCaptor) + `CustomerServiceBddMockTest`. Two consecutive `mvn -B test` → **Tests run: 47**, Failures: 0 · **BUILD SUCCESS**. Not-found path verifies `never().save`. Instructor walkthrough: `docs/instructor-participant-help/week-2/18-mockito-exercises-and-lab18.md`.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 18 `starter/` → `examples\lab18-crm` (or copy `lab17-crm` → `lab18-crm`). Completed starter stubs: `CustomerServiceMockitoTest` (`activateRaviUsesFindAndSave`, `notFoundNeverCallsSave`, `addCustomerCapturesSavedEntity`) + `CustomerServiceBddMockTest` (`givenProspectWhenActivateThenSavedActive`) alongside Lab 17 baseline `CustomerServiceTests` (2). Two consecutive `mvn -B test` → **Tests run: 6**, Failures: 0 · **BUILD SUCCESS**. Not-found path verifies `never().save`. Instructor walkthrough: `docs/instructor-participant-help/week-2/18-mockito-exercises-and-lab18.md`.
 
 ## Prerequisites (Windows)
 
@@ -44,7 +44,7 @@ mvn -B clean test
 mvn -q test   # second run for determinism
 ```
 
-Verified (2026-08-03): **Tests run: 47**, Failures: 0 · **BUILD SUCCESS** (Lab 17 suite + Mockito 4 + BDD 2).
+Verified (2026-08-03): **Tests run: 6**, Failures: 0 · **BUILD SUCCESS** (baseline 2 + Mockito 3 + BDD 1).
 
 ## Do the lab
 

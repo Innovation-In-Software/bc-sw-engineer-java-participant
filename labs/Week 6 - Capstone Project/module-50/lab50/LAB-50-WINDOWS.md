@@ -36,7 +36,10 @@ cd examples\customer-management-platform
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
-npm run build
+# Timed path (starter): SQL + docs only
+Select-String -Path db\migration\V50__customer_interaction.sql -Pattern 'CHECK|INDEX|crm.customer_interaction'
+# Full path only (when frontend/ exists):
+# cd frontend; npm ci; npm test; npm run build
 ```
 
 

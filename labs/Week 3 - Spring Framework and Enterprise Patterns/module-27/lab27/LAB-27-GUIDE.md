@@ -55,7 +55,7 @@ Keep this checklist visible while you work.
 | - | ----------- |
 | 1 | `@Transactional TransferService` + controller |
 | 2 | Seeded accounts + transaction log entity |
-| 3 | Happy-path evidence (MAIN→LOYALTY + correlation) |
+| 3 | Happy-path evidence (MAIN→LOYALTY balances) |
 | 4 | `ACC-FORCE-FAIL` rollback evidence (balances + no log) |
 | 5 | ACID explanation tied to observations |
 | 6 | Automated tests proving rollback balances |
@@ -94,8 +94,8 @@ Use these examples consistently:
 | -- | ----------- | ----- |
 | `CUS-1001` | Amina Khan | `ACTIVE` — owns MAIN + LOYALTY |
 | `CUS-1002` | Ravi Singh | `PROSPECT` — owns MAIN |
-| `ACC-1001-MAIN` | Amina main | seed balance `1000.00` |
-| `ACC-1001-LOYALTY` | Amina loyalty | seed balance `100.00` |
+| `ACC-MAIN-1001` | Amina main | seed balance `1000.00` |
+| `ACC-LOYALTY-1001` | Amina loyalty | seed balance `50.00` |
 | `ACC-1002-MAIN` | Ravi main | seed balance `250.00` |
 | `ACC-FORCE-FAIL` | synthetic sink | triggers rollback demo |
 | `lab-request-001` | correlation | transfer log + header |
@@ -154,24 +154,22 @@ public class TransferService {
   }
 
   @Transactional
-  public TransactionLog transfer(String fromId, String toId,
-                                 BigDecimal amount, String correlationId) {
-    Account from = accounts.findById(fromId)
-        .orElseThrow(() -> new AccountNotFoundException(fromId));
-    Account to = accounts.findById(toId)
-        .orElseThrow(() -> new AccountNotFoundException(toId));
+  public void transfer(String fromAccountId, String toAccountId, BigDecimal amount) {
+    Account from = accounts.findById(fromAccountId)
+        .orElseThrow(() -> new IllegalArgumentException("Unknown from account"));
+    if ("ACC-FORCE-FAIL".equals(toAccountId)) {
+      throw new IllegalStateException("Forced failure for rollback demo");
+    }
+    Account to = accounts.findById(toAccountId)
+        .orElseThrow(() -> new IllegalArgumentException("Unknown to account"));
     if (from.getBalance().compareTo(amount) < 0) {
-      throw new InsufficientFundsException(fromId);
+      throw new IllegalStateException("Insufficient funds");
     }
     from.setBalance(from.getBalance().subtract(amount));
     to.setBalance(to.getBalance().add(amount));
     accounts.save(from);
     accounts.save(to);
-    if ("ACC-FORCE-FAIL".equals(toId)) {
-      throw new IllegalStateException("Forced failure for rollback demo");
-    }
-    return logs.save(new TransactionLog(
-        /* transferId */, correlationId, fromId, toId, amount, Instant.now()));
+    logs.save(new TransactionLog(fromAccountId, toAccountId, amount));
   }
 }
 ```
@@ -233,15 +231,16 @@ mvn -q -DskipTests package
 **Do this:** `data.sql` or `CommandLineRunner` / `@PostConstruct`:
 
 ```sql
+-- Starter AccountSeed (preferred timed path):
+-- ACC-MAIN-1001 @ 1000.00, ACC-LOYALTY-1001 @ 50.00
 INSERT INTO ACCOUNT (ACCOUNT_ID, CUSTOMER_ID, BALANCE, STATUS) VALUES
- ('ACC-1001-MAIN', 'CUS-1001', 1000.00, 'ACTIVE'),
- ('ACC-1001-LOYALTY', 'CUS-1001', 100.00, 'ACTIVE'),
- ('ACC-1002-MAIN', 'CUS-1002', 250.00, 'ACTIVE');
+ ('ACC-MAIN-1001', 'CUS-1001', 1000.00, 'ACTIVE'),
+ ('ACC-LOYALTY-1001', 'CUS-1001', 50.00, 'ACTIVE');
 ```
 
 If using `data.sql` with Hibernate, set `spring.jpa.defer-datasource-initialization=true` as needed for Boot 3.
 
-**Expected result:** Query/API dump shows MAIN 1000, LOYALTY 100, Ravi MAIN 250.
+**Expected result:** Query/API dump shows MAIN 1000, LOYALTY 50 (starter `AccountSeed`).
 
 **If it fails:** Seeds not loading → defer init / use runner. Duplicate seed on restart → use `ddl-auto` + clear strategy appropriate for mem DB.
 
@@ -295,24 +294,22 @@ public class TransferService {
   }
 
   @Transactional
-  public TransactionLog transfer(String fromId, String toId,
-                                 BigDecimal amount, String correlationId) {
-    Account from = accounts.findById(fromId)
-        .orElseThrow(() -> new AccountNotFoundException(fromId));
-    Account to = accounts.findById(toId)
-        .orElseThrow(() -> new AccountNotFoundException(toId));
+  public void transfer(String fromAccountId, String toAccountId, BigDecimal amount) {
+    Account from = accounts.findById(fromAccountId)
+        .orElseThrow(() -> new IllegalArgumentException("Unknown from account"));
+    if ("ACC-FORCE-FAIL".equals(toAccountId)) {
+      throw new IllegalStateException("Forced failure for rollback demo");
+    }
+    Account to = accounts.findById(toAccountId)
+        .orElseThrow(() -> new IllegalArgumentException("Unknown to account"));
     if (from.getBalance().compareTo(amount) < 0) {
-      throw new InsufficientFundsException(fromId);
+      throw new IllegalStateException("Insufficient funds");
     }
     from.setBalance(from.getBalance().subtract(amount));
     to.setBalance(to.getBalance().add(amount));
     accounts.save(from);
     accounts.save(to);
-    if ("ACC-FORCE-FAIL".equals(toId)) {
-      throw new IllegalStateException("Forced failure for rollback demo");
-    }
-    return logs.save(new TransactionLog(
-        /* transferId */, correlationId, fromId, toId, amount, Instant.now()));
+    logs.save(new TransactionLog(fromAccountId, toAccountId, amount));
   }
 }
 ```
@@ -333,12 +330,9 @@ Optional Copilot prompt: “Spring Boot TransferService with @Transactional debi
 
 ```java
 @PostMapping("/api/transfers")
-public TransactionLog transfer(
-    @RequestBody TransferRequest req,
-    @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001")
-    String correlationId) {
-  return transferService.transfer(
-      req.fromAccountId(), req.toAccountId(), req.amount(), correlationId);
+@ResponseStatus(HttpStatus.NO_CONTENT)
+public void transfer(@RequestBody TransferRequest req) {
+  transferService.transfer(req.fromAccountId(), req.toAccountId(), req.amount());
 }
 ```
 
@@ -346,12 +340,12 @@ public TransactionLog transfer(
 curl -s -X POST http://localhost:8080/api/transfers \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
-  -d '{"fromAccountId":"ACC-1001-MAIN","toAccountId":"ACC-1001-LOYALTY","amount":50.00}'
+  -d '{"fromAccountId":"ACC-MAIN-1001","toAccountId":"ACC-LOYALTY-1001","amount":50.00}'
 ```
 
 Re-read balances (repository query, H2 console, or GET account endpoint if you add one).
 
-**Expected result:** MAIN `950.00`; LOYALTY `150.00`; log row with correlation `lab-request-001`; HTTP 200.
+**Expected result:** MAIN `950.00`; LOYALTY `100.00` (seed was `50.00` + transfer `50.00`); HTTP 200.
 
 **If it fails:** 404 accounts → seeds. TX not committing → check exception paths / bean proxy. Controller annotated `@Transactional` instead of service → move annotation down.
 ---
@@ -366,7 +360,7 @@ Re-read balances (repository query, H2 console, or GET account endpoint if you a
 curl -s -X POST http://localhost:8080/api/transfers \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
-  -d '{"fromAccountId":"ACC-1001-MAIN","toAccountId":"ACC-FORCE-FAIL","amount":10.00}'
+  -d '{"fromAccountId":"ACC-MAIN-1001","toAccountId":"ACC-FORCE-FAIL","amount":10.00}'
 ```
 
 **Expected result:** Error response; MAIN unchanged vs pre-call; no success `TransactionLog` for the failed attempt; JPA/SQL may show rollback.
@@ -500,11 +494,11 @@ cd ~/java-bootcamp/examples/lab27-crm
 mvn spring-boot:run
 curl -s -H "X-Correlation-Id: lab-request-001" \
   -H "Content-Type: application/json" \
-  -d '{"fromAccountId":"ACC-1001-MAIN","toAccountId":"ACC-1001-LOYALTY","amount":50.00}' \
+  -d '{"fromAccountId":"ACC-MAIN-1001","toAccountId":"ACC-LOYALTY-1001","amount":50.00}' \
   http://localhost:8080/api/transfers
 curl -s -H "X-Correlation-Id: lab-request-001" \
   -H "Content-Type: application/json" \
-  -d '{"fromAccountId":"ACC-1001-MAIN","toAccountId":"ACC-FORCE-FAIL","amount":10.00}' \
+  -d '{"fromAccountId":"ACC-MAIN-1001","toAccountId":"ACC-FORCE-FAIL","amount":10.00}' \
   http://localhost:8080/api/transfers
 mvn -q test
 mvn -q test

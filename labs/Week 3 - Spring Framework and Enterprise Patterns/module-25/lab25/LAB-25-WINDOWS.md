@@ -43,7 +43,7 @@ mvn -B spring-boot:run
 # Invoke-RestMethod http://localhost:8080/api/customers
 ```
 
-Verified (2026-08-03): **Tests run: 6** · **BUILD SUCCESS** twice (`CustomerServiceTest`); GET `CUS-1001`/`CUS-1002` **200**; POST Maya **201**; duplicate **409**; missing **404**; activate Ravi **200**; controller has **no** `repository` imports; `docs/lab25-001.md` present.
+Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerServiceTest`: `getSeededCus1001`, `duplicateCreateRejected`); live GET seeded CUS-1001/CUS-1002; create + list via service; duplicate create throws `IllegalStateException`; controller has **no** repository imports; `docs/lab25-001.md` present. (PATCH activate / HTTP 409 mapping = full-path extras, not timed Surefire.)
 
 ## Do the lab
 

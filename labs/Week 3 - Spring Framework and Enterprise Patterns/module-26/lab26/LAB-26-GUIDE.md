@@ -94,7 +94,7 @@ Use these examples consistently:
 | -- | ---- | ----- |
 | `CUS-1001` | Amina Khan | `ACTIVE` — smoke under `dev` |
 | `CUS-1002` | Ravi Singh | `PROSPECT` — smoke under `dev` |
-| `lab26-001` | — | correlation / evidence id |
+| `lab-request-001` | — | correlation / evidence id |
 | `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY` | — | **env only** for prod — never real values in Git |
 | `.env.example` | — | placeholders only |
 
@@ -161,7 +161,7 @@ logging:
 northstar:
   integration:
     api-key: "dev-local-key-not-secret"
-    timeout-ms: 3000
+    connect-timeout-ms: 3000
 
 # application-test.yml
 spring:
@@ -259,7 +259,7 @@ logging:
 northstar:
   integration:
     api-key: "dev-local-key-not-secret"
-    timeout-ms: 3000
+    connect-timeout-ms: 3000
 
 # application-test.yml
 spring:
@@ -282,7 +282,7 @@ logging:
 northstar:
   integration:
     api-key: "test-fixture-key"
-    timeout-ms: 500
+    connect-timeout-ms: 100
 ```
 
 ```bash
@@ -330,7 +330,7 @@ management:
 northstar:
   integration:
     api-key: ${NORTHSTAR_API_KEY}
-    timeout-ms: 3000
+    connect-timeout-ms: 3000
 ```
 
 ```bash
@@ -370,21 +370,21 @@ PowerShell equivalent: `$env:SPRING_PROFILES_ACTIVE="test"` then clear.
 
 ---
 
-### Step 6 — Prove override order with `timeout-ms`
+### Step 6 — Prove override order with `connect-timeout-ms`
 
 **Why:** Trust the precedence table by watching the same key change winners.
 
-**Do this:** Under `test` profile (YAML value e.g. `500`), then set `NORTHSTAR_INTEGRATION_TIMEOUT_MS=9999`, then `-Dnorthstar.integration.timeout-ms=1234`. Record effective value via `/actuator/env/...` (dev/test only) or a small `@ConfigurationProperties` log/test.
+**Do this:** Under `test` profile (YAML value `100` in starter `application-test.yml`), then set `NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS=9999`, then `-Dnorthstar.integration.connect-timeout-ms=1234`. Record effective value via `/actuator/env/...` (dev/test only) or a small `@ConfigurationProperties` log/test.
 
-| Layer | Source | Expected timeout-ms |
+| Layer | Source | Expected connect-timeout-ms |
 | ----- | ------ | ------------------- |
-| Profile YAML | `application-test.yml` | 500 |
-| Env var | `NORTHSTAR_INTEGRATION_TIMEOUT_MS` | 9999 |
+| Profile YAML | `application-test.yml` | 100 |
+| Env var | `NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS` | 9999 |
 | CLI `-D` | system property | 1234 |
 
 **Expected result:** Recorded three measurements matching the table; CLI wins over env.
 
-**If it fails:** Relaxed binding confusion (`timeout-ms` vs `timeoutMs`) → use Boot’s relaxed rules consistently. Actuator env not exposed → use a unit `ApplicationContextRunner` / test instead and document.
+**If it fails:** Relaxed binding confusion (`connect-timeout-ms` vs `connectTimeoutMs`) → use Boot’s relaxed rules consistently. Actuator env not exposed → use a unit `ApplicationContextRunner` / test instead and document.
 
 ---
 
@@ -392,7 +392,7 @@ PowerShell equivalent: `$env:SPRING_PROFILES_ACTIVE="test"` then clear.
 
 **Why:** Typed, validated binding fails with named fields instead of late NPEs.
 
-**Do this:** `NorthstarIntegrationProperties` record with `@Validated`, `@NotBlank apiKey`, `@Positive timeoutMs`, prefix `northstar.integration`. Enable via `@EnableConfigurationProperties`. Add `.env.example` with `DB_*` and `NORTHSTAR_API_KEY=changeme`. Ensure `.gitignore` ignores `.env`.
+**Do this:** `NorthstarIntegrationProperties` record with `@Validated`, `@NotBlank apiKey`, `@Positive connectTimeoutMs`, prefix `northstar.integration`. Enable via `@EnableConfigurationProperties`. Add `.env.example` with `DB_*` and `NORTHSTAR_API_KEY=changeme`. Ensure `.gitignore` ignores `.env`.
 
 ```bash
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
@@ -408,7 +408,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 
 **Why:** Config work must not break Lab 25 fixtures or CI quietness.
 
-**Do this:** Run tests with `spring.profiles.active=test`. Under `dev`, curl `CUS-1001`/`CUS-1002` with `X-Correlation-Id: lab26-001`. Optional `ConfigurationPrecedenceTest` documenting one precedence assertion.
+**Do this:** Run tests with `spring.profiles.active=test`. Under `dev`, curl `CUS-1001`/`CUS-1002` with `X-Correlation-Id: lab-request-001`. Optional `ConfigurationPrecedenceTest` documenting one precedence assertion.
 
 ```bash
 mvn -q test -Dspring.profiles.active=test
@@ -515,7 +515,7 @@ logging:
 northstar:
   integration:
     api-key: "local-dev-placeholder"
-    timeout-ms: 3000
+    connect-timeout-ms: 3000
 ```
 
 ### `.env.example`
@@ -535,7 +535,7 @@ NORTHSTAR_API_KEY=changeme
 ```bash
 cd ~/java-bootcamp/examples/lab26-crm
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
-curl -s -H "X-Correlation-Id: lab26-001" http://localhost:8080/api/customers/CUS-1001
+curl -s -H "X-Correlation-Id: lab-request-001" http://localhost:8080/api/customers/CUS-1001
 mvn test -Dspring.profiles.active=test
 mvn test -Dspring.profiles.active=test
 # expect fail without env:
@@ -548,8 +548,8 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 
 # Override order demo (illustrative):
 # export SPRING_PROFILES_ACTIVE=test
-# export NORTHSTAR_INTEGRATION_TIMEOUT_MS=9999
-# mvn spring-boot:run -Dnorthstar.integration.timeout-ms=1234
+# export NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS=9999
+# mvn spring-boot:run -Dnorthstar.integration.connect-timeout-ms=1234
 
 git status --short
 ```
@@ -595,7 +595,7 @@ Optional — jot brief notes in your README if useful for your progress check (n
 ```bash
 cd ~/java-bootcamp/examples/lab26-crm
 # Ctrl+C any spring-boot:run
-unset SPRING_PROFILES_ACTIVE NORTHSTAR_INTEGRATION_TIMEOUT_MS DB_USERNAME DB_PASSWORD NORTHSTAR_API_KEY
+unset SPRING_PROFILES_ACTIVE NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS DB_USERNAME DB_PASSWORD NORTHSTAR_API_KEY
 mvn -q clean
 git status --short
 ```

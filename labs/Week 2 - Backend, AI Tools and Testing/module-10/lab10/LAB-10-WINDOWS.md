@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-10-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Sunday, August 2, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 10 `starter/` → `examples\lab10-crm` (or full path: copy `lab9-crm` → `lab10-crm`). Filled `CustomerStatus`, plain-Java `Customer` (no JPA), in-memory `CustomerService`, `Main` harness, and `copilot-notes\ai-review-notes.md` (`lab10-001`–`lab10-004`). `mvn clean compile` → **BUILD SUCCESS**; `java -cp target\classes com.northstar.crm.Main` prints both sample customers, PROSPECT filter for `CUS-1002`, then ACTIVE after `updateStatus`. Blank/duplicate/unknown ID rules verified (`IllegalArgumentException` / `IllegalStateException`). Instructor walkthrough: `docs/instructor-participant-help/week-2/10-service-exercises-and-lab10.md`.
+**Verified (Sunday, August 2, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 10 `starter/` → `examples\lab10-crm` (or full path: copy `lab9-crm` → `lab10-crm`). Filled `CustomerStatus`, plain-Java `Customer` (no JPA), in-memory `CustomerService` (`addCustomer` / `findByCustomerId` / `updateStatus`), `Main` harness, and `copilot-notes\ai-review-notes.md` (`lab10-001`–`lab10-004`). `mvn clean compile` → **BUILD SUCCESS**; `java -cp target\classes com.northstar.crm.Main` prints both sample customers via `findByCustomerId`, then ACTIVE after `updateStatus` on `CUS-1002`. Blank/duplicate/unknown ID rules verified (`IllegalArgumentException` / `IllegalStateException`). Instructor walkthrough: `docs/instructor-participant-help/week-2/10-service-exercises-and-lab10.md`.
 
 ## Prerequisites (Windows)
 
@@ -41,8 +41,8 @@ Copy-Item -Recurse lab9-crm lab10-crm   # once
 cd lab10-crm
 mvn clean compile
 java -cp target\classes com.northstar.crm.Main
-All customers: [Customer{customerId='CUS-1001', fullName='Amina Khan', status=ACTIVE}, Customer{customerId='CUS-1002', fullName='Ravi Singh', status=PROSPECT}]
-PROSPECT customers: [Customer{customerId='CUS-1002', fullName='Ravi Singh', status=PROSPECT}]
+Amina: Optional[Customer{customerId='CUS-1001', fullName='Amina Khan', status=ACTIVE}]
+Ravi before: Optional[Customer{customerId='CUS-1002', fullName='Ravi Singh', status=PROSPECT}]
 After activation: Optional[Customer{customerId='CUS-1002', fullName='Ravi Singh', status=ACTIVE}]
 ```
 

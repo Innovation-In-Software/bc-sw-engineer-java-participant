@@ -166,7 +166,7 @@ USER 10001
 EXPOSE 8080
 ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75"
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD wget -qO- http://127.0.0.1:8080/actuator/health/readiness || exit 1
+  CMD ["bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/8080 && printf 'GET /actuator/health/readiness HTTP/1.0\r\nHost: localhost\r\n\r\n' >&3 && cat <&3 | grep -q UP"]
 ENTRYPOINT ["java","-jar","/app/app.jar"]
 ```
 
@@ -234,7 +234,7 @@ USER 10001
 EXPOSE 8080
 ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75"
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD wget -qO- http://127.0.0.1:8080/actuator/health/readiness || exit 1
+  CMD ["bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/8080 && printf 'GET /actuator/health/readiness HTTP/1.0\r\nHost: localhost\r\n\r\n' >&3 && cat <&3 | grep -q UP"]
 ENTRYPOINT ["java","-jar","/app/app.jar"]
 ```
 
@@ -288,8 +288,10 @@ Record size, user `10001`, entrypoint, architecture in the runbook.
 
 ```bash
 SPRING_PROFILES_ACTIVE=docker
-CRM_DB_URL=jdbc:postgresql://${CRM_DB_HOST:localhost}:5432/${CRM_DB_NAME:crm}
-CRM_DB_USERNAME=crm_app
+CRM_DB_HOST=localhost
+CRM_DB_PORT=5432
+CRM_DB_NAME=crm
+CRM_DB_USER=crm_app
 CRM_DB_PASSWORD=
 # KAFKA_BOOTSTRAP=...
 ```
@@ -297,7 +299,7 @@ CRM_DB_PASSWORD=
 Copy to gitignored `.env.local`, fill training values, run:
 
 ```bash
-docker run --rm --name crm-api -p 8080:8080 \
+docker run --rm --name crm-lab41 -p 8080:8080 \
   --memory=512m --env-file .env.local crm-api:lab41
 ```
 
@@ -305,7 +307,7 @@ Use Compose network DNS (`crm-postgres`) instead of `host.docker.internal` when 
 
 **Expected result:** Container starts with injected env; port published; memory capped.
 
-**If it fails:** Cannot reach PostgreSQL → fix JDBC host for Docker networking. Immediate exit → `docker logs crm-api`.
+**If it fails:** Cannot reach PostgreSQL → fix `CRM_DB_HOST` for Docker networking. Immediate exit → `docker logs crm-lab41`.
 
 ---
 
@@ -319,7 +321,7 @@ Use Compose network DNS (`crm-postgres`) instead of `host.docker.internal` when 
 curl -fsS http://localhost:8080/actuator/health/readiness
 # Create/get Amina with synthetic payload; include correlation:
 curl -fsS -H "X-Correlation-Id: lab-request-001" ...
-docker logs crm-api --tail 100
+docker logs crm-lab41 --tail 100
 ```
 
 Confirm logs show correlation where instrumented, **no** password or full PAN/PII dumps.
@@ -337,7 +339,7 @@ Confirm logs show correlation where instrumented, **no** password or full PAN/PI
 **Do this:**
 
 ```bash
-docker stop --time 20 crm-api
+docker stop --time 20 crm-lab41
 ```
 
 Confirm logs show orderly shutdown (Spring shutdown hooks) within timeout. Then run once with an invalid JDBC URL; observe readiness failure / exit; capture logs; remove the failed container without deleting your runbook notes.
@@ -372,10 +374,13 @@ git status --short
 
 ```bash
 docker network ls
-docker network connect <crm-net> crm-api   # if started separately
+docker network connect <crm-net> crm-lab41   # if started separately
 # or run:
-docker run --rm --name crm-api --network <crm-net> -p 8080:8080 \
-  -e CRM_DB_URL='jdbc:postgresql://crm-postgres:5432/crm' \
+docker run --rm --name crm-lab41 --network <crm-net> -p 8080:8080 \
+  -e CRM_DB_HOST=crm-postgres \
+  -e CRM_DB_PORT=5432 \
+  -e CRM_DB_NAME=crm \
+  -e CRM_DB_USER=crm_app \
   --env-file .env.local crm-api:lab41
 ```
 
@@ -466,15 +471,15 @@ _Mark **Pass** or **Fail** in your lab notes._
 cd ~/java-bootcamp/examples/lab41-crm
 docker build --pull -t crm-api:lab41 .
 docker image inspect crm-api:lab41 --format 'id={{.Id}} size={{.Size}} user={{json .Config.User}}'
-docker run --rm --name crm-api -p 8080:8080 \
+docker run --rm --name crm-lab41 -p 8080:8080 \
   --memory=512m --env-file .env.local crm-api:lab41
 curl -fsS http://localhost:8080/actuator/health/readiness
 curl -fsS -H "X-Correlation-Id: lab-request-001" \
   -H "Content-Type: application/json" \
-  -d '{"publicId":"CUS-1001","fullName":"Amina Khan","email":"amina.khan@example.test"}' \
-  http://localhost:8080/api/customers   # adapt to your API
-docker logs crm-api --tail 50
-docker stop --time 20 crm-api
+  -X POST http://localhost:8080/api/v1/interactions \
+  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"lab41 smoke"}'
+docker logs crm-lab41 --tail 50
+docker stop --time 20 crm-lab41
 ```
 
 ### Actuator exposure reminder (`application.yml`)
@@ -507,7 +512,7 @@ docker tag crm-api:lab41 crm-api:1.0.0-${GIT_SHA}
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
 | 1 | Run as root by commenting `USER` | Inspect user `0`; note risk | Restore `USER 10001` |
-| 2 | Invalid `CRM_DB_URL` | Readiness fail / crash loop | Fix URL |
+| 2 | Invalid `CRM_DB_HOST` / port | Readiness fail / crash loop | Fix `CRM_DB_*` keys |
 | 3 | Omit `.dockerignore` `target/` | Slower/messier context | Restore ignore |
 | 4 | `docker stop --time 1` | Possible forced kill | Prefer 20s; tune app |
 | 5 | Tag only `latest` in notes | Document why Lab 42 rejects it | Use version+SHA |
@@ -522,7 +527,7 @@ docker tag crm-api:lab41 crm-api:1.0.0-${GIT_SHA}
 | Jar not found | Wrong COPY glob | Match Boot jar name |
 | Permission denied | Root-owned files | `--chown=spring:spring` |
 | Cannot connect DB | Docker DNS/host | Use compose service name / host gateway |
-| HEALTHCHECK fail | No wget/curl | Adjust check; expose actuator |
+| HEALTHCHECK fail | No wget/curl | Prefer `/dev/tcp` HEALTHCHECK; expose actuator |
 | OOM kill | Memory limit tight | Tune limit / MaxRAMPercentage |
 | Secrets in history | ARG password | Rebuild without; rotate |
 | Slow repeated builds | Cache busted by COPY order | Keep pom-first pattern |
@@ -557,8 +562,8 @@ Optional — jot brief notes in your README if useful for your progress check (n
 ## Cleanup
 
 ```bash
-docker stop crm-api 2>/dev/null || true
-docker rm crm-api 2>/dev/null || true
+docker stop crm-lab41 2>/dev/null || true
+docker rm crm-lab41 2>/dev/null || true
 # optional: docker rmi crm-api:lab41
 cd ~/java-bootcamp/examples/lab41-crm
 git status --short

@@ -326,7 +326,7 @@ jobs:
 
 **Why:** Compile-only green builds miss vulnerable dependencies; reports must survive a failed gate for triage.
 
-**Do this:** Add a dependency-scan and/or available SAST step (Maven profile, OWASP Dependency-Check, or instructor-provided scanner). Fail at the agreed threshold. Preserve reports even when the gate fails (separate artifact paths or `after-script` as GitHub allows).
+**Do this:** Add a dependency-scan and/or available SAST step (Maven profile, OWASP Dependency-Check, or instructor-provided scanner). Fail at the agreed threshold. Preserve reports even when the gate fails (use `if: always()` on upload-artifact steps).
 
 ```bash
 # Local analogue (adjust profile/plugin to cohort tooling)
@@ -376,17 +376,28 @@ Add a `package` job that depends on `verify` and uploads a checksummed JAR:
 **Do this:** After verify on `main` (or release path), calculate SHA-256, record commit identity, and attach JAR + `SHA256SUMS` as artifacts. Do **not** rebuild in deployment steps.
 
 ```yaml
-  branches:
-    main:
-      - step: *verify
-      - step:
-          name: Checksum artifact
-          script:
-            - sha256sum target/*.jar > target/SHA256SUMS
-            - echo "commit=${GITHUB_SHA}" >> target/SHA256SUMS
-          artifacts:
-            - target/*.jar
-            - target/SHA256SUMS
+  package:
+    needs: verify
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Package once + checksum
+        run: |
+          mvn -B -DskipTests package
+          sha256sum target/*.jar > target/SHA256SUMS
+          echo "commit=${GITHUB_SHA}" >> target/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: crm-jar
+          path: |
+            target/*.jar
+            target/SHA256SUMS
 ```
 
 **Expected result:** Artifact pack includes JAR + checksum lines + commit reference.
@@ -402,15 +413,8 @@ Add a `package` job that depends on `verify` and uploads a checksummed JAR:
 **Do this:** Keep focused validation on pull requests; complete gates on `main`; use version tags (`v*`) and **manual** environment deployment where required.
 
 ```yaml
-  tags:
-    'v*':
-      - step: *verify
-      - step:
-          name: Deploy to test
-          deployment: test
-          trigger: manual
-          script:
-            - ./scripts/deploy.sh "$GITHUB_REF_NAME"
+# Tag / release behavior is the same package job above (gated by startsWith(github.ref, 'refs/tags/')).
+# Deploy belongs in Lab 44 `.github/workflows/cd.yml` (workflow_dispatch + Environments) — not in verify CI.
 ```
 
 Ensure `scripts/deploy.sh` reads credentials from environment variables—never hard-codes them.

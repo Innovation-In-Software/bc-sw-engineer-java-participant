@@ -176,7 +176,7 @@ Parts 1–8 map to Steps 1–8; Step 9 closes archival evidence.
 
 **Why:** Unindexed claims collapse under the first hard question.
 
-**Do this:** Create `defense/evidence-index.md` mapping requirements → features → tests → scans → pipeline → digest → deployment → monitoring. Every slide claim gets a link/path. State known limitations honestly.
+**Do this:** Fill the starter stub `defense/evidence-index.md` mapping requirements → features → tests → scans → pipeline → digest → deployment → monitoring. Every slide claim gets a link/path. State known limitations honestly.
 
 Minimum rows:
 
@@ -290,7 +290,7 @@ Failover script language (practice aloud):
 
 **Why:** Architecture memorization without evidence structure fails Q&A.
 
-**Do this:** Populate `defense/technical-q-and-a.md` with practice answers using **claim → evidence → trade-off → next-step**. Cover security, consistency, Kafka, PostgreSQL, testing, CI/CD, probes, monitoring. Practice saying “unknown—here is how we would verify.”
+**Do this:** Fill the starter stub `defense/technical-q-and-a.md` with practice answers using **claim → evidence → trade-off → next-step**. Cover security, consistency, Kafka, PostgreSQL, testing, CI/CD, probes, monitoring. Practice saying “unknown—here is how we would verify.”
 
 Sample topics:
 
@@ -324,7 +324,7 @@ Card template:
 
 **Why:** Uncaptured panel questions become lost commitments.
 
-**Do this:** Respect presentation and demo timeboxes. Narrate outcomes while operating. Record questions and follow-ups in `defense/feedback-log.md` with owners/dates.
+**Do this:** Respect presentation and demo timeboxes. Narrate outcomes while operating. Record questions and follow-ups in the optional stub `defense/feedback-log.md` with owners/dates.
 
 **Expected result:** Completed delivery (or instructor-scheduled slot) with feedback log.
 
@@ -359,7 +359,7 @@ Backend lead — within two weeks.
 Three releases with no staging contract mismatch.
 ```
 
-**Expected result:** `defense/retrospective.md` with ≤5 actions, each owned.
+**Expected result:** Filled stub `defense/retrospective.md` with ≤5 actions, each owned.
 
 **If it fails:** More than five vague actions → cut to measurable few.
 
@@ -369,7 +369,7 @@ Three releases with no staging contract mismatch.
 
 **Why:** Ungrounded self-scores and unclean archives create portfolio risk.
 
-**Do this:** Complete `defense/self-assessment.md` with evidence links showing each required outcome is complete. Archive secret-free portfolio summary.
+**Do this:** Fill the starter stub `defense/self-assessment.md` with evidence links showing each required outcome is complete. Archive secret-free portfolio summary.
 
 Scrub checklist before archive:
 

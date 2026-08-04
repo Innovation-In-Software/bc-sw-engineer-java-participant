@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Ship repository + validator + DefaultCustomerService with legal/illegal status transitions |
 | **Skills practiced** | Service/repo boundaries, transition matrix, ctor DI, validate-before-mutate |
-| **Expected outcome** | Green `mvn test` · activate CUS-1002 · reject ACTIVE→PROSPECT with `lab-request-001` |
+| **Expected outcome** | `mvn test` → **Tests run: 3** · activate CUS-1002 · reject ACTIVE→PROSPECT with `lab-request-001` |
 | **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
 | **Prerequisites** | Lab 0 · Lab 14 DTOs preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
 | **Expected files** | `examples/lab15-crm/` — repo, validator, service, tests, notes |
@@ -38,7 +38,7 @@
 | Prerequisite | `examples\lab14-crm\` (DTOs + Bean Validation) |
 | This lab project | `examples\lab15-crm\` (`Copy-Item -Recurse lab14-crm lab15-crm`) |
 | Layers | `CustomerRepository` / `InMemoryCustomerRepository` · `CustomerValidator` · `CustomerService` + `DefaultCustomerService` |
-| Full suite | `mvn -B clean test` → **Tests run: 15**, Failures: 0 · **BUILD SUCCESS** |
+| Timed starter suite | `mvn -B clean test` → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS** (`CustomerValidatorTest`) |
 | Main | `activated CUS-1002 status=ACTIVE`; illegal `ACTIVE -> PROSPECT [lab-request-001]`; Amina stays ACTIVE |
 | Anti-leak | No `HashMap` / JDBC / `EntityManager` in `service` package |
 
@@ -458,24 +458,26 @@ System.out.println("CUS-1001 still: " + service.findById("CUS-1001").orElseThrow
 **Do this:**
 
 1. Search service sources for `HashMap`, `Connection`, `EntityManager`—expect none.
-2. Add `CustomerValidatorTest`:
+2. Complete starter `CustomerValidatorTest` methods:
 
 ```java
 @Test
-void allowsProspectToActive() {
-    var repo = new InMemoryCustomerRepository();
-    var validator = new CustomerValidator(repo);
+void prospectToActiveAllowed() {
     assertDoesNotThrow(() ->
         validator.validateTransition(
             CustomerStatus.PROSPECT, CustomerStatus.ACTIVE, "lab-request-001"));
 }
 
 @Test
-void rejectsActiveToProspect() {
-    var validator = new CustomerValidator(new InMemoryCustomerRepository());
+void activeToProspectRejected() {
     assertThrows(IllegalStateException.class, () ->
         validator.validateTransition(
             CustomerStatus.ACTIVE, CustomerStatus.PROSPECT, "lab-request-001"));
+}
+
+@Test
+void duplicateIdRejected() {
+    // seed via repo.save(...); validateNew duplicate → throws
 }
 ```
 
@@ -485,7 +487,7 @@ mvn -q test -Dtest=CustomerValidatorTest
 
 Note why `listAll` returns `List.copyOf` (callers cannot mutate internal storage).
 
-**Expected result:** Tests green; no Map/SQL leakage in service sources.
+**Expected result:** **Tests run: 3**; no Map/SQL leakage in service sources.
 
 **If it fails:** Accidental public `getMap()` on repository → remove it.
 

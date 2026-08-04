@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-16-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab15-crm` → `examples\lab16-crm`; added `ErrorResponse` / `BusinessException` factories / `GlobalExceptionHandler` / `ApiResult`; facade returns Ok/Fail; service/validator throw typed business exceptions. `mvn -B clean test` → **Tests run: 21**, Failures: 0 · **BUILD SUCCESS**. Main (Maven runtime classpath) prints 400/404/409 JSON with `lab-request-001` and leaves `CUS-1001` ACTIVE after illegal transition. Instructor walkthrough: `docs/instructor-participant-help/week-2/16-errors-exercises-and-lab16.md`.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab15-crm` → `examples\lab16-crm`; added `ErrorResponse` / `BusinessException` factories / `GlobalExceptionHandler` / `ApiResult`; facade returns Ok/Fail; service/validator throw typed business exceptions. Timed starter `GlobalExceptionHandlerTest` (`mapsNotFoundTo404`, `mapsConflictTo409`, `unexpectedIsGeneric500`) → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS**. Main (Maven runtime classpath) prints 400/404/409 JSON with `lab-request-001` and leaves `CUS-1001` ACTIVE after illegal transition. Instructor walkthrough: `docs/instructor-participant-help/week-2/16-errors-exercises-and-lab16.md`.
 
 ## Prerequisites (Windows)
 
@@ -46,7 +46,7 @@ mvn -q -DincludeScope=runtime dependency:build-classpath "-Dmdep.outputFile=targ
 java -cp "target\classes;$(Get-Content target\cp.txt -Raw)" com.northstar.crm.Main
 ```
 
-Verified (re-confirmed 2026-08-03): **Tests run: 21** · **BUILD SUCCESS**. Main with dependency classpath shows 400 validation, 404 not-found, 409 conflict JSON with `correlationId=lab-request-001`; `CUS-1001 still: ACTIVE`.
+Verified (re-confirmed 2026-08-03): **Tests run: 3** · **BUILD SUCCESS** (`GlobalExceptionHandlerTest`). Main with dependency classpath shows 400 validation, 404 not-found, 409 conflict JSON with `correlationId=lab-request-001`; `CUS-1001 still: ACTIVE`.
 
 ## Do the lab
 

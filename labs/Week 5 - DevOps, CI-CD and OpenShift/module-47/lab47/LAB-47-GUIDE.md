@@ -64,10 +64,11 @@ Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
-| 1 | `communications/incident-update.md` |
-| 2 | `communications/pull-request-description.md` |
-| 3 | `communications/stakeholder-release-email.md` |
-| 4 | `communications/peer-review.md` |
+| 1 | `communications/shared-facts.md` |
+| 2 | `communications/incident-update.md` |
+| 3 | `communications/pull-request-description.md` |
+| 4 | `communications/stakeholder-release-email.md` |
+| 5 | `communications/peer-review.md` |
 | 5 | Release briefing notes + shared facts |
 | 6 | Consistent, secret-free packet |
 | 7 | Optional: links to Labs 43–46 evidence |
@@ -137,7 +138,7 @@ Confirm (Lab 0 tools assumed):
 
 * Prior CRM lab notes and release context (or use the lab scenario table)
 * Markdown editing in VS Code
-* Optional: CRM tree that still builds (`mvn -q test`)
+* Optional: prior CRM tree available for context (this lab is markdown-only)
 * No secrets (keys, tokens, passwords) committed to Git
 
 ### Pre-flight
@@ -174,7 +175,7 @@ Complete each step in order. Paths assume `~/java-bootcamp/examples/lab47-crm`. 
 
 **Why:** Beautiful prose cannot fix contradictory severity across channels.
 
-**Do this:** Create `communications/shared-facts.md`. Review scope, evidence, defects, deployment state, owners, and dates from Labs 43–46 (or the lab scenario). Label **confirmed facts**, **assumptions**, and **unknowns**. Do not invent status or root cause.
+**Do this:** Fill the starter stub `communications/shared-facts.md`. Review scope, evidence, defects, deployment state, owners, and dates from Labs 43–46 (or the lab scenario). Label **confirmed facts**, **assumptions**, and **unknowns**. Do not invent status or root cause.
 
 Minimum fields:
 
@@ -203,7 +204,7 @@ Minimum fields:
 
 **Why:** The wrong channel and urgency create either panic or silence.
 
-**Do this:** In `docs/release-briefing-notes.md`, for each audience (on-call engineers, PR reviewers, business stakeholders, peer reviewer), state what they know, what they must decide, channel, urgency, and the clear ask / next update time.
+**Do this:** In your notes (or optionally `docs/release-briefing-notes.md` — not a starter submit file), for each audience (on-call engineers, PR reviewers, business stakeholders, peer reviewer), state what they know, what they must decide, channel, urgency, and the clear ask / next update time.
 
 **Expected result:** Audience matrix with purpose and ask.
 
@@ -215,7 +216,7 @@ Minimum fields:
 
 **Why:** Responders need scannable severity, impact, and next touch time.
 
-**Do this:** Create `communications/incident-update.md`. State severity, impact, start time, symptoms, mitigation, owner, and next update. Avoid blame and unsupported cause claims. Use UTC. Quantify impact only where evidence exists.
+**Do this:** Fill the starter stub `communications/incident-update.md`. State severity, impact, start time, symptoms, mitigation, owner, and next update. Avoid blame and unsupported cause claims. Use UTC. Quantify impact only where evidence exists.
 
 ```markdown
 # CRM Incident Update — SEV-2
@@ -242,7 +243,7 @@ Adapt to your fact sheet. Fixtures may appear sparingly (“synthetic checks on 
 
 **Why:** Engineers need timeline and signals without changing the public facts.
 
-**Do this:** Create `communications/technical-follow-up.md`. Add timeline, signals (CI digest from Lab 43/44, lag from Lab 46), hypotheses, actions, and results. Distinguish correlation from causation. Link dashboards/runbooks without exposing secrets. Cite `lab-request-001` only in diagnostic context.
+**Do this (optional / full-path):** If you need a deeper engineering timeline beyond the incident update, add `communications/technical-follow-up.md` (not in the five-file starter submit list). Add timeline, signals (CI digest from Lab 43/44, lag from Lab 46), hypotheses, actions, and results. Distinguish correlation from causation. Link dashboards/runbooks without exposing secrets. Cite `lab-request-001` only in diagnostic context.
 
 **Expected result:** Technical doc aligned with incident update; no secret URLs with tokens.
 
@@ -254,7 +255,7 @@ Adapt to your fact sheet. Fixtures may appear sparingly (“synthetic checks on 
 
 **Why:** Reviewers cannot review “fix” with no risk or test story.
 
-**Do this:** Create `communications/pull-request-description.md` for a plausible mitigation/fix PR (rollback automation, DLT handling, health check, etc.—pick one consistent with your facts).
+**Do this:** Fill the starter stub `communications/pull-request-description.md` for a plausible mitigation/fix PR (rollback automation, DLT handling, health check, etc.—pick one consistent with your facts).
 
 ```markdown
 ## Why
@@ -296,7 +297,7 @@ Ask two or three precise questions.
 
 **Why:** Business readers will not parse Kafka consumer groups; they will parse impact and action.
 
-**Do this:** Create `communications/stakeholder-release-email.md` in plain language. Lead with outcome and user impact. Explain schedule, disruption, risk, and support route. Avoid implementation detail that does not support a decision.
+**Do this:** Fill the starter stub `communications/stakeholder-release-email.md` in plain language. Lead with outcome and user impact. Explain schedule, disruption, risk, and support route. Avoid implementation detail that does not support a decision.
 
 ```text
 Subject: CRM 1.4 release planned for Tuesday, 18:00 UTC
@@ -323,7 +324,7 @@ If you are mid-incident instead of pre-release, rewrite subject/body to match **
 
 **Why:** Solo authors miss tone/fact drift; peer review is the QA gate for words.
 
-**Do this:** Exchange packets with a peer (or self-review with a written checklist if solo). Create `communications/peer-review.md`. Check fact, audience, action, tone, and consistency. Suggest concrete rewrites (before/after sentences). Author accepts or declines with rationale.
+**Do this:** Exchange packets with a peer (or self-review with a written checklist if solo). Fill the starter stub `communications/peer-review.md`. Check fact, audience, action, tone, and consistency. Suggest concrete rewrites (before/after sentences). Author accepts or declines with rationale.
 
 **Expected result:** Peer-review file with ≥2 concrete rewrite suggestions and dispositions.
 

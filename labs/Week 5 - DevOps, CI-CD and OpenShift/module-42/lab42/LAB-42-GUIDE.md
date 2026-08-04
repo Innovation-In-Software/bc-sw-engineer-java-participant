@@ -64,7 +64,7 @@ Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
-| 1 | `k8s/configmap.yaml`, `deployment.yaml`, `service.yaml`, `route.yaml` or `ingress.yaml` |
+| 1 | `k8s/configmap.yaml`, `deployment.yaml`, `service.yaml`, `ingress.yaml` |
 | 2 | Secret handling documented (`secret.example.yaml` without values) |
 | 3 | Probe configuration with distinct startup/ready/live |
 | 4 | Rollout success evidence + rollback rehearsal evidence |
@@ -208,9 +208,11 @@ kind: ConfigMap
 metadata:
   name: crm-api-config
 data:
-  SPRING_PROFILES_ACTIVE: "kubernetes"
-  CRM_DB_URL: "jdbc:postgresql://postgres.example.svc:5432/crm"
-  CRM_DB_USERNAME: "crm_app"
+  SPRING_PROFILES_ACTIVE: "k8s"
+  CRM_DB_HOST: "postgres.training.svc.cluster.local"
+  CRM_DB_PORT: "5432"
+  CRM_DB_NAME: "crm"
+  CRM_DB_USER: "crm_app"
 ```
 
 Create the Secret **out of band** (instructor may provide):
@@ -243,7 +245,7 @@ metadata:
   labels:
     app: crm-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: crm-api
@@ -338,7 +340,7 @@ Tune thresholds for PostgreSQL-warm boots. Do **not** point liveness at readines
 
 ---
 
-### Step 6 — Create Service and Route (or Ingress)
+### Step 6 — Create Service and Ingress
 
 **Why:** ClusterIP alone is not user-reachable; edge TLS policy matters.
 
@@ -358,7 +360,7 @@ spec:
       targetPort: http
 ```
 
-Traefik Ingress `k8s/ingress.yaml` (adjust host / class per instructor):
+Traefik Ingress `k8s/ingress.yaml` (matches starter / k3s training defaults):
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -366,10 +368,11 @@ kind: Ingress
 metadata:
   name: crm-api
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
+  ingressClassName: traefik
   rules:
-    - host: crm-api.example.local
+    - host: crm-api.training.example.test
       http:
         paths:
           - path: /
@@ -378,12 +381,14 @@ spec:
               service:
                 name: crm-api
                 port:
-                  name: http
+                  number: 80
 ```
 
-Document the hostname assigned for your namespace.
+Document the hostname for your namespace (`crm-api.training.example.test` unless the instructor assigns another).
 
-**Expected result:** Service selects pods; Ingress exposes HTTPS (or training HTTP if TLS not available—note residual risk).
+> **Optional (OpenShift only):** If your cohort uses OpenShift Routes instead of Kubernetes Ingress, author `route.yaml` and use `kubectl get route` — otherwise stay on `ingress.yaml` with the starter.
+
+**Expected result:** Service selects pods; Ingress exposes HTTP via Traefik `web` (TLS optional for training—note residual risk).
 
 **If it fails:** No endpoints → label mismatch. Ingress admission errors → ask instructor for allowed host patterns.
 
@@ -398,9 +403,9 @@ Document the hostname assigned for your namespace.
 ```bash
 kubectl apply -f k8s/configmap.yaml
 # Secret already created out-of-band
-kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml -f k8s/route.yaml
+kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml -f k8s/ingress.yaml
 kubectl rollout status deployment/crm-api --timeout=180s
-kubectl get pods,svc,endpoints,route -l app=crm-api
+kubectl get pods,svc,endpoints,ingress -l app=crm-api
 kubectl describe deployment crm-api
 kubectl logs deployment/crm-api --all-containers --tail=100
 kubectl get events --sort-by=.lastTimestamp | tail
@@ -421,11 +426,12 @@ Correct selector, pull, resource, and probe failures using those signals—not r
 **Do this:** Get Route host and:
 
 ```bash
-HOST=$(kubectl get route crm-api -o jsonpath='{.spec.host}')
-curl -fsS "https://${HOST}/actuator/health/readiness"
+HOST=$(kubectl get ingress crm-api -o jsonpath='{.spec.rules[0].host}')
+curl -fsS "http://${HOST}/actuator/health/readiness"
 curl -fsS -H "X-Correlation-Id: lab-request-001" \
   -H "Content-Type: application/json" \
-  "https://${HOST}/api/customers/..."   # create/get CUS-1001 per your API
+  -X POST "http://${HOST}/api/v1/interactions" \
+  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"lab42 smoke"}'
 ```
 
 Verify correlation appears in pod logs when instrumented. Use synthetic emails only.
@@ -460,7 +466,7 @@ Verify previous revision Ready and smoke still works. Write `docs/deployment-run
 
 **Why:** CRM APIs must remain correct when more than one pod serves traffic.
 
-**Do this:** Confirm `replicas: 2` (or scale up temporarily):
+**Do this:** Default manifests use `replicas: 1`. Scale up temporarily to observe multi-pod Endpoints:
 
 ```bash
 kubectl scale deployment/crm-api --replicas=2
@@ -471,7 +477,7 @@ Send several smoke requests with `lab-request-001` (and varying correlation IDs)
 
 Optional: delete one pod and watch Service continue serving while the ReplicaSet replaces it—record downtime expectations (should be minimal with readiness).
 
-**Expected result:** ≥2 Ready pods (or documented single-replica training limit); Endpoints list both; smoke still green after pod delete.
+**Expected result:** After scale, ≥2 Ready pods; Endpoints list both; smoke still green after pod delete. Leave default at `replicas: 1` unless the instructor asks otherwise.
 
 **If it fails:** Only one pod scheduled → resource quota; ask instructor. Sticky assumption bugs → fix app state (no local-only caches for customer writes without shared store).
 
@@ -481,7 +487,7 @@ Optional: delete one pod and watch Service continue serving while the ReplicaSet
 
 **Why:** Manifests without operable docs fail the lab’s operator bar.
 
-**Do this:** Have a peer apply from `docs/deployment-runbook.md` alone (or you from a fresh terminal), reach readiness via Route, and execute `rollout history`. Patch any missing image coordinates, Secret prerequisites, or hostname discovery steps.
+**Do this:** Have a peer apply from `docs/deployment-runbook.md` alone (or you from a fresh terminal), reach readiness via Ingress, and execute `rollout history`. Patch any missing image coordinates, Secret prerequisites, or hostname discovery steps.
 
 **Expected result:** Peer succeeds without undocumented Slack commands; runbook updated; evidence retained.
 
@@ -543,7 +549,7 @@ kind: Deployment
 metadata:
   name: crm-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels: { app: crm-api }
   template:
@@ -571,15 +577,15 @@ spec:
 ```bash
 cd ~/java-bootcamp/examples/lab42-crm
 kubectl apply -f k8s/configmap.yaml
-kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml -f k8s/route.yaml
+kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml -f k8s/ingress.yaml
 kubectl rollout status deployment/crm-api --timeout=180s
-kubectl get pods,svc,endpoints -l app=crm-api
+kubectl get pods,svc,endpoints,ingress -l app=crm-api
 kubectl describe deployment crm-api
 kubectl logs deployment/crm-api --all-containers --tail=100
 kubectl rollout history deployment/crm-api
 kubectl rollout undo deployment/crm-api
-HOST=$(kubectl get route crm-api -o jsonpath='{.spec.host}')
-curl -fsS "https://${HOST}/actuator/health/readiness"
+HOST=$(kubectl get ingress crm-api -o jsonpath='{.spec.rules[0].host}')
+curl -fsS "http://${HOST}/actuator/health/readiness"
 ```
 
 ## Failure Experiments
@@ -590,7 +596,7 @@ curl -fsS "https://${HOST}/actuator/health/readiness"
 | 2 | Point liveness at readiness with DB blip | Restart storm risk | Separate probes |
 | 3 | Deploy bad image tag | ImagePull/CrashLoop; rollout fail | `rollout undo` |
 | 4 | Put password in ConfigMap temporarily | Document why forbidden | Move to Secret; rotate |
-| 5 | Scale to 0 then back | Outage then recovery | `replicas: 2` |
+| 5 | Scale to 0 then back | Outage then recovery | `replicas: 1` (or scale back to prior) |
 
 ---
 
@@ -611,7 +617,7 @@ curl -fsS "https://${HOST}/actuator/health/readiness"
 
 Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
-1. Which inputs are untrusted (Traffic from Route; ConfigMap data from Git)?
+1. Which inputs are untrusted (Traffic from Ingress; ConfigMap data from Git)?
 2. Where are authn/authz enforced (edge + app—not Deployment alone)?
 3. Which values are sensitive—Secret vs ConfigMap?
 
@@ -623,7 +629,7 @@ Optional — jot brief notes in your README if useful for your progress check (n
 Capture evidence first. Delete **only** resources you created in the training namespace (instructor policy may keep shared PostgreSQL).
 
 ```bash
-kubectl delete -f k8s/route.yaml -f k8s/service.yaml -f k8s/deployment.yaml -f k8s/configmap.yaml --ignore-not-found
+kubectl delete -f k8s/ingress.yaml -f k8s/service.yaml -f k8s/deployment.yaml -f k8s/configmap.yaml --ignore-not-found
 # Do not delete shared Secrets/DBs unless instructed
 kubectl config current-context   # confirm you did not leave a prod context
 cd ~/java-bootcamp/examples/lab42-crm

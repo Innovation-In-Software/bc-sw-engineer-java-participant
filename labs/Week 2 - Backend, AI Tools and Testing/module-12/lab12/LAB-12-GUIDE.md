@@ -375,7 +375,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void duplicateIdRejected() {
+    void duplicateIdThrows() {
         CustomerService svc = new CustomerService();
         svc.createCustomer("CUS-1002", "Ravi Singh", "ravi.singh@example.com", null, CustomerStatus.PROSPECT);
         assertThrows(IllegalStateException.class, () ->
@@ -383,7 +383,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void unknownCustomerFailsClearly() {
+    void unknownIdThrows() {
         CustomerService svc = new CustomerService();
         assertThrows(IllegalArgumentException.class, () -> svc.getCustomer("CUS-9999"));
     }

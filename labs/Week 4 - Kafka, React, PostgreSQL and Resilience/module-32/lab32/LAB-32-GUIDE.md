@@ -103,7 +103,7 @@ Use these examples consistently:
 
 | ID | Name | Notes |
 | -- | ---- | ----- |
-| `CUS-1001` | Amina Khan | Primary WireMock stub `/accounts/CUS-1001` |
+| `CUS-1001` | Amina Khan | Primary WireMock stub `/accounts/CUS-1001/summary` |
 | `CUS-1002` | Ravi Singh | Optional second stub / happy path |
 | `lab-request-001` | — | Correlation on CRM request / outbound header |
 | `accountProfile` | — | Resilience4j instance name |
@@ -215,20 +215,20 @@ mvn -q dependency:tree -Dincludes=io.github.resilience4j
 **Do this:** Stub success, temporary 503, and slow responses for Amina:
 
 ```java
-stubFor(get("/accounts/CUS-1001")
+stubFor(get("/accounts/CUS-1001/summary")
   .inScenario("recovery").whenScenarioStateIs(STARTED)
   .willReturn(aResponse().withStatus(503))
   .willSetStateTo("available"));
-stubFor(get("/accounts/CUS-1001")
+stubFor(get("/accounts/CUS-1001/summary")
   .inScenario("recovery").whenScenarioStateIs("available")
-  .willReturn(okJson("{\"accounts\":[]}")));
+  .willReturn(okJson("{\"customerId\":\"CUS-1001\",\"available\":true,\"note\":\"ok\"}")));
 ```
 
 Also prepare a 3000ms delayed stub for TimeLimiter tests and a permanent-503 scenario for OPEN.
 
 **Expected result:** First request 503; second 200; WireMock journal shows expected call counts.
 
-**If it fails:** Scenario state not advancing → fix `willSetStateTo` / `whenScenarioStateIs`. Wrong path → align client base URL + `/accounts/CUS-1001`.
+**If it fails:** Scenario state not advancing → fix `willSetStateTo` / `whenScenarioStateIs`. Wrong path → align client base URL + `/accounts/{id}/summary`.
 
 ---
 
@@ -241,7 +241,7 @@ Also prepare a 3000ms delayed stub for TimeLimiter tests and a permanent-503 sce
 ```yaml
 resilience4j.retry.instances.accountProfile:
   max-attempts: 3
-  wait-duration: 250ms
+  waitDuration: 200ms
   enable-exponential-backoff: true
   exponential-backoff-multiplier: 2
   retry-exceptions:
@@ -251,7 +251,7 @@ resilience4j.retry.instances.accountProfile:
 
 Map HTTP 503 to `TemporaryAccountException` in the client. Do **not** list business validation errors as retryable.
 
-**Expected result:** Logs show attempt delays 250ms then 500ms then success for recovery scenario; `account_profile_loaded customerId=CUS-1001`.
+**Expected result:** Logs show retry wait (`waitDuration: 200ms`) then success for recovery scenario; `account_profile_loaded customerId=CUS-1001`.
 
 **If it fails:** Retries not happening → exception type not listed / wrong instance name. Retries on 400 → remove from retry list.
 
@@ -344,13 +344,13 @@ private CompletableFuture<AccountSummary> fallback(
 
 ```java
 public static AccountSummary unavailable(String customerId) {
-  return new AccountSummary(customerId, false, List.of());
+  return new AccountSummary(customerId, false, "account-profile-unavailable");
 }
 ```
 
 Wire React/API banner text: “Account information is temporarily unavailable.” Document that write endpoints do **not** use this success-shaped fallback.
 
-**Expected result:** HTTP 200 with `{"customerId":"CUS-1001","available":false,"accounts":[]}` (or equivalent) for degraded reads — not a fake account list implying success of a mutation.
+**Expected result:** HTTP 200 with `{"customerId":"CUS-1001","available":false,"note":"account-profile-unavailable"}` (or equivalent) for degraded reads — not a fake account list implying success of a mutation.
 
 **If it fails:** Fallback returns empty success without `available=false` → React cannot distinguish; fix contract. Returning 500 for all CB opens → consider degraded read policy for UX (document choice).
 
@@ -490,7 +490,7 @@ resilience4j:
     instances:
       accountProfile:
         max-attempts: 3
-        wait-duration: 250ms
+        waitDuration: 200ms
         enable-exponential-backoff: true
         exponential-backoff-multiplier: 2
   circuitbreaker:

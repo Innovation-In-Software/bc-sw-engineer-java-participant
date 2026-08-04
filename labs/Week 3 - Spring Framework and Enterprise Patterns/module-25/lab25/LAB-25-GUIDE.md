@@ -123,7 +123,7 @@ Prior labs: [Lab 23](../../module-23/lab23/LAB-23-GUIDE.md).
 Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Spring Boot 3.x web
-* Domain types `Customer` / `CustomerStatus` (recreate if needed)
+* Domain type `Customer` JavaBean (`id`/`name`/`email`/`status`)
 * Copilot / Cursor optional
 * No secrets committed to Git
 
@@ -140,23 +140,22 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 
 ```java
 @Test
-void updateStatus_movesProspectToActive() {
-  var repo = new InMemoryCustomerRepository();
-  var service = new CustomerService(repo);
-  var updated = service.updateStatus("CUS-1002", CustomerStatus.ACTIVE);
-  assertEquals(CustomerStatus.ACTIVE, updated.getStatus());
-  assertEquals("Ravi Singh", updated.getFullName());
+void getSeededCus1001() {
+  CustomerService service = new CustomerService(new InMemoryCustomerRepository());
+  Customer amina = service.get("CUS-1001");
+  assertEquals("CUS-1001", amina.getId());
+  assertEquals("Amina Khan", amina.getName());
 }
 
 @Test
-void getRequired_throws_whenMissing() {
-  var service = new CustomerService(new InMemoryCustomerRepository());
-  assertThrows(CustomerNotFoundException.class,
-      () -> service.getRequired("CUS-9999"));
+void duplicateCreateRejected() {
+  CustomerService service = new CustomerService(new InMemoryCustomerRepository());
+  assertThrows(IllegalStateException.class,
+      () -> service.create(Customer.amina(), "lab-request-001"));
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** Timed path = `get` / `create` / `list` only (no `updateStatus` / PATCH). Match `id`/`name` getters and duplicate → `IllegalStateException`.
 
 ---
 
@@ -180,7 +179,7 @@ mkdir -p copilot-notes docs
 mkdir -p ~/java-bootcamp/notes/screenshots/lab-25
 ```
 
-Ensure `Customer` / `CustomerStatus` (`PROSPECT`, `ACTIVE`, `SUSPENDED`, `CLOSED`) compile under `com.northstar.crm`.
+Ensure starter JavaBean `Customer` (`id`/`name`/`email`/`status` strings) compiles under `com.northstar.crm`. Timed path uses String status values, not a required enum.
 
 ```bash
 mvn -q -DskipTests package
@@ -201,18 +200,17 @@ mvn -q -DskipTests package
 ```java
 public interface CustomerRepository {
   Customer save(Customer customer);
-  Optional<Customer> findByCustomerId(String customerId);
+  Optional<Customer> findById(String id);
   List<Customer> findAll();
-  boolean existsByCustomerId(String customerId);
-  void deleteByCustomerId(String customerId);
+  boolean existsById(String id);
 }
 ```
 
-Optional Copilot prompt: “Spring Data style CustomerRepository for CRM customerId String PK, no JPA annotations yet.” Review every line.
+Optional Copilot prompt: “Spring Data style CustomerRepository for CRM id String PK, no JPA annotations yet.” Review every line.
 
 **Expected result:** Interface compiles; no `HttpServletRequest` / Web types.
 
-**If it fails:** AI adds JPA annotations prematurely → reject or park for later. Vague method names like `get` → prefer `findByCustomerId`.
+**If it fails:** AI adds JPA annotations prematurely → reject or park for later. Vague method names like `get` → prefer `findById`.
 
 ---
 
@@ -228,21 +226,19 @@ public class InMemoryCustomerRepository implements CustomerRepository {
   private final Map<String, Customer> store = new ConcurrentHashMap<>();
 
   public InMemoryCustomerRepository() {
-    store.put("CUS-1001", new Customer(
-        "CUS-1001", "Amina Khan", "amina.khan@example.com", CustomerStatus.ACTIVE));
-    store.put("CUS-1002", new Customer(
-        "CUS-1002", "Ravi Singh", "ravi.singh@example.com", CustomerStatus.PROSPECT));
+    store.put("CUS-1001", Customer.amina());
+    store.put("CUS-1002", Customer.ravi());
   }
 
   @Override
   public Customer save(Customer customer) {
-    store.put(customer.getCustomerId(), customer);
+    store.put(customer.getId(), customer);
     return customer;
   }
 
   @Override
-  public Optional<Customer> findByCustomerId(String customerId) {
-    return Optional.ofNullable(store.get(customerId));
+  public Optional<Customer> findById(String id) {
+    return Optional.ofNullable(store.get(id));
   }
 
   @Override
@@ -251,18 +247,13 @@ public class InMemoryCustomerRepository implements CustomerRepository {
   }
 
   @Override
-  public boolean existsByCustomerId(String customerId) {
-    return store.containsKey(customerId);
-  }
-
-  @Override
-  public void deleteByCustomerId(String customerId) {
-    store.remove(customerId);
+  public boolean existsById(String id) {
+    return store.containsKey(id);
   }
 }
 ```
 
-**Expected result:** Context starts; `findByCustomerId("CUS-1001")` returns Amina ACTIVE.
+**Expected result:** Context starts; `findById("CUS-1001")` returns Amina ACTIVE.
 
 **If it fails:** Bean not created → missing `@Repository` or scan package. Seeds missing → check constructor/`@PostConstruct`. Overwriting seeds in tests → fresh repo per test later.
 
@@ -271,45 +262,39 @@ public class InMemoryCustomerRepository implements CustomerRepository {
 ### Step 4 — Implement `CustomerService` with business rules
 **Why:** Duplicate checks, not-found, and illegal transitions belong in one place both REST and SOAP can call.
 
-**Do this:** Constructor-inject `CustomerRepository`. Implement `getRequired`, `create` (reject duplicate id), `updateStatus` (reject illegal transitions), `list`. **No** Spring Web imports.
+**Do this:** Constructor-inject `CustomerRepository`. Timed path: implement `get`, `create` (reject duplicate via `existsById`), `list`. **No** Spring Web imports. (`updateStatus` / PATCH = full-path homework.)
 
 ```java
 @Service
 public class CustomerService {
-  private final CustomerRepository customers;
+  private final CustomerRepository customerRepository;
 
-  public CustomerService(CustomerRepository customers) {
-    this.customers = customers;
+  public CustomerService(CustomerRepository customerRepository) {
+    this.customerRepository = customerRepository;
   }
 
-  public Customer getRequired(String customerId) {
-    return customers.findByCustomerId(customerId)
-        .orElseThrow(() -> new CustomerNotFoundException(customerId));
-  }
-
-  public Customer create(Customer customer) {
-    if (customers.existsByCustomerId(customer.getCustomerId())) {
-      throw new DuplicateCustomerException(customer.getCustomerId());
+  public Customer create(Customer customer, String correlationId) {
+    if (customerRepository.existsById(customer.getId())) {
+      throw new IllegalStateException("Duplicate customer");
     }
-    return customers.save(customer);
+    return customerRepository.save(customer);
   }
 
-  public Customer updateStatus(String customerId, CustomerStatus next) {
-    Customer c = getRequired(customerId);
-    // reject CLOSED -> ACTIVE, ACTIVE -> PROSPECT, etc. per Lab 15 table
-    c.setStatus(next);
-    return customers.save(c);
+  public Customer get(String id) {
+    return customerRepository
+        .findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Customer not found: " + id));
   }
 
   public List<Customer> list() {
-    return customers.findAll();
+    return customerRepository.findAll();
   }
 }
 ```
 
 Reject AI suggestions that return `ResponseEntity` from the service. Record rejects in `lab25-001`.
 
-**Expected result:** `getRequired("CUS-9999")` throws not-found; `updateStatus("CUS-1002", ACTIVE)` succeeds; service has zero Web imports.
+**Expected result:** `get("CUS-9999")` throws not-found; duplicate create throws `IllegalStateException`; service has zero Web imports.
 
 **If it fails:** Controller still owns rules → move logic down. Service depends on concrete map → depend on interface only.
 
@@ -319,31 +304,29 @@ Reject AI suggestions that return `ResponseEntity` from the service. Record reje
 
 **Why:** The layering gate is enforceable by import review and instructor probe.
 
-**Do this:** Map GET/PATCH (and POST/list in Step 6). Convert DTOs; propagate `X-Correlation-Id: lab-request-001`. Controllers call **only** `CustomerService`.
+**Do this:** Map GET + POST (list via service/unit test on timed path). Propagate `X-Correlation-Id: lab-request-001`. Controllers call **only** `CustomerService`. (PATCH status = full-path.)
 
 ```java
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
-  private final CustomerService service;
+  private final CustomerService customerService;
 
-  public CustomerController(CustomerService service) {
-    this.service = service;
+  public CustomerController(CustomerService customerService) {
+    this.customerService = customerService;
   }
 
-  @GetMapping("/{customerId}")
-  public CustomerResponse get(
-      @PathVariable String customerId,
-      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001")
-      String correlationId) {
-    return CustomerResponse.from(service.getRequired(customerId));
+  @PostMapping
+  @ResponseStatus(HttpStatus.CREATED)
+  public Customer create(
+      @RequestBody Customer customer,
+      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String correlationId) {
+    return customerService.create(customer, correlationId);
   }
 
-  @PatchMapping("/{customerId}/status")
-  public CustomerResponse status(
-      @PathVariable String customerId,
-      @RequestBody StatusUpdateRequest body) {
-    return CustomerResponse.from(service.updateStatus(customerId, body.status()));
+  @GetMapping("/{id}")
+  public Customer get(@PathVariable String id) {
+    return customerService.get(id);
   }
 }
 ```
@@ -370,12 +353,12 @@ curl -s -H "X-Correlation-Id: lab-request-001" \
 curl -s -X POST http://localhost:8080/api/customers \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
-  -d '{"customerId":"CUS-1003","fullName":"Maya Chen","email":"maya@example.com","status":"PROSPECT"}'
+  -d '{"id":"CUS-1003","name":"Maya Chen","email":"maya@example.com","status":"PROSPECT"}'
 ```
 
 **Expected result:** 201 for Maya; list includes seeded + new; duplicate `CUS-1001` rejected by service rule.
 
-**If it fails:** Silent overwrite → add `existsByCustomerId` check before save. Exception becomes 500 → add/adjust exception handler from Lab 16 patterns.
+**If it fails:** Silent overwrite → add `existsById` check before save. Exception becomes 500 → add/adjust exception handler from Lab 16 patterns.
 
 ---
 
@@ -383,23 +366,22 @@ curl -s -X POST http://localhost:8080/api/customers \
 
 **Why:** Layer honesty means service rules can green without `@SpringBootTest` for every assertion.
 
-**Do this:** `CustomerServiceTest` constructing `CustomerService` with `InMemoryCustomerRepository` (or Mockito mock). Cover activate Ravi, not-found, duplicate.
+**Do this:** `CustomerServiceTest` constructing `CustomerService` with `InMemoryCustomerRepository`. Timed Surefire: `getSeededCus1001` + `duplicateCreateRejected` (**Tests run: 2**).
 
 ```java
 @Test
-void updateStatus_movesProspectToActive() {
-  var repo = new InMemoryCustomerRepository();
-  var service = new CustomerService(repo);
-  var updated = service.updateStatus("CUS-1002", CustomerStatus.ACTIVE);
-  assertEquals(CustomerStatus.ACTIVE, updated.getStatus());
-  assertEquals("Ravi Singh", updated.getFullName());
+void getSeededCus1001() {
+  CustomerService service = new CustomerService(new InMemoryCustomerRepository());
+  Customer amina = service.get("CUS-1001");
+  assertEquals("CUS-1001", amina.getId());
+  assertEquals("Amina Khan", amina.getName());
 }
 
 @Test
-void getRequired_throws_whenMissing() {
-  var service = new CustomerService(new InMemoryCustomerRepository());
-  assertThrows(CustomerNotFoundException.class,
-      () -> service.getRequired("CUS-9999"));
+void duplicateCreateRejected() {
+  CustomerService service = new CustomerService(new InMemoryCustomerRepository());
+  assertThrows(IllegalStateException.class,
+      () -> service.create(Customer.amina(), "lab-request-001"));
 }
 ```
 
@@ -512,7 +494,7 @@ curl -s -H "X-Correlation-Id: lab-request-001" \
 curl -s -X POST http://localhost:8080/api/customers \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
-  -d '{"customerId":"CUS-1003","fullName":"Maya Chen","email":"maya@example.com","status":"PROSPECT"}'
+  -d '{"id":"CUS-1003","name":"Maya Chen","email":"maya@example.com","status":"PROSPECT"}'
 curl -s http://localhost:8080/api/customers
 mvn -q test -Dtest=CustomerServiceTest
 mvn -q test

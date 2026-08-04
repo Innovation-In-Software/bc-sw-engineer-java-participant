@@ -413,6 +413,8 @@ public class StudentManager {
 }
 ```
 
+> **Starter note:** The timed-path starter `displayMenu` also prints bonus options **6–10**. Core graded path is still options **1–5** (Exit = 5). Implement or ignore 6–10 after the core path.
+
 **Expected result:** Class compiles conceptually (empty methods can be stubs that print `"TODO"` for now, or omit until Step 6+).
 
 **If it fails:**
@@ -484,7 +486,7 @@ public class Main {
 
 Until manager methods exist, you can temporarily leave empty methods that print a short message—or implement Steps 6–9 first, then compile.
 
-**Expected result:** Menu text matches the sample (title + options 1–5). Choice `5` prints `Thank You` and exits.
+**Expected result:** Menu text matches the sample (title + options 1–5; starter may also show bonus 6–10). Choice `5` prints `Thank You` and exits.
 
 **If it fails:**
 
@@ -661,7 +663,7 @@ java -cp out com.academy.student.Main
 
 **IntelliJ alternative:** After Sources Root + SDK 21, open `Main.java` → Run gutter on `main`. Then still practice the terminal once.
 
-**Expected result:** Menu appears:
+**Expected result:** Menu appears (core options 1–5; starter may also list bonus 6–10):
 
 ```text
 ====================================
@@ -697,7 +699,7 @@ Enter Choice :
 3. Choice `4` → average
 4. Choice `5` → exit
 
-**Expected result:** Console should look like the reference sample:
+**Expected result:** Console should look like the reference sample (core 1–5; ignore bonus 6–10 if the starter prints them):
 
 ```text
 ====================================

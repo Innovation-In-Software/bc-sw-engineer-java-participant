@@ -108,7 +108,7 @@ Use these examples consistently:
 | `CUS-1001` | Amina Khan | `ACTIVE` — primary card fixture |
 | `CUS-1002` | Ravi Singh | `PROSPECT` — second card / grid |
 | `lab-request-001` | — | correlation on edit/add console callbacks |
-| fictional emails | `amina@example.com`, `ravi@example.com` | never real PII |
+| fictional emails | `amina.khan@example.com`, `ravi.singh@example.com` | never real PII |
 
 **Security note for evidence.** Use fictional emails only. Never commit `.env` secrets, `node_modules/`, or `dist/`. Screenshots of the dashboard and test output go under `notes/screenshots/lab-33/`.
 
@@ -207,20 +207,19 @@ npm run dev
 **Do this:** Create `src/types/customer.ts`:
 
 ```typescript
-export type CustomerStatus = "PROSPECT" | "ACTIVE" | "SUSPENDED" | "CLOSED";
+export type CustomerStatus = "PROSPECT" | "ACTIVE" | "CLOSED";
 
 export interface Customer {
   customerId: string;
   fullName: string;
   email: string;
-  phone: string;
   status: CustomerStatus;
 }
 
 export type CustomerDraft = Omit<Customer, "customerId">;
 ```
 
-Create `src/data/seedCustomers.ts` with Amina (`CUS-1001`, ACTIVE, `amina@example.com`) and Ravi (`CUS-1002`, PROSPECT, `ravi@example.com`).
+Create `src/data/seedCustomers.ts` with Amina (`CUS-1001`, ACTIVE, `amina.khan@example.com`) and Ravi (`CUS-1002`, PROSPECT, `ravi.singh@example.com`).
 
 ```bash
 npm run build
@@ -244,7 +243,6 @@ import type { CustomerStatus } from "../types/customer";
 const labels: Record<CustomerStatus, string> = {
   PROSPECT: "Prospect",
   ACTIVE: "Active",
-  SUSPENDED: "Suspended",
   CLOSED: "Closed",
 };
 
@@ -259,7 +257,7 @@ export function StatusBadge({ status }: { status: CustomerStatus }) {
 
 Add minimal CSS for text contrast; do not rely on color alone.
 
-**Expected result:** ACTIVE renders visible text `Active`; SUSPENDED renders `Suspended`; badge readable in grayscale.
+**Expected result:** ACTIVE renders visible text `Active`; CLOSED renders `Closed`; badge readable in grayscale. (No `SUSPENDED` in starter status union.)
 
 **If it fails:** Missing label for a status → exhaustiveness error (good). Empty children → fix labels map.
 
@@ -278,7 +276,7 @@ Add minimal CSS for text contrast; do not rely on color alone.
 
 Render with Amina fixture in Story-style smoke check inside `App` temporarily if needed.
 
-**Expected result:** Heading `Amina Khan`; link `amina@example.com`; status Active; Edit calls `onEdit("CUS-1001")` (log with `lab-request-001` in console if you stub).
+**Expected result:** Heading `Amina Khan`; link `amina.khan@example.com`; status Active; Edit calls `onEdit("CUS-1001")` (log with `lab-request-001` in console if you stub).
 
 **If it fails:** Button not found by name → use accessible name `Edit`. Props typing error → export `Props` interface.
 

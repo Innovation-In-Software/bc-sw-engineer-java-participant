@@ -39,10 +39,11 @@
 | This lab project | `examples\lab14-crm\` (`Copy-Item -Recurse lab12-crm lab14-crm`) |
 | Validation deps | `jakarta.validation-api` **3.1.0** · Hibernate Validator **8.0.2.Final** · Expressly **5.0.0** |
 | API edge | `CustomerApiFacade` + `CustomerRequestDTO` / `CustomerResponseDTO` + `CustomerMapper` |
-| Full suite | `mvn -B clean test` → **Tests run: 13**, Failures: 0 · **BUILD SUCCESS** |
+| Timed starter suite | `mvn -B clean test` → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS** (`CustomerRequestValidationTest`) |
+| Full-path suite (optional) | May reach **Tests run: 13** with facade/mapper extras — not required on timed path |
 | Main | Response DTOs for `CUS-1001`/`CUS-1002`; invalid email + unknown id include `lab-request-001` |
 
-**If it fails (Windows PowerShell):** Use **Jakarta** validation packages (not `javax`). Missing EL → add `expressly`. Lab 12 service uses `createCustomer` / `getCustomer` — adapt the guide’s `addCustomer` / `findByCustomerId` examples. `java -cp target\classes` alone fails with `NoClassDefFoundError: jakarta/validation/Validation` — build a runtime classpath via `dependency:build-classpath` (see README) or run from IntelliJ.
+**If it fails (Windows PowerShell):** Use **Jakarta** validation packages (not `javax`). Missing EL → add `expressly`. Lab 12 service uses `createCustomer` / `getCustomer` — wire the facade to those names (not `addCustomer`). `java -cp target\classes` alone fails with `NoClassDefFoundError: jakarta/validation/Validation` — build a runtime classpath via `dependency:build-classpath` (see README) or run from IntelliJ.
 
 ---
 
@@ -159,42 +160,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomerRequestDTOValidationTest {
-    private Validator validator;
-
-    @BeforeEach
-    void setUp() {
-        validator = Validation.buildDefaultValidatorFactory().getValidator();
-    }
-
-    @Test
-    void rejectsInvalidEmail() {
-        CustomerRequestDTO dto = validTemplate();
-        dto.setEmail("not-an-email");
-        assertFalse(validator.validate(dto).isEmpty());
-    }
-
-    @Test
-    void rejectsBlankFullName() {
-        CustomerRequestDTO dto = validTemplate();
-        dto.setFullName(" ");
-        assertFalse(validator.validate(dto).isEmpty());
-    }
-
-    @Test
-    void acceptsAminaKhan() {
-        CustomerRequestDTO dto = validTemplate();
-        dto.setCustomerId("CUS-1001");
-        dto.setFullName("Amina Khan");
-        dto.setEmail("amina.khan@example.com");
-        dto.setStatus("ACTIVE");
-        assertTrue(validator.validate(dto).isEmpty());
-    }
-
-// ... truncated — see full sample in the Steps
+class CustomerRequestValidationTest {
+    // Timed starter names: validAminaRequestPasses, invalidEmailFails, blankNameFails
+    // (full-path solution may use CustomerRequestDTOValidationTest / acceptsAminaKhan — prefer starter names in class)
+}
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** Match starter test class/method names (`CustomerRequestValidationTest`), IDs, and failure behavior — instructors check these.
 
 ---
 
@@ -424,13 +396,19 @@ public class CustomerApiFacade {
             throw new IllegalArgumentException(
                 "validation failed [" + correlationId + "]: " + detail);
         }
-        var saved = service.addCustomer(CustomerMapper.toEntity(request));
+        var saved = service.createCustomer(
+                request.getCustomerId(),
+                request.getFullName(),
+                request.getEmail(),
+                request.getPhone(),
+                CustomerStatus.valueOf(request.getStatus()));
+        // Or: map → createCustomer → toResponse (match your Lab 12 API)
         return CustomerMapper.toResponse(saved);
     }
 }
 ```
 
-Wire `Main` to create Amina via a valid DTO with correlation ID `lab-request-001`. Adapt `addCustomer` / `save` method names to your service.
+Wire `Main` to create Amina via a valid DTO with correlation ID `lab-request-001`. Call `createCustomer` / `getCustomer` (Lab 12 names).
 
 **Expected result:** Console shows create ok for `CUS-1001` / Amina / ACTIVE with correlation echoed in logs/notes.
 
@@ -442,67 +420,41 @@ Wire `Main` to create Amina via a valid DTO with correlation ID `lab-request-001
 
 **Why:** Automated tests prove Bean Validation—not only a happy Main demo.
 
-**Do this:** `CustomerRequestDTOValidationTest.java`:
+**Do this:** Complete starter `CustomerRequestValidationTest.java` (package `com.northstar.crm`):
 
 ```java
-package com.northstar.crm.dto;
+@Test
+void validAminaRequestPasses() {
+    CustomerRequestDTO dto = new CustomerRequestDTO();
+    dto.setCustomerId("CUS-1001");
+    dto.setFullName("Amina Khan");
+    dto.setEmail("amina.khan@example.com");
+    dto.setStatus("ACTIVE");
+    assertTrue(validator.validate(dto).isEmpty());
+}
 
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+@Test
+void invalidEmailFails() {
+    CustomerRequestDTO dto = validTemplate();
+    dto.setEmail("not-an-email");
+    assertFalse(validator.validate(dto).isEmpty());
+}
 
-class CustomerRequestDTOValidationTest {
-    private Validator validator;
-
-    @BeforeEach
-    void setUp() {
-        validator = Validation.buildDefaultValidatorFactory().getValidator();
-    }
-
-    @Test
-    void rejectsInvalidEmail() {
-        CustomerRequestDTO dto = validTemplate();
-        dto.setEmail("not-an-email");
-        assertFalse(validator.validate(dto).isEmpty());
-    }
-
-    @Test
-    void rejectsBlankFullName() {
-        CustomerRequestDTO dto = validTemplate();
-        dto.setFullName(" ");
-        assertFalse(validator.validate(dto).isEmpty());
-    }
-
-    @Test
-    void acceptsAminaKhan() {
-        CustomerRequestDTO dto = validTemplate();
-        dto.setCustomerId("CUS-1001");
-        dto.setFullName("Amina Khan");
-        dto.setEmail("amina.khan@example.com");
-        dto.setStatus("ACTIVE");
-        assertTrue(validator.validate(dto).isEmpty());
-    }
-
-    private CustomerRequestDTO validTemplate() {
-        CustomerRequestDTO dto = new CustomerRequestDTO();
-        dto.setCustomerId("CUS-1002");
-        dto.setFullName("Ravi Singh");
-        dto.setEmail("ravi.singh@example.com");
-        dto.setStatus("PROSPECT");
-        return dto;
-    }
+@Test
+void blankNameFails() {
+    CustomerRequestDTO dto = validTemplate();
+    dto.setFullName(" ");
+    assertFalse(validator.validate(dto).isEmpty());
 }
 ```
 
-Also add a facade-level test or Main snippet that attempts invalid email with `lab-request-001` and asserts the exception message contains the correlation ID.
+(Optional full path: also add facade/mapper tests; solution names may differ — timed path sticks to the three starter methods.)
 
 ```bash
-mvn -q test -Dtest=CustomerRequestDTOValidationTest
+mvn -q test -Dtest=CustomerRequestValidationTest
 ```
 
-**Expected result:** Tests green; invalid email/blank name produce violations.
+**Expected result:** **Tests run: 3**; invalid email/blank name produce violations.
 
 **If it fails:** Surefire missing → copy Lab 11 plugin. Tests under wrong package path → use `src/test/java`.
 
@@ -647,7 +599,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 ```bash
 cd ~/java-bootcamp/examples/lab14-crm
 mvn -q clean test
-mvn -q test -Dtest=CustomerRequestDTOValidationTest
+mvn -q test -Dtest=CustomerRequestValidationTest
 mvn -q exec:java -Dexec.mainClass=com.northstar.crm.Main
 git status
 ```
@@ -657,7 +609,7 @@ git status
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
 | 1 | Remove Hibernate Validator temporarily; run tests | `NoProviderFoundException` / missing provider | Restore dependency |
-| 2 | Missing `fullName`, bad email, `status` blank/null | Facade fails before `addCustomer` | Keep validate-first order |
+| 2 | Missing `fullName`, bad email, `status` blank/null | Facade fails before `createCustomer` | Keep validate-first order |
 | 3 | Create `CUS-1001` twice | Duplicate = service rule, not Bean Validation | Document difference |
 | 4 | Skip `validator.validate` call | Invalid data reaches service | Re-add validate; note risk |
 | 5 | Status `Active` (wrong case) | `valueOf` fails at map time | Require enum-aligned strings |

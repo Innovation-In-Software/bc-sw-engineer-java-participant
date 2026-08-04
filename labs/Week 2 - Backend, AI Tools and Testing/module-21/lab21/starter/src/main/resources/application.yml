@@ -10,4 +10,5 @@ management:
       probes:
         enabled: true
       show-details: always
+      # TODO: group.readiness.include: readinessState,crmReadinessIndicator
 # TODO: document that production must NOT expose everything — lab-only exposure

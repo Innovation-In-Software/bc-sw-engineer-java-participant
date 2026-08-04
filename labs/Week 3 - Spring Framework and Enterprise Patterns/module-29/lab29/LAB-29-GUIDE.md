@@ -143,7 +143,7 @@ void create_rejectsInvalidEmail() throws Exception {
           .contentType(MediaType.APPLICATION_JSON)
           .header("X-Correlation-Id", "lab-request-001")
           .content("""
-              {"customerId":"CUS-1003","fullName":"Maya Chen",
+              {"id":"CUS-1003","name":"Maya Chen",
                "email":"bad","status":"PROSPECT"}
               """))
       .andExpect(status().isBadRequest())
@@ -225,8 +225,8 @@ mvn -q -DskipTests package
 
 ```java
 public record CustomerRequest(
-    @NotBlank @Pattern(regexp = "CUS-\\d{4}") String customerId,
-    @NotBlank @Size(max = 120) String fullName,
+    @NotBlank @Pattern(regexp = "CUS-\\d{4}") String id,
+    @NotBlank @Size(max = 120) String name,
     @NotBlank @Email String email,
     @NotNull CustomerStatus status
 ) {}
@@ -259,11 +259,11 @@ public ResponseEntity<CustomerResponse> create(
   // delegate to service
 }
 
-@PatchMapping("/{customerId}/status")
+@PatchMapping("/{id}/status")
 public CustomerResponse updateStatus(
-    @PathVariable String customerId,
+    @PathVariable String id,
     @Valid @RequestBody StatusUpdateRequest request) {
-  return CustomerResponse.from(service.updateStatus(customerId, request.status()));
+  return CustomerResponse.from(service.updateStatus(id, request.status()));
 }
 ```
 
@@ -286,7 +286,7 @@ curl -s -i -X POST http://localhost:8080/api/customers \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
   -H "Authorization: Bearer $TOKEN" \
-  -d '{"customerId":"BAD","fullName":"","email":"not-an-email","status":"ACTIVE"}'
+  -d '{"id":"","name":"","email":"not-an-email","status":"ACTIVE"}'
 ```
 
 Before the global handler exists, Spring may return its default 400 structure. Note it — Step 5 replaces it with your envelope.
@@ -324,7 +324,7 @@ public class GlobalExceptionHandler {
 
 Read `X-Correlation-Id` from the request (default `lab-request-001` only when demos need it).
 
-**Expected result:** Re-run invalid POST; JSON matches `ErrorResponse`; violations include email/fullName/customerId; `correlationId` reflects `lab-request-001` when header sent.
+**Expected result:** Re-run invalid POST; JSON matches `ErrorResponse`; violations include email/name/id; `correlationId` reflects `lab-request-001` when header sent.
 
 **If it fails:** Advice not scanned → wrong package. Violations empty → handler type mismatch (use `MethodArgumentNotValidException`).
 
@@ -394,7 +394,9 @@ Optional stretch: sketch how SOAP clients, REST, services, repositories, transac
 
 ---
 
-### Step 8 — Automated tests for validation and handler
+### Step 8
+
+Name the suite `ErrorEnvelopeTest` (**Tests run: 4**): validation **400**, not-found **404**, duplicate **409**, security **401**. Login first with `POST /api/auth/login` `{"username":"agent1","password":"agent1"}`, then send `Authorization: Bearer <token>`. — Automated tests for validation and handler
 
 **Why:** Asserting `jsonPath` on `ErrorResponse` prevents silent contract drift.
 
@@ -407,7 +409,7 @@ void create_rejectsInvalidEmail() throws Exception {
           .contentType(MediaType.APPLICATION_JSON)
           .header("X-Correlation-Id", "lab-request-001")
           .content("""
-              {"customerId":"CUS-1003","fullName":"Maya Chen",
+              {"id":"CUS-1003","name":"Maya Chen",
                "email":"bad","status":"PROSPECT"}
               """))
       .andExpect(status().isBadRequest())
@@ -517,7 +519,7 @@ curl -s -i -X POST http://localhost:8080/api/customers \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
   -H "Authorization: Bearer <token>" \
-  -d '{"customerId":"BAD","fullName":"","email":"x","status":"ACTIVE"}'
+  -d '{"id":"","name":"","email":"x","status":"ACTIVE"}'
 curl -s -i http://localhost:8080/api/customers/CUS-1001 \
   -H "X-Correlation-Id: lab-request-001" \
   -H "Authorization: Bearer <token>"

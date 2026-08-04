@@ -35,8 +35,8 @@ cd examples\customer-management-platform
 ### Commands this lab typically uses
 
 ```powershell
-cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
-docker compose
+cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform\backend
+mvn -B test
 ```
 
 

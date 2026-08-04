@@ -41,6 +41,7 @@ javac -d out `
   src\com\academy\student\StudentManager.java `
   src\com\academy\student\Main.java
 java -cp out com.academy.student.Main
+# Starter menu may show options 1–10 (bonus 6–10); core graded path is still 1–5
 ```
 
 

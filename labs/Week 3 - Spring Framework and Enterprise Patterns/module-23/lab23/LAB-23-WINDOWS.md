@@ -45,7 +45,7 @@ mvn -B spring-boot:run
 # Profile teaser: mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
 ```
 
-Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS** twice (`CrmApplicationTests` + `CustomerControllerApiTest`); live health **UP**; POST **201** / GET **200** for `CUS-1001` with `lab-request-001`; `CUS-MISSING` **404**; profile `dev` active with health details; `/actuator/info` shows `northstar-crm` when `management.info.env.enabled=true`.
+Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** twice (`CrmApplicationTests` + `CustomerControllerHttpTest`); live health **UP**; POST **201** / GET **200** for `CUS-1001` with `lab-request-001`; `CUS-MISSING` **404**; profile `dev` active with health details; `/actuator/info` shows `northstar-crm` when `management.info.env.enabled=true`.
 
 ## Do the lab
 

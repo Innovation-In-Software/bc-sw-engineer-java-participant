@@ -40,9 +40,9 @@
 | Domain / service | `CustomerStatus`, fleshed-out `Customer`, in-memory `CustomerService` |
 | Review log | `copilot-notes\ai-review-notes.md` (`lab10-001`–`lab10-004`) |
 | Compile / run | `mvn -q clean compile` · `java -cp target\classes com.northstar.crm.Main` |
-| Smoke-test output | `CUS-1001` ACTIVE + `CUS-1002` PROSPECT → after activation `CUS-1002` ACTIVE |
+| Smoke-test output | `findByCustomerId` for Amina/Ravi; after `updateStatus` `CUS-1002` ACTIVE |
 
-**If it fails (Windows PowerShell):** Copy from `examples\` only. Replacing Lab 9’s repository-backed `CustomerService` stub breaks `CustomerController` (`create` / `getById`). Keep thin `UnsupportedOperationException` stubs for those DTO methods so the controller still compiles, or temporarily comment the controller calls — do **not** add JPA/Spring to “fix” Copilot. Reject `@Entity` / `@Id` / `@Column` on `Customer`. Prefer `java -cp target\classes` over the fat JAR for this lab’s harness.
+**If it fails (Windows PowerShell):** Prefer the timed-path `starter/` copy into `examples\lab10-crm` (no Spring controller in that tree). Reject `@Entity` / `@Id` / `@Column` on `Customer`. Prefer `java -cp target\classes` over the fat JAR for this lab’s harness. Do **not** add JPA/Spring to “fix” Copilot.
 
 ---
 
@@ -100,7 +100,7 @@ Northstar’s engineering lead wants the customer-service backend built faster w
 
 **No AI-generated code merges without a human explaining, in writing, what it does and why it is correct.**
 
-You flesh out the `Customer` domain object and the first `CustomerService` operations (add, look up, list by status, change status) on top of the Lab 9 Maven skeleton. You use Copilot to go faster, and you prove—with a written review log—that you understood and verified every line.
+You flesh out the `Customer` domain object and the first `CustomerService` operations (`addCustomer`, `findByCustomerId`, `updateStatus`) on top of the Lab 9 Maven skeleton. You use Copilot to go faster, and you prove—with a written review log—that you understood and verified every line. (`findByStatus` / `listAll` are optional full-path stretch — not required on the timed starter.)
 
 Use these examples consistently:
 
@@ -378,14 +378,14 @@ It should hold customers in an in-memory List<Customer>. Methods:
 addCustomer(Customer) — reject blank customerId, reject duplicate customerId
   with IllegalStateException, otherwise store and return the customer;
 findByCustomerId(String) — return Optional<Customer>;
-findByStatus(CustomerStatus) — return List<Customer>;
-updateStatus(String customerId, CustomerStatus newStatus) — throw
+updateStatus(String customerId, CustomerStatus status) — throw
   IllegalArgumentException if the customer does not exist, otherwise
-  update and return it;
-listAll() — return an unmodifiable copy of all customers.
+  update and return it.
 ```
 
-Reference shape to compare against:
+> **Timed starter API:** Complete those three methods. Optional full-path stretch (not in starter stubs): `findByStatus(CustomerStatus)` and `listAll()`.
+
+Reference shape to compare against (timed path):
 
 ```java
 package com.northstar.crm.service;
@@ -418,21 +418,11 @@ public class CustomerService {
                 .findFirst();
     }
 
-    public List<Customer> findByStatus(CustomerStatus status) {
-        return customers.stream()
-                .filter(c -> c.getStatus() == status)
-                .toList();
-    }
-
-    public Customer updateStatus(String customerId, CustomerStatus newStatus) {
+    public Customer updateStatus(String customerId, CustomerStatus status) {
         Customer customer = findByCustomerId(customerId)
                 .orElseThrow(() -> new IllegalArgumentException("No such customer: " + customerId));
-        customer.setStatus(newStatus);
+        customer.setStatus(status);
         return customer;
-    }
-
-    public List<Customer> listAll() {
-        return List.copyOf(customers);
     }
 }
 ```
@@ -443,7 +433,7 @@ mvn -q compile
 
 **Expected result:** `BUILD SUCCESS`; service depends only on entity classes (and JDK), no Spring stereotypes.
 
-**If it fails:** Reject `@Service` / `@Component` / repository injections. Ensure `Optional` and streams match Java 21. Fix missing imports from Chat paste carefully. If compile fails because `CustomerController` still calls Lab 8/9 `create`/`getById`, keep those two methods as `UnsupportedOperationException` stubs on `CustomerService` (controller stays untouched for later labs).
+**If it fails:** Reject `@Service` / `@Component` / repository injections. Ensure `Optional` and streams match Java 21. Fix missing imports from Chat paste carefully.
 
 ---
 
@@ -471,8 +461,8 @@ public class Main {
         service.addCustomer(new Customer("CUS-1002", "Ravi Singh", "ravi.singh@example.com",
                 "555-0102", CustomerStatus.PROSPECT, LocalDateTime.now()));
 
-        System.out.println("All customers: " + service.listAll());
-        System.out.println("PROSPECT customers: " + service.findByStatus(CustomerStatus.PROSPECT));
+        System.out.println("Amina: " + service.findByCustomerId("CUS-1001"));
+        System.out.println("Ravi before: " + service.findByCustomerId("CUS-1002"));
 
         service.updateStatus("CUS-1002", CustomerStatus.ACTIVE);
         System.out.println("After activation: " + service.findByCustomerId("CUS-1002"));
@@ -493,8 +483,8 @@ mvn -q compile exec:java -Dexec.mainClass=com.northstar.crm.Main
 **Expected result (theme):**
 
 ```text
-All customers: [Customer{customerId='CUS-1001', ...}, Customer{customerId='CUS-1002', ...}]
-PROSPECT customers: [Customer{customerId='CUS-1002', fullName='Ravi Singh', status=PROSPECT}]
+Amina: Optional[Customer{customerId='CUS-1001', ..., status=ACTIVE}]
+Ravi before: Optional[Customer{customerId='CUS-1002', ..., status=PROSPECT}]
 After activation: Optional[Customer{customerId='CUS-1002', ..., status=ACTIVE}]
 ```
 
@@ -589,7 +579,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | `Main` creates `CUS-1001` (ACTIVE) and `CUS-1002` (PROSPECT) | Pass / Fail |
-| 2 | Status filter and `updateStatus` demonstrated | Pass / Fail |
+| 2 | `findByCustomerId` and `updateStatus` demonstrated (Ravi → ACTIVE) | Pass / Fail |
 | 3 | Blank/duplicate/unknown ID rules exist in service code | Pass / Fail |
 
 ### Checkpoint D — Review log + risks + experiments

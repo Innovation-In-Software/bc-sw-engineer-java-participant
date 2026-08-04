@@ -35,7 +35,7 @@ cd examples/lab22-crm
 
 ```bash
 cd ~/java-bootcamp/examples/lab22-crm
-mvn -B "-Dtest=CustomerServiceTest,CustomerServiceSpringIT" test
+mvn -B "-Dtest=CustomerServiceTest,CustomerServiceSpringTest" test
 mvn -B spring-boot:run
 ```
 

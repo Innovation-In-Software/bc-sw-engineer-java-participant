@@ -36,7 +36,10 @@ cd examples/customer-management-platform
 
 ```bash
 cd ~/java-bootcamp/examples/customer-management-platform
-npm run build
+# Timed path (starter): SQL + docs only
+rg -n 'CHECK|INDEX|crm.customer_interaction' db/migration/V50__customer_interaction.sql
+# Full path only (when frontend/ exists):
+# cd frontend && npm ci && npm test && npm run build
 ```
 
 

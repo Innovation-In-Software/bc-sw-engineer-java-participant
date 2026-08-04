@@ -57,7 +57,7 @@ Keep this checklist visible while you work.
 | 2 | `customer.xsd` + live-generated WSDL |
 | 3 | JAXB generation + `CustomerSoapMapper` |
 | 4 | SOAP fault mapping to business exceptions |
-| 5 | Working UsernameToken interceptor (lab secret) |
+| 5 | UsernameToken interceptor (lab secret) — **full path**; timed path stays unsecured |
 | 6 | `requests/` sample XML + fault cases |
 | 7 | `CustomerEndpointTest` green twice |
 | 8 | Evidence that REST and SOAP share `CustomerService` |
@@ -86,7 +86,7 @@ Northstar CRM already serves REST from `lab23-crm/`. A regional billing partner 
 
 Leadership freezes:
 
-**Ship Spring-WS beside REST: live WSDL from XSD, four operations, CLIENT faults for not-found/duplicate, UsernameToken required, same `CustomerService` as REST.**
+**Ship Spring-WS beside REST: live WSDL from XSD, timed path = getCustomer only (unsecured), same `CustomerService` as REST. Four ops + UsernameToken = full path.**
 
 Use these examples consistently:
 
@@ -116,7 +116,7 @@ flowchart TB
   Svc --> Repo["In-memory repository"]
   UI["React SPA"] -->|HTTPS/JSON| REST["CustomerController"]
   REST --> Svc
-  XSD["customer.xsd"] --> WSDL["/ws/customer.wsdl"]
+  XSD["customer.xsd"] --> WSDL["/ws/customers.wsdl"]
 ```
 
 ## Prerequisites
@@ -127,7 +127,7 @@ Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Git
 * Working `lab23-crm` (Boot 3, web, actuator, `CustomerService`)
-* Lab 13 contract preferred; else use Step 2 XSD (namespace `http://northstar.com/crm/customer`)
+* Lab 13 contract preferred; else use Step 2 XSD (namespace `http://northstar.com/crm/customers`)
 * Lab 16 `BusinessException` hierarchy preferred
 * Client that can POST raw XML (`curl`)
 * No secrets committed to Git
@@ -146,8 +146,8 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://northstar.com/crm/customer"
-           targetNamespace="http://northstar.com/crm/customer"
+           xmlns:tns="http://northstar.com/crm/customers"
+           targetNamespace="http://northstar.com/crm/customers"
            elementFormDefault="qualified">
   <xs:simpleType name="CustomerStatus">
     <xs:restriction base="xs:string">
@@ -160,7 +160,7 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
   <xs:complexType name="CustomerType">
     <xs:sequence>
       <xs:element name="customerId" type="xs:string"/>
-      <xs:element name="fullName" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
       <xs:element name="email" type="xs:string"/>
       <xs:element name="phone" type="xs:string" minOccurs="0"/>
       <xs:element name="status" type="tns:CustomerStatus"/>
@@ -212,13 +212,13 @@ mvn -q -Dincludes=org.springframework.ws dependency:tree
 
 **Why:** The XSD is the partner contract; generated Java must follow it, not the other way around.
 
-**Do this:** Place `src/main/resources/customer.xsd` with namespace `http://northstar.com/crm/customer`. Minimum shape (align with Lab 13):
+**Do this:** Place `src/main/resources/customer.xsd` with namespace `http://northstar.com/crm/customers`. Minimum shape (align with Lab 13):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://northstar.com/crm/customer"
-           targetNamespace="http://northstar.com/crm/customer"
+           xmlns:tns="http://northstar.com/crm/customers"
+           targetNamespace="http://northstar.com/crm/customers"
            elementFormDefault="qualified">
   <xs:simpleType name="CustomerStatus">
     <xs:restriction base="xs:string">
@@ -231,7 +231,7 @@ mvn -q -Dincludes=org.springframework.ws dependency:tree
   <xs:complexType name="CustomerType">
     <xs:sequence>
       <xs:element name="customerId" type="xs:string"/>
-      <xs:element name="fullName" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
       <xs:element name="email" type="xs:string"/>
       <xs:element name="phone" type="xs:string" minOccurs="0"/>
       <xs:element name="status" type="tns:CustomerStatus"/>
@@ -257,7 +257,7 @@ mvn -q generate-sources
 
 ### Step 3 — Configure dispatcher servlet and live WSDL
 
-**Why:** Partners need a stable `/ws/customer.wsdl` that cannot drift from the XSD bean.
+**Why:** Partners need a stable `/ws/customers.wsdl` that cannot drift from the XSD bean.
 
 **Do this:** `@EnableWs` `WebServiceConfig` with servlet + WSDL definition:
 
@@ -271,12 +271,12 @@ ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(
   return new ServletRegistrationBean<>(servlet, "/ws/*");
 }
 
-@Bean(name = "customer")
+@Bean(name = "customers")
 DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema customerSchema) {
   DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
   definition.setPortTypeName("CustomerServicePort");
   definition.setLocationUri("/ws");
-  definition.setTargetNamespace("http://northstar.com/crm/customer");
+  definition.setTargetNamespace("http://northstar.com/crm/customers");
   definition.setSchema(customerSchema);
   return definition;
 }
@@ -289,12 +289,12 @@ XsdSchema customerSchema() {
 
 ```bash
 mvn spring-boot:run
-curl -s http://localhost:8080/ws/customer.wsdl | head -20
+curl -s http://localhost:8080/ws/customers.wsdl | head -20
 ```
 
 **Expected result:** WSDL definitions with targetNamespace; operations visible via `grep wsdl:operation`.
 
-**If it fails:** 404 on WSDL → bean name must be `customer` for `/ws/customer.wsdl`. XSD not found → file under `src/main/resources`. Servlet not mapped → check `/ws/*` registration.
+**If it fails:** 404 on WSDL → bean name must be `customers` for `/ws/customers.wsdl`. XSD not found → file under `src/main/resources`. Servlet not mapped → check `/ws/*` registration.
 ---
 
 ### Step 4 — Map JAXB types and implement `CustomerEndpoint`
@@ -329,7 +329,7 @@ curl -s -X POST http://localhost:8080/ws \
 
 ---
 
-### Step 6 — UsernameToken interceptor (WS-Security)
+### Step 6 — UsernameToken interceptor (WS-Security) — **full path only**
 
 **Why:** Message-level identity proves the sender beyond open HTTP; partners often require it even behind TLS.
 
@@ -412,7 +412,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Live `/ws/customer.wsdl` lists four operations | Pass / Fail |
+| 1 | Live `/ws/customers.wsdl` lists four operations | Pass / Fail |
 | 2 | `CustomerEndpoint` delegates to `CustomerService` | Pass / Fail |
 | 3 | Mapper keeps JAXB out of service/REST layers | Pass / Fail |
 
@@ -423,7 +423,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | Not-found yields CLIENT fault | Pass / Fail |
-| 2 | Missing UsernameToken rejected | Pass / Fail |
+| 2 | Missing UsernameToken rejected (**full path only**) | Pass / Fail / N/A timed |
 | 3 | Secured get of `CUS-1001` succeeds (`lab24-001` evidenced) | Pass / Fail |
 
 ### Checkpoint D — Hygiene
@@ -468,7 +468,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 cd ~/java-bootcamp/examples/lab24-crm
 mvn -q generate-sources
 mvn spring-boot:run
-curl -s http://localhost:8080/ws/customer.wsdl | grep "wsdl:operation"
+curl -s http://localhost:8080/ws/customers.wsdl | grep "wsdl:operation"
 curl -s -X POST http://localhost:8080/ws \
   -H "Content-Type: text/xml; charset=utf-8" \
   --data @requests/get-customer.xml
@@ -500,7 +500,7 @@ mvn -q test
 
 | Symptom | Likely cause | Fix |
 | ------- | ------------ | --- |
-| WSDL 404 | Bean name ≠ `customer` | Rename WSDL definition bean |
+| WSDL 404 | Bean name ≠ `customers` | Rename WSDL definition bean |
 | `@PayloadRoot` never matches | Namespace/localPart drift | Exact URI + element name; enable WS DEBUG |
 | Generic SERVER fault | Unmapped / wrapped exception | Map FQCN; avoid wrapping |
 | WSS rejects valid-looking XML | Wrong wsse URI / password / Content-Type | Copy secured sample exactly |

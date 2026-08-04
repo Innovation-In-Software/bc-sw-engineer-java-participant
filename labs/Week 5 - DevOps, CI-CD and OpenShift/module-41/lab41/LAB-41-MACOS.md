@@ -36,7 +36,10 @@ cd examples/lab41-crm
 
 ```bash
 cd ~/java-bootcamp/examples/lab41-crm
-docker build
+docker build -t crm-api:lab41 .
+docker run --rm --name crm-lab41 -p 8080:8080 --env-file .env.example crm-api:lab41
+# curl http://127.0.0.1:8080/actuator/health/readiness
+docker stop crm-lab41
 ```
 
 

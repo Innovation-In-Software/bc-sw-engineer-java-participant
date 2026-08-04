@@ -41,7 +41,7 @@ mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
 # Fail-fast: mvn -B spring-boot:run "-Dspring-boot.run.profiles=prod"   # expect APPLICATION FAILED TO START
 ```
 
-Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** twice under `test`; `dev` active + H2 `/h2-console` + GET `CUS-1001` **200**; override ladder **100 / 9999 / 1234**; `prod` **APPLICATION FAILED TO START** (blank `apiKey`); `.env` absent.
+Verified (2026-08-03): **Tests run: 1** · **BUILD SUCCESS** twice under `test`; `dev` active + H2 `/h2-console` + GET `CUS-1001` **200**; override ladder **100 / 9999 / 1234**; `prod` **APPLICATION FAILED TO START** (blank `apiKey`); `.env` absent.
 
 ## Do the lab
 

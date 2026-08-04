@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-21-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 21 starter `examples\lab21-crm`: Actuator probes + `CrmReadinessIndicator` + Micrometer `crm.customer.create`/`get` (tag `result` only). Live curls: health/liveness/readiness **UP**; create metric COUNT=1 after POST. `ActuatorIT` → **Tests run: 3**, Failures: 0. Two consecutive `mvn verify` → **BUILD SUCCESS**. Instructor walkthrough: `docs/instructor-participant-help/week-2/21-obs-exercises-and-lab21.md`.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 21 starter `examples\lab21-crm`: Actuator probes + readiness group (`readinessState,crmReadinessIndicator`) + Micrometer `crm.customer.create`/`get` via `recordCreate`/`recordGet` (tag `result` only). Live curls: health/liveness/readiness **UP**; create metric after POST **CUS-2101**. `ActuatorIT` (`healthAndProbesAreUp`, `readinessCanGoDownWhileLivenessStaysUp`, `createMetricAppearsAfterTraffic`) → **Tests run: 3**, Failures: 0. Two consecutive `mvn -B "-Dtest=ActuatorIT" test` → **BUILD SUCCESS**. Instructor walkthrough: `docs/instructor-participant-help/week-2/21-obs-exercises-and-lab21.md`.
 
 ## Prerequisites (Windows)
 
@@ -38,7 +38,7 @@ cd examples\lab21-crm
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab21-crm
 mvn -B "-Dtest=ActuatorIT" test
-mvn -B clean verify
+mvn -B clean "-Dtest=ActuatorIT" test
 # optional live probes:
 # mvn -q -DskipTests spring-boot:run
 # Invoke-RestMethod http://localhost:8080/actuator/health/liveness
@@ -46,7 +46,7 @@ mvn -B clean verify
 # Invoke-RestMethod http://localhost:8080/actuator/metrics/crm.customer.create
 ```
 
-Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS**; live health/liveness/readiness UP; create metric increments after traffic.
+Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS**; live health/liveness/readiness UP; create metric increments after POST `CUS-2101`.
 
 ## Do the lab
 

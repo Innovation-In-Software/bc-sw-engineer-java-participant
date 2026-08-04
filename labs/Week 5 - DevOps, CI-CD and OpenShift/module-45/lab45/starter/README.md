@@ -45,7 +45,7 @@ cd infra/terraform
 terraform fmt -check -recursive || terraform fmt
 terraform init -backend=false
 terraform validate
-# ansible-playbook --syntax-check ../../infra/ansible/site.yml
+# From lab root: ansible-playbook --syntax-check -i inventory.example.yml infra/ansible/site.yml
 ```
 
 Evidence under `~/java-bootcamp/notes/screenshots/lab-45/` (no state secrets).

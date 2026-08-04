@@ -120,7 +120,7 @@ Use these fixtures consistently:
 
 ```mermaid
 flowchart TB
-  PR["Developer PR"] --> CI["CI: build -> tests -> SAST<br/>dep/secret/image scan"]
+  PR["Developer PR"] --> CI["CI: verify + image build<br/>(SAST/scans optional full-path)"]
   CI --> Pub["publish artifact"]
   Pub --> CD["CD: deploy staging -> gates -> prod"]
   CD --> Sec["JWT/RBAC harden + secrets"]
@@ -153,20 +153,20 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 ```java
 @Test
 void deleteCustomerRequiresManagerRole() throws Exception {
-  mvc.perform(delete("/api/customers/{id}", customerId)
+  mvc.perform(delete("/api/v1/customers/{id}", customerId)
       .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
      .andExpect(status().isForbidden());
 }
 
 @Test
 void anonymousCustomersUnauthorized() throws Exception {
-  mvc.perform(get("/api/customers"))
+  mvc.perform(get("/api/v1/customers"))
      .andExpect(status().isUnauthorized());
 }
 
 @Test
 void agentCanReadCustomers() throws Exception {
-  mvc.perform(get("/api/customers").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
+  mvc.perform(get("/api/v1/customers").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
      .andExpect(status().isOk());
 }
 ```
@@ -208,8 +208,8 @@ SecurityFilterChain apiSecurity(HttpSecurity http) throws Exception {
       .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .authorizeHttpRequests(auth -> auth
           .requestMatchers("/actuator/health/**").permitAll()
-          .requestMatchers(HttpMethod.DELETE, "/api/customers/**").hasRole("MANAGER")
-          .requestMatchers("/api/**").authenticated()
+          .requestMatchers(HttpMethod.DELETE, "/api/v1/customers/**").hasRole("MANAGER")
+          .requestMatchers("/api/v1/**").authenticated()
           .anyRequest().denyAll())
       .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
       .build();
@@ -219,20 +219,20 @@ SecurityFilterChain apiSecurity(HttpSecurity http) throws Exception {
 ```java
 @Test
 void deleteCustomerRequiresManagerRole() throws Exception {
-  mvc.perform(delete("/api/customers/{id}", customerId)
+  mvc.perform(delete("/api/v1/customers/{id}", customerId)
       .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
      .andExpect(status().isForbidden());
 }
 
 @Test
 void anonymousCustomersUnauthorized() throws Exception {
-  mvc.perform(get("/api/customers"))
+  mvc.perform(get("/api/v1/customers"))
      .andExpect(status().isUnauthorized());
 }
 
 @Test
 void agentCanReadCustomers() throws Exception {
-  mvc.perform(get("/api/customers").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
+  mvc.perform(get("/api/v1/customers").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
      .andExpect(status().isOk());
 }
 ```
@@ -288,7 +288,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 **Do this:** Multi-stage Dockerfile; non-root user; tag by version + commit SHA; push to training registry; capture digest and SBOM if available. Never bake secrets into layers.
 
 ```bash
-docker build -t "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}" -f backend/Dockerfile backend
+docker build -t "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}" .   # Dockerfile at CMP root; context includes backend/
 docker push "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}"
 docker image inspect "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}" --format='{{index .RepoDigests 0}}'
 ```
@@ -303,7 +303,7 @@ docker image inspect "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}" --format='{{index
 
 **Why:** Manual “it works on my laptop” deploy is not a gate.
 
-**Do this:** Pipeline definition: build → verify → scan → publish → (gated) deploy. Pass verified artifact identity between stages. Scope env vars/secrets; require approvals for deploy if instructed. Preserve reports as artifacts.
+**Do this:** Align with solution Capstone CI (`.github/workflows/ci.yml`): jobs **`verify`** (`mvn -B clean verify` in `backend/`) and **`image`** (`docker build -t crm-api:${GITHUB_SHA} .` from repo root on `main`). Dependency/secret/image **scans and SAST are optional full-path** gates — document them in the checklist if you add them; they are not required for the solution sketch.
 
 Minimum stage acceptance notes in demo.md:
 
@@ -330,8 +330,8 @@ Minimum stage acceptance notes in demo.md:
 ```bash
 set -eu
 curl -fsS "$CRM_URL/actuator/health/readiness"
-test "$(curl -s -o /dev/null -w '%{http_code}' "$CRM_URL/api/customers")" = "401"
-curl -fsS "$CRM_URL/api/customers?page=0&size=1" \
+test "$(curl -s -o /dev/null -w '%{http_code}' "$CRM_URL/api/v1/customers")" = "401"
+curl -fsS "$CRM_URL/api/v1/customers?page=0&size=1" \
   -H "Authorization: Bearer $SMOKE_TOKEN" \
   -H "X-Correlation-ID: release-smoke-${GITHUB_RUN_NUMBER}"
 # optional: assert CUS-1001 visible when seeded
@@ -431,7 +431,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ```bash
 curl -fsS "$CRM_URL/actuator/health/readiness"
-test "$(curl -s -o /dev/null -w '%{http_code}' "$CRM_URL/api/customers")" = "401"
+test "$(curl -s -o /dev/null -w '%{http_code}' "$CRM_URL/api/v1/customers")" = "401"
 kubectl rollout status deployment/crm-api --timeout=180s
 ```
 
@@ -440,7 +440,7 @@ kubectl rollout status deployment/crm-api --timeout=180s
 ```bash
 cd ~/java-bootcamp/examples/customer-management-platform
 ./mvnw -B clean verify
-docker build -t crm-api:local -f backend/Dockerfile backend
+docker build -t crm-api:local .   # root context (see starter Dockerfile COPY backend/...)
 kubectl apply -f k8s/
 kubectl rollout status deployment/crm-api --timeout=180s
 git status --short
@@ -482,7 +482,7 @@ Adapt paths to your Spring Boot actuator config; never probe a authenticated-onl
 
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
-| 1 | Call `/api/**` without token | 401 | Keep rule |
+| 1 | Call `/api/v1/**` without token | 401 | Keep rule |
 | 2 | AGENT calls MANAGER delete | 403 | Keep method security |
 | 3 | Deploy broken image tag | Rollout fails/probes fail | Roll back digest |
 | 4 | Temporarily expose actuator `env` | Sensitive leakage risk | Restrict exposure |

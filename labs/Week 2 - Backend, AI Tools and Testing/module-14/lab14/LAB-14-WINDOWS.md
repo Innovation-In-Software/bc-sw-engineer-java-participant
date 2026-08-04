@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-14-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Copied `examples\lab12-crm` → `examples\lab14-crm`; added Jakarta Validation **3.1.0**, Hibernate Validator **8.0.2.Final**, Expressly **5.0.0**; implemented `CustomerRequestDTO` / `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` (wired to Lab 12 `createCustomer`/`getCustomer`). `mvn -B clean test` → **Tests run: 13**, Failures: 0 · **BUILD SUCCESS**. Main (with Maven runtime classpath) prints response DTOs for Amina/Ravi and rejects invalid email / unknown id with `lab-request-001`. Bare `java -cp target\classes` fails with `NoClassDefFoundError: jakarta/validation/Validation` — use `dependency:build-classpath` or IntelliJ Run. Instructor walkthrough: `docs/instructor-participant-help/week-2/14-dto-exercises-and-lab14.md`.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 14 `starter/` → `examples\lab14-crm` (or copy `lab12-crm` → `lab14-crm`). Jakarta Validation **3.1.0**, Hibernate Validator **8.0.2.Final**, Expressly **5.0.0**; `CustomerRequestDTO` / `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` (wired to Lab 12 `createCustomer`/`getCustomer`). Starter timed suite: `CustomerRequestValidationTest` (`validAminaRequestPasses`, `invalidEmailFails`, `blankNameFails`) → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS**. Main (with Maven runtime classpath) prints response DTOs for Amina/Ravi and rejects invalid email / unknown id with `lab-request-001`. Bare `java -cp target\classes` fails with `NoClassDefFoundError: jakarta/validation/Validation` — use `dependency:build-classpath` or IntelliJ Run. Instructor walkthrough: `docs/instructor-participant-help/week-2/14-dto-exercises-and-lab14.md`.
 
 ## Prerequisites (Windows)
 
@@ -39,7 +39,8 @@ cd examples\lab14-crm
 cd $env:USERPROFILE\java-bootcamp\examples
 Copy-Item -Recurse lab12-crm lab14-crm   # once
 cd lab14-crm
-mvn -q test "-Dtest=CustomerRequestDTOValidationTest"
+mvn -q test "-Dtest=CustomerRequestValidationTest"
+# Expected: Tests run: 3 (validAminaRequestPasses, invalidEmailFails, blankNameFails)
 mvn -B clean test
 # Main needs validation jars — not target\classes alone:
 mvn -q -DincludeScope=runtime dependency:build-classpath "-Dmdep.outputFile=target\cp.txt"

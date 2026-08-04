@@ -39,7 +39,7 @@ Full GUIDE: [`../LAB-11-GUIDE.md`](../LAB-11-GUIDE.md)
 ## 45-minute checklist
 
 - [ ] Complete `CustomerTest` + `CustomerServiceTest` TODOs (reject weak assertions)
-- [ ] Flesh out `CustomerNotifier`; wire into service; Mockito verify
+- [ ] Flesh out `CustomerNotifier.notifyStatusChange`; wire into `updateStatus`; Mockito verify
 - [ ] Extract duplicated validation helper
 - [ ] Fill `copilot-notes/ai-test-refactor-notes.md` lab11-001–004
 - [ ] Run smoke test

@@ -202,12 +202,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PlaceholderTest {
     @Test
     void projectCoordinatesAreMeaningful() {
-        assertTrue(true, "Replace with real CRM tests in Labs 11/17");
+        assertTrue(true);
     }
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** The starter uses a one-arg `assertTrue(true)` (a TODO comment may mention the Labs 11/17 message). Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -335,7 +335,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PlaceholderTest {
     @Test
     void projectCoordinatesAreMeaningful() {
-        assertTrue(true, "Replace with real CRM tests in Labs 11/17");
+        // TODO: replace with real CRM tests in Labs 11/17
+        assertTrue(true);
     }
 }
 ```

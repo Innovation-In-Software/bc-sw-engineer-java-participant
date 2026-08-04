@@ -36,8 +36,8 @@ cd examples\lab47-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab47-crm
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+Get-ChildItem communications\*.md
+Select-String -Path communications\*.md -Pattern '1\.4\.0|CUS-1001|Sev-2|lab-request-001'
 ```
 
 

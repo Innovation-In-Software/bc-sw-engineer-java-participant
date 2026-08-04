@@ -41,7 +41,7 @@ Filtered list stored in useState updated by useEffect — why remove it?
 
 ## 45-minute timed path (use starter)
 
-> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: ≥8 RTL tests + title useEffect + state notes.
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: ≥6 RTL tests + title useEffect + state notes.
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
@@ -68,7 +68,7 @@ Keep this checklist visible while you work.
 | 2 | Discriminated form modes; immutable updates |
 | 3 | Client validation with accessible errors |
 | 4 | Title `useEffect` with cleanup; no derived-state effects |
-| 5 | ≥8 RTL interaction tests + green build |
+| 5 | ≥6 RTL interaction tests + green build |
 | 6 | State notes + evidence screenshots |
 | 7 | README runbook |
 | 8 | No secrets or generated directories committed |
@@ -150,12 +150,12 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```tsx
-type Mode =
-  | { kind: "closed" }
-  | { kind: "create" }
-  | { kind: "edit"; id: string };
+type UiMode =
+  | { type: "list" }
+  | { type: "create" }
+  | { type: "edit"; customerId: string };
 
-const [mode, setMode] = useState<Mode>({ kind: "closed" });
+const [mode, setMode] = useState<UiMode>({ type: "list" });
 ```
 
 **What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
@@ -168,7 +168,7 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab34-crm
 
 ---
 
-### Step 1 — Branch Lab 33 and initialize lifted state
+### Step 1 — Copy lab34 starter and initialize lifted state
 
 **Why:** List, toolbar, and form must share one source of truth before feature work sprawls.
 
@@ -176,7 +176,7 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab34-crm
 
 ```bash
 cd ~/java-bootcamp/examples
-cp -r lab33-crm lab34-crm
+cp -r lab34/starter ~/java-bootcamp/examples/lab34-crm
 cd lab34-crm/crm-ui
 mkdir -p src/validation docs ~/java-bootcamp/notes/screenshots/lab-34
 ```
@@ -225,7 +225,7 @@ Confirm DevTools: `customers.length === 2`, `query === ""`.
 
 ```tsx
 const visible = customers.filter((c) =>
-  [c.customerId, c.fullName, c.email].some((v) =>
+  [c.customerId, c.name, c.email].some((v) =>
     v.toLowerCase().includes(query.trim().toLowerCase())
   )
 );
@@ -246,15 +246,15 @@ Pass `visible` (not `customers`) to `CustomerList`.
 **Do this:**
 
 ```tsx
-type Mode =
-  | { kind: "closed" }
-  | { kind: "create" }
-  | { kind: "edit"; id: string };
+type UiMode =
+  | { type: "list" }
+  | { type: "create" }
+  | { type: "edit"; customerId: string };
 
-const [mode, setMode] = useState<Mode>({ kind: "closed" });
+const [mode, setMode] = useState<UiMode>({ type: "list" });
 ```
 
-Add opens create; card Edit sets `{ kind: "edit", id }`; show form only when mode is not `closed`.
+Add opens create; card Edit sets `{ type: "edit", customerId }`; show form only when mode is not `list`.
 
 **Expected result:** Mode cannot be create and edit together; TypeScript rejects overlapping fields.
 
@@ -281,7 +281,7 @@ When entering edit mode, load draft from the selected customer (omit identity mu
 
 **Expected result:** Typed draft remains visible; prior field error clears for that field only.
 
-**If it fails:** Spreading into wrong object → lose other fields. Mutating `draft.fullName =` → use functional update.
+**If it fails:** Spreading into wrong object → lose other fields. Mutating `draft.name =` → use functional update.
 
 ---
 
@@ -318,7 +318,7 @@ setCustomers((prev) => [
   ...prev,
   { ...draft, customerId: crypto.randomUUID() },
 ]);
-setMode({ kind: "closed" });
+setMode({ type: "list" });
 setDraft(emptyDraft);
 setErrors({});
 console.log("create", "lab-request-001");
@@ -337,10 +337,10 @@ console.log("create", "lab-request-001");
 **Do this:**
 
 ```tsx
-if (mode.kind !== "edit") return;
+if (mode.type !== "edit") return;
 setCustomers((prev) =>
   prev.map((c) =>
-    c.customerId === mode.id ? { ...c, ...draft, customerId: c.customerId } : c
+    c.customerId === mode.customerId ? { ...c, ...draft, customerId: c.customerId } : c
   )
 );
 ```
@@ -349,7 +349,7 @@ Preserve original `customerId`. Log `lab-request-001`.
 
 **Expected result:** Only selected customer fields change; Amina remains if editing Ravi.
 
-**If it fails:** Spreading draft that includes wrong id → force `customerId: c.customerId`. Mutating `c.fullName` → clone.
+**If it fails:** Spreading draft that includes wrong id → force `customerId: c.customerId`. Mutating `c.name` → clone.
 
 ---
 
@@ -360,7 +360,7 @@ Preserve original `customerId`. Log `lab-request-001`.
 **Do this:**
 
 ```tsx
-setMode({ kind: "closed" });
+setMode({ type: "list" });
 setDraft(emptyDraft);
 setErrors({});
 console.log("cancel", "lab-request-001");
@@ -428,7 +428,7 @@ npm run build
 
 Complete Failure Experiments. Capture evidence. Run tests twice.
 
-**Expected result:** ≥8 tests passed; build succeeds; consecutive runs identical.
+**Expected result:** ≥6 tests passed; build succeeds; consecutive runs identical.
 
 **If it fails:** Flaky timers → remove sleeps; use `userEvent` + `findBy`. Strict Mode double invoke → ensure immutable updates.
 
@@ -453,7 +453,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | Controlled search + derived `visible` | Pass / Fail |
-| 2 | Discriminated mode union (closed / create / edit) | Pass / Fail |
+| 2 | Discriminated mode union (list / create / edit) | Pass / Fail |
 | 3 | Immutable create and update; cancel preserves list | Pass / Fail |
 | 4 | Field validation blocks bad saves | Pass / Fail |
 
@@ -465,7 +465,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | - | ------- | ---------- |
 | 1 | `useEffect` title sync with cleanup | Pass / Fail |
 | 2 | No derived-state filter effects | Pass / Fail |
-| 3 | ≥8 RTL flow tests green twice | Pass / Fail |
+| 3 | ≥6 RTL flow tests green twice | Pass / Fail |
 | 4 | `npm run build` succeeds | Pass / Fail |
 
 ### Checkpoint D — Hygiene
@@ -488,7 +488,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 const [customers, setCustomers] = useState<Customer[]>(seed);
 const [query, setQuery] = useState("");
 const visible = customers.filter((c) =>
-  [c.customerId, c.fullName, c.email].some((v) =>
+  [c.customerId, c.name, c.email].some((v) =>
     v.toLowerCase().includes(query.trim().toLowerCase())
   )
 );

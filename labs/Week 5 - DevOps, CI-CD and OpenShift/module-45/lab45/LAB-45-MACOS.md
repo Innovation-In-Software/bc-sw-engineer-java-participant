@@ -35,9 +35,12 @@ cd examples/lab45-crm
 ### Commands this lab typically uses
 
 ```bash
-cd ~/java-bootcamp/examples/lab45-crm
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+cd ~/java-bootcamp/examples/lab45-crm/infra/terraform
+terraform fmt -check -recursive
+terraform init -backend=false
+terraform validate -var='db_password=unused-local'
+cd ../..
+ansible-playbook --syntax-check -i inventory.example.yml infra/ansible/site.yml
 ```
 
 

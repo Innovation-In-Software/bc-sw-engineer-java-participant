@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-19-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9** + Chrome **150.0.7871.187**. Used Lab 19 Spring Boot starter (`examples\lab19-crm`); WebDriverManager resolved chromedriver **150.0.7871.124**. `CustomerApiIT` (3) + `CustomerUiIT` (2, headless + blank-name). Two consecutive `mvn -B clean verify` / `mvn -B verify` → **Tests run: 5**, Failures: 0 · **BUILD SUCCESS** (Failsafe). Instructor walkthrough: `docs/instructor-participant-help/week-2/19-selenium-exercises-and-lab19.md`.
+**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9** + Chrome **150.0.7871.187**. Lab 19 Spring Boot starter (`examples\lab19-crm`); WebDriverManager resolved chromedriver **150.0.7871.124**. Timed suite: `CustomerApiIT` (3: `getAminaReturns200`, `createEchoesCorrelationHeader` POST **CUS-1901**, `missingCustomerReturns404`) + `CustomerUiIT` (1: `createCustomerViaUi` **CUS-2001**; `fill` includes email; testids `submit-customer` / `create-result`). `mvn -B "-Dtest=CustomerApiIT,CustomerUiIT" test` → **Tests run: 4**, Failures: 0 · **BUILD SUCCESS** (Surefire; no Failsafe plugin). Instructor walkthrough: `docs/instructor-participant-help/week-2/19-selenium-exercises-and-lab19.md`.
 
 ## Prerequisites (Windows)
 
@@ -44,7 +44,7 @@ mvn -B clean verify
 # mvn spring-boot:run   # then http://localhost:8080/customers.html
 ```
 
-Verified (2026-08-03): **Tests run: 5** (ApiIT 3 + UiIT 2) · **BUILD SUCCESS** via Failsafe on `verify`.
+Verified (2026-08-03): **Tests run: 4** (ApiIT 3 + UiIT 1) · **BUILD SUCCESS** via Surefire `-Dtest=CustomerApiIT,CustomerUiIT`.
 
 ## Do the lab
 

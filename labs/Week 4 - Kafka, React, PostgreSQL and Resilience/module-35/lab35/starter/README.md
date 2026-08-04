@@ -65,6 +65,6 @@ Continue remaining GUIDE steps as homework / full path if needed.
 | Symptom | Fix |
 | --- | --- |
 | CORS in browser | Match Spring allowlist to Vite origin |
-| Failed to fetch | curl API; fix VITE_CRM_API_URL; restart Vite |
+| Failed to fetch | curl API; fix VITE_API_BASE_URL; restart Vite |
 | Abort toast | Ignore AbortError |
 | /api/api | Normalize base URL + path join |

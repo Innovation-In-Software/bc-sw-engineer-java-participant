@@ -424,7 +424,7 @@ mvn -q -Dtest=CustomerLoggingIT test
 - Production: ship to central store; never embed secrets in patterns
 ```
 
-Complete Failure Experiments. Capture sanitized excerpts. Run `mvn -q test` twice.
+Complete Failure Experiments. Capture sanitized excerpts. Run `mvn -q -Dtest=CustomerLoggingIT test` twice.
 
 **Expected result:** Docs match observed console; forbidden list reviewed against Step 4–6 samples; experiments recorded; suite deterministic.
 
@@ -491,7 +491,7 @@ cd ~/java-bootcamp/examples/lab20-crm
 mvn spring-boot:run
 curl -H "X-Correlation-Id: lab-request-001" http://localhost:8080/api/customers/CUS-1001
 mvn -q -Dtest=CustomerLoggingIT test
-mvn -q clean verify
+mvn -q clean -Dtest=CustomerLoggingIT test
 git status
 ```
 

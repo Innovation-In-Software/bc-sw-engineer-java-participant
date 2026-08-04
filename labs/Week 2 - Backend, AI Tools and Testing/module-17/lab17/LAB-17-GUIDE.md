@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Ship CustomerServiceTests + parameterized transitions + JaCoCo ≥80% on service package |
 | **Skills practiced** | AAA, meaningful asserts, @CsvSource, Surefire, JaCoCo verify gate |
-| **Expected outcome** | Green `mvn clean test` + `mvn clean verify` · runbook evidence |
+| **Expected outcome** | `mvn clean verify` → **Tests run: 19** (6+2+11) · JaCoCo ≥80% · runbook evidence |
 | **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
 | **Prerequisites** | Lab 0 · Lab 16 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
 | **Expected files** | `examples/lab17-crm/` — service tests, parameterized suite, pom JaCoCo, runbook |
@@ -39,7 +39,7 @@
 | This lab project | `examples\lab17-crm\` (`Copy-Item -Recurse lab16-crm lab17-crm`) |
 | Gate | JaCoCo **0.8.12** package rule `com.northstar.crm.service` LINE ≥ **0.80** |
 | Formal suites | `CustomerServiceTests` · `CustomerValidatorParameterizedTest` |
-| Full suite | `mvn -B clean verify` → **Tests run: 41**, Failures: 0 · **BUILD SUCCESS** |
+| Timed starter suite | `mvn -B clean verify` → **Tests run: 19**, Failures: 0 · **BUILD SUCCESS** (6 service + 2 handler + 11 parameterized) |
 | Service coverage | LINE ratio ≈ **0.97** (36 covered / 1 missed) |
 | Gate proof | `minimum` 0.99 → rule violated (0.97 &lt; 0.99); restored 0.80 → green |
 
@@ -199,10 +199,10 @@ mvn -q -DincludeArtifactIds=junit-jupiter dependency:tree
 
 **Why:** Lock create/find/activate before negatives and coverage chasing create noise.
 
-**Do this:** Create `CustomerServiceTests` with `@BeforeEach` wiring fresh `InMemoryCustomerRepository` + `CustomerValidator` + `DefaultCustomerService`. Cover:
+**Do this:** Complete starter `CustomerServiceTests` with `@BeforeEach` wiring fresh `InMemoryCustomerRepository` + `CustomerValidator` + `DefaultCustomerService`. Starter method names:
 
-* add/find Amina `CUS-1001`
-* activate Ravi `CUS-1002` PROSPECT → ACTIVE with `lab-request-001`
+* `addAndActivateRaviHappyPath` — add Amina ACTIVE + Ravi PROSPECT; activate Ravi with `lab-request-001`
+* Expand to **6** service tests total (also `duplicateIdThrowsConflict`, `illegalTransitionThrowsConflict`, `missingCustomerThrowsNotFound`, plus stretch `duplicateEmailThrowsConflict` / `closedToActiveRejected`)
 
 Adapt `Customer` constructors to your entity. Prefer asserting `BusinessException` where Lab 16 types exist.
 
@@ -238,7 +238,7 @@ Prefer `assertThrows(BusinessException.class, ...)` and assert code/message cont
 
 **Why:** Transition matrices explode into copy-paste methods; `@CsvSource` keeps the table visible.
 
-**Do this:** `CustomerValidatorParameterizedTest` with legal rows (e.g. PROSPECT→ACTIVE/CLOSED, ACTIVE→SUSPENDED/CLOSED, SUSPENDED→ACTIVE) and illegal rows (ACTIVE→PROSPECT, CLOSED→ACTIVE/PROSPECT). Align rows with Lab 15 ALLOWED map.
+**Do this:** Complete starter `CustomerValidatorParameterizedTest` with separate methods `legalTransitions` / `illegalTransitions`. Expand to **11** parameterized invocations (6 legal + 5 illegal). **ACTIVE→PROSPECT is illegal** — never put it in the legal `@CsvSource`. Align rows with Lab 15 ALLOWED map (solution rows: legal PROSPECT→ACTIVE/CLOSED, ACTIVE→SUSPENDED/CLOSED, SUSPENDED→ACTIVE/CLOSED; illegal ACTIVE→PROSPECT, CLOSED→ACTIVE/PROSPECT, PROSPECT→SUSPENDED, ACTIVE→ACTIVE).
 
 ```bash
 mvn -q test -Dtest=CustomerValidatorParameterizedTest
@@ -381,8 +381,25 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ```java
 @ParameterizedTest
-@CsvSource({ "PROSPECT, ACTIVE", "ACTIVE, PROSPECT" })
-void transition(CustomerStatus from, CustomerStatus to) { ... }
+@CsvSource({
+        "PROSPECT,ACTIVE",
+        "PROSPECT,CLOSED",
+        "ACTIVE,SUSPENDED",
+        "ACTIVE,CLOSED",
+        "SUSPENDED,ACTIVE",
+        "SUSPENDED,CLOSED"
+})
+void legalTransitions(CustomerStatus from, CustomerStatus to) { ... }
+
+@ParameterizedTest
+@CsvSource({
+        "ACTIVE,PROSPECT",   // illegal — not a legal row
+        "CLOSED,ACTIVE",
+        "CLOSED,PROSPECT",
+        "PROSPECT,SUSPENDED",
+        "ACTIVE,ACTIVE"
+})
+void illegalTransitions(CustomerStatus from, CustomerStatus to) { ... }
 ```
 
 ### Commands

@@ -3,7 +3,7 @@
   "version": "TODO(lab44)-semver",
   "gitCommit": "TODO(lab44)-GITHUB_SHA",
   "jarSha256": "TODO(lab44)-from-SHA256SUMS",
-  "imageRepository": "TODO(lab44)/crm-api",
+  "imageRepository": "ghcr.io/TODO(lab44)/crm-api",
   "imageDigest": "sha256:TODO(lab44)",
   "builtBy": "lab43-ci",
   "environments": {

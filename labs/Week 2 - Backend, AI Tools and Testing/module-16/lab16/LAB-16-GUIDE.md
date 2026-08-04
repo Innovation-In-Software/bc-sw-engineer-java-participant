@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Ship ErrorResponse + GlobalExceptionHandler + Fail demos (400/404/409) with correlation |
 | **Skills practiced** | Catch order, BusinessException mapping, safe messages, ApiResult Fail JSON |
-| **Expected outcome** | Green `mvn test` · 400/404/409 demos · `lab-request-001` on every Fail |
+| **Expected outcome** | `mvn test` → **Tests run: 3** · 400/404/409 demos · `lab-request-001` on every Fail |
 | **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
 | **Prerequisites** | Lab 0 · Lab 15 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
 | **Expected files** | `examples/lab16-crm/` — ErrorResponse, handler, facade, tests, notes |
@@ -38,7 +38,7 @@
 | Prerequisite | `examples\lab15-crm\` (service + validator transitions) |
 | This lab project | `examples\lab16-crm\` (`Copy-Item -Recurse lab15-crm lab16-crm`) |
 | Error model | `ErrorResponse` · `BusinessException` · `GlobalExceptionHandler` · `ApiResult` |
-| Full suite | `mvn -B clean test` → **Tests run: 21**, Failures: 0 · **BUILD SUCCESS** |
+| Timed starter suite | `mvn -B clean test` → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS** (`GlobalExceptionHandlerTest`) |
 | Main demos | **400** invalid email · **404** `CUS-9999` · **409** `ACTIVE → PROSPECT` (Amina stays ACTIVE) |
 | Correlation | `lab-request-001` on every failure JSON |
 
@@ -432,11 +432,11 @@ Pass correlation into `changeStatus` failures similarly. Require non-blank corre
 
 **Why:** Handler mapping must not require a web server—unit tests are enough and foreshadow advice tests.
 
-**Do this:** `GlobalExceptionHandlerTest`:
+**Do this:** Complete starter `GlobalExceptionHandlerTest` methods:
 
 ```java
 @Test
-void mapsNotFound() {
+void mapsNotFoundTo404() {
     var handler = new GlobalExceptionHandler();
     var err = handler.fromBusiness(
         BusinessException.notFound("CUS-9999", "lab-request-001"));
@@ -445,25 +445,25 @@ void mapsNotFound() {
 }
 
 @Test
-void mapsValidationEmail() {
-    // build DTO with bad email, validate, map via fromValidation
-    assertEquals(400, err.getStatus());
-    assertTrue(err.getErrors().containsKey("email"));
-}
-
-@Test
-void mapsConflict() {
+void mapsConflictTo409() {
     var err = handler.fromBusiness(
         BusinessException.conflict("illegal status transition ACTIVE -> PROSPECT", "lab-request-001"));
     assertEquals(409, err.getStatus());
 }
+
+@Test
+void unexpectedIsGeneric500() {
+    // fromUnexpected → 500 INTERNAL_ERROR; message must not contain secret/stack text
+}
 ```
+
+(Validation/400 mapping can remain a Main demo — not required in the timed starter suite.)
 
 ```bash
 mvn -q test -Dtest=GlobalExceptionHandlerTest
 ```
 
-**Expected result:** ≥2–3 tests green; `BUILD SUCCESS`.
+**Expected result:** **Tests run: 3**; `BUILD SUCCESS`.
 
 **If it fails:** Asserting exact timestamp → assert status/correlation/fields instead.
 

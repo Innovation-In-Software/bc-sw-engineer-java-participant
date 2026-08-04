@@ -227,7 +227,7 @@ spring:
         enable.idempotence: true
 crm:
   kafka:
-    customer-topic: crm.customer-events.v1
+    customer-events-topic: crm.customer-events.v1
 ```
 
 Configure `JsonSerializer` / `JsonDeserializer` (or Boot defaults) as taught in class.
@@ -246,9 +246,9 @@ Configure `JsonSerializer` / `JsonDeserializer` (or Boot defaults) as taught in 
 
 ```java
 public record CustomerEvent(
-    UUID eventId, String eventType, int eventVersion,
+    String eventId, String eventType, int eventVersion,
     Instant occurredAt, String customerId, String correlationId,
-    CustomerData data) {
+    String source, CustomerData data) {
   public CustomerEvent {
     Objects.requireNonNull(eventId);
     Objects.requireNonNull(customerId);
@@ -305,7 +305,7 @@ mvn -q spring-boot:run
 **Do this:**
 
 ```java
-@KafkaListener(topics = "${crm.kafka.customer-topic}")
+@KafkaListener(topics = "${crm.kafka.customer-events-topic}")
 void receive(CustomerEvent event,
     @Header(KafkaHeaders.RECEIVED_KEY) String key) {
   if (!key.equals(event.customerId()))
@@ -329,7 +329,7 @@ Log `customer_event_received` with `eventId` + `customerId` + `correlationId` (`
 **Do this:**
 
 ```java
-public boolean markIfNew(UUID eventId) {
+public boolean markIfNew(String eventId) {
   return processedIds.add(eventId); // lab: ConcurrentHashMap.newKeySet()
 }
 
@@ -510,7 +510,7 @@ spring:
     producer:
       properties:
         enable.idempotence: true
-crm.kafka.customer-topic: crm.customer-events.v1
+crm.kafka.customer-events-topic: crm.customer-events.v1
 ```
 
 ### Commands

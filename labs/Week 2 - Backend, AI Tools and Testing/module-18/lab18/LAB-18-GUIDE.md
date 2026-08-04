@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Ship Mockito + BDDMockito isolation suites with stub/verify/never/ArgumentCaptor |
 | **Skills practiced** | @Mock repo, real validator, verify/never, ArgumentCaptor, BDDMockito syntax |
-| **Expected outcome** | Green Mockito + BDD suites · not-found never saves · isolation-policy.md |
+| **Expected outcome** | `mvn test` → **Tests run: 6** · not-found never saves · isolation-policy.md |
 | **Estimated time** | Timed path ~45 min · Full path 3–4 hours |
 | **Prerequisites** | Lab 0 · Lab 17 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
 | **Expected files** | `examples/lab18-crm/` — mock suites, POM Mockito deps, isolation-policy |
@@ -158,21 +158,12 @@ class CustomerServiceBddMockTest {
     }
 
     @Test
-    void activatesRaviInBddStyle() {
-        Customer ravi = new Customer(
-            "CUS-1002", "Ravi Singh", "ravi.singh@example.com", CustomerStatus.PROSPECT);
-        given(repository.findById("CUS-1002")).willReturn(Optional.of(ravi));
-        given(repository.save(any(Customer.class))).willAnswer(inv -> inv.getArgument(0));
-
-        Customer updated = service.changeStatus(
-            "CUS-1002", CustomerStatus.ACTIVE, "lab-request-001");
-
-        then(repository).should().findById("CUS-1002");
-        then(repository).should().save(any(Customer.class));
+    void givenProspectWhenActivateThenSavedActive() {
+        // starter method name — complete TODOs; see Steps for activateRaviUsesFindAndSave / notFoundNeverCallsSave
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** Match starter method names (`activateRaviUsesFindAndSave`, `notFoundNeverCallsSave`, `addCustomerCapturesSavedEntity`, `givenProspectWhenActivateThenSavedActive`).
 
 ---
 
@@ -225,11 +216,11 @@ mvn -q -DincludeArtifactIds=mockito-core,mockito-junit-jupiter dependency:tree
 
 ---
 
-### Step 2 — Create `CustomerServiceMockitoTest` skeleton
+### Step 2 — Complete starter `CustomerServiceMockitoTest` skeleton
 
 **Why:** Extension wiring and shared mock-repo construction must be correct before stubbing business paths—otherwise failures look like domain bugs.
 
-**Do this:** Create `src/test/java/com/northstar/crm/service/CustomerServiceMockitoTest.java`:
+**Do this:** Open the starter `CustomerServiceMockitoTest.java` and finish the `@BeforeEach` wiring (do not recreate from scratch):
 
 ```java
 package com.northstar.crm.service;
@@ -289,7 +280,7 @@ Prefer **manual construction** over `@InjectMocks` alone when the validator also
 
 ```java
 @Test
-void activatesProspectUsingStubbedRepository() {
+void activateRaviUsesFindAndSave() {
     Customer ravi = new Customer(
         "CUS-1002", "Ravi Singh", "ravi.singh@example.com", CustomerStatus.PROSPECT);
 
@@ -303,13 +294,11 @@ void activatesProspectUsingStubbedRepository() {
     verify(repository).findById("CUS-1002");
     verify(repository).save(argThat(c ->
         "CUS-1002".equals(c.getCustomerId()) && c.getStatus() == CustomerStatus.ACTIVE));
-    // Prefer explicit verify counts if validator also reads exists*:
-    // verify(repository, times(1)).save(...);
 }
 ```
 
 ```bash
-mvn -q test -Dtest=CustomerServiceMockitoTest#activatesProspectUsingStubbedRepository
+mvn -q test -Dtest=CustomerServiceMockitoTest#activateRaviUsesFindAndSave
 ```
 
 **Expected result:** One test green; status ACTIVE; find and save verified; no real `Map` involved.
@@ -326,7 +315,7 @@ mvn -q test -Dtest=CustomerServiceMockitoTest#activatesProspectUsingStubbedRepos
 
 ```java
 @Test
-void unknownCustomerDoesNotSave() {
+void notFoundNeverCallsSave() {
     when(repository.findById("CUS-9999")).thenReturn(Optional.empty());
 
     assertThrows(Exception.class, () ->
@@ -381,51 +370,22 @@ Align `existsBy*` method names with your Lab 15–16 validator.
 
 **Why:** Teams often write specs in given/when/then language; students must see this as style over the same Mockito engine.
 
-**Do this:** Create `CustomerServiceBddMockTest.java`:
+**Do this:** Complete starter `CustomerServiceBddMockTest.java` (method name `givenProspectWhenActivateThenSavedActive`):
 
 ```java
-package com.northstar.crm.service;
+@Test
+void givenProspectWhenActivateThenSavedActive() {
+    Customer ravi = new Customer(
+        "CUS-1002", "Ravi Singh", "ravi.singh@example.com", CustomerStatus.PROSPECT);
+    given(repository.findById("CUS-1002")).willReturn(Optional.of(ravi));
+    given(repository.save(any(Customer.class))).willAnswer(inv -> inv.getArgument(0));
 
-import com.northstar.crm.entity.Customer;
-import com.northstar.crm.entity.CustomerStatus;
-import com.northstar.crm.repository.CustomerRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+    Customer updated = service.changeStatus(
+        "CUS-1002", CustomerStatus.ACTIVE, "lab-request-001");
 
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.*;
-
-@ExtendWith(MockitoExtension.class)
-class CustomerServiceBddMockTest {
-
-    @Mock CustomerRepository repository;
-    DefaultCustomerService service;
-
-    @BeforeEach
-    void setUp() {
-        service = new DefaultCustomerService(repository, new CustomerValidator(repository));
-    }
-
-    @Test
-    void activatesRaviInBddStyle() {
-        Customer ravi = new Customer(
-            "CUS-1002", "Ravi Singh", "ravi.singh@example.com", CustomerStatus.PROSPECT);
-        given(repository.findById("CUS-1002")).willReturn(Optional.of(ravi));
-        given(repository.save(any(Customer.class))).willAnswer(inv -> inv.getArgument(0));
-
-        Customer updated = service.changeStatus(
-            "CUS-1002", CustomerStatus.ACTIVE, "lab-request-001");
-
-        then(repository).should().findById("CUS-1002");
-        then(repository).should().save(any(Customer.class));
-        assertEquals(CustomerStatus.ACTIVE, updated.getStatus());
-    }
+    then(repository).should().findById("CUS-1002");
+    then(repository).should().save(any(Customer.class));
+    assertEquals(CustomerStatus.ACTIVE, updated.getStatus());
 }
 ```
 

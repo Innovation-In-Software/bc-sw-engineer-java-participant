@@ -138,7 +138,7 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"username":"agent1","password":"agent-pass"}' | jq -r .accessToken)
+  -d '{"username":"agent1","password":"agent1"}' | jq -r .accessToken)
 
 curl -s http://localhost:8080/api/customers/CUS-1001 \
   -H "Authorization: Bearer $TOKEN" \
@@ -234,9 +234,9 @@ Start the app and call customers without a token.
 @Bean
 UserDetailsService users(PasswordEncoder encoder) {
   return new InMemoryUserDetailsManager(
-      User.withUsername("agent1").password(encoder.encode("agent-pass"))
+      User.withUsername("agent1").password(encoder.encode("agent1"))
           .roles("AGENT").build(),
-      User.withUsername("admin1").password(encoder.encode("admin-pass"))
+      User.withUsername("admin1").password(encoder.encode("admin1"))
           .roles("ADMIN").build());
 }
 ```
@@ -245,7 +245,7 @@ Document lab passwords only in README for students — do not commit a productio
 
 **Expected result:** `PasswordEncoder` bean is BCrypt (or equivalent); `UserDetailsService` loads `agent1` and `admin1`.
 
-**If it fails:** `{noop}agent-pass` left in production notes as “fine” → reject for anything beyond local demo. Wrong role string → later 403 flakiness.
+**If it fails:** `{noop}agent1` left in production notes as “fine” → reject for anything beyond local demo. Wrong role string → later 403 flakiness.
 
 ---
 
@@ -294,7 +294,7 @@ public LoginResponse login(@RequestBody LoginRequest req) {
 curl -s -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
-  -d '{"username":"agent1","password":"agent-pass"}'
+  -d '{"username":"agent1","password":"agent1"}'
 ```
 
 Also try a bad password and confirm **401** without leaking which field was wrong.
@@ -314,7 +314,7 @@ Also try a bad password and confirm **401** without leaking which field was wron
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"username":"agent1","password":"agent-pass"}' | jq -r .accessToken)
+  -d '{"username":"agent1","password":"agent1"}' | jq -r .accessToken)
 
 curl -s http://localhost:8080/api/customers/CUS-1001 \
   -H "Authorization: Bearer $TOKEN" \
@@ -336,7 +336,7 @@ Ensure Amina (`ACTIVE`) is seeded from prior labs or a data seeder.
 **Do this:** Expose an admin-only endpoint (list support data or forced override). Agents must receive 403.
 
 ```java
-@GetMapping("/api/admin/customers")
+@GetMapping("/api/admin/ping")
 @PreAuthorize("hasRole('ADMIN')")
 public List<CustomerResponse> adminList() { ... }
 ```
@@ -344,7 +344,7 @@ public List<CustomerResponse> adminList() { ... }
 Enable method security if using `@PreAuthorize`. Exercise:
 
 ```bash
-# agent token -> 403 on /api/admin/customers
+# agent token -> 403 on /api/admin/ping
 # admin token -> 200
 curl -s http://localhost:8080/api/customers/CUS-1002 \
   -H "Authorization: Bearer $AGENT_TOKEN"   # allowed for AGENT
@@ -356,7 +356,9 @@ curl -s http://localhost:8080/api/customers/CUS-1002 \
 
 ---
 
-### Step 8 — Automated MockMvc matrix and production notes
+### Step 8
+
+Name the suite `SecurityPathTest` (**Tests run: 3**): missing token → **401**; agent customers OK + `/api/admin/ping` → **403**; admin ping → **200**. — Automated MockMvc matrix and production notes
 
 **Why:** Automated 401/403 checks prevent regressions when routes are added.
 
@@ -503,7 +505,7 @@ mvn -q spring-boot:run
 curl -s -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
-  -d '{"username":"admin1","password":"admin-pass"}'
+  -d '{"username":"admin1","password":"admin1"}'
 curl -s http://localhost:8080/api/customers/CUS-1002 \
   -H "Authorization: Bearer <token>" \
   -H "X-Correlation-Id: lab-request-001"

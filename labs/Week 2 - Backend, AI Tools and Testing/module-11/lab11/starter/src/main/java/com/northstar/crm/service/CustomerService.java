@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Lab 10 baseline. Lab 11 TODOs: extract CustomerNotifier + validation helper;
- * keep behavior for CUS-1001 / CUS-1002.
+ * Lab 10 baseline. Lab 11 TODOs: inject CustomerNotifier; call notifyStatusChange
+ * from updateStatus; extract validateCustomerId; keep behavior for CUS-1001 / CUS-1002.
  */
 public class CustomerService {
     private final List<Customer> customers = new ArrayList<>();
-    // TODO: inject/use CustomerNotifier instead of System.out after refactor
+    // TODO: private final CustomerNotifier notifier; + no-arg (no-op) and injectable ctors
 
     public Customer addCustomer(Customer customer) {
         // TODO: extract duplicated validation into a private helper (Lab 11)
@@ -30,7 +30,6 @@ public class CustomerService {
             customer.setStatus(CustomerStatus.PROSPECT);
         }
         customers.add(customer);
-        System.out.println("created " + customer.getCustomerId()); // TODO: notify via CustomerNotifier
         return customer;
     }
 
@@ -40,10 +39,13 @@ public class CustomerService {
                 .findFirst();
     }
 
-    public Customer updateStatus(String customerId, CustomerStatus status) {
+    public Customer updateStatus(String customerId, CustomerStatus newStatus) {
         Customer c = findByCustomerId(customerId)
                 .orElseThrow(() -> new IllegalArgumentException("Customer not found: " + customerId));
-        c.setStatus(status);
+        // TODO: capture oldStatus, set newStatus, then notifier.notifyStatusChange(...)
+        c.setStatus(newStatus);
         return c;
     }
+
+    // TODO (optional timed stretch): findByStatus(CustomerStatus) and listAll()
 }

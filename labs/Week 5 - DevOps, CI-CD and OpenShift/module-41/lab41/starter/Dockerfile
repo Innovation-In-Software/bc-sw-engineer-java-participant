@@ -19,7 +19,7 @@ COPY --from=build /workspace/target/*.jar app.jar
 EXPOSE 8080
 ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75"
 # TODO(lab41): Never ENV CRM_DB_PASSWORD or bake secrets into layers
-# TODO(lab41): HEALTHCHECK against readiness (wget/curl per image)
+# TODO(lab41): HEALTHCHECK against readiness — prefer /dev/tcp (JRE often lacks wget/curl)
 # HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-#   CMD wget -qO- http://127.0.0.1:8080/actuator/health/readiness || exit 1
+#   CMD ["bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/8080 && printf 'GET /actuator/health/readiness HTTP/1.0\r\nHost: localhost\r\n\r\n' >&3 && cat <&3 | grep -q UP"]
 ENTRYPOINT ["java","-jar","/app/app.jar"]

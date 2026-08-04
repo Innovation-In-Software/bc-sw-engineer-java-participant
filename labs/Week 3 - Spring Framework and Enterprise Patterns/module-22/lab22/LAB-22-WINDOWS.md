@@ -35,7 +35,7 @@ cd examples\lab22-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab22-crm
-mvn -B "-Dtest=CustomerServiceTest,CustomerServiceSpringIT" test
+mvn -B "-Dtest=CustomerServiceTest,CustomerServiceSpringTest" test
 mvn -B spring-boot:run
 # After Started CrmApplication (second Terminal / PowerShell):
 # $headers = @{ "X-Correlation-Id" = "lab-request-001"; "Content-Type" = "application/json" }

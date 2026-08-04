@@ -152,11 +152,11 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```bash
-curl -i -X POST "http://localhost:8080/api/customers/$CUSTOMER_ID/interactions" \
+curl -i -X POST "http://localhost:8080/api/v1/interactions" \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $TOKEN" \
   -H 'X-Correlation-ID: lab-request-001' \
-  -d '{"channel":"PHONE","summary":"Requested address update"}'
+  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
 ```
 
 **What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
@@ -195,22 +195,25 @@ mkdir -p ~/java-bootcamp/notes/screenshots/lab-49 backend/src/test/java/com/nort
 
 **Why:** Shipping JPA entities as JSON couples clients to persistence and breaks Lab 50 typing.
 
-**Do this:** Create immutable request/response/event records. Keep entities internal. Use Bean Validation and enums for channel (`PHONE`, `EMAIL`, `CHAT`).
+**Do this:** Create immutable request/response/event records. Keep entities internal. Use Bean Validation for `interactionType` (`CALL`, `EMAIL`, `NOTE`, `MEETING`). Customer id is a **String** fixture (`CUS-1001`), not a UUID path param.
 
 Example shapes (adapt to your IDs):
 
 ```java
 public record CreateInteractionRequest(
-    @NotBlank @Size(max = 20) String channel,
-    @NotBlank @Size(max = 1000) String summary) {}
+    @NotBlank String customerId,
+    @NotBlank String interactionType,  // CALL, EMAIL, NOTE, MEETING
+    @NotBlank @Size(max = 1000) String summary,
+    String correlationId) {}
 
 public record InteractionResponse(
-    UUID id, UUID customerId, String channel, String summary, Instant createdAt) {}
+    String id, String customerId, String interactionType, String summary,
+    String correlationId, Instant createdAt) {}
 
 public record CustomerInteractionRecordedV1(
-    UUID eventId, String eventType, int eventVersion,
+    String eventId, String eventType, int eventVersion,
     Instant occurredAt, String correlationId, String actor,
-    UUID customerId, UUID interactionId, String channel) {}
+    String customerId, String interactionId, String interactionType) {}
 ```
 
 **Expected result:** DTOs compile; entities not referenced from controller method signatures.
@@ -275,25 +278,25 @@ Unit-test the service with a fake publisher that records the event payload for `
 
 **Why:** Wrong status codes and opaque 500s block frontend integration and panel trust.
 
-**Do this:** `POST /api/customers/{customerId}/interactions` returning 201 + `Location`. Use Problem Details for validation and not-found. Read `X-Correlation-ID` (default generate if absent—but demos must send `lab-request-001`). Prepare `@PreAuthorize` stubs if security present; Lab 51 hardens fully.
+**Do this:** `POST /api/v1/interactions` returning 201 (+ `Location` if you add it). Use Problem Details for validation and not-found. Read `X-Correlation-ID` (default generate if absent—but demos must send `lab-request-001`). Prepare `@PreAuthorize` stubs if security present; Lab 51 hardens fully.
 
 ```java
-@PostMapping("/api/customers/{customerId}/interactions")
-@PreAuthorize("hasAnyRole('AGENT','MANAGER')")
-ResponseEntity<InteractionResponse> create(
-    @PathVariable UUID customerId,
-    @Valid @RequestBody CreateInteractionRequest request,
-    @RequestHeader(value = "X-Correlation-ID", required = false) String correlationId) {
-  var cid = correlationId == null || correlationId.isBlank() ? "lab-request-001" : correlationId;
-  var result = service.create(customerId, request, cid);
-  var location = URI.create("/api/customers/" + customerId + "/interactions/" + result.id());
-  return ResponseEntity.created(location).body(result);
+@RestController
+@RequestMapping("/api/v1/interactions")
+class InteractionController {
+  @PostMapping
+  ResponseEntity<InteractionResponse> create(
+      @RequestBody @Valid CreateInteractionRequest request,
+      @RequestHeader(value = "X-Correlation-ID", required = false) String correlationHeader) {
+    var result = service.create(request, correlationHeader);
+    return ResponseEntity.status(201).body(result);
+  }
 }
 ```
 
 Also add GET timeline endpoint if CAP story requires it for Lab 50. Capture MockMvc JSON snippets (sanitized) under `~/java-bootcamp/notes/screenshots/lab-49/`.
 
-**Expected result:** MockMvc: 201 for Amina; 400 invalid channel; 404 `CUS-9999`; Location header present.
+**Expected result:** Service/MockMvc: 201 for `CUS-1001`; validation error for invalid `interactionType`; `UnknownCustomerException` for `CUS-9999`.
 
 **If it fails:** 200 on create → fix to 201. Stack traces in body → Problem Details advice. Path variable type mismatch vs Lab 50 client → freeze ID type in contract doc.
 
@@ -341,11 +344,11 @@ cd ~/java-bootcamp/examples/customer-management-platform/backend
 Manual curl (adapt token/id):
 
 ```bash
-curl -i -X POST "http://localhost:8080/api/customers/$CUSTOMER_ID/interactions" \
+curl -i -X POST "http://localhost:8080/api/v1/interactions" \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $TOKEN" \
   -H 'X-Correlation-ID: lab-request-001' \
-  -d '{"channel":"PHONE","summary":"Requested address update"}'
+  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
 ```
 
 **Expected result:** `BUILD SUCCESS`; tests cover happy + negative; evidence noted in `docs/backend-demo.md`.
@@ -418,17 +421,17 @@ _Mark **Pass** or **Fail** in your lab notes._
 public record CustomerInteractionRecordedV1(
     UUID eventId, String eventType, int eventVersion,
     Instant occurredAt, String correlationId,
-    UUID customerId, UUID interactionId, String channel) {}
+    String customerId, String interactionId, String interactionType) {}
 ```
 
 ### Verify API and event
 
 ```bash
 ./mvnw -B clean verify
-curl -i -X POST http://localhost:8080/api/customers/$CUSTOMER_ID/interactions \
+curl -i -X POST http://localhost:8080/api/v1/interactions \
   -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" \
   -H 'X-Correlation-ID: lab-request-001' \
-  -d '{"channel":"PHONE","summary":"Requested address update"}'
+  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
 kafka-console-consumer.sh --bootstrap-server localhost:9092 \
   --topic crm.customer.interactions.v1 --from-beginning --max-messages 1
 ```
@@ -437,7 +440,7 @@ kafka-console-consumer.sh --bootstrap-server localhost:9092 \
 
 ```bash
 cd ~/java-bootcamp/examples/customer-management-platform
-docker compose up -d
+cd backend && mvn -B test   # timed path; Compose/Kafka optional full-path
 cd backend
 ./mvnw -B -q test
 ./mvnw -B clean verify
@@ -448,7 +451,7 @@ git status --short
 ## Prerequisites (JDK, Compose, profiles)
 ## Seed customers (CUS-1001 Amina, CUS-1002 Ravi)
 ## Happy path curl (lab-request-001)
-## Negative path curl (invalid channel, CUS-9999)
+## Negative path curl (invalid interactionType, CUS-9999 → UnknownCustomerException)
 ## SQL verification
 ## Kafka verification (topic, sample payload fields)
 ## Test commands (mvn clean verify)
@@ -464,7 +467,7 @@ git status --short
   "title": "Bad Request",
   "status": 400,
   "detail": "Validation failed",
-  "instance": "/api/customers/.../interactions"
+  "instance": "/api/v1/interactions"
 }
 ```
 
@@ -476,7 +479,7 @@ Adapt field names to your Problem Details implementation; keep status semantics 
 
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
-| 1 | POST invalid channel | 400 Problem Details; no row; no event | Keep validation |
+| 1 | POST invalid interactionType | 400 / validation fail; no row; no event | Keep validation |
 | 2 | POST for `CUS-9999` | 404; bounded error | Keep mapping |
 | 3 | Break consumer idempotency briefly | Duplicate side effect | Restore dedupe |
 | 4 | Stop Kafka mid-publish (safe lab) | Failure matches ADR expectation | Restart broker |
@@ -491,7 +494,7 @@ Adapt field names to your Problem Details implementation; keep status semantics 
 | Symptom | Likely cause | Fix |
 | ------- | ------------ | --- |
 | Tests not discovered | Naming/path | `*Test`/`*IT` under `src/test/java` |
-| Kafka connection refused | Compose not up | `docker compose up -d`; check port |
+| Kafka connection refused | Compose not up | `cd backend && mvn -B test   # timed path; Compose/Kafka optional full-path`; check port |
 | Event missing | Publish before commit / wrong topic | Align ADR; verify topic name |
 | Flaky IT | Shared consumer group / timing | Unique keys; awaitility |
 | PostgreSQL migration fail | Non-PostgreSQL SQL | Use compatible types/profiles |
@@ -515,7 +518,7 @@ Optional — jot brief notes in your README if useful for your progress check (n
 ```bash
 cd ~/java-bootcamp/examples/customer-management-platform
 ./mvnw -q clean 2>/dev/null || (cd backend && ./mvnw -q clean)
-docker compose stop
+# stop optional Compose stack if you started one
 git status --short
 ```
 

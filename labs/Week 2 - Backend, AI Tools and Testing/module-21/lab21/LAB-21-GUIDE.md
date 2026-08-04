@@ -55,7 +55,7 @@ Keep this checklist visible while you work.
 | 1 | Actuator health (liveness/readiness) evidence |
 | 2 | Micrometer metrics for CRM create/get |
 | 3 | Automated `ActuatorIT` output |
-| 4 | Successful-path evidence with `CUS-1001` / `CUS-1002` |
+| 4 | Successful-path evidence with metric traffic `CUS-2101` (+ seeded `CUS-1001` get) |
 | 5 | Controlled-failure evidence (readiness down / create failure counter) |
 | 6 | `docs/monitoring-report.md` |
 | 7 | Production exposure restrictions documented |
@@ -92,7 +92,8 @@ Use these examples consistently:
 | ID | Name | Notes |
 | -- | ---- | ----- |
 | `CUS-1001` | Amina Khan | `ACTIVE` — traffic that moves create/get metrics |
-| `CUS-1002` | Ravi Singh | `PROSPECT` — second create; failure-counter demos |
+| `CUS-2101` | Metric User | POST for `createMetricAppearsAfterTraffic` |
+| `CUS-1002` | Ravi Singh | `PROSPECT` — optional second create / failure demos |
 | `lab-request-001` | — | correlation in HTTP/logs (not metric tags) |
 | ISO-8601 UTC | — | evidence timestamps |
 
@@ -138,29 +139,14 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 ```java
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class ActuatorIT {
-  @Autowired TestRestTemplate rest;
-  @LocalServerPort int port;
-
-  @Test
-  void healthIsUp() {
-    var res = rest.getForEntity("http://localhost:" + port + "/actuator/health", Map.class);
-    assertThat(res.getStatusCode().is2xxSuccessful()).isTrue();
-    assertThat(res.getBody().get("status")).isEqualTo("UP");
-  }
-
-  @Test
-  void createIncrementsMetric() {
-    // read counter, POST CUS-1002, read again, assert delta >= 1
-  }
-
-  @Test
-  void readinessCanFailIndependently() {
-    // flip lab toggle / indicator; assert readiness not UP; liveness still UP; restore
-  }
+  // Starter method names:
+  // healthAndProbesAreUp
+  // readinessCanGoDownWhileLivenessStaysUp
+  // createMetricAppearsAfterTraffic  // POST CUS-2101
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** Match starter ActuatorIT names and fixture `CUS-2101`; metrics use `recordCreate` / `recordGet`.
 
 ---
 
@@ -217,12 +203,15 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,prometheus
+        include: health,metrics,info   # starter lab-only set (prometheus optional)
   endpoint:
     health:
       show-details: always
       probes:
         enabled: true
+      group:
+        readiness:
+          include: readinessState,crmReadinessIndicator
   metrics:
     tags:
       application: northstar-crm
@@ -231,9 +220,9 @@ server:
   port: 8080
 ```
 
-Separate management port is optional; if used, record it in README. Mark unrestricted exposure as **lab-only**.
+Starter ships probes + exposure; add the **readiness group** so `CrmReadinessIndicator` participates. Mark unrestricted exposure as **lab-only**.
 
-**Expected result:** App starts on 8080; `/actuator` discovery (if enabled) lists health and metrics.
+**Expected result:** App starts on 8080; health/liveness/readiness reachable; readiness group includes `crmReadinessIndicator`.
 
 **If it fails:** YAML indentation wrong → endpoints stay closed. Spelling `exposure.include` → fix exactly. Restart required after YAML changes.
 
@@ -299,43 +288,11 @@ Expose a **lab-only** toggle endpoint or test hook to flip readiness; mark it cl
 
 **Why:** Counters/timers without wiring never move; high-cardinality tags destroy metric backends—keep tags low-cardinality.
 
-**Do this:** Create `CustomerMetrics.java`:
+**Do this:** Complete starter `CustomerMetrics` — wire service calls to `recordCreate(String result)` / `recordGet(String result)` (tag by `result` only). Counters: `crm.customer.create` / `crm.customer.get`.
 
-```java
-@Component
-public class CustomerMetrics {
-  private final Counter createSuccess;
-  private final Counter createFailure;
-  private final Counter getSuccess;
-  private final Timer createTimer;
-  private final Timer getTimer;
+Wire from `CustomerService` for create/get. Tag by `result` only—**do not** tag with customer names or correlation IDs. Customer IDs belong in logs (Lab 20).
 
-  public CustomerMetrics(MeterRegistry registry) {
-    createSuccess = registry.counter("crm.customer.create", "result", "success");
-    createFailure = registry.counter("crm.customer.create", "result", "failure");
-    getSuccess = registry.counter("crm.customer.get", "result", "success");
-    createTimer = registry.timer("crm.customer.create.latency");
-    getTimer = registry.timer("crm.customer.get.latency");
-  }
-
-  public Customer timedCreate(Supplier<Customer> action) {
-    return createTimer.record(() -> {
-      try {
-        Customer c = action.get();
-        createSuccess.increment();
-        return c;
-      } catch (RuntimeException e) {
-        createFailure.increment();
-        throw e;
-      }
-    });
-  }
-}
-```
-
-Wire from `CustomerService` for create/get. Tag by `operation`/`result` only—**do not** tag with customer names or correlation IDs. Customer IDs belong in logs (Lab 20).
-
-**Expected result:** Metric names appear under `/actuator/metrics`; `crm.customer.create` and latency timers listed.
+**Expected result:** Metric names appear under `/actuator/metrics`; `crm.customer.create` / `crm.customer.get` listed after traffic.
 
 **If it fails:** Metrics missing → bean not constructed / service not calling wrappers. Name typo in curl path → names are exact. Ultra-high-cardinality tags if student “improves” with customerId—reject in review.
 
@@ -351,17 +308,17 @@ Wire from `CustomerService` for create/get. Tag by `operation`/`result` only—*
 curl -s http://localhost:8080/actuator/metrics/crm.customer.create
 
 curl -s -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" \
-  -d '{"customerId":"CUS-1001","fullName":"Amina Khan","status":"ACTIVE"}' \
+  -d '{"customerId":"CUS-2101","fullName":"Metric User","email":"metric@example.com","status":"PROSPECT"}' \
   http://localhost:8080/api/customers
 
 curl -s -H "X-Correlation-Id: lab-request-001" \
   http://localhost:8080/api/customers/CUS-1001
 
 curl -s http://localhost:8080/actuator/metrics/crm.customer.create
-curl -s http://localhost:8080/actuator/metrics/crm.customer.get.latency
+curl -s http://localhost:8080/actuator/metrics/crm.customer.get
 ```
 
-**Expected result:** Create success count increases after POST; get latency count ≥ 1; Lab 20 logs still show `corr=lab-request-001 cust=CUS-1001`.
+**Expected result:** Create success count increases after POST `CUS-2101`; get metric moves after GET; Lab 20 logs still show correlation + customer ids.
 
 **If it fails:** Counter flat → wire path not hit (duplicate fail before increment placement). Latency missing → timer not recorded on get. Logs missing correlation → Lab 20 filter regression—fix logging first.
 
@@ -371,30 +328,22 @@ curl -s http://localhost:8080/actuator/metrics/crm.customer.get.latency
 
 **Why:** Probe and metric regressions should fail CI without manual curl archaeology.
 
-**Do this:** Create `ActuatorIT.java`:
+**Do this:** Complete starter `ActuatorIT.java` methods:
 
 ```java
-@SpringBootTest(webEnvironment = RANDOM_PORT)
-class ActuatorIT {
-  @Autowired TestRestTemplate rest;
-  @LocalServerPort int port;
+@Test
+void healthAndProbesAreUp() {
+  // GET /actuator/health, /actuator/health/liveness, /actuator/health/readiness → 200
+}
 
-  @Test
-  void healthIsUp() {
-    var res = rest.getForEntity("http://localhost:" + port + "/actuator/health", Map.class);
-    assertThat(res.getStatusCode().is2xxSuccessful()).isTrue();
-    assertThat(res.getBody().get("status")).isEqualTo("UP");
-  }
+@Test
+void readinessCanGoDownWhileLivenessStaysUp() {
+  // readiness.setReady(false); assert readiness down / liveness up; restore true
+}
 
-  @Test
-  void createIncrementsMetric() {
-    // read counter, POST CUS-1002, read again, assert delta >= 1
-  }
-
-  @Test
-  void readinessCanFailIndependently() {
-    // flip lab toggle / indicator; assert readiness not UP; liveness still UP; restore
-  }
+@Test
+void createMetricAppearsAfterTraffic() {
+  // POST CUS-2101 then GET /actuator/metrics/crm.customer.create
 }
 ```
 
@@ -402,7 +351,7 @@ class ActuatorIT {
 mvn -q -Dtest=ActuatorIT test
 ```
 
-**Expected result:** health UP; createIncrementsMetric PASS; optional readiness independence test PASS; BUILD SUCCESS.
+**Expected result:** **Tests run: 3**; all three starter methods PASS; BUILD SUCCESS.
 
 **If it fails:** Random port vs hard-coded 8080 in assertions → use `@LocalServerPort`. Metric JSON structure differs by Boot version → parse `measurements` carefully.
 
@@ -418,7 +367,7 @@ mvn -q -Dtest=ActuatorIT test
 # CRM Monitoring Report (Lab 21)
 - Health: /actuator/health, /liveness, /readiness
 - Metrics: crm.customer.create{result}, crm.customer.get.latency
-- Example traffic: CUS-1001, CUS-1002, corr=lab-request-001
+- Example traffic: POST CUS-2101, GET CUS-1001, corr=lab-request-001
 - Alert idea: create failure ratio > 5% for 5 minutes
 - Production: do not expose unrestricted Actuator on the public internet
 - Cards: IDs in logs (Lab 20); aggregates in metrics (this lab)
@@ -485,11 +434,15 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
+        include: health,metrics,info
   endpoint:
     health:
       probes:
         enabled: true
+      show-details: always
+      group:
+        readiness:
+          include: readinessState,crmReadinessIndicator
 ```
 
 ### Commands
@@ -501,7 +454,7 @@ curl -s http://localhost:8080/actuator/health/liveness
 curl -s http://localhost:8080/actuator/health/readiness
 curl -s http://localhost:8080/actuator/metrics/crm.customer.create
 mvn -q -Dtest=ActuatorIT test
-mvn -q clean verify
+# Expected: Tests run: 3 (healthAndProbesAreUp, readinessCanGoDownWhileLivenessStaysUp, createMetricAppearsAfterTraffic)
 git status
 ```
 

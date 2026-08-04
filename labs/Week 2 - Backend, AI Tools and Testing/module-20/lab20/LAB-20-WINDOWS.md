@@ -39,7 +39,7 @@ cd examples\lab20-crm
 cd $env:USERPROFILE\java-bootcamp\examples\lab20-crm
 mvn -q dependency:tree | findstr /i "logback slf4j"
 mvn -B "-Dtest=CustomerLoggingIT" test
-mvn -B clean verify
+mvn -B clean "-Dtest=CustomerLoggingIT" test
 # optional: mvn spring-boot:run  then curl with X-Correlation-Id: lab-request-001
 ```
 

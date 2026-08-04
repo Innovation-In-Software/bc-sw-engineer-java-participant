@@ -150,7 +150,7 @@ set -eu
 : "${RELEASE_DIGEST:?release digest is required}"
 # Adapt resource names to instructor environment
 kubectl set image deployment/crm-api \
-  crm-api="registry.example.com/training/crm-api@${RELEASE_DIGEST}"
+  crm-api="ghcr.io/example-org/crm-api@${RELEASE_DIGEST}"
 kubectl rollout status deployment/crm-api --timeout=180s
 curl -fsS -H "X-Correlation-Id: lab-request-001" \
   "${CRM_BASE_URL}/actuator/health/readiness"
@@ -200,15 +200,15 @@ git switch -c lab/44-crm 2>/dev/null || true
 {
   "application": "crm-api",
   "version": "1.4.0",
-  "gitCommit": "${GITHUB_SHA}",
-  "jarSha256": "<calculated-value>",
-  "image": "registry.example.com/training/crm-api:1.4.0",
+  "gitCommit": "<GITHUB_SHA>",
+  "jarSha256": "<hex-from-Lab43-SHA256SUMS>",
+  "imageRepository": "ghcr.io/example-org/crm-api",
   "imageDigest": "sha256:<registry-digest>",
-  "builtBy": "github-actions"
+  "builtBy": "lab43-ci"
 }
 ```
 
-Fill real values from Lab 43 artifacts (replace placeholders deliberately).
+Fill real values from Lab 43 artifacts (replace placeholders deliberately). Wire promotion in `.github/workflows/cd.yml` (starter): `workflow_dispatch` with environment + `artifact_digest`, compare against this manifest, then `kubectl set image … ghcr.io/…@sha256:…` — never rebuild with Maven on the deploy agent.
 
 ```bash
 sha256sum target/*.jar
@@ -287,7 +287,7 @@ set -eu
 : "${RELEASE_DIGEST:?release digest is required}"
 # Adapt resource names to instructor environment
 kubectl set image deployment/crm-api \
-  crm-api="registry.example.com/training/crm-api@${RELEASE_DIGEST}"
+  crm-api="ghcr.io/example-org/crm-api@${RELEASE_DIGEST}"
 kubectl rollout status deployment/crm-api --timeout=180s
 curl -fsS -H "X-Correlation-Id: lab-request-001" \
   "${CRM_BASE_URL}/actuator/health/readiness"
@@ -413,7 +413,7 @@ set -eu
 : "${RELEASE_DIGEST:?release digest is required}"
 : "${CRM_BASE_URL:?}"
 kubectl set image deployment/crm-api \
-  crm-api="registry.example.com/training/crm-api@${RELEASE_DIGEST}"
+  crm-api="ghcr.io/example-org/crm-api@${RELEASE_DIGEST}"
 kubectl rollout status deployment/crm-api --timeout=180s
 curl -fsS -H "X-Correlation-Id: lab-request-001" \
   "${CRM_BASE_URL}/actuator/health/readiness"

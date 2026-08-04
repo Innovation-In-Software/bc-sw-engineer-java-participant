@@ -68,11 +68,11 @@ Keep this checklist visible while you work.
 | - | ----------- |
 | 1 | `docs/architecture/context.md` (C4 context + product outcome) |
 | 2 | `docs/architecture/container.md` (containers + data flow) |
-| 3 | `docs/nfrs.md` (measurable NFRs) |
+| 3 | `docs/nfrs.md` (measurable NFRs) — create if missing from starter |
 | 4 | `docs/adrs/` (≥5 ADRs: DB, messaging, consistency, auth, deploy) |
 | 5 | `docs/backlog.md` (prioritized vertical stories including interaction recording) |
 | 6 | `docs/risk-register.md` (scored risks with mitigations) |
-| 7 | `docs/team-plan.md` (owners, milestones, critical path) |
+| 7 | `docs/team-plan.md` (owners, milestones, critical path) — create if missing from starter |
 | 8 | Baseline note if platform code already exists |
 
 **Must submit:** the items in the table above (sources + evidence + short notes).
@@ -259,8 +259,8 @@ flowchart LR
 **Do this:** In `docs/architecture/container.md` or `docs/contracts.md`, identify ownership for:
 
 * Customer, Interaction, Case (if any), Notification side effects
-* Draft endpoint sketch: `POST /api/customers/{id}/interactions` with Problem Details errors
-* Draft event: `CustomerInteractionRecordedV1` fields (eventId, type, version, time, actor, correlationId, customerId, interactionId, channel)
+* Draft endpoint sketch: `POST /api/v1/interactions` with Problem Details errors (body includes `customerId`, `interactionType`, `summary`, `correlationId`)
+* Draft event: `CustomerInteractionRecordedV1` fields (eventId, type, version, time, actor, correlationId, customerId, interactionId, interactionType)
 * Compatibility policy: additive fields OK; breaking changes require version bump
 
 Reference fixtures: create interaction for `CUS-1001` with header `X-Correlation-ID: lab-request-001`.

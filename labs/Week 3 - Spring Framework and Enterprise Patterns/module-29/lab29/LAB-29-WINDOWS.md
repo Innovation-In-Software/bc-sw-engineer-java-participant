@@ -39,7 +39,7 @@ mvn -B test
 mvn -B spring-boot:run
 ```
 
-Verified (2026-08-03): **Tests run: 6** · **BUILD SUCCESS** twice (`CustomerValidationTest`); GET `CUS-1001`/`CUS-1002` **200**; `CUS-9999` **404** envelope; bad email **400** with `violations[field=email]`; blank fields **400** (≥4 violations); duplicate `CUS-1001` **409**; valid create **201**. Correlation `lab-request-001`. Starter DTO fields `id`/`name`/`email`/`status`.
+Verified (2026-08-03): **Tests run: 4** · **BUILD SUCCESS** twice (`ErrorEnvelopeTest`); GET `CUS-1001`/`CUS-1002` **200**; `CUS-9999` **404** envelope; bad email **400** with `violations[field=email]`; blank fields **400** (≥4 violations); duplicate `CUS-1001` **409**; valid create **201**. Correlation `lab-request-001`. Starter DTO fields `id`/`name`/`email`/`status`.
 
 ## Do the lab
 

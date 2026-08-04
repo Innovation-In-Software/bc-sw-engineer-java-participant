@@ -36,8 +36,8 @@ cd examples\customer-management-platform
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
-kubectl apply
-docker build
+docker build -t crm-api:session-local .
+# Smoke (when app running): POST /api/v1/interactions — see GUIDE
 ```
 
 

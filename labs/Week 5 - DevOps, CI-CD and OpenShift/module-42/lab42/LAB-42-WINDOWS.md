@@ -36,7 +36,9 @@ cd examples\lab42-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab42-crm
-kubectl apply
+kubectl apply -f k8s/
+kubectl get ingress crm-api
+kubectl rollout status deployment/crm-api --timeout=180s
 ```
 
 

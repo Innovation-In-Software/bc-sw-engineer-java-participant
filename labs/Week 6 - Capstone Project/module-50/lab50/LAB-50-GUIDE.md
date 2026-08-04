@@ -41,6 +41,10 @@ TypeScript types disagree with Lab 49 DTOs — what do you reconcile?
 
 ## 45-minute timed path (session block — use starter)
 
+> **Starter note:** Timed path = SQL migration + `docs/data-api-checklist.md` only. There is **no** `frontend/` in the starter. Gate `npm` / React under the **full path** (homework / multi-day). Solution adds `frontend/` for the full deliverable.
+
+## 45-minute timed path details
+
 > **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: React, a11y, E2E, restart durability, `docs/frontend-persistence-demo.md`.
 
 In class, use the starter data/API + Flyway stubs so the **session block** fits **~45 minutes**. React UI, a11y, E2E, and restart durability remain **multi-day** on the full path.
@@ -152,6 +156,7 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```bash
+# FULL PATH only (starter has no frontend/ — skip on timed path):
 cd ~/java-bootcamp/examples/customer-management-platform/frontend
 npm ci
 npm run lint
@@ -252,7 +257,7 @@ export async function createInteraction(
   body: CreateInteraction,
   signal?: AbortSignal
 ): Promise<Interaction> {
-  const response = await fetch(`${apiBase}/api/customers/${customerId}/interactions`, {
+  const response = await fetch(`${apiBase}/api/v1/interactions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -362,6 +367,7 @@ Record SQL excerpt (sanitized) and screenshot in `~/java-bootcamp/notes/screensh
 **Do this:** Component tests for form validation and timeline rendering. One Selenium/Playwright (as agreed) journey: search Amina → save interaction → assert timeline text. Use stable accessible selectors (`getByLabel`, roles). Isolate test data; screenshots on failure only.
 
 ```bash
+# FULL PATH only (starter has no frontend/ — skip on timed path):
 cd ~/java-bootcamp/examples/customer-management-platform/frontend
 npm ci
 npm run lint

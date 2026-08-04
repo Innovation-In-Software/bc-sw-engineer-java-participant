@@ -140,18 +140,23 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 ```java
 class CustomerServiceTest {
   @Test
-  void createUsesRepositoryAndNotifies() {
+  void createAndGetWithoutSpringContext() {
     var repo = new InMemoryCustomerRepository();
-    var notify = mock(NotificationService.class);
+    var notify = new NotificationService();
     var service = new CustomerService(repo, notify);
-    service.create(Customer.amina(), "lab-request-001");
-    assertThat(repo.findById("CUS-1001")).isPresent();
-    verify(notify).customerCreated("CUS-1001", "lab-request-001");
+
+    Customer created = service.create(Customer.amina(), "lab-request-001");
+    assertEquals("CUS-1001", created.getId());
+
+    Customer found = service.get("CUS-1001");
+    assertNotNull(found);
+    assertEquals("Amina Khan", found.getName());
+    assertEquals("ACTIVE", found.getStatus());
   }
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** Match names, IDs, getters (`getId`/`getName`), and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -225,21 +230,44 @@ mvn spring-boot:run
 **Do this:** Keep `Customer` as a plain type (adapt to your existing entity if already present):
 
 ```java
-public record Customer(String customerId, String fullName, String status) {
+public class Customer {
+  private String id;
+  private String name;
+  private String email;
+  private String status;
+
+  public Customer() {}
+
+  public Customer(String id, String name, String email, String status) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.status = status;
+  }
+
   public static Customer amina() {
-    return new Customer("CUS-1001", "Amina Khan", "ACTIVE");
+    return new Customer("CUS-1001", "Amina Khan", "amina.khan@example.com", "ACTIVE");
   }
   public static Customer ravi() {
-    return new Customer("CUS-1002", "Ravi Singh", "PROSPECT");
+    return new Customer("CUS-1002", "Ravi Singh", "ravi.singh@example.com", "PROSPECT");
   }
+
+  public String getId() { return id; }
+  public void setId(String id) { this.id = id; }
+  public String getName() { return name; }
+  public void setName(String name) { this.name = name; }
+  public String getEmail() { return email; }
+  public void setEmail(String email) { this.email = email; }
+  public String getStatus() { return status; }
+  public void setStatus(String status) { this.status = status; }
 }
 ```
 
-If you already have a richer Lab 10–16 entity, keep it—do **not** force a rewrite; add factory helpers if useful for tests.
+Starter uses this JavaBean shape (`id`/`name`/`email`/`status`) for Jackson — keep getters/setters; do **not** rename fields to `customerId`/`fullName`.
 
 **Expected result:** Domain compiles independently of Spring annotations; `CUS-1001` / `CUS-1002` helpers available for tests and seed data.
 
-**If it fails:** Accidental `@Component` on DTO → remove. Record vs class mismatch with Jackson → align JSON bindings separately.
+**If it fails:** Accidental `@Component` on DTO → remove. Missing getters → Jackson cannot bind JSON `id`/`name`/`email`/`status`.
 
 ---
 
@@ -258,7 +286,13 @@ public interface CustomerRepository {
 @Repository
 public class InMemoryCustomerRepository implements CustomerRepository {
   private final Map<String, Customer> store = new ConcurrentHashMap<>();
-  @Override public Customer save(Customer c) { store.put(c.customerId(), c); return c; }
+
+  public InMemoryCustomerRepository() {
+    store.put("CUS-1001", Customer.amina());
+    store.put("CUS-1002", Customer.ravi());
+  }
+
+  @Override public Customer save(Customer c) { store.put(c.getId(), c); return c; }
   @Override public Optional<Customer> findById(String id) {
     return Optional.ofNullable(store.get(id));
   }
@@ -267,8 +301,8 @@ public class InMemoryCustomerRepository implements CustomerRepository {
 @Service
 public class NotificationService {
   private static final Logger log = LoggerFactory.getLogger(NotificationService.class);
-  public void customerCreated(String customerId, String correlationId) {
-    log.info("Notify create customerId={} corr={}", customerId, correlationId);
+  public void notifyCreated(String customerId, String correlationId) {
+    log.info("customer.created id={} correlationId={}", customerId, correlationId);
   }
 }
 ```
@@ -290,27 +324,29 @@ Keep Lab 20 PII rules: notify with IDs/correlation only.
 ```java
 @Service
 public class CustomerService {
-  private final CustomerRepository repository;
-  private final NotificationService notifications;
+  private final CustomerRepository customerRepository;
+  private final NotificationService notificationService;
 
-  public CustomerService(CustomerRepository repository, NotificationService notifications) {
-    this.repository = repository;
-    this.notifications = notifications;
+  public CustomerService(CustomerRepository customerRepository, NotificationService notificationService) {
+    this.customerRepository = customerRepository;
+    this.notificationService = notificationService;
   }
 
-  public Customer create(Customer input, String correlationId) {
-    Customer saved = repository.save(input);
-    notifications.customerCreated(saved.customerId(), correlationId);
+  public Customer create(Customer customer, String correlationId) {
+    Customer saved = customerRepository.save(customer);
+    notificationService.notifyCreated(saved.getId(), correlationId);
     return saved;
   }
 
-  public Optional<Customer> findById(String id) {
-    return repository.findById(id);
+  public Customer get(String id) {
+    return customerRepository
+        .findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Customer not found: " + id));
   }
 }
 ```
 
-Remove field injection and `new InMemoryCustomerRepository()` if present. Inject `CustomerMetrics` the same way if Lab 21 remains. Prefer injecting the **interface** type `CustomerRepository`.
+Remove field injection and `new InMemoryCustomerRepository()` if present. Prefer injecting the **interface** type `CustomerRepository`. Timed path uses `get` (throws) — not `Optional` on the service.
 
 **Expected result:** Application starts without “parameter 0 of constructor required a bean” errors; `CustomerService` is singleton by default; unit tests can `new CustomerService(fakeRepo, fakeNotify)`.
 
@@ -328,30 +364,30 @@ Remove field injection and `new InMemoryCustomerRepository()` if present. Inject
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
-  private final CustomerService customers;
+  private final CustomerService customerService;
 
-  public CustomerController(CustomerService customers) {
-    this.customers = customers;
+  public CustomerController(CustomerService customerService) {
+    this.customerService = customerService;
   }
 
   @PostMapping
-  public ResponseEntity<Customer> create(
-      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String cid,
-      @RequestBody Customer body) {
-    return ResponseEntity.status(HttpStatus.CREATED).body(customers.create(body, cid));
+  @ResponseStatus(HttpStatus.CREATED)
+  public Customer create(
+      @RequestBody Customer customer,
+      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String correlationId) {
+    return customerService.create(customer, correlationId);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Customer> get(@PathVariable String id) {
-    return customers.findById(id).map(ResponseEntity::ok)
-        .orElse(ResponseEntity.notFound().build());
+  public Customer get(@PathVariable String id) {
+    return customerService.get(id);
   }
 }
 ```
 
-Adapt to existing method names from Labs 19–21.
+Match starter method names: service `create` / `get`, JSON fields `id`/`name`/`email`/`status`.
 
-**Expected result:** POST `CUS-1001` → 201; GET → 200 Amina ACTIVE; notification log shows `customerId=CUS-1001 corr=lab-request-001`.
+**Expected result:** POST `CUS-1001` → 201; GET → 200 Amina ACTIVE; notification log shows `customer.created id=CUS-1001 correlationId=lab-request-001`.
 
 **If it fails:** 404 mapping → request path/context path. Bean not found for controller ctor → service not annotated/scanned. Validation differences → keep Lab 19 behavior.
 
@@ -366,7 +402,7 @@ Adapt to existing method names from Labs 19–21.
 ```java
 @PostConstruct
 void init() {
-  log.info("CustomerService initialized scope=singleton");
+  log.info("CustomerService ready");
 }
 
 @PreDestroy
@@ -395,22 +431,25 @@ Start the app, create `CUS-1002`, then stop the process (Ctrl+C) and capture des
 ```java
 class CustomerServiceTest {
   @Test
-  void createUsesRepositoryAndNotifies() {
+  void createAndGetWithoutSpringContext() {
     var repo = new InMemoryCustomerRepository();
-    var notify = mock(NotificationService.class);
+    var notify = new NotificationService();
     var service = new CustomerService(repo, notify);
-    service.create(Customer.amina(), "lab-request-001");
-    assertThat(repo.findById("CUS-1001")).isPresent();
-    verify(notify).customerCreated("CUS-1001", "lab-request-001");
+
+    Customer created = service.create(Customer.amina(), "lab-request-001");
+    assertEquals("CUS-1001", created.getId());
+    assertEquals("Amina Khan", service.get("CUS-1001").getName());
   }
 }
 ```
+
+Add `@SpringBootTest` class `CustomerServiceSpringTest` with method `springGraphCreatesAndGetsCus1001` (see solution) that autowires `CustomerService` and asserts seeded `CUS-1001` plus create/get for Ravi.
 
 ```bash
 mvn -q test
 ```
 
-**Expected result:** Unit test and `CustomerServiceSpringIT` PASS; BUILD SUCCESS.
+**Expected result:** Unit test `createAndGetWithoutSpringContext` and `CustomerServiceSpringTest.springGraphCreatesAndGetsCus1001` PASS; BUILD SUCCESS.
 
 **If it fails:** Unit test needs Spring → constructor still pulls container APIs incorrectly. IT missing bean → same scan issues as Step 1. Mockito unused → ensure test deps (Boot starter-test includes Mockito).
 
@@ -509,7 +548,7 @@ public class CustomerService {
 cd ~/java-bootcamp/examples/lab22-crm
 mvn spring-boot:run
 curl -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" \
-  -d '{"customerId":"CUS-1001","fullName":"Amina Khan","status":"ACTIVE"}' \
+  -d '{"id":"CUS-1001","name":"Amina Khan","email":"amina.khan@example.com","status":"ACTIVE"}' \
   http://localhost:8080/api/customers
 mvn -q test
 mvn -q clean verify

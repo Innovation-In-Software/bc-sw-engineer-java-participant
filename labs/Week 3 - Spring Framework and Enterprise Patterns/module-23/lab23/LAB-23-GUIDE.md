@@ -142,7 +142,7 @@ class CrmApplicationTests {
 }
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CustomerControllerIT {
+class CustomerControllerHttpTest {
   @LocalServerPort int port;
   @Autowired TestRestTemplate rest;
 
@@ -151,14 +151,14 @@ class CustomerControllerIT {
     var headers = new HttpHeaders();
     headers.set("X-Correlation-Id", "lab-request-001");
     headers.setContentType(MediaType.APPLICATION_JSON);
-    var body = "{\"customerId\":\"CUS-1001\",\"fullName\":\"Amina Khan\",\"status\":\"ACTIVE\"}";
+    var body = "{\"id\":\"CUS-1001\",\"name\":\"Amina Khan\",\"email\":\"amina.khan@example.com\",\"status\":\"ACTIVE\"}";
     var created = rest.postForEntity(
         "http://localhost:" + port + "/api/customers",
         new HttpEntity<>(body, headers),
         Customer.class);
     assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     assertThat(rest.getForEntity("/api/customers/CUS-1001", Customer.class)
-        .getBody().customerId()).isEqualTo("CUS-1001");
+        .getBody().getId()).isEqualTo("CUS-1001");
   }
 }
 ```
@@ -276,25 +276,29 @@ Restart and curl health once config is live.
 
 **Why:** Controllers need a domain type and a service bean before REST exists; keep Lab 22 constructor-injection habits even for a map.
 
-**Do this:** Add `Customer` (record or class with `@NotBlank` fields) and `@Service CustomerService` backed by `ConcurrentHashMap`. Seed nothing mandatory — create via API in Step 5.
+**Do this:** Keep starter JavaBean `Customer` (`id`/`name`/`email`/`status` + getters). `@Service CustomerService` is backed by `ConcurrentHashMap` and **already seeds** `CUS-1001` / `CUS-1002`. Timed path does **not** require `@NotBlank` / validation starter (`@Valid` = optional full-path).
 
 ```java
-public record Customer(
-    @NotBlank String customerId,
-    @NotBlank String fullName,
-    @NotBlank String status) {}
-
 @Service
 public class CustomerService {
   private final Map<String, Customer> store = new ConcurrentHashMap<>();
 
-  public Customer create(Customer c) {
-    store.put(c.customerId(), c);
-    return c;
+  public CustomerService() {
+    store.put("CUS-1001", Customer.amina());
+    store.put("CUS-1002", Customer.ravi());
   }
 
-  public Optional<Customer> findById(String id) {
-    return Optional.ofNullable(store.get(id));
+  public Customer create(Customer customer, String correlationId) {
+    store.put(customer.getId(), customer);
+    return customer;
+  }
+
+  public Customer get(String id) {
+    Customer found = store.get(id);
+    if (found == null) {
+      throw new IllegalArgumentException("Customer not found: " + id);
+    }
+    return found;
   }
 }
 ```
@@ -303,9 +307,9 @@ public class CustomerService {
 mvn -q -DskipTests compile
 ```
 
-**Expected result:** Classes compile; service is a Boot bean after component scan.
+**Expected result:** Classes compile; service is a Boot bean after component scan; seeds visible via GET after Step 5.
 
-**If it fails:** Missing validation dependency for `@NotBlank` → add starter-validation. Service not scanned → package must be under `com.northstar.crm`.
+**If it fails:** Service not scanned → package must be under `com.northstar.crm`. Optional full-path validation → add starter-validation + `@Valid` separately.
 
 ---
 
@@ -318,40 +322,35 @@ mvn -q -DskipTests compile
 ```java
 @RestController
 @RequestMapping("/api/customers")
-@Validated
 public class CustomerController {
-  private final CustomerService customers;
+  private final CustomerService customerService;
 
-  public CustomerController(CustomerService customers) {
-    this.customers = customers;
+  public CustomerController(CustomerService customerService) {
+    this.customerService = customerService;
   }
 
   @PostMapping
-  public ResponseEntity<Customer> create(
-      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String cid,
-      @Valid @RequestBody Customer body) {
-    Customer saved = customers.create(body);
-    return ResponseEntity.status(HttpStatus.CREATED)
-        .header("X-Correlation-Id", cid)
-        .body(saved);
+  @ResponseStatus(HttpStatus.CREATED)
+  public Customer create(
+      @RequestBody Customer customer,
+      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String correlationId) {
+    return customerService.create(customer, correlationId);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Customer> get(@PathVariable String id) {
-    return customers.findById(id)
-        .map(ResponseEntity::ok)
-        .orElse(ResponseEntity.notFound().build());
+  public Customer get(@PathVariable String id) {
+    return customerService.get(id);
   }
 }
 ```
 
 ```bash
 curl -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" \
-  -d "{\"customerId\":\"CUS-1001\",\"fullName\":\"Amina Khan\",\"status\":\"ACTIVE\"}" \
+  -d "{\"id\":\"CUS-1001\",\"name\":\"Amina Khan\",\"email\":\"amina.khan@example.com\",\"status\":\"ACTIVE\"}" \
   http://localhost:8080/api/customers
 
 curl -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" \
-  -d "{\"customerId\":\"CUS-1002\",\"fullName\":\"Ravi Singh\",\"status\":\"PROSPECT\"}" \
+  -d "{\"id\":\"CUS-1002\",\"name\":\"Ravi Singh\",\"email\":\"ravi.singh@example.com\",\"status\":\"PROSPECT\"}" \
   http://localhost:8080/api/customers
 
 curl -s http://localhost:8080/api/customers/CUS-1001
@@ -432,7 +431,7 @@ Document which profile you would use on a shared training server. Note in `docs/
 
 **Why:** Manual curls alone are not a gate; context-load + one HTTP IT prove the slice is peer-reproducible.
 
-**Do this:** Keep `@SpringBootTest` contextLoads; add `CustomerControllerIT` with `RANDOM_PORT` and create/get for `CUS-1001` + correlation header.
+**Do this:** Keep `@SpringBootTest` contextLoads; add `CustomerControllerHttpTest` with `RANDOM_PORT` and create/get for `CUS-1001` + correlation header.
 
 ```java
 @SpringBootTest
@@ -441,7 +440,7 @@ class CrmApplicationTests {
 }
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CustomerControllerIT {
+class CustomerControllerHttpTest {
   @LocalServerPort int port;
   @Autowired TestRestTemplate rest;
 
@@ -450,14 +449,14 @@ class CustomerControllerIT {
     var headers = new HttpHeaders();
     headers.set("X-Correlation-Id", "lab-request-001");
     headers.setContentType(MediaType.APPLICATION_JSON);
-    var body = "{\"customerId\":\"CUS-1001\",\"fullName\":\"Amina Khan\",\"status\":\"ACTIVE\"}";
+    var body = "{\"id\":\"CUS-1001\",\"name\":\"Amina Khan\",\"email\":\"amina.khan@example.com\",\"status\":\"ACTIVE\"}";
     var created = rest.postForEntity(
         "http://localhost:" + port + "/api/customers",
         new HttpEntity<>(body, headers),
         Customer.class);
     assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     assertThat(rest.getForEntity("/api/customers/CUS-1001", Customer.class)
-        .getBody().customerId()).isEqualTo("CUS-1001");
+        .getBody().getId()).isEqualTo("CUS-1001");
   }
 }
 ```
@@ -467,7 +466,7 @@ mvn -q test
 mvn -q test
 ```
 
-**Expected result:** Both runs green and identical; IT asserts 201 and body `customerId=CUS-1001`.
+**Expected result:** Both runs green and identical; IT asserts 201 and body `id=CUS-1001` (via `getId()`).
 
 **If it fails:** Fixed port conflicts in parallel Surefire → use `RANDOM_PORT`. Flaky map state across tests → isolate or use unique IDs per test. Context fails → missing main class or broken YAML.
 ---
@@ -573,7 +572,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 curl -s http://localhost:8080/actuator/health
 curl -s http://localhost:8080/actuator/info
 curl -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" \
-  -d "{\"customerId\":\"CUS-1002\",\"fullName\":\"Ravi Singh\",\"status\":\"PROSPECT\"}" \
+  -d "{\"id\":\"CUS-1002\",\"name\":\"Ravi Singh\",\"email\":\"ravi.singh@example.com\",\"status\":\"PROSPECT\"}" \
   http://localhost:8080/api/customers
 curl -s http://localhost:8080/api/customers/CUS-1001
 curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/api/customers/CUS-MISSING
@@ -587,7 +586,7 @@ git status
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
 | 1 | Remove web starter temporarily | Context/start fails or no embedded server | Restore starter |
-| 2 | POST blank `fullName` with validation | 400-level rejection | Fix payload |
+| 2 | POST blank `name` (optional `@Valid` / validation starter = full-path) | 400-level rejection if validation enabled | Fix payload |
 | 3 | Create `CUS-1001` twice | Document overwrite vs future uniqueness | Keep map honest |
 | 4 | Bind port already in use | BindException / start fail | Free port or change YAML |
 | 5 | Hit health while app stopped | Connection refused | Start app |
@@ -603,7 +602,7 @@ git status
 | Tests flaky on 8080 | Fixed port collision | `webEnvironment = RANDOM_PORT` |
 | YAML ignored | Indent/typo / no restart | Fix YAML; restart |
 | Bean not found | Wrong package scan | Keep types under `com.northstar.crm` |
-| Validation never fires | Missing starter-validation | Add dependency; `@Valid` on body |
+| Validation never fires | Timed path has no `@Valid` | Optional full-path: add starter-validation + `@Valid` |
 | Working in `module-23-exercises` for the lab | Wrong project | Lab lives in `examples/lab23-crm` |
 | App starts but no REST mapping | Missing `@RestController` / wrong path | Confirm `/api/customers` mapping |
 

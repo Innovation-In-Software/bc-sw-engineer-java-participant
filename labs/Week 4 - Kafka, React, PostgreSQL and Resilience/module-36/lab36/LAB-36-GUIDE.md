@@ -245,7 +245,7 @@ After login, confirm Application tab: **no** token in localStorage/sessionStorag
 **Do this:** In `http.request`, parse request URL and compare to API origin:
 
 ```typescript
-const url = new URL(path.startsWith("http") ? path : `${API_URL}${path}`);
+const url = new URL(path.startsWith("http") ? path : `${VITE_API_BASE_URL}${path}`);
 if (url.origin === apiOrigin && token) {
   headers.set("Authorization", `Bearer ${token}`);
 }
@@ -255,7 +255,7 @@ Still send `X-Correlation-Id: lab-request-001` on CRM calls.
 
 **Expected result:** Bearer header goes only to CRM API origin.
 
-**If it fails:** Relative URLs mis-parsed → normalize with `API_URL`. Token on CDN calls → tighten check.
+**If it fails:** Relative URLs mis-parsed → normalize with `VITE_API_BASE_URL`. Token on CDN calls → tighten check.
 
 ---
 
@@ -358,7 +358,7 @@ Ban HTML sinks in CRM UI review.
 **Do this:** If using cookie sessions on unsafe methods:
 
 ```typescript
-fetch(`${API_URL}/customers`, {
+fetch(`${import.meta.env.VITE_API_BASE_URL}/api/customers`, {
   method: "POST",
   credentials: "include",
   headers: {

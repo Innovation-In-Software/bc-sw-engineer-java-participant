@@ -15,7 +15,7 @@
 
 ## Data flow (interaction create)
 
-1. Agent → UI → `POST /api/...` with `X-Correlation-ID: lab-request-001`
+1. Agent → UI → `POST /api/v1/interactions` with `X-Correlation-ID: lab-request-001`
 2. API validates → persists → publishes `CustomerInteractionRecordedV1` (or equivalent)
 3. Consumer _____ (idempotent / DLT notes): _____
 

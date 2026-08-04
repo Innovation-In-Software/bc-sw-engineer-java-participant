@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Ship CustomerApiIT + Selenium Page Object UI IT with correlation and data-testid |
 | **Skills practiced** | API IT, WebDriver, Page Objects, explicit waits, regression evidence |
-| **Expected outcome** | Green ApiIT + UiIT · correlation echo · regression-notes.md |
+| **Expected outcome** | `mvn -Dtest=CustomerApiIT,CustomerUiIT test` → **Tests run: 4** · correlation echo · regression-notes.md |
 | **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
 | **Prerequisites** | Lab 0 · Lab 18 preferred · Exercises 1–4, 6, 5 Pass · JDK 21 · Maven · Chrome/Chromium |
 | **Expected files** | `examples/lab19-crm/` — controller/static UI, ApiIT, UiIT, notes |
@@ -56,7 +56,7 @@ Keep this checklist visible while you work.
 | 2 | Selenium UI suite with Page Object(s) (`CustomerUiIT`, `CustomerFormPage`) |
 | 3 | Minimal UI surface with stable selectors |
 | 4 | Automated test output (surefire) |
-| 5 | Successful-path evidence (API + UI) for `CUS-1001` / `CUS-1002` |
+| 5 | Successful-path evidence: API POST `CUS-1901` + UI `CUS-2001` (get Amina `CUS-1001`) |
 | 6 | Controlled-failure evidence (validation / not found / broken locator screenshot) |
 | 7 | Regression notes (why integration vs UI scope; CI browser strategy) |
 | 8 | Run and cleanup instructions |
@@ -85,15 +85,17 @@ The CRM stores customer identity, contact details, lifecycle status, and financi
 
 Leadership freezes:
 
-**Create/get for `CUS-1001` / `CUS-1002` must be proven at HTTP and UI layers with correlation `lab-request-001`. Flaky sleeps are not an acceptable “fix.”**
+**HTTP ApiIT proves get Amina `CUS-1001`, create `CUS-1901` with correlation `lab-request-001`, and 404; UI IT creates `CUS-2001`. Flaky sleeps are not an acceptable “fix.”**
 
 Use these examples consistently:
 
 | ID | Name | Notes |
 | -- | ---- | ----- |
-| `CUS-1001` | Amina Khan | `ACTIVE` — API + UI happy path |
-| `CUS-1002` | Ravi Singh | `PROSPECT` — UI/API second customer; blank-name negative |
-| `CUS-MISSING` / `CUS-9999` | — | not-found 404 |
+| `CUS-1001` | Amina Khan | `ACTIVE` — seeded get happy path |
+| `CUS-1901` | Lab Nineteen | API POST + correlation echo |
+| `CUS-2001` | Ui Customer | UI Page Object create |
+| `CUS-1002` | Ravi Singh | `PROSPECT` — optional second customer |
+| `CUS-9999` | — | not-found 404 (`missingCustomerReturns404`) |
 | `lab-request-001` | — | `X-Correlation-Id` on POST/GET |
 | ISO-8601 UTC | — | timestamps in evidence notes |
 
@@ -138,29 +140,14 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 ```java
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerApiIT {
-  @LocalServerPort int port;
-  @Autowired TestRestTemplate rest;
-
-  @Test
-  void createAndGetCus1001() {
-    var headers = new HttpHeaders();
-    headers.set("X-Correlation-Id", "lab-request-001");
-    headers.setContentType(MediaType.APPLICATION_JSON);
-    var body = """
-      {"customerId":"CUS-1001","fullName":"Amina Khan","status":"ACTIVE"}
-      """;
-    var created = rest.exchange(
-        "http://localhost:" + port + "/api/customers",
-        HttpMethod.POST, new HttpEntity<>(body, headers), Customer.class);
-    assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-    assertThat(created.getHeaders().getFirst("X-Correlation-Id")).isEqualTo("lab-request-001");
-    var got = rest.getForEntity("/api/customers/CUS-1001", Customer.class);
-    assertThat(got.getBody().customerId()).isEqualTo("CUS-1001");
-  }
+  // Starter methods: getAminaReturns200, createEchoesCorrelationHeader (POST CUS-1901),
+  // missingCustomerReturns404 (GET CUS-9999)
 }
+// UiIT: createCustomerViaUi — fill(id, name, email, status) with CUS-2001;
+// testids submit-customer / create-result
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** Match starter method names, fixtures (`CUS-1901` / `CUS-2001`), and testids — instructors check these.
 
 ---
 
@@ -261,7 +248,7 @@ public class CustomerController {
 
 Adapt method names to your Lab 15–18 service (`addCustomer` / `create`, etc.). Prefer constructor injection (foreshadows Lab 22).
 
-**Expected result:** POST returns 201 with `customerId=CUS-1001`; GET returns 200 Amina ACTIVE; `X-Correlation-Id` echoes `lab-request-001`.
+**Expected result:** GET `CUS-1001` returns 200 Amina ACTIVE; POST `CUS-1901` returns 201 with `X-Correlation-Id` echo `lab-request-001`.
 
 **If it fails:** 404 on mapping → check `@RequestMapping` and context path. Correlation missing → default when header absent. Bean wiring errors → ensure Boot app class / `@SpringBootApplication` exists for this module.
 
@@ -271,7 +258,7 @@ Adapt method names to your Lab 15–18 service (`addCustomer` / `create`, etc.).
 
 **Why:** Proves the network boundary independently of Chrome flakiness—cheap, fast regression before UI.
 
-**Do this:** Create `CustomerApiIT.java` with `@SpringBootTest(webEnvironment = RANDOM_PORT)` and `TestRestTemplate` or `WebTestClient`. Cover create, get, not-found, and invalid body. Prefer deterministic IDs.
+**Do this:** Complete starter `CustomerApiIT.java` with `@SpringBootTest(webEnvironment = RANDOM_PORT)` and `TestRestTemplate`. Cover get Amina, create `CUS-1901` + correlation echo, and not-found `CUS-9999`.
 
 ```java
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -280,31 +267,25 @@ class CustomerApiIT {
   @Autowired TestRestTemplate rest;
 
   @Test
-  void createAndGetCus1001() {
-    var headers = new HttpHeaders();
-    headers.set("X-Correlation-Id", "lab-request-001");
-    headers.setContentType(MediaType.APPLICATION_JSON);
-    var body = """
-      {"customerId":"CUS-1001","fullName":"Amina Khan","status":"ACTIVE"}
-      """;
-    var created = rest.exchange(
-        "http://localhost:" + port + "/api/customers",
-        HttpMethod.POST, new HttpEntity<>(body, headers), Customer.class);
-    assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-    assertThat(created.getHeaders().getFirst("X-Correlation-Id")).isEqualTo("lab-request-001");
-    var got = rest.getForEntity("/api/customers/CUS-1001", Customer.class);
-    assertThat(got.getBody().customerId()).isEqualTo("CUS-1001");
+  void getAminaReturns200() { /* GET /api/customers/CUS-1001 → 200 */ }
+
+  @Test
+  void createEchoesCorrelationHeader() {
+    // POST customerId CUS-1901 with X-Correlation-Id lab-request-001 → 201 + header echo
   }
+
+  @Test
+  void missingCustomerReturns404() { /* GET CUS-9999 → 404 */ }
 }
 ```
 
-Add `getMissingReturns404` for an unknown ID.
+Complete the three starter `CustomerApiIT` methods (`getAminaReturns200`, `createEchoesCorrelationHeader` with **CUS-1901**, `missingCustomerReturns404`).
 
 ```bash
 mvn -q -Dtest=CustomerApiIT test
 ```
 
-**Expected result:** create/get and 404 tests PASS; surefire report for `CustomerApiIT` present.
+**Expected result:** **Tests run: 3** for ApiIT; surefire report for `CustomerApiIT` present.
 
 **If it fails:** Port in URL wrong when using relative paths with `TestRestTemplate` root URI—prefer `@SpringBootTest` + `@LocalServerPort` consistently. JSON property names mismatch → align with Jackson/record field names. Shared static store across tests → reset or unique IDs per method if needed.
 
@@ -320,17 +301,18 @@ mvn -q -Dtest=CustomerApiIT test
 <form id="customer-form">
   <label>Customer ID <input id="customerId" data-testid="customer-id"/></label>
   <label>Full name <input id="fullName" data-testid="full-name"/></label>
+  <label>Email <input id="email" data-testid="email"/></label>
   <label>Status <select id="status" data-testid="status">
     <option>ACTIVE</option><option>PROSPECT</option>
   </select></label>
-  <button type="submit" data-testid="submit">Save</button>
+  <button type="submit" data-testid="submit-customer">Create</button>
 </form>
-<div id="result" data-testid="result"></div>
+<pre data-testid="create-result" id="result"></pre>
 ```
 
 Wire submit to `POST /api/customers` with header `X-Correlation-Id: lab-request-001`. Show result text including ID and name/status (or an error message for validation).
 
-Manually open `http://localhost:8080/customers.html` after `mvn spring-boot:run` and submit `CUS-1002` / Ravi / PROSPECT once.
+Manually open `http://localhost:8080/customers.html` after `mvn spring-boot:run` and submit `CUS-2001` once (UI fixture).
 
 **Expected result:** Manual submit shows Ravi / PROSPECT in result; Network tab shows correlation header.
 
@@ -386,19 +368,20 @@ public class CustomerFormPage {
         By.cssSelector("[data-testid=customer-id]")));
     return this;
   }
-  public CustomerFormPage fill(String id, String name, String status) {
+  public CustomerFormPage fill(String id, String name, String email, String status) {
     driver.findElement(By.cssSelector("[data-testid=customer-id]")).sendKeys(id);
     driver.findElement(By.cssSelector("[data-testid=full-name]")).sendKeys(name);
+    driver.findElement(By.cssSelector("[data-testid=email]")).sendKeys(email);
     new Select(driver.findElement(By.cssSelector("[data-testid=status]")))
         .selectByVisibleText(status);
     return this;
   }
   public void submit() {
-    driver.findElement(By.cssSelector("[data-testid=submit]")).click();
+    driver.findElement(By.cssSelector("[data-testid=submit-customer]")).click();
   }
   public String resultText() {
     return wait.until(ExpectedConditions.visibilityOfElementLocated(
-        By.cssSelector("[data-testid=result]"))).getText();
+        By.cssSelector("[data-testid=create-result]"))).getText();
   }
 }
 ```
@@ -407,8 +390,8 @@ public class CustomerFormPage {
 @Test
 void createCustomerViaUi() {
   var page = new CustomerFormPage(driver, wait).open(baseUrl);
-  page.fill("CUS-1001", "Amina Khan", "ACTIVE").submit();
-  assertThat(page.resultText()).contains("CUS-1001").contains("Amina Khan");
+  page.fill("CUS-2001", "Ui Customer", "ui.customer@example.com", "PROSPECT").submit();
+  assertThat(page.resultText()).contains("CUS-2001");
 }
 ```
 
@@ -418,38 +401,21 @@ Derive `baseUrl` from `@LocalServerPort` when the UI test starts Boot (preferred
 mvn -q -Dtest=CustomerUiIT#createCustomerViaUi test
 ```
 
-**Expected result:** UI happy path PASS; result contains `CUS-1001` and Amina Khan.
+**Expected result:** UI happy path PASS; result contains `CUS-2001`.
 
 **If it fails:** Timeout on result → JS did not update result / API failed—check API IT first. Element not found → wrong `data-testid` or page URL. Stale element → re-find after navigation; keep waits explicit.
 
 ---
 
-### Step 7 — Add negative UI and API regression cases
+### Step 7 — Confirm API 404 regression (starter)
 
-**Why:** Suites that only green-path CRM create hide validation regressions until production.
+**Why:** Suites that only green-path CRM create hide not-found regressions until production.
 
-**Do this:**
+**Do this:** Ensure starter `CustomerApiIT#missingCustomerReturns404` covers `GET /api/customers/CUS-9999` → 404. (Optional full-path stretch: blank-name UI validation — not required on timed starter, which has **one** UiIT method.)
 
-```java
-@Test
-void blankNameShowsValidationMessage() {
-  var page = new CustomerFormPage(driver, wait).open(baseUrl);
-  page.fill("CUS-1002", "", "PROSPECT").submit();
-  assertThat(page.resultText()).containsIgnoringCase("full name");
-}
+**Expected result:** Timed suite = **ApiIT 3 + UiIT 1 = Tests run: 4**.
 
-@Test
-void getMissingCustomerReturns404() {
-  var response = rest.getForEntity("/api/customers/CUS-MISSING", String.class);
-  assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-}
-```
-
-Assert visible error text or HTTP 4xx—not only “something happened.”
-
-**Expected result:** Both negatives PASS; suite documents happy and failure contracts.
-
-**If it fails:** Blank name still 201 → validation missing at boundary—add it. Message assert too brittle → assert stable reason code in UI. 404 returns 200 empty → fix controller not-found mapping.
+**If it fails:** 404 returns 200 empty → fix controller not-found mapping.
 
 ---
 
@@ -460,8 +426,7 @@ Assert visible error text or HTTP 4xx—not only “something happened.”
 **Do this:**
 
 ```bash
-mvn -q clean verify
-# make a tiny non-functional edit (log message rename), then:
+# Surefire only (no Failsafe plugin in starter POM) — pin IT classes:
 mvn -q -Dtest=CustomerApiIT,CustomerUiIT test
 ls target/surefire-reports/
 ```
@@ -501,7 +466,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | `CustomerApiIT` create/get `CUS-1001` | Pass / Fail |
+| 1 | `CustomerApiIT` get `CUS-1001` + create `CUS-1901` + 404 | Pass / Fail |
 | 2 | Not-found 404 case | Pass / Fail |
 | 3 | Deterministic fixtures (no random PII) | Pass / Fail |
 
@@ -550,9 +515,8 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ```bash
 cd ~/java-bootcamp/examples/lab19-crm
-mvn -q -Dtest=CustomerApiIT test
-mvn -q -Dtest=CustomerUiIT test
-mvn -q clean verify
+mvn -q -Dtest=CustomerApiIT,CustomerUiIT test
+# Expected: Tests run: 4 (ApiIT 3 + UiIT 1) — Surefire; no Failsafe
 mvn spring-boot:run
 git status
 ```

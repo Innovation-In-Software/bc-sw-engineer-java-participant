@@ -39,7 +39,7 @@ mvn -B test
 mvn -B spring-boot:run
 ```
 
-Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS** twice; force-fail `ACC-FORCE-FAIL` → HTTP **409**, MAIN unchanged at **1000.00**; happy MAIN→LOYALTY `50.00` → MAIN **950.00** / LOYALTY **150.00** / `correlationId=lab-request-001`; insufficient funds leaves balances unchanged. `@Transactional` on `TransferService` only.
+Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** twice; force-fail `ACC-FORCE-FAIL` → HTTP **409**, MAIN unchanged at **1000.00**; happy MAIN→LOYALTY `50.00` → MAIN **950.00** / LOYALTY **100.00** / `transfer updates MAIN/LOYALTY balances`; insufficient funds leaves balances unchanged. `@Transactional` on `TransferService` only.
 
 ## Do the lab
 

@@ -39,7 +39,7 @@ mvn -B test
 mvn -B spring-boot:run
 ```
 
-Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** twice (`CustomerEndpointTest` + UsernameToken envelope); WSDL **200** at `/ws/customers.wsdl`; unsecured SOAP → Client fault **No WS-Security header found**; secured get → **CUS-1001**/**ACTIVE**; not-found → Client **Customer not found**; REST GET `CUS-1001` still works.
+Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerEndpointTest.getCustomerReturnsCus1001` + `CrmApplicationTests`); WSDL **200** at `/ws/customers.wsdl`; unsecured get-customer.xml returns **CUS-1001** / **name=Amina Khan**; REST GET `CUS-1001` still works. (UsernameToken = full-path homework; not wired in timed starter/solution.)
 
 ## Do the lab
 

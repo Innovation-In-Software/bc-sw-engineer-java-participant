@@ -284,7 +284,7 @@ spring:
       ack-mode: record
 management:
   endpoints.web.exposure.include: health,info,prometheus
-  metrics.tags.application: crm-api
+  metrics.tags.application: lab46-crm
 ```
 
 ```bash

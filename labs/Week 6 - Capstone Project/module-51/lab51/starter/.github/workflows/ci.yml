@@ -1,0 +1,42 @@
+# Capstone CI — security + package (Lab 51 sketch)
+# secrets via GitHub Actions secrets — never hardcode
+name: Capstone CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Verify
+        run: mvn -B clean verify  # TODO(lab51): confirm working-directory backend
+      - name: Upload surefire
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: backend/target/surefire-reports/**
+
+  image:
+    needs: verify
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image (no push secrets in log)
+        run: |
+          docker build -t crm-api:${GITHUB_SHA} .  # root context — NOT -f backend/Dockerfile backend
+          docker images crm-api:${GITHUB_SHA} --digests
+      # Push + digest record use GHCR credentials from Environment secrets (full path)

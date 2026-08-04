@@ -146,28 +146,26 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```yaml
-- name: Configure CRM runtime host
+- name: Northstar CRM host baseline
   hosts: crm
   become: true
+  gather_facts: true
+  vars:
+    crm_app_user: crm
   tasks:
-    - name: Create CRM service account
+    - name: Ensure crm group exists
+      ansible.builtin.group:
+        name: "{{ crm_app_user }}"
+        state: present
+    - name: Ensure crm user exists
       ansible.builtin.user:
-        name: crm
-        system: true
-        shell: /usr/sbin/nologin
-    - name: Install runtime configuration
-      ansible.builtin.template:
-        src: crm.env.j2
-        dest: /etc/crm/crm.env
-        owner: root
-        group: crm
-        mode: "0640"
-      notify: Restart CRM
-  handlers:
-    - name: Restart CRM
-      ansible.builtin.service:
-        name: crm
-        state: restarted
+        name: "{{ crm_app_user }}"
+        group: "{{ crm_app_user }}"
+        state: present
+        create_home: true
+    - name: Placeholder — document package installs
+      ansible.builtin.debug:
+        msg: "Install JRE / agent packages per instructor baseline"
 ```
 
 **What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
@@ -226,7 +224,28 @@ Pin provider versions. List assumptions. Include a human review checklist.
 
 **Why:** Monolithic mystery `main.tf` hides destructive defaults.
 
-**Do this:** Separate providers, variables, resources, and outputs. Pin compatible provider ranges. Inspect every resource, data source, and default. Prefer a namespace sketch like:
+**Do this:** Separate providers, variables, resources, and outputs. Pin compatible provider ranges. Inspect every resource, data source, and default. **Timed path / starter:** use `hashicorp/null` + `null_resource.crm_stack_sketch` (validate without cloud credentials):
+
+```hcl
+terraform {
+  required_version = ">= 1.5.0"
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.2"
+    }
+  }
+}
+
+resource "null_resource" "crm_stack_sketch" {
+  triggers = {
+    environment = var.environment
+    region      = var.region
+  }
+}
+```
+
+When a cloud sandbox is authorized, replace `null_resource` with real modules. Full-path cloud sketch example:
 
 ```hcl
 terraform {
@@ -251,7 +270,7 @@ resource "kubernetes_namespace_v1" "crm" {
 output "namespace" { value = kubernetes_namespace_v1.crm.metadata[0].name }
 ```
 
-**Expected result:** Structured files; pinned providers; human notes on each resource purpose.
+**Expected result:** Structured files; pinned providers; human notes on each resource purpose. Starter validates with `null_resource.crm_stack_sketch` + `-var=db_password=unused-local`.
 
 **If it fails:** Unpinned `version = "*"` → pin; mysterious resources outside contract → delete.
 
@@ -287,8 +306,9 @@ output "namespace" { value = kubernetes_namespace_v1.crm.metadata[0].name }
 cd ~/java-bootcamp/examples/lab45-crm/infra/terraform
 terraform fmt -check -recursive || terraform fmt -recursive
 terraform init -backend=false
-terraform validate
-terraform plan -var='environment=dev' -out=tfplan
+terraform validate -var='db_password=unused-local'
+# Plan optional for null_resource sketch; cloud plan only in authorized sandbox:
+# terraform plan -var='environment=dev' -var='db_password=unused-local' -out=tfplan
 terraform show -no-color tfplan | tee ../../notes/tfplan-excerpt.txt
 ```
 
@@ -307,33 +327,31 @@ Read every create, update, replace, and destroy. Estimate cost and identify priv
 **Do this:** Prefer modules over shell. Add handlers, ownership, modes, and privilege boundaries. Use `no_log` only for tasks that process secrets.
 
 ```yaml
-- name: Configure CRM runtime host
+- name: Northstar CRM host baseline
   hosts: crm
   become: true
+  gather_facts: true
+  vars:
+    crm_app_user: crm
   tasks:
-    - name: Create CRM service account
+    - name: Ensure crm group exists
+      ansible.builtin.group:
+        name: "{{ crm_app_user }}"
+        state: present
+    - name: Ensure crm user exists
       ansible.builtin.user:
-        name: crm
-        system: true
-        shell: /usr/sbin/nologin
-    - name: Install runtime configuration
-      ansible.builtin.template:
-        src: crm.env.j2
-        dest: /etc/crm/crm.env
-        owner: root
-        group: crm
-        mode: "0640"
-      notify: Restart CRM
-  handlers:
-    - name: Restart CRM
-      ansible.builtin.service:
-        name: crm
-        state: restarted
+        name: "{{ crm_app_user }}"
+        group: "{{ crm_app_user }}"
+        state: present
+        create_home: true
+    - name: Placeholder — document package installs
+      ansible.builtin.debug:
+        msg: "Install JRE / agent packages per instructor baseline"
 ```
 
-Create `inventory.example.yml` with fictional hosts only.
+Create `inventory.example.yml` at the **lab root** (sibling of `infra/`) with fictional hosts only. Jinja templates under `infra/ansible/templates/` are optional full-path work.
 
-**Expected result:** `site.yml` + example inventory + template; no real secrets.
+**Expected result:** `infra/ansible/site.yml` + root `inventory.example.yml`; no real secrets. Syntax-check from lab root.
 
 **If it fails:** Hard-coded password in playbook → move to vault/env; never commit vault pass.
 
@@ -346,9 +364,9 @@ Create `inventory.example.yml` with fictional hosts only.
 **Do this:**
 
 ```bash
-cd ~/java-bootcamp/examples/lab45-crm/infra/ansible
-ansible-playbook --syntax-check -i inventory.example.yml site.yml
-ansible-lint site.yml 2>/dev/null || echo "ansible-lint not installed; note residual risk"
+cd ~/java-bootcamp/examples/lab45-crm
+ansible-playbook --syntax-check -i inventory.example.yml infra/ansible/site.yml
+ansible-lint infra/ansible/site.yml 2>/dev/null || echo "ansible-lint not installed; note residual risk"
 ```
 
 If a disposable authorized target exists, run once, run again, expect zero changes. Capture evidence. If no host is authorized, document syntax/lint as the training substitute and state residual risk.
@@ -437,36 +455,26 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ## Reference Commands, Configuration, and Code
 
-### Idempotent Ansible tasks
+### Idempotent Ansible tasks (starter-aligned)
 
 ```yaml
-- name: Configure CRM runtime host
+- name: Northstar CRM host baseline
   hosts: crm
   become: true
   tasks:
-    - name: Ensure CRM config directory
-      ansible.builtin.file:
-        path: /etc/crm
-        state: directory
-        owner: root
-        group: crm
-        mode: "0750"
-    - name: Create CRM service account
+    - name: Ensure crm group exists
+      ansible.builtin.group:
+        name: crm
+        state: present
+    - name: Ensure crm user exists
       ansible.builtin.user:
         name: crm
-        system: true
-        shell: /usr/sbin/nologin
-    - name: Install runtime configuration
-      ansible.builtin.template:
-        src: crm.env.j2
-        dest: /etc/crm/crm.env
-        owner: root
         group: crm
-        mode: "0640"
-      notify: Restart CRM
-  handlers:
-// ... see Steps for full sample
+        state: present
+        create_home: true
 ```
+
+Jinja `template:` tasks are optional full-path; keep secrets out of playbooks.
 
 ## Contract summary
 
@@ -495,12 +503,13 @@ _Mark **Pass** or **Fail** in your lab notes._
 cd ~/java-bootcamp/examples/lab45-crm/infra/terraform
 terraform fmt -check -recursive
 terraform init -backend=false
-terraform validate
-terraform plan -var='environment=dev' -out=tfplan
+terraform validate -var='db_password=unused-local'
+# Plan optional for null_resource sketch; cloud plan only in authorized sandbox:
+# terraform plan -var='environment=dev' -var='db_password=unused-local' -out=tfplan
 terraform show -no-color tfplan
-cd ../ansible
-ansible-playbook --syntax-check -i inventory.example.yml site.yml
-ansible-lint site.yml
+cd ../..
+ansible-playbook --syntax-check -i inventory.example.yml infra/ansible/site.yml
+ansible-lint infra/ansible/site.yml
 ```
 
 ### Evidence log template
