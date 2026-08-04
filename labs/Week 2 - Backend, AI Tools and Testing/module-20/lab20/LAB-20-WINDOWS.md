@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-20-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 20 starter `examples\lab20-crm`: Logback pattern `corr/cust/op`, `CorrelationFilter` MDC + finally clear, PII-free service logs. `CustomerLoggingIT` → **Tests run: 2**, Failures: 0. Two consecutive `mvn -B clean verify` / `mvn -B verify` → **BUILD SUCCESS**. Sample lines show `corr=lab-request-001 cust=CUS-1001 op=customer.get` with no Amina/email. Instructor walkthrough: `docs/instructor-participant-help/week-2/20-logging-exercises-and-lab20.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 20 starter `examples\lab20-crm`: Logback pattern `corr=%X{corr} cust=%X{cust} op=%X{op}`, `CorrelationFilter` MDC + finally clear, PII-free service logs (`op=create` / `op=get`). `CustomerLoggingIT` → **Tests run: 1**, Failures: 0. `mvn -B -Dtest=CustomerLoggingIT test` → **BUILD SUCCESS**. Sample line: `corr=lab-request-001 cust=CUS-1001 op=get` with no Amina/email. Instructor walkthrough: `docs/instructor-participant-help/week-2/20-logging-exercises-and-lab20.md`.
 
 ## Prerequisites (Windows)
 
@@ -43,7 +43,7 @@ mvn -B clean verify
 # optional: mvn spring-boot:run  then curl with X-Correlation-Id: lab-request-001
 ```
 
-Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS**; logs include `lab-request-001` + customer ids + ops; no Amina/email PII.
+Verified (2026-08-04): **Tests run: 1** · **BUILD SUCCESS**; logs include `lab-request-001` + customer ids + `op=get`/`op=create`; no Amina/email PII.
 
 ## Do the lab
 

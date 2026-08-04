@@ -54,7 +54,7 @@ Keep this checklist visible while you work.
 | - | ----------- |
 | 1 | `logback-spring.xml` (or equivalent) structured pattern |
 | 2 | `CorrelationFilter` with MDC lifecycle |
-| 3 | CustomerService/controller logging without PII |
+| 3 | CustomerService logging without PII (controller WARN optional) |
 | 4 | Automated `CustomerLoggingIT` output |
 | 5 | Successful-path evidence (`CUS-1001` / `CUS-1002` / `lab-request-001`) |
 | 6 | Controlled-failure evidence (WARN/ERROR samples) |
@@ -93,8 +93,10 @@ Use these examples consistently:
 | -- | ---- | ----- |
 | `CUS-1001` | Amina Khan | `ACTIVE` — create/get INFO traces (ID only in logs) |
 | `CUS-1002` | Ravi Singh | `PROSPECT` — second customer + validation WARN demos |
-| `lab-request-001` | — | `X-Correlation-Id` / MDC `correlationId` |
+| `lab-request-001` | — | `X-Correlation-Id` / MDC `corr` |
 | ISO-8601 UTC | — | prefer ISO timestamps in pattern |
+
+**MDC keys (starter contract):** `corr` · `cust` · `op` (values `create` / `get`). Logback labels them as `corr=%X{corr} cust=%X{cust} op=%X{op}`.
 
 **PII rule for this lab.** You may store full names in the domain model for CRM functionality, but **never** write full name, email, phone, address, passwords, tokens, or PAN into log messages or MDC.
 
@@ -107,10 +109,10 @@ Use these examples consistently:
 
 ```mermaid
 flowchart TB
-  Client["Client / curl / Lab 19 UI"] --> CF["CorrelationFilter<br/>MDC correlationId"]
-  CF --> Ctrl["CustomerController<br/>WARN reason codes"]
-  Ctrl --> Svc["CustomerService<br/>INFO/WARN/ERROR + MDC"]
-  Svc --> Log["Logback pattern<br/>corr / cust / op"]
+  Client["Client / curl / Lab 19 UI"] --> CF["CorrelationFilter<br/>MDC corr"]
+  CF --> Ctrl["CustomerController<br/>400 on blank fullName"]
+  Ctrl --> Svc["CustomerService<br/>INFO + MDC cust/op"]
+  Svc --> Log["Logback pattern<br/>%X{corr} / %X{cust} / %X{op}"]
 ```
 
 ## Prerequisites
@@ -168,6 +170,10 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab20-crm
 
 **Do this:**
 
+**Timed path (classroom default):** copy [`starter/`](starter/README.md) into `~/java-bootcamp/examples/lab20-crm` (see starter README). The starter already includes the CRM baseline + logging TODOs.
+
+**Full path (from Lab 19):** 
+
 ```bash
 cd ~/java-bootcamp/examples
 cp -r lab19-crm lab20-crm
@@ -194,13 +200,14 @@ mvn -q dependency:tree | grep -iE "logback|slf4j" || mvn -q dependency:tree | fi
 
 **Why:** Without a shared pattern, MDC keys exist in code but never appear in operator-visible lines.
 
-**Do this:** Create `src/main/resources/logback-spring.xml`:
+**Do this:** Confirm (or create) `src/main/resources/logback-spring.xml` — the starter already ships this pattern; fill any remaining TODO and keep the MDC key names **`corr` / `cust` / `op`**:
 
 ```xml
 <configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%d{ISO8601} %-5level [%thread] %logger{36} corr=%X{correlationId} cust=%X{customerId} op=%X{op} - %msg%n</pattern>
+      <pattern>%d{ISO8601} %-5level [%thread] %logger{36} corr=%X{corr} cust=%X{cust} op=%X{op} - %msg%n</pattern>
     </encoder>
   </appender>
   <logger name="com.northstar.crm" level="INFO"/>
@@ -222,23 +229,24 @@ JSON encoding is optional bonus; key=value / `%X{...}` is enough for this lab. A
 
 **Why:** Correlation must enter MDC once per request and always leave—leaks across Tomcat threads corrupt the next tenant’s traces.
 
-**Do this:** Create `CorrelationFilter.java`:
+**Do this:** Complete the starter `CorrelationFilter.java` TODOs (MDC key is **`corr`**, matching `%X{corr}`):
 
 ```java
 @Component
 public class CorrelationFilter extends OncePerRequestFilter {
   public static final String HEADER = "X-Correlation-Id";
-  public static final String MDC_KEY = "correlationId";
 
   @Override
-  protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res,
-                                  FilterChain chain) throws ServletException, IOException {
-    String cid = req.getHeader(HEADER);
-    if (cid == null || cid.isBlank()) cid = "lab-request-001";
-    MDC.put(MDC_KEY, cid);
-    res.setHeader(HEADER, cid);
+  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                  FilterChain filterChain) throws ServletException, IOException {
+    String cid = request.getHeader(HEADER);
+    if (cid == null || cid.isBlank()) {
+      cid = "lab-request-001";
+    }
+    MDC.put("corr", cid);
+    response.setHeader(HEADER, cid);
     try {
-      chain.doFilter(req, res);
+      filterChain.doFilter(request, response);
     } finally {
       MDC.clear();
     }
@@ -264,70 +272,60 @@ Response header echoes correlation; log lines show `corr=lab-request-001` for th
 
 **Why:** Service-layer ops are what support searches; logs must carry IDs and outcomes—not Amina’s phone.
 
-**Do this:** Replace `System.out` with SLF4J. Set MDC `customerId` and `op` around the operation:
+**Do this:** Complete the starter TODOs. Set MDC **`cust`** and **`op`** (`create` / `get`) — do **not** log `fullName` or email. The filter owns `MDC.clear()`; the service only puts op-scoped keys:
 
 ```java
 private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
 
-public Customer create(Customer input) {
-  MDC.put("customerId", input.customerId());
-  MDC.put("op", "customer.create");
-  try {
-    log.info("Creating customer");
-    Customer saved = repository.save(input);
-    log.info("Customer created status={}", saved.status());
-    return saved;
-  } catch (DuplicateCustomerException e) {
-    log.warn("Create rejected reason=duplicate");
-    throw e;
-  } catch (Exception e) {
-    log.error("Create failed", e);
-    throw e;
-  } finally {
-    MDC.remove("customerId");
-    MDC.remove("op");
+public Customer create(Customer customer, String correlationId) {
+  String customerId = customer.getCustomerId();
+  MDC.put("cust", customerId);
+  MDC.put("op", "create");
+  log.info("create customer id={}", customerId);
+  if (customerId == null || customerId.isBlank()) {
+    log.warn("reject create reason=missing_customer_id");
+    throw new IllegalArgumentException("customerId required [" + correlationId + "]");
   }
+  return repository.save(customer);
 }
 
-public Optional<Customer> findById(String id) {
-  MDC.put("customerId", id);
-  MDC.put("op", "customer.get");
-  try {
-    log.info("Loading customer");
-    return repository.findById(id);
-  } finally {
-    MDC.remove("customerId");
-    MDC.remove("op");
-  }
+public Optional<Customer> findById(String customerId) {
+  MDC.put("cust", customerId);
+  MDC.put("op", "get");
+  log.info("get customer id={}", customerId);
+  return repository.findById(customerId);
 }
 ```
 
-Adapt to your method names. Prefer removing op/customerId keys rather than calling `MDC.clear()` in the service if the filter owns full clear—either way, document ownership so keys do not leak *and* correlation is not wiped mid-request incorrectly. Common pattern: filter clears all in `finally`; service only puts/removes op-scoped keys.
+Do **not** call `MDC.clear()` in the service — that would wipe `corr` mid-request. Optional homework: `MDC.remove("cust")` / `MDC.remove("op")` in a `finally` if you want tighter scoping; the starter solution relies on the filter’s full clear.
 
-**Expected result:** Creating `CUS-1001` yields lines with `corr=lab-request-001 cust=CUS-1001 op=customer.create` and **no** “Amina” or email.
+**Expected result:** Creating or getting `CUS-1001` yields lines with `corr=lab-request-001 cust=CUS-1001 op=create` (or `op=get`) and **no** “Amina” or email.
 
 **If it fails:** PII still appears → search for string concat of `fullName`/`email` and delete. `op` blank → MDC put after early return. Stack traces with payloads → avoid logging request bodies in ERROR helpers.
 
 ---
 
-### Step 5 — Log controller validation boundaries
+### Step 5 — Controller validation boundary (full path)
 
-**Why:** Rejecting bad input without a WARN reason code forces operators into HTTP-only forensics.
+**Why:** Rejecting bad input without a log line forces operators into HTTP-only forensics.
 
-**Do this:** At the API edge, log rejection at WARN with reason codes (`missing_status`, `invalid_id`, `missing_full_name`), not the full invalid payload if it might contain free-text PII:
+**Timed path:** The starter `CustomerController` already returns **400** when `fullName` is blank and echoes `X-Correlation-Id`. No starter TODO required here.
+
+**Full path (optional homework):** Add a SLF4J WARN with a reason code — log `customerId`, never `fullName`:
 
 ```java
-if (body.fullName() == null || body.fullName().isBlank()) {
-  log.warn("Rejecting create reason=missing_full_name customerId={}", body.customerId());
-  return ResponseEntity.badRequest().build();
+private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
+
+// inside create(...):
+if (body.getFullName() == null || body.getFullName().isBlank()) {
+  log.warn("Rejecting create reason=missing_full_name customerId={}", body.getCustomerId());
+  return ResponseEntity.badRequest().header("X-Correlation-Id", corr).build();
 }
 ```
 
-Logging `customerId` is allowed; logging `fullName` is not for this CRM lab standard.
+**Expected result:** POST with blank name → 400; optional WARN includes `reason=missing_full_name` and correlation; request body not echoed into logs.
 
-**Expected result:** POST with blank name → 400; WARN line includes `reason=missing_full_name` and correlation; request body not echoed into logs.
-
-**If it fails:** 400 without WARN → add log before return. WARN includes name → remove it. Controller logs every successful body → too chatty/PII-risky; keep INFO thin.
+**If it fails:** 400 without WARN → add log before return (full path only). WARN includes name → remove it. Controller logs every successful body → too chatty/PII-risky; keep INFO thin.
 
 ---
 
@@ -354,7 +352,7 @@ curl -s -H "X-Correlation-Id: lab-request-001" \
   http://localhost:8080/api/customers
 ```
 
-**Expected result:** Requests succeed (or duplicate create is explained); logs show `corr=lab-request-001` for both; ops `customer.create` / `customer.get` with `cust=CUS-1001` and `cust=CUS-1002`.
+**Expected result:** Requests succeed (or duplicate create is explained); logs show `corr=lab-request-001` for both; ops `create` / `get` with `cust=CUS-1001` and `cust=CUS-1002`.
 
 **If it fails:** Correlation missing on get-only → filter not applied to that path. Duplicate unexplained → add WARN `reason=duplicate`. Accidental PII in excerpt → scrub before committing notes.
 
@@ -364,32 +362,46 @@ curl -s -H "X-Correlation-Id: lab-request-001" \
 
 **Why:** PII rules that exist only in README regress silently; IT makes “no Amina in logs” enforceable.
 
-**Do this:** Create `CustomerLoggingIT.java` using Logback `ListAppender` or Spring’s `OutputCaptureExtension`:
+**Do this:** Complete the starter `CustomerLoggingIT.java` TODOs. Starter seeds `CUS-1001` (Amina) — the smoke path is a **GET** with correlation header (matches solution):
 
 ```java
-@SpringBootTest(webEnvironment = RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(OutputCaptureExtension.class)
 class CustomerLoggingIT {
+
+  @LocalServerPort
+  int port;
+
+  @Autowired
+  TestRestTemplate rest;
+
   @Test
-  void createLogsIdsNotPii(CapturedOutput output) {
-    // POST CUS-1001 with X-Correlation-Id: lab-request-001
-    assertThat(output.getOut()).contains("CUS-1001");
-    assertThat(output.getOut()).contains("lab-request-001");
-    assertThat(output.getOut()).contains("customer.create");
-    assertThat(output.getOut()).doesNotContain("Amina");
+  void getAminaLogsCorrelationWithoutPii(CapturedOutput output) {
+    HttpHeaders headers = new HttpHeaders();
+    headers.set("X-Correlation-Id", "lab-request-001");
+    ResponseEntity<String> res = rest.exchange(
+        "http://localhost:" + port + "/api/customers/CUS-1001",
+        HttpMethod.GET,
+        new HttpEntity<>(headers),
+        String.class);
+    assertEquals(HttpStatus.OK, res.getStatusCode());
+
+    String logs = output.getOut() + output.getErr();
+    assertTrue(logs.contains("lab-request-001"));
+    assertTrue(logs.contains("CUS-1001"));
+    assertFalse(logs.contains("Amina"));
+    assertFalse(logs.toLowerCase().contains("amina.khan@example.com"));
   }
 }
 ```
-
-Also assert no `@example.com` email if your create would otherwise log it.
 
 ```bash
 mvn -q -Dtest=CustomerLoggingIT test
 ```
 
-**Expected result:** `createLogsIdsNotPii` PASS; BUILD SUCCESS.
+**Expected result:** `getAminaLogsCorrelationWithoutPii` PASS; **Tests run: 1**; BUILD SUCCESS.
 
-**If it fails:** Output capture empty → logging goes to a file appender only; assert against console or attach ListAppender to `com.northstar.crm`. “Amina” found → remove message inclusions; check exception messages. Flaky → isolate MDC and avoid parallel pollution.
+**If it fails:** Output capture empty → logging goes to a file appender only; assert against console or attach ListAppender to `com.northstar.crm`. “Amina” found → remove message inclusions; check exception messages / `Customer.toString()`. Flaky → isolate MDC and avoid parallel pollution.
 
 ---
 
@@ -397,16 +409,18 @@ mvn -q -Dtest=CustomerLoggingIT test
 
 **Why:** The next engineer and Lab 21 need an explicit contract, not archaeology of patterns.
 
-**Do this:** Write `docs/logging.md`:
+**Do this:** Complete starter `docs/logging.md`:
 
 ```markdown
 ## Logging contract
 
-- Required MDC: correlationId, customerId (when known), op
+- Required MDC: corr, cust (when known), op (`create` / `get`)
+- Pattern: corr=%X{corr} cust=%X{cust} op=%X{op}
 - Allowed: customerId, status, reason codes, durations, HTTP status
 - Forbidden: fullName, email, phone, address, passwords, tokens, PAN
 - Correlation header: X-Correlation-Id (example lab-request-001)
 - Levels: INFO success path; WARN business reject; ERROR unexpected
+- Filter owns MDC.clear() in finally
 - Production: ship to central store; never embed secrets in patterns
 ```
 
@@ -437,7 +451,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | `CorrelationFilter` sets MDC and clears in `finally` | Pass / Fail |
-| 2 | Service create/get use SLF4J with ID/op MDC | Pass / Fail |
+| 2 | Service create/get use SLF4J with MDC `cust` / `op` (`create`/`get`) | Pass / Fail |
 | 3 | No PII in sampled INFO lines | Pass / Fail |
 
 ### Checkpoint C — Validation + automated proof
@@ -446,9 +460,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Controller WARN reason codes without payload dump | Pass / Fail |
+| 1 | Controller returns 400 on blank fullName (WARN optional) | Pass / Fail |
 | 2 | Manual traces for `CUS-1001` / `CUS-1002` | Pass / Fail |
-| 3 | `CustomerLoggingIT` asserts IDs present and “Amina” absent | Pass / Fail |
+| 3 | `CustomerLoggingIT` GET asserts IDs present and “Amina” absent | Pass / Fail |
 
 ### Checkpoint D — Hygiene
 
@@ -467,7 +481,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 ### Logback pattern
 
 ```xml
-<pattern>%d{ISO8601} %-5level [%thread] %logger{36} corr=%X{correlationId} cust=%X{customerId} op=%X{op} - %msg%n</pattern>
+<pattern>%d{ISO8601} %-5level [%thread] %logger{36} corr=%X{corr} cust=%X{cust} op=%X{op} - %msg%n</pattern>
 ```
 
 ### Commands
@@ -484,7 +498,7 @@ git status
 ### Safe log line sample
 
 ```text
-2026-07-14T13:00:00.000Z INFO  [...] CustomerService corr=lab-request-001 cust=CUS-1001 op=customer.create - Customer created status=ACTIVE
+2026-07-14T13:00:00.000Z INFO  [...] CustomerService corr=lab-request-001 cust=CUS-1001 op=get - get customer id=CUS-1001
 ```
 
 ### Forbidden-field grep (local hygiene)
