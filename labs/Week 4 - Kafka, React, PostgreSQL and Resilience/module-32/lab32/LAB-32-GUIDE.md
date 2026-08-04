@@ -156,7 +156,7 @@ mvn -q test -Dtest=AccountProfileResilienceTest
 mvn -q test -Dtest=AccountProfileResilienceTest
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -545,7 +545,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which remote/network inputs are untrusted (account JSON)?
 2. Where are authn/authz enforced for CRM vs outbound account calls (propagate tokens carefully)?
@@ -567,23 +567,6 @@ No Docker required for WireMock tests; if you started Lab 30 Kafka for combined 
 
 **Keep `lab32-crm`** as the resilience reference for capstone outbound dependency hardening.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (annotations + fallback) | 30 |
-| Integration/configuration correctness (YAML instances) | 15 |
-| Failure handling (OPEN fail-fast, timeout, honesty) | 15 |
-| Automated verification (WireMock tests) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Fallback that implies write success → honor violation. CB “configured” but never demonstrated OPEN → incomplete. Sleep-only tests → quality marks lost.
-
----
 
 ## Reflection Questions
 

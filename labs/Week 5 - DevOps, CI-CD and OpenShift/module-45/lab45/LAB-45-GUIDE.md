@@ -170,7 +170,7 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
         state: restarted
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -561,7 +561,7 @@ ansible-lint site.yml
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (AI output, community modules)?
 2. Where are authn/authz for apply enforced (human approval, CI roles)?
@@ -584,23 +584,6 @@ Delete any local state created accidentally. Keep sanitized plan excerpts.
 
 **Keep `lab45-crm`**—Capstone and later hardening may reuse these modules as starting points.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (Terraform + Ansible sketches) | 30 |
-| Integration/configuration correctness (fmt/validate/plan/lint) | 15 |
-| Failure handling (rejected unsafe AI / adverse review) | 15 |
-| Automated verification | 10 |
-| Security and production awareness / AI review discipline | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Blind `apply` of AI output → honor violation potential. Committed state/secrets → must remediate before scoring. AI used with no review log → lose AI/security marks.
-
----
 
 ## Reflection Questions
 

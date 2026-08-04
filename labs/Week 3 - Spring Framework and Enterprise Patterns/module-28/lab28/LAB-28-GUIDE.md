@@ -145,7 +145,7 @@ curl -s http://localhost:8080/api/customers/CUS-1001 \
   -H "X-Correlation-Id: lab-request-001"
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -538,7 +538,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (credentials, Authorization header, customer IDs)?
 2. Where are authn/authz enforced (filter chain, method security)?
@@ -561,23 +561,6 @@ Do not commit `.env`, tokens, or `target/`. Keep redacted screenshots under `not
 
 **Keep `lab28-crm`**—Lab 29 layers Bean Validation and `ErrorResponse` on this secured API.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (JWT, filter chain, roles) | 30 |
-| Integration/configuration correctness (stateless, matchers, encoder) | 15 |
-| Failure handling (401 vs 403 proofs) | 15 |
-| Automated verification (MockMvc matrix) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Shipping open `/api/customers/**` → honor violation. Logging raw JWTs or committing secrets → security marks lost. Cannot distinguish 401 from 403 → incomplete.
-
----
 
 ## Reflection Questions
 

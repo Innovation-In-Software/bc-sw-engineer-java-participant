@@ -19,8 +19,9 @@ Lean participant guides. Apply with `scripts/declutter_all_lab_guides.py` (and `
 13. **Failure Experiments** + **Troubleshooting** (≤8 rows)
 14. **Security** — optional, ≤3 prompts
 15. **Cleanup**
-16. **Rubric**
-17. **Reflection** — max **3** questions, **1–3 sentences** each
+16. **Reflection** — max **3** questions, **1–3 sentences** each
+
+Labs are **hands-on practice** that participants must complete. Progress is checked for completion—not marks-based evaluation. Do **not** add Evaluation Rubric / marks tables.
 
 ## Remove (clutter)
 

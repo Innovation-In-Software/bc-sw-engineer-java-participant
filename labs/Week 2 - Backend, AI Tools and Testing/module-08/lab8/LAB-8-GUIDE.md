@@ -210,7 +210,7 @@ public class Main {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -727,7 +727,7 @@ Also write a short project `LAB-8-GUIDE.md` at the root with: overview, how to c
 
 ### Step 12 — Verify structure, compile, and capture evidence
 
-**Why:** Rubric marks evidence that structure is real—listings, compile logs, screenshots—not only “I created folders.”
+**Why:** Progress checks look for evidence that structure is real—listings, compile logs, screenshots—not only “I created folders.”
 
 **Do this:**
 
@@ -896,7 +896,7 @@ Perform deliberately, then restore working code.
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which browser, network, event, or database inputs are untrusted? *(Design: future API inputs)*
 2. Where are authentication, authorization, and validation enforced? *(Which layer will own them?)*
@@ -919,23 +919,6 @@ Remove any temporary secrets from the environment where practical. Keep `docs/`,
 
 **Keep this project**—Lab 9 typically copies or continues from `lab8-crm` into `lab9-crm`.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (packages, stubs, standards) | 30 |
-| Integration/configuration correctness (Maven layout, compile) | 15 |
-| Failure handling (intentional stub failures / layer-rule experiment) | 15 |
-| Automated verification (`mvn compile`, Main run) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** JDK 21 + Maven layout; seven packages under `com.northstar.crm`; stubs show correct dependency direction; `Main` runs; docs name `CUS-1001` / `lab-request-001` and hard layer rules; failure experiments recorded; no Spring/JPA/Kafka required. Bonuses are stretch—not required for the core 100.
-
----
 
 ## Reflection Questions
 

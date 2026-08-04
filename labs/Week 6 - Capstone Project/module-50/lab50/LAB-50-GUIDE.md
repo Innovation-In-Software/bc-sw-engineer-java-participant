@@ -163,7 +163,7 @@ cd ..
 ./mvnw -B clean verify 2>/dev/null || mvn -B clean verify
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -510,7 +510,7 @@ Never paste connection passwords beside the query in evidence files.
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (form fields, query strings)?
 2. Where are authn/authz/validation enforced (UI hints vs API)?
@@ -534,23 +534,6 @@ Remove temporary plaintext env files. Keep sanitized screenshots and demo.md.
 
 **Keep Lab 50 UI + migrations**—Lab 51 deploys them; Lab 52 demos them.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (React journey + JPA/PostgreSQL) | 30 |
-| Integration/configuration correctness (client ↔ API ↔ DB) | 15 |
-| Failure handling (UI states + invalid rollback) | 15 |
-| Automated verification | 10 |
-| Security and production awareness / a11y | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Pretty UI without SQL proof → incomplete core marks. Missing labels/keyboard support → lose a11y/security marks. DTO drift from Lab 49 → integration deduction.
-
----
 
 ## Reflection Questions
 

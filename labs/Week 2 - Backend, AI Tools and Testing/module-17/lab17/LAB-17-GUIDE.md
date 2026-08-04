@@ -159,7 +159,7 @@ mkdir -p copilot-notes docs
 mkdir -p ~/java-bootcamp/notes/screenshots/lab-17
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -423,7 +423,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (production inputs; tests use fixtures only)?
 2. Where are authn/authz/validation enforced (still service/facade; tests don’t replace auth)?
@@ -444,23 +444,6 @@ Do not commit `target/site/jacoco` unless your course policy explicitly allows i
 
 **Keep `lab17-crm`**—Lab 18 introduces Mockito isolation on this suite’s seams.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (`CustomerServiceTests`, parameterized) | 30 |
-| Integration/configuration correctness (Surefire, JaCoCo gate) | 15 |
-| Failure handling (negatives + deliberate gate fail) | 15 |
-| Automated verification | 10 |
-| Security and production awareness / AI review discipline | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Passing verify with empty meaningful asserts → lose AI/quality marks. Excluding service classes to “pass” coverage → honor violation. Lab 11-style preview depth is no longer enough.
-
----
 
 ## Reflection Questions
 

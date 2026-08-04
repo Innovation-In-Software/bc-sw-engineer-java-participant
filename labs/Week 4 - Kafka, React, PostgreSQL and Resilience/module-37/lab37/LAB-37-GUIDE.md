@@ -165,7 +165,7 @@ FROM customer WHERE public_id = 'CUS-1001';
 COMMIT;
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -636,7 +636,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (any SQL from apps; never expose DB to browser)?
 2. Where are authn/authz/validation enforced (DB constraints + app authz)?
@@ -662,23 +662,6 @@ Remove lab passwords from shell history where practical. Recheck `git status`.
 
 **Keep `lab37-crm` scripts**—later JPA/PostgreSQL labs should map these table/column names rather than inventing a parallel model.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (ER + DDL + seeds) | 30 |
-| Integration/configuration correctness (Docker, grants, types) | 15 |
-| Failure handling (negatives + drop order) | 15 |
-| Automated/scripted verification | 10 |
-| Security and production awareness (least privilege, no PII) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** DBA grants to `CRM_APP` → honor violation. FLOAT/BINARY money → lose core marks. Missing Ravi zero-account case → incomplete seeds.
-
----
 
 ## Reflection Questions
 

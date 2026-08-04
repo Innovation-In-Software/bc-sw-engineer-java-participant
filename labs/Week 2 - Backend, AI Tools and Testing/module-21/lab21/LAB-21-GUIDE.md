@@ -160,7 +160,7 @@ class ActuatorIT {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -546,7 +546,7 @@ Metric name spelling in Prometheus may differ from Actuator JSON (`crm.customer.
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which browser, network, or Actuator inputs are untrusted?
 2. Where are authn/authz enforced for management endpoints in production?
@@ -567,23 +567,6 @@ git status
 
 **Keep `lab21-crm`**—Lab 22 replaces remaining `new` wiring with Spring IoC across the CRM graph.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (indicator + metrics wiring) | 30 |
-| Integration/configuration correctness (Actuator YAML) | 15 |
-| Failure handling (readiness ≠ liveness; failure counters) | 15 |
-| Automated verification | 10 |
-| Security and production awareness (exposure) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Presenting unrestricted public Actuator as production-ready → honor violation. Metric tags with customer names/IDs → security/production deduction. Missing readiness independence proof → incomplete.
-
----
 
 ## Reflection Questions
 

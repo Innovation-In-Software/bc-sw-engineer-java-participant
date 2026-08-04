@@ -218,7 +218,7 @@ public class CustomerService {
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -230,7 +230,7 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab12-crm
 
 ### Step 1 — Scaffold `lab12-crm` and freeze the messy baseline
 
-**Why:** Without a frozen before snapshot, graders cannot tell refactor from rewrite. The messy class is the teaching artifact.
+**Why:** Without a frozen before snapshot, instructors cannot tell refactor from rewrite. The messy class is the teaching artifact.
 
 **Do this:**
 
@@ -481,7 +481,7 @@ If Copilot is unavailable, write a short note explaining a **manual** refactor c
 
 ### Step 7 — Run tests and capture before/after evidence
 
-**Why:** Rubric marks evidence packaging, not only a green last command.
+**Why:** Progress checks look for evidence packaging, not only a green last command.
 
 **Do this:**
 
@@ -650,7 +650,7 @@ unknown CUS-9999 -> IllegalArgumentException (+ correlationId)
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (customer fields from callers)?
 2. Where are authn/authz/validation enforced after refactor (service helpers—auth still absent)?
@@ -671,23 +671,6 @@ Keep `CustomerService.before.java.txt` and docs evidence. Remove temporary crede
 
 **Keep `lab12-crm`**—Lab 13 designs SOAP contracts against a readable domain.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (refactor quality) | 30 |
-| Integration/configuration correctness | 15 |
-| Failure handling (exceptions, duplicates) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence (before/after) | 10 |
-
-**Notes:** Missing before snapshot → documentation deductions even if after code is clean. Copilot without review verdict → incomplete docs marks. Behavior + clarity beat speculative “enterprise” frameworks.
-
----
 
 ## Reflection Questions
 

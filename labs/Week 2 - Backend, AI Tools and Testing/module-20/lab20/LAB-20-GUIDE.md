@@ -152,7 +152,7 @@ curl -s -H "X-Correlation-Id: lab-request-001" \
   http://localhost:8080/api/customers
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -525,7 +525,7 @@ Do **not** commit unsanitized consoles. If grep hits, scrub the excerpt and fix 
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which browser, network, or API inputs are untrusted?
 2. Where are authn/authz/validation enforced (logs do not replace them)?
@@ -548,23 +548,6 @@ git status
 
 Preserve Lab 19 IT/UI suites when practical; logging changes should not require fixture ID rewrites.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (filter, MDC, service logs) | 30 |
-| Integration/configuration correctness (Logback pattern) | 15 |
-| Failure handling (WARN/ERROR without PII) | 15 |
-| Automated verification | 10 |
-| Security and production awareness (no PII) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Any committed log sample containing full names, emails, phones, or tokens → heavy security deduction. MDC without finally clear → failure-handling deduction. Log4j2 equivalent OK only if outcomes/docs match.
-
----
 
 ## Reflection Questions
 

@@ -159,7 +159,7 @@ npm run build
 curl -I http://localhost:8080
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -528,7 +528,7 @@ Non-controls: ProtectedRoute alone, hiding buttons by role alone
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (all browser input, query params, customer fields)?
 2. Where are authn/authz/validation enforced (Spring Security / API; guards UX only)?
@@ -550,23 +550,6 @@ Do not commit tokens, `.env` secrets, `node_modules/`, or `dist/`.
 
 **Keep `lab36-crm`**—Lab 37 designs PostgreSQL schema for customers/accounts while these browser controls remain in force.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (auth state, token, guards, http) | 30 |
-| Integration/configuration correctness (headers, CSRF/CSP) | 15 |
-| Failure handling (401/403/XSS/abuse experiments) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** `localStorage` tokens left in submission → honor violation. Claiming ProtectedRoute authorizes APIs → fail security marks.
-
----
 
 ## Reflection Questions
 

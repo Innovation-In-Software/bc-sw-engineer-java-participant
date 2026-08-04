@@ -163,7 +163,7 @@ SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(NULL, NULL, 'ALLSTATS LAST'));
 -- Capture plan without forcing hints; note HASH vs NESTED LOOPS
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -572,7 +572,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (ad-hoc SQL in prod? app binds only)?
 2. Where are authn/authz/validation enforced (still not in SQL scripts—app later)?
@@ -593,23 +593,6 @@ Do not commit PostgreSQL password files, datapump dumps, or full plan HTML expor
 
 **Keep `lab38-crm`**—Lab 39 maps these tables with Spring Data JPA + Flyway and should preserve justified indexes.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (volume, stats, indexes, sargable SQL, paging) | 30 |
-| Integration/configuration correctness (actual plans, comparable binds) | 15 |
-| Failure handling (challenge indexes, regression observations) | 15 |
-| Automated / scripted verification (rerunnable SQL) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence (`report.md`) | 10 |
-
-**Notes:** Adding indexes without before/after plans → lose evidence marks. Keeping every experimental index without challenge → lose production-awareness marks. Tweaking hints to force a pretty plan without explaining why → call it out in the report or lose honesty marks.
-
----
 
 ## Reflection Questions
 

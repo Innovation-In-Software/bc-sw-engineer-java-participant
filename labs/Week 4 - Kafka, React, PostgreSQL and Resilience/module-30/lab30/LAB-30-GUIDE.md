@@ -155,7 +155,7 @@ try (var producer = new KafkaProducer<String, String>(props)) {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -553,7 +553,7 @@ Do not invent parallel topic names for the same stream.
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which event inputs are untrusted (payload fields, keys)?
 2. Where will authn/authz for publish/consume be enforced in production?
@@ -574,23 +574,6 @@ git status
 
 **Keep `lab30-crm` (and preferably the same topic names)**—Lab 31 Spring Kafka expects `crm.customer-events.v1` and DLQ/DLT conventions.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (topics, keyed events, groups) | 30 |
-| Integration/configuration correctness (Compose/KRaft) | 15 |
-| Failure handling (lag, reconnect, bad key lessons) | 15 |
-| Automated/scripted verification (Java produce + commands) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Random keys that break per-customer ordering → incomplete. Inventing topic names that Lab 31 cannot reuse → continuity failure.
-
----
 
 ## Reflection Questions
 

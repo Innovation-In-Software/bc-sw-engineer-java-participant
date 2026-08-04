@@ -194,7 +194,7 @@ class CustomerRequestDTOValidationTest {
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -557,7 +557,7 @@ Include fixtures, `mvn test` / Main commands, and a short entity-vs-DTO note in 
 
 **Expected result:** README is supportable; `git status` clean of `target/` and secrets.
 
-**If it fails:** Undocumented constraints → graders cannot verify intentional rules.
+**If it fails:** Undocumented constraints → instructors cannot verify intentional rules.
 
 ---
 
@@ -679,7 +679,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (all DTO fields from clients)?
 2. Where are authn/authz/validation enforced (validation now; auth still absent)?
@@ -698,23 +698,6 @@ git status
 
 No containers required. Keep DTOs/mapper/facade and tests. **Keep `lab14-crm`** for Lab 15+ service-layer work.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (DTOs, annotations, mapper) | 30 |
-| Integration/configuration correctness (Validator trigger) | 15 |
-| Failure handling (invalid payloads) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Returning `Customer` from the facade loses major marks even if validation tests pass. Jakarta imports required. Adapt entity constructors freely if documented.
-
----
 
 ## Reflection Questions
 

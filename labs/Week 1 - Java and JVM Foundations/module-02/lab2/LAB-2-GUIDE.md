@@ -232,7 +232,7 @@ public class Main {
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -826,20 +826,6 @@ You may delete `out/` anytime; sources stay. Keep `examples/Lab2-JavaSyntax/` fo
 **Windows:** `Remove-Item -Recurse -Force out`  
 **macOS / Linux:** `rm -rf out`
 
----
-
-## Evaluation Rubric (100 marks)
-
-| Area | Marks |
-| ---- | ----- |
-| Project structure & packages | 15 |
-| `Student` model | 15 |
-| Menu + `Main` loop | 15 |
-| Add / Display / Search / Average | 30 |
-| Validation & formatting | 15 |
-| Code quality & evidence | 10 |
-
----
 
 ## Reflection Questions
 

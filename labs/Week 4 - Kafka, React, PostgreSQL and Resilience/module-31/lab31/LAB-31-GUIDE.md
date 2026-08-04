@@ -160,7 +160,7 @@ mvn -q spring-boot:run
 # Observe: customer_event_published / customer_event_received / duplicate_event_ignored
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -550,7 +550,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which event/network inputs are untrusted?
 2. Where are validation and authz enforced (HTTP Lab 28/29 vs Kafka ACLs later)?
@@ -571,23 +571,6 @@ git status
 
 **Keep `lab31-crm`**—Lab 32 adds Resilience4j for outbound account-profile calls alongside this event backbone.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (template, listener, contract) | 30 |
-| Integration/configuration correctness (JSON, topics) | 15 |
-| Failure handling (idempotency, retry, DLT) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Listener without idempotency → incomplete. Infinite retry on bad contracts → honor issue. Sleep-only tests → quality marks lost.
-
----
 
 ## Reflection Questions
 

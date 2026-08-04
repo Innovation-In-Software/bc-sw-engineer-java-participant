@@ -193,7 +193,7 @@ class CustomerServiceTest {
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -435,7 +435,7 @@ Create/update `copilot-notes/ai-test-refactor-notes.md` entry `lab11-001`: paste
 
 **Expected result:** `lab11-001` shows rejected weak test + replacement/deletion + one-sentence justification.
 
-**If it fails:** If Copilot produces a surprisingly good test, still invent/demonstrate a trivial one yourself and reject it—graders need evidence you know the pattern.
+**If it fails:** If Copilot produces a surprisingly good test, still invent/demonstrate a trivial one yourself and reject it—instructors need evidence you know the pattern.
 
 ---
 
@@ -762,7 +762,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which test data is safe to commit, and why (`CUS-1001` / `CUS-1002`)?
 2. Where is human review enforced before AI tests/refactors merge?
@@ -781,23 +781,6 @@ git status
 
 No containers started. Keep notes and sources. **Keep `lab11-crm`** for Lab 12+ and the later formal testing labs.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Test generation (`CustomerTest`, `CustomerServiceTest`) | 20 |
-| Refactoring and Mockito mock (`CustomerNotifier`, mock test) | 20 |
-| AI review discipline (false confidence, gaps, acceptance guidelines) | 20 |
-| Failure handling (experiments documented) | 10 |
-| Manual verification | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Preview-level depth is fine; judge assertion quality, real notifier extraction, and genuine rejection notes. Do not require JaCoCo 100% or advanced Mockito features.
-
----
 
 ## Reflection Questions
 

@@ -1,4 +1,4 @@
-# Exercise 6 — Rubric Self-Check Warmup
+# Exercise 6 — Completion Self-Check Warmup
 
 ## Activity card
 
@@ -11,15 +11,15 @@
 
 ### What you will learn
 
-Self-score against rubric dimensions with evidence pointers.
+Confirm required outcomes are complete, with evidence pointers.
 
 ### Enterprise context
 
-Honest gaps beat inflated scores—panels cross-check evidence.
+Honest gaps beat inflated claims—panels cross-check evidence.
 
 ### Predict
 
-Can you score 'exceeds' with no artifact link?
+Can you claim complete with no artifact link?
 
 ### Debug
 
@@ -29,14 +29,14 @@ Rebuilding the whole platform during warmup — stop?
 
 | Symptom | Fix |
 | --- | --- |
-| Self-score without paths | Add evidence-index IDs |
+| Claim complete without paths | Add evidence-index IDs |
 | Week review as Lab files | Optional deck 157–168 |
 
 **Module 52** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Deliverable
 
-**Submit only** the file(s) below (not the graded lab).
+**Submit only** the file(s) below (not the full lab packet).
 
 | Item | Path (under `examples/module-52-exercises/`) |
 | ---- | --------------------------------------------- |
@@ -47,7 +47,7 @@ Rebuilding the whole platform during warmup — stop?
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
 ```markdown
-# Lab 52 — Rubric Self-Check Warmup
+# Lab 52 — Completion Self-Check Warmup
 
 ## Step 1 — Categories
 
@@ -76,7 +76,7 @@ From `examples/module-52-exercises/`, create `notes/` if needed, then create `no
 ### Step 2 — Paste and complete this template
 
 ```markdown
-# Lab 52 — Rubric Self-Check Warmup
+# Lab 52 — Completion Self-Check Warmup
 
 ## Step 1 — Categories
 
@@ -100,7 +100,7 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-Rubric warmup with honest MISSING markers in `notes/lab52-rubric-self-check.md`.
+Completion warmup with honest MISSING markers in `notes/lab52-rubric-self-check.md`.
 
 ## If it fails
 

@@ -263,7 +263,7 @@ public class ReportService {
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -409,7 +409,7 @@ public final class EmployeeData {
 | Rating       | 1 – 5                                  |
 | Active mix   | Most `true`; at least 1–2 `false`      |
 
-You may seed all 25 rows from the instructor [`solution/`](solution/) `EmployeeData` for grading parity (dashboard numbers will match).
+You may seed all 25 rows from the instructor [`solution/`](solution/) `EmployeeData` for progress-check parity (dashboard numbers will match).
 
 **Expected result:** `createSampleEmployees()` returns a non-empty `List` with multiple departments and salary bands.
 
@@ -1039,7 +1039,7 @@ public class ReportService {
 
 ### Step 18 — Menu-driven `Main` (Part 20)
 
-**Why:** A single switch turns every pipeline into a demo graders can click through. Prefer `nextLine()` + `parseInt` to avoid Scanner newline traps from Lab 5.
+**Why:** A single switch turns every pipeline into a demo instructors can click through. Prefer `nextLine()` + `parseInt` to avoid Scanner newline traps from Lab 5.
 
 **Do this:** Create `src/com/academy/analytics/Main.java`:
 
@@ -1210,7 +1210,7 @@ Capture screenshots under `notes/screenshots/lab-6/` (no secrets).
 
 ### Step 20 — Fill stream-operations table + reflection draft
 
-**Why:** Rubric marks analysis, not only green compiles.
+**Why:** Progress checks look for analysis, not only green compiles.
 
 **Do this:**
 
@@ -1346,25 +1346,6 @@ rm -rf out
 
 Keep `.java` sources, stream notes, and evidence screenshots. Do not delete GitHub credentialss or Lab 0 tooling. Leave [`solution/`](solution/) intact—do not submit it as your own work.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria                       | Marks |
-| ------------------------------ | ----: |
-| Project Structure              |    10 |
-| Lambda Expressions             |    10 |
-| Functional Interfaces          |    10 |
-| Stream Pipeline Implementation |    15 |
-| Filtering, Mapping & Sorting   |    15 |
-| Collectors & Grouping          |    15 |
-| Reduction & Statistics         |    10 |
-| Dashboard & Reports            |    10 |
-| Code Quality & Documentation   |     5 |
-
-**Notes:** Package `com.academy.analytics` + `-d out` compile; lambdas for print/filter behaviors; Predicate/Function/Consumer/Supplier shown; pipelines use intermediate + terminal ops correctly; filter/map/sorted/distinct/limit/skip work; `groupingBy` + `partitioningBy` + summarizing present; reduce/counts/Optional highest-paid; menu 1–9 + dashboard; clear naming and notes. Bonuses are stretch—not required for the core 100.
-
----
 
 ## Reflection Questions
 

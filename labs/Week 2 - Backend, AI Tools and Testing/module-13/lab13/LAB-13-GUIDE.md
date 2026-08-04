@@ -221,7 +221,7 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -717,7 +717,7 @@ Do not add MessageDispatcherServlet or JAXB generation requirements in Lab 13.
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which SOAP inputs are untrusted (body/header fields)?
 2. Where will authn/authz/validation be enforced (schema + future WS-Security / service rules)?
@@ -736,23 +736,6 @@ git status
 
 No Docker stack. Keep contracts and samples. **Keep `lab13-crm`**—Lab 24 implements it.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (XSD, WSDL, samples) | 30 |
-| Integration/configuration correctness (namespaces, binding) | 15 |
-| Failure handling (fault samples, broken import experiment) | 15 |
-| Automated/manual verification (well-formedness, checklist) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Do **not** require Spring-WS, JAXB generation, or a listening port. Extra ops (Delete/List) only OK if the required three remain correct. XML local-name casing may vary if WSDL operations and samples stay coherent.
-
----
 
 ## Reflection Questions
 

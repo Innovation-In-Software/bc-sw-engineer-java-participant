@@ -160,7 +160,7 @@ class CustomerApiIT {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -584,7 +584,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which browser, network, or API inputs are untrusted?
 2. Where are authentication, authorization, and validation enforced (UI is not enough)?
@@ -607,23 +607,6 @@ git status
 
 **Keep `lab19-crm`**—Lab 20 adds structured logging on the same create/get paths.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (API IT + Page Object UI) | 30 |
-| Integration/configuration correctness (WebDriverManager, Boot IT) | 15 |
-| Failure handling (negatives + screenshot) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Suite that only sleeps until green → heavy deduction. Random UUIDs instead of lab fixtures → continuity violation. Playwright instead of Selenium is acceptable only if outcomes and docs are equivalent and instructor agrees.
-
----
 
 ## Reflection Questions
 

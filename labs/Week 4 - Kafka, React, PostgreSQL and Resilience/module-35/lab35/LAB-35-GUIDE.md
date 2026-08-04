@@ -159,7 +159,7 @@ curl -i -X POST http://localhost:8080/api/customers \
   -d "{\"fullName\":\"Amina Khan\",\"email\":\"amina@example.com\",\"phone\":\"+1-555-0101\",\"status\":\"ACTIVE\"}"
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -539,7 +539,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (all browser payloads; Origin header)?
 2. Where are authn/authz/validation enforced (server validation now; auth Lab 36)?
@@ -560,23 +560,6 @@ Do not commit `node_modules/`, `dist/`, or secret `.env`.
 
 **Keep `lab35-crm`**—Lab 36 adds threat model, in-memory tokens, route guards, XSS/CSRF/CSP controls.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (typed client, states, abort, writes) | 30 |
-| Integration/configuration correctness (env, CORS) | 15 |
-| Failure handling (400/500/network/abort UX + experiments) | 15 |
-| Automated verification | 10 |
-| Security and production awareness (no Vite secrets, CORS) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Swallowing errors into empty lists → fail failure marks. `allowedOrigins("*")` left in code → honor violation.
-
----
 
 ## Reflection Questions
 

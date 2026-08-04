@@ -191,7 +191,7 @@ public class DefaultCustomerService implements CustomerService {
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -631,7 +631,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (all client fields reaching the service)?
 2. Where are authn/authz/validation enforced (shape at facade; meaning in validator; auth still absent)?
@@ -650,23 +650,6 @@ git status
 
 No containers required. **Keep `lab15-crm`**—Lab 16 expands exceptions on these paths.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (service, validator, repository) | 30 |
-| Integration/configuration correctness (DI wiring) | 15 |
-| Failure handling (illegal transitions, duplicates) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Shared-repo wiring mistakes and status corruption on failed transitions are major deductions. Spring annotations are not required and should not appear yet.
-
----
 
 ## Reflection Questions
 

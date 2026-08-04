@@ -23,7 +23,7 @@
 
 ### What you will learn
 
-Deliver an evidence-backed CRM defense: narrative, timed demo, Q&A, blameless retro, rubric self-assessment.
+Deliver an evidence-backed CRM defense: narrative, timed demo, Q&A, blameless retro, completion self-check.
 
 ### Enterprise context
 
@@ -81,7 +81,7 @@ Keep this checklist visible while you work.
 
 ## Lab Overview
 
-This Module 52 lab is the Week 6 **final defense**: rehearse and deliver a business-to-technology narrative, a deterministic live demo, evidence-backed technical Q&A, a blameless retrospective, and a rubric-based self-assessment—packaged for the review panel and portfolio.
+This Module 52 lab is the Week 6 **final defense**: rehearse and deliver a business-to-technology narrative, a deterministic live demo, evidence-backed technical Q&A, a blameless retrospective, and a evidence-backed completion self-check—packaged for the review panel and portfolio.
 
 ## Learning Objectives
 
@@ -162,7 +162,7 @@ kubectl get pods -l app=crm-api
 kubectl rollout history deployment/crm-api
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -369,7 +369,7 @@ Three releases with no staging contract mismatch.
 
 **Why:** Ungrounded self-scores and unclean archives create portfolio risk.
 
-**Do this:** Complete `defense/self-assessment.md` against the Lab 52 rubric with evidence links. Reconcile team vs reviewer scores when available. Archive secret-free portfolio summary.
+**Do this:** Complete `defense/self-assessment.md` with evidence links showing each required outcome is complete. Archive secret-free portfolio summary.
 
 Scrub checklist before archive:
 
@@ -493,7 +493,7 @@ git status --short
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs remain untrusted in the demonstrated system?
 2. Where did you prove authn/authz/validation?
@@ -515,25 +515,8 @@ Keep sanitized defense pack; delete temporary credential files.
 
 **Keep `defense/`**—it is the primary portfolio and assessment packet for Week 6.
 
-Capstone grading should weigh evidence linked from `defense/evidence-index.md` over unrehearsed claims.
+Capstone progress checks should weigh evidence linked from `defense/evidence-index.md` over unrehearsed claims.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure (`defense/` pack) | 10 |
-| Core implementation (story, demo script, evidence index) | 30 |
-| Integration/configuration correctness (live/fallback coherence) | 15 |
-| Failure handling (demo recovery + honest limitations) | 15 |
-| Automated verification citations (tests/pipeline/smoke) | 10 |
-| Security and production awareness in Q&A | 10 |
-| Documentation and evidence (retro + self-assessment) | 10 |
-
-**Notes:** Smooth demo with orphan claims → lose evidence marks. Blame-centric retro → documentation deduction. Secrets in portfolio → remediation required before scoring.
-
----
 
 ## Reflection Questions
 

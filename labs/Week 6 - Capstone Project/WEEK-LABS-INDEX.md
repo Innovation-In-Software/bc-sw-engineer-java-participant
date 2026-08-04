@@ -16,8 +16,7 @@ This document is the **capstone master document** for Modules 48–52 and Labs 4
 | Resource | Path |
 | -------- | ---- |
 | **Capstone project brief (DOCX, company-shareable)** | [Java_Software_Engineer_Capstone.docx](Java_Software_Engineer_Capstone.docx) |
-| **Capstone evaluation rubric (DOCX)** | [Java_Software_Engineer_Capstone_Rubric.docx](Java_Software_Engineer_Capstone_Rubric.docx) |
-| Capstone brief + rubric (Markdown) | [CAPSTONE-BRIEF-AND-RUBRIC.md](CAPSTONE-BRIEF-AND-RUBRIC.md) |
+| Capstone brief (Markdown) | [CAPSTONE-BRIEF-AND-RUBRIC.md](CAPSTONE-BRIEF-AND-RUBRIC.md) |
 | Slide outline | [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) |
 | Labs index | [labs/LABS-INDEX.md](../LABS-INDEX.md) |
 | Setup (Weeks 1–6) | [labs/SETUP-INSTRUCTIONS.md](../SETUP-INSTRUCTIONS.md) |
@@ -43,7 +42,7 @@ This document is the **capstone master document** for Modules 48–52 and Labs 4
 | Backend | 49 | [Lab 49](module-49/lab49/LAB-49-GUIDE.md) | Spring Boot APIs, Kafka events, tests |
 | Full stack | 50 | [Lab 50](module-50/lab50/LAB-50-GUIDE.md) | React UI + PostgreSQL/JPA end-to-end journey |
 | Release | 51 | [Lab 51](module-51/lab51/LAB-51-GUIDE.md) | Security, pipeline, containers, k3s deploy |
-| Defend | 52 | [Lab 52](module-52/lab52/LAB-52-GUIDE.md) | Live demo, Q&A, retrospective, rubric score |
+| Defend | 52 | [Lab 52](module-52/lab52/LAB-52-GUIDE.md) | Live demo, Q&A, retrospective, completion check |
 
 ### Pre-lab exercises (Modules 48–52)
 
@@ -68,7 +67,7 @@ By the end of Week 6, students should be able to:
 - Complete a usable React journey backed by Spring Data JPA and PostgreSQL
 - Apply JWT/RBAC, SAST gates, immutable images, and safe k3s deployment
 - Present and defend the solution with reproducible evidence
-- Run a blameless retrospective and score work against a transparent rubric
+- Run a blameless retrospective and confirm completion with evidence
 
 ---
 
@@ -316,7 +315,7 @@ Enterprise engineers must communicate value, architecture, trade-offs, and limit
 
 - Business-to-technology narrative and rehearsed demo
 - Evidence-backed answers to architecture / security / ops questions
-- Blameless retrospective and rubric-based self-assessment
+- Blameless retrospective and evidence-backed completion self-check
 
 ### Lab outcomes and artifacts
 
@@ -327,11 +326,11 @@ Enterprise engineers must communicate value, architecture, trade-offs, and limit
 | `defense/evidence-index.md` | Claim → artifact map |
 | `defense/technical-q-and-a.md` | Prepared answers with links |
 | `defense/retrospective.md` | Blameless lessons learned |
-| `defense/self-assessment.md` | Rubric score with evidence |
+| `defense/self-assessment.md` | Completion self-check with evidence |
 
 ### Module narrative (slides)
 
-Presentation structure → live walkthrough → review-board Q&A → evaluation → retrospective → program wrap-up  
+Presentation structure → live walkthrough → review-board Q&A → progress check → retrospective → program wrap-up  
 See [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) (slides ~120–168) and [Module 52 slide text](../../curriculum/Week%206%20-%20Capstone%20Project/module-52/SLIDE-TEXT-README.md).
 
 ---
@@ -393,25 +392,14 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | - | ------- | ---------- |
 | 1 | Presentation, demo script, evidence index | Pass / Fail |
 | 2 | Technical Q&A and retrospective | Pass / Fail |
-| 3 | Self-assessment against rubric | Pass / Fail |
+| 3 | Completion self-check with evidence | Pass / Fail |
 | 4 | Peer-review notes and residual risks | Pass / Fail |
 
 ---
 
-## Evaluation overview
+## Progress check (not marks-based)
 
-Each lab uses a **100-mark rubric**. A live demo without supporting evidence does not earn full credit. Committed secrets or unsafe unauthorized actions must be remediated before assessment.
-
-| Criterion | Marks | Full-credit evidence |
-| --------- | ----: | -------------------- |
-| Scope and baseline | 8 | Clear scope and recorded starting state |
-| Technical implementation | 25 | Correct, maintainable lab-specific work |
-| Security and safe configuration | 12 | Least privilege, no secrets, negative test |
-| Automated validation | 15 | Repeatable happy and failure checks |
-| Operational readiness | 10 | Health, logs, metrics, pipeline, or rollout evidence |
-| Recovery and risk management | 10 | Verified recovery and explicit residual risks |
-| Documentation | 12 | Another engineer can reproduce the work |
-| Peer review and professionalism | 8 | Focused feedback and clean submission |
+Labs are **hands-on practice** that teams must complete. Instructors check **progress and completion**, not a marks rubric. A live demo without supporting evidence does not count as complete. Committed secrets or unsafe unauthorized actions must be remediated before the progress check.
 
 ### Week success criteria
 
@@ -444,10 +432,10 @@ Adapt to cohort size; every member should touch implementation and evidence.
 
 ### Instructors
 
-1. Use this README for week orientation and assessment framing.
+1. Use this README for week orientation and progress-check framing.
 2. Teach from module slide assets / [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md).
 3. Run hands-on work from Labs [48](module-48/lab48/LAB-48-GUIDE.md)–[52](module-52/lab52/LAB-52-GUIDE.md) (see [labs index](../LABS-INDEX.md)); each lab is evidence-gated.
-4. Score using the shared rubric; require claim → artifact linkage in Lab 52.
+4. Check completion with claim → artifact linkage in Lab 52 (not marks scoring).
 
 ### Students
 

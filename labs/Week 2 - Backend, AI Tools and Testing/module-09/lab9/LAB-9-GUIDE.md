@@ -207,7 +207,7 @@ class PlaceholderTest {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -593,7 +593,7 @@ Correlation ID (logs later): lab-request-001
 
 ### Step 9 — Capture evidence and complete notes
 
-**Why:** Rubric marks lifecycle evidence and tree annotations, not only a green last command.
+**Why:** Progress checks look for lifecycle evidence and tree annotations, not only a green last command.
 
 **Do this:**
 
@@ -731,7 +731,7 @@ Perform deliberately, then restore working state.
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted? *(Downloaded Maven artifacts; later API inputs)*
 2. Where are authn/authz/validation enforced later? *(App layers + CI/repo managers)*
@@ -756,23 +756,6 @@ Keep sources, `docs/lifecycle-evidence.md`, `docs/dependency-tree.txt`, and note
 
 **Keep `lab9-crm`**—Lab 10+ typically continues from this Maven-enabled tree.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (`pom.xml`, lifecycle, profiles) | 30 |
-| Integration/configuration correctness (plugins, JAR) | 15 |
-| Failure handling (resolution / test failures) | 15 |
-| Automated verification (`mvn test` / `verify`) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Copy from Lab 8 intact; GAV correct; scopes demonstrated; phase-by-phase evidence exists; tree annotated; profiles shown; `java -jar` works; `mvn -B verify` documented and successful; failures restored. Bonuses are stretch—not required for the core 100.
-
----
 
 ## Reflection Questions
 

@@ -171,7 +171,7 @@ void agentCanReadCustomers() throws Exception {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -507,7 +507,7 @@ Adapt paths to your Spring Boot actuator config; never probe a authenticated-onl
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (tokens, headers, images, manifests)?
 2. Where are authn/authz/validation enforced (filter chain, method security)?
@@ -530,23 +530,6 @@ Keep sanitized reports; remove plaintext secrets.
 
 **Keep Lab 51 pipeline, manifests, and digest evidence**—Lab 52 defense depends on them.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (JWT, pipeline, Docker, deploy) | 30 |
-| Integration/configuration correctness (probes, secrets wiring) | 15 |
-| Failure handling (deny paths + rollback) | 15 |
-| Automated verification (tests + smoke in CI/CD) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Floating `:latest` without digest → lose integration marks. Skipping unauthorized smoke → failure-handling deduction. Committed secrets → remediation required before scoring.
-
----
 
 ## Reflection Questions
 

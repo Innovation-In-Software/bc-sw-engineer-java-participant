@@ -151,7 +151,7 @@ class CustomerServiceTest {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -543,7 +543,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which browser, network, or API inputs are untrusted?
 2. Where are authn/authz/validation enforced (DI does not replace them)?
@@ -563,23 +563,6 @@ git status
 
 **Keep `lab22-crm`**—this bean graph becomes the base for later Boot/JPA labs and portfolio Spring evidence.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (stereotypes + constructor DI) | 30 |
-| Integration/configuration correctness (scan, Boot start) | 15 |
-| Failure handling (missing bean experiment + validation) | 15 |
-| Automated verification (unit + IT) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence (`dependency-graph.md`) | 10 |
-
-**Notes:** Field `@Autowired` as the primary pattern → deduction. `new` of collaborators inside services → honor violation. XML bean config instead of annotations is acceptable only if constructor injection still wins and differences are documented.
-
----
 
 ## Reflection Questions
 

@@ -172,7 +172,7 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 </xs:schema>
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -511,7 +511,7 @@ mvn -q test
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which SOAP fields are untrusted and where validated?
 2. Is UsernameToken enough without HTTPS?
@@ -533,23 +533,6 @@ Do not commit `target/` or real secrets. Keep `requests/` samples with **lab** c
 
 **Keep `lab24-crm`**—Lab 25 refactors layering under the same service contract.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (XSD, WSDL, endpoint, mapper) | 30 |
-| Integration/configuration correctness (servlet, jaxb2) | 15 |
-| Failure handling (SOAP faults + missing token) | 15 |
-| Automated verification | 10 |
-| Security and production awareness (UsernameToken honesty) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Duplicating business rules inside the endpoint → lose core marks. Leaving WS-Security off for “convenience” → lose security marks. Committing real passwords → honor violation.
-
----
 
 ## Reflection Questions
 

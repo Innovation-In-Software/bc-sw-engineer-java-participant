@@ -170,7 +170,7 @@ cd lab10-crm
 New-Item -ItemType Directory -Force -Path copilot-notes, ..\..\notes\screenshots\lab-10 | Out-Null
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -449,7 +449,7 @@ mvn -q compile
 
 ### Step 6 — Prove it manually with `Main`
 
-**Why:** Compiles ≠ correct behavior. A harness with the canonical sample IDs is evidence graders can re-run without Copilot.
+**Why:** Compiles ≠ correct behavior. A harness with the canonical sample IDs is evidence instructors can re-run without Copilot.
 
 **Do this:** Update `Main.java`:
 
@@ -652,7 +652,7 @@ Perform deliberately; document in `ai-review-notes.md`.
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which parts of a Copilot prompt are untrusted from the model’s perspective, and which are trusted (your business rules)?
 2. Where is human review formally enforced before AI code reaches the shared repo?
@@ -673,23 +673,6 @@ No containers or cloud services were started. Remove scratch prompt files that c
 
 **Keep `lab10-crm`**—Lab 11 builds tests on this service.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (`Customer`, `CustomerStatus`, `CustomerService`, `Main`) | 30 |
-| Prompting technique and AI review discipline (weak/strong, review log) | 20 |
-| Failure handling (experiments documented) | 10 |
-| Manual verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Copilot Ready; plain-Java domain; sample IDs work; review log authentic (including at least one rejection/correction); no phantom framework deps. Blind-accept first suggestions without log → lose prompting/review marks even if code “works.”
-
----
 
 ## Reflection (optional stretch — 3 short bullets max)
 

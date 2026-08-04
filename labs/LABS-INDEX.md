@@ -74,7 +74,7 @@ labs/
 | [Week 3 - Spring Framework and Enterprise Patterns](Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/) | lab22–lab29 | Spring IoC/Boot/WS, layers, profiles, transactions, security, validation |
 | [Week 4 - Kafka, React, PostgreSQL and Resilience](Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/) | lab30–lab39 | Kafka, Resilience4j, React, PostgreSQL, JPA |
 | [Week 5 - DevOps, CI-CD and OpenShift](Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/) | lab40–lab47 | AppSec, Docker, k3s, GitHub Actions, CD, IaC, Kafka ops, communication |
-| [Week 6 - Capstone Project](Week%206%20-%20Capstone%20Project/) | lab48–lab52 | Capstone plan → build → secure/deploy → defense ([week index](Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md) · [brief + rubric](Week%206%20-%20Capstone%20Project/CAPSTONE-BRIEF-AND-RUBRIC.md)) |
+| [Week 6 - Capstone Project](Week%206%20-%20Capstone%20Project/) | lab48–lab52 | Capstone plan → build → secure/deploy → defense ([week index](Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md) · [brief](Week%206%20-%20Capstone%20Project/CAPSTONE-BRIEF-AND-RUBRIC.md)) |
 
 ---
 

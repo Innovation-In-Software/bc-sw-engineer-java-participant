@@ -159,7 +159,7 @@ kubectl run crm-pull-test --image=REGISTRY/training/crm-api:lab41 --restart=Neve
 kubectl delete pod crm-pull-test --wait=false 2>/dev/null || true
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -609,7 +609,7 @@ curl -fsS "https://${HOST}/actuator/health/readiness"
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (Traffic from Route; ConfigMap data from Git)?
 2. Where are authn/authz enforced (edge + app—not Deployment alone)?
@@ -634,23 +634,6 @@ Remove local kubeconfig copies and plaintext password files from the jump host.
 
 **Keep `lab42-crm` manifests**—portfolio evidence for the container→cluster path (Labs 41–42).
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (manifests, probes, Service/Route) | 30 |
-| Integration/configuration correctness (labels, env, image) | 15 |
-| Failure handling (events diagnosis, rollback) | 15 |
-| Automated / scripted verification (apply + rollout status) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Password in ConfigMap/Git → honor violation. Single combined probe without rationale → lose core marks. No rollback drill → lose failure-handling marks.
-
----
 
 ## Reflection Questions
 

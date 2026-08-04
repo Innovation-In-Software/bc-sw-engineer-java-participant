@@ -151,7 +151,7 @@ kafka-consumer-groups.sh --bootstrap-server localhost:9092 \
   --group crm-customer-projection-v1 --describe
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -543,7 +543,7 @@ git status --short
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (Kafka payloads from other services)?
 2. Where are authn/authz for redrive enforced?
@@ -565,23 +565,6 @@ Purge lab DLT messages if shared brokers require it. Keep sanitized screenshots.
 
 **Keep `lab46-crm`**—Lab 47 may reference this failure class in incident communications.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (error handler, DLT, idempotency) | 30 |
-| Integration/configuration correctness (Spring Kafka + metrics) | 15 |
-| Failure handling (poison path + replay safety) | 15 |
-| Automated verification | 10 |
-| Security and production awareness (PII, bounded tags) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Infinite retry or PII in logs → lose security marks. Replay-all without idempotency → lose recovery marks.
-
----
 
 ## Reflection Questions
 

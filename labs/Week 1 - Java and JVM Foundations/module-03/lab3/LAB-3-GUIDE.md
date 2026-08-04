@@ -267,7 +267,7 @@ Choice : 8
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -814,19 +814,6 @@ Delete `out/` anytime; keep sources under `examples/Lab3-BankingSystem/` for evi
 **Windows:** `Remove-Item -Recurse -Force out`  
 **macOS / Linux:** `rm -rf out`
 
----
-
-## Evaluation Rubric (100 marks)
-
-| Area | Marks |
-| ---- | ----- |
-| Class design & encapsulation | 20 |
-| Inheritance / abstraction / interface | 25 |
-| Polymorphism & service operations | 25 |
-| Menu app + packaging / compile | 15 |
-| UML + code quality + evidence | 15 |
-
----
 
 ## Reflection Questions
 

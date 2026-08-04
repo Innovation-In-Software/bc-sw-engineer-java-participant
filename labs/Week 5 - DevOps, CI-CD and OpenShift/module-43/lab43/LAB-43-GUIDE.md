@@ -226,7 +226,7 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
             target/SHA256SUMS
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -676,7 +676,7 @@ echo "Would deploy artifact for tag=${TAG} commit=${GITHUB_SHA:-local}"
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (PR branch code vs secured variables)?
 2. Where are authn/authz for deploy enforced (GitHub deployments, approvals)?
@@ -697,23 +697,6 @@ Delete temporary plaintext secret files. Keep sanitized screenshots. Do not comm
 
 **Keep `lab43-crm`**—Lab 44 promotes the immutable artifact identity and CI evidence practices established here.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (`.github/workflows/ci.yml`, cache, package-once) | 30 |
-| Integration/configuration correctness (gates, branch workflows) | 15 |
-| Failure handling (forced fail + restore) | 15 |
-| Automated verification | 10 |
-| Security and production awareness (secured vars, no secret leakage) | 10 |
-| Documentation and evidence (`ci-runbook.md`) | 10 |
-
-**Notes:** Green pipeline that skips tests or rebuilds on deploy → lose security/operability marks. Committed secrets → honor violation until remediated.
-
----
 
 ## Reflection Questions
 

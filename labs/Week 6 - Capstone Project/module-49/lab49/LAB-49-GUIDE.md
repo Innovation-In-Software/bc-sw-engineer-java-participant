@@ -159,7 +159,7 @@ curl -i -X POST "http://localhost:8080/api/customers/$CUSTOMER_ID/interactions" 
   -d '{"channel":"PHONE","summary":"Requested address update"}'
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -501,7 +501,7 @@ Adapt field names to your Problem Details implementation; keep status semantics 
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (body, path ids, headers, Kafka payloads)?
 2. Where are authn/authz/validation enforced (validation now; JWT Lab 51)?
@@ -523,23 +523,6 @@ Do not commit `target/` or broker data directories. Keep `docs/backend-demo.md` 
 
 **Keep the Lab 49 backend slice**—Lab 50 builds UI and PostgreSQL proof on these contracts; Lab 51 secures and deploys them.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (API, service, persistence, Kafka) | 30 |
-| Integration/configuration correctness (migration, topic, profiles) | 15 |
-| Failure handling (validation, not-found, consumer DLT/dedupe) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence (`backend-demo.md`) | 10 |
-
-**Notes:** Happy-path-only without negatives → lose failure marks. Publishing on validation failure → honor violation. Demo without `lab-request-001` correlation → incomplete evidence.
-
----
 
 ## Reflection Questions
 

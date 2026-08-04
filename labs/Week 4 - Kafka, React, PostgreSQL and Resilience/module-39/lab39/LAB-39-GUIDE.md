@@ -174,7 +174,7 @@ CREATE INDEX ix_account_customer ON account (customer_id);
 -- CREATE INDEX ix_customer_status_created ON customer (status, created_at DESC, customer_id DESC);
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -642,7 +642,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (HTTP bodies, sort params, page size)?
 2. Where are authn/authz/validation enforced (filters/service—JPA is not authz)?
@@ -664,23 +664,6 @@ Do not commit `.env`, wallets, or `target/`.
 
 **Keep `lab39-crm`**—Lab 40 security scans and Lab 41 container builds use this backend.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (entities, repos, service, paging) | 30 |
-| Integration/configuration correctness (Flyway, validate, OSIV off) | 15 |
-| Failure handling (409 paths, not-found, lock) | 15 |
-| Automated verification (PostgreSQL IT, verify) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Shipping `ddl-auto=create-drop` → honor violation. Returning entities with lazy bags to JSON “because it worked with OSIV” → lose production marks. H2-only tests when PostgreSQL was available → lose verification marks.
-
----
 
 ## Reflection Questions
 

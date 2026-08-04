@@ -243,7 +243,7 @@ private void executeTransaction(String operationName, TransactionAction action) 
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -936,7 +936,7 @@ public void demonstrateUncheckedExceptions() {
 
 **Expected result:** Three handled messages; process still running; ERROR lines appended to the log.
 
-**If it fails:** Do not omit the catches “to see the crash”—graders want recovery evidence.
+**If it fails:** Do not omit the catches “to see the crash”—instructors want recovery evidence.
 
 ---
 
@@ -1136,7 +1136,7 @@ tail -n 40 logs/application.log   # or Get-Content logs\application.log -Tail 40
 
 ### Step 15 — Optional bonuses + notes table
 
-**Why:** Rubric core is exception design/recovery; bonuses show polish.
+**Why:** Core focus is exception design/recovery; bonuses show polish.
 
 **Do this (optional):**
 
@@ -1295,25 +1295,6 @@ rm -rf out
 
 Keep `.java` sources, `transactions.txt`, notes, and evidence screenshots. Do not delete GitHub credentialss or Lab 0 tooling. Leave [`solution/`](solution/) intact—do not submit it as your own work.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria                               | Marks |
-| -------------------------------------- | ----: |
-| Project Structure                      |    10 |
-| Checked & Unchecked Exception Handling |    15 |
-| Custom Exceptions                      |    15 |
-| try-catch-finally Implementation       |    15 |
-| throw & throws Usage                   |    10 |
-| Exception Propagation                  |    10 |
-| try-with-resources                     |    10 |
-| Logging & Error Recovery               |    10 |
-| Code Quality & Documentation           |     5 |
-
-**Notes:** Package `com.academy.atm` + `-d out` compile from project root; checked custom exceptions for domain rules; unchecked demos handled; multi-catch + `finally` on banking ops; `throw` in `Account` and `throws` declarations; clear Main→Service→Account propagation; try-with-resources for `transactions.txt`; file logging + menu survives failures. Bonuses are stretch—not required for the core 100.
-
----
 
 ## Reflection Questions
 

@@ -182,7 +182,7 @@ logging:
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -581,7 +581,7 @@ git status --short
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which config values are sensitive per profile, and where stored?
 2. Why must `application-prod.yml` avoid defaults for DB username/password?
@@ -602,23 +602,6 @@ git status --short
 
 **Keep `lab26-crm`**—Lab 27 builds transactional services on this config discipline.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (YAML + profile files) | 30 |
-| Profile activation and override-order evidence | 15 |
-| Externalized configuration and fail-fast behavior | 15 |
-| Failure handling | 10 |
-| Security and secrets-handling awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Real secrets in Git → honor violation. Prod YAML with default passwords → lose security/fail-fast marks. No override evidence → lose activation marks.
-
----
 
 ## Reflection Questions
 

@@ -156,7 +156,7 @@ void getRequired_throws_whenMissing() {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -547,7 +547,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (JSON bodies, path IDs)?
 2. Where are authn/authz/validation enforced (Lab 28 deepens auth)?
@@ -567,23 +567,6 @@ git status
 
 **Keep `lab25-crm`**—Lab 26 adds profiles/config on this layering.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (layers + seeds + rules) | 30 |
-| Integration/configuration correctness (DI wiring) | 15 |
-| Failure handling (duplicate / not-found / illegal transition) | 15 |
-| Automated verification | 10 |
-| Security and production awareness / AI review discipline | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Controllers importing repositories → lose core marks. Passing tests with only `assertNotNull` → lose verification/AI marks. Undocumented Copilot paste → lose AI marks.
-
----
 
 ## Reflection Questions
 

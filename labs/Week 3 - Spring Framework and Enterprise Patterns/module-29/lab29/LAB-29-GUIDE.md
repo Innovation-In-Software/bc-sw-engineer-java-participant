@@ -160,7 +160,7 @@ void get_unknownCustomer_returns404Envelope() throws Exception {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -552,7 +552,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (JSON bodies, path IDs, headers)?
 2. Where are authn (Lab 28), authz, and validation enforced?
@@ -574,23 +574,6 @@ Keep screenshots/excerpts. Do not commit `target/`.
 
 **Keep `lab29-crm`**—Labs 30–31 add Kafka on a CRM that already speaks a stable error contract.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (`@Valid`, handler, envelope) | 30 |
-| Integration/configuration correctness (statuses, correlation) | 15 |
-| Failure handling (404/409/500 safety) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence (Lab 14/16 unify) | 10 |
-
-**Notes:** Happy path only without envelope tests → incomplete. Leaking stacks to clients → security/production marks lost. Equivalent `ProblemDetail` OK if field equivalence and React impact are documented.
-
----
 
 ## Reflection Questions
 

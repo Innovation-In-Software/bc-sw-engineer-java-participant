@@ -172,7 +172,7 @@ class CustomerServiceBddMockTest {
 // ... truncated — see full sample in the Steps
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -586,7 +586,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (production API inputs; tests use fixtures/stubs only)?
 2. Where are authn/authz/validation enforced (still service/validator; mocks don’t replace auth)?
@@ -607,23 +607,6 @@ Do not commit `target/`. Keep review notes and isolation policy.
 
 **Keep `lab18-crm`**—Lab 19 builds integration/UI regression on CRM create/get seams you just isolated.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (mocks, stubs, captors, BDD) | 30 |
-| Integration/configuration correctness (MockitoExtension, deps) | 15 |
-| Failure handling (never save / illegal transition) | 15 |
-| Automated verification | 10 |
-| Security and production awareness / AI review discipline | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Mocking `DefaultCustomerService` instead of collaborators → honor violation. Leaving unused stubs “for later” without notes → lose quality marks. Lab 17 fixtures rewritten to random UUIDs → lose continuity marks.
-
----
 
 ## Reflection Questions
 

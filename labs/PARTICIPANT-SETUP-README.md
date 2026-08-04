@@ -252,7 +252,7 @@ Prefer **kubectl** with your kubeconfig. This cohort uses **k3s + Traefik**.
 | `CUS-1002` | Ravi Singh |
 | `lab-request-001` | Correlation ID for tracing |
 
-Screenshots for grading should show **success**, with secrets redacted.
+Screenshots for progress checks should show **success**, with secrets redacted.
 
 ---
 

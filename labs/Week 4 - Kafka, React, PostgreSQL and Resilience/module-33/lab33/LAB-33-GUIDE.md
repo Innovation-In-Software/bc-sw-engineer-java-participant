@@ -160,7 +160,7 @@ mkdir -p docs
 mkdir -p ~/java-bootcamp/notes/screenshots/lab-33 src/types src/components src/data
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -526,7 +526,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (browser DOM; fixtures only this lab)?
 2. Where are authn/authz/validation enforced (not yet—Lab 35–36; forms presentational)?
@@ -547,23 +547,6 @@ Do not commit `node_modules/` or `dist/`. Keep notes screenshots.
 
 **Keep `lab33-crm`**—Lab 34 copies it to `lab34-crm` and lifts state into `App`.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (types, badge, card, list, form) | 30 |
-| Integration/configuration correctness (Vite, Vitest) | 15 |
-| Failure handling (empty/error shells + experiments) | 15 |
-| Automated verification (RTL by role) | 10 |
-| Security and production awareness / a11y discipline | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Class-name-only tests → lose automated marks. Index keys → honor violation. Color-only status without text → a11y failure.
-
----
 
 ## Reflection Questions
 

@@ -159,7 +159,7 @@ curl -fsS -H "X-Correlation-Id: lab-request-001" \
   "${CRM_BASE_URL}/api/customers/CUS-1001"
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -555,7 +555,7 @@ git status --short
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted at promote time (human approval, registry contents)?
 2. Where are authn/authz for prod deploy enforced?
@@ -577,23 +577,6 @@ Leave staging on instructor-approved version. Delete temporary secret files. Kee
 
 **Keep `lab44-crm`**—Lab 45 may automate environment setup; do not discard promotion docs.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (manifest, promotion by digest, docs) | 30 |
-| Integration/configuration correctness (gates, env separation) | 15 |
-| Failure handling (rollback / NO-GO rehearsal) | 15 |
-| Automated / staged verification (smoke evidence) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Promoting `latest` or rebuilding per environment → lose core marks. Missing rollback verification → cap recovery marks.
-
----
 
 ## Reflection Questions
 

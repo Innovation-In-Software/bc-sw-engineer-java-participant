@@ -162,7 +162,7 @@ Acceptance criteria:
 5. Audit data records actor and correlation ID without note contents.
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -550,7 +550,7 @@ git status --short
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (browser agents, JWT claims, Kafka payloads)?
 2. Where will authn/authz/validation be enforced (UI hints vs API enforcement)?
@@ -572,23 +572,6 @@ Stop any exploratory containers started while sketching. Keep sanitized planning
 
 **Keep the Lab 48 docs tree**—Labs 49–52 implement and defend against it. Do not delete Accepted ADRs without superseding.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (context, containers, backlog, ADRs) | 30 |
-| Integration/configuration correctness (NFR measurability, contract sketches) | 15 |
-| Failure handling (risk register, contingencies, experiment) | 15 |
-| Automated verification (peer reproduction checklist) | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Pretty diagrams without trust boundaries or owners → lose architecture marks. ADRs without alternatives → honor violation on decision quality. Backlog that cannot demo `CUS-1001` interaction → incomplete core implementation.
-
----
 
 ## Reflection Questions
 

@@ -199,7 +199,7 @@ private final TreeMap<String, Integer> categoryBookCount = new TreeMap<>();
 private final ArrayList<BorrowRecord> borrowHistory = new ArrayList<>();
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -338,7 +338,7 @@ Implement `registerMember()` similarly with `memberIds` / `members` and message 
 
 ### Step 7 — Display books with four iteration styles
 
-**Why:** Interviewers and graders look for comfort with classic `for`, enhanced `for`, `Iterator`, and `forEach`.
+**Why:** Interviewers and instructors look for comfort with classic `for`, enhanced `for`, `Iterator`, and `forEach`.
 
 **Builds on Exercise 5:** Safe iteration practice — here you demonstrate all four styles on the live catalog (not just remove-via-iterator).
 
@@ -520,7 +520,7 @@ javac -d out src/com/academy/library/*.java
 java -cp out com.academy.library.Main
 ```
 
-**IntelliJ:** Run `Main` from the gutter, **or** use the same terminal commands above for grading fidelity.
+**IntelliJ:** Run `Main` from the gutter, **or** use the same terminal commands above for progress-check fidelity.
 
 **Expected result:** Menu appears; process waits at `Choice :`.
 
@@ -612,7 +612,7 @@ Screenshot this path for evidence.
 
 ### Step 16 — Self-review and optional solution peek
 
-**Why:** Rubric scores collection *choice* + working menu, not clever one-liners.
+**Why:** Progress checks look for collection *choice* + working menu, not clever one-liners.
 
 **Do this:** Checklist:
 
@@ -733,22 +733,6 @@ Keep sources and evidence. Leave [`solution/`](solution/) intact.
 
 Use **What you'll submit** at the top for the submit list.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Correct List / Set / Map usage | 20 |
-| Domain models + encapsulation | 10 |
-| Add / register / display / search | 15 |
-| Borrow / return with Map | 15 |
-| Sort (`Comparable` / `Comparator`) | 10 |
-| Reports + TreeSet / TreeMap insights | 10 |
-| Menu app + compile/run evidence | 10 |
-| Analysis & code quality | 10 |
-
----
 
 ## Reflection Questions
 

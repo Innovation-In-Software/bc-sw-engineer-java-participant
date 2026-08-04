@@ -147,7 +147,7 @@ After completing this lab, you will be able to:
 * Work confidently in the standard bootcamp workspace (IntelliJ primary / VS Code optional) with a **separate** graded lab folder
 * Produce graded compile/run evidence for four entry-point classes (`HelloWorld`, `Calculator`, `Employee`, `MemoryDemo`)
 * Apply exercise `javap` skills to Calculator opcodes such as `iadd` / `invokestatic` / `iload` / `istore` and capture screenshots for the LMS
-* Trace method-call flow (`main` → `add` → return) and complete a stack-frame table suitable for grading
+* Trace method-call flow (`main` → `add` → return) and complete a stack-frame table suitable for a progress check
 * Explain object creation (`new Employee(...)`) with a stack-reference vs heap-object sketch (same story as Exercise 7 `Person`, graded names)
 
 ## Business Scenario
@@ -300,7 +300,7 @@ public class Employee {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -496,7 +496,7 @@ javac HelloWorld.java
 java HelloWorld
 ```
 
-**IntelliJ green arrow (optional after `javac`, or instead for run-only if the IDE compiles for you):** click the green ▶ next to `main` → **Run ‘HelloWorld.main()’**. Still practice terminal `javac` / `java` for this lab’s grading evidence.
+**IntelliJ green arrow (optional after `javac`, or instead for run-only if the IDE compiles for you):** click the green ▶ next to `main` → **Run ‘HelloWorld.main()’**. Still practice terminal `javac` / `java` for this lab’s progress-check evidence.
 
 **Expected result:**
 
@@ -614,7 +614,7 @@ Capture a screenshot of `javap -c HelloWorld` for deliverables.
 
 ### Step 5 — Create a Calculator program
 
-**Why:** Integer locals and `invokestatic` make stack behavior easier to see than UI apps — and give graders a richer bytecode sample than HelloWorld alone.
+**Why:** Integer locals and `invokestatic` make stack behavior easier to see than UI apps — and give instructors a richer bytecode sample than HelloWorld alone.
 
 **Builds on Exercise 6:** You already wrote a methods demo with `add(10, 20)` → `30`. Here the graded class is `Calculator` with the same arithmetic story, plus required `javap -c` evidence (`iadd`, `invokestatic`, …).
 
@@ -690,7 +690,7 @@ public static int add(int, int);
 
 **Why:** Connects Calculator code to the runtime memory model you will reuse for every Spring request thread later.
 
-**Builds on Exercises 5–6:** Locals, parameters, and the `add` call pattern are familiar; this step forces a **written table** and call-flow narrative for grading.
+**Builds on Exercises 5–6:** Locals, parameters, and the `add` call pattern are familiar; this step forces a **written table** and call-flow narrative for the progress check.
 
 **Do this:**
 
@@ -1204,7 +1204,7 @@ You may see `java.lang.OutOfMemoryError: Java heap space`. Restore normal `Memor
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. **Bytecode as artifact:** Why might an enterprise forbid copying raw `.class` files between machines without a reproducible build (Maven/CI)?
 2. **Heap dumps:** If a future CRM JVM writes a heap dump on OOM, what privacy risk appears if customer PII sits in memory? Who should access dumps?
@@ -1215,7 +1215,7 @@ Optional — jot brief notes in your README if useful for the rubric (not a sepa
 
 ## Cleanup
 
-Capture grading evidence **before** aggressive cleanup.
+Capture progress-check evidence **before** aggressive cleanup.
 
 **Keep:**
 
@@ -1247,34 +1247,14 @@ ls
 * Uninstall Lab 0 tooling (JDK, Maven)
 * Commit heap dumps, `hs_err_pid*`, or credential files
 
-After grading, you may keep `.class` files locally; they are not sacred—sources are.
+After the progress check, you may keep `.class` files locally; they are not sacred—sources are.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks | What reviewers look for |
-| -------- | ----: | ----------------------- |
-| Environment readiness (Lab 0 + Exercises 1–8 Pass, IDE, JDK 21, correct folder, personal GitHub repo Step 0) | 10 | Pre-flight versions; exercise folder present; path under `examples/jvm-compilation-lab`; `origin` push works |
-| HelloWorld compile / run / file inspection | 10 | Exact `Hello, JVM!`; `.java` + `.class` evidence |
-| `javap` bytecode literacy | 15 | Readable `javap -c` capture; can name key opcodes |
-| Calculator + stack explanation | 15 | `Sum = 30`; coherent stack-frame narrative / table |
-| Employee heap model | 10 | `101 - Aman`; correct stack-ref vs heap-object sketch |
-| Class loading observation | 10 | Verbose/Xlog evidence including JDK + `Employee` |
-| MemoryDemo + heap flags awareness | 10 | `Created 100000 employees`; `PrintFlagsFinal` or `-Xmx` notes |
-| Clean / recompile discipline | 5 | Shows delete `*.class` then successful rebuild |
-| Evidence quality + written answers | 10 | Clear screenshots; seven short answers present |
-| Failure experiments / security awareness | 5 | At least one controlled failure + thoughtful security note |
-
-Partial credit is normal if optional VisualVM/`jconsole` is skipped. Missing JDK 21, missing sources, or inability to explain `.java` vs `.class` typically blocks a pass.
-
----
 
 ## Reflection Questions
 
 Write **1–3 sentence** answers (not essays):
 
-1. What evidence would convince a grader the bytecode screenshot is from **your** `HelloWorld`?
+1. What evidence would convince a instructor the bytecode screenshot is from **your** `HelloWorld`?
 2. Looking forward: which Lab 1 idea will matter first when the CRM runs under Docker—heap limits, class loading, or bytecode inspection?
 3. Which mental model changed most: “Java runs my `.java` file” versus “JVM runs bytecode”?
 

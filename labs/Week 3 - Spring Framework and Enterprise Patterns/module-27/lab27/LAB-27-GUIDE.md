@@ -176,7 +176,7 @@ public class TransferService {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -228,7 +228,7 @@ mvn -q -DskipTests package
 
 ### Step 2 — Seed Amina and Ravi accounts
 
-**Why:** Fixed balances make rollback diffs reproducible for peers and graders.
+**Why:** Fixed balances make rollback diffs reproducible for peers and instructors.
 
 **Do this:** `data.sql` or `CommandLineRunner` / `@PostConstruct`:
 
@@ -538,7 +538,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (amount, account IDs, headers)?
 2. Where are authn/authz/validation enforced (Lab 28 deepens)?
@@ -560,23 +560,6 @@ git status
 
 **Keep `lab27-crm`**—Lab 28 secures transfer and customer APIs.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (`TransferService`, accounts, log) | 30 |
-| Integration/configuration correctness (JPA/H2/TX proxy) | 15 |
-| Failure handling (`ACC-FORCE-FAIL` + insufficient funds) | 15 |
-| Automated verification | 10 |
-| Security and production awareness / AI TX review | 10 |
-| Documentation and evidence (ACID) | 10 |
-
-**Notes:** Exception thrown but balance decreased → fail atomicity marks. `@Transactional` only on controller → lose core marks. ACID slogans without evidence → lose documentation marks. Simulated in-memory TX without caveats → lose honesty marks.
-
----
 
 ## Reflection Questions
 

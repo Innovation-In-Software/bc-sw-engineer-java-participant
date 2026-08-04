@@ -232,7 +232,7 @@ Tip: Run with GC logging using:
 java -Xlog:gc GarbageCollectionDemo
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -242,7 +242,7 @@ java -Xlog:gc GarbageCollectionDemo
 
 ### Step 1 — Create the Lab 4 workspace
 
-**Why:** A known path under `examples/` matches Lab 0 conventions and keeps grading evidence easy to find.
+**Why:** A known path under `examples/` matches Lab 0 conventions and keeps progress-check evidence easy to find.
 
 **Builds on:** Exercises used `module-04-exercises/`. This graded folder is separate — do not overwrite exercise sources.
 
@@ -628,7 +628,7 @@ Numbers differ by machine—record **your** run.
 
 ### Step 11 — Optional laptop tools (`jstat`, `jconsole`, VisualVM)
 
-**Why:** The `Runtime` API is enough for the rubric; CLI/GUI tools deepen intuition on **your** OS desktop.
+**Why:** The `Runtime` API is enough for progress checks; CLI/GUI tools deepen intuition on **your** OS desktop.
 
 **Do this (pick what you have time for):**
 
@@ -676,7 +676,7 @@ Delete dumps after a quick look. Never zip them into LMS submissions.
 
 Optionally skim [`solution/Lab4-MemoryManagement/`](solution/Lab4-MemoryManagement/) *after* your attempt.
 
-**Expected result:** Notes a grader can re-run and understand without opening a dump file.
+**Expected result:** Notes a instructor can re-run and understand without opening a dump file.
 
 **If it fails:** Missing evidence → re-run Steps 6–10 and capture terminal output only.
 
@@ -787,22 +787,6 @@ Keep `.java` sources and notes. Leave [`solution/`](solution/) intact.
 
 Use **What you'll submit** at the top for the submit list.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Stack vs Heap Demonstration | 15 |
-| Object Lifecycle Implementation | 10 |
-| Garbage Collection Demo | 15 |
-| JVM Memory Monitoring | 15 |
-| Memory Leak Creation & Resolution | 20 |
-| Performance Measurement | 10 |
-| Analysis & Reflection | 10 |
-| Code Quality & Documentation | 5 |
-
----
 
 ## Reflection Questions
 

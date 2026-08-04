@@ -196,7 +196,7 @@ public class GlobalExceptionHandler {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -576,7 +576,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (all request fields + headers later)?
 2. Where are authn/authz/validation enforced (validation/business now; auth still absent)?
@@ -595,23 +595,6 @@ git status
 
 No containers required. **Keep `lab16-crm`**—Labs 17–18 test behavior; Week 3 adapts the handler to Spring.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (handler, model, exception) | 30 |
-| Integration/configuration correctness (facade mapping) | 15 |
-| Failure handling (400/404/409 demos) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** HTML stack traces or entity `toString()` as client body → heavy deductions. Missing correlation on any demo path → incomplete. 422 instead of 409 is acceptable only if documented consistently.
-
----
 
 ## Reflection Questions
 

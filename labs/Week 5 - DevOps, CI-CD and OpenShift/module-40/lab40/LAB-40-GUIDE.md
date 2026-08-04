@@ -157,7 +157,7 @@ void agentCannotReadAnotherAgentsCustomer() throws Exception {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -531,7 +531,7 @@ git status --short
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (HTTP, headers, file uploads if any)?
 2. Where are authn/authz/validation enforced?
@@ -553,23 +553,6 @@ Do not commit live credentials rotated during the lab without scrubbing history 
 
 **Keep `lab40-crm`**—Lab 41 containerizes this hardened backend; security tests should still pass.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (scan, SAST, remediation, test) | 30 |
-| Integration/configuration correctness (plugin profile, outputs) | 15 |
-| Failure handling (triage, repro, residual risk) | 15 |
-| Automated verification | 10 |
-| Security and production awareness | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Mass suppressions without expiry → lose security marks. Disabling the gate or `@Disabled` on the ownership test → honor violation. Assessment without commands/versions → lose documentation marks.
-
----
 
 ## Reflection Questions
 

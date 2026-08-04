@@ -163,7 +163,7 @@ class CustomerControllerIT {
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -609,7 +609,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (JSON body, headers)?
 2. Where are authn/authz/validation enforced (validation now; full security later)?
@@ -631,23 +631,6 @@ Do not commit `target/`. Keep curl transcripts and notes.
 
 **Keep `lab23-crm`**—Lab 24 copies it into `lab24-crm` for Spring-WS.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (`CrmApplication`, YAML, `/api/customers`) | 30 |
-| Integration/configuration correctness (starters, Actuator, profiles teaser) | 15 |
-| Failure handling (404, validation, start failures) | 15 |
-| Automated verification | 10 |
-| Security and production awareness (Actuator exposure honesty) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** A green package without HTTP evidence for fixtures → lose core marks. Claiming “Boot does everything” without ownership notes → lose awareness marks. Committing secrets → honor violation.
-
----
 
 ## Reflection Questions
 

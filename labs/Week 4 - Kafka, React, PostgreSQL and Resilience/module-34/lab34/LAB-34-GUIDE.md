@@ -158,7 +158,7 @@ type Mode =
 const [mode, setMode] = useState<Mode>({ kind: "closed" });
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -531,7 +531,7 @@ git status
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (all form fields; still client-only)?
 2. Where are authn/authz/validation enforced (client UX now; API later)?
@@ -552,23 +552,6 @@ Do not commit `node_modules/` or `dist/`.
 
 **Keep `lab34-crm`**—Lab 35 adds typed fetch, AbortController, and CORS against Spring.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (state, modes, immutable CRUD, filter) | 30 |
-| Integration/configuration correctness (controlled inputs, effects) | 15 |
-| Failure handling (validation + cancel + experiments) | 15 |
-| Automated verification (flow tests) | 10 |
-| Security and production awareness / anti-pattern discipline | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** In-place mutations or filtered-state effects → lose core marks. Happy-path-only tests → lose automated marks.
-
----
 
 ## Reflection Questions
 

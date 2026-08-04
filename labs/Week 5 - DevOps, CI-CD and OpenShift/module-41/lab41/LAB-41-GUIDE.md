@@ -170,7 +170,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
 ENTRYPOINT ["java","-jar","/app/app.jar"]
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — graders check these.
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
 
 ---
 
@@ -545,7 +545,7 @@ docker tag crm-api:lab41 crm-api:1.0.0-${GIT_SHA}
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (env files, image bases, registry)?
 2. Where are authn/authz/validation enforced (still in app—not Docker alone)?
@@ -568,23 +568,6 @@ Keep Dockerfile and runbook; delete plaintext env files from shared hosts.
 
 **Keep `lab41-crm`**—Lab 42 deploys this image with Deployment/Service/Route and probes.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (Dockerfile, ignore, run) | 30 |
-| Integration/configuration correctness (env, health, limits) | 15 |
-| Failure handling (shutdown, bad dependency) | 15 |
-| Automated / scripted verification | 10 |
-| Security and production awareness (non-root, no secrets) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Root runtime → lose security marks. Password `ENV` in Dockerfile → honor violation. Runbook without inspect evidence → lose documentation marks.
-
----
 
 ## Reflection Questions
 

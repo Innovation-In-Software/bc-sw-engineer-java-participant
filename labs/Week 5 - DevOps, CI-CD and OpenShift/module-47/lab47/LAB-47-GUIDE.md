@@ -611,7 +611,7 @@ git status --short
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for the rubric (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
 
 1. Which inputs are untrusted (chat rumors vs telemetry)?
 2. Where are approval gates for external stakeholder email?
@@ -631,23 +631,6 @@ Remove any accidental secret pastes. Keep the finalized packet for portfolio. No
 
 **Keep `lab47-crm`**—Capstone presentations often reuse these templates.
 
----
-
-## Evaluation Rubric (100 Marks)
-
-| Criteria | Marks |
-| -------- | ----: |
-| Environment and project structure | 10 |
-| Core implementation (four communications + facts) | 30 |
-| Integration/configuration correctness (cross-doc consistency) | 15 |
-| Failure handling (corrections, peer-caught issues) | 15 |
-| Verification (peer can brief; optional build check) | 10 |
-| Security and production awareness (scrub, blameless) | 10 |
-| Documentation and evidence | 10 |
-
-**Notes:** Invented root cause stated as fact → lose failure/security marks. Secrets in packet → must remediate. Audience-inappropriate dump of Kafka internals to executives → lose core marks.
-
----
 
 ## Reflection Questions
 
