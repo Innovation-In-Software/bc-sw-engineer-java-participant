@@ -36,11 +36,11 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 ```markdown
 # Lab 28 — JWT Login TODOs
 
-POST /api/auth/login {username,password} → {token, roles}
-JwtService.issue(user) / parse(token)
-Client: Authorization: Bearer <token>
+POST /api/auth/login {username,password} → {accessToken, tokenType}
+JwtService issueToken / parseSubject / parseRole (lab stub OK)
+Client: Authorization: Bearer <accessToken>
 Lab users: agent1 (AGENT), admin1 (ADMIN)
-Secret: env CRM_JWT_SECRET (placeholder in .env.example)
+Secret: env JWT_SECRET → northstar.security.jwt-secret (placeholder in .env.example)
 
 ## Scope
 Pre-lab only.

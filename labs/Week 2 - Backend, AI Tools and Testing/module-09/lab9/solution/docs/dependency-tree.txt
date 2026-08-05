@@ -1,0 +1,17 @@
+# Annotated dependency tree (Lab 9)
+# Capture refreshed with: mvn dependency:tree
+#
+# Direct vs transitive:
+# - DIRECT: spring-context (compile), junit-jupiter (test)
+# - TRANSITIVE: spring-aop, spring-beans, spring-core, spring-expression under spring-context
+# - junit-jupiter stays test scope so it does not ship as a production runtime dependency
+# - Example +- line: spring-context children with siblings
+# - Example \- line: last child under a parent (often junit-jupiter at root)
+
+com.northstar:customer-service:jar:0.1.0-SNAPSHOT
++- org.springframework:spring-context:jar:6.2.3:compile
+|  +- org.springframework:spring-aop:jar:6.2.3:compile
+|  +- org.springframework:spring-beans:jar:6.2.3:compile
+|  +- org.springframework:spring-core:jar:6.2.3:compile
+|  \- org.springframework:spring-expression:jar:6.2.3:compile
+\- org.junit.jupiter:junit-jupiter:jar:5.11.4:test

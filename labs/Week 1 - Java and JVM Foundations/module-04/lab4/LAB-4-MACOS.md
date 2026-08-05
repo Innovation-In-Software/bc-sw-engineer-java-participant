@@ -41,7 +41,11 @@ java StackExample
 java HeapExample
 java ObjectLifecycle
 java -Xms16m -Xmx64m -Xlog:gc GarbageCollectionDemo
-java MemoryLeakDemo
+java MemoryLeakDemo leak
+# stop with Ctrl+C after a few progress lines if leak mode runs long
+java MemoryLeakDemo fix
+java -Xms128m -Xmx512m PerformanceTest
+# Full-credit / homework: java WeakReferenceDemo
 ```
 
 
@@ -62,6 +66,6 @@ _Mark **Pass** or **Fail** in your lab notes._
 | - | ------- | ---------- |
 | 1 | Workspace `~/java-bootcamp` open in IntelliJ with SDK **21** | Pass / Fail |
 | 2 | Lab project under `examples/Lab4-MemoryManagement` as in [LAB-4-GUIDE.md](LAB-4-GUIDE.md) | Pass / Fail |
-| 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
-| 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
-| 5 | Screenshots (if required) under `notes/screenshots/lab-4/` | Pass / Fail |
+| 3 | Timed smoke: GC + `MemoryLeakDemo leak`/`fix` + `PerformanceTest` | Pass / Fail |
+| 4 | Full credit: `WeakReferenceDemo` (homework OK if timed class ends) | Pass / Fail |
+| 5 | Screenshots under `notes/screenshots/lab-4/` | Pass / Fail |

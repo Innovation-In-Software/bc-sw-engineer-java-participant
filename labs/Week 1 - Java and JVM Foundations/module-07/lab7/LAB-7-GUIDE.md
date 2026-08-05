@@ -34,16 +34,18 @@
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
+> **Timed path:** Exception classes, `Account`, `Transaction`, `LoggerUtil`, and `Main` are already in the starter — do **not** recreate them. Implement only `ATMService.login`, `deposit`, and `withdraw` (via `executeTransaction`). Transfer / daily error report / transaction summary are Bonus stubs. Smoke includes mini statement (menu 6 — already wired).
+
 1. Open [`starter/README.md`](starter/README.md).
 2. Copy `starter/Lab7-ATMSystem/` into your `java-bootcamp/examples/Lab7-ATMSystem/` target folder (commands in the starter README).
-3. Fill every `// TODO` / `_____` — do **not** open `solution/` first.
-4. Run the starter smoke test; capture evidence under `notes/screenshots/lab-7/`.
+3. Fill `login` / `deposit` / `withdraw` TODOs — do **not** open `solution/` first.
+4. Run the starter smoke test (login → failed withdraw → deposit → balance → **mini statement** → exit); capture evidence under `notes/screenshots/lab-7/`.
 5. Mark the **timed-path Pass criteria** in the starter README. Continue remaining GUIDE steps only if time allows (or as homework).
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
-| **Full (extended)** | see Duration | Every Step in this GUIDE |
+| **Timed (default)** | ~45 min | login + deposit + withdraw + smoke (incl. mini statement) |
+| **Full (extended)** | see Duration | Every Step in this GUIDE (transfer / reports bonuses) |
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
 

@@ -1,8 +1,23 @@
 public class GcObserve {
     public static void main(String[] args) {
-        // TODO: allocate a bounded List of byte[] (e.g. a few thousand * 1KB)
-        // TODO: optionally null the list; call System.gc() as a HINT only
-        // Run with: java -Xms16m -Xmx64m -Xlog:gc GcObserve
-        throw new UnsupportedOperationException("TODO");
+        long checksum = 0;
+
+        for (int round = 1; round <= 20; round++) {
+            // About 12.5 MB per temporary batch.
+            // TODO: byte[][] batch = new byte[200][];
+
+            for (int i = 0; i < batch.length; i++) {
+                // TODO: batch[i] = new byte[64 * 1024];
+                // TODO: checksum += batch[i].length;
+            }
+
+            if (round % 5 == 0) {
+                // TODO: println "Completed round " + round
+            }
+
+            // On the next iteration, this batch can become unreachable.
+        }
+
+        // TODO: println "Allocated bytes over time: " + checksum
     }
 }

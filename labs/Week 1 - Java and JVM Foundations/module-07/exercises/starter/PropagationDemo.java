@@ -1,23 +1,28 @@
 public class PropagationDemo {
-    static void level3() {
-        // TODO: throw a RuntimeException with a clear message
-        _____
+    static void accountLayer()
+            _____ { // TODO: throws InsufficientFundsException
+        // Deepest layer creates the domain failure.
+        // TODO: throw new InsufficientFundsException(100.00, 150.00)
     }
 
-    static void level2() {
-        level3();
+    static void serviceLayer()
+            _____ { // TODO: throws InsufficientFundsException
+        // No recovery here, so declare and let it propagate.
+        accountLayer();
     }
 
-    static void level1() {
-        level2();
+    static void menuLayer()
+            _____ { // TODO: throws InsufficientFundsException
+        // Still no recovery action; keep the contract.
+        serviceLayer();
     }
 
     public static void main(String[] args) {
         try {
-            level1();
-        } catch (_____ ex) {
-            System.out.println("Boundary caught: " + ex.getMessage());
+            menuLayer();
+        } catch (_____ ex) { // TODO: catch InsufficientFundsException
+            // TODO: print "Caught at main: " + ex.getMessage()
+            // TODO: ex.printStackTrace(System.out)
         }
-        System.out.println("Session continued.");
     }
 }

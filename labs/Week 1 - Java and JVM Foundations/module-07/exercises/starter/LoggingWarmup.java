@@ -1,16 +1,24 @@
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class LoggingWarmup {
-    static void logError(String context, Exception ex) {
-        // TODO: print context + exception type/message (no secrets)
-        _____
-    }
+    private static final Logger LOGGER =
+            Logger.getLogger(
+                    LoggingWarmup.class.getName());
 
     public static void main(String[] args) {
-        String accountId = "1001";
+        // Demo identifier only — never log real PINs or secrets.
+        String accountId = "A-1001";
+
         try {
-            throw new IllegalArgumentException("Invalid amount");
-        } catch (IllegalArgumentException ex) {
-            logError("withdraw account=" + accountId, ex);
-            System.out.println("User message: Transaction failed. Please try again.");
+            throw new IllegalStateException(
+                    "Withdrawal service unavailable");
+        } catch (IllegalStateException ex) {
+            // TODO: LOGGER.log(Level.SEVERE, "Withdrawal failed accountId=" + accountId, ex)
+            //   pass ex as the third argument to keep the stack trace
+
+            // TODO: print user-safe message:
+            //   "User message: Withdrawal could not be completed."
         }
     }
 }

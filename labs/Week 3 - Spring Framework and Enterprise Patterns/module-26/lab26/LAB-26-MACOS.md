@@ -41,7 +41,7 @@ mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
 # Fail-fast: mvn -B spring-boot:run "-Dspring-boot.run.profiles=prod"   # expect APPLICATION FAILED TO START
 ```
 
-Verified (2026-08-03): **Tests run: 1** · **BUILD SUCCESS** twice under `test`; `dev` active + H2 `/h2-console` + GET `CUS-1001` **200**; override ladder **100 / 9999 / 1234**; `prod` **APPLICATION FAILED TO START** (blank `apiKey`); `.env` absent.
+Verified (2026-08-04): **Tests run: 1** (`ProfileBindingTest`) · **BUILD SUCCESS** under `test` (optional second run for determinism — still 1 test); `dev` active + H2 JDBC `jdbc:h2:mem:lab26dev;...MODE=PostgreSQL` (no `/h2-console` / JPA required) + GET `CUS-1001` **200**; `prod` **APPLICATION FAILED TO START** (unresolved `${DB_PASSWORD}` / `${NORTHSTAR_API_KEY}`); `.env.example` has `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY`; `.env` absent. App name `northstar-crm`.
 
 ## Do the lab
 

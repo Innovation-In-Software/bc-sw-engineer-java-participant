@@ -32,16 +32,18 @@
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
+> **Timed path:** Do **not** “fill every TODO.” Implement only the **CORE methods needed for menus 1–9** (listed in the starter README). Menu items **10–21** are Bonus/Demo stubs that print a message — they must not crash while you explore. Prioritize classroom smoke **1 → 8 → 9** first (list + dashboard Average Salary **100680** + exit); finish CORE menus **2–7** as homework if class time ends.
+
 1. Open [`starter/README.md`](starter/README.md).
 2. Copy `starter/Lab6-EmployeeAnalytics/` into your `java-bootcamp/examples/Lab6-EmployeeAnalytics/` target folder (commands in the starter README).
-3. Fill every `// TODO` / `_____` — do **not** open `solution/` first.
-4. Run the starter smoke test; capture evidence under `notes/screenshots/lab-6/`.
-5. Mark the **timed-path Pass criteria** in the starter README. Continue remaining GUIDE steps only if time allows (or as homework).
+3. Fill CORE method TODOs for menus 1–9 — do **not** open `solution/` first.
+4. Run the starter smoke test (at least menus `1` → `8` → `9`); capture evidence under `notes/screenshots/lab-6/`.
+5. Mark the **timed-path Pass criteria** in the starter README. Complete remaining CORE menus 2–7 and GUIDE steps as homework / extended work.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
-| **Full (extended)** | see Duration | Every Step in this GUIDE |
+| **Timed (default)** | ~45 min | CORE methods for menus 1–9; classroom prioritizes smoke **1+8+9** |
+| **Full (extended)** | see Duration | Every Step + bonus menus 10–21 |
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
 

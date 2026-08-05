@@ -35,15 +35,15 @@
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
 1. Open [`starter/README.md`](starter/README.md).
-2. Copy `starter/` into your `java-bootcamp/examples/…` target (see starter README).
-3. Fill every `// TODO` — do **not** wait on a perfect prior lab; the starter includes a baseline.
-4. Run the starter smoke test; evidence under `notes/screenshots/lab-26/`.
+2. Copy `starter/` into `%USERPROFILE%\java-bootcamp\examples\lab26-crm` (Windows) or `~/java-bootcamp/examples/lab26-crm` (macOS/Linux) — see starter README.
+3. Fill every `// TODO` — do **not** wait on a perfect prior lab; the starter includes a baseline CRM API.
+4. Add `ProfileBindingTest` under `src/test` (starter ships **0** tests; solution has **Tests run: 1**), then smoke under `dev`.
 5. Mark timed-path Pass criteria in the starter README. Continue remaining GUIDE steps as homework if needed.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
-| **Full (extended)** | see Duration | Every Step in this GUIDE |
+| **Timed (default)** | ~45 min | Starter TODOs + `ProfileBindingTest` + smoke |
+| **Full (extended)** | see Duration | Every Step in this GUIDE (override ladder, optional H2 console / JPA notes) |
 
 ---
 
@@ -54,13 +54,13 @@ Keep this checklist visible while you work.
 | # | Deliverable |
 | - | ----------- |
 | 1 | `application.yml` + `dev`/`test`/`prod` profile files |
-| 2 | `NorthstarIntegrationProperties` + enable config |
-| 3 | `.env.example` placeholders only |
+| 2 | `NorthstarIntegrationProperties` + `@EnableConfigurationProperties` |
+| 3 | `.env.example` placeholders only (`DB_USERNAME`, `DB_PASSWORD`, `NORTHSTAR_API_KEY`) |
 | 4 | Evidence of `-D` and env profile activation |
-| 5 | Fail-fast prod startup evidence |
-| 6 | Override-order notes with measurements |
-| 7 | Dual green tests under `test` |
-| 8 | CRM smoke under `dev` for fixtures |
+| 5 | Fail-fast prod startup evidence (unresolved `${DB_PASSWORD}` / `${NORTHSTAR_API_KEY}`) |
+| 6 | Override-order notes (full path) or short notes in `docs/profile-notes.md` |
+| 7 | `ProfileBindingTest` green under `test` (**Tests run: 1**) |
+| 8 | CRM smoke under `dev` for `CUS-1001` |
 
 **Must submit:** the items in the table above (sources + evidence + short notes).
 
@@ -68,21 +68,23 @@ Keep this checklist visible while you work.
 
 ## Lab Overview
 
-This Module 26 lab externalizes **environment-aware configuration** for the Customer Management Platform. You convert shared defaults to `application.yml`, split `application-dev.yml` / `application-test.yml` / `application-prod.yml`, activate profiles two ways, prove property-source override order, bind settings with `@ConfigurationProperties`, and keep real secrets out of Git.
+This Module 26 lab externalizes **environment-aware configuration** for the Customer Management Platform. You convert shared defaults to `application.yml`, split `application-dev.yml` / `application-test.yml` / `application-prod.yml`, activate profiles two ways, bind settings with `@ConfigurationProperties`, and keep real secrets out of Git.
+
+The timed path uses **JDBC DataSource URLs only** (H2 in-memory for `dev`/`test`). There is **no JPA** and **no `/h2-console`** requirement in the starter/solution contract.
 
 ## Learning Objectives
 
 After completing this lab, you will be able to:
 
 * Explain Spring property-source override order (CLI > env > `application-{profile}.yml` > `application.yml` > code defaults)
-* Convert `application.properties` to `application.yml` and know when each format helps
-* Create and structure `application-dev.yml`, `application-test.yml`, and `application-prod.yml`
+* Structure `application.yml` plus `application-dev.yml`, `application-test.yml`, and `application-prod.yml`
 * Activate a profile with `-Dspring.profiles.active` / `spring-boot.run.profiles` and with `SPRING_PROFILES_ACTIVE`
-* Bind externalized configuration with `@ConfigurationProperties` instead of scattered `@Value`
+* Bind externalized configuration with a mutable `@ConfigurationProperties` class
+* Keep prod secrets in env vars and prove fail-fast when placeholders are unresolved
 
 ## Business Scenario
 
-Northstar’s CRM must run in three places: laptop/laptop sandbox (`dev`), CI (`test`), and shared production with an PostgreSQL-style database (`prod`). The team keeps shipping incidents caused by developer settings in shared files.
+Northstar’s CRM must run in three places: laptop sandbox (`dev`), CI (`test`), and shared production with PostgreSQL (`prod`). The team keeps shipping incidents caused by developer settings in shared files.
 
 Leadership freezes:
 
@@ -98,7 +100,7 @@ Use these examples consistently:
 | `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY` | — | **env only** for prod — never real values in Git |
 | `.env.example` | — | placeholders only |
 
-**Security note for evidence.** Commit `.env.example` with `changeme` placeholders. Never commit `.env`, real PostgreSQL passwords, or live API keys. Restrict `/actuator/env` in prod.
+**Security note for evidence.** Commit `.env.example` with lab placeholders. Never commit `.env`, real PostgreSQL passwords, or live API keys.
 
 ---
 
@@ -112,8 +114,8 @@ flowchart TB
   Prof --> Base["application.yml"]
   Base --> Props["@ConfigurationProperties<br/>lowest"]
   Props --> Spring["Spring Environment"]
-  Spring --> DS["DataSource / Logging / Actuator"]
-  Spring --> Svc["CustomerService / Repository"]
+  Spring --> DS["DataSource URL binding"]
+  Spring --> Svc["CustomerService in-memory map"]
 ```
 
 ## Prerequisites
@@ -123,7 +125,6 @@ Prior labs: [Lab 25](../../module-25/lab25/LAB-25-GUIDE.md).
 Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Spring Boot 3
-* Working `lab25-crm` with Customer layers on port 8080
 * Ability to set JVM system properties and OS environment variables (Bash or PowerShell)
 * No secrets committed to Git
 
@@ -139,50 +140,41 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```yaml
-# application-dev.yml
+# application.yml (base — shared defaults)
+spring:
+  application:
+    name: northstar-crm
+server:
+  port: 8080
+northstar:
+  integration:
+    api-base-url: http://localhost:9090
+    connect-timeout-ms: 2000
+
+# application-dev.yml (solution target)
 spring:
   datasource:
-    url: jdbc:h2:mem:crmdev;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:lab26dev;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
     username: sa
-    password: ""
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+    password:
+    driver-class-name: org.h2.Driver
 logging:
   level:
     com.northstar.crm: DEBUG
-    org.hibernate.SQL: DEBUG
-northstar:
-  integration:
-    api-key: "dev-local-key-not-secret"
-    connect-timeout-ms: 3000
 
-# application-test.yml
+# application-test.yml (solution target)
 spring:
   datasource:
-    url: jdbc:h2:mem:crmtest;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:lab26test;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
     username: sa
-    password: ""
-  h2:
-    console:
-      enabled: false
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: false
-logging:
-  level:
-// ... truncated — see full sample in the Steps
+    password:
+    driver-class-name: org.h2.Driver
+northstar:
+  integration:
+    connect-timeout-ms: 100
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** App name is `northstar-crm`. Base YAML uses `api-base-url` + `connect-timeout-ms` (default **2000**). H2 mem names are `lab26dev` / `lab26test`. Prod secrets bind only in `application-prod.yml` via env placeholders — not in base YAML.
 
 ---
 
@@ -192,47 +184,63 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab26-crm
 
 ---
 
-### Step 1 — Branch Lab 25 and inventory existing properties
+### Step 1 — Copy starter and inventory YAML TODOs
 
-**Why:** Conversion without inventory silently drops keys and causes “mystery” regressions.
+**Why:** Timed path starts from starter, not a fragile Lab 25 copy.
 
 **Do this:**
 
 ```bash
-cd ~/java-bootcamp/examples
-cp -r lab25-crm lab26-crm
-cd lab26-crm
+# Prefer starter copy (timed path) — see starter/README.md
+cd ~/java-bootcamp/examples/lab26-crm
 mkdir -p docs
 mkdir -p ~/java-bootcamp/notes/screenshots/lab-26
 ```
 
-List every key in `application.properties` (or existing YAML) on paper/notes before deleting anything: app name, port, datasource, JPA, H2 console, logging.
+**Full path (optional):** if branching an older CRM copy instead of starter, inventory every key before rewriting YAML.
 
-**Expected result:** Complete inventory in `docs/config-notes.md`; no key forgotten between Step 1 and Step 2.
+List keys you will fill: `spring.application.name`, port, `northstar.integration.*`, datasource URLs per profile.
 
-**If it fails:** Project only has inline defaults → still document intended keys before authoring YAML.
+**Expected result:** Notes started in `docs/profile-notes.md` (not `config-notes.md`); project under `examples/lab26-crm`.
+
+**If it fails:** Working only inside the course `labs/` clone → copy starter into `java-bootcamp/examples/lab26-crm` first.
 
 ---
 
-### Step 2 — Convert shared defaults to `application.yml`
+### Step 2 — Complete shared defaults in `application.yml`
 
 **Why:** Shared settings must be profile-agnostic so environment files only carry deltas.
 
-**Do this:** Create `application.yml` with application name, default profile `dev`, port, management health/info (lab baseline), logging pattern with correlation placeholder, and `northstar.integration` **placeholder** values for local-only. Delete `application.properties` after compile succeeds.
+**Do this:** Ensure base YAML matches the contract:
+
+```yaml
+spring:
+  application:
+    name: northstar-crm
+  # Optional (solution): profiles.default: dev
+server:
+  port: 8080
+northstar:
+  integration:
+    api-base-url: http://localhost:9090
+    connect-timeout-ms: 2000
+```
+
+Do **not** put prod `api-key` or DB passwords in the base file. Add `spring-boot-starter-jdbc` if you bind a DataSource (solution does; starter may need the dependency for datasource YAML).
 
 ```bash
 mvn -q clean compile
 ```
 
-**Expected result:** Only YAML remains for app config; compile success.
+**Expected result:** Compile success; app name `northstar-crm`.
 
-**If it fails:** Indentation errors → fix YAML structure. Both `.properties` and `.yml` conflicting → remove properties after migration.
+**If it fails:** Indentation errors → fix YAML structure.
 
 ---
 
 ### Step 3 — Author `application-dev.yml` and `application-test.yml`
 
-**Why:** Developers need loud SQL and H2 console; CI needs quiet logs and isolated schema — never the same file.
+**Why:** Developers need a loud local profile; CI needs a quiet isolated `test` profile — never the same file.
 
 **Do this:**
 
@@ -240,48 +248,23 @@ mvn -q clean compile
 # application-dev.yml
 spring:
   datasource:
-    url: jdbc:h2:mem:crmdev;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:lab26dev;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
     username: sa
-    password: ""
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+    password:
+    driver-class-name: org.h2.Driver
 logging:
   level:
     com.northstar.crm: DEBUG
-    org.hibernate.SQL: DEBUG
-northstar:
-  integration:
-    api-key: "dev-local-key-not-secret"
-    connect-timeout-ms: 3000
 
 # application-test.yml
 spring:
   datasource:
-    url: jdbc:h2:mem:crmtest;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:lab26test;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
     username: sa
-    password: ""
-  h2:
-    console:
-      enabled: false
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: false
-logging:
-  level:
-    root: WARN
-    com.northstar.crm: INFO
+    password:
+    driver-class-name: org.h2.Driver
 northstar:
   integration:
-    api-key: "test-fixture-key"
     connect-timeout-ms: 100
 ```
 
@@ -289,9 +272,11 @@ northstar:
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-**Expected result:** Banner shows `dev`; H2 console path available in logs/docs; CRM GET `CUS-1001` still works if seeds present.
+**Expected result:** Banner/active profile shows `dev`; GET `http://localhost:8080/api/customers/CUS-1001` still works (in-memory `CustomerService` seeds).
 
-**If it fails:** Profile not active → check activation and filename. Seeds missing after profile change → confirm datasource URL still in-memory / seeder still runs.
+**Full path (optional):** enable H2 console or JPA `ddl-auto` only if you add those dependencies yourself — **not** part of the timed starter/solution contract.
+
+**If it fails:** Profile not active → check activation and filename. Wrong mem name (`crmdev`) → use `lab26dev` / `lab26test`.
 
 ---
 
@@ -305,41 +290,22 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 # application-prod.yml
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:prod-db.northstar.internal}:${DB_PORT:5432}/${DB_SERVICE:CRMPROD}
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db.example.internal:5432/crm
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-    hikari:
-      maximum-pool-size: 10
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: false
-  h2:
-    console:
-      enabled: false
-logging:
-  level:
-    root: WARN
-    com.northstar.crm: INFO
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health
 northstar:
   integration:
     api-key: ${NORTHSTAR_API_KEY}
-    connect-timeout-ms: 3000
 ```
 
 ```bash
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-**Expected result:** `APPLICATION FAILED TO START` / unresolved placeholder for missing env vars.
+**Expected result:** `APPLICATION FAILED TO START` / unresolved placeholder for missing `${DB_PASSWORD}` and/or `${NORTHSTAR_API_KEY}`.
 
-**If it fails:** App starts with blanks → you added defaults like `${DB_PASSWORD:}` — remove defaults for secrets. Wrong driver on classpath → acceptable for this lab if fail is still placeholder resolution; document PostgreSQL driver note.
+**If it fails:** App starts with blanks → you added defaults like `${DB_PASSWORD:}` — remove defaults for secrets.
+
 ---
 
 ### Step 5 — Activate profiles two ways
@@ -364,17 +330,19 @@ unset SPRING_PROFILES_ACTIVE
 
 PowerShell equivalent: `$env:SPRING_PROFILES_ACTIVE="test"` then clear.
 
-**Expected result:** Evidence of both activation styles in notes (banner lines).
+**Expected result:** Evidence of both activation styles in `docs/profile-notes.md` (banner lines).
 
-**If it fails:** Env var ignored in same shell where `-D` also set → document which wins next step. Maven fork not inheriting env → export in same terminal session.
+**If it fails:** Env var ignored in same shell where `-D` also set → document which wins next step.
 
 ---
 
-### Step 6 — Prove override order with `connect-timeout-ms`
+### Step 6 — Prove override order with `connect-timeout-ms` (full path)
 
 **Why:** Trust the precedence table by watching the same key change winners.
 
-**Do this:** Under `test` profile (YAML value `100` in starter `application-test.yml`), then set `NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS=9999`, then `-Dnorthstar.integration.connect-timeout-ms=1234`. Record effective value via `/actuator/env/...` (dev/test only) or a small `@ConfigurationProperties` log/test.
+**Timed path:** optional — notes in `docs/profile-notes.md` are enough if class time is short.
+
+**Do this:** Under `test` profile (YAML value `100`), then set `NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS=9999`, then `-Dnorthstar.integration.connect-timeout-ms=1234`. Record effective value via a small `@ConfigurationProperties` log/test (actuator `/env` is optional and not required in starter YAML).
 
 | Layer | Source | Expected connect-timeout-ms |
 | ----- | ------ | ------------------- |
@@ -382,42 +350,62 @@ PowerShell equivalent: `$env:SPRING_PROFILES_ACTIVE="test"` then clear.
 | Env var | `NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS` | 9999 |
 | CLI `-D` | system property | 1234 |
 
-**Expected result:** Recorded three measurements matching the table; CLI wins over env.
+**Expected result:** Recorded measurements matching the table; CLI wins over env.
 
-**If it fails:** Relaxed binding confusion (`connect-timeout-ms` vs `connectTimeoutMs`) → use Boot’s relaxed rules consistently. Actuator env not exposed → use a unit `ApplicationContextRunner` / test instead and document.
+**If it fails:** Relaxed binding confusion (`connect-timeout-ms` vs `connectTimeoutMs`) → use Boot’s relaxed rules consistently.
 
 ---
 
 ### Step 7 — Bind `@ConfigurationProperties` and `.env.example`
 
-**Why:** Typed, validated binding fails with named fields instead of late NPEs.
+**Why:** Typed binding fails with named fields instead of late NPEs.
 
-**Do this:** `NorthstarIntegrationProperties` record with `@Validated`, `@NotBlank apiKey`, `@Positive connectTimeoutMs`, prefix `northstar.integration`. Enable via `@EnableConfigurationProperties`. Add `.env.example` with `DB_*` and `NORTHSTAR_API_KEY=changeme`. Ensure `.gitignore` ignores `.env`.
+**Do this:** Complete `NorthstarIntegrationProperties` as a **mutable class** (not a record) with prefix `northstar.integration`, fields `apiBaseUrl`, `connectTimeoutMs` (default **2000**), `apiKey`, plus getters/setters. Annotate with `@ConfigurationProperties` and enable via `@EnableConfigurationProperties` on `CrmApplication`.
+
+Bean Validation (`@Validated` / `@NotBlank`) is **not** required for the timed path — the starter/solution class has none.
+
+Add `.env.example`:
+
+```text
+# Copy to .env locally — never commit real values
+DB_USERNAME=crm
+DB_PASSWORD=change-me
+NORTHSTAR_API_KEY=lab-only-key
+```
+
+Ensure `.gitignore` ignores `.env`.
 
 ```bash
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-**Expected result:** Fail-fast on missing/blank prod binding fields; `.env.example` committed; `.env` not.
+**Expected result:** Fail-fast on unresolved prod placeholders; `.env.example` committed; `.env` not.
 
-**If it fails:** Properties not bound → enable config props + correct prefix. Validation not running → add validation starter / `@Validated`.
+**If it fails:** Properties not bound → enable config props + correct prefix.
 
 ---
 
 ### Step 8 — Tests under `test` profile + CRM smoke under `dev`
 
-**Why:** Config work must not break Lab 25 fixtures or CI quietness.
+**Why:** Config work must not break CRM fixtures or CI quietness.
 
-**Do this:** Run tests with `spring.profiles.active=test`. Under `dev`, curl `CUS-1001`/`CUS-1002` with `X-Correlation-Id: lab-request-001`. Optional `ConfigurationPrecedenceTest` documenting one precedence assertion.
+**Do this:** Starter has **no** tests yet. Add `com.northstar.crm.ProfileBindingTest` (see solution pattern):
+
+* `@SpringBootTest` + `@ActiveProfiles("test")`
+* Assert `connectTimeoutMs == 100`, `apiBaseUrl == "http://localhost:9090"`, customer `CUS-1001` / `"Amina Khan"`
 
 ```bash
-mvn -q test -Dspring.profiles.active=test
-mvn -q test -Dspring.profiles.active=test
+mvn -B test -Dspring.profiles.active=test
+# Expected: Tests run: 1, BUILD SUCCESS
+# Optional: run a second time for determinism evidence ("dual green" = same suite twice, still 1 test)
+mvn -B test -Dspring.profiles.active=test
 ```
 
-**Expected result:** Dual green tests; `dev` smoke curls succeed; notes include override evidence.
+Under `dev`, curl `CUS-1001` with `X-Correlation-Id: lab-request-001`.
 
-**If it fails:** Tests picking `dev` loud SQL → force `test` profile in `src/test/resources` or Surefire. Seeds fail under test H2 name → confirm seeder/schema init for test URL.
+**Expected result:** **Tests run: 1** · `ProfileBindingTest` green; `dev` smoke succeeds; notes in `docs/profile-notes.md`.
+
+**If it fails:** Tests picking wrong profile → force `@ActiveProfiles("test")`. Missing assertions → replace starter ProfileBindingTest TODO stub.
 
 ---
 
@@ -442,7 +430,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | `lab26-crm` under `examples/` | Pass / Fail |
-| 2 | Inventory complete; shared `application.yml` present | Pass / Fail |
+| 2 | Shared `application.yml` with `name: northstar-crm` | Pass / Fail |
 | 3 | `.gitignore` covers `.env` / secrets | Pass / Fail |
 
 ### Checkpoint B — Profile files
@@ -452,7 +440,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | `application-dev.yml` / `-test.yml` / `-prod.yml` exist | Pass / Fail |
-| 2 | `prod` has no default secrets | Pass / Fail |
+| 2 | H2 URLs use `lab26dev` / `lab26test`; prod URL hard-coded host | Pass / Fail |
 | 3 | `dev` CRM smoke for `CUS-1001` works | Pass / Fail |
 
 ### Checkpoint C — Activation + binding
@@ -462,8 +450,8 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | Activation via `-D` and via env evidenced | Pass / Fail |
-| 2 | Override-order table measured | Pass / Fail |
-| 3 | `@ConfigurationProperties` + fail-fast on prod | Pass / Fail |
+| 2 | `docs/profile-notes.md` present | Pass / Fail |
+| 3 | `@ConfigurationProperties` class + fail-fast on prod | Pass / Fail |
 
 ### Checkpoint D — Hygiene
 
@@ -471,9 +459,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Two consecutive `mvn test` under `test` green | Pass / Fail |
+| 1 | `ProfileBindingTest` — Tests run: 1 under `test` | Pass / Fail |
 | 2 | `.env.example` only; no secrets staged | Pass / Fail |
-| 3 | README runbook complete | Pass / Fail |
+| 3 | README / notes runbook complete | Pass / Fail |
 
 ---
 
@@ -494,40 +482,24 @@ _Mark **Pass** or **Fail** in your lab notes._
 ```yaml
 spring:
   application:
-    name: customer-service
+    name: northstar-crm
   profiles:
     default: dev
-  jackson:
-    default-property-inclusion: non_null
 server:
   port: 8080
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-logging:
-  pattern:
-    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level [%X{correlationId}] %logger{36} - %msg%n"
-  level:
-    root: INFO
-    com.northstar.crm: INFO
 northstar:
   integration:
-    api-key: "local-dev-placeholder"
-    connect-timeout-ms: 3000
+    api-base-url: http://localhost:9090
+    connect-timeout-ms: 2000
 ```
 
 ### `.env.example`
 
 ```text
-# copy to .env locally — NEVER commit .env
-DB_HOST=prod-db.northstar.internal
-DB_PORT=5432
-DB_SERVICE=CRMPROD
-DB_USERNAME=changeme
-DB_PASSWORD=changeme
-NORTHSTAR_API_KEY=changeme
+# Copy to .env locally — never commit real values
+DB_USERNAME=crm
+DB_PASSWORD=change-me
+NORTHSTAR_API_KEY=lab-only-key
 ```
 
 ### Commands
@@ -536,8 +508,8 @@ NORTHSTAR_API_KEY=changeme
 cd ~/java-bootcamp/examples/lab26-crm
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
 curl -s -H "X-Correlation-Id: lab-request-001" http://localhost:8080/api/customers/CUS-1001
-mvn test -Dspring.profiles.active=test
-mvn test -Dspring.profiles.active=test
+mvn -B test -Dspring.profiles.active=test
+# expect Tests run: 1
 # expect fail without env:
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
 
@@ -545,11 +517,6 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 # $env:SPRING_PROFILES_ACTIVE="test"
 # mvn spring-boot:run
 # Remove-Item Env:SPRING_PROFILES_ACTIVE
-
-# Override order demo (illustrative):
-# export SPRING_PROFILES_ACTIVE=test
-# export NORTHSTAR_INTEGRATION_CONNECT_TIMEOUT_MS=9999
-# mvn spring-boot:run -Dnorthstar.integration.connect-timeout-ms=1234
 
 git status --short
 ```
@@ -572,10 +539,10 @@ git status --short
 | ------- | ------------ | --- |
 | Profile ignored | Wrong filename / not activated | `application-{name}.yml` + active profile |
 | Env not picked up | Not exported in same shell / need restart | Restart after env change |
-| Tests use `dev` | No test profile force | Surefire/`src/test/resources` |
+| Tests use `dev` | No test profile force | `@ActiveProfiles("test")` |
 | Prod starts empty password | Default `${VAR:}` used | Remove secret defaults |
 | Binding null | Prefix/enable missing | `@EnableConfigurationProperties` |
-| CRM seeds gone | Datasource URL changed | Align seeder with profile DB |
+| Datasource bean missing | No JDBC starter | Add `spring-boot-starter-jdbc` |
 | Working in `module-26-exercises` for the lab | Wrong project | Lab lives in `examples/lab26-crm` |
 | Real password committed | Secret hygiene failure | Remove, rotate, use `.env.example` only |
 
@@ -612,5 +579,3 @@ Write **1–3 sentence** answers (not essays):
 3. Which failure was hardest (missing prop, wrong profile, override confusion)?
 
 ---
-
-

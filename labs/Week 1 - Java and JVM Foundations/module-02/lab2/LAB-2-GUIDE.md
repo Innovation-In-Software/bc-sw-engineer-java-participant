@@ -42,6 +42,8 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
+> **Timed path (starter):** If you copied `starter/Lab2-JavaSyntax/`, **skip create Steps 1–5** (folders, `Student`, `StudentManager` skeleton, `Main` menu). Those files already exist. Fill TODOs only in `StudentManager` (`addStudent` / `displayStudents` / `searchStudent` / `calculateAverage`). Prefer the existing `printStudentTable` / `findStudentIndex` helpers — do not rewrite table formatting from scratch. The starter menu shows options **1–10** (core 1–5 plus bonus 6–10); timed path only needs core **1–5**.
+
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
 
 | Role | Path |
@@ -117,12 +119,18 @@ flowchart TB
 
 ### Lab flow
 
+1. Create / copy packaged sources under `examples/Lab2-JavaSyntax/src/com/academy/student/`.
+2. Implement array storage + core menu methods on `StudentManager`.
+3. Compile to `out/`, run `com.academy.student.Main`, walk the sample session.
+4. Capture LMS evidence (screenshots + short answers).
 
 ### Menu flow
 
+`Main` loops: print menu → read choice → `switch` → call `StudentManager` → repeat until Exit (`5`). Starter also lists bonus options **6–10**; ignore them on the timed path unless you finish early.
 
 ### Compile → run
 
+From `Lab2-JavaSyntax/`: `javac -d out` on the three sources → `java -cp out com.academy.student.Main`. Class files land under `out/com/academy/student/`.
 
 ---
 
@@ -699,7 +707,7 @@ Enter Choice :
 3. Choice `4` → average
 4. Choice `5` → exit
 
-**Expected result:** Console should look like the reference sample (core 1–5; ignore bonus 6–10 if the starter prints them):
+**Expected result:** Core behavior matches the sample below. **Starter note:** the starter menu prints options **1–10** (bonus 6–10). That is expected — use only core choices **1–5** for the timed-path transcript; ignore bonus lines in screenshots or leave them unused.
 
 ```text
 ====================================
@@ -710,6 +718,11 @@ Student Management System
 3. Search Student
 4. Average Marks
 5. Exit
+6. Top Student (Bonus)
+7. Lowest Marks (Bonus)
+8. Pass / Fail Report (Bonus)
+9. Sort by Marks (Bonus)
+10. Class Statistics (Bonus)
 Enter Choice : 1
 Student ID : 101
 Name : John
@@ -795,7 +808,11 @@ java -cp out com.academy.student.Main
 
 ### Method map (suggested)
 
-| Class | M
+| Class | Methods / role |
+| ----- | -------------- |
+| `Student` | Fields + getters/setters; `display()`; pass/fail helper |
+| `StudentManager` | `displayMenu`; `addStudent`; `displayStudents`; `searchStudent`; `calculateAverage`; helpers `printStudentTable`, `findStudentIndex` (+ bonus 6–10 optional) |
+| `Main` | Create shared `Scanner` + `StudentManager`; `while (true)` menu `switch`; exit on `5` |
 
 ## Failure Experiments (optional learning)
 

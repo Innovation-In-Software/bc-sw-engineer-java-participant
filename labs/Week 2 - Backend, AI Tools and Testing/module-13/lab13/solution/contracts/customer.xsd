@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://northstar.com/crm/customer"
+           targetNamespace="http://northstar.com/crm/customer"
+           elementFormDefault="qualified">
+
+  <xs:simpleType name="CustomerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PROSPECT"/>
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="SUSPENDED"/>
+      <xs:enumeration value="CLOSED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="CustomerType">
+    <xs:sequence>
+      <xs:element name="customerId" type="xs:string"/>
+      <xs:element name="fullName" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="tns:CustomerStatus"/>
+      <xs:element name="createdAt" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="createCustomerRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fullName" type="xs:string"/>
+        <xs:element name="email" type="xs:string"/>
+        <xs:element name="phone" type="xs:string" minOccurs="0"/>
+        <xs:element name="status" type="tns:CustomerStatus" minOccurs="0"/>
+        <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="tns:CustomerType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="updateCustomerRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customerId" type="xs:string"/>
+        <xs:element name="fullName" type="xs:string" minOccurs="0"/>
+        <xs:element name="email" type="xs:string" minOccurs="0"/>
+        <xs:element name="phone" type="xs:string" minOccurs="0"/>
+        <xs:element name="status" type="tns:CustomerStatus" minOccurs="0"/>
+        <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="tns:CustomerType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getCustomerRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customerId" type="xs:string"/>
+        <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="tns:CustomerType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

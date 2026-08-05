@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-20-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 20 starter `examples\lab20-crm`: Logback pattern `corr=%X{corr} cust=%X{cust} op=%X{op}`, `CorrelationFilter` MDC + finally clear, PII-free service logs (`op=create` / `op=get`). `CustomerLoggingIT` → **Tests run: 1**, Failures: 0. `mvn -B -Dtest=CustomerLoggingIT test` → **BUILD SUCCESS**. Sample line: `corr=lab-request-001 cust=CUS-1001 op=get` with no Amina/email. Instructor walkthrough: `docs/instructor-participant-help/week-2/20-logging-exercises-and-lab20.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 20 solution under `%USERPROFILE%\java-bootcamp\examples\_week2-verify\lab20-solution`: Logback pattern `corr=%X{corr} cust=%X{cust} op=%X{op}`, `CorrelationFilter` MDC + finally clear, PII-free service logs. Surefire **includes `*IT.java`** (Spring Boot parent would otherwise skip it). `mvn -B clean test` → **Tests run: 1**, Failures: 0 · **BUILD SUCCESS**. Sample line: `corr=lab-request-001 cust=CUS-1001 op=get` with no Amina/email. Instructor walkthrough: `docs/instructor-participant-help/week-2/20-logging-exercises-and-lab20.md`.
 
 ## Prerequisites (Windows)
 

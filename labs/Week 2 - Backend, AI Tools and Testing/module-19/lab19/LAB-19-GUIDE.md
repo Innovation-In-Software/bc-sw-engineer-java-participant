@@ -312,9 +312,9 @@ mvn -q -Dtest=CustomerApiIT test
 
 Wire submit to `POST /api/customers` with header `X-Correlation-Id: lab-request-001`. Show result text including ID and name/status (or an error message for validation).
 
-Manually open `http://localhost:8080/customers.html` after `mvn spring-boot:run` and submit `CUS-2001` once (UI fixture).
+Manually open `http://localhost:8080/customers.html` after `mvn spring-boot:run` and submit `CUS-2001` once (UI fixture: name **Ui Customer**, status **PROSPECT**).
 
-**Expected result:** Manual submit shows Ravi / PROSPECT in result; Network tab shows correlation header.
+**Expected result:** Manual submit shows **Ui Customer** / **PROSPECT** (and `CUS-2001`) in result; Network tab shows correlation header.
 
 **If it fails:** Static resource 404 → check `src/main/resources/static` path. CORS/fetch errors → same-origin static+API under Boot. Blank result → JS error in browser console—fix before automating.
 

@@ -1,6 +1,6 @@
 package com.northstar.crm.api;
 
-import com.northstar.crm.dto.CustomerMapper;
+import com.northstar.crm.mapper.CustomerMapper;
 import com.northstar.crm.dto.CustomerRequestDTO;
 import com.northstar.crm.dto.CustomerResponseDTO;
 import com.northstar.crm.entity.Customer;
@@ -21,7 +21,7 @@ public class CustomerApiFacade {
 
     public CustomerApiFacade(CustomerService service) {
         this.service = service;
-        // TODO: build Validator via Validation.buildDefaultValidatorFactory().getValidator()
+        // ValidatorFactory already wired — keep this ctor pattern (GUIDE Step 5)
         this.validator = Validation.buildDefaultValidatorFactory().getValidator();
     }
 

@@ -74,17 +74,17 @@ public class Main {
         System.out.println("7 Active Employees");
         System.out.println("8 Dashboard");
         System.out.println("9 Exit");
-        System.out.println("10 Lambda Demo");
-        System.out.println("11 Functional Interface Demo");
-        System.out.println("12 Stream Sources Demo");
-        System.out.println("13 High Salary Filter (>80000)");
-        System.out.println("14 IT High Performers Filter");
-        System.out.println("15 Mapping Demo");
-        System.out.println("16 Sorting Demo");
-        System.out.println("17 Distinct Departments");
-        System.out.println("18 Top/Next 5 Salaries");
-        System.out.println("19 Employee Counts");
-        System.out.println("20 Collectors Demo");
+        System.out.println("10 Lambda Demo (Bonus)");
+        System.out.println("11 Functional Interface Demo (Bonus)");
+        System.out.println("12 Stream Sources Demo (Bonus)");
+        System.out.println("13 High Salary Filter (>80000) (Bonus)");
+        System.out.println("14 IT High Performers Filter (Bonus)");
+        System.out.println("15 Mapping Demo (Bonus)");
+        System.out.println("16 Sorting Demo (Bonus)");
+        System.out.println("17 Distinct Departments (Bonus)");
+        System.out.println("18 Top/Next 5 Salaries (Bonus)");
+        System.out.println("19 Employee Counts (Bonus)");
+        System.out.println("20 Collectors Demo (Bonus)");
         System.out.println("21 Bonus Insights");
         System.out.print("Choice : ");
     }

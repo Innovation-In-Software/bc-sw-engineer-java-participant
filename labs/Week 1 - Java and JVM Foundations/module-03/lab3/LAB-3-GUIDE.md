@@ -42,6 +42,8 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
+> **Timed path (starter):** If you copied `starter/Lab3-BankingSystem/`, **skip the create Steps** that scaffold packages and class shells — those eight types already exist. Fill TODOs only. Implement `SavingsAccount.calculateInterest` and `CurrentAccount.calculateCharges` **before** you rely on Display Accounts (menu `6`), because display prints interest/charges. Bonus menus **9–13** are optional on the timed path; core smoke uses create customer / savings / deposit / withdraw / display / exit.
+
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
 
 | Role | Path |

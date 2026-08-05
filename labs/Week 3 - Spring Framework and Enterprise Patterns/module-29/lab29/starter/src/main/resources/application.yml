@@ -8,3 +8,7 @@ management:
     web:
       exposure:
         include: health,info
+
+northstar:
+  security:
+    jwt-secret: ${JWT_SECRET:lab-only-change-me}

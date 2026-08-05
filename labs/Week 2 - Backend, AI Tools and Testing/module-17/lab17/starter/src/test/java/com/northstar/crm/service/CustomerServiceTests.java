@@ -40,4 +40,16 @@ class CustomerServiceTests {
         // TODO: changeStatus CUS-9999 → BusinessException with CUSTOMER_NOT_FOUND
         throw new UnsupportedOperationException("TODO: not found");
     }
+
+    @Test
+    void duplicateEmailThrowsConflict() {
+        // TODO: add Amina; add other id with same email → BusinessException
+        throw new UnsupportedOperationException("TODO: duplicate email");
+    }
+
+    @Test
+    void closedToActiveRejected() {
+        // TODO: add CLOSED CUS-1001; changeStatus → ACTIVE throws BusinessException
+        throw new UnsupportedOperationException("TODO: closed to active");
+    }
 }

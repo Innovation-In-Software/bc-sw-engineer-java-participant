@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-21-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 21 starter `examples\lab21-crm`: Actuator probes + readiness group (`readinessState,crmReadinessIndicator`) + Micrometer `crm.customer.create`/`get` via `recordCreate`/`recordGet` (tag `result` only). Live curls: health/liveness/readiness **UP**; create metric after POST **CUS-2101**. `ActuatorIT` (`healthAndProbesAreUp`, `readinessCanGoDownWhileLivenessStaysUp`, `createMetricAppearsAfterTraffic`) → **Tests run: 3**, Failures: 0. Two consecutive `mvn -B "-Dtest=ActuatorIT" test` → **BUILD SUCCESS**. Instructor walkthrough: `docs/instructor-participant-help/week-2/21-obs-exercises-and-lab21.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Lab 21 solution under `%USERPROFILE%\java-bootcamp\examples\_week2-verify\lab21-solution`: Actuator probes + readiness group (`readinessState,crmReadinessIndicator`) + Micrometer `crm.customer.create`/`get`. Surefire **includes `*IT.java`**. `ActuatorIT` (`healthAndProbesAreUp`, `readinessCanGoDownWhileLivenessStaysUp`, `createMetricAppearsAfterTraffic`) → `mvn -B clean test` → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS**. Instructor walkthrough: `docs/instructor-participant-help/week-2/21-obs-exercises-and-lab21.md`.
 
 ## Prerequisites (Windows)
 
@@ -68,3 +68,4 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
 | 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
 | 5 | Screenshots (if required) under `notes/screenshots/lab-21/` | Pass / Fail |
+

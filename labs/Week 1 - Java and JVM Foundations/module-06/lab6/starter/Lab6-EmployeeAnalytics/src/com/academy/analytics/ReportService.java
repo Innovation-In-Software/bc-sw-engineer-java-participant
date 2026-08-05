@@ -1,10 +1,5 @@
 package com.academy.analytics;
 
-import java.util.DoubleSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 public class ReportService {
 
     private final EmployeeService employeeService;
@@ -13,9 +8,12 @@ public class ReportService {
         this.employeeService = employeeService;
     }
 
+    // --- CORE (menus 1–9) — keep throwing until implemented ---
+
     public void displayDashboard() {
-        // TODO: stream stats (avg/max/min), department count, active/inactive
+        // TODO (menu 8): stream stats (avg/max/min), department count, active/inactive
         // TODO: top performer, highest-paid dept, top 5 salaries — print dashboard block
+        // Expected with solution seed: Average Salary : 100680
         throw new UnsupportedOperationException("TODO");
     }
 
@@ -33,7 +31,7 @@ public class ReportService {
 
     public void displayTopPerformers() {
         System.out.println("Top Performers (Rating >= 4):");
-        // TODO: employeeService.getTopPerformers(4).forEach(...)
+        // TODO (menu 4): employeeService.getTopPerformers(4).forEach(...)
         throw new UnsupportedOperationException("TODO");
     }
 
@@ -42,7 +40,7 @@ public class ReportService {
     }
 
     public void displayDepartmentStatistics() {
-        // TODO: getDepartmentStatistics(); print count/avg/max/min per dept
+        // TODO (menu 6): getDepartmentStatistics(); print count/avg/max/min per dept
         throw new UnsupportedOperationException("TODO");
     }
 
@@ -50,9 +48,9 @@ public class ReportService {
         employeeService.displayActiveEmployees();
     }
 
+    // --- BONUS (menu 21) ---
+
     public void displayBonusInsights() {
-        System.out.println("--- Bonus Insights ---");
-        // TODO: second highest salary, longest name, highest avg dept, histogram, custom collector
-        throw new UnsupportedOperationException("TODO");
+        System.out.println("Bonus / full-path feature — implement after CORE");
     }
 }

@@ -1,6 +1,6 @@
 # Java Software Engineer Bootcamp
 
-**Participant lab guides** for the **Java Software Engineer** six-week bootcamp (**no solution keys**) from [Innovation In Software](https://github.com/Innovation-In-Software).
+**Participant lab guides** for the **Java Software Engineer** six-week bootcamp from [Innovation In Software](https://github.com/Innovation-In-Software). **Week 1–2** include `solution/` reference keys; **Week 3–6** do not.
 
 Early-career developers build full-stack enterprise Java skills — from JVM foundations through Spring, Kafka, React, PostgreSQL, DevOps, and a production-style capstone.
 
@@ -33,7 +33,7 @@ Early-career developers build full-stack enterprise Java skills — from JVM fou
 ```text
 bc-sw-engineer-java-participant/
 ├── README.md                 ← You are here (synced from course README.participant.md)
-├── labs/                     ← Lab guides and setup docs (no solution/ folders)
+├── labs/                     ← Lab guides and setup docs
 │   ├── FINAL-SETUP-README.md
 │   ├── PARTICIPANT-SETUP-README.md
 │   ├── CLONE-AND-OWN-REPO-GUIDE.md
@@ -41,12 +41,14 @@ bc-sw-engineer-java-participant/
 │   ├── TECHNOLOGY-STACK-GUIDE.md
 │   ├── ACRONYM-CHEATSHEETS-INDEX.md  ← Per-module term → full form sheets
 │   └── Week N - …/module-NN/
-│       ├── exercises/        ← Week 1 pre-lab practice (when present)
+│       ├── exercises/        ← Pre-lab practice (when present)
 │       └── labN/             ← Lab guide + Windows/macOS how-tos
+│           ├── starter/      ← Timed-path scaffold
+│           └── solution/     ← Week 1–2 only (reference after you try)
 └── decks/pdf/                ← Student-facing module slide PDFs
 ```
 
-**No `solution/` folders** are published here. Complete each lab yourself. Slide PDFs are under [`decks/pdf/`](decks/pdf/). Editable PPTX decks and instructor notes are provided separately by your instructor.
+**Week 1–2** publish `solution/` (and exercise solutions) so you can compare after attempting the lab. **Week 3–6** do **not** include `solution/` — complete those yourself. Prefer timed `starter/` first; open `solution/` only when stuck or after your attempt. Slide PDFs are under [`decks/pdf/`](decks/pdf/). Editable PPTX decks and instructor notes are provided separately by your instructor.
 
 ### Kahoot knowledge checks
 
@@ -149,7 +151,7 @@ cd bc-sw-engineer-java-participant
 5. Work under `~/java-bootcamp` or `%USERPROFILE%\java-bootcamp`  
 6. For each later module: open `module-NN/README.md` (Week 1) → exercises → one OS how-to → `LAB-N-GUIDE.md`. **Lab 1 Step 0** creates your private `java-bootcamp` GitHub repo — then commit/push there after every exercise pack and lab.
 
-Do not treat `labs/.../solution/` as your working project unless a lab says otherwise.
+Prefer timed `starter/` as your working project. Open Week 1–2 `solution/` only after you attempt the lab (or when your instructor says so). Week 3+ has no published solutions.
 
 ---
 

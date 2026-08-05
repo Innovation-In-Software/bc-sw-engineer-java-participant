@@ -1,21 +1,29 @@
-import java.io.Closeable;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class TryWithResourcesDemo {
-    static class DemoResource implements Closeable {
-        @Override
-        public void close() {
-            System.out.println("close()");
-        }
-    }
-
     public static void main(String[] args) {
-        // TODO: try-with-resources; body may throw; close must still print
-        try (DemoResource resource = new DemoResource()) {
-            System.out.println("using resource");
-            // TODO: optionally throw to prove close still runs
-            _____
-        } catch (Exception ex) {
-            System.out.println("caught: " + ex.getClass().getSimpleName());
+        // Relative path: current working directory must be the exercises folder.
+        Path file = Path.of("transactions.txt");
+
+        try {
+            Files.writeString(
+                    file, "deposit 100\nwithdraw 25\n");
+
+            // TODO: try-with-resources — BufferedReader from Files.newBufferedReader(file)
+            try (_____ reader = _____) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println("Read: " + line);
+                }
+            } // reader.close() happens here automatically
+
+            System.out.println(
+                    "Reader closed automatically.");
+        } catch (_____ ex) { // TODO: catch IOException
+            // TODO: print "File error: " + ex.getMessage()
         }
     }
 }

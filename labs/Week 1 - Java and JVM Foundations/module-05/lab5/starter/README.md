@@ -12,7 +12,7 @@ Domain classes (`Book`, `Member`, `BorrowRecord`, `BookComparator`) and `Main` a
 | **Estimated time** | ~45 minutes |
 | **Files** | Packaged suite under `Lab5-LibraryManagement/src/com/academy/library/` |
 
-**Boilerplate reduced:** Domain models, menu `Main`, and add/register helpers are given — focus on loan Map logic and reports.
+**Boilerplate reduced:** Domain models, menu `Main`, and add/register helpers are given — focus on loan Map logic and reports. Skip recreating those files.
 
 Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-5-GUIDE.md`](../LAB-5-GUIDE.md)
 
@@ -42,11 +42,12 @@ cd "$DST"
 
 ## 45-minute checklist (ordered TODOs)
 
-1. Skim domain models + given `addBook` / `registerMember`.
-2. Implement `LibraryService.borrowBook`.
-3. Implement `LibraryService.returnBook`.
-4. Implement `ReportService.displaySummaryReport`, `findMostPopularCategory` (export optional).
-5. Smoke test; evidence under `notes/screenshots/lab-5/`.
+1. Skim domain models + given `addBook` / `registerMember` (do not recreate).
+2. Implement `LibraryService.borrowBook` (**required**).
+3. Implement `LibraryService.returnBook` (**required**).
+4. Implement `ReportService.displaySummaryReport` + `findMostPopularCategory` (**required**).
+5. **Bonus / optional:** `exportReportToFile`, performance comparison (menus 14 / 17) — starter prints a Bonus stub so the menu does not crash.
+6. Smoke test; evidence under `notes/screenshots/lab-5/`.
 
 ## Smoke test
 
@@ -62,16 +63,26 @@ javac -d out `
 java -cp out com.academy.library.Main
 ```
 
-Interactive path: add book `101` / category `Programming` → register member `1` → borrow → reports → exit.
+Interactive path (prompts in order):
+
+1. Menu `1` → Book ID `101`, Title `Java Basics`, Author `Aman`, Category `Programming`, **Price `55`**
+2. Menu `2` → Member ID `1`, Name `Riya`, Email `riya@test.com`, Phone `9999999999`
+3. Menu `6` → Book ID `101`, Member ID `1`
+4. Menu `10` → Reports
+5. Menu `7` → Book ID `101` (optional return)
+6. Menu `11` → Exit
 
 **Expected output snippet:**
 
 ```text
+Book Added Successfully
+Member Registered Successfully
 Book Borrowed Successfully
 Reports
 Books : 1
 Borrowed : 1
-...
+Available : 0
+Members : 1
 Most Popular Category : Programming
 Thank You
 ```
@@ -81,7 +92,7 @@ Thank You
 | # | Criterion | Pass / Fail |
 | - | --------- | ----------- |
 | 1 | Project compiles | |
-| 2 | Borrow / return / reports work | |
+| 2 | Borrow / return / summary reports work | |
 | 3 | Evidence under `notes/screenshots/lab-5/` | |
 
-> Full GUIDE steps remain for homework / extended work.
+> Full GUIDE steps (export, performance, history) remain for homework / extended work. Bonus menu items should print a stub message, not crash.

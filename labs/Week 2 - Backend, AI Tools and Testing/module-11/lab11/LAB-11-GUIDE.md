@@ -410,7 +410,7 @@ class CustomerServiceTest {
 mvn -q test -Dtest=CustomerServiceTest
 ```
 
-**Expected result:** `Tests run: 4, Failures: 0`
+**Expected result:** `Tests run: 4, Failures: 0` for this class so far. Timed path still needs `findByStatusReturnsOnlyMatchingCustomers` (5th service test) before the full suite hits **8**.
 
 **If it fails:** After Step 5’s constructor change, no-arg constructor must still work (no-op notifier). Re-run full suite after refactors.
 
@@ -634,9 +634,9 @@ Acceptance guidelines for AI-generated tests and refactors:
 mvn -q clean test
 ```
 
-**Expected result:** About **7** tests total (`CustomerTest` 2 + `CustomerServiceTest` 4 + mock 1, unless you added a real extra test in Step 4); `BUILD SUCCESS`; checklist in notes.
+**Expected result:** **Tests run: 8** (`CustomerTest` 2 + `CustomerServiceTest` 5 including `findByStatusReturnsOnlyMatchingCustomers` + mock 1); `BUILD SUCCESS`; checklist in notes. Lab 9 `PlaceholderTest` must be removed so it does not inflate the suite.
 
-**Verified (Windows):** Replacing the weak `serviceIsNotNull` test with `findByStatusReturnsOnlyMatchingCustomers` yields **Tests run: 8** (2 + 5 + 1) — document that count in notes. Lab 9 `PlaceholderTest` removed so it does not inflate/pollute the suite.
+**Verified (Windows):** Timed starter + filled TODOs → **Tests run: 8** (2 + 5 + 1). Document that count in notes.
 
 **If it fails:** Count mismatches if you replaced the weak test with an extra real one—document actual count. Stale classes → always `clean test`.
 

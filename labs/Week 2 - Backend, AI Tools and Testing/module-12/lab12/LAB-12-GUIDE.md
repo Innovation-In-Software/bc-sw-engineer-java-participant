@@ -352,7 +352,7 @@ cp src/main/java/com/northstar/crm/service/CustomerService.java \
 
 **Why:** Tests lock intended post-refactor behavior and document bugs you will fix (null returns, `==`).
 
-**Do this:** Write `CustomerServiceTest` against the **target** API (will fail until Steps 4–5 finish—record that in `docs/before-after.md`):
+**Do this:** Complete starter `CustomerServiceTest` (**6** method shells) and `CustomerTest` (**2** shells). The GUIDE sample below shows three core service scenarios; the starter also includes `createRaviProspectThenActivate`, `blankCustomerIdThrows`, and `updateUnknownThrowsWithCorrelation`. Full timed suite = **Tests run: 8**.
 
 ```java
 package com.northstar.crm.service;
@@ -390,9 +390,9 @@ class CustomerServiceTest {
 }
 ```
 
-Optionally add `updateStatus` and blank-ID tests. Ensure JUnit is `test` scope in `pom.xml` (from Lab 9/11).
+Optionally flesh out correlation on not-found (starter shells already include update-unknown + blank-id). Ensure JUnit is `test` scope in `pom.xml` (from Lab 9/11).
 
-**Expected result:** Test names document CRM scenarios; early red runs recorded briefly in before-after notes.
+**Expected result:** All **6** `CustomerServiceTest` + **2** `CustomerTest` names lock CRM scenarios; early red runs recorded briefly in before-after notes.
 
 **If it fails:** No JUnit → copy test deps from Lab 11. Temporary adapters from `doStuff` are allowed then deleted—document if used.
 

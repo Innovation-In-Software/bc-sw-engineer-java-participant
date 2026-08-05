@@ -115,7 +115,7 @@ java-bootcamp\
 
 **Optional VS Code:** File → Open Folder… → same path; Terminal → New Terminal.
 
-### Step 7 — HelloWorld sources
+### Step 7 — HelloJava sources
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
@@ -195,8 +195,8 @@ _Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are
 | 3 | Git works; `user.name` / `user.email` set | Pass / Fail |
 | 4 | `JAVA_HOME` points at Temurin 21 | Pass / Fail |
 | 5 | Workspace `%USERPROFILE%\java-bootcamp` with `examples\` and `notes\screenshots\` | Pass / Fail |
-| 6 | HelloWorld prints from terminal | Pass / Fail |
-| 7 | HelloWorld runs via IntelliJ green arrow | Pass / Fail |
+| 6 | HelloJava prints `Hello Java Bootcamp!` from terminal | Pass / Fail |
+| 7 | HelloJava runs via IntelliJ green arrow | Pass / Fail |
 | 8 | (Optional) VS Code opens the same folder | Pass / Fail |
 
 **Do not start Lab 1 until every Pass criteria row is Pass in your notes.**

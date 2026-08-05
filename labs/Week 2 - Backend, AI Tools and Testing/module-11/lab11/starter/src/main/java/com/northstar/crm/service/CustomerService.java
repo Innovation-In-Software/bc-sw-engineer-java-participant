@@ -47,5 +47,5 @@ public class CustomerService {
         return c;
     }
 
-    // TODO (optional timed stretch): findByStatus(CustomerStatus) and listAll()
+    // TODO (required for Tests run: 8): findByStatus(CustomerStatus) and listAll()
 }

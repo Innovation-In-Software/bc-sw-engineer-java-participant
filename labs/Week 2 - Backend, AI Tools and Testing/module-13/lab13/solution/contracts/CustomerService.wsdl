@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CustomerService"
+             targetNamespace="http://northstar.com/crm/customer"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://northstar.com/crm/customer"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://northstar.com/crm/customer"
+                  schemaLocation="customer.xsd"/>
+    </xsd:schema>
+  </types>
+
+  <message name="CreateCustomerRequestMessage">
+    <part name="body" element="tns:createCustomerRequest"/>
+  </message>
+  <message name="CreateCustomerResponseMessage">
+    <part name="body" element="tns:createCustomerResponse"/>
+  </message>
+  <message name="UpdateCustomerRequestMessage">
+    <part name="body" element="tns:updateCustomerRequest"/>
+  </message>
+  <message name="UpdateCustomerResponseMessage">
+    <part name="body" element="tns:updateCustomerResponse"/>
+  </message>
+  <message name="GetCustomerRequestMessage">
+    <part name="body" element="tns:getCustomerRequest"/>
+  </message>
+  <message name="GetCustomerResponseMessage">
+    <part name="body" element="tns:getCustomerResponse"/>
+  </message>
+
+  <portType name="CustomerPortType">
+    <operation name="CreateCustomer">
+      <input message="tns:CreateCustomerRequestMessage"/>
+      <output message="tns:CreateCustomerResponseMessage"/>
+    </operation>
+    <operation name="UpdateCustomer">
+      <input message="tns:UpdateCustomerRequestMessage"/>
+      <output message="tns:UpdateCustomerResponseMessage"/>
+    </operation>
+    <operation name="GetCustomer">
+      <input message="tns:GetCustomerRequestMessage"/>
+      <output message="tns:GetCustomerResponseMessage"/>
+    </operation>
+  </portType>
+
+  <binding name="CustomerSoapBinding" type="tns:CustomerPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="CreateCustomer">
+      <soap:operation soapAction="http://northstar.com/crm/customer/CreateCustomer"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+    <operation name="UpdateCustomer">
+      <soap:operation soapAction="http://northstar.com/crm/customer/UpdateCustomer"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+    <operation name="GetCustomer">
+      <soap:operation soapAction="http://northstar.com/crm/customer/GetCustomer"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+  </binding>
+
+  <service name="CustomerService">
+    <port name="CustomerSoapPort" binding="tns:CustomerSoapBinding">
+      <!-- Placeholder only — Lab 24 hosts a real URL under /ws -->
+      <soap:address location="http://localhost:8080/ws"/>
+    </port>
+  </service>
+</definitions>

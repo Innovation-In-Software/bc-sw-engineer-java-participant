@@ -1,5 +1,7 @@
-package com.northstar.crm.dto;
+package com.northstar.crm.mapper;
 
+import com.northstar.crm.dto.CustomerRequestDTO;
+import com.northstar.crm.dto.CustomerResponseDTO;
 import com.northstar.crm.entity.Customer;
 import com.northstar.crm.entity.CustomerStatus;
 

@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Complete CustomerServiceTests, CsvSource transitions, and JaCoCo gate |
 | **Skills practiced** | AAA, meaningful asserts, parameterized tests, verify gate |
-| **Expected outcome** | `mvn -B clean test` + `mvn -B clean verify` green |
+| **Expected outcome** | `mvn -B clean verify` → **Tests run: 19** + JaCoCo gate |
 | **Estimated time** | ~45 minutes |
 | **Files** | `examples/lab17-crm/` copied from this starter |
 
@@ -67,3 +67,4 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-17/` (redact secrets).
 | Runbook documents commands + evidence | Pass / Fail |
 
 Continue remaining GUIDE steps as homework / full path if needed.
+

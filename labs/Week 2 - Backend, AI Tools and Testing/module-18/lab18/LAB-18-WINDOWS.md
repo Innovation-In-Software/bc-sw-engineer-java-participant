@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-18-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 18 `starter/` → `examples\lab18-crm` (or copy `lab17-crm` → `lab18-crm`). Completed starter stubs: `CustomerServiceMockitoTest` (`activateRaviUsesFindAndSave`, `notFoundNeverCallsSave`, `addCustomerCapturesSavedEntity`) + `CustomerServiceBddMockTest` (`givenProspectWhenActivateThenSavedActive`) alongside Lab 17 baseline `CustomerServiceTests` (2). Two consecutive `mvn -B test` → **Tests run: 6**, Failures: 0 · **BUILD SUCCESS**. Not-found path verifies `never().save`. Instructor walkthrough: `docs/instructor-participant-help/week-2/18-mockito-exercises-and-lab18.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 18 `starter/` → `examples\lab18-crm` (or copy `lab17-crm` → `lab18-crm`). Completed starter stubs: `CustomerServiceMockitoTest` (`activateRaviUsesFindAndSave`, `notFoundNeverCallsSave`, `addCustomerCapturesSavedEntity`) + `CustomerServiceBddMockTest` (`givenProspectWhenActivateThenSavedActive`) alongside Lab 17 baseline `CustomerServiceTests` (2). Two consecutive `mvn -B test` → **Tests run: 6**, Failures: 0 · **BUILD SUCCESS**. Not-found path verifies `never().save`. Instructor walkthrough: `docs/instructor-participant-help/week-2/18-mockito-exercises-and-lab18.md`.
 
 ## Prerequisites (Windows)
 
@@ -66,3 +66,4 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
 | 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
 | 5 | Screenshots (if required) under `notes/screenshots/lab-18/` | Pass / Fail |
+

@@ -41,8 +41,10 @@ Full GUIDE: [`../LAB-27-GUIDE.md`](../LAB-27-GUIDE.md)
 ## 45-minute checklist
 
 - [ ] Add `@Transactional` on `TransferService.transfer` (service boundary)
-- [ ] Implement debit/credit + `TransactionLog` write inside the TX
-- [ ] Force rollback when destination is `ACC-FORCE-FAIL`
+- [ ] Implement debit/credit + `TransactionLog` write inside the TX (debit then force-fail is OK)
+- [ ] Force rollback when destination is `ACC-FORCE-FAIL` → HTTP **500** (no ExceptionHandler)
+- [ ] Controller returns HTTP **200** `{"status":"OK"}` (not 204)
+- [ ] Complete tests: `forceFailRollsBack` + `happyPathMovesFunds` (**Tests run: 2**)
 - [ ] Fill ACID table in `docs/acid-notes.md`
 - [ ] Smoke: happy MAIN→LOYALTY; failure leaves MAIN unchanged
 
@@ -50,6 +52,7 @@ Full GUIDE: [`../LAB-27-GUIDE.md`](../LAB-27-GUIDE.md)
 
 ```bash
 mvn -B test
+# Tests run: 2
 mvn -B spring-boot:run
 ```
 

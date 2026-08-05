@@ -871,7 +871,7 @@ Major files you will inspect or modify:
 - `src/main/java/com/northstar/crm/repository/CustomerRepository.java`
 - `src/main/java/com/northstar/crm/repository/InMemoryCustomerRepository.java`
 - `src/test/java/com/northstar/crm/CustomerServiceTest.java`
-- `copilot-notes/ai-layering-review.md`
+- `docs/lab25-001.md`
 - `docs/layering-notes.md`
 
 Screenshot placeholder:
@@ -970,7 +970,7 @@ Checkpoint:
 2. Confirm controllers do not import repository classes.
 3. Confirm services do not return ResponseEntity or use servlet classes.
 4. Use AI only for small drafts or review prompts, then inspect the result line by line.
-5. Record AI assistance in copilot-notes/ai-layering-review.md.
+5. Record AI assistance in docs/lab25-001.md.
 6. Run service tests twice.
 
 #### Step 5: Run tests
@@ -1049,7 +1049,7 @@ Important lines:
 - GET CUS-1002 returns Ravi Singh.
 - Duplicate create of CUS-1001 is rejected.
 - CustomerController has no repository imports.
-- copilot-notes/ai-layering-review.md explains AI use or says no AI was used.
+- docs/lab25-001.md explains AI use or says no AI was used.
 
 ### Checkpoint
 
@@ -1868,7 +1868,7 @@ Before continuing, confirm each item:
 | --- | --- | --- |
 | HTML login page appears | Default form login is still enabled. | Disable form login for API behavior. |
 | Valid admin token still gets 403 | Role names or ROLE_ prefix handling is inconsistent. | Use roles('ADMIN') with hasRole('ADMIN') consistently. |
-| Valid token gets 401 | JWT filter order or secret mismatch is wrong. | Register before UsernamePasswordAuthenticationFilter and verify CRM_JWT_SECRET. |
+| Valid token gets 401 | JWT filter order or secret mismatch is wrong. | Register before UsernamePasswordAuthenticationFilter and verify JWT_SECRET / northstar.security.jwt-secret. |
 
 ### Completion Checklist
 

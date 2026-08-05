@@ -270,9 +270,9 @@ public class LibraryService {
     }
 
     public void exportReport() {
+        // Bonus menu 17 — stub so timed-path explorers do not crash.
         try {
-            Path outputPath = reportService.exportReportToFile("library-report.txt");
-            System.out.println("Report exported to: " + outputPath.toAbsolutePath());
+            reportService.exportReportToFile("library-report.txt");
         } catch (IOException ex) {
             System.out.println("Failed to export report: " + ex.getMessage());
         }

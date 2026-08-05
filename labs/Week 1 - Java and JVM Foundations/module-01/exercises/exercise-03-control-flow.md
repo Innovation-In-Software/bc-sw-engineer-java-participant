@@ -86,7 +86,7 @@ java ControlFlow
 
 ## Debug challenge (hands-on)
 
-Create `ControlFlowBug.java` with this **broken** code, then fix it (do not leave the infinite loop):
+Copy [`starter/ControlFlowBug.java`](starter/ControlFlowBug.java) (or paste the skeleton below), then fix it (do not leave the infinite loop):
 
 ```java
 public class ControlFlowBug {

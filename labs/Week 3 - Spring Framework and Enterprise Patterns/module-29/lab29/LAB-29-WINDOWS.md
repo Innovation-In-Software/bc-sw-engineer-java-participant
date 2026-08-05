@@ -37,9 +37,14 @@ cd examples\lab29-crm
 cd $env:USERPROFILE\java-bootcamp\examples\lab29-crm
 mvn -B test
 mvn -B spring-boot:run
+# Login first (security is in starter):
+# $login = Invoke-RestMethod -Method Post -Uri http://localhost:8080/api/auth/login -ContentType application/json -Body '{"username":"agent1","password":"agent1"}'
+# Then Authorization: Bearer $login.accessToken on customer calls
 ```
 
-Verified (2026-08-03): **Tests run: 4** · **BUILD SUCCESS** twice (`ErrorEnvelopeTest`); GET `CUS-1001`/`CUS-1002` **200**; `CUS-9999` **404** envelope; bad email **400** with `violations[field=email]`; blank fields **400** (≥4 violations); duplicate `CUS-1001` **409**; valid create **201**. Correlation `lab-request-001`. Starter DTO fields `id`/`name`/`email`/`status`.
+Verified (2026-08-04): **Tests run: 4** · **BUILD SUCCESS** (`ErrorEnvelopeTest`: 400/404/409 + no-token **401**). Lab 28 security **included in starter** — login `agent1`/`agent1` then Bearer for customer curls. GET `CUS-1001`/`CUS-1002` **200** with Bearer; `CUS-9999` **404**; bad email **400** with `violations[{field,message}]`; duplicate `CUS-1001` **409**. `ErrorResponse` has no `path` field. No `StatusUpdateRequest`/PATCH in timed path. Notes: `docs/error-contract.md`. Correlation `lab-request-001`. Starter DTO class fields `id`/`name`/`email`/`status`.
+
+Verified on this instructor laptop (2026-08-04): Temurin JDK **21.0.11**, Maven **3.9.9**. Solutions copied to %USERPROFILE%\java-bootcamp\examples\labNN-crm and mvn -B test → **BUILD SUCCESS**.
 
 ## Do the lab
 

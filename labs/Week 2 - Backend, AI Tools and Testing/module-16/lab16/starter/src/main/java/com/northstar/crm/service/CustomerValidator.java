@@ -31,9 +31,11 @@ public class CustomerValidator {
             throw new IllegalArgumentException("customerId is required");
         }
         if (repository.existsById(customer.getCustomerId())) {
+            // TODO Lab 16: replace with BusinessException.conflict(..., correlationId) — need corr on API
             throw new IllegalStateException("duplicate customerId: " + customer.getCustomerId());
         }
         if (customer.getEmail() != null && repository.existsByEmail(customer.getEmail())) {
+            // TODO Lab 16: BusinessException.conflict for duplicate email
             throw new IllegalStateException("duplicate email: " + customer.getEmail());
         }
     }
@@ -41,6 +43,7 @@ public class CustomerValidator {
     public void validateTransition(CustomerStatus from, CustomerStatus to, String correlationId) {
         Set<CustomerStatus> allowed = ALLOWED.getOrDefault(from, Set.of());
         if (!allowed.contains(to)) {
+            // TODO Lab 16: BusinessException.conflict(message, correlationId) instead of IllegalStateException
             throw new IllegalStateException(
                     "illegal status transition " + from + " -> " + to
                             + " [" + correlationId + "]");

@@ -3,7 +3,7 @@
   <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <!-- TODO: structured pattern with %X{corr} %X{cust} %X{op} — no PII fields -->
+      <!-- Pattern already includes %X{corr} %X{cust} %X{op} — confirm no PII field tokens -->
       <pattern>%d{ISO8601} %-5level [%thread] %logger{36} corr=%X{corr} cust=%X{cust} op=%X{op} - %msg%n</pattern>
     </encoder>
   </appender>

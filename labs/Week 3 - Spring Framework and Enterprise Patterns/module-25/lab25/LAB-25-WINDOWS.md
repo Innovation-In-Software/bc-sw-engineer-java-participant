@@ -36,15 +36,18 @@ cd examples\lab25-crm
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab25-crm
 mvn -B test
+# Expected: Tests run: 2 — getSeededCus1001, duplicateCreateRejected
 mvn -B spring-boot:run
 # After Started CrmApplication (second Terminal):
 # Invoke-WebRequest http://localhost:8080/api/customers/CUS-1001 -UseBasicParsing
 # Invoke-WebRequest http://localhost:8080/api/customers/CUS-1002 -UseBasicParsing
-# Invoke-RestMethod http://localhost:8080/api/customers
+# POST create CUS-1003 — no GET /api/customers list endpoint in starter/solution
+# List = service.list() / unit test (optional full-path: add GET list)
 ```
 
-Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerServiceTest`: `getSeededCus1001`, `duplicateCreateRejected`); live GET seeded CUS-1001/CUS-1002; create + list via service; duplicate create throws `IllegalStateException`; controller has **no** repository imports; `docs/lab25-001.md` present. (PATCH activate / HTTP 409 mapping = full-path extras, not timed Surefire.)
+Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerServiceTest`: `getSeededCus1001`, `duplicateCreateRejected`); live GET seeded CUS-1001/CUS-1002; create via HTTP; list via **service** (not HTTP list); duplicate create throws `IllegalStateException`; controller + repository **interface** **provided**; implement InMemory repo + service + tests; AI notes in **`docs/lab25-001.md` only**. (PATCH activate / HTTP list / 409 mapping = full-path extras.)
 
+Verified on this instructor laptop (2026-08-04): Temurin JDK **21.0.11**, Maven **3.9.9**. Solutions copied to %USERPROFILE%\java-bootcamp\examples\labNN-crm and mvn -B test → **BUILD SUCCESS**.
 ## Do the lab
 
 Complete every step in **[LAB-25-GUIDE.md](LAB-25-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  

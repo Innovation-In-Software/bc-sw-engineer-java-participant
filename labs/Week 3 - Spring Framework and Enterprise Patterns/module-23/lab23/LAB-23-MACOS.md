@@ -35,14 +35,20 @@ cd examples/lab23-crm
 
 ```bash
 cd ~/java-bootcamp/examples/lab23-crm
+# Timed path (starter has CrmApplicationTests only):
+mvn -B "-Dtest=CrmApplicationTests" test
+# Full path after you add CustomerControllerHttpTest (Step 8 homework):
 mvn -B test
 mvn -B spring-boot:run
 # After Started CrmApplication (second Terminal):
+# curl -s http://localhost:8080/actuator/health
+# curl create/get CUS-1001 with X-Correlation-Id: lab-request-001  (header read, not echoed)
+# curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/api/customers/CUS-MISSING  # timed: 500
 # Profile teaser: mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
+# Packaged JAR name: target/lab23-crm-0.0.1-SNAPSHOT.jar
 ```
 
-Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** twice (`CrmApplicationTests` + `CustomerControllerHttpTest`); live health **UP**; POST **201** / GET **200** for `CUS-1001` with `lab-request-001`; `CUS-MISSING` **404**; profile `dev` active with health details; `/actuator/info` shows `northstar-crm` when `management.info.env.enabled=true`.
-
+Verified (2026-08-03): **Timed:** `CrmApplicationTests` — **Tests run: 1**. **Full / homework:** `CrmApplicationTests` + `CustomerControllerHttpTest` — **Tests run: 2** · **BUILD SUCCESS**. Live health **UP**; POST **201** / GET **200** for `CUS-1001` with request header `lab-request-001` (header **read**, not echoed); `CUS-MISSING` → **500** (Boot default; no `@ControllerAdvice` in starter/solution); profile `dev` teaser; `/actuator/info` shows `northstar-crm` when `info.*` + `management.info.env.enabled=true`. (`CustomerController` **provided** — verify/call, do not rewrite.)
 ## Do the lab
 
 Complete every step in **[LAB-23-GUIDE.md](LAB-23-GUIDE.md)**. GUIDE paths already use `~/java-bootcamp`.  

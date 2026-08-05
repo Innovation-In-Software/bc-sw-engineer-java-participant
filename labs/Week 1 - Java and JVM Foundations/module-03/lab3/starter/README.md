@@ -38,13 +38,17 @@ cp -R "$SRC"/. "$DST"/
 cd "$DST"
 ```
 
+## Timed path (starter) — skip create Steps
+
+Package layout and all eight type shells already exist. **Skip GUIDE create Steps.** Fill TODOs only. Implement `calculateInterest` / `calculateCharges` **before** Display Accounts. Bonus menus **9–13** are optional.
+
 ## 45-minute checklist (ordered TODOs)
 
 1. Implement `Account.deposit` and `Account.withdraw`.
-2. Implement `SavingsAccount.calculateInterest` and `CurrentAccount.calculateCharges`.
+2. Implement `SavingsAccount.calculateInterest` and `CurrentAccount.calculateCharges` (needed before Display Accounts).
 3. Implement `BankService.createCustomer`, `createSavingsAccount`, `createCurrentAccount`.
 4. Implement `deposit`, `withdraw`, `displayAccounts`.
-5. Run smoke test; evidence under `notes/screenshots/lab-3/`.
+5. Run smoke test (core menus 1–8; bonus 9–13 optional); evidence under `notes/screenshots/lab-3/`.
 
 ## Smoke test
 

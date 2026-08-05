@@ -36,11 +36,13 @@ cd examples/lab25-crm
 ```bash
 cd ~/java-bootcamp/examples/lab25-crm
 mvn -B test
+# Expected: Tests run: 2 — getSeededCus1001, duplicateCreateRejected
 mvn -B spring-boot:run
+# GET /api/customers/CUS-1001 and CUS-1002; POST create CUS-1003
+# No GET /api/customers list endpoint — list via service.list() / unit test
 ```
 
-Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerServiceTest`: `getSeededCus1001`, `duplicateCreateRejected`); live GET seeded CUS-1001/CUS-1002; create + list via service; duplicate create throws `IllegalStateException`; controller has **no** repository imports; `docs/lab25-001.md` present. (PATCH activate / HTTP 409 mapping = full-path extras, not timed Surefire.)
-
+Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerServiceTest`: `getSeededCus1001`, `duplicateCreateRejected`); live GET seeded CUS-1001/CUS-1002; create via HTTP; list via **service** (not HTTP list); duplicate create throws `IllegalStateException`; controller + repository **interface** **provided**; implement InMemory repo + service + tests; AI notes in **`docs/lab25-001.md` only**. (PATCH activate / HTTP list / 409 mapping = full-path extras.)
 ## Do the lab
 
 Complete every step in **[LAB-25-GUIDE.md](LAB-25-GUIDE.md)**. GUIDE paths already use `~/java-bootcamp`.  

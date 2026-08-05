@@ -40,16 +40,19 @@ Full GUIDE: [`../LAB-26-GUIDE.md`](../LAB-26-GUIDE.md)
 
 ## 45-minute checklist
 
-- [ ] Complete base `application.yml` and three profile files
-- [ ] Fill `NorthstarIntegrationProperties` + `@ConfigurationProperties` binding
-- [ ] Prove activation via `-Dspring.profiles.active` / env (notes)
-- [ ] Ensure `.env.example` only — no real secrets committed
+- [ ] Complete base `application.yml` (`name: northstar-crm`, `api-base-url`, `connect-timeout-ms: 2000`) and three profile files (`lab26dev` / `lab26test` H2 URLs)
+- [ ] Fill mutable `NorthstarIntegrationProperties` + `@ConfigurationProperties` binding
+- [ ] Prove activation via `-Dspring.profiles.active` / env (`docs/profile-notes.md`)
+- [ ] Ensure `.env.example` only (`DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY`) — no real secrets committed
+- [ ] Add `ProfileBindingTest` (starter ships **0** tests; expect **Tests run: 1**)
 - [ ] Smoke under `dev`: GET CUS-1001 still works
 
 ## Smoke test
 
 ```bash
+# After adding ProfileBindingTest:
 mvn -B test -Dspring.profiles.active=test
+# Tests run: 1
 mvn -B spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 

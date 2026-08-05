@@ -20,8 +20,9 @@ public class ReportService {
     }
 
     public Path exportReportToFile(String fileName) throws IOException {
-        // TODO: build same summary + category breakdown; Files.writeString; return Path
-        throw new UnsupportedOperationException("TODO");
+        // Bonus / full-path feature — implement after core borrow/return/summary TODOs.
+        System.out.println("Bonus / full-path feature — implement after core TODOs.");
+        return Path.of(fileName);
     }
 
     private String findMostPopularCategory() {

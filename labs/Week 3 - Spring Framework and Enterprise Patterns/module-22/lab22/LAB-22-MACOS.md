@@ -35,12 +35,14 @@ cd examples/lab22-crm
 
 ```bash
 cd ~/java-bootcamp/examples/lab22-crm
+# Timed path (starter has unit test only until Step 7 homework):
+mvn -B "-Dtest=CustomerServiceTest" test
+# Full verify after you add CustomerServiceSpringTest (homework Step 7):
 mvn -B "-Dtest=CustomerServiceTest,CustomerServiceSpringTest" test
 mvn -B spring-boot:run
 ```
 
-Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** (unit + `@SpringBootTest` IT via `-Dtest=…`; plain `mvn test` runs `*Test` only); live POST **201** / GET **200** for `CUS-1001` with `lab-request-001`; log `CustomerService ready` + `customer.created id=CUS-1001 correlationId=lab-request-001`; graceful stop shows `CustomerService shutting down`.
-
+Verified (2026-08-03): **Timed:** `CustomerServiceTest` only — **Tests run: 1**. **Full / homework:** `CustomerServiceTest` + `CustomerServiceSpringTest` via `-Dtest=…` — **Tests run: 2** · **BUILD SUCCESS**. Live POST **201** / GET **200** for `CUS-1001` with `lab-request-001`; log `CustomerService ready` + `customer.created id=CUS-1001 correlationId=lab-request-001`; graceful stop shows `CustomerService shutting down`. (`CustomerController` is **provided** in starter — verify, do not rewrite.)
 ## Do the lab
 
 Complete every step in **[LAB-22-GUIDE.md](LAB-22-GUIDE.md)**. GUIDE paths already use `~/java-bootcamp`.  

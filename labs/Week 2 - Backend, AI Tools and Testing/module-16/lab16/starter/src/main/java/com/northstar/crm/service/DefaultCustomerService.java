@@ -35,6 +35,7 @@ public class DefaultCustomerService implements CustomerService {
     @Override
     public Customer changeStatus(String customerId, CustomerStatus newStatus, String correlationId) {
         Customer existing = repository.findById(customerId)
+                // TODO Lab 16: BusinessException.notFound(customerId, correlationId)
                 .orElseThrow(() -> new IllegalArgumentException(
                         "customer not found [" + correlationId + "]: " + customerId));
         validator.validateTransition(existing.getStatus(), newStatus, correlationId);

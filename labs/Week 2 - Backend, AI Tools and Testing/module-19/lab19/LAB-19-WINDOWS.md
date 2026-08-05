@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-19-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9** + Chrome **150.0.7871.187**. Lab 19 Spring Boot starter (`examples\lab19-crm`); WebDriverManager resolved chromedriver **150.0.7871.124**. Timed suite: `CustomerApiIT` (3: `getAminaReturns200`, `createEchoesCorrelationHeader` POST **CUS-1901**, `missingCustomerReturns404`) + `CustomerUiIT` (1: `createCustomerViaUi` **CUS-2001**; `fill` includes email; testids `submit-customer` / `create-result`). `mvn -B "-Dtest=CustomerApiIT,CustomerUiIT" test` → **Tests run: 4**, Failures: 0 · **BUILD SUCCESS** (Surefire; no Failsafe plugin). Instructor walkthrough: `docs/instructor-participant-help/week-2/19-selenium-exercises-and-lab19.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9** + Chrome **150.0.7871.187**. Lab 19 solution under `%USERPROFILE%\java-bootcamp\examples\_week2-verify\lab19-solution`; WebDriverManager chromedriver **150.0.7871.124**. Surefire **includes `*IT.java`**. Timed suite: `CustomerApiIT` (3: get Amina, create **CUS-1901**, 404) + `CustomerUiIT` (1: **CUS-2001** / Ui Customer). `mvn -B clean test` → **Tests run: 4**, Failures: 0 · **BUILD SUCCESS**. Instructor walkthrough: `docs/instructor-participant-help/week-2/19-selenium-exercises-and-lab19.md`.
 
 ## Prerequisites (Windows)
 
@@ -66,3 +66,4 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
 | 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
 | 5 | Screenshots (if required) under `notes/screenshots/lab-19/` | Pass / Fail |
+

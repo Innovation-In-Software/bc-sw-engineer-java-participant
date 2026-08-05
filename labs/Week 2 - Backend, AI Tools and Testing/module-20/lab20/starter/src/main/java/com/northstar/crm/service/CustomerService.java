@@ -18,7 +18,7 @@ public class CustomerService {
     }
 
     public Customer create(Customer customer, String correlationId) {
-        // TODO: MDC.put("cust", customerId); MDC.put("op", "create"); INFO log without fullName/email
+        // TODO: MDC.put("cust", customer.getCustomerId()); MDC.put("op", "create"); INFO log without fullName/email
         if (customer.getCustomerId() == null || customer.getCustomerId().isBlank()) {
             throw new IllegalArgumentException("customerId required [" + correlationId + "]");
         }

@@ -35,11 +35,24 @@ cd examples/lab13-crm
 ### Commands this lab typically uses
 
 ```bash
-cd ~/java-bootcamp/examples/lab13-crm
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+cd ~/java-bootcamp
+mkdir -p examples/lab13-crm/{contracts,samples,docs} notes/screenshots/lab-13
+cd examples/lab13-crm
+
+# Design-only lab — NO Maven. Check XSD/WSDL/XML well-formedness:
+# Prefer xmllint if installed; otherwise Python:
+python3 - <<'PY'
+from pathlib import Path
+import xml.etree.ElementTree as ET
+roots = list(Path("contracts").rglob("*")) + list(Path("samples").rglob("*"))
+for p in roots:
+    if p.suffix.lower() in {".xsd", ".wsdl", ".xml"}:
+        ET.parse(p)
+        print("OK", p.name)
+PY
 ```
 
+Verified intent: all contracts + samples well-formed; README documents placeholder endpoint (not live). No `mvn` — Spring-WS hosting is Lab 24.
 
 ## Do the lab
 

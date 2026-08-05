@@ -447,9 +447,9 @@ Document in README / `docs/isolation-policy.md`:
 
 Complete Failure Experiments. Capture Surefire excerpts under `notes/screenshots/lab-18/`. Run `mvn -q test` twice for determinism.
 
-**Expected result:** All Lab 17 + Lab 18 tests green twice; README states isolation policy; evidence saved; `git status` clean of `target/`.
+**Expected result:** Timed Lab 18 suite green twice — **Tests run: 6** (baseline `CustomerServiceTests` 2 + Mockito 3 + BDD 1); README states isolation policy; evidence saved; `git status` clean of `target/`.
 
-**If it fails:** Lab 17 broken by POM change → diff Mockito deps only. Flaky verifies → fresh `@BeforeEach` mocks, never share static mocks. See Troubleshooting.
+**If it fails:** Baseline broken by POM change → diff Mockito deps only. Flaky verifies → fresh `@BeforeEach` mocks, never share static mocks. See Troubleshooting.
 
 ---
 

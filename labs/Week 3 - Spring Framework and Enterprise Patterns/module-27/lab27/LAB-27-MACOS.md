@@ -39,7 +39,7 @@ mvn -B test
 mvn -B spring-boot:run
 ```
 
-Verified (2026-08-03): **Tests run: 2** · **BUILD SUCCESS** twice; force-fail `ACC-FORCE-FAIL` → HTTP **409**, MAIN unchanged at **1000.00**; happy MAIN→LOYALTY `50.00` → MAIN **950.00** / LOYALTY **100.00** / `transfer updates MAIN/LOYALTY balances`; insufficient funds leaves balances unchanged. `@Transactional` on `TransferService` only.
+Verified (2026-08-04): **Tests run: 2** (`forceFailRollsBack` + `happyPathMovesFunds`) · **BUILD SUCCESS**; force-fail `ACC-FORCE-FAIL` → `IllegalStateException` / HTTP **500** (no ExceptionHandler), MAIN unchanged at **1000.00**; happy `POST /api/transfers` → **200** `{"status":"OK"}`; unit happy path uses amount **5.00** (curl demo may use **50.00** → MAIN **950.00** / LOYALTY **100.00**). H2 `jdbc:h2:mem:lab27`. Seeds `ACC-MAIN-1001` / `ACC-LOYALTY-1001` only. `@Transactional` on `TransferService` only. Insufficient-funds check is full-path optional (not in solution).
 
 ## Do the lab
 

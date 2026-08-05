@@ -26,20 +26,24 @@
 
 > **Incremental build:** Exercises 1–7 (List/Set/Map/Iterator/choice + warm-up) → Lab 5 packaged `com.academy.library` with domain types and menu. Same `java-bootcamp`, new folder `Lab5-LibraryManagement/`.
 
-> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).## 45-minute timed path (use starter)
+> **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–F).
+
+## 45-minute timed path (use starter)
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
+> **Timed path:** Skip recreating domain classes / add/register helpers (already in the starter). Fill only `LibraryService.borrowBook`, `LibraryService.returnBook`, `ReportService.displaySummaryReport`, and `findMostPopularCategory`. Export (menu 17) and performance comparison (menu 14) are **bonus** — starter stubs print a Bonus message so exploring those menu items does not crash.
+
 1. Open [`starter/README.md`](starter/README.md).
 2. Copy `starter/Lab5-LibraryManagement/` into your `java-bootcamp/examples/Lab5-LibraryManagement/` target folder (commands in the starter README).
-3. Fill every `// TODO` / `_____` — do **not** open `solution/` first.
+3. Fill the core TODOs listed above — do **not** open `solution/` first.
 4. Run the starter smoke test; capture evidence under `notes/screenshots/lab-5/`.
 5. Mark the **timed-path Pass criteria** in the starter README. Continue remaining GUIDE steps only if time allows (or as homework).
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
-| **Full (extended)** | see Duration | Every Step in this GUIDE |
+| **Timed (default)** | ~45 min | borrow / return / summary (+ popular category) + smoke |
+| **Full (extended)** | see Duration | Every Step in this GUIDE (export, performance, history bonuses) |
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
 
@@ -49,7 +53,7 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | Pre-lab exercises | `examples\module-05-exercises\` (flat files — must exist before graded work) |
 | This lab project | `examples\Lab5-LibraryManagement\` with `src\com\academy\library\` |
 | Compile / run | Named `javac -d out` on the seven sources → `java -cp out com.academy.library.Main` |
-| Smoke-test output | Add `101` → register `1` → borrow → reports `Borrowed : 1` / popular `Programming` → `Thank You` |
+| Smoke-test output | Add `101` (incl. **Price `55`**) → register `1` → borrow → reports `Borrowed : 1` / popular `Programming` → `Thank You` |
 
 **If it fails (Windows PowerShell):** Prefer naming each `.java` file in the `javac` line (as in [LAB-5-WINDOWS.md](LAB-5-WINDOWS.md)); do not rely on `*.java` globs. Mark `examples\Lab5-LibraryManagement\src` as Sources Root — not `module-05-exercises`.
 

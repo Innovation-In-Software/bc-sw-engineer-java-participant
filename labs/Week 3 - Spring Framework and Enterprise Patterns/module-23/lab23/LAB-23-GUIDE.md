@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Ship an Initializr-style Boot CRM app with REST customers + Actuator health |
 | **Skills practiced** | Starters, CrmApplication, application.yml, embedded server, health smoke |
-| **Expected outcome** | App on 8080 · health UP · CUS-1001/CUS-1002 evidence · autoconfig notes |
+| **Expected outcome** | App on 8080 · health UP · CUS-1001/CUS-1002 evidence · contextLoads · autoconfig notes |
 | **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
 | **Prerequisites** | Lab 0 · Lab 22 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
 | **Expected files** | `examples/lab23-crm/` — pom, YAML, API, tests, ownership notes |
@@ -57,7 +57,7 @@ Keep this checklist visible while you work.
 | 2 | `CrmApplication` + `application.yml` + profile teasers |
 | 3 | `/api/customers` evidence for `CUS-1001` / `CUS-1002` / `lab-request-001` |
 | 4 | Actuator health verification |
-| 5 | Automated context-load and API IT; dual `mvn test` green |
+| 5 | Timed: `CrmApplicationTests.contextLoads`; full path: also `CustomerControllerHttpTest` |
 | 6 | Autoconfig vs ownership notes |
 | 7 | Controlled-failure evidence |
 | 8 | README runbook + cleanup |
@@ -86,7 +86,7 @@ Northstar freezes a deliverable for Module 23:
 
 **Ship a runnable Spring Boot CRM slice: starters, YAML, `/api/customers`, Actuator health, and an honest note on auto-config versus ownership.**
 
-You own that slice for Amina (`CUS-1001` ACTIVE) and Ravi (`CUS-1002` PROSPECT), plus 404 for missing IDs and correlation on create.
+You own that slice for Amina (`CUS-1001` ACTIVE) and Ravi (`CUS-1002` PROSPECT), missing-ID failure (Boot default **500** unless you add advice), and correlation on create.
 
 Use these examples consistently:
 
@@ -94,8 +94,8 @@ Use these examples consistently:
 | -- | ---- | ----- |
 | `CUS-1001` | Amina Khan | `ACTIVE` — primary create/get |
 | `CUS-1002` | Ravi Singh | `PROSPECT` — second create/get |
-| `CUS-MISSING` | — | not-found / 404 path |
-| `lab-request-001` | — | default `X-Correlation-Id` |
+| `CUS-MISSING` | — | not-found → `IllegalArgumentException` → Boot default **500** (timed) |
+| `lab-request-001` | — | default `X-Correlation-Id` (request header **read**; not echoed unless you add that) |
 | `lab23-001`, … | — | optional evidence / notes IDs |
 
 **Security note for evidence.** Use fictional emails only. Unrestricted Actuator on a public host is lab-only — document that in README. Never commit secrets or real production URLs.
@@ -140,30 +140,12 @@ Study this pattern once before Step 1. Your job is to apply the same idea in the
 class CrmApplicationTests {
   @Test void contextLoads() {}
 }
-
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CustomerControllerHttpTest {
-  @LocalServerPort int port;
-  @Autowired TestRestTemplate rest;
-
-  @Test
-  void createAndGetCus1001() {
-    var headers = new HttpHeaders();
-    headers.set("X-Correlation-Id", "lab-request-001");
-    headers.setContentType(MediaType.APPLICATION_JSON);
-    var body = "{\"id\":\"CUS-1001\",\"name\":\"Amina Khan\",\"email\":\"amina.khan@example.com\",\"status\":\"ACTIVE\"}";
-    var created = rest.postForEntity(
-        "http://localhost:" + port + "/api/customers",
-        new HttpEntity<>(body, headers),
-        Customer.class);
-    assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-    assertThat(rest.getForEntity("/api/customers/CUS-1001", Customer.class)
-        .getBody().getId()).isEqualTo("CUS-1001");
-  }
-}
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**Timed path:** after YAML + service TODOs, `CrmApplicationTests.contextLoads` is the automated smoke (**Tests run: 1**).  
+**Full path:** also add `CustomerControllerHttpTest` (RANDOM_PORT create/get for `CUS-1001`) — solution has it; starter does not.
+
+**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these. Missing ID → service `IllegalArgumentException` → Boot default **500** (not 404) unless you add `@ControllerAdvice`.
 
 ---
 
@@ -313,36 +295,13 @@ mvn -q -DskipTests compile
 
 ---
 
-### Step 5 — Expose `/api/customers` create and get
+### Step 5 — Call the provided `/api/customers` create and get
 
 **Why:** Leadership’s acceptance proof is HTTP evidence for Amina and Ravi with correlation, not a compiled JAR alone.
 
-**Do this:** Implement `CustomerController` with constructor injection; echo `X-Correlation-Id` (default `lab-request-001`); return 201/200/404.
+**Already provided in starter:** `api/CustomerController.java` — constructor-injected `CustomerService`, `POST` (201), `GET /{id}`, and **reads** `@RequestHeader` `X-Correlation-Id` (default `lab-request-001`). **Do not re-implement from scratch.** The controller does **not** echo the correlation header on the response unless you add that yourself (not required).
 
-```java
-@RestController
-@RequestMapping("/api/customers")
-public class CustomerController {
-  private final CustomerService customerService;
-
-  public CustomerController(CustomerService customerService) {
-    this.customerService = customerService;
-  }
-
-  @PostMapping
-  @ResponseStatus(HttpStatus.CREATED)
-  public Customer create(
-      @RequestBody Customer customer,
-      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String correlationId) {
-    return customerService.create(customer, correlationId);
-  }
-
-  @GetMapping("/{id}")
-  public Customer get(@PathVariable String id) {
-    return customerService.get(id);
-  }
-}
-```
+**Do this:** Finish Step 4 service TODOs, then verify HTTP:
 
 ```bash
 curl -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" \
@@ -357,9 +316,11 @@ curl -s http://localhost:8080/api/customers/CUS-1001
 curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/api/customers/CUS-MISSING
 ```
 
-**Expected result:** 201 for creates; 200 for `CUS-1001`; 404 for missing; correlation header present on create response.
+**Expected result (timed):** 201 for creates; 200 for `CUS-1001`; missing ID → **500** (Boot default for unhandled `IllegalArgumentException`). Correlation is **accepted on the request** (and used in service logs when you log it) — do not claim it appears on the response unless your code sets it.
 
-**If it fails:** 415 → set `Content-Type: application/json`. Always 404 → confirm path `/api/customers/{id}` and that create succeeded first. Validation 400 → fix blank fields.
+**Optional full path:** add `@ControllerAdvice` / `@ResponseStatus` so missing ID returns **404** instead of 500.
+
+**If it fails:** 415 → set `Content-Type: application/json`. Always 404 on mapped path → confirm `/api/customers/{id}` and that create succeeded first. Expecting 404 on missing without advice → wrong; timed path is 500.
 ---
 
 ### Step 6 — Verify Actuator health and info
@@ -385,7 +346,19 @@ Optionally set `info.app.name` / `description` in YAML. In `docs/autoconfig-note
 
 **Why:** Students must see that environment changes configuration without code edits — full secrets work is Lab 26.
 
-**Do this:** Add profile files:
+**Starter already has** `application-dev.yml` / `application-prod.yml` with TODO comments (lab-only teaser — e.g. `logging.level.root: DEBUG` / `WARN`; no real secrets; Lab 26 deepens profiles). Fill those teasers. Solution uses a slightly richer shape (shown below) — either approach is fine for the lab.
+
+Starter comment intent:
+
+```yaml
+# application-dev.yml — TODO: lab-only teaser — e.g. logging.level.root: DEBUG
+# Do not put real secrets here (Lab 26 deepens profiles).
+
+# application-prod.yml — TODO: lab-only teaser — e.g. logging.level.root: WARN
+# Document that unrestricted Actuator is not for public prod hosts.
+```
+
+Example filled shape (matches solution):
 
 ```yaml
 # application-dev.yml
@@ -411,34 +384,37 @@ management:
   endpoint:
     health:
       show-details: never
+# Unrestricted Actuator is lab-only — Lab 26 deepens secrets/profiles.
 ```
 
 ```bash
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
-# or after package:
-java -jar target/crm-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
+# or after package (artifactId is lab23-crm):
+java -jar target/lab23-crm-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 ```
 
 Document which profile you would use on a shared training server. Note in `docs/autoconfig-notes.md` that Lab 26 will split secrets correctly — do not invent prod passwords here.
 
-**Expected result:** Startup shows `The following profiles are active: dev`; DEBUG from `com.northstar.crm` appears; prod file exists and is clearly tighter.
+**Expected result:** Startup shows `The following profiles are active: dev`; DEBUG (or your teaser level) appears; prod file exists and is clearly tighter.
 
-**If it fails:** Profile ignored → check filename `application-dev.yml` and activation property. Conflicting ports in profile files → keep one port unless intentional.
+**If it fails:** Profile ignored → check filename `application-dev.yml` and activation property. Conflicting ports in profile files → keep one port unless intentional. Wrong JAR name → use `lab23-crm-0.0.1-SNAPSHOT.jar`.
 
 ---
 
 ### Step 8 — Automate Boot smoke tests
 
-**Why:** Manual curls alone are not a gate; context-load + one HTTP IT prove the slice is peer-reproducible.
+**Why:** Manual curls alone are not a gate; context-load (and optionally one HTTP IT) prove the slice is peer-reproducible.
 
-**Do this:** Keep `@SpringBootTest` contextLoads; add `CustomerControllerHttpTest` with `RANDOM_PORT` and create/get for `CUS-1001` + correlation header.
+**Timed path:** Keep starter `CrmApplicationTests.contextLoads` green after YAML + service TODOs.
+
+```bash
+mvn -B -Dtest=CrmApplicationTests test
+# Expected timed: Tests run: 1 · BUILD SUCCESS
+```
+
+**Full path (this Step homework):** Add `CustomerControllerHttpTest` with `RANDOM_PORT` and create/get for `CUS-1001` + request header `X-Correlation-Id` (solution has this class; starter does not).
 
 ```java
-@SpringBootTest
-class CrmApplicationTests {
-  @Test void contextLoads() {}
-}
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerControllerHttpTest {
   @LocalServerPort int port;
@@ -449,31 +425,34 @@ class CustomerControllerHttpTest {
     var headers = new HttpHeaders();
     headers.set("X-Correlation-Id", "lab-request-001");
     headers.setContentType(MediaType.APPLICATION_JSON);
-    var body = "{\"id\":\"CUS-1001\",\"name\":\"Amina Khan\",\"email\":\"amina.khan@example.com\",\"status\":\"ACTIVE\"}";
+    Customer body = new Customer("CUS-1001", "Amina Khan", "amina.khan@example.com", "ACTIVE");
     var created = rest.postForEntity(
         "http://localhost:" + port + "/api/customers",
         new HttpEntity<>(body, headers),
         Customer.class);
-    assertThat(created.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-    assertThat(rest.getForEntity("/api/customers/CUS-1001", Customer.class)
-        .getBody().getId()).isEqualTo("CUS-1001");
+    assertEquals(HttpStatus.CREATED, created.getStatusCode());
+    assertEquals("CUS-1001",
+        rest.getForEntity("http://localhost:" + port + "/api/customers/CUS-1001", Customer.class)
+            .getBody().getId());
   }
 }
 ```
 
 ```bash
-mvn -q test
-mvn -q test
+mvn -B test
+mvn -B test
+# Full path after HttpTest exists: Tests run: 2
 ```
 
-**Expected result:** Both runs green and identical; IT asserts 201 and body `id=CUS-1001` (via `getId()`).
+**Expected result (timed):** `contextLoads` PASS; **Tests run: 1**.  
+**Expected result (full):** also `createAndGetCus1001` PASS; **Tests run: 2**; dual green runs identical.
 
 **If it fails:** Fixed port conflicts in parallel Surefire → use `RANDOM_PORT`. Flaky map state across tests → isolate or use unique IDs per test. Context fails → missing main class or broken YAML.
 ---
 
 ### Step 9 — Failure experiments + evidence pack
 
-**Why:** Auto-config literacy includes knowing how Boot fails and how 404/validation appear.
+**Why:** Auto-config literacy includes knowing how Boot fails and how missing-ID / validation appear.
 
 **Do this:** Complete Failure Experiments. Capture startup, health, and curl excerpts under `notes/screenshots/lab-23/`. Finish `docs/autoconfig-notes.md` (three auto-config items, three ownership items). Ensure `git status` clean of `target/`.
 
@@ -503,7 +482,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 | - | ------- | ---------- |
 | 1 | `application.yml` sets name, port, Actuator | Pass / Fail |
 | 2 | Create/get for `CUS-1001` and `CUS-1002` with `lab-request-001` | Pass / Fail |
-| 3 | Missing ID returns 404 | Pass / Fail |
+| 3 | Missing ID → **500** (timed) or 404 if you added `@ControllerAdvice` (full path) | Pass / Fail |
 
 ### Checkpoint C — Ops + profiles
 
@@ -521,7 +500,7 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Two consecutive `mvn test` identical success | Pass / Fail |
+| 1 | Timed: `CrmApplicationTests` green; full: also `CustomerControllerHttpTest` (dual `mvn test`) | Pass / Fail |
 | 2 | README runbook complete | Pass / Fail |
 | 3 | No secrets / `target/` committed | Pass / Fail |
 
@@ -576,6 +555,7 @@ curl -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" 
   http://localhost:8080/api/customers
 curl -s http://localhost:8080/api/customers/CUS-1001
 curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/api/customers/CUS-MISSING
+# timed missing-ID: expect 500; optional full-path @ControllerAdvice → 404
 mvn -q test
 mvn -q test
 git status

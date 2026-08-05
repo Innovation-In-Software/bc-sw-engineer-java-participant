@@ -36,11 +36,15 @@ cp -R "$SRC"/. "$DST"/
 cd "$DST"
 ```
 
+## Timed path (starter) — skip create Steps 1–5
+
+Package layout, `Student`, `StudentManager` shell, and `Main` menu already exist. **Skip GUIDE create Steps 1–5.** Fill TODOs in `StudentManager` only (`add` / `display` / `search` / `average`). Use existing `printStudentTable` / `findStudentIndex` helpers. Menu shows **1–10** (bonus 6–10 optional) — timed path needs core **1–5** only.
+
 ## 45-minute checklist (ordered TODOs)
 
 1. Skim `Student.java` (fields, getters, `display`, pass/fail) — do not rewrite getters.
 2. Implement `StudentManager.addStudent`.
-3. Implement `displayStudents`, `searchStudent`, `calculateAverage`.
+3. Implement `displayStudents`, `searchStudent`, `calculateAverage` (call `printStudentTable` where noted).
 4. Confirm `Main` menu cases 1–5 work (bonus 6–10 optional).
 5. Compile, run smoke test, capture evidence under `notes/screenshots/lab-2/`.
 

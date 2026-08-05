@@ -22,8 +22,7 @@ public class CrmReadinessIndicator implements HealthIndicator {
 
     @Override
     public Health health() {
-        // TODO: when !ready return Health.outOfService().withDetail("reason", "lab-toggle")
-        // Baseline returns UP so the app starts; flip the toggle in ActuatorIT.
+        // Ready → UP; lab toggle off → OUT_OF_SERVICE (already correct — confirm in ActuatorIT)
         return ready ? Health.up().build() : Health.outOfService().withDetail("reason", "lab-toggle").build();
     }
 }

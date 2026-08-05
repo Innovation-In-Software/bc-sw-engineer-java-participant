@@ -17,7 +17,8 @@ public class CorrelationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         // TODO: read X-Correlation-Id (default lab-request-001); MDC.put("corr", ...); echo response header
-        // TODO: wrap doFilter in try/finally with MDC.clear()
-        filterChain.doFilter(request, response);
+        // TODO: call filterChain.doFilter ONLY inside try; always MDC.clear() in finally
+        // Do NOT leave a bare doFilter call outside try/finally (double-invoke / skipped MDC).
+        throw new UnsupportedOperationException("TODO: wire MDC + doFilter in try/finally");
     }
 }

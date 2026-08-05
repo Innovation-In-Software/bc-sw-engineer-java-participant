@@ -40,7 +40,7 @@ Follow the matching steps in your OS how-to; skip optional VS Code unless you al
 - [ ] **IntelliJ IDEA Community** installed and launched once
 - [ ] **`java-bootcamp`** folder with `examples/` and `notes/screenshots/`
 - [ ] Workspace opened in IntelliJ with Project SDK **21**
-- [ ] **HelloWorld** (or Hello Java) smoke: terminal **and** IntelliJ green arrow print the greeting
+- [ ] **HelloJava** smoke: terminal **and** IntelliJ green arrow print `Hello Java Bootcamp!`
 - [ ] Git identity set (`user.name` / `user.email`) — personal GitHub repo comes in Lab 1 Step 0
 
 ## Smoke test
@@ -68,7 +68,7 @@ echo "$JAVA_HOME"
 cd ~/java-bootcamp && pwd
 ```
 
-Then run the HelloWorld / Hello Java steps from your OS guide (terminal + green arrow).
+Then run the HelloJava steps from your OS guide (terminal + green arrow).
 
 Evidence under `~/java-bootcamp/notes/screenshots/` (Windows: `%USERPROFILE%\java-bootcamp\notes\screenshots\`). Redact secrets.
 
@@ -80,8 +80,8 @@ Evidence under `~/java-bootcamp/notes/screenshots/` (Windows: `%USERPROFILE%\jav
 | Maven 3.9.x on Java 21 | Pass / Fail |
 | `JAVA_HOME` points at JDK 21 | Pass / Fail |
 | `java-bootcamp` with `examples/` + `notes/screenshots/` | Pass / Fail |
-| HelloWorld runs from terminal | Pass / Fail |
-| HelloWorld runs via IntelliJ green arrow | Pass / Fail |
+| HelloJava prints `Hello Java Bootcamp!` from terminal | Pass / Fail |
+| HelloJava runs via IntelliJ green arrow | Pass / Fail |
 | Git identity set | Pass / Fail |
 
 **Do not start Lab 1** until every row is Pass in your notes.

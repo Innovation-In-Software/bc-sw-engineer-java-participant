@@ -13,7 +13,7 @@
 | --- | --- |
 | **Objective** | Implement methods with params/returns and a simple overload |
 | **Skills practiced** | method signatures, return, overloading |
-| **Expected outcome** | Calls print expected results for add/multiply (or overload pair) |
+| **Expected outcome** | Calls print expected results for `square(int)` / `square(double)` overloads |
 | **Estimated time** | 12–15 minutes |
 | **File to create** | `examples/module-02-exercises/MethodsDemo.java` |
 | **Checkpoint** | D (after slides 67–69) |
@@ -115,7 +115,7 @@ Both calls print the correct square, and the program compiles even though two me
 
 ## Predict the Output
 
-Which overload runs for `add(2, 3)` vs `add(2.5, 3.5)`?
+Which overload runs for `square(4)` vs `square(2.5)`?
 
 ## Troubleshooting
 

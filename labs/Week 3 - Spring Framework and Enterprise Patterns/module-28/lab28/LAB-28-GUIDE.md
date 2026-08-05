@@ -35,15 +35,15 @@
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
 1. Open [`starter/README.md`](starter/README.md).
-2. Copy `starter/` into your `java-bootcamp/examples/…` target (see starter README).
-3. Fill every `// TODO` — do **not** wait on a perfect prior lab; the starter includes a baseline.
-4. Run the starter smoke test; evidence under `notes/screenshots/lab-28/`.
-5. Mark timed-path Pass criteria in the starter README. Continue remaining GUIDE steps as homework if needed.
+2. Copy `starter/` into `%USERPROFILE%\java-bootcamp\examples\lab28-crm` or `~/java-bootcamp/examples/lab28-crm`.
+3. Fill every `// TODO` (SecurityConfig, JwtService, AuthController login validation, filter).
+4. Add `SecurityPathTest` (**Tests run: 3**) — starter ships **0** tests until you add them in Step 8.
+5. Mark timed-path Pass criteria. Continue remaining GUIDE steps as homework if needed.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
-| **Full (extended)** | see Duration | Every Step in this GUIDE |
+| **Timed (default)** | ~45 min | Lab stub JWT + matcher roles + SecurityPathTest ×3 |
+| **Full (extended)** | see Duration | Real HS256 (`eyJ…`) / jjwt / `@PreAuthorize` stretch |
 
 ---
 
@@ -54,10 +54,10 @@ Keep this checklist visible while you work.
 | # | Deliverable |
 | - | ----------- |
 | 1 | `lab28-crm` with SecurityFilterChain, JWT login, AGENT/ADMIN roles |
-| 2 | MockMvc (or WebTestClient) evidence for 401/403/200 |
-| 3 | Successful-path evidence (login + `CUS-1001` with AGENT) |
+| 2 | MockMvc evidence for 401/403/200 (`SecurityPathTest` — **Tests run: 3**) |
+| 3 | Successful-path evidence (login + `CUS-1001` with AGENT Bearer) |
 | 4 | Controlled-failure evidence (401/403) |
-| 5 | Auth-flow notes or diagram in `docs/security-notes.md` |
+| 5 | Auth-flow notes in `docs/security-notes.md` |
 | 6 | Production IdP / secret-rotation checklist |
 | 7 | Run and cleanup instructions |
 | 8 | No secrets or generated build directories committed |
@@ -68,21 +68,23 @@ Keep this checklist visible while you work.
 
 ## Lab Overview
 
-This Module 28 lab adds **Spring Security** to the **Customer Management Platform**: JWT-based login, a `SecurityFilterChain` that protects APIs by default, CRM roles `AGENT` and `ADMIN`, and **MockMvc** (or WebTestClient) proofs for **401** and **403**.
+This Module 28 lab adds **Spring Security** to the CRM: login that issues a **lab stub token**, a `SecurityFilterChain` that protects APIs by default, CRM roles `AGENT` and `ADMIN`, and **MockMvc** proofs for **401** and **403**.
+
+Timed path does **not** require a real three-part `eyJ…` HS256 JWT — the solution uses a lab stub format (see Step 4). Real JWT libraries are a full-path / production note.
 
 ## Learning Objectives
 
 After completing this lab, you will be able to:
 
 * Add Spring Security to a Spring Boot 3 CRM API
-* Implement a login endpoint that authenticates credentials and returns a JWT
-* Validate JWTs on subsequent requests with a filter (or resource-server pattern as taught)
-* Protect `/api/customers/**` (and related) routes by default
-* Enforce roles `AGENT` and `ADMIN` with request matchers and/or `@PreAuthorize`
+* Implement a login endpoint that authenticates credentials and returns an access token
+* Validate tokens on subsequent requests with a filter
+* Protect `/api/customers/**` routes by default
+* Enforce roles `AGENT` and `ADMIN` with **request matchers** (timed path)
 
 ## Business Scenario
 
-The CRM stores customer identity, contact details, lifecycle status, and financial accounts. Its React client communicates with Spring Boot over HTTPS/JSON. Without authentication, anyone who can reach the network can read or mutate customer data — unacceptable for Northstar. Agents need day-to-day access to Amina Khan and Ravi Singh records; admins need elevated control for support and configuration.
+Without authentication, anyone who can reach the network can read or mutate customer data. Agents need day-to-day access to Amina Khan and Ravi Singh records; admins need elevated control.
 
 Use these examples consistently:
 
@@ -90,12 +92,11 @@ Use these examples consistently:
 | -- | ---- | ----- |
 | `CUS-1001` | Amina Khan | `ACTIVE` — primary secured GET target |
 | `CUS-1002` | Ravi Singh | `PROSPECT` — readable by AGENT and ADMIN |
-| `CUS-9999` | — | optional not-found path under auth |
 | `lab-request-001` | — | correlation header (not a credential) |
-| `agent1` | — | role `AGENT` (lab-only password) |
-| `admin1` | — | role `ADMIN` (lab-only password) |
+| `agent1` / `agent1` | — | role `AGENT` (lab-only) |
+| `admin1` / `admin1` | — | role `ADMIN` (lab-only) |
 
-**Security note for evidence.** Use fictional emails and lab-only passwords. Redact JWTs in screenshots if policy requires. Never commit `CRM_JWT_SECRET` values or `.env` files.
+**Security note for evidence.** Redact tokens in screenshots if policy requires. Never commit `JWT_SECRET` values or `.env` files.
 
 ---
 
@@ -105,9 +106,9 @@ Use these examples consistently:
 ```mermaid
 flowchart TB
   UI["React CRM SPA"] -->|HTTPS/JSON| Sec["Spring Security filter chain"]
-  Sec --> Login["/api/auth/login<br/>issue JWT"]
-  Sec --> API["/api/customers/**<br/>JWT + roles"]
-  Login --> Jwt["JwtService + UserDetails"]
+  Sec --> Login["/api/auth/login<br/>issue token"]
+  Sec --> API["/api/customers/**<br/>Bearer + roles"]
+  Login --> Jwt["JwtService + CrmUserDetailsService"]
   API --> Filt["JwtAuthenticationFilter"]
   Jwt --> Users["agent1 / admin1 in-memory"]
   Filt --> Ctx["SecurityContext + MockMvc tests"]
@@ -120,9 +121,9 @@ Prior labs: [25](../../module-25/lab25/LAB-25-GUIDE.md) · [27](../../module-27/
 Confirm (Lab 0 tools assumed):
 
 * JDK 21; Maven; Git; Spring Boot 3.x CRM REST API
-* `spring-boot-starter-security` and a JWT library (`jjwt` or Spring Authorization/Resource Server patterns as taught)
+* `spring-boot-starter-security` (starter includes it)
 * HTTP client capable of sending `Authorization: Bearer ...`
-* No secrets (keys, tokens, passwords) committed to Git — use `.env.example` only
+* No secrets committed to Git — use `.env.example` only
 
 ### Pre-flight
 
@@ -133,8 +134,6 @@ mvn -version
 
 ## Worked example (read before you code)
 
-Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
-
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
@@ -145,7 +144,9 @@ curl -s http://localhost:8080/api/customers/CUS-1001 \
   -H "X-Correlation-Id: lab-request-001"
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+Login JSON shape: `{"accessToken":"...","tokenType":"Bearer"}` — **no** `username` field required.
+
+**What to notice:** Match users, roles, and 401/403 behavior — instructors check these.
 
 ---
 
@@ -155,32 +156,30 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab28-crm
 
 ---
 
-### Step 1 — Branch prior CRM and pin Security + JWT deps
+### Step 1 — Copy starter and pin secret config
 
-**Why:** Secret handling and dependencies must be executable via Maven before any filter logic exists.
+**Why:** Secret handling must be executable via Maven before any filter logic exists.
 
 **Do this:**
 
 ```bash
-cd ~/java-bootcamp/examples
-cp -r lab27-crm lab28-crm   # or lab25-crm / latest CRM API copy
-cd lab28-crm
+# Timed path: copy starter/ — see starter/README.md
+cd ~/java-bootcamp/examples/lab28-crm
 mkdir -p docs
 mkdir -p ~/java-bootcamp/notes/screenshots/lab-28
 ```
 
-Add `spring-boot-starter-security`, test support, and your JWT library. Define configuration placeholders — never hard-code a production key.
+Confirm YAML (starter/solution):
 
 ```yaml
-crm:
+northstar:
   security:
-    jwt-secret: ${CRM_JWT_SECRET:lab-only-change-me-use-long-random}
-    jwt-expiration-minutes: 60
+    jwt-secret: ${JWT_SECRET:lab-only-change-me}
 ```
 
 ```text
 # .env.example
-CRM_JWT_SECRET=replace-with-long-random-lab-secret
+JWT_SECRET=lab-only-change-me
 ```
 
 ```bash
@@ -188,89 +187,73 @@ mvn -q -DskipTests package
 git status
 ```
 
-**Expected result:** `BUILD SUCCESS`; `.env.example` exists; no real secret in staged files.
+**Expected result:** `BUILD SUCCESS`; `.env.example` uses **`JWT_SECRET`** (not `CRM_JWT_SECRET`); no real secret staged.
 
-**If it fails:** Parent BOM missing → keep Spring Boot parent managing versions. `.env` staged → add to `.gitignore` before continuing.
+**If it fails:** `.env` staged → add to `.gitignore` before continuing.
 
 ---
 
 ### Step 2 — Configure the security filter chain
 
-**Why:** APIs must deny by default; only login and health should be anonymous.
+**Why:** APIs must deny by default; login, health, and `/error` must stay anonymous.
 
-**Do this:** In `config/SecurityConfig.java`, disable session state for a JWT API. Permit login and health; authenticate everything else. Wire CSRF appropriately for stateless APIs. Register the JWT filter before `UsernamePasswordAuthenticationFilter`.
+**Do this:** In `config/SecurityConfig.java`, disable session state for a token API. Permit login, health, and **`/error`**. Wire CSRF off for stateless APIs. Register the JWT filter before `UsernamePasswordAuthenticationFilter`. Disable httpBasic/formLogin for API-style 401s.
 
 ```java
-@Bean
-SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-  http.csrf(csrf -> csrf.disable())
-      .sessionManagement(sm ->
-          sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-      .authorizeHttpRequests(auth -> auth
-          .requestMatchers("/api/auth/login", "/actuator/health").permitAll()
-          .requestMatchers("/api/admin/**").hasRole("ADMIN")
-          .requestMatchers("/api/customers/**").hasAnyRole("AGENT", "ADMIN")
-          .anyRequest().authenticated())
-      .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-  return http.build();
-}
+.authorizeHttpRequests(auth -> auth
+    .requestMatchers("/api/auth/login", "/actuator/health", "/error").permitAll()
+    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+    .requestMatchers("/api/admin/**").hasRole("ADMIN")
+    .requestMatchers("/api/customers/**").hasAnyRole("AGENT", "ADMIN")
+    .anyRequest().authenticated())
 ```
 
-Start the app and call customers without a token.
+**Why `/error` is permitAll:** Boot `sendError(403)` dispatches to `/error`. If that path requires auth, the client status becomes **401** instead of **403**. Always verify role denial with `spring-boot:run`, not only MockMvc.
 
-**Expected result:** Application starts; unauthenticated `GET /api/customers/CUS-1001` returns **401**; health remains reachable if exposed.
+**Expected result:** Unauthenticated `GET /api/customers/CUS-1001` returns **401**; health remains reachable.
 
-**If it fails:** Browser form login redirects → disable formLogin/httpBasic for API-style responses. Filter not registered → 401 persists even with valid tokens later. Agent on admin returns **401** instead of **403** on live Tomcat → add `/error` to `permitAll()` (Boot `sendError(403)` dispatches to `/error`; if that path requires auth, the client status becomes 401). MockMvc may still show 403 without this fix — always verify with `spring-boot:run`.
+**If it fails:** Browser form login redirects → disable formLogin/httpBasic. Agent on admin returns **401** instead of **403** on live Tomcat → add `/error` to `permitAll()`.
 
 ---
 
-### Step 3 — Implement UserDetails and password encoding
+### Step 3 — Confirm UserDetails via `CrmUserDetailsService`
 
-**Why:** Roles and encoded passwords are the source of truth for login; plaintext passwords fail security review.
+**Why:** Roles and encoded passwords are the source of truth for login.
 
-**Do this:** Provide in-memory lab users. Roles must become `ROLE_AGENT` / `ROLE_ADMIN` in Spring's model.
+**Do this:** Starter already includes `@Service CrmUserDetailsService` with in-memory users:
 
-```java
-@Bean
-UserDetailsService users(PasswordEncoder encoder) {
-  return new InMemoryUserDetailsManager(
-      User.withUsername("agent1").password(encoder.encode("agent1"))
-          .roles("AGENT").build(),
-      User.withUsername("admin1").password(encoder.encode("admin1"))
-          .roles("ADMIN").build());
-}
-```
+| username | password | role |
+| -------- | -------- | ---- |
+| `agent1` | `agent1` | `AGENT` |
+| `admin1` | `admin1` | `ADMIN` |
 
-Document lab passwords only in README for students — do not commit a production password file. Prefer `BCryptPasswordEncoder`.
+Prefer `BCryptPasswordEncoder`. Do not invent a separate `InMemoryUserDetailsManager` `@Bean` unless you remove the `@Service` to avoid duplicate beans.
 
-**Expected result:** `PasswordEncoder` bean is BCrypt (or equivalent); `UserDetailsService` loads `agent1` and `admin1`.
+**Expected result:** `UserDetailsService` loads `agent1` and `admin1` with BCrypt-encoded passwords.
 
-**If it fails:** `{noop}agent1` left in production notes as “fine” → reject for anything beyond local demo. Wrong role string → later 403 flakiness.
+**If it fails:** Wrong role string → later 403 flakiness.
 
 ---
 
-### Step 4 — Implement JwtService (issue and parse)
+### Step 4 — Implement JwtService (lab stub token)
 
 **Why:** Signature verification is the trust boundary for bearer tokens after login.
 
-**Do this:** Issue tokens that include subject (username), roles, issued-at, and expiry. Validate signature and expiry on parse.
+**Do this (timed path):** Issue and parse a **lab stub** token — not a real HS256 JWT:
 
-```java
-public String issueToken(UserDetails user) {
-  // HS256 with crm.security.jwt-secret
-  // claims: sub, roles, iat, exp
-}
-
-public Jws<Claims> parse(String token) {
-  // verify signature and expiration
-}
+```text
+lab.<subject>.<role>.<hex(secret.hashCode())>
 ```
 
-Include `lab-request-001` only as a separate header/correlation practice — do not put auth inside correlation IDs.
+Example shape: `lab.agent1.AGENT.<sig>`
 
-**Expected result:** `issueToken(agent1)` returns a three-part JWT; parse rejects tampered payloads and expired tokens.
+Bind secret with `@Value("${northstar.security.jwt-secret}")`. Reject tokens that do not start with `lab` or whose sig part does not match the secret hash.
 
-**If it fails:** Secret too short for HS256 library → lengthen lab secret. Clock skew in tests → use generous expiry or fixed clocks in tests.
+**Full path (optional):** replace the stub with a real three-part `eyJ…` HS256 JWT via jjwt (comment-only in pom for timed path).
+
+**Expected result:** `issueToken` returns a `lab.…` stub; parse rejects tampered sigs.
+
+**If it fails:** Expecting `eyJ` only → soften requirement; stub is the timed contract.
 
 ---
 
@@ -281,35 +264,34 @@ Include `lab-request-001` only as a separate header/correlation practice — do 
 **Do this:**
 
 ```java
-@PostMapping("/api/auth/login")
-public LoginResponse login(@RequestBody LoginRequest req) {
-  authenticationManager.authenticate(
-      new UsernamePasswordAuthenticationToken(req.username(), req.password()));
-  UserDetails user = userDetailsService.loadUserByUsername(req.username());
-  return new LoginResponse(jwtService.issueToken(user), user.getUsername());
+@PostMapping("/login")
+public Map<String, String> login(@RequestBody Map<String, String> body) {
+  UserDetails user = userDetailsService.loadUserByUsername(body.get("username"));
+  if (!passwordEncoder.matches(body.get("password"), user.getPassword())) {
+    throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Bad credentials");
+  }
+  String token = jwtService.issueToken(user);
+  return Map.of("accessToken", token, "tokenType", "Bearer");
 }
 ```
 
 ```bash
 curl -s -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
-  -H "X-Correlation-Id: lab-request-001" \
   -d '{"username":"agent1","password":"agent1"}'
 ```
 
-Also try a bad password and confirm **401** without leaking which field was wrong.
+**Expected result:** `{"accessToken":"lab.agent1.AGENT.<sig>","tokenType":"Bearer"}`; bad password returns **401**.
 
-**Expected result:** `{"accessToken":"eyJ...","username":"agent1"}`; bad password returns 401.
-
-**If it fails:** Login also requires JWT → matcher missed `/api/auth/login`. 403 on bad password → check AuthenticationEntryPoint vs AccessDeniedHandler wiring.
+**If it fails:** Login also requires JWT → matcher missed `/api/auth/login`.
 
 ---
 
 ### Step 6 — JWT filter and authenticated customer access
 
-**Why:** Login alone is not enough; every request must present a valid JWT (defense in depth).
+**Why:** Login alone is not enough; every request must present a valid token.
 
-**Do this:** Read `Authorization: Bearer`, parse JWT, set `SecurityContext`, continue the filter chain.
+**Do this:** Read `Authorization: Bearer`, parse token, set `SecurityContext`, continue the chain.
 
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login \
@@ -321,72 +303,51 @@ curl -s http://localhost:8080/api/customers/CUS-1001 \
   -H "X-Correlation-Id: lab-request-001"
 ```
 
-Ensure Amina (`ACTIVE`) is seeded from prior labs or a data seeder.
-
 **Expected result:** JSON for Amina Khan / `ACTIVE`; request without `Authorization` still returns **401**.
 
-**If it fails:** Filter does not set `SecurityContext` → still 401 with valid token. Seed missing `CUS-1001` → 404 under auth (separate from security; fix seed).
+**If it fails:** Filter does not set `SecurityContext` → still 401 with valid token.
 
 ---
 
-### Step 7 — Role separation AGENT vs ADMIN
+### Step 7 — Role separation AGENT vs ADMIN (matcher-only)
 
 **Why:** Authenticated does not mean authorized — students must prove **403** vs **401**.
 
-**Do this:** Expose an admin-only endpoint (list support data or forced override). Agents must receive 403.
+**Do this:** Starter `AdminController.ping()` at `GET /api/admin/ping` returns `{"role":"ADMIN","ok":"true"}`. Authorization is **matcher-only** via `hasRole("ADMIN")` in `SecurityConfig`.
 
-```java
-@GetMapping("/api/admin/ping")
-@PreAuthorize("hasRole('ADMIN')")
-public List<CustomerResponse> adminList() { ... }
-```
-
-Enable method security if using `@PreAuthorize`. Exercise:
+**Timed path:** `@PreAuthorize` is **not** required. Full path may add method security as a stretch.
 
 ```bash
 # agent token -> 403 on /api/admin/ping
 # admin token -> 200
-curl -s http://localhost:8080/api/customers/CUS-1002 \
-  -H "Authorization: Bearer $AGENT_TOKEN"   # allowed for AGENT
 ```
 
-**Expected result:** `agent1`: customers OK, admin route **403**; `admin1`: customers OK, admin route **200**; `CUS-1002` (Ravi / PROSPECT) readable by both under customer API policy.
+**Expected result:** `agent1`: customers OK, admin route **403**; `admin1`: customers OK, admin route **200**.
 
-**If it fails:** `hasRole("ADMIN")` but authorities missing `ROLE_` prefix → unexpected 403 for admin. Matcher and annotation disagree → pick one clear policy and document it.
+**If it fails:** Live Tomcat shows 401 for agent→admin → ensure `/error` is `permitAll`.
 
 ---
 
-### Step 8
-
-Name the suite `SecurityPathTest` (**Tests run: 3**): missing token → **401**; agent customers OK + `/api/admin/ping` → **403**; admin ping → **200**. — Automated MockMvc matrix and production notes
+### Step 8 — `SecurityPathTest` (**Tests run: 3**)
 
 **Why:** Automated 401/403 checks prevent regressions when routes are added.
 
-**Do this:** Use MockMvc or WebTestClient for the status matrix. Document that production must replace in-memory users and shared HS256 secrets with an IdP and rotating keys.
+**Do this:** Starter has **0** tests. Add `com.northstar.crm.SecurityPathTest`:
 
-```java
-@Test
-void customers_requireAuthentication() throws Exception {
-  mockMvc.perform(get("/api/customers/CUS-1001"))
-      .andExpect(status().isUnauthorized());
-}
-
-@Test
-void admin_forbidden_for_agent() throws Exception {
-  // obtain or forge agent JWT under test secret → expect 403 on /api/admin/**
-}
-```
+1. `missingTokenIs401`
+2. `agentCanReadCustomerButNotAdmin`
+3. `adminCanPing`
 
 ```bash
-mvn -q test
-mvn -q test   # second run for determinism
+mvn -B test
+# Expected: Tests run: 3, BUILD SUCCESS
 ```
 
-Record production checklist in `docs/security-notes.md` (IdP, key vault, no plaintext passwords, token TTL, refresh design notes).
+Record production checklist in `docs/security-notes.md` (IdP, key vault, no plaintext passwords, token TTL).
 
-**Expected result:** Surefire green twice; README/docs list IdP / secret rotation checklist items.
+**Expected result:** Surefire **Tests run: 3**; docs list IdP / secret rotation checklist items.
 
-**If it fails:** Tests depend on a live server clock for expiry → use fixed expiry in tests. Security context leaks across tests → reset between cases.
+**If it fails:** Security context leaks across tests → reset between cases.
 
 ---
 
@@ -397,43 +358,33 @@ Record production checklist in `docs/security-notes.md` (IdP, key vault, no plai
 **Do this:** In project README and `docs/security-notes.md`, list:
 
 ```bash
-export CRM_JWT_SECRET='lab-only-long-random'   # never commit the real value
+export JWT_SECRET='lab-only-change-me'   # never commit a real value
 mvn -q spring-boot:run
 # login → capture token (redact in notes) → GET CUS-1001 / admin matrix
-mvn -q test
+mvn -B test
 ```
 
-Include: demo users (`agent1`/`admin1`), matcher table (login permitAll, customers AGENT|ADMIN, admin ADMIN), token TTL, and production checklist (IdP, JWKS, secret rotation, rate-limit failed logins, never log Bearer tokens).
+Include: demo users, matcher table (login+health+`/error` permitAll, customers AGENT|ADMIN, admin ADMIN), and production checklist (IdP, JWKS, secret rotation, never log Bearer tokens).
 
 **Expected result:** Peer can reproduce green auth demos and tests from README alone.
-
-**If it fails:** Runbook lists only `spring-boot:run` with no 401/403 checks → add the matrix commands.
 
 ---
 
 ### Step 10 — Failure experiments + evidence pack
 
-**Why:** Misconfigured secrets, role mistakes, and token logging are the failure modes of this lab’s culture.
+**Do this:** Complete Failure Experiments. Capture redacted curl and Surefire under `notes/screenshots/lab-28/`. Confirm `git status` is clean of secrets and `target/`.
 
-**Do this:** Complete Failure Experiments. Capture redacted curl and Surefire excerpts under `notes/screenshots/lab-28/`. Confirm `git status` is clean of secrets and `target/`. Run `mvn -q test` twice for determinism.
-
-**Expected result:** ≥3 experiments documented; identical consecutive test runs; evidence saved; no JWT/password in Git.
-
-**If it fails:** See Troubleshooting.
+**Expected result:** ≥3 experiments documented; Tests run: 3; evidence saved; no JWT/password in Git.
 
 ---
 
 ## Seed and fixture checklist (before demos)
 
-Ensure the CRM repository still contains:
-
 | Fixture | Seed requirement |
 | ------- | ---------------- |
-| `CUS-1001` | Amina Khan, `ACTIVE`, fictional email |
-| `CUS-1002` | Ravi Singh, `PROSPECT`, fictional email |
+| `CUS-1001` | Amina Khan, `ACTIVE` |
+| `CUS-1002` | Ravi Singh, `PROSPECT` |
 | Correlation | Clients send `X-Correlation-Id: lab-request-001` |
-
-If your Lab 25/27 copy has empty data, add a `CommandLineRunner` or `data.sql` before claiming Security “works” — a 404 under a valid JWT is a data issue, not an auth issue.
 
 ---
 
@@ -446,18 +397,18 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | `lab28-crm` under `~/java-bootcamp/examples/` | Pass / Fail |
-| 2 | Security + JWT dependencies resolve | Pass / Fail |
+| 2 | `northstar.security.jwt-secret` / `JWT_SECRET` configured | Pass / Fail |
 | 3 | `.env.example` present; real `.env` / secrets not staged | Pass / Fail |
 
-### Checkpoint B — Filter chain and JWT login
+### Checkpoint B — Filter chain and login
 
 _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Stateless `SecurityFilterChain` with permitAll login/health | Pass / Fail |
-| 2 | `agent1` / `admin1` with BCrypt (or equivalent) | Pass / Fail |
-| 3 | Login issues JWT; parse rejects tampered tokens | Pass / Fail |
+| 1 | Stateless chain; permitAll login + health + `/error` | Pass / Fail |
+| 2 | `CrmUserDetailsService` loads `agent1` / `admin1` | Pass / Fail |
+| 3 | Login returns `{accessToken, tokenType}` (lab stub OK) | Pass / Fail |
 
 ### Checkpoint C — Roles and API access
 
@@ -465,9 +416,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Bearer access to `CUS-1001` / `CUS-1002` as AGENT | Pass / Fail |
-| 2 | Missing/invalid JWT → 401 | Pass / Fail |
-| 3 | AGENT on admin route → 403; ADMIN → 200 | Pass / Fail |
+| 1 | Bearer access to `CUS-1001` as AGENT | Pass / Fail |
+| 2 | Missing/invalid token → 401 | Pass / Fail |
+| 3 | AGENT on admin → 403; ADMIN → 200 (matcher-only) | Pass / Fail |
 
 ### Checkpoint D — Tests and hygiene
 
@@ -475,9 +426,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | MockMvc (or WebTestClient) 401/403/200 matrix green | Pass / Fail |
-| 2 | Two consecutive `mvn test` identical success | Pass / Fail |
-| 3 | Production IdP / rotation notes; no tokens in logs or Git | Pass / Fail |
+| 1 | `SecurityPathTest` — Tests run: 3 | Pass / Fail |
+| 2 | Production IdP / rotation notes | Pass / Fail |
+| 3 | No tokens in logs or Git | Pass / Fail |
 
 ---
 
@@ -486,30 +437,25 @@ _Mark **Pass** or **Fail** in your lab notes._
 ### SecurityFilterChain (pattern)
 
 ```java
-http.csrf(csrf -> csrf.disable())
-    .sessionManagement(sm ->
-        sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-    .authorizeHttpRequests(auth -> auth
-        .requestMatchers("/api/auth/login").permitAll()
-        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-        .requestMatchers("/api/customers/**").hasAnyRole("AGENT", "ADMIN")
-        .anyRequest().authenticated());
+.requestMatchers("/api/auth/login", "/actuator/health", "/error").permitAll()
+.requestMatchers("/api/admin/**").hasRole("ADMIN")
+.requestMatchers("/api/customers/**").hasAnyRole("AGENT", "ADMIN")
+.anyRequest().authenticated();
 ```
 
 ### Commands
 
 ```bash
 cd ~/java-bootcamp/examples/lab28-crm
-mvn -q -DskipTests package
 mvn -q spring-boot:run
 curl -s -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
-  -H "X-Correlation-Id: lab-request-001" \
   -d '{"username":"admin1","password":"admin1"}'
 curl -s http://localhost:8080/api/customers/CUS-1002 \
   -H "Authorization: Bearer <token>" \
   -H "X-Correlation-Id: lab-request-001"
-mvn -q test
+mvn -B test
+# Tests run: 3
 git status
 ```
 
@@ -517,11 +463,11 @@ git status
 
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
-| 1 | Mismatch JWT secret between issuer and filter | 401 on customers with “valid-looking” token | Align secret / env |
-| 2 | Login with wrong password; malformed Bearer | 401; no secret leakage in body/logs | Keep safe error path |
-| 3 | Call admin API as `agent1` | 403 | Confirm matcher / `@PreAuthorize` |
-| 4 | Reuse expired token | 401; explain refresh as production concern | Relogin for new token |
-| 5 | Optional: slow AuthenticationProvider | Client timeout honest; no password in debug logs | Remove artificial delay |
+| 1 | Mismatch JWT secret between issuer and filter | 401 on customers | Align `JWT_SECRET` |
+| 2 | Login with wrong password; malformed Bearer | 401; no secret leakage | Keep safe error path |
+| 3 | Call admin API as `agent1` | 403 (live Tomcat) | Confirm `/error` permitAll |
+| 4 | Tamper stub sig | 401 | Keep parse check |
+| 5 | Optional: real HS256 swap (full path) | Document migration | Keep stub for timed Pass |
 
 ---
 
@@ -531,20 +477,19 @@ git status
 | ------- | ------------ | --- |
 | HTML login redirect | Form login still enabled | Disable formLogin; return 401 for APIs |
 | Valid token still 401 | Filter order / SecurityContext not set | Register filter before UsernamePasswordAuthenticationFilter |
-| Admin always 403 | Role naming (`ROLE_` prefix) | Use `roles("ADMIN")` or `hasAuthority("ROLE_ADMIN")` consistently |
-| Tests flaky on expiry | Real clock skew | Fixed TTL or Clock bean in tests |
-| Double auth errors | Duplicate filter registration | Register once; keep login `permitAll` |
-| Secret change ignored | Env not reloaded | Restart JVM after changing `CRM_JWT_SECRET` |
+| Admin always 403 | Role naming (`ROLE_` prefix) | Use `roles("ADMIN")` consistently |
+| Agent admin shows 401 live | `/error` not permitAll | Add `/error` to permitAll |
+| Secret change ignored | Env not reloaded | Restart JVM after changing `JWT_SECRET` |
 | Working in `module-28-exercises` for the lab | Wrong project | Lab lives in `examples/lab28-crm` |
 | Real JWT secret committed | Secret hygiene failure | Remove, rotate, use `.env.example` only |
 
 ## Security and Production Review
 
-Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
+Optional — jot brief notes in your README if useful for your progress check:
 
 1. Which inputs are untrusted (credentials, Authorization header, customer IDs)?
-2. Where are authn/authz enforced (filter chain, method security)?
-3. Which values are sensitive (JWT secret, passwords, bearer tokens) and where stored?
+2. Where are authn/authz enforced (filter chain matchers)?
+3. Which values are sensitive (`JWT_SECRET`, passwords, bearer tokens) and where stored?
 
 ---
 
@@ -554,24 +499,22 @@ Optional — jot brief notes in your README if useful for your progress check (n
 ```bash
 cd ~/java-bootcamp/examples/lab28-crm
 # Stop spring-boot:run (Ctrl+C)
-# Unset CRM_JWT_SECRET from the shell if exported
+# Unset JWT_SECRET from the shell if exported
 mvn -q clean
 git status
 ```
 
 Do not commit `.env`, tokens, or `target/`. Keep redacted screenshots under `notes/screenshots/lab-28/`.
 
-**Keep `lab28-crm`**—Lab 29 layers Bean Validation and `ErrorResponse` on this secured API.
+**Keep `lab28-crm`**—Lab 29 layers Bean Validation and `ErrorResponse` on this secured API (Lab 29 starter already includes this security baseline).
 
 
 ## Reflection Questions
 
 Write **1–3 sentence** answers (not essays):
 
-1. Which design decision most affected correctness (stateless JWT vs session)?
+1. Which design decision most affected correctness (stateless token vs session)?
 2. What evidence proves role separation works?
 3. Which failure was hardest to diagnose (401 vs 403 vs filter order)?
 
 ---
-
-

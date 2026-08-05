@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-14-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 14 `starter/` → `examples\lab14-crm` (or copy `lab12-crm` → `lab14-crm`). Jakarta Validation **3.1.0**, Hibernate Validator **8.0.2.Final**, Expressly **5.0.0**; `CustomerRequestDTO` / `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` (wired to Lab 12 `createCustomer`/`getCustomer`). Starter timed suite: `CustomerRequestValidationTest` (`validAminaRequestPasses`, `invalidEmailFails`, `blankNameFails`) → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS**. Main (with Maven runtime classpath) prints response DTOs for Amina/Ravi and rejects invalid email / unknown id with `lab-request-001`. Bare `java -cp target\classes` fails with `NoClassDefFoundError: jakarta/validation/Validation` — use `dependency:build-classpath` or IntelliJ Run. Instructor walkthrough: `docs/instructor-participant-help/week-2/14-dto-exercises-and-lab14.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 14 `starter/` → `examples\lab14-crm` (or copy `lab12-crm` → `lab14-crm`). Jakarta Validation **3.1.0**, Hibernate Validator **8.0.2.Final**, Expressly **5.0.0**; `CustomerRequestDTO` / `CustomerResponseDTO`, `CustomerMapper`, `CustomerApiFacade` (wired to Lab 12 `createCustomer`/`getCustomer`). Starter timed suite: `CustomerRequestValidationTest` (`validAminaRequestPasses`, `invalidEmailFails`, `blankNameFails`) → **Tests run: 3**, Failures: 0 · **BUILD SUCCESS**. Main (with Maven runtime classpath) prints response DTOs for Amina/Ravi and rejects invalid email / unknown id with `lab-request-001`. Bare `java -cp target\classes` fails with `NoClassDefFoundError: jakarta/validation/Validation` — use `dependency:build-classpath` or IntelliJ Run. Instructor walkthrough: `docs/instructor-participant-help/week-2/14-dto-exercises-and-lab14.md`.
 
 ## Prerequisites (Windows)
 
@@ -69,3 +69,4 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
 | 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
 | 5 | Screenshots (if required) under `notes/screenshots/lab-14/` | Pass / Fail |
+

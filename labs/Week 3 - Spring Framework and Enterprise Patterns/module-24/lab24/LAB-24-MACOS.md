@@ -35,12 +35,15 @@ cd examples/lab24-crm
 
 ```bash
 cd ~/java-bootcamp/examples/lab24-crm
+# Until Step 8: starter TODO stubs fail — replace stubs or smoke via spring-boot:run + curls
 mvn -B test
+# After Step 8 (or on solution): Tests run: 2
 mvn -B spring-boot:run
+# Timed: requests/get-customer.xml (unsecured DOM getCustomer). Port type CustomersPort.
+# UsernameToken / JAXB four-ops / SoapFaultMappingExceptionResolver = full-path only (not wired timed).
 ```
 
-Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerEndpointTest.getCustomerReturnsCus1001` + `CrmApplicationTests`); WSDL **200** at `/ws/customers.wsdl`; unsecured get-customer.xml returns **CUS-1001** / **name=Amina Khan**; REST GET `CUS-1001` still works. (UsernameToken = full-path homework; not wired in timed starter/solution.)
-
+Verified: **After Step 8 / solution:** **Tests run: 2** · **BUILD SUCCESS** (`CustomerEndpointTest.getCustomerReturnsCus1001` + `CrmApplicationTests.contextLoadsAndRestSeedVisible`). **Before Step 8:** starter shows **Tests run: 2** with Failures (TODO stubs). WSDL **200** at `/ws/customers.wsdl` (**CustomersPort**, getCustomer); unsecured get-customer.xml returns **CUS-1001** / **name=Amina Khan**; REST GET `CUS-1001` still works. UsernameToken **not wired** in timed starter/solution.
 ## Do the lab
 
 Complete every step in **[LAB-24-GUIDE.md](LAB-24-GUIDE.md)**. GUIDE paths already use `~/java-bootcamp`.  

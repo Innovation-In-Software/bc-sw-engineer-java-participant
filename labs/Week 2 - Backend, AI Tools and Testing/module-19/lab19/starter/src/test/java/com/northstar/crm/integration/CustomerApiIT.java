@@ -26,7 +26,7 @@ class CustomerApiIT {
 
     @Test
     void createEchoesCorrelationHeader() {
-        // TODO: POST with X-Correlation-Id lab-request-001 → 201 + header echo
+        // TODO: POST customerId CUS-1901 with X-Correlation-Id lab-request-001 → 201 + header echo
         throw new UnsupportedOperationException("TODO: API create + correlation");
     }
 

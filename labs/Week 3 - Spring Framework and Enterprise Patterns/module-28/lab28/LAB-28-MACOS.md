@@ -39,7 +39,7 @@ mvn -B test
 mvn -B spring-boot:run
 ```
 
-Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS** twice (`SecurityPathTest`); health **200**; no-token customers **401**; bad login **401**; agent login → Bearer GET `CUS-1001` **200** (Amina ACTIVE); agent → `/api/admin/ping` **403**; admin → admin ping **200**; agent GET `CUS-1002` **200**. Lab users `agent1`/`agent1`, `admin1`/`admin1`. Permit `/error` so live Tomcat does not rewrite 403→401. No `.env` committed.
+Verified (2026-08-04): **Tests run: 3** · **BUILD SUCCESS** (`SecurityPathTest`: `missingTokenIs401`, `agentCanReadCustomerButNotAdmin`, `adminCanPing`). Login JSON `{accessToken, tokenType}`; timed token is lab stub `lab.subject.role.sig` (not required `eyJ` HS256). Secret `northstar.security.jwt-secret` / env `JWT_SECRET`. Users via `CrmUserDetailsService`. Matcher-only admin (no `@PreAuthorize` required). health **200**; no-token customers **401**; agent → `/api/admin/ping` **403**; admin ping **200**. Permit `/error` so live Tomcat does not rewrite 403→401. starter ships failing TODO test stubs until Step 8. No `.env` committed.
 
 ## Do the lab
 

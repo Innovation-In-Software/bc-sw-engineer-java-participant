@@ -55,7 +55,7 @@ Keep this checklist visible while you work.
 | - | ----------- |
 | 1 | Layered Controller → Service → Repository source |
 | 2 | Seeded in-memory repo with `CUS-1001` / `CUS-1002` |
-| 3 | HTTP evidence + duplicate/not-found failures |
+| 3 | HTTP GET/POST evidence + duplicate/not-found via service tests |
 | 4 | `CustomerServiceTest` output |
 | 5 | AI review notes (`lab25-001`) or manual equivalent |
 | 6 | Layering / JPA readiness notes |
@@ -74,11 +74,11 @@ This Module 25 lab formalizes **Controller → Service → Repository** for Cust
 
 After completing this lab, you will be able to:
 
-* Separate Controller, Service, and Repository responsibilities for Customer CRUD and status updates
-* Define a Spring Data–style `CustomerRepository` and an in-memory implementation
+* Separate Controller, Service, and Repository responsibilities for Customer create/get/list
+* Implement a seeded in-memory `CustomerRepository` against the provided interface
 * Keep HTTP mapping and JSON serialization out of the service layer
-* Enforce lifecycle rules (for example `PROSPECT` → `ACTIVE`) in the service, not the controller
-* Use Copilot (or similar) productively while reviewing suggestions for correctness and security
+* Enforce duplicate/not-found rules in the service, not the controller
+* Use Copilot (or similar) productively while reviewing suggestions into `docs/lab25-001.md`
 
 ## Business Scenario
 
@@ -175,12 +175,12 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab25-crm
 cd ~/java-bootcamp/examples
 cp -r lab24-crm lab25-crm   # or lab23-crm if you skipped SOAP
 cd lab25-crm
-mkdir -p copilot-notes docs
+mkdir -p docs
 mkdir -p ~/java-bootcamp/notes/screenshots/lab-25
+# Prefer course starter copy (recommended) — includes docs/lab25-001.md
 ```
 
 Ensure starter JavaBean `Customer` (`id`/`name`/`email`/`status` strings) compiles under `com.northstar.crm`. Timed path uses String status values, not a required enum.
-
 ```bash
 mvn -q -DskipTests package
 ```
@@ -191,11 +191,11 @@ mvn -q -DskipTests package
 
 ---
 
-### Step 2 — Define Spring Data–style `CustomerRepository`
+### Step 2 — Confirm the provided `CustomerRepository` interface
 
 **Why:** The interface is the seam Lab 27+ will swap; method names stay persistence-oriented, not HTTP-oriented.
 
-**Do this:**
+**Already provided in starter:** `repository/CustomerRepository.java` with `save` / `findById` / `findAll` / `existsById`. **Do not reinvent** — open it, confirm signatures, then implement the in-memory class in Step 3.
 
 ```java
 public interface CustomerRepository {
@@ -206,7 +206,7 @@ public interface CustomerRepository {
 }
 ```
 
-Optional Copilot prompt: “Spring Data style CustomerRepository for CRM id String PK, no JPA annotations yet.” Review every line.
+Optional Copilot prompt: “Spring Data style CustomerRepository for CRM id String PK, no JPA annotations yet.” Review every line; record accepts/rejects in `docs/lab25-001.md`.
 
 **Expected result:** Interface compiles; no `HttpServletRequest` / Web types.
 
@@ -292,7 +292,7 @@ public class CustomerService {
 }
 ```
 
-Reject AI suggestions that return `ResponseEntity` from the service. Record rejects in `lab25-001`.
+Reject AI suggestions that return `ResponseEntity` from the service. Record rejects in `docs/lab25-001.md`.
 
 **Expected result:** `get("CUS-9999")` throws not-found; duplicate create throws `IllegalStateException`; service has zero Web imports.
 
@@ -300,36 +300,11 @@ Reject AI suggestions that return `ResponseEntity` from the service. Record reje
 
 ---
 
-### Step 5 — Thin `CustomerController` (prove no repository imports)
+### Step 5 — Verify the provided thin `CustomerController`
 
 **Why:** The layering gate is enforceable by import review and instructor probe.
 
-**Do this:** Map GET + POST (list via service/unit test on timed path). Propagate `X-Correlation-Id: lab-request-001`. Controllers call **only** `CustomerService`. (PATCH status = full-path.)
-
-```java
-@RestController
-@RequestMapping("/api/customers")
-public class CustomerController {
-  private final CustomerService customerService;
-
-  public CustomerController(CustomerService customerService) {
-    this.customerService = customerService;
-  }
-
-  @PostMapping
-  @ResponseStatus(HttpStatus.CREATED)
-  public Customer create(
-      @RequestBody Customer customer,
-      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String correlationId) {
-    return customerService.create(customer, correlationId);
-  }
-
-  @GetMapping("/{id}")
-  public Customer get(@PathVariable String id) {
-    return customerService.get(id);
-  }
-}
-```
+**Already provided in starter:** `api/CustomerController.java` with `POST /api/customers` and `GET /api/customers/{id}` only — **no list endpoint**. Controllers call **only** `CustomerService` and read `X-Correlation-Id` (default `lab-request-001`). **Do not re-implement** — verify no repository imports, then call HTTP after Steps 3–4.
 
 ```bash
 curl -s -H "X-Correlation-Id: lab-request-001" \
@@ -340,14 +315,18 @@ curl -s -H "X-Correlation-Id: lab-request-001" \
 
 **Expected result:** JSON for Amina ACTIVE and Ravi PROSPECT; controller source has no `repository` imports.
 
-**If it fails:** 404 on seeded data → bean not wired / wrong path. Controller injects repository → refactor immediately.
+**If it fails:** 404 on seeded data → bean not wired / wrong path. Controller injects repository → refactor immediately. Expecting `GET /api/customers` list → **not in starter/solution**; use service `list()` / unit test (Step 6–7).
 
 ---
 
-### Step 6 — Create, list, and duplicate rejection through layers
+### Step 6 — Create + duplicate rejection (list via service)
 **Why:** Write paths prove uniqueness rules live in the service even if the map could silently overwrite.
 
-**Do this:** POST create for `CUS-1003` Maya; GET list; POST duplicate `CUS-1001` expecting 4xx / duplicate exception path.
+**Do this:**
+
+1. POST create for `CUS-1003` Maya (HTTP).
+2. **Timed list:** call `CustomerService.list()` / `findAll` from a unit test or debugger — **not** `GET /api/customers` (no list route in starter/solution).
+3. Assert duplicate create of `CUS-1001` throws `IllegalStateException` (service unit test — Step 7).
 
 ```bash
 curl -s -X POST http://localhost:8080/api/customers \
@@ -356,9 +335,11 @@ curl -s -X POST http://localhost:8080/api/customers \
   -d '{"id":"CUS-1003","name":"Maya Chen","email":"maya@example.com","status":"PROSPECT"}'
 ```
 
-**Expected result:** 201 for Maya; list includes seeded + new; duplicate `CUS-1001` rejected by service rule.
+**Optional full path:** add `GET /api/customers` that delegates to `customerService.list()` if you want HTTP list evidence.
 
-**If it fails:** Silent overwrite → add `existsById` check before save. Exception becomes 500 → add/adjust exception handler from Lab 16 patterns.
+**Expected result:** 201 for Maya; service `list()` includes seeded + new; duplicate `CUS-1001` rejected by service rule (`IllegalStateException` — may surface as HTTP **500** without advice).
+
+**If it fails:** Silent overwrite → add `existsById` check before save. Expecting HTTP list 200 on `/api/customers` → not provided; use service/unit test.
 
 ---
 
@@ -398,9 +379,9 @@ mvn -q test -Dtest=CustomerServiceTest
 ### Step 8 — AI review log + JPA readiness note
 **Why:** This lab’s AI outcome is review discipline, not raw autocomplete volume.
 
-**Do this:** In `copilot-notes/ai-layering-review.md` record entry `lab25-001`: files aided, accepted suggestions, **rejected** suggestions (with why). Document how `CustomerRepository` becomes `extends JpaRepository<Customer, String>` later without changing controller routes. If no AI used, mark “manual” with rationale.
+**Do this:** Fill starter file **`docs/lab25-001.md` only** (do **not** create `copilot-notes/ai-layering-review.md`). Record files aided, accepted suggestions, **rejected** suggestions (with why). Document how `CustomerRepository` becomes `extends JpaRepository<Customer, String>` later without changing controller routes. If no AI used, mark “manual” with rationale.
 
-**Expected result:** Dated review; at least one rejection **or** N/A with reason; README points to JPA swap plan.
+**Expected result:** `docs/lab25-001.md` completed; at least one rejection **or** N/A with reason; notes mention JPA swap plan.
 
 **If it fails:** Empty “used Copilot” claim without rejects → incomplete. Accepted service returning `ResponseEntity` → reverse that design.
 
@@ -446,9 +427,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Create/list + duplicate rejection evidenced | Pass / Fail |
-| 2 | `CustomerServiceTest` green | Pass / Fail |
-| 3 | AI review `lab25-001` or manual N/A | Pass / Fail |
+| 1 | Create + service `list()` / unit evidence + duplicate rejection | Pass / Fail |
+| 2 | `CustomerServiceTest` (`getSeededCus1001`, `duplicateCreateRejected`) green | Pass / Fail |
+| 3 | AI review in `docs/lab25-001.md` or manual N/A | Pass / Fail |
 
 ### Checkpoint D — Hygiene
 
@@ -495,9 +476,9 @@ curl -s -X POST http://localhost:8080/api/customers \
   -H "Content-Type: application/json" \
   -H "X-Correlation-Id: lab-request-001" \
   -d '{"id":"CUS-1003","name":"Maya Chen","email":"maya@example.com","status":"PROSPECT"}'
-curl -s http://localhost:8080/api/customers
+# No GET /api/customers list in starter/solution — list via service unit test / findAll
 mvn -q test -Dtest=CustomerServiceTest
-mvn -q test
+# Expected: Tests run: 2 (getSeededCus1001, duplicateCreateRejected)
 mvn -q test
 git status
 ```

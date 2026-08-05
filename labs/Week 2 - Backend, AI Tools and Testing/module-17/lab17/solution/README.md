@@ -1,0 +1,72 @@
+# Lab 17 solution — timed path (~45 minutes)
+
+**Theme:** JUnit 5 service tests + parameterized transitions + JaCoCo ≥80%
+
+## Activity card
+
+| | |
+| --- | --- |
+| **Objective** | Complete CustomerServiceTests, CsvSource transitions, and JaCoCo gate |
+| **Skills practiced** | AAA, meaningful asserts, parameterized tests, verify gate |
+| **Expected outcome** | `mvn -B clean test` + `mvn -B clean verify` green |
+| **Estimated time** | ~45 minutes |
+| **Files** | Completed reference for `examples/lab17-crm` (compare to your timed starter work) |
+
+**Boilerplate reduced:** Baseline CRM + test TODOs given — fill `// TODO`; always **clean verify** for JaCoCo.
+
+Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-17-GUIDE.md`](../LAB-17-GUIDE.md)
+
+**Detailed walkthrough:** [SOLUTION.md](SOLUTION.md) · [SOLUTION-NOTES.md](SOLUTION-NOTES.md)
+
+**Honesty:** Mockito deep isolation is Lab 18. Review AI-generated tests before Pass.
+
+## Copy into your workspace
+
+Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab17-crm`.
+
+**Windows (PowerShell)** — from this lab folder:
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab17-crm" | Out-Null
+Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab17-crm\"
+cd $env:USERPROFILE\java-bootcamp\examples\lab17-crm
+```
+
+**macOS / Linux:**
+
+```bash
+mkdir -p ~/java-bootcamp/examples/lab17-crm
+cp -R starter/. ~/java-bootcamp/examples/lab17-crm/
+cd ~/java-bootcamp/examples/lab17-crm
+```
+
+Full GUIDE: [`../LAB-17-GUIDE.md`](../LAB-17-GUIDE.md)
+
+## 45-minute checklist
+
+- [ ] Wire `CustomerServiceTests` @BeforeEach with fresh repo/validator/service
+- [ ] Implement happy + negative tests (duplicate, illegal transition, not-found)
+- [ ] Complete parameterized legal/illegal transition tests
+- [ ] Confirm JaCoCo check on `com.northstar.crm.service` (≥0.80); optional deliberate 0.99 fail
+- [ ] Fill `docs/junit-runbook.md`; run smoke test
+
+## Smoke test
+
+```bash
+mvn -B clean test
+mvn -B clean verify
+```
+
+Evidence under `~/java-bootcamp/notes/screenshots/lab-17/` (redact secrets).
+
+## Timed-path Pass criteria
+
+| Criterion | Pass / Fail |
+| --------- | ----------- |
+| CustomerServiceTests green | Pass / Fail |
+| Parameterized transition tests green | Pass / Fail |
+| mvn clean verify passes JaCoCo gate (≥80% on service package) | Pass / Fail |
+| Runbook documents commands + evidence | Pass / Fail |
+
+Continue remaining GUIDE steps as homework / full path if needed.
+

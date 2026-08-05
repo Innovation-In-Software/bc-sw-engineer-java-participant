@@ -35,16 +35,20 @@ cd examples\lab24-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab24-crm
+# Until Step 8: starter TODO stubs fail — replace stubs or smoke via spring-boot:run + curls
 mvn -B test
+# After Step 8 (or on solution): Tests run: 2
 mvn -B spring-boot:run
 # After Started CrmApplication (second Terminal):
 # Invoke-WebRequest http://localhost:8080/ws/customers.wsdl -UseBasicParsing
-# Timed path: use requests\get-customer.xml (unsecured). UsernameToken / get-customer-secured.xml = full-path only.
+# Timed: requests\get-customer.xml (unsecured DOM getCustomer). Port type CustomersPort.
+# UsernameToken / JAXB four-ops / SoapFaultMappingExceptionResolver = full-path only (not wired timed).
 # Invoke-RestMethod http://localhost:8080/api/customers/CUS-1001
 ```
 
-Verified: **Tests run: 2** · **BUILD SUCCESS** (`CustomerEndpointTest.getCustomerReturnsCus1001` + `CrmApplicationTests`); WSDL **200** at `/ws/customers.wsdl`; unsecured get-customer.xml returns **CUS-1001** / **name=Amina Khan**; REST GET `CUS-1001` still works. (UsernameToken = full-path homework; not wired in timed starter/solution.)
+Verified: **After Step 8 / solution:** **Tests run: 2** · **BUILD SUCCESS** (`CustomerEndpointTest.getCustomerReturnsCus1001` + `CrmApplicationTests.contextLoadsAndRestSeedVisible`). **Before Step 8:** starter shows **Tests run: 2** with Failures (TODO stubs). WSDL **200** at `/ws/customers.wsdl` (**CustomersPort**, getCustomer); unsecured get-customer.xml returns **CUS-1001** / **name=Amina Khan**; REST GET `CUS-1001` still works. UsernameToken **not wired** in timed starter/solution.
 
+Verified on this instructor laptop (2026-08-04): Temurin JDK **21.0.11**, Maven **3.9.9**. Solutions copied to %USERPROFILE%\java-bootcamp\examples\labNN-crm and mvn -B test → **BUILD SUCCESS**.
 ## Do the lab
 
 Complete every step in **[LAB-24-GUIDE.md](LAB-24-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  

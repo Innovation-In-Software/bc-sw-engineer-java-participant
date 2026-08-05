@@ -8,7 +8,7 @@
 | --- | --- |
 | **Objective** | Replace manual `new` wiring with Spring stereotypes + constructor DI for the CRM graph |
 | **Skills practiced** | IoC, constructor injection, stereotypes, lifecycle callbacks, dependency-graph.md |
-| **Expected outcome** | App starts · unit + Spring tests · graph matches constructors · CUS-1001 path works |
+| **Expected outcome** | App starts · unit test green · graph matches constructors · CUS-1001 path works (Spring IT = homework) |
 | **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
 | **Prerequisites** | Lab 0 · Lab 21 preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
 | **Expected files** | `examples/lab22-crm/` — beans, DI, lifecycle, tests, dependency-graph |
@@ -56,7 +56,7 @@ Keep this checklist visible while you work.
 | 1 | `CustomerService`, `CustomerRepository`, `NotificationService` as Spring beans |
 | 2 | Constructor injection throughout the CRM graph |
 | 3 | Lifecycle evidence for `CustomerService` |
-| 4 | Unit + Spring tests |
+| 4 | Unit test (`CustomerServiceTest`); Spring IT = homework Step 7 |
 | 5 | `docs/dependency-graph.md` |
 | 6 | Successful-path evidence (`CUS-1001`, `CUS-1002`, `lab-request-001`) |
 | 7 | Controlled-failure evidence (missing bean / validation) |
@@ -106,11 +106,10 @@ Use these examples consistently:
 
 ```mermaid
 flowchart TB
-  App["CrmApplication<br/>@SpringBootApplication"] --> Ctrl["CustomerController"]
+  App["CrmApplication<br/>@SpringBootApplication"] --> Ctrl["CustomerController<br/>(provided in starter)"]
   Ctrl --> Svc["CustomerService @Service"]
   Svc --> Repo["InMemoryCustomerRepository"]
   Svc --> Notif["NotificationService"]
-  Svc --> Met["CustomerMetrics optional"]
   Life["@PostConstruct / @PreDestroy"] -.-> Svc
   Docs["docs/dependency-graph.md"] -.-> App
 ```
@@ -354,35 +353,22 @@ Remove field injection and `new InMemoryCustomerRepository()` if present. Prefer
 
 ---
 
-### Step 5 — Wire the controller as a Spring MVC bean
+### Step 5 — Verify the provided `CustomerController` wiring
 
-**Why:** The HTTP boundary must join the same graph; controller `new CustomerService()` would bypass IoC and tests.
+**Why:** The HTTP boundary must join the same graph; a controller that does `new CustomerService()` would bypass IoC and tests.
+
+**Already provided in starter:** `api/CustomerController.java` is a complete `@RestController` with constructor injection of `CustomerService`, `POST /api/customers` (201), `GET /api/customers/{id}`, and `@RequestHeader` `X-Correlation-Id` (default `lab-request-001`). **Do not re-implement it** — verify wiring after you finish Steps 3–4.
 
 **Do this:**
 
-```java
-@RestController
-@RequestMapping("/api/customers")
-public class CustomerController {
-  private final CustomerService customerService;
+1. Open `src/main/java/com/northstar/crm/api/CustomerController.java` and confirm it injects `CustomerService` (no `new`, no repository import).
+2. After stereotypes + constructor DI are done, start the app and call create/get:
 
-  public CustomerController(CustomerService customerService) {
-    this.customerService = customerService;
-  }
-
-  @PostMapping
-  @ResponseStatus(HttpStatus.CREATED)
-  public Customer create(
-      @RequestBody Customer customer,
-      @RequestHeader(value = "X-Correlation-Id", defaultValue = "lab-request-001") String correlationId) {
-    return customerService.create(customer, correlationId);
-  }
-
-  @GetMapping("/{id}")
-  public Customer get(@PathVariable String id) {
-    return customerService.get(id);
-  }
-}
+```bash
+curl -H "X-Correlation-Id: lab-request-001" -H "Content-Type: application/json" \
+  -d '{"id":"CUS-1001","name":"Amina Khan","email":"amina.khan@example.com","status":"ACTIVE"}' \
+  http://localhost:8080/api/customers
+curl -s http://localhost:8080/api/customers/CUS-1001
 ```
 
 Match starter method names: service `create` / `get`, JSON fields `id`/`name`/`email`/`status`.
@@ -421,12 +407,11 @@ Start the app, create `CUS-1002`, then stop the process (Ctrl+C) and capture des
 
 ### Step 7 — Prove testability with and without the container
 
-**Why:** Constructor DI’s payoff is fast unit tests without Boot; IT still proves the real graph.
+**Why:** Constructor DI’s payoff is fast unit tests without Boot; a Spring IT still proves the real graph.
 
-**Do this:**
+**Timed path:** Complete the starter unit test only — `CustomerServiceTest.createAndGetWithoutSpringContext` (no Spring context). Starter ships this class; fill the TODOs.
 
-1. Pure unit test: `new CustomerService(fakeRepo, fakeNotify)` — no Spring.
-2. Spring IT: `@SpringBootTest` loads real beans and creates `CUS-1001`.
+**Full path / homework (this Step):** Add `@SpringBootTest` class `CustomerServiceSpringTest` with method `springGraphCreatesAndGetsCus1001` that autowires `CustomerService` and asserts seeded `CUS-1001` plus create/get for Ravi (see solution). Until you add that class, plain `mvn test` runs the unit test only (**Tests run: 1**).
 
 ```java
 class CustomerServiceTest {
@@ -443,13 +428,16 @@ class CustomerServiceTest {
 }
 ```
 
-Add `@SpringBootTest` class `CustomerServiceSpringTest` with method `springGraphCreatesAndGetsCus1001` (see solution) that autowires `CustomerService` and asserts seeded `CUS-1001` plus create/get for Ravi.
-
 ```bash
-mvn -q test
+# Timed path (unit test only — starter):
+mvn -B -Dtest=CustomerServiceTest test
+
+# Full verify after you add CustomerServiceSpringTest (homework):
+mvn -B -Dtest=CustomerServiceTest,CustomerServiceSpringTest test
 ```
 
-**Expected result:** Unit test `createAndGetWithoutSpringContext` and `CustomerServiceSpringTest.springGraphCreatesAndGetsCus1001` PASS; BUILD SUCCESS.
+**Expected result (timed):** `createAndGetWithoutSpringContext` PASS; **Tests run: 1**.  
+**Expected result (full / homework):** also `CustomerServiceSpringTest.springGraphCreatesAndGetsCus1001` PASS; **Tests run: 2**.
 
 **If it fails:** Unit test needs Spring → constructor still pulls container APIs incorrectly. IT missing bean → same scan issues as Step 1. Mockito unused → ensure test deps (Boot starter-test includes Mockito).
 
@@ -465,13 +453,13 @@ mvn -q test
 # Lab 22 Dependency Graph
 CustomerController → CustomerService → CustomerRepository (InMemoryCustomerRepository)
                                    ↘ NotificationService
-                                   ↘ CustomerMetrics (if present)
 All default singleton.
 Correlation: X-Correlation-Id / lab-request-001
 Lab IDs: CUS-1001, CUS-1002
 Anti-pattern: new InMemoryCustomerRepository() inside CustomerService
 ```
 
+(`CustomerMetrics` is **not** in starter/solution — do not treat it as required.)
 Optional: enable Actuator `beans` endpoint **locally** for a screenshot—do not leave unrestricted exposure as a production recommendation (Lab 21 lesson).
 
 Complete Failure Experiments. Run `mvn test` twice.
@@ -511,8 +499,8 @@ _Mark **Pass** or **Fail** in your lab notes._
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | `@PostConstruct` / `@PreDestroy` evidence | Pass / Fail |
-| 2 | Pure unit test without Spring | Pass / Fail |
-| 3 | `@SpringBootTest` IT creates/gets `CUS-1001` | Pass / Fail |
+| 2 | Pure unit test without Spring (`CustomerServiceTest`) | Pass / Fail |
+| 3 | `@SpringBootTest` IT (`CustomerServiceSpringTest`) — **full path / homework** | Pass / Fail / N/A timed |
 
 ### Checkpoint D — Documentation hygiene
 

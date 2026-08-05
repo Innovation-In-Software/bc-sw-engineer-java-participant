@@ -15,7 +15,7 @@
 In class, use the starter checklist so the **essential** tools fit **~45 minutes**. The OS how-tos remain the full install path (optional VS Code, deeper troubleshooting).
 
 1. Open [`starter/README.md`](starter/README.md).
-2. Follow the checklist while working in [LAB-0-WINDOWS.md](LAB-0-WINDOWS.md) or [LAB-0-MACOS.md](LAB-0-MACOS.md) — JDK 21, Maven, IntelliJ, `java-bootcamp`, HelloWorld smoke.
+2. Follow the checklist while working in [LAB-0-WINDOWS.md](LAB-0-WINDOWS.md) or [LAB-0-MACOS.md](LAB-0-MACOS.md) — JDK 21, Maven, IntelliJ, `java-bootcamp`, HelloJava smoke.
 3. Skip optional VS Code unless you already use it.
 4. Capture evidence under `notes/screenshots/`; mark timed-path Pass criteria in the starter README.
 5. Continue remaining OS-guide steps on the **full path** if anything is incomplete.

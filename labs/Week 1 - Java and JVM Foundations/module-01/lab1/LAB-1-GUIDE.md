@@ -41,6 +41,8 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | **Timed (default)** | ~45 min | Starter TODOs + smoke test |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
+> **Timed path (starter):** If you copied `starter/` into `jvm-compilation-lab/`, **skip the recreate Steps** that create `HelloWorld`, `Calculator`, `Employee`, and `MemoryDemo` from scratch. Those files already exist — **`HelloWorld` is already complete**. Only fill remaining `// TODO` stubs (Calculator / Employee / MemoryDemo), then run the smoke test and evidence steps (`javap`, class-loading, screenshots, GitHub). Use the full GUIDE create Steps only if you are on the full path without starter.
+
 ---
 
 ## What you'll submit (read this first)
@@ -164,7 +166,7 @@ You already practiced the basics in Module 1 Exercises 1–8. Today’s **graded
 
 **Why Aman / Employee instead of CUS-1001 here?** Keep mental bandwidth on memory and bytecode. Customer IDs and REST APIs appear when the architecture becomes a multi-tier CRM.
 
-**Sec
+**Security habit:** Never commit secrets, tokens, or heap dumps — even tiny training programs must stay free of passwords and PII in source and screenshots.
 
 ## Architecture Context
 ### Compile → load → execute
@@ -181,6 +183,12 @@ flowchart LR
 
 ### Stack versus heap (beginner picture)
 
+| Area | Holds | Lab example |
+| ---- | ----- | ----------- |
+| **Stack** | Method frames, locals, return addresses | `Calculator.add` locals `a` / `b`; `main`’s reference variable |
+| **Heap** | Objects created with `new` | `new Employee(101, "Aman")` — the object lives on the heap; the variable holds a reference |
+
+Primitives and references in a method live in that method’s stack frame. Objects (and arrays) live on the heap until they become unreachable and the GC reclaims them. `MemoryDemo` stresses the heap by allocating many `Employee` objects in a loop.
 
 ### Tools in this lab
 

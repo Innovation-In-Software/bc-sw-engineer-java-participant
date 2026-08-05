@@ -7,8 +7,8 @@
 | | |
 | --- | --- |
 | **Objective** | Ship contract-first Spring-WS SOAP beside REST, sharing CustomerService |
-| **Skills practiced** | XSD/WSDL, @Endpoint/@PayloadRoot, mapper, SOAP faults, UsernameToken |
-| **Expected outcome** | WSDL live · getCustomer works · REST still works · faults/security evidence |
+| **Skills practiced** | Timed: XSD/WSDL, @Endpoint/@PayloadRoot, DOM mapper, getCustomer · Full: JAXB, 4 ops, faults, UsernameToken |
+| **Expected outcome** | Timed: WSDL live · getCustomer · REST still works · Full: faults/security evidence |
 | **Estimated time** | Timed path ~45 min · Full path 4–5 hours |
 | **Prerequisites** | Lab 0 · Lab 23 preferred · Lab 13 contract preferred · Exercises 1–6 Pass · JDK 21 · Maven 3.9+ |
 | **Expected files** | `examples/lab24-crm/` — XSD, endpoint, mapper, requests/, tests |
@@ -24,11 +24,13 @@
 | Windows | [LAB-24-WINDOWS.md](LAB-24-WINDOWS.md) |
 | macOS | [LAB-24-MACOS.md](LAB-24-MACOS.md) |
 
-> **Incremental build:** Contract-first → ops map → PayloadRoot → fault vs REST → UsernameToken → Lab 24.
+> **Incremental build:** Contract-first → getCustomer PayloadRoot → WSDL → REST share → (full) four ops / JAXB / faults / UsernameToken → Lab 24.
 
 > **Classroom pacing:** [`../PACING.md`](../PACING.md) (Checkpoints A–E).
 
-> **Critical scope:** **Contract-first** XSD. **Keep REST**. Thin `@Endpoint` delegates to **one** `CustomerService`. **UsernameToken** lab security only — not JWT (Lab 28) or full WS-Security suite.
+> **Critical scope (timed):** **Contract-first** XSD with **getCustomer only**. Port type **`CustomersPort`**. **DOM `Element` mapper** (not JAXB/XJC). Thin `@Endpoint` delegates to **one** `CustomerService`. **Keep REST**. **UsernameToken is not wired** in starter/solution timed path.
+
+> **Full path / stretch:** four SOAP operations, JAXB/XJC, `SoapFaultMappingExceptionResolver`, Wss4j UsernameToken — homework only.
 
 ## 45-minute timed path (use starter)
 
@@ -37,13 +39,13 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 1. Open [`starter/README.md`](starter/README.md).
 2. Copy `starter/` into your `java-bootcamp/examples/…` target (see starter README).
 3. Fill every `// TODO` — do **not** wait on a perfect prior lab; the starter includes a baseline.
-4. Run the starter smoke test; evidence under `notes/screenshots/lab-24/`.
+4. Smoke: WSDL + unsecured `requests/get-customer.xml` + REST GET `CUS-1001`. Starter ships **0 tests** until Step 8 (then add tests → **Tests run: 2**).
 5. Mark timed-path Pass criteria in the starter README. Continue remaining GUIDE steps as homework if needed.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
-| **Full (extended)** | see Duration | Every Step in this GUIDE |
+| **Timed (default)** | ~45 min | `WebServiceConfig` + DOM mapper + **getCustomer only** + WSDL/`CustomersPort` + REST still works |
+| **Full (extended)** | see Duration | Four ops + JAXB + fault resolver + UsernameToken + Step 8 tests |
 
 ---
 
@@ -53,13 +55,13 @@ Keep this checklist visible while you work.
 
 | # | Deliverable |
 | - | ----------- |
-| 1 | `CustomerEndpoint` with four SOAP operations |
-| 2 | `customer.xsd` + live-generated WSDL |
-| 3 | JAXB generation + `CustomerSoapMapper` |
-| 4 | SOAP fault mapping to business exceptions |
-| 5 | UsernameToken interceptor (lab secret) — **full path**; timed path stays unsecured |
-| 6 | `requests/` sample XML + fault cases |
-| 7 | `CustomerEndpointTest` green twice |
+| 1 | Timed: `CustomerEndpoint` **getCustomer** only (DOM `Element`) |
+| 2 | `customer.xsd` (getCustomer pair) + live WSDL · port type **`CustomersPort`** |
+| 3 | Timed: `CustomerSoapMapper` DOM methods · Full: JAXB/XJC optional |
+| 4 | Full path: SOAP fault mapping (`SoapFaultMappingExceptionResolver`) |
+| 5 | UsernameToken interceptor — **full path only**; timed stays unsecured (not wired) |
+| 6 | `requests/get-customer.xml` (+ full-path secured/not-found samples) |
+| 7 | Step 8: add `CustomerEndpointTest` + `CrmApplicationTests` (**Tests run: 2**; starter starts at 0) |
 | 8 | Evidence that REST and SOAP share `CustomerService` |
 
 **Must submit:** the items in the table above (sources + evidence + short notes).
@@ -68,25 +70,26 @@ Keep this checklist visible while you work.
 
 ## Lab Overview
 
-This Module 24 lab extends the **Northstar Customer Service Platform** with a contract-first **Spring Web Services** SOAP endpoint beside the Lab 23 REST API. You author `customer.xsd`, generate JAXB types, implement `CustomerEndpoint`, serve a live WSDL, map business faults, and add a minimal WS-Security **UsernameToken** — all while delegating to the same `CustomerService` so protocol never forks business rules.
+This Module 24 lab extends the **Northstar Customer Service Platform** with a contract-first **Spring Web Services** SOAP endpoint beside the Lab 23 REST API. **Timed path:** author/use `customer.xsd` for **getCustomer**, wire `WebServiceConfig` (`CustomersPort`, `/ws/customers.wsdl`), implement `@Endpoint` + DOM `Element` mapper, keep REST on the same `CustomerService`. **UsernameToken is not wired** in starter/solution. **Full path / stretch:** four operations, JAXB/XJC, SOAP fault resolver, and lab-only UsernameToken.
 
 ## Learning Objectives
 
 After completing this lab, you will be able to:
 
 * Explain contract-first SOAP and why the XSD—not Java—is the source of truth
-* Author an XSD and let Spring-WS generate WSDL dynamically from it
-* Generate JAXB request/response classes with `jaxb2-maven-plugin`
-* Implement `@Endpoint` with `@PayloadRoot` / `@RequestPayload` / `@ResponsePayload`
-* Configure `MessageDispatcherServlet` and `DefaultWsdl11Definition`
+* Author a getCustomer XSD and let Spring-WS generate WSDL dynamically from it
+* Configure `MessageDispatcherServlet` and `DefaultWsdl11Definition` with port type **`CustomersPort`**
+* Implement `@Endpoint` with `@PayloadRoot` / `@RequestPayload` / `@ResponsePayload` for **getCustomer**
+* Map SOAP payloads with a **DOM `Element` mapper** (timed) — JAXB/XJC is full-path stretch
+* (Full path) Add four ops, fault mapping, and UsernameToken — knowing timed path stays unsecured
 
 ## Business Scenario
 
-Northstar CRM already serves REST from `lab23-crm/`. A regional billing partner only integrates via SOAP/XML and must create, get, update status, and list customers using the Lab 13 contract. Protocol may differ; business rules must not.
+Northstar CRM already serves REST from `lab23-crm/`. A regional billing partner only integrates via SOAP/XML. Protocol may differ; business rules must not.
 
 Leadership freezes:
 
-**Ship Spring-WS beside REST: live WSDL from XSD, timed path = getCustomer only (unsecured), same `CustomerService` as REST. Four ops + UsernameToken = full path.**
+**Ship Spring-WS beside REST: live WSDL from XSD, timed path = getCustomer only with DOM mapper (unsecured, `CustomersPort`), same `CustomerService` as REST. Four ops + JAXB + UsernameToken + fault resolver = full path.**
 
 Use these examples consistently:
 
@@ -109,14 +112,14 @@ Use these examples consistently:
 ```mermaid
 flowchart TB
   Partner["Partner billing"] -->|SOAP/XML| MDS["MessageDispatcherServlet /ws/*"]
-  MDS --> WSS["Wss4j UsernameToken"]
-  WSS --> EP["CustomerEndpoint @Endpoint"]
-  EP --> Map["CustomerSoapMapper JAXB"]
+  MDS --> EP["CustomerEndpoint @Endpoint<br/>getCustomer timed"]
+  EP --> Map["CustomerSoapMapper<br/>DOM Element timed"]
   Map --> Svc["CustomerService"]
-  Svc --> Repo["In-memory repository"]
+  Svc --> Repo["In-memory store"]
   UI["React SPA"] -->|HTTPS/JSON| REST["CustomerController"]
   REST --> Svc
-  XSD["customer.xsd"] --> WSDL["/ws/customers.wsdl"]
+  XSD["customer.xsd"] --> WSDL["/ws/customers.wsdl<br/>CustomersPort"]
+  WSS["Wss4j UsernameToken<br/>full path only"] -.-> MDS
 ```
 
 ## Prerequisites
@@ -143,36 +146,17 @@ mvn -version
 
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://northstar.com/crm/customers"
-           targetNamespace="http://northstar.com/crm/customers"
-           elementFormDefault="qualified">
-  <xs:simpleType name="CustomerStatus">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="PROSPECT"/>
-      <xs:enumeration value="ACTIVE"/>
-      <xs:enumeration value="SUSPENDED"/>
-      <xs:enumeration value="CLOSED"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="CustomerType">
-    <xs:sequence>
-      <xs:element name="customerId" type="xs:string"/>
-      <xs:element name="name" type="xs:string"/>
-      <xs:element name="email" type="xs:string"/>
-      <xs:element name="phone" type="xs:string" minOccurs="0"/>
-      <xs:element name="status" type="tns:CustomerStatus"/>
-      <xs:element name="createdAt" type="xs:dateTime"/>
-    </xs:sequence>
-  </xs:complexType>
-  <!-- request/response pairs: createCustomer, getCustomer,
-       updateCustomerStatus, listCustomers (see module materials) -->
-</xs:schema>
+```java
+@PayloadRoot(namespace = NAMESPACE, localPart = "GetCustomerRequest")
+@ResponsePayload
+public Element getCustomer(@RequestPayload Element request) {
+  String customerId = mapper.customerIdFromGetRequest(request);
+  Customer customer = customerService.get(customerId);
+  return mapper.toGetCustomerResponse(customer);
+}
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice (timed):** DOM `Element` in/out; one operation; port type `CustomersPort`; UsernameToken not wired. Four ops / JAXB / WSS = full path.
 
 ---
 
@@ -182,11 +166,11 @@ Complete each step in order. Commands assume `~/java-bootcamp/examples/lab24-crm
 
 ---
 
-### Step 1 — Branch Lab 23 and add Spring-WS dependencies
+### Step 1 — Branch Lab 23 and confirm Spring-WS dependencies
 
-**Why:** SOAP support is opt-in; the parent BOM must bring WS, WSDL, security, and test jars before XSD work starts.
+**Why:** SOAP support is opt-in; the parent BOM must bring WS and WSDL jars before XSD work starts.
 
-**Do this:**
+**Do this:** Prefer copying the course **starter** (recommended). Or branch Lab 23:
 
 ```bash
 cd ~/java-bootcamp/examples
@@ -196,7 +180,7 @@ mkdir -p requests docs
 mkdir -p ~/java-bootcamp/notes/screenshots/lab-24
 ```
 
-Add `spring-boot-starter-web-services`, `wsdl4j`, `spring-ws-security`, `spring-ws-test` (test), and `jaxb2-maven-plugin` sourcing `customer.xsd` into package `com.northstar.crm.endpoint.jaxb`.
+Starter already includes `spring-boot-starter-web-services`, `wsdl4j`, and (for full-path stretch) `spring-ws-security` / `spring-ws-test`. **Timed path does not require `jaxb2-maven-plugin` / XJC** — the mapper uses DOM `Element`.
 
 ```bash
 mvn -q -Dincludes=org.springframework.ws dependency:tree
@@ -204,54 +188,36 @@ mvn -q -Dincludes=org.springframework.ws dependency:tree
 
 **Expected result:** Spring-WS artifacts on the tree; `BUILD SUCCESS`.
 
-**If it fails:** Version fight with Boot parent → drop explicit WS core version when starter manages it. Plugin not running → confirm `<executions>` with goal `xjc` after XSD exists (Step 2).
+**If it fails:** Version fight with Boot parent → drop explicit WS core version when starter manages it.
 
 ---
 
-### Step 2 — Author `customer.xsd` and generate JAXB
+### Step 2 — Confirm timed `customer.xsd` (getCustomer only)
 
-**Why:** The XSD is the partner contract; generated Java must follow it, not the other way around.
+**Why:** The XSD is the partner contract; WSDL is generated from it.
 
-**Do this:** Place `src/main/resources/customer.xsd` with namespace `http://northstar.com/crm/customers`. Minimum shape (align with Lab 13):
+**Timed path — already in starter:** `src/main/resources/customer.xsd` with namespace `http://northstar.com/crm/customers` and **only** `GetCustomerRequest` / `GetCustomerResponse` (fields: `customerId`, `name`, `email`, `status`). Confirm it; do **not** require JAXB generation.
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://northstar.com/crm/customers"
-           targetNamespace="http://northstar.com/crm/customers"
-           elementFormDefault="qualified">
-  <xs:simpleType name="CustomerStatus">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="PROSPECT"/>
-      <xs:enumeration value="ACTIVE"/>
-      <xs:enumeration value="SUSPENDED"/>
-      <xs:enumeration value="CLOSED"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="CustomerType">
-    <xs:sequence>
-      <xs:element name="customerId" type="xs:string"/>
-      <xs:element name="name" type="xs:string"/>
-      <xs:element name="email" type="xs:string"/>
-      <xs:element name="phone" type="xs:string" minOccurs="0"/>
-      <xs:element name="status" type="tns:CustomerStatus"/>
-      <xs:element name="createdAt" type="xs:dateTime"/>
-    </xs:sequence>
-  </xs:complexType>
-  <!-- request/response pairs: createCustomer, getCustomer,
-       updateCustomerStatus, listCustomers (see module materials) -->
-</xs:schema>
+<!-- Timed shape (starter) — getCustomer only -->
+<xs:element name="GetCustomerRequest">…customerId…</xs:element>
+<xs:element name="GetCustomerResponse">…customerId, name, email, status…</xs:element>
+<!-- TODO (full path): add CreateCustomer / UpdateStatus / List operations -->
 ```
 
-Complete all four request/response element pairs as in Lab 13 (or the full schema in course samples). Then:
+**Full path / stretch:** expand XSD to four operations and optionally run XJC (`jaxb2-maven-plugin`) into `com.northstar.crm.endpoint.jaxb`. Timed path stays on DOM.
 
 ```bash
-mvn -q generate-sources
+# Timed: no generate-sources required
+mvn -q -DskipTests compile
+# Full path only (if you added XJC plugin + four-op XSD):
+# mvn -q generate-sources
 ```
 
-**Expected result:** Types under `target/generated-sources/xjc/.../GetCustomerRequest.java` etc.; generate success.
+**Expected result (timed):** XSD compiles with project; getCustomer elements present; **no** XJC output required.  
+**Expected result (full path):** optional generated types under `target/generated-sources/xjc/...` if you added the plugin.
 
-**If it fails:** XML schema errors → validate XSD. Empty output → plugin `sources` path wrong. IDE missing generated sources → add generated-sources folder to IDE or rely on Maven compile.
+**If it fails:** XML schema errors → validate XSD. (Full path) Empty XJC output → plugin `sources` path wrong.
 
 ---
 
@@ -259,7 +225,7 @@ mvn -q generate-sources
 
 **Why:** Partners need a stable `/ws/customers.wsdl` that cannot drift from the XSD bean.
 
-**Do this:** `@EnableWs` `WebServiceConfig` with servlet + WSDL definition:
+**Do this:** Complete starter TODOs in `@EnableWs` `WebServiceConfig` — servlet `/ws/*` + WSDL bean name `customers`. Port type must be **`CustomersPort`** (not `CustomerServicePort`).
 
 ```java
 @Bean
@@ -272,17 +238,17 @@ ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(
 }
 
 @Bean(name = "customers")
-DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema customerSchema) {
+DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema customersSchema) {
   DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
-  definition.setPortTypeName("CustomerServicePort");
+  definition.setPortTypeName("CustomersPort");
   definition.setLocationUri("/ws");
   definition.setTargetNamespace("http://northstar.com/crm/customers");
-  definition.setSchema(customerSchema);
+  definition.setSchema(customersSchema);
   return definition;
 }
 
 @Bean
-XsdSchema customerSchema() {
+XsdSchema customersSchema() {
   return new SimpleXsdSchema(new ClassPathResource("customer.xsd"));
 }
 ```
@@ -292,40 +258,50 @@ mvn spring-boot:run
 curl -s http://localhost:8080/ws/customers.wsdl | head -20
 ```
 
-**Expected result:** WSDL definitions with targetNamespace; operations visible via `grep wsdl:operation`.
+**Expected result:** WSDL with targetNamespace; timed path shows **getCustomer** operation and port type **CustomersPort**.
 
 **If it fails:** 404 on WSDL → bean name must be `customers` for `/ws/customers.wsdl`. XSD not found → file under `src/main/resources`. Servlet not mapped → check `/ws/*` registration.
 ---
 
-### Step 4 — Map JAXB types and implement `CustomerEndpoint`
+### Step 4 — Implement DOM mapper + `CustomerEndpoint` (getCustomer)
 
-**Why:** Keep JAXB out of the service layer; route payloads to Lab 23 business methods only.
+**Why:** Keep XML mapping out of the service layer; route payloads to the shared `CustomerService` only.
 
-**Do this:** Implement `CustomerSoapMapper.toSoap(Customer)` (status + UTC `createdAt`). Implement `@Endpoint CustomerEndpoint` with four `@PayloadRoot` methods for create/get/updateStatus/list, constructing JAXB responses after service calls.
+**Timed path:** Implement starter TODOs in `CustomerSoapMapper` (`customerIdFromGetRequest` / `toGetCustomerResponse` using DOM `Element`) and `@Endpoint CustomerEndpoint` with **one** `@PayloadRoot` for `GetCustomerRequest` → `customerService.get(id)`. Seeds (`CUS-1001` / `CUS-1002`) come from the shared service (same as REST).
 
-Seed or create Amina/Ravi so get works (REST create from Lab 23 or SOAP create).
+**Full path / stretch:** add create/updateStatus/list `@PayloadRoot` methods and/or switch mapper to JAXB types from XJC.
 
-**Expected result:** Secured/unsecured wiring still pending; unsecured POST get for `CUS-1001` returns Amina once data exists (may temporarily work before Step 6 interceptor). Mapper unused by REST controller.
+```bash
+curl -s -X POST http://localhost:8080/ws \
+  -H "Content-Type: text/xml; charset=utf-8" \
+  --data @requests/get-customer.xml
+curl -s http://localhost:8080/api/customers/CUS-1001
+```
 
-**If it fails:** Namespace / localPart mismatch → DEBUG `org.springframework.ws`. Domain getters differ → adapt mapper to your Lab 23 entity. Service method names differ → call your actual Lab 23 API without reinventing rules.
+**Expected result:** Unsecured POST get for `CUS-1001` returns Amina; REST GET still works; mapper unused by REST controller. **UsernameToken is not wired** — unsecured XML succeeds on timed path.
+
+**If it fails:** Namespace / localPart mismatch → DEBUG `org.springframework.ws`. Domain getters differ → adapt mapper to `id`/`name`/`email`/`status`.
 
 ---
 
-### Step 5 — Share exceptions and map SOAP faults
+### Step 5 — SOAP fault mapping — **full path / stretch**
 
-**Why:** SOAP and REST must report the same business errors; faults must not leak stacks.
+**Why:** SOAP and REST should report the same business errors; faults must not leak stacks.
 
-**Do this:** Reuse or add `BusinessException` / `CustomerNotFoundException` / `DuplicateCustomerException`. Register `SoapFaultMappingExceptionResolver` mapping not-found and duplicate to `CLIENT` faults; default `SERVER` with generic string.
+**Timed path:** skip — missing ID may surface as a server fault / exception from `IllegalArgumentException`; documenting that is enough for class.
+
+**Full path:** Register `SoapFaultMappingExceptionResolver` mapping not-found/duplicate to `CLIENT` faults; author `requests/get-customer-not-found.xml`.
 
 ```bash
+# full path only
 curl -s -X POST http://localhost:8080/ws \
   -H "Content-Type: text/xml; charset=utf-8" \
   --data @requests/get-customer-not-found.xml
 ```
 
-**Expected result:** Faultcode Client (or SOAP-ENV:Client); faultstring like `Customer not found`; no stack in body.
+**Expected result (full path):** Faultcode Client; faultstring like `Customer not found`; no stack in body.
 
-**If it fails:** Always “Unexpected server error” → FQCN keys in mappings must match thrown type (wrapping hides mappings). HTTP 500 with empty body → check resolver bean registration/order.
+**If it fails:** Always “Unexpected server error” → FQCN keys in mappings must match thrown type.
 
 ---
 
@@ -333,23 +309,23 @@ curl -s -X POST http://localhost:8080/ws \
 
 **Why:** Message-level identity proves the sender beyond open HTTP; partners often require it even behind TLS.
 
-**Do this:** `Wss4jSecurityInterceptor` with `ValidationActions=UsernameToken` and `SimplePasswordValidationCallbackHandler` users map `crm-partner` → `lab24-shared-secret` (lab-only). Implement `WsConfigurer.addInterceptors`. Author `requests/get-customer-secured.xml` with `wsse:Security` / UsernameToken PasswordText.
+**Timed path / starter / solution:** UsernameToken is **not wired**. Unsecured `requests/get-customer.xml` is the class smoke. Do **not** fail the timed path for missing WSS.
+
+**Full path homework:** `Wss4jSecurityInterceptor` with `ValidationActions=UsernameToken` and `SimplePasswordValidationCallbackHandler` users map `crm-partner` → `lab24-shared-secret` (lab-only). Author `requests/get-customer-secured.xml`.
 
 ```bash
-# expect reject:
+# full path only — expect reject without token after interceptor is registered:
 curl -s -X POST http://localhost:8080/ws -H "Content-Type: text/xml; charset=utf-8" \
   --data @requests/get-customer.xml
-
 # expect getCustomerResponse for CUS-1001:
 curl -s -X POST http://localhost:8080/ws -H "Content-Type: text/xml; charset=utf-8" \
   --data @requests/get-customer-secured.xml
 ```
 
-Log correlation `lab24-001` on service path where practical.
+**Expected result (full path):** Unsecured request faults on security header; secured get returns `CUS-1001` / Amina.  
+**Expected result (timed):** N/A — leave interceptor unregistered.
 
-**Expected result:** Unsecured request faults on security header; secured get returns `CUS-1001` / Amina.
-
-**If it fails:** Namespace typo in `wsse` → WSS4J reject. Wrong Content-Type → parser rejects. Password map mismatch → case-sensitive fix. Forgot to register interceptor → requests still succeed unsecured (fail the lab intent).
+**If it fails:** Namespace typo in `wsse` → WSS4J reject. Wrong Content-Type → parser rejects. Password map mismatch → case-sensitive fix.
 
 ---
 
@@ -357,28 +333,35 @@ Log correlation `lab24-001` on service path where practical.
 
 **Why:** Leadership’s acceptance is “one service, two protocols,” not a second domain fork.
 
-**Do this:** Create/update via SOAP; GET same customer via REST (or reverse). Show `CUS-1002` status change visible on both. Document in `docs/soap-notes.md`.
+**Do this (timed):** SOAP get `CUS-1001` then REST GET same id (or reverse). Document in `docs/soap-notes.md`. Full path may also create/update via SOAP and show status on both.
 
-**Expected result:** Same `customerId`/status on both protocols after one write path.
+**Expected result:** Same customer data on both protocols from one `CustomerService`.
 
-**If it fails:** Two stores → endpoint not using injected Lab 23 service. Different ID schemes → align fixtures.
+**If it fails:** Two stores → endpoint not using injected service. Different ID schemes → align fixtures.
 
 ---
 
-### Step 8 — Automate with `MockWebServiceClient` + runbook
+### Step 8 — Add tests (`CustomerEndpointTest` + `CrmApplicationTests`)
 
-**Why:** Partner regressions must fail in Surefire without requiring a full manual SoapUI session every time.
+**Why:** Partner regressions must fail in Surefire without a full manual SoapUI session every time.
 
-**Do this:** `CustomerEndpointTest` with `MockWebServiceClient.createClient(applicationContext)`; assert get payload for `CUS-1001`. Save request XML files under `requests/`. README: WSDL URL, secured curl, not-found fault, UsernameToken lab caveat.
+**Note:** Starter ships **2** failing TODO stubs (`CrmApplicationTests`, `CustomerEndpointTest`). Replace stubs in this Step → **Tests run: 2** PASS. Solution has **2** tests after this Step.
+
+**Do this:** Add:
+
+1. `CustomerEndpointTest` with `MockWebServiceClient` — method `getCustomerReturnsCus1001`
+2. `CrmApplicationTests` — method `contextLoadsAndRestSeedVisible` (seeded `CUS-1001` via service)
+
+Keep `requests/get-customer.xml`. Document WSDL URL; note UsernameToken is full-path only / not wired on timed path.
 
 ```bash
-mvn -q test
-mvn -q test
+mvn -B test
+mvn -B test
 ```
 
-**Expected result:** Dual green tests; request files and WSDL curl evidence saved.
+**Expected result (after Step 8):** **Tests run: 2** · dual green; WSDL + get-customer evidence saved.
 
-**If it fails:** Context missing WS beans → `@SpringBootTest` on Boot app. Payload namespace mismatch → fix StringSource XML. Security interceptor blocks Mock client → configure test to send token or exclude interceptor in test profile and document trade-off.
+**If it fails:** Context missing WS beans → `@SpringBootTest` on Boot app. Payload namespace mismatch → fix StringSource XML.
 
 ---
 
@@ -386,35 +369,34 @@ mvn -q test
 
 **Why:** Integration teams learn more from fault taxonomy than from green paths alone.
 
-**Do this:** Complete Failure Experiments. Capture WSDL snippet, secured response, not-found fault, missing-token fault under `notes/screenshots/lab-24/`. `git status` clean of `target/` and real secrets.
+**Do this:** Complete Failure Experiments appropriate to your path. Timed: WSDL snippet, unsecured get response, REST still works. Full path: also secured response, not-found fault, missing-token fault. `git status` clean of `target/` and real secrets.
 
 **Expected result:** ≥3 experiments; evidence pack complete; no plaintext prod secrets in Git.
 
 **If it fails:** See Troubleshooting.
-
 ---
 
 ## Implementation Checkpoints
 
-### Checkpoint A — Tooling
+### Checkpoint A — Tooling (timed)
 
 _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | `lab24-crm` copied from Lab 23 under `examples/` | Pass / Fail |
-| 2 | Spring-WS + jaxb2 + security dependencies present | Pass / Fail |
-| 3 | `customer.xsd` generates JAXB types | Pass / Fail |
+| 1 | `lab24-crm` under `examples/` (starter copy preferred) | Pass / Fail |
+| 2 | Spring-WS + `wsdl4j` present (JAXB/XJC **not** required timed) | Pass / Fail |
+| 3 | Timed `customer.xsd` has getCustomer request/response only | Pass / Fail |
 
-### Checkpoint B — Contract + endpoint
+### Checkpoint B — Contract + endpoint (timed)
 
 _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Live `/ws/customers.wsdl` lists four operations | Pass / Fail |
-| 2 | `CustomerEndpoint` delegates to `CustomerService` | Pass / Fail |
-| 3 | Mapper keeps JAXB out of service/REST layers | Pass / Fail |
+| 1 | Live `/ws/customers.wsdl` with port type **`CustomersPort`** + getCustomer | Pass / Fail |
+| 2 | `CustomerEndpoint` getCustomer delegates to `CustomerService` | Pass / Fail |
+| 3 | DOM `CustomerSoapMapper` keeps XML out of service/REST layers | Pass / Fail |
 
 ### Checkpoint C — Faults + security
 
@@ -422,9 +404,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Not-found yields CLIENT fault | Pass / Fail |
-| 2 | Missing UsernameToken rejected (**full path only**) | Pass / Fail / N/A timed |
-| 3 | Secured get of `CUS-1001` succeeds (`lab24-001` evidenced) | Pass / Fail |
+| 1 | Fault resolver / CLIENT not-found — **full path** | Pass / Fail / N/A timed |
+| 2 | Missing UsernameToken rejected — **full path only** (not wired timed) | Pass / Fail / N/A timed |
+| 3 | Timed: unsecured get `CUS-1001` works · Full: secured get succeeds | Pass / Fail |
 
 ### Checkpoint D — Hygiene
 
@@ -432,10 +414,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Two consecutive `mvn test` identical success | Pass / Fail |
+| 1 | After Step 8: two consecutive `mvn test` → **Tests run: 2** (before Step 8 may be 0) | Pass / Fail |
 | 2 | REST and SOAP share one service proof | Pass / Fail |
-| 3 | No secrets / `target/` committed; UsernameToken marked lab-only | Pass / Fail |
-
+| 3 | No secrets / `target/` committed; UsernameToken marked lab-only / not wired timed | Pass / Fail |
 ---
 
 ## Reference Commands, Configuration, and Code
@@ -466,22 +447,19 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ```bash
 cd ~/java-bootcamp/examples/lab24-crm
-mvn -q generate-sources
+# Timed: no generate-sources / XJC required
 mvn spring-boot:run
 curl -s http://localhost:8080/ws/customers.wsdl | grep "wsdl:operation"
 curl -s -X POST http://localhost:8080/ws \
   -H "Content-Type: text/xml; charset=utf-8" \
   --data @requests/get-customer.xml
-curl -s -X POST http://localhost:8080/ws \
-  -H "Content-Type: text/xml; charset=utf-8" \
-  --data @requests/get-customer-secured.xml
-curl -s -X POST http://localhost:8080/ws \
-  -H "Content-Type: text/xml; charset=utf-8" \
-  --data @requests/get-customer-not-found.xml
 # REST still works against same service:
 curl -s http://localhost:8080/api/customers/CUS-1001
-mvn -q test
-mvn -q test
+# After Step 8 (replace starter TODO stubs):
+mvn -B test
+# Full path only:
+# curl … --data @requests/get-customer-secured.xml
+# curl … --data @requests/get-customer-not-found.xml
 ```
 
 ## Failure Experiments
@@ -489,10 +467,10 @@ mvn -q test
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
 | 1 | App stopped; POST SOAP | Connection refused | Start app; discuss partner backoff |
-| 2 | get `CUS-9999` | CLIENT fault | Keep mapping |
+| 2 | get `CUS-9999` | Timed: exception/fault · Full: CLIENT fault if resolver added | Keep mapping |
 | 3 | Malformed XML (cut tag) | Parse/fault failure | Fix file |
-| 4 | Double createCustomer | Non-idempotent duplicates | Document partner guidance |
-| 5 | get-customer.xml without security | Security fault; no business hit | Use secured file |
+| 4 | Double createCustomer | Full path only | Document partner guidance |
+| 5 | get-customer.xml without security | Timed: **succeeds** (UsernameToken not wired) · Full: security fault | Document path |
 
 ---
 
@@ -504,10 +482,13 @@ mvn -q test
 | `@PayloadRoot` never matches | Namespace/localPart drift | Exact URI + element name; enable WS DEBUG |
 | Generic SERVER fault | Unmapped / wrapped exception | Map FQCN; avoid wrapping |
 | WSS rejects valid-looking XML | Wrong wsse URI / password / Content-Type | Copy secured sample exactly |
-| XJC empty | Plugin source path | Point at `src/main/resources/customer.xsd` |
+| Expecting JAXB/XJC on timed path | Wrong scope | Use DOM `Element` mapper |
+| Port type `CustomerServicePort` | Starter/solution use **`CustomersPort`** | Fix `setPortTypeName` |
 | REST/SOAP diverge | Two services/stores | One injected `CustomerService` |
+| TODO stub failures before Step 8 | Starter ships fail("TODO") stubs | Replace stubs → Tests run: 2 PASS |
 | Working in `module-24-exercises` for the lab | Wrong project | Lab lives in `examples/lab24-crm` |
 | Deleted REST controller “to focus on SOAP” | Scope misunderstanding | Keep both protocols |
+| Failing timed path for missing UsernameToken | Not wired in starter/solution | Full-path homework only |
 
 ## Security and Production Review
 

@@ -38,9 +38,13 @@ cp "$SRC"/*.java "$DST"/
 cd "$DST"
 ```
 
+## Timed path (starter) — skip recreate Steps
+
+You already have all four `.java` files. **Do not** recreate `HelloWorld` / `Calculator` / `Employee` / `MemoryDemo` from the GUIDE create Steps. Fill TODOs + evidence only. **`HelloWorld` is already complete** — just confirm it prints `Hello, JVM!`.
+
 ## 45-minute checklist (ordered TODOs)
 
-1. Confirm `HelloWorld.java` prints `Hello, JVM!` (already complete).
+1. Confirm `HelloWorld.java` prints `Hello, JVM!` (already complete — no TODO).
 2. Complete `Calculator.add` and its `main` print.
 3. Complete `Employee` constructor, `display()`, and `main`.
 4. Complete `MemoryDemo` loop + size print.

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Northstar CRM — Customers</title>
+</head>
+<body>
+  <h1>Create customer</h1>
+  <form id="customer-form">
+    <label>ID <input name="customerId" data-testid="customer-id"/></label>
+    <label>Name <input name="fullName" data-testid="full-name"/></label>
+    <label>Email <input name="email" data-testid="email"/></label>
+    <label>Status <input name="status" data-testid="status" value="PROSPECT"/></label>
+    <button type="submit" data-testid="submit-customer">Create</button>
+  </form>
+  <pre data-testid="create-result" id="result"></pre>
+  <script>
+    document.getElementById('customer-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const body = {
+        customerId: document.querySelector('[data-testid="customer-id"]').value,
+        fullName: document.querySelector('[data-testid="full-name"]').value,
+        email: document.querySelector('[data-testid="email"]').value,
+        status: document.querySelector('[data-testid="status"]').value
+      };
+      const res = await fetch('/api/customers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Correlation-Id': 'lab-request-001'
+        },
+        body: JSON.stringify(body)
+      });
+      const text = await res.text();
+      document.getElementById('result').textContent = text;
+    });
+  </script>
+</body>
+</html>

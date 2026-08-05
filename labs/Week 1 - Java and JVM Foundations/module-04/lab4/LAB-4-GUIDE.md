@@ -30,15 +30,18 @@
 
 In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
 
+> **Timed path:** Skip recreating Steps 1–5 (`Person`, `MemoryMonitor`, stack/heap/lifecycle demos are already in the starter). Fill the measurement / leak / performance `// TODO`s only — do **not** open `solution/` first.
+
 1. Open [`starter/README.md`](starter/README.md).
 2. Copy `starter/Lab4-MemoryManagement/` into your `java-bootcamp/examples/Lab4-MemoryManagement/` target folder (commands in the starter README).
-3. Fill every `// TODO` / `_____` — do **not** open `solution/` first.
-4. Run the starter smoke test; capture evidence under `notes/screenshots/lab-4/`.
-5. Mark the **timed-path Pass criteria** in the starter README. Continue remaining GUIDE steps only if time allows (or as homework).
+3. Fill GC + `MemoryLeakDemo` leak/fix + `PerformanceTest` TODOs — do **not** open `solution/` first.
+4. Run the starter smoke test (includes `MemoryLeakDemo leak` + `fix`); capture evidence under `notes/screenshots/lab-4/`.
+5. Mark the **timed-path Pass criteria** in the starter README. Complete `WeakReferenceDemo` for **full credit** (homework if class time ends). Continue remaining GUIDE steps only if time allows.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
+| **Timed (default)** | ~45 min | GC + leak/fix + `PerformanceTest` TODOs + smoke |
+| **Full credit** | timed + homework | Timed scope **plus** `WeakReferenceDemo` |
 | **Full (extended)** | see Duration | Every Step in this GUIDE |
 
 **Verified participant layout (Windows IntelliJ + PowerShell; Temurin JDK 21.0.11):**
@@ -50,7 +53,8 @@ In class, use the starter templates so the **core** objectives fit **~45 minutes
 | This lab folder | `examples\Lab4-MemoryManagement\` (flat `.java` — **no** Sources Root / packages) |
 | Compile | Named `javac` of the nine core demos in that folder |
 | Useful VM flags | `-Xms16m -Xmx64m -Xlog:gc` for `GarbageCollectionDemo`; `-Xms128m -Xmx512m` for `PerformanceTest` |
-| Smoke-test themes | Nested stack frames; heap identity hashes; GC reclaim after null; G1 log lines; leak rise / fix drop; weak `get()` → `null` |
+| Smoke-test themes | Nested stack frames; heap identity hashes; GC reclaim after null; G1 log lines; `MemoryLeakDemo leak` rise / `fix` drop; `PerformanceTest` table |
+| Full-credit add-on | `WeakReferenceDemo` — strong stays / weak `get()` → `null` (required for full Pass; optional during timed classroom) |
 
 **If it fails (Windows PowerShell):** Name each `.java` file in the `javac` line (see [LAB-4-WINDOWS.md](LAB-4-WINDOWS.md)). Do **not** mark this folder as Sources Root (unlike Labs 2–3). If `OutOfMemoryError` on GC demo, raise `-Xmx` temporarily or close heavy apps.
 
@@ -127,7 +131,7 @@ You need to determine:
 
 **Pedagogical frame.** Demos use `Person`, `Employee`, `Student`, and byte payloads—not live customer PII. The skills transfer when a future CRM cache retains every customer forever.
 
-**Security
+**Security:** Never commit `.hprof` dumps or paste dump contents into LMS notes (PII risk). Keep intentional OOM demos optional, short, and instructor-approved with a tiny `-Xmx`. Prefer fixing retention roots over sprinkling `System.gc()` in production-style code.
 
 ## Architecture Context
 ### Stack vs Heap (mental model)
@@ -152,8 +156,15 @@ flowchart LR
 
 ### Lab flow
 
+1. Shared helpers (`Person`, `MemoryMonitor`) → stack / heap / lifecycle demos  
+2. Bounded allocate → null → GC observe (`GarbageCollectionDemo` + `-Xlog:gc`)  
+3. Retention contrast: `MemoryLeakDemo leak` vs `fix`  
+4. Timed path: `PerformanceTest` table; full credit: `WeakReferenceDemo`  
+5. Optional tools / bonus comparisons only after core smoke passes  
 
 ### Reachability (why GC did—or did not—free memory)
+
+GC reclaims only **unreachable** objects. A static list, open loan map, or forgotten cache entry keeps strong references alive — so used memory can rise even while GC runs. `leak` mode keeps a long-lived root; `fix` clears it so objects become eligible. Weak references do not prevent collection when only weak paths remain.
 
 ## Prerequisites
 
@@ -711,8 +722,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 | - | ------- | ---------- |
 | 1 | `GarbageCollectionDemo` with Before / After / After GC reports | Pass / Fail |
 | 2 | `-Xlog:gc` snippet saved | Pass / Fail |
-| 3 | `MemoryLeakDemo leak` and `fix` both demonstrated | Pass / Fail |
-| 4 | `WeakReferenceDemo` and `PerformanceTest` run; table filled | Pass / Fail |
+| 3 | `MemoryLeakDemo leak` and `fix` both demonstrated (timed Pass) | Pass / Fail |
+| 4 | `PerformanceTest` run; results table filled (timed Pass) | Pass / Fail |
+| 5 | `WeakReferenceDemo` run (required for **full** Pass; homework OK if timed class ends) | Pass / Fail |
 
 ### Checkpoint D — Evidence hygiene
 

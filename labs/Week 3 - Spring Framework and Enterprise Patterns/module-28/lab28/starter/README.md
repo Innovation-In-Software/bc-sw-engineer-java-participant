@@ -40,16 +40,19 @@ Full GUIDE: [`../LAB-28-GUIDE.md`](../LAB-28-GUIDE.md)
 
 ## 45-minute checklist
 
-- [ ] Complete `SecurityFilterChain` matchers (public login, AGENT customers, ADMIN admin)
-- [ ] Fill `JwtService` issue/parse stubs
-- [ ] Wire `JwtAuthenticationFilter` into the chain
+- [ ] Complete `SecurityFilterChain` matchers (login + health + `/error` permitAll; AGENT customers; ADMIN admin)
+- [ ] Fill `JwtService` lab stub (`lab.subject.role.sig`) — real `eyJ` HS256 is full-path optional
+- [ ] Wire `JwtAuthenticationFilter` into the chain; login returns `{accessToken, tokenType}`
 - [ ] Prove login → Bearer GET CUS-1001; missing token → 401; agent on admin → 403
-- [ ] Note IdP/key-rotation in docs/security-notes.md
+- [ ] Add `SecurityPathTest` (**Tests run: 3**) — starter ships failing TODO test stubs
+- [ ] Note IdP/key-rotation in docs/security-notes.md (`JWT_SECRET`)
 
 ## Smoke test
 
 ```bash
+# After adding SecurityPathTest:
 mvn -B test
+# Tests run: 3
 mvn -B spring-boot:run
 ```
 

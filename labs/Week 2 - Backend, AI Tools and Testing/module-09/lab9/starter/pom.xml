@@ -72,5 +72,5 @@
     </plugins>
   </build>
 
-  <!-- TODO: add profiles id=dev (activeByDefault) and id=prod with distinct app.env properties -->
+  <!-- TODO: add profiles id=dev (activeByDefault), id=test, and id=prod with distinct app.env properties -->
 </project>

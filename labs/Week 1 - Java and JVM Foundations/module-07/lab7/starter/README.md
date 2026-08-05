@@ -8,11 +8,11 @@ Exception classes, `Account`, `Transaction`, `LoggerUtil`, and `Main` are mostly
 | --- | --- |
 | **Objective** | Complete ATM login + deposit/withdraw failure paths with domain exceptions |
 | **Skills practiced** | Boundary catch, insufficient funds, invalid PIN/account, logging |
-| **Expected outcome** | Smoke path: login → failed withdraw message → deposit → balance `12000` → Thank You |
+| **Expected outcome** | Smoke: login → failed withdraw → deposit → balance `12000` → mini statement → Thank You |
 | **Estimated time** | ~45 minutes |
 | **Files** | Packaged suite under `Lab7-ATMSystem/src/com/academy/atm/` |
 
-**Boilerplate reduced:** Exception types, account model, logger, and menu are given — focus on `ATMService` TODOs.
+**Boilerplate reduced:** Exception types, account model, logger, and menu are given — do **not** recreate exception classes. Focus on `ATMService` login/deposit/withdraw TODOs. Transfer and report menus are Bonus stubs.
 
 Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-7-GUIDE.md`](../LAB-7-GUIDE.md)
 
@@ -45,11 +45,11 @@ cd "$DST"
 
 ## 45-minute checklist (ordered TODOs)
 
-1. Skim exception types + `Account.deposit` / `withdraw`.
+1. Skim given exception types + `Account.deposit` / `withdraw` (do not recreate).
 2. Implement `ATMService.login` (success + invalid PIN / missing account).
 3. Implement `deposit` via `executeTransaction`.
 4. Implement `withdraw` via `executeTransaction` (insufficient funds path).
-5. Smoke test from **project root**; evidence under `notes/screenshots/lab-7/`.
+5. Smoke test from **project root** including mini statement (menu 6); evidence under `notes/screenshots/lab-7/`.
 
 ## Smoke test
 
@@ -67,7 +67,7 @@ javac -d out `
 java -cp out com.academy.atm.Main
 ```
 
-Interactive path: login `1001` / `1234` → withdraw `20000` → deposit `1000` → balance → exit.
+Interactive path: login `1001` / `1234` → withdraw `20000` → deposit `1000` → balance → **mini statement** → exit.
 
 **Expected output snippet:**
 
@@ -79,6 +79,11 @@ Transaction Cancelled
 ...
 Deposit Successful
 Current Balance : 12000
+...
+Session Transactions:
+...
+Historical Transactions (from file):
+...
 Thank You
 ```
 
@@ -87,7 +92,8 @@ Thank You
 | # | Criterion | Pass / Fail |
 | - | --------- | ----------- |
 | 1 | Project compiles; run from Lab7 root | |
-| 2 | Login + withdraw fail + deposit success | |
-| 3 | Evidence under `notes/screenshots/lab-7/` | |
+| 2 | Login + withdraw fail + deposit success + balance `12000` | |
+| 3 | Mini statement shows session and/or file lines | |
+| 4 | Evidence under `notes/screenshots/lab-7/` | |
 
-> Full GUIDE steps (transfer, reports, unchecked demos) remain for homework / extended work.
+> Full GUIDE steps (transfer, reports, unchecked demos) remain for homework / extended work. Bonus menus print a stub — they should not crash.

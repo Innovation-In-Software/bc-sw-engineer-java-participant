@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-11-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 11 `starter/` → `examples\lab11-crm` (or copy `lab10-crm` → `lab11-crm`). Mockito (`mockito-core` + `mockito-junit-jupiter` **5.11.0**, test scope); `CustomerNotifier.notifyStatusChange` + `validateCustomerId`; tests `CustomerTest` (2) / `CustomerServiceTest` (5) / `CustomerNotifierMockTest` (1); notes `copilot-notes\ai-test-refactor-notes.md`. `mvn clean test` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS** (twice, deterministic). `Main` still shows `CUS-1001` ACTIVE + `CUS-1002` PROSPECT → ACTIVE. Skipping notifier → Mockito **Wanted but not invoked**. JDK 21 may log Byte Buddy dynamic-agent warnings during Mockito — ignore if Surefire is green. Instructor walkthrough: `docs/instructor-participant-help/week-2/11-testing-exercises-and-lab11.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 11 `starter/` → `examples\lab11-crm` (or copy `lab10-crm` → `lab11-crm`). Mockito (`mockito-core` + `mockito-junit-jupiter` **5.11.0**, test scope); `CustomerNotifier.notifyStatusChange` + `validateCustomerId`; tests `CustomerTest` (2) / `CustomerServiceTest` (5) / `CustomerNotifierMockTest` (1); notes `copilot-notes\ai-test-refactor-notes.md`. `mvn clean test` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS** (twice, deterministic). `Main` still shows `CUS-1001` ACTIVE + `CUS-1002` PROSPECT → ACTIVE. Skipping notifier → Mockito **Wanted but not invoked**. JDK 21 may log Byte Buddy dynamic-agent warnings during Mockito — ignore if Surefire is green. Instructor walkthrough: `docs/instructor-participant-help/week-2/11-testing-exercises-and-lab11.md`.
 
 ## Prerequisites (Windows)
 
@@ -66,3 +66,4 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
 | 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
 | 5 | Screenshots (if required) under `notes/screenshots/lab-11/` | Pass / Fail |
+

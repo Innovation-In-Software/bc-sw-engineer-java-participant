@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-12-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 12 `starter/` → `examples\lab12-crm` (or copy `lab11-crm` → `lab12-crm` then insert messy baseline). Froze messy `doStuff` baseline as `CustomerService.before.java.txt`; refactored to `createCustomer` / `getCustomer` / `updateStatus` with `Map<String,Customer>`, exception + `lab-request-001` correlation messages, and validation helpers. Evidence under `docs\` (smells, before-after, AI review, standards checklist). `mvn -B clean test` and `mvn -B verify` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS**. `Main` demo prints create/get/update plus duplicate/unknown failures with correlation ID. Instructor walkthrough: `docs/instructor-participant-help/week-2/12-refactor-exercises-and-lab12.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 12 `starter/` → `examples\lab12-crm` (or copy `lab11-crm` → `lab12-crm` then insert messy baseline). Froze messy `doStuff` baseline as `CustomerService.before.java.txt`; refactored to `createCustomer` / `getCustomer` / `updateStatus` with `Map<String,Customer>`, exception + `lab-request-001` correlation messages, and validation helpers. Evidence under `docs\` (smells, before-after, AI review, standards checklist). `mvn -B clean test` and `mvn -B verify` → **Tests run: 8**, Failures: 0 · **BUILD SUCCESS**. `Main` demo prints create/get/update plus duplicate/unknown failures with correlation ID. Instructor walkthrough: `docs/instructor-participant-help/week-2/12-refactor-exercises-and-lab12.md`.
 
 ## Prerequisites (Windows)
 
@@ -67,3 +67,4 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
 | 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
 | 5 | Screenshots (if required) under `notes/screenshots/lab-12/` | Pass / Fail |
+

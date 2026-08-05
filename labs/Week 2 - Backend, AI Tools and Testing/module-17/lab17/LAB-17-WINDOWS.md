@@ -9,7 +9,7 @@
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
 **Other OS:** [macOS guide](LAB-17-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
 
-**Verified (Monday, August 3, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 17 `starter/` → `examples\lab17-crm` (or copy `lab16-crm` → `lab17-crm`). JaCoCo **0.8.12** check on `com.northstar.crm.service` (≥0.80 LINE); completed `CustomerServiceTests` (6) + `GlobalExceptionHandlerTest` (2) + `CustomerValidatorParameterizedTest` (11; ACTIVE→PROSPECT illegal). Two consecutive `mvn -q test` green; `mvn -B clean verify` → **Tests run: 19**, Failures: 0 · **BUILD SUCCESS** (service coverage ≈ **0.97**). Deliberate `minimum=0.99` failed with `lines covered ratio is 0.97, but expected minimum is 0.99`; restored **0.80**. Instructor walkthrough: `docs/instructor-participant-help/week-2/17-junit-exercises-and-lab17.md`.
+**Verified (Tuesday, August 4, 2026):** IntelliJ Terminal (PowerShell) + Temurin OpenJDK **21.0.11** + Apache Maven **3.9.9**. Timed path: Lab 17 `starter/` → `examples\lab17-crm` (or copy `lab16-crm` → `lab17-crm`). JaCoCo **0.8.12** check on `com.northstar.crm.service` (≥0.80 LINE); completed `CustomerServiceTests` (6) + `GlobalExceptionHandlerTest` (2) + `CustomerValidatorParameterizedTest` (11; ACTIVE→PROSPECT illegal). Two consecutive `mvn -q test` green; `mvn -B clean verify` → **Tests run: 19**, Failures: 0 · **BUILD SUCCESS** (service coverage ≈ **0.97**). Deliberate `minimum=0.99` failed with `lines covered ratio is 0.97, but expected minimum is 0.99`; restored **0.80**. Instructor walkthrough: `docs/instructor-participant-help/week-2/17-junit-exercises-and-lab17.md`.
 
 ## Prerequisites (Windows)
 
@@ -67,3 +67,4 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
 | 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
 | 5 | Screenshots (if required) under `notes/screenshots/lab-17/` | Pass / Fail |
+

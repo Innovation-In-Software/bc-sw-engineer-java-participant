@@ -13,6 +13,7 @@ Do **not** copy from `../solution/` until you have tried first.
 | `Hello.java` | 1 |
 | `WoraProbe.java` | 2 |
 | `ControlFlow.java` | 3 |
+| `ControlFlowBug.java` | 3 (debug challenge — fix the infinite loop) |
 | `Helper.java` + `LoadDemo.java` | 4 |
 | `Variables.java` | 5 |
 | `Methods.java` | 6 |

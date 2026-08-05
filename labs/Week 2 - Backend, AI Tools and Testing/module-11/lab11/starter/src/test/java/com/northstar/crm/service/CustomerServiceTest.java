@@ -31,5 +31,10 @@ class CustomerServiceTest {
         throw new UnsupportedOperationException("TODO: unknown customer");
     }
 
-    // TODO (stretch): findByStatusReturnsOnlyMatchingCustomers
+    @Test
+    void findByStatusReturnsOnlyMatchingCustomers() {
+        // TODO: add ACTIVE CUS-1001 + PROSPECT CUS-1002; assert findByStatus(PROSPECT) size 1 / id CUS-1002
+        // Requires listAll() + findByStatus(CustomerStatus) on CustomerService (timed path — required)
+        throw new UnsupportedOperationException("TODO: findByStatus filter");
+    }
 }
