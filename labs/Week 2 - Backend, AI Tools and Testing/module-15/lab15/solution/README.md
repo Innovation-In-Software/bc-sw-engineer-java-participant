@@ -1,72 +1,25 @@
-# Lab 15 solution — timed path (~45 minutes)
+# Lab 15 solution — complete reference
 
-**Theme:** Service layer + CustomerValidator status transitions (no persistence leak)
+**Theme:** Repository interface + validator transitions + DefaultCustomerService
 
-## Activity card
+This folder is the **finished lab** (not the timed starter). Participants: attempt `../starter/` first, then compare here.
 
 | | |
 | --- | --- |
-| **Objective** | Implement repo, validator ALLOWED matrix, DefaultCustomerService, and demos |
-| **Skills practiced** | Ctor DI, validate-before-mutate, illegal-transition proof |
-| **Expected outcome** | `mvn -B clean test` green · activate CUS-1002 · reject ACTIVE→PROSPECT |
-| **Estimated time** | ~45 minutes |
-| **Files** | Completed reference for `examples/lab15-crm` (compare to your timed starter work) |
-
-**Boilerplate reduced:** Baseline CRM + TODOs given — fill `// TODO`; keep Map out of `service`.
-
-Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-15-GUIDE.md`](../LAB-15-GUIDE.md)
-
-**Detailed walkthrough:** [SOLUTION.md](SOLUTION.md) · [SOLUTION-NOTES.md](SOLUTION-NOTES.md)
-
-**Honesty:** No `@ControllerAdvice` / Spring MVC error mapping in Lab 15 (Lab 16).
+| **What this is** | Working reference implementation + docs |
+| **Verify** | `mvn -B clean test` |
+| **Expected** | Tests run: 3, Failures: 0 |
+| **Walkthrough** | [SOLUTION.md](SOLUTION.md) (full completed source embedded) |
+| **Short notes** | [SOLUTION-NOTES.md](SOLUTION-NOTES.md) |
+| **Guide** | [../LAB-15-GUIDE.md](../LAB-15-GUIDE.md) |
 
 ## Copy into your workspace
 
-Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab15-crm`.
-
-**Windows (PowerShell)** — from this lab folder:
-
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab15-crm" | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab15-crm\"
+Copy-Item -Recurse -Force ".\*" "$env:USERPROFILE\java-bootcamp\examples\lab15-crm\"
 cd $env:USERPROFILE\java-bootcamp\examples\lab15-crm
-```
-
-**macOS / Linux:**
-
-```bash
-mkdir -p ~/java-bootcamp/examples/lab15-crm
-cp -R starter/. ~/java-bootcamp/examples/lab15-crm/
-cd ~/java-bootcamp/examples/lab15-crm
-```
-
-Full GUIDE: [`../LAB-15-GUIDE.md`](../LAB-15-GUIDE.md)
-
-## 45-minute checklist
-
-- [ ] Implement `InMemoryCustomerRepository` (private Map)
-- [ ] Fill `CustomerValidator` ALLOWED transitions + validateNew / validateTransition
-- [ ] Implement `DefaultCustomerService` constructor DI + changeStatus (validate before mutate)
-- [ ] Main: activate CUS-1002; reject ACTIVE→PROSPECT on CUS-1001; prove status unchanged
-- [ ] Finish `CustomerValidatorTest`; fill `docs/service-layer-notes.md`
-- [ ] Run smoke test
-
-## Smoke test
-
-```bash
 mvn -B clean test
 ```
 
-Evidence under `~/java-bootcamp/notes/screenshots/lab-15/` (redact secrets).
-
-## Timed-path Pass criteria
-
-| Criterion | Pass / Fail |
-| --------- | ----------- |
-| Validator tests green (legal + illegal + duplicate) | Pass / Fail |
-| Main activates CUS-1002 to ACTIVE | Pass / Fail |
-| Illegal transition leaves CUS-1001 ACTIVE; message includes lab-request-001 | Pass / Fail |
-| No HashMap / JDBC in service package | Pass / Fail |
-
-Continue remaining GUIDE steps as homework / full path if needed.
-
+Do **not** treat this as a TODO checklist — the code here is already complete.

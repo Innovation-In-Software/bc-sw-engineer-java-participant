@@ -1,68 +1,25 @@
-# Lab 10 solution — timed path (~45 minutes)
+# Lab 10 solution — complete reference
 
-**Theme:** GitHub Copilot for plain Java CRM domain
+**Theme:** Customer domain + in-memory CustomerService (add/find/updateStatus)
 
-## Activity card
+This folder is the **finished lab** (not the timed starter). Participants: attempt `../starter/` first, then compare here.
 
 | | |
 | --- | --- |
-| **Objective** | Strong-prompt Copilot fill for Customer/Status/Service + review log |
-| **Skills practiced** | Constrained generation, phantom reject, Accept/Reject/Edit notes |
-| **Expected outcome** | Smoke path CUS-1001/CUS-1002 + `lab10-001`–`lab10-004` log entries |
-| **Estimated time** | ~45 minutes |
-| **Files** | Completed reference for `examples/lab10-crm` (compare to your timed starter work) |
-
-**Boilerplate reduced:** Maven tree + stubs given — focus on constrained Copilot fills and the review log.
-
-Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-10-GUIDE.md`](../LAB-10-GUIDE.md)
-
-**Detailed walkthrough:** [SOLUTION.md](SOLUTION.md) · [SOLUTION-NOTES.md](SOLUTION-NOTES.md)
-
-**AI hygiene:** “Java 21, no Spring, no JPA” in every prompt. Never paste secrets/PII.
+| **What this is** | Working reference implementation + docs |
+| **Verify** | `mvn -B clean compile; java -cp target/classes com.northstar.crm.Main` |
+| **Expected** | Main prints CUS-1001 / CUS-1002 demo |
+| **Walkthrough** | [SOLUTION.md](SOLUTION.md) (full completed source embedded) |
+| **Short notes** | [SOLUTION-NOTES.md](SOLUTION-NOTES.md) |
+| **Guide** | [../LAB-10-GUIDE.md](../LAB-10-GUIDE.md) |
 
 ## Copy into your workspace
 
-**Windows (PowerShell)** — from this lab folder:
-
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab10-crm" | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab10-crm\"
+Copy-Item -Recurse -Force ".\*" "$env:USERPROFILE\java-bootcamp\examples\lab10-crm\"
 cd $env:USERPROFILE\java-bootcamp\examples\lab10-crm
+mvn -B clean compile; java -cp target/classes com.northstar.crm.Main
 ```
 
-**macOS / Linux:**
-
-```bash
-mkdir -p ~/java-bootcamp/examples/lab10-crm
-cp -R starter/. ~/java-bootcamp/examples/lab10-crm/
-cd ~/java-bootcamp/examples/lab10-crm
-```
-
-Full GUIDE: [`../LAB-10-GUIDE.md`](../LAB-10-GUIDE.md)
-
-## 45-minute checklist
-
-- [ ] Sign in Copilot; sanity-check ghost text on Main TODO
-- [ ] Fill `CustomerStatus` + `Customer` with strong prompts; reject JPA
-- [ ] Draft `CustomerService` (add/find/updateStatus)
-- [ ] Complete `Main` demo for CUS-1001 / CUS-1002
-- [ ] Log entries lab10-001–lab10-004 in `copilot-notes/ai-review-notes.md`
-- [ ] Run smoke test
-
-## Smoke test
-
-```bash
-mvn clean compile
-java -cp target/classes com.northstar.crm.Main
-```
-
-## Timed-path Pass criteria
-
-| Criterion | Pass / Fail |
-| --------- | ----------- |
-| Compiles; Main shows both sample customers | Pass / Fail |
-| No JPA/Spring on entity | Pass / Fail |
-| ai-review-notes has accept/reject decisions | Pass / Fail |
-
-Continue remaining GUIDE steps as homework / full path if needed.
-
+Do **not** treat this as a TODO checklist — the code here is already complete.

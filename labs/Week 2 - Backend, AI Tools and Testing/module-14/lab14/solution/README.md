@@ -1,68 +1,25 @@
-# Lab 14 solution — timed path (~45 minutes)
+# Lab 14 solution — complete reference
 
-**Theme:** DTOs + Jakarta Bean Validation at the API boundary
+**Theme:** DTO + Bean Validation + CustomerMapper (mapper package) + facade
 
-## Activity card
+This folder is the **finished lab** (not the timed starter). Participants: attempt `../starter/` first, then compare here.
 
 | | |
 | --- | --- |
-| **Objective** | Complete DTO annotations, mapper, facade validation, and tests |
-| **Skills practiced** | Bean Validation, no-leak mapping, correlation on failures |
-| **Expected outcome** | `mvn -B clean test` green · response DTOs only |
-| **Estimated time** | ~45 minutes |
-| **Files** | Completed reference for `examples/lab14-crm` (compare to your timed starter work) |
-
-**Boilerplate reduced:** Baseline CRM + DTO shells given — fill `// TODO`; do **not** add Spring Boot.
-
-Pacing: [`../../PACING.md`](../../PACING.md) · Full steps: [`../LAB-14-GUIDE.md`](../LAB-14-GUIDE.md)
-
-**Detailed walkthrough:** [SOLUTION.md](SOLUTION.md) · [SOLUTION-NOTES.md](SOLUTION-NOTES.md)
-
-**Honesty:** No Spring `@Valid` controllers in Lab 14 — use `ValidatorFactory` in the facade.
+| **What this is** | Working reference implementation + docs |
+| **Verify** | `mvn -B clean test` |
+| **Expected** | Tests run: 13 (timed path minimum 3 validation tests) |
+| **Walkthrough** | [SOLUTION.md](SOLUTION.md) (full completed source embedded) |
+| **Short notes** | [SOLUTION-NOTES.md](SOLUTION-NOTES.md) |
+| **Guide** | [../LAB-14-GUIDE.md](../LAB-14-GUIDE.md) |
 
 ## Copy into your workspace
 
-**Windows (PowerShell)** — from this lab folder:
-
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab14-crm" | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab14-crm\"
+Copy-Item -Recurse -Force ".\*" "$env:USERPROFILE\java-bootcamp\examples\lab14-crm\"
 cd $env:USERPROFILE\java-bootcamp\examples\lab14-crm
-```
-
-**macOS / Linux:**
-
-```bash
-mkdir -p ~/java-bootcamp/examples/lab14-crm
-cp -R starter/. ~/java-bootcamp/examples/lab14-crm/
-cd ~/java-bootcamp/examples/lab14-crm
-```
-
-Full GUIDE: [`../LAB-14-GUIDE.md`](../LAB-14-GUIDE.md)
-
-## 45-minute checklist
-
-- [ ] Add Bean Validation annotations on `CustomerRequestDTO`
-- [ ] Implement `CustomerMapper` + `CustomerApiFacade` TODOs
-- [ ] Complete validation tests (valid / bad email / blank name)
-- [ ] Main demo returns response DTOs only; invalid path shows `lab-request-001`
-- [ ] Fill `docs/dto-boundary-notes.md`
-- [ ] Run smoke test
-
-## Smoke test
-
-```bash
 mvn -B clean test
 ```
 
-## Timed-path Pass criteria
-
-| Criterion | Pass / Fail |
-| --------- | ----------- |
-| Validation tests green | Pass / Fail |
-| Facade returns DTOs only (no entity leak) | Pass / Fail |
-| Invalid payload rejected before service | Pass / Fail |
-| Correlation id visible on failure | Pass / Fail |
-
-Continue remaining GUIDE steps as homework / full path if needed.
-
+Do **not** treat this as a TODO checklist — the code here is already complete.

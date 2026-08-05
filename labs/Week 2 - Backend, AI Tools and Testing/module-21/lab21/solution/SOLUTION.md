@@ -1,106 +1,347 @@
-# Lab 21 — Detailed solution (instructor / shared after class)
+# Lab 21 — Complete reference solution
 
-> **Audience:** Instructors and participants when the instructor releases `solution/`.  
-> **Do not open this during the timed path** unless your instructor says so.  
-> Timed starter card: [`../starter/README.md`](../starter/README.md) · Full steps: [`../LAB-21-GUIDE.md`](../LAB-21-GUIDE.md)
+> **Finished project** — every source file below is the completed answer (not a smoke checklist).
+>
+> Attempt [`../starter/`](../starter/) first. Guide: [`../LAB-21-GUIDE.md`](../LAB-21-GUIDE.md)
 
 ## Goal
 
-**Actuator health + metrics**
+**Actuator readiness + Micrometer metrics**
 
-## What you should end with
-
-| Check | Expected |
-| --- | --- |
-| Verify command | `mvn -B clean test` |
-| Suite / smoke | Tests run: 3 (ActuatorIT) |
-| Workspace copy (optional) | `%USERPROFILE%\java-bootcamp\examples\lab21-crm` from this `solution/` |
-
-## Solution tree (key files)
-
-### Java / sources
-- `src/main/java/com/northstar/crm/CrmApplication.java`
-- `src/main/java/com/northstar/crm/model/Customer.java`
-- `src/main/java/com/northstar/crm/repository/CustomerRepository.java`
-- `src/main/java/com/northstar/crm/repository/InMemoryCustomerRepository.java`
-- `src/main/java/com/northstar/crm/service/CustomerService.java`
-- `src/main/java/com/northstar/crm/api/CustomerController.java`
-- `src/main/java/com/northstar/crm/logging/CorrelationFilter.java`
-- `src/main/java/com/northstar/crm/metrics/CustomerMetrics.java`
-- `src/main/java/com/northstar/crm/health/CrmReadinessIndicator.java`
-- `src/test/java/com/northstar/crm/actuator/ActuatorIT.java`
-
-### Docs / contracts
-- `monitoring-report.md`
-
-## How this maps to the GUIDE
-
-1. Copy `starter/` → `examples/lab21-crm` (timed path) **or** use this `solution/` as the completed reference.
-2. Every `// TODO` in the starter has a filled implementation here — compare file-by-file with your work.
-3. Run the verify command above from the project root (this folder or your `lab21-crm` copy).
-4. Keep `docs/` notes that the GUIDE names (smells, isolation policy, monitoring report, etc.).
-
-## Instructor notes (short)
-
-# Lab 21 solution notes
-
-## What / why
-
-Actuator health with distinct liveness vs readiness (`CrmReadinessIndicator` in readiness group), Micrometer counters `crm.customer.create` / `crm.customer.get` with low-cardinality `result` tags, verified by `ActuatorIT`.
-
-## Verify
+## Run the finished project
 
 ```powershell
-cd "labs\Week 2 - Backend, AI Tools and Testing\module-21\lab21\solution"
-mvn -B -Dtest=ActuatorIT test
-```
-
-No Docker required. Delete any `target/` under solution/starter before commit.
-
-## Pitfalls
-
-- Custom readiness indicator must be in the readiness group or the probe ignores it.
-- Tagging customerId/correlation → cardinality anti-pattern.
-- Lab exposure of Actuator is not a production config.
-
-
-## Step-by-step fill guide (participant walkthrough)
-
-### A. Scaffold
-- Open IntelliJ on `%USERPROFILE%\java-bootcamp`.
-- Prefer timed path: copy `starter/*` into `examples\lab21-crm`.
-- Confirm JDK **21** and Maven **3.9+** (`java -version`, `mvn -version`).
-
-### B. Implement TODOs in GUIDE order
-- Follow [`../LAB-21-GUIDE.md`](../LAB-21-GUIDE.md) Steps top-to-bottom.
-- When stuck, open the matching file under this `solution/src` (or `contracts/` / `docs/`) and compare **behavior**, not just names.
-- Do not paste blindly — check package names (especially Lab 14 `com.northstar.crm.mapper`).
-
-### C. Verify on Windows (this machine baseline)
-```powershell
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab21-crm" | Out-Null
+Copy-Item -Recurse -Force ".\*" "$env:USERPROFILE\java-bootcamp\examples\lab21-crm\"
 cd $env:USERPROFILE\java-bootcamp\examples\lab21-crm
-# Or from the repo solution folder:
-# cd "...\module-21\lab21\solution"
 mvn -B clean test
 ```
 
-### D. Common pitfalls for Lab 21
-- Wrong **Tests run** count usually means a missing test class/method shell or leftover `PlaceholderTest`.
-- Package / import drift vs GUIDE samples → fix imports to match solution packages.
-- Never commit `target/`.
+**Expected:** Tests run: 3
 
-## Verified on instructor machine
+## File index (14 files)
 
-**Date:** Tuesday, August 4, 2026  
-**JDK:** Temurin OpenJDK **21.0.11**  
-**Maven:** **3.9.9**  
-**Result:** Solution suite/smoke **PASS** under `%USERPROFILE%\java-bootcamp\examples\_week2-verify\lab21-solution`.
+| # | Path |
+|---|------|
+| 1 | `src/main/java/com/northstar/crm/api/CustomerController.java` |
+| 2 | `src/main/java/com/northstar/crm/CrmApplication.java` |
+| 3 | `src/main/java/com/northstar/crm/health/CrmReadinessIndicator.java` |
+| 4 | `src/main/java/com/northstar/crm/logging/CorrelationFilter.java` |
+| 5 | `src/main/java/com/northstar/crm/metrics/CustomerMetrics.java` |
+| 6 | `src/main/java/com/northstar/crm/model/Customer.java` |
+| 7 | `src/main/java/com/northstar/crm/repository/CustomerRepository.java` |
+| 8 | `src/main/java/com/northstar/crm/repository/InMemoryCustomerRepository.java` |
+| 9 | `src/main/java/com/northstar/crm/service/CustomerService.java` |
+| 10 | `src/main/resources/application.yml` |
+| 11 | `src/main/resources/logback-spring.xml` |
+| 12 | `src/test/java/com/northstar/crm/actuator/ActuatorIT.java` |
+| 13 | `pom.xml` |
+| 14 | `docs/monitoring-report.md` |
 
+## Full source
 
+### `src/main/java/com/northstar/crm/api/CustomerController.java`
 
-## Reference implementation — Actuator readiness group
+```java
+package com.northstar.crm.api;
 
-Path: `src/main/resources/application.yml`
+import com.northstar.crm.model.Customer;
+import com.northstar.crm.service.CustomerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/customers")
+public class CustomerController {
+    private final CustomerService customers;
+
+    public CustomerController(CustomerService customers) {
+        this.customers = customers;
+    }
+
+    @PostMapping
+    public ResponseEntity<Customer> create(
+            @RequestHeader(value = "X-Correlation-Id", required = false) String correlationId,
+            @RequestBody Customer body) {
+        String corr = (correlationId == null || correlationId.isBlank()) ? "lab-request-001" : correlationId;
+        if (body.getFullName() == null || body.getFullName().isBlank()) {
+            return ResponseEntity.badRequest().header("X-Correlation-Id", corr).build();
+        }
+        Customer created = customers.create(body, corr);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("X-Correlation-Id", corr)
+                .body(created);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> get(
+            @PathVariable String id,
+            @RequestHeader(value = "X-Correlation-Id", required = false) String correlationId) {
+        String corr = (correlationId == null || correlationId.isBlank()) ? "lab-request-001" : correlationId;
+        return customers.findById(id)
+                .map(c -> ResponseEntity.ok().header("X-Correlation-Id", corr).body(c))
+                .orElseGet(() -> ResponseEntity.notFound().header("X-Correlation-Id", corr).build());
+    }
+}
+```
+
+### `src/main/java/com/northstar/crm/CrmApplication.java`
+
+```java
+package com.northstar.crm;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CrmApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(CrmApplication.class, args);
+    }
+}
+```
+
+### `src/main/java/com/northstar/crm/health/CrmReadinessIndicator.java`
+
+```java
+package com.northstar.crm.health;
+
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.stereotype.Component;
+
+/**
+ * Lab-only readiness toggle — NOT for production.
+ * When down, readiness should be OUT_OF_SERVICE while liveness stays UP.
+ */
+@Component
+public class CrmReadinessIndicator implements HealthIndicator {
+    private volatile boolean ready = true;
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    @Override
+    public Health health() {
+        return ready
+                ? Health.up().build()
+                : Health.outOfService().withDetail("reason", "lab-toggle").build();
+    }
+}
+```
+
+### `src/main/java/com/northstar/crm/logging/CorrelationFilter.java`
+
+```java
+package com.northstar.crm.logging;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import org.slf4j.MDC;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+@Component
+public class CorrelationFilter extends OncePerRequestFilter {
+    public static final String HEADER = "X-Correlation-Id";
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+        String corr = request.getHeader(HEADER);
+        if (corr == null || corr.isBlank()) {
+            corr = "lab-request-001";
+        }
+        MDC.put("corr", corr);
+        response.setHeader(HEADER, corr);
+        try {
+            filterChain.doFilter(request, response);
+        } finally {
+            MDC.clear();
+        }
+    }
+}
+```
+
+### `src/main/java/com/northstar/crm/metrics/CustomerMetrics.java`
+
+```java
+package com.northstar.crm.metrics;
+
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CustomerMetrics {
+    private final MeterRegistry registry;
+
+    public CustomerMetrics(MeterRegistry registry) {
+        this.registry = registry;
+    }
+
+    public void recordCreate(String result) {
+        Counter.builder("crm.customer.create")
+                .tag("result", result)
+                .register(registry)
+                .increment();
+    }
+
+    public void recordGet(String result) {
+        Counter.builder("crm.customer.get")
+                .tag("result", result)
+                .register(registry)
+                .increment();
+    }
+}
+```
+
+### `src/main/java/com/northstar/crm/model/Customer.java`
+
+```java
+package com.northstar.crm.model;
+
+public class Customer {
+    private String customerId;
+    private String fullName;
+    private String email;
+    private String status;
+
+    public Customer() {}
+
+    public Customer(String customerId, String fullName, String email, String status) {
+        this.customerId = customerId;
+        this.fullName = fullName;
+        this.email = email;
+        this.status = status;
+    }
+
+    public static Customer amina() {
+        return new Customer("CUS-1001", "Amina Khan", "amina.khan@example.com", "ACTIVE");
+    }
+
+    public static Customer ravi() {
+        return new Customer("CUS-1002", "Ravi Singh", "ravi.singh@example.com", "PROSPECT");
+    }
+
+    public String getCustomerId() { return customerId; }
+    public void setCustomerId(String customerId) { this.customerId = customerId; }
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+}
+```
+
+### `src/main/java/com/northstar/crm/repository/CustomerRepository.java`
+
+```java
+package com.northstar.crm.repository;
+
+import com.northstar.crm.model.Customer;
+import java.util.Optional;
+
+public interface CustomerRepository {
+    Customer save(Customer customer);
+    Optional<Customer> findById(String customerId);
+}
+```
+
+### `src/main/java/com/northstar/crm/repository/InMemoryCustomerRepository.java`
+
+```java
+package com.northstar.crm.repository;
+
+import com.northstar.crm.model.Customer;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class InMemoryCustomerRepository implements CustomerRepository {
+    private final Map<String, Customer> store = new ConcurrentHashMap<>();
+
+    public InMemoryCustomerRepository() {
+        store.put("CUS-1001", Customer.amina());
+        store.put("CUS-1002", Customer.ravi());
+    }
+
+    @Override
+    public Customer save(Customer customer) {
+        store.put(customer.getCustomerId(), customer);
+        return customer;
+    }
+
+    @Override
+    public Optional<Customer> findById(String customerId) {
+        return Optional.ofNullable(store.get(customerId));
+    }
+}
+```
+
+### `src/main/java/com/northstar/crm/service/CustomerService.java`
+
+```java
+package com.northstar.crm.service;
+
+import com.northstar.crm.metrics.CustomerMetrics;
+import com.northstar.crm.model.Customer;
+import com.northstar.crm.repository.CustomerRepository;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomerService {
+    private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
+    private final CustomerRepository repository;
+    private final CustomerMetrics metrics;
+
+    public CustomerService(CustomerRepository repository, CustomerMetrics metrics) {
+        this.repository = repository;
+        this.metrics = metrics;
+    }
+
+    public Customer create(Customer customer, String correlationId) {
+        MDC.put("cust", customer.getCustomerId());
+        MDC.put("op", "create");
+        log.info("create customer");
+        try {
+            Customer saved = repository.save(customer);
+            metrics.recordCreate("success");
+            return saved;
+        } catch (RuntimeException ex) {
+            metrics.recordCreate("failure");
+            throw ex;
+        }
+    }
+
+    public Optional<Customer> findById(String customerId) {
+        MDC.put("cust", customerId);
+        MDC.put("op", "get");
+        log.info("get customer");
+        Optional<Customer> found = repository.findById(customerId);
+        metrics.recordGet(found.isPresent() ? "success" : "not_found");
+        return found;
+    }
+}
+```
+
+### `src/main/resources/application.yml`
 
 ```yaml
 server.port: 8080
@@ -122,14 +363,26 @@ management:
   metrics:
     tags:
       application: northstar-crm
-
 ```
 
+### `src/main/resources/logback-spring.xml`
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{ISO8601} %-5level [%thread] %logger{36} corr=%X{corr} cust=%X{cust} op=%X{op} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+</configuration>
+```
 
-## Reference implementation — ActuatorIT
-
-Path: `src/test/java/com/northstar/crm/actuator/ActuatorIT.java`
+### `src/test/java/com/northstar/crm/actuator/ActuatorIT.java`
 
 ```java
 package com.northstar.crm.actuator;
@@ -216,6 +469,122 @@ class ActuatorIT {
                 () -> "unexpected metric body: " + metric.getBody());
     }
 }
-
 ```
+
+### `pom.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.3.5</version>
+    <relativePath/>
+  </parent>
+  <groupId>com.northstar</groupId>
+  <artifactId>lab21-crm</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>lab21-crm</name>
+  <properties>
+    <java.version>21</java.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <!-- Spring Boot parent excludes *IT by default; this lab's IT is the timed suite -->
+          <includes>
+            <include>**/*Test.java</include>
+            <include>**/*Tests.java</include>
+            <include>**/*IT.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
+
+### `docs/monitoring-report.md`
+
+```markdown
+# Lab 21 — Monitoring report (solution)
+
+## Probes
+
+| Endpoint | Meaning |
+| --- | --- |
+| `/actuator/health/liveness` | Process alive — do not fail for dependency warmup |
+| `/actuator/health/readiness` | Safe for traffic — includes `crmReadiness` lab toggle |
+
+`CrmReadinessIndicator` is **lab-only** (contributor id `crmReadinessIndicator` in the readiness group). When `setReady(false)`, readiness leaves UP while liveness stays UP.
+
+## Metrics (low cardinality)
+
+| Name | Tags |
+| --- | --- |
+| `crm.customer.create` | `result=success\|failure` |
+| `crm.customer.get` | `result=success\|not_found` |
+
+Never tag `customerId` or correlation IDs (cardinality explosion).
+
+## Production hardening
+
+Local lab exposes `health,metrics,info`. Production must authenticate Actuator, firewall the management port, and allow-list endpoints. Do **not** expose `/actuator/env` or unrestricted `show-details`.
+
+## Evidence checklist
+
+- Health + liveness + readiness UP at start
+- Readiness toggled down independently of liveness
+- After POST `CUS-2101` / GET `CUS-1001`, `/actuator/metrics/crm.customer.create` present
+```
+
+## Instructor notes
+
+# Lab 21 solution notes
+
+## What / why
+
+Actuator health with distinct liveness vs readiness (`CrmReadinessIndicator` in readiness group), Micrometer counters `crm.customer.create` / `crm.customer.get` with low-cardinality `result` tags, verified by `ActuatorIT`.
+
+## Verify
+
+```powershell
+cd "labs\Week 2 - Backend, AI Tools and Testing\module-21\lab21\solution"
+mvn -B -Dtest=ActuatorIT test
+```
+
+No Docker required. Delete any `target/` under solution/starter before commit.
+
+## Pitfalls
+
+- Custom readiness indicator must be in the readiness group or the probe ignores it.
+- Tagging customerId/correlation → cardinality anti-pattern.
+- Lab exposure of Actuator is not a production config.
+
 
