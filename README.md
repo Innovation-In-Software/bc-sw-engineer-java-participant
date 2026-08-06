@@ -1,164 +1,99 @@
 # Java Software Engineer Bootcamp
 
-**Participant lab guides** for the **Java Software Engineer** six-week bootcamp from [Innovation In Software](https://github.com/Innovation-In-Software). **Week 1–2** include `solution/` reference keys; **Week 3–6** do not.
-
-Early-career developers build full-stack enterprise Java skills — from JVM foundations through Spring, Kafka, React, PostgreSQL, DevOps, and a production-style capstone.
+Participant materials for the six-week **Java Software Engineer** bootcamp from [Innovation In Software](https://github.com/Innovation-In-Software).
 
 | | |
 | --- | --- |
-| **Audience** | Early-career developers preparing for enterprise Java roles |
-| **Format** | 6 weeks · theory + hands-on labs |
-| **Through-line project** | Evolving **Customer Management Platform** (CRM) across Labs 1–52 |
-| **Repository** | [Innovation-In-Software/bc-sw-engineer-java-participant](https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant) |
-| **Cohort env** | Shared AWS host `100.22.136.97` · see [FINAL-SETUP-README](labs/FINAL-SETUP-README.md) |
+| **Repository** | [bc-sw-engineer-java-participant](https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant) |
+| **Contents** | `slides/` (PDF) · `labs/` · Week 1–2 `solution/` only |
 
 ---
 
-## Start here
+## Week 1 — Java and JVM Foundations
 
-1. Read **[Clone the course repo · Commit in your own repo](labs/CLONE-AND-OWN-REPO-GUIDE.md)** — clone handouts once; commit/push only to **your** private `java-bootcamp`  
-2. Read **[Final Lab Environment Setup](labs/FINAL-SETUP-README.md)** — shared host, Postgres / Kafka / k3s / GHCR  
-3. Read **[Participant Setup README](labs/PARTICIPANT-SETUP-README.md)** — what you install on the laptop vs what the instructor provides  
-4. New to IDEs / Git? Read **[IntelliJ + GitHub — beginner guide](labs/INTELLIJ-AND-GITHUB-BEGINNER-README.md)** — open projects, run Java, commit and push  
-5. Skim Week 1 **[IDE conventions](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)** — **IntelliJ IDEA Community** (primary) and **VS Code** (optional)  
-6. Complete **[Lab 0 — Development Environment Setup](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-GUIDE.md)** on **your laptop** ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md))  
-7. Use the **[Lab Index](labs/LABS-INDEX.md)** for Labs 1–52  
+| Module | Title |
+| ------ | ----- |
+| 0 | Development Environment Setup (Lab 0) |
+| 1 | JVM Architecture and Runtime Model |
+| 2 | Java Syntax and Core Constructs |
+| 3 | Object-Oriented Programming in Java |
+| 4 | Memory Management and Performance |
+| 5 | Java Collections Framework |
+| 6 | Streams and Functional Programming |
+| 7 | Exception Handling and Error Management |
 
-**All labs run from your laptop.** Credentials and kubeconfigs are handed out by the instructor — they are **not** stored in this Git repository.
+## Week 2 — Backend, AI Tools and Testing
 
----
+| Module | Title |
+| ------ | ----- |
+| 8 | Java Project Structure and Modularization |
+| 9 | Build and Dependency Management with Maven |
+| 10 | GitHub Copilot Fundamentals for Java Developers |
+| 11 | GitHub Copilot for Testing and Refactoring |
+| 12 | Java Coding Standards and Best Practices |
+| 13 | SOAP API Design with Java |
+| 14 | DTOs, Validation and API Contracts |
+| 15 | Business Logic and Service Layer Design |
+| 16 | Exception Handling in Distributed APIs |
+| 17 | JUnit Testing Fundamentals |
+| 18 | Mockito for Test Isolation |
+| 19 | Integration Testing and UI Test Automation |
+| 20 | Logging Frameworks and Diagnostics |
+| 21 | API Observability and Monitoring |
 
-## What is in this repository
+## Week 3 — Spring Framework and Enterprise Patterns
 
-```text
-bc-sw-engineer-java-participant/
-├── README.md                 ← You are here (synced from course README.participant.md)
-├── labs/                     ← Lab guides and setup docs
-│   ├── FINAL-SETUP-README.md
-│   ├── PARTICIPANT-SETUP-README.md
-│   ├── CLONE-AND-OWN-REPO-GUIDE.md
-│   ├── SETUP-INSTRUCTIONS.md
-│   ├── TECHNOLOGY-STACK-GUIDE.md
-│   ├── ACRONYM-CHEATSHEETS-INDEX.md  ← Per-module term → full form sheets
-│   └── Week N - …/module-NN/
-│       ├── exercises/        ← Pre-lab practice (when present)
-│       └── labN/             ← Lab guide + Windows/macOS how-tos
-│           ├── starter/      ← Timed-path scaffold
-│           └── solution/     ← Week 1–2 only (reference after you try)
-└── decks/pdf/                ← Student-facing module slide PDFs
-```
+| Module | Title |
+| ------ | ----- |
+| 22 | Spring Core and Inversion of Control (IoC) |
+| 23 | Spring Boot Auto-Configuration |
+| 24 | SOAP Web Services with Spring WS |
+| 25 | Service and Repository Layers |
+| 26 | Spring Profiles and Configuration |
+| 27 | Transaction Management |
+| 28 | Spring Security Fundamentals |
+| 29 | Validation and Global Exception Handling |
 
-**Week 1–2** publish `solution/` (and exercise solutions) so you can compare after attempting the lab. **Week 3–6** do **not** include `solution/` — complete those yourself. Prefer timed `starter/` first; open `solution/` only when stuck or after your attempt. Slide PDFs are under [`decks/pdf/`](decks/pdf/). Editable PPTX decks and instructor notes are provided separately by your instructor.
+## Week 4 — Kafka, React, PostgreSQL and Resilience
 
-### Kahoot knowledge checks
+| Module | Title |
+| ------ | ----- |
+| 30 | Event-Driven Architecture with Kafka |
+| 31 | Kafka Integration with Spring Boot |
+| 32 | Resilience and Fault Tolerance |
+| 33 | React Component Development |
+| 34 | State and Event Management |
+| 35 | Frontend and API Integration |
+| 36 | Frontend Security |
+| 37 | PostgreSQL Design |
+| 38 | SQL and Query Performance |
+| 39 | Spring Data JPA and PostgreSQL |
 
-Your instructor runs a **Kahoot** after many module labs (Modules **1–39**, Weeks 1–4). Join with the on-screen PIN at [kahoot.it](https://kahoot.it). Quiz Excel files are instructor-only and are not in this participant repo.
+## Week 5 — DevOps, CI/CD and Kubernetes (k3s)
 
----
+| Module | Title |
+| ------ | ----- |
+| 40 | Application Security Testing |
+| 41 | Containerization with Docker |
+| 42 | Kubernetes (k3s) Deployment |
+| 43 | GitHub Actions and CI/CD Integration |
+| 44 | Continuous Delivery and Release Management |
+| 45 | Infrastructure as Code with Terraform and Ansible |
+| 46 | Kafka Resilience and Observability |
+| 47 | Professional Communication and Collaboration |
 
-## Program overview
+## Week 6 — Capstone Project
 
-| Week | Theme | Labs | Focus |
-| ---- | ----- | ---- | ----- |
-| [1](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/) | Java and JVM Foundations | 0–7 | JVM, syntax, OOP, memory, collections, streams, exceptions |
-| [2](labs/Week%202%20-%20Backend,%20AI%20Tools%20and%20Testing/) | Backend, AI Tools and Testing | 8–21 | Maven, Copilot, SOAP, JUnit/Mockito, Selenium, logging |
-| [3](labs/Week%203%20-%20Spring%20Framework%20and%20Enterprise%20Patterns/) | Spring Framework and Enterprise Patterns | 22–29 | Spring IoC/Boot/WS, layers, profiles, transactions, security |
-| [4](labs/Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/) | Kafka, React, PostgreSQL and Resilience | 30–39 | Kafka, Resilience4j, React, PostgreSQL, JPA |
-| [5](labs/Week%205%20-%20DevOps,%20CI-CD%20and%20OpenShift/) | DevOps, CI/CD and Kubernetes (k3s) | 40–47 | AppSec, Docker, kubectl/k3s, CI/CD, IaC |
-| [6](labs/Week%206%20-%20Capstone%20Project/) | Capstone Project | 48–52 | Plan → build → secure/deploy → defense |
-
-Full lab titles: **[labs/LABS-INDEX.md](labs/LABS-INDEX.md)**. Capstone: **[Week 6](labs/Week%206%20-%20Capstone%20Project/WEEK-LABS-INDEX.md)**.
-
----
-
-## Technology stack
-
-```text
-Java 21           Spring Boot 3.x   Spring WS         Spring Security
-Maven             JUnit / Mockito   GitHub Copilot    SOAP / REST
-Apache Kafka 4.0  React             PostgreSQL 17     Spring Data JPA
-Docker            Kubernetes (k3s)  Traefik           GitHub Actions
-GHCR              Terraform         Ansible           Resilience4j
-SLF4J / Logback   Selenium          VisualVM          Node 22
-```
-
-Details: [Technology Stack Guide](labs/TECHNOLOGY-STACK-GUIDE.md) · [Acronym cheatsheets by module](labs/ACRONYM-CHEATSHEETS-INDEX.md).
-
----
-
-## Training environment (final for this cohort)
-
-Everything heavy runs on **one shared AWS server** (`us-west-2`, IP **`100.22.136.97`**). Students connect **out** from IntelliJ (or optional VS Code) on their laptop. Full write-up: **[labs/FINAL-SETUP-README.md](labs/FINAL-SETUP-README.md)**.
-
-```mermaid
-flowchart LR
-  subgraph Laptop["Your laptop"]
-    IDE["IntelliJ / VS Code"]
-    JDK["JDK 21 + Maven + Git"]
-    Code["java-bootcamp workspace"]
-  end
-  subgraph Shared["Shared AWS lab host"]
-    PG["PostgreSQL 17"]
-    KF["Kafka 4.0"]
-    K3["k3s + Traefik"]
-    GHCR["GHCR images"]
-  end
-  Laptop -->|"connect out<br/>Week 4+"| Shared
-```
-
-| Shared service | Endpoint | Notes |
-| -------------- | -------- | ----- |
-| **PostgreSQL 17** | `100.22.136.97:5432` | DB `bootcamp`; per-student role + schema |
-| **Apache Kafka 4.0** | `100.22.136.97:9092` | Single shared broker |
-| **Kubernetes (k3s)** | `https://100.22.136.97:6443` | Per-student namespace; Traefik on `:80`/`:443` |
-| **CI / images** | GitHub Actions + **GHCR** | — |
-
-| You install on the laptop | Instructor provides (Google Sheet / Docs) |
-| ------------------------- | ----------------------------------------- |
-| **IntelliJ IDEA Community** (primary) · optional VS Code | Credentials row (`studentNN` + password) |
-| JDK 21, Maven 3.9.x, Git | JDBC: `jdbc:postgresql://100.22.136.97:5432/bootcamp?currentSchema=studentNN` |
-| Node 22 (before Week 4) | Kafka bootstrap `100.22.136.97:9092` |
-| **kubectl** (before Week 5) | Kubeconfig `studentNN.yaml` |
-| GitHub + Copilot (as assigned) | GHCR / org guidance |
-
-**Confirmed stack:** PostgreSQL + GitHub Actions + **k3s** (kubectl + Traefik Ingress).
-
-| Weeks | What you need from the env |
-| ----- | -------------------------- |
-| 0–3 | Laptop tools only |
-| 4 | PostgreSQL + Kafka (+ Node 22 for React) |
-| 5–6 | Above + k3s namespace + GHCR + GitHub Actions |
-
-Deploy path (Week 5+): **build image → push GHCR → `kubectl apply` into your namespace**.
-
-Reachability requires the **class IP allowlist** (or instructor VPN). Never commit passwords, kubeconfigs, or `.env` files.
+| Module | Title |
+| ------ | ----- |
+| 48 | Capstone Planning and Architecture |
+| 49 | Capstone Backend and Messaging |
+| 50 | Capstone Frontend and Persistence |
+| 51 | Capstone Security, CI/CD and Deployment |
+| 52 | Capstone Final Defense and Retrospective |
 
 ---
 
-## Clone and navigate
-
-**Full walkthrough (two repos, first push, everyday commit):** **[labs/CLONE-AND-OWN-REPO-GUIDE.md](labs/CLONE-AND-OWN-REPO-GUIDE.md)**
-
-```bash
-git clone https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant.git
-cd bc-sw-engineer-java-participant
-```
-
-1. Open [`labs/CLONE-AND-OWN-REPO-GUIDE.md`](labs/CLONE-AND-OWN-REPO-GUIDE.md) — handouts clone vs your private `java-bootcamp`  
-2. Open [`labs/FINAL-SETUP-README.md`](labs/FINAL-SETUP-README.md)  
-3. Read [`labs/_PARTICIPANT-FILE-GUIDE.md`](labs/_PARTICIPANT-FILE-GUIDE.md) once (which file when)  
-4. Complete Lab 0 ([Windows](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) · [macOS](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md)) — includes Git identity  
-5. Work under `~/java-bootcamp` or `%USERPROFILE%\java-bootcamp`  
-6. For each later module: open `module-NN/README.md` (Week 1) → exercises → one OS how-to → `LAB-N-GUIDE.md`. **Lab 1 Step 0** creates your private `java-bootcamp` GitHub repo — then commit/push there after every exercise pack and lab.
-
-Prefer timed `starter/` as your working project. Open Week 1–2 `solution/` only after you attempt the lab (or when your instructor says so). Week 3+ has no published solutions.
-
----
-
-## Support
-
-- Environment → [FINAL-SETUP-README](labs/FINAL-SETUP-README.md) · [Participant Setup](labs/PARTICIPANT-SETUP-README.md) · [Setup Instructions](labs/SETUP-INSTRUCTIONS.md)  
-- IDE → [Week 1 IDE conventions](labs/Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)  
-- Course operations → your instructor / Innovation In Software classroom channel  
+**Solutions:** Week 1–2 include `solution/` under each lab/exercises folder. Week 3–6 do not.
 
 © 2026 Innovation In Software Corporation
