@@ -299,12 +299,27 @@ northstar:
 ```
 
 ```bash
+# Bash / macOS / Linux:
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
+
+# PowerShell (quotes required — otherwise Maven sees ".run.profiles=prod" as a lifecycle phase):
+mvn spring-boot:run "-Dspring-boot.run.profiles=prod"
 ```
 
-**Expected result:** `APPLICATION FAILED TO START` / unresolved placeholder for missing `${DB_PASSWORD}` and/or `${NORTHSTAR_API_KEY}`.
+**Expected result:** Log shows `The following 1 profile is active: "prod"`, then **`APPLICATION FAILED TO START`**.
 
-**If it fails:** App starts with blanks → you added defaults like `${DB_PASSWORD:}` — remove defaults for secrets.
+On this lab’s classpath (H2 only, no PostgreSQL driver), the usual root cause is:
+
+`Failed to load driver class org.postgresql.Driver`
+
+That still counts as the fail-fast proof: `prod` switched the JDBC URL to PostgreSQL and refused to stay up without a real prod database stack / env. Spring Boot does **not** always print `Could not resolve placeholder 'DB_PASSWORD'` for YAML-bound properties — missing `${DB_PASSWORD}` / `${NORTHSTAR_API_KEY}` are often left as the literal `${...}` string until something else (driver / connection / later use) breaks startup.
+
+**If it “runs” instead of failing:**
+
+1. Confirm the banner line is **`prod`**, not `dev`. Base `application.yml` sets `spring.profiles.default: dev`, so a plain `mvn spring-boot:run` (no profile flag) starts happily on H2.
+2. On PowerShell, always quote `"-Dspring-boot.run.profiles=prod"`. Unquoted, Maven fails immediately with `Unknown lifecycle phase ".run.profiles=prod"` (app never starts).
+3. Do not use defaults like `${DB_PASSWORD:}` / `${NORTHSTAR_API_KEY:}` for secrets.
+4. Env names are **`DB_PASSWORD`** and **`NORTHSTAR_API_KEY`** (not a bare `API_KEY`).
 
 ---
 

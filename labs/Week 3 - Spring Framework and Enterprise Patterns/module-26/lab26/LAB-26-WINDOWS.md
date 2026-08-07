@@ -42,7 +42,9 @@ mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
 # Fail-fast: mvn -B spring-boot:run "-Dspring-boot.run.profiles=prod"   # expect APPLICATION FAILED TO START
 ```
 
-Verified (2026-08-04): **Tests run: 1** (`ProfileBindingTest`) · **BUILD SUCCESS** under `test` (optional second run for determinism — still 1 test); `dev` active + H2 JDBC `jdbc:h2:mem:lab26dev;...MODE=PostgreSQL` (no `/h2-console` / JPA required) + GET `CUS-1001` **200**; `prod` **APPLICATION FAILED TO START** (unresolved `${DB_PASSWORD}` / `${NORTHSTAR_API_KEY}`); `.env.example` has `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY`; `.env` absent. App name `northstar-crm`.
+Verified (2026-08-04): **Tests run: 1** (`ProfileBindingTest`) · **BUILD SUCCESS** under `test` (optional second run for determinism — still 1 test); `dev` active + H2 JDBC `jdbc:h2:mem:lab26dev;...MODE=PostgreSQL` (no `/h2-console` / JPA required) + GET `CUS-1001` **200**; `prod` **APPLICATION FAILED TO START**; `.env.example` has `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY`; `.env` absent. App name `northstar-crm`.
+
+Re-verified (2026-08-07, PowerShell): `mvn spring-boot:run "-Dspring-boot.run.profiles=prod"` with secrets unset → active profile **`prod`**, then **APPLICATION FAILED TO START** with `Failed to load driver class org.postgresql.Driver` (H2-only classpath; Boot does not always throw “Could not resolve placeholder” for YAML `${DB_PASSWORD}` / `${NORTHSTAR_API_KEY}`). Unquoted `-Dspring-boot.run.profiles=prod` → Maven `Unknown lifecycle phase ".run.profiles=prod"`. Plain `mvn spring-boot:run` uses default **`dev`** and starts.
 
 Verified on this instructor laptop (2026-08-04): Temurin JDK **21.0.11**, Maven **3.9.9**. Solutions copied to %USERPROFILE%\java-bootcamp\examples\labNN-crm and mvn -B test → **BUILD SUCCESS**.
 

@@ -41,7 +41,9 @@ mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
 # Fail-fast: mvn -B spring-boot:run "-Dspring-boot.run.profiles=prod"   # expect APPLICATION FAILED TO START
 ```
 
-Verified (2026-08-04): **Tests run: 1** (`ProfileBindingTest`) · **BUILD SUCCESS** under `test` (optional second run for determinism — still 1 test); `dev` active + H2 JDBC `jdbc:h2:mem:lab26dev;...MODE=PostgreSQL` (no `/h2-console` / JPA required) + GET `CUS-1001` **200**; `prod` **APPLICATION FAILED TO START** (unresolved `${DB_PASSWORD}` / `${NORTHSTAR_API_KEY}`); `.env.example` has `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY`; `.env` absent. App name `northstar-crm`.
+Verified (2026-08-04): **Tests run: 1** (`ProfileBindingTest`) · **BUILD SUCCESS** under `test` (optional second run for determinism — still 1 test); `dev` active + H2 JDBC `jdbc:h2:mem:lab26dev;...MODE=PostgreSQL` (no `/h2-console` / JPA required) + GET `CUS-1001` **200**; `prod` **APPLICATION FAILED TO START**; `.env.example` has `DB_USERNAME` / `DB_PASSWORD` / `NORTHSTAR_API_KEY`; `.env` absent. App name `northstar-crm`.
+
+Re-verified instructor laptop (2026-08-07, Windows PowerShell; same Boot 3.3.5 / H2-only classpath): with `prod` active and secrets unset, failure is **`Failed to load driver class org.postgresql.Driver`** (not always a “Could not resolve placeholder” line). YAML `${DB_PASSWORD}` / `${NORTHSTAR_API_KEY}` without defaults remain env-only; see GUIDE Step 4.
 
 ## Do the lab
 

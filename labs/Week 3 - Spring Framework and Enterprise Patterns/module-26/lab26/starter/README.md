@@ -53,7 +53,9 @@ Full GUIDE: [`../LAB-26-GUIDE.md`](../LAB-26-GUIDE.md)
 # After adding ProfileBindingTest:
 mvn -B test -Dspring.profiles.active=test
 # Tests run: 1
-mvn -B spring-boot:run -Dspring-boot.run.profiles=dev
+# PowerShell: quote the -D argument
+mvn -B spring-boot:run "-Dspring-boot.run.profiles=dev"
+# Fail-fast check: mvn -B spring-boot:run "-Dspring-boot.run.profiles=prod"
 ```
 
 Evidence under `~/java-bootcamp/notes/screenshots/lab-26/` (redact secrets).
@@ -63,7 +65,7 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-26/` (redact secrets).
 | Criterion | Pass / Fail |
 | --------- | ----------- |
 | `dev` profile starts with H2-friendly settings | Pass / Fail |
-| `prod` refuses missing DB_PASSWORD / NORTHSTAR_API_KEY (or documented) | Pass / Fail |
+| `prod` fails to start without env secrets / Postgres stack (see GUIDE Step 4) | Pass / Fail |
 | Profile YAML files present for dev/test/prod | Pass / Fail |
 | No real secrets in Git | Pass / Fail |
 | CUS-1001 smoke under `dev` | Pass / Fail |
