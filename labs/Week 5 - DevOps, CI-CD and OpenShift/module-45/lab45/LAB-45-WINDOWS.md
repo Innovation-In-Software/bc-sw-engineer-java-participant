@@ -35,14 +35,14 @@ cd examples\lab45-crm
 ### Commands this lab typically uses
 
 ```powershell
+$env:Path = "$env:USERPROFILE\bin;" + $env:Path
 cd $env:USERPROFILE\java-bootcamp\examples\lab45-crm\infra\terraform
-terraform fmt -check -recursive
+terraform fmt -recursive
 terraform init -backend=false
-terraform validate -var="db_password=unused-local"
-cd ..\..
-ansible-playbook --syntax-check -i inventory.example.yml infra/ansible/site.yml
+terraform validate
 ```
 
+Verified on this laptop (2026-08-11): Terraform **1.9.8** (downloaded to `%USERPROFILE%\bin`; not on PATH by default). `init -backend=false` installed `hashicorp/null` **3.2.4**. **`terraform validate` → Success.** No cloud apply. `ansible-playbook` is not installed on this PATH — playbook files are in `infra/ansible/`; syntax-check is residual.
 
 ## Do the lab
 

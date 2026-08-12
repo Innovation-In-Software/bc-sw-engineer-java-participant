@@ -35,10 +35,16 @@ cd examples\lab35-crm
 ### Commands this lab typically uses
 
 ```powershell
-cd $env:USERPROFILE\java-bootcamp\examples\lab35-crm
-npm run dev
+cd $env:USERPROFILE\java-bootcamp\examples\lab35-crm\crm-api
+mvn -B spring-boot:run
+cd $env:USERPROFILE\java-bootcamp\examples\lab35-crm\crm-ui
+npm run test -- --run
 npm run build
 ```
+
+**PowerShell curl (verified 2026-08-11):** inline `--data "{\"fullName\":...}"` is split by the shell (body can be 2 bytes → 500). Write JSON to a file and use `curl.exe --data-binary "@file.json"`. Same for Lab 27 transfers.
+
+**CORS probe:** `curl.exe -i -H "Origin: https://evil.example" http://localhost:8080/api/customers` → **403** `Invalid CORS request` and **no** `Access-Control-Allow-Origin: https://evil.example`. `Origin: http://localhost:5173` → **200** + `Access-Control-Allow-Origin: http://localhost:5173`.
 
 
 ## Do the lab

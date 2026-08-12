@@ -36,8 +36,13 @@ cd examples\lab39-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab39-crm
-mvn spring-boot:run
+# Do not reuse Lab 37/38 database `crm` (different columns). Create an isolated DB:
+docker exec -e PGPASSWORD=change-me crm-postgres psql -U crm -d postgres -c "CREATE DATABASE crm_lab39;"
+# application.yml default URL: jdbc:postgresql://localhost:5432/crm_lab39
+mvn -B test
 ```
+
+**Verified 2026-08-11:** Flyway V1 applied to PostgreSQL **16.14** on `crm_lab39`. `CustomerRepositoryIT` is named `*IT.java`; default Surefire **skips** that pattern, so this lab’s `pom.xml` includes `**/*IT.java`. Then `mvn -B test` → **Tests run: 2** (create + duplicate email **409**). Do not start a second `compose.yaml` on port **5432** while Lab 37’s `crm-postgres` is already bound there.
 
 
 ## Do the lab

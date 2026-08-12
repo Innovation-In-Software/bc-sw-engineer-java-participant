@@ -43,6 +43,8 @@ Verified (2026-08-04): **Tests run: 2** (`forceFailRollsBack` + `happyPathMovesF
 
 Verified on this instructor laptop (2026-08-04): Temurin JDK **21.0.11**, Maven **3.9.9**. Solutions copied to %USERPROFILE%\java-bootcamp\examples\labNN-crm and mvn -B test → **BUILD SUCCESS**.
 
+**Windows PowerShell + curl JSON (verified 2026-08-11):** do **not** pass `{\"fromAccountId\":...}` on the `curl.exe -d` line — PowerShell leaves the backslashes and Tomcat returns **400** `HttpMessageNotReadableException` (`Unexpected character '\'`). Write the body to a file and use `--data-binary "@$env:TEMP\lab27\happy.json"` (or `Invoke-RestMethod -ContentType application/json`). Incremental full-path copy `lab26-crm` → `lab27-crm` plus `spring-boot-starter-data-jpa` also **BUILD SUCCESS**; isolated `TransferServiceTest` **Tests run: 2**. Live `POST /api/transfers` happy **50.00** → **200** `{"status":"OK"}`; `ACC-FORCE-FAIL` → **500**.
+
 ## Do the lab
 
 Complete every step in **[LAB-27-GUIDE.md](LAB-27-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  

@@ -93,8 +93,9 @@ public class WoraProbe {
 1. Fill TODOs so the program prints two lines (OS name, then a labeled line).
 2. Compile: `javac WoraProbe.java`
 3. **Broken command (intentional):** run `java WoraProbe.java`  
-   - **Expected failure:** launcher error / wrong usage — note the message.
-4. **Fix:** run `java WoraProbe` (no `.java`).
+   - **JDK 8–10 expected failure:** launcher error / wrong usage — note the message.
+   - **JDK 11+ (verified Temurin 21.0.11 on Windows):** this does **not** fail. Source-file mode compiles and runs the `.java` in one step and prints the same two lines. Still record what you saw.
+4. **Intended habit:** run `javac WoraProbe.java` then `java WoraProbe` (no `.java`).
 5. Save notes under `java-bootcamp/notes/wora-notes.md`:
 
 ```text

@@ -48,6 +48,8 @@ mvn -B clean "-Dtest=ActuatorIT" test
 
 Verified (2026-08-03): **Tests run: 3** · **BUILD SUCCESS**; live health/liveness/readiness UP; create metric increments after POST `CUS-2101`.
 
+Full path (copy `lab20-crm`, 2026-08-11): `ActuatorIT` **Tests run: 3** on this laptop. Metrics wired through Lab 15 `DefaultCustomerService` + optional `CustomerMetrics` (unit tests keep 2-arg ctor). POST `CUS-2101` then `/actuator/metrics/crm.customer.create` 200.
+
 ## Do the lab
 
 Complete every step in **[LAB-21-GUIDE.md](LAB-21-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  

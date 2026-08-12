@@ -36,11 +36,31 @@ cd examples\lab42-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab42-crm
-kubectl apply -f k8s/
-kubectl get ingress crm-api
-kubectl rollout status deployment/crm-api --timeout=180s
+$env:Path = "$env:USERPROFILE\bin;" + $env:Path
+$env:KUBECONFIG = "$env:USERPROFILE\.config\k3d\kubeconfig-lab42.yaml"
+kubectl apply --dry-run=client -f k8s/ -n crm-training
+kubectl apply -f k8s/configmap.yaml -n crm-training
+kubectl rollout status deployment/crm-api -n crm-training --timeout=180s
+curl.exe -fsS -H "Host: crm-api.training.example.test" http://127.0.0.1:8088/actuator/health/readiness
 ```
 
+Verified on this laptop (2026-08-11), Docker Desktop 4.26.1 / Engine 24.0.7, k3d **5.9.0**, kubectl **1.28.2**:
+
+- No instructor kubeconfig for `100.22.136.97:6443`. Local substitute: `k3d cluster create lab42 --image rancher/k3s:v1.28.15-k3s1 -p "8088:80@loadbalancer"`.
+- Default k3s **v1.35.5** fails: kubelet rejects **cgroup v1** on this Docker Desktop. Pin **v1.28.15-k3s1**.
+- Rewrite kubeconfig `server:` from `host.docker.internal` to **`https://127.0.0.1:<mapped-port>`** — otherwise kubectl hits a LAN IP and times out.
+- `k3d image import crm-api:lab41 -c lab42` then `imagePullPolicy: IfNotPresent`. Isolated DB **`crm_lab42`**, JDBC host **`host.k3d.internal`**.
+- Secret out-of-band (`kubectl create secret generic`). Do not apply `secret.example.yaml` with real passwords.
+- Ingress smoke: Host `crm-api.training.example.test` on **localhost:8088**. Rollback: `set image …:does-not-exist` → `ErrImagePull` → `rollout undo`.
+
+### If it fails
+
+| Symptom | Fix |
+| --- | --- |
+| kubelet cgroup v1 unsupported | Use `rancher/k3s:v1.28.15-k3s1` |
+| kubectl to `:8080` | Set `KUBECONFIG` to k3d file; not default localhost |
+| `host.docker.internal` timeout | Replace with `127.0.0.1` in kubeconfig |
+| ImagePullBackOff | `k3d image import` + `IfNotPresent` |
 
 ## Do the lab
 

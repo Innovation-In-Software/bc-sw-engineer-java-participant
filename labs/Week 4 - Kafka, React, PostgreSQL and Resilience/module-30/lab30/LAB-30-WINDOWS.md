@@ -39,6 +39,12 @@ cd $env:USERPROFILE\java-bootcamp\examples\lab30-crm
 docker compose
 ```
 
+**Docker engine (verified 2026-08-11):** Docker Desktop UI/processes can start without the engine. If `docker version` says `open //./pipe/docker_engine` and `com.docker.service` is **Stopped**, `net start com.docker.service` needs an **elevated** PowerShell (error 5 Access is denied from a non-elevated shell). Starting `wsl -d docker-desktop` alone does **not** create the named pipe. After the service is Running, retry `docker compose up -d` from `examples/lab30-crm`.
+
+**WSL drive missing (verified 2026-08-11):** Desktop dialog *“The Docker Desktop WSL data distro is registered with WSL, but its drive seems to be missing.”* Official recovery: `wsl --unregister docker-desktop-data`, then start Docker Desktop (recreates the data distro; **deletes existing containers/images/volumes**). After that, `wsl -l -v` showed both `docker-desktop` and `docker-desktop-data` **Running**, and `docker version` reported Engine **24.0.7**. Then `docker compose up -d` pulled `apache/kafka:3.9.1` and bound `0.0.0.0:9092->9092/tcp`.
+
+**PowerShell Maven:** quote the exec property: `mvn -B -q exec:java "-Dexec.mainClass=com.northstar.crm.event.CustomerEventProducer"` — unquoted `-Dexec.mainClass=…` is parsed as a lifecycle phase.
+
 
 ## Do the lab
 

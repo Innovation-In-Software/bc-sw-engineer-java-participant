@@ -43,6 +43,8 @@ Verified (2026-08-04): **Tests run: 3** · **BUILD SUCCESS** (`SecurityPathTest`
 
 Verified on this instructor laptop (2026-08-04): Temurin JDK **21.0.11**, Maven **3.9.9**. Solutions copied to %USERPROFILE%\java-bootcamp\examples\labNN-crm and mvn -B test → **BUILD SUCCESS**.
 
+**Incremental full path (verified 2026-08-11):** `lab27-crm` → `lab28-crm`. Isolated `SecurityPathTest` **Tests run: 3**. Live: login stub `lab.agent1.AGENT.<sig>`; no-token/garbage/bad password **401**; agent GET Amina **200** (`customerId`, not `id`); agent admin **403**; admin ping **200**. PowerShell: write login JSON to a file (`--data-binary @file`). JSON path in tests is `$.customerId`.
+
 ## Do the lab
 
 Complete every step in **[LAB-28-GUIDE.md](LAB-28-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  

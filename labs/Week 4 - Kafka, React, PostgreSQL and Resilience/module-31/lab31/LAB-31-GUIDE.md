@@ -380,6 +380,9 @@ Publish a poison message (key mismatch or bad version) and a transient-failure s
 **Do this:** Use `@EmbeddedKafka` or Kafka Testcontainers:
 
 ```java
+import static org.awaitility.Awaitility.await;
+// or: Awaitility.await()...
+
 @Test
 void publishesAndConsumesCustomerCreated() {
   publisher.publish(createdEvent); // CUS-1001 / lab-request-001

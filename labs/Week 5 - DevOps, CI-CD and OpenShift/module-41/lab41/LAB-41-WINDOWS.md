@@ -36,12 +36,33 @@ cd examples\lab41-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab41-crm
-docker build -t crm-api:lab41 .
-docker run --rm --name crm-lab41 -p 8080:8080 --env-file .env.example crm-api:lab41
-# curl http://127.0.0.1:8080/actuator/health/readiness
-docker stop crm-lab41
+docker build --pull -t crm-api:lab41 .
+docker run -d --name crm-lab41 --network lab37-crm_default --memory=512m --env-file .env.local -p 8080:8080 crm-api:lab41
+curl.exe -fsS http://127.0.0.1:8080/actuator/health/readiness
+docker exec crm-lab41 id
+docker stop --time 20 crm-lab41
 ```
 
+Verified on this laptop (2026-08-11), Temurin 21.0.11, Maven 3.9.9, Docker Desktop 4.26.1 / Engine 24.0.7, PostgreSQL 16.14 in `crm-postgres`:
+
+- Copy Lab 40 into `examples\lab41-crm` and use isolated database **`crm_lab41`**. Do not Flyway-migrate Lab 39/40 DBs.
+- JDBC from another container: hostname **`crm-postgres`** on network **`lab37-crm_default`**. `localhost` inside the CRM container is the container itself.
+- `.env.example` has an empty `CRM_DB_PASSWORD`. Copy to **`.env.local`** (gitignored). Do not `--env-file .env.example` if the password is blank.
+- First `docker build --pull` downloaded `maven:3.9-eclipse-temurin-21` + `eclipse-temurin:21-jre` (~several minutes). Image `crm-api:lab41` **404 MB**, `Config.User=10001`, id `sha256:1968b9213c51…`. `RepoDigests` empty until push — record Image Id for Lab 42.
+- Add `spring-boot-starter-actuator` and permit `/actuator/health/**` only (not `env`/`beans`). JRE image has no curl — HEALTHCHECK uses `/dev/tcp`.
+- Port **8080** may still be held by a leftover `mvn spring-boot:run` (Lab 36). `netstat -ano | findstr :8080` then stop that PID before `docker run -p 8080:8080`.
+- Docker Desktop “WSL drive missing” on this laptop was transient — Engine was already healthy (`crm-postgres` / `crm-kafka` Up). Do **not** `wsl --unregister docker-desktop-data` unless the engine is actually down (that deletes containers).
+- Smoke: POST/GET `CUS-1001` with Basic `admin:change-me` and `X-Correlation-Id: lab-request-001` → **201/200**. Anon GET → **401**.
+- `docker stop --time 20` → Tomcat `Graceful shutdown complete` in **~1.2 s**. Bad `CRM_DB_HOST=no-such-host` → Flyway `UnknownHostException`, container **exited / unhealthy**.
+
+### If it fails
+
+| Symptom | Fix |
+| --- | --- |
+| `bind: Only one usage of … port 8080` | Kill leftover Java on 8080; `docker rm -f crm-lab41` |
+| Readiness never UP | Join `lab37-crm_default` and set `CRM_DB_HOST=crm-postgres` |
+| Health 401 | Permit `/actuator/health/**` in `SecurityConfig` |
+| WSL drive missing dialog | Confirm `docker version` Server; unregister data distro only if Engine is dead |
 
 ## Do the lab
 

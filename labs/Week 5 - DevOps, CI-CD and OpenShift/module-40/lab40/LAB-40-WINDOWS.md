@@ -36,9 +36,30 @@ cd examples\lab40-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab40-crm
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+mvn -B test
+mvn -B test "-Dtest=ObjectOwnershipSecurityTest"
+mvn -B -Psecurity-scan dependency-check:check "-DdataDirectory=$pwd\dependency-check-data"
+mvn -B clean verify
 ```
+
+Verified on this laptop (2026-08-11), Temurin 21.0.11, Maven 3.9.9, Dependency-Check **10.0.4**, PostgreSQL 16.14 in `crm-postgres`:
+
+- Copy Lab 39 into `examples\lab40-crm` and use an isolated database **`crm_lab40`** (do not Flyway-migrate Lab 37/38 `crm` or Lab 39 `crm_lab39`).
+- Quote Maven `-D…` in PowerShell (`"-Dtest=…"`). Unquoted `-Dtest=` is parsed as a lifecycle phase.
+- First NVD populate **without** `NVD_API_KEY` downloaded 376,016 records and took **~36 minutes**. Do not kill mid-update. Later runs reuse `dependency-check-data\` (~45–55 s).
+- Plugin 10.0.4 logged non-fatal `URL CHARACTER VARYING(1000)` errors on CVE-2026-6785 / CVE-2026-6786; the HTML/JSON reports still wrote.
+- Sonatype OSS Index returned “Invalid credentials”; the profile can set `<ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>` and still gate on NVD.
+- Spring Boot **3.3.5** (Lab 39 parent) failed `failBuildOnCVSS=7` with **70** High/Critical rows (Tomcat 10.1.31, Spring 6.1.14, …). Last OSS 3.x parent **3.5.16** plus `tomcat.version=10.1.57` cleared reachable Highs. Do **not** lower `failBuildOnCVSS` to greenwash. CLI `-DfailBuildOnCVSS=1` does **not** override the profile XML — edit the pom, observe, restore **7**.
+- HTML report is ~1 MB — keep it under `target\` / gitignore; commit CSV + sanitized excerpts under `notes\screenshots\lab-40\`.
+
+### If it fails
+
+| Symptom | Fix |
+| ------- | --- |
+| NVD download extremely slow | Expected without an API key; wait. Put the key in the environment only. |
+| Scan fails only on CVSS ≥ 7 | Triage/fix or time-bounded suppression — keep the profile. |
+| PowerShell eats `-Dtest=` | Quote the whole `-D…` argument. |
+| IT talks to the wrong database | Point datasource at `crm_lab40`, not `crm` / `crm_lab39`. |
 
 
 ## Do the lab

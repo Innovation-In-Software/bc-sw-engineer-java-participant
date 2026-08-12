@@ -46,6 +46,8 @@ mvn -q test   # second run for determinism
 
 Verified (2026-08-03): **Tests run: 6**, Failures: 0 · **BUILD SUCCESS** (baseline 2 + Mockito 3 + BDD 1).
 
+Full path (copy `lab17-crm`, 2026-08-11): `CustomerServiceMockitoTest` **5** + `CustomerServiceBddMockTest` **1**; two consecutive `mvn -B test` → **Tests run: 40**, Failures: 0 (Lab 17 suites retained). `dependency:tree -Dincludes=org.mockito*` → `mockito-core:5.11.0:test` + `mockito-junit-jupiter:5.11.0:test`. Unused `when(findAll)` → `UnnecessaryStubbingException`. GUIDE 4-arg `Customer` ctor does not match this tree’s 6-arg entity (phone + createdAt).
+
 ## Do the lab
 
 Complete every step in **[LAB-18-GUIDE.md](LAB-18-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  

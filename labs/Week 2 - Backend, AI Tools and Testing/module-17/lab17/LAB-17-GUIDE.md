@@ -42,6 +42,7 @@
 | Timed starter suite | `mvn -B clean verify` → **Tests run: 19**, Failures: 0 · **BUILD SUCCESS** (6 service + 2 handler + 11 parameterized) |
 | Service coverage | LINE ratio ≈ **0.97** (36 covered / 1 missed) |
 | Gate proof | `minimum` 0.99 → rule violated (0.97 &lt; 0.99); restored 0.80 → green |
+| Full path (copy `lab16-crm`, 2026-08-11) | `mvn -B clean verify` → **Tests run: 34**, Failures: 0. Service LINE **1.00** (DefaultCustomerService 13/13 + CustomerValidator 22/22). Raising `minimum` to 0.99 alone stays green at 1.00; temporary unused method on `DefaultCustomerService` dropped LINE to **0.92** → `Rule violated … 0.92, but expected minimum is 0.99`; unused method removed and 0.80 restored → green |
 
 **If it fails (Windows PowerShell):** Always `mvn clean verify` so the JaCoCo agent applies. Package include must be exactly `com.northstar.crm.service`. Prefer `assertThrows(BusinessException.class, …)` over bare `Exception`. Do not commit `target\site\jacoco`.
 

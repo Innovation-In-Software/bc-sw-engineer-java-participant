@@ -36,10 +36,13 @@ cd examples\lab37-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab37-crm
-# SQL labs — follow GUIDE psql/pgAdmin steps under database/
-# psql "host=$env:CRM_DB_HOST port=5432 dbname=crm user=crm_app" -c "select version();"
-# Then run database/01_create_user.sql … 05_drop.sql as the GUIDE describes
+docker compose up -d
+# PowerShell has no POSIX `<` redirect into docker exec — pipe the file:
+Get-Content .\database\01_create_user.sql -Raw | docker exec -i crm-postgres psql -U crm -d crm -v ON_ERROR_STOP=1
+Get-Content .\database\02_schema.sql -Raw | docker exec -i -e PGPASSWORD=$env:POSTGRES_APP_PASSWORD crm-postgres psql -U crm_app -d crm -v ON_ERROR_STOP=1
 ```
+
+**Verified 2026-08-11:** `postgres:16` image pull + `crm-postgres` `0.0.0.0:5432->5432/tcp`. `pg_isready` before the first `psql`. App role `crm_app` / schema `crm_app`. Full-path DDL (ADDRESS + HISTORY) applied; seed showed Amina `ACTIVE` + `ACCT-1001-01` and Ravi `PROSPECT`. Negatives: `ck_customer_status` / `uk_customer_email` / `fk_account_customer`. `05_drop.sql` then recreate re-seeded both fixtures.
 
 
 ## Do the lab

@@ -46,6 +46,8 @@ mvn -B clean verify
 
 Verified (2026-08-03): **Tests run: 4** (ApiIT 3 + UiIT 1) · **BUILD SUCCESS** via Surefire `-Dtest=CustomerApiIT,CustomerUiIT`.
 
+Full path (copy `lab18-crm` + Boot 3.3.5, 2026-08-11): Chrome **151.0.7922.76** at `C:\Program Files\Google\Chrome\Application\chrome.exe`. WebDriverManager chromedriver **151.0.7922.77**. REST adapter uses Lab 15 `addCustomer`/`findById` (no starter `model.Customer`). Timed pin `CustomerApiIT,CustomerUiIT` → **Tests run: 4**. Full `mvn -B test` → **Tests run: 44**. Broken `data-testid=submit-customer-WRONG` → `NoSuchElementException` + `target/ui-failure.png`.
+
 ## Do the lab
 
 Complete every step in **[LAB-19-GUIDE.md](LAB-19-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  

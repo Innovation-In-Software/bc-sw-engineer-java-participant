@@ -36,10 +36,19 @@ cd examples\lab43-crm
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp\examples\lab43-crm
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+mvn -B clean verify
+mvn -B "-DskipTests" package
+Get-FileHash .\target\lab43-crm-0.0.1-SNAPSHOT.jar -Algorithm SHA256
 ```
 
+Verified on this laptop (2026-08-11), Temurin 21.0.11, Maven 3.9.9, PostgreSQL 16.14 `crm_lab43`:
+
+- Copy Lab 41 → `lab43-crm`. Isolated DB **`crm_lab43`**. ITs read `SPRING_DATASOURCE_URL` so GitHub Actions can point at a **postgres:16** service.
+- `mvn -B clean verify` → **Tests run: 7**. Do **not** use `-DskipTests` on verify.
+- Failure experiment: flip `anonymousReadIs401` to `isOk` → expected 200 but was 401 → **BUILD FAILURE**. Restore `isUnauthorized`.
+- Package SHA-256 (this laptop): `62816E151CA912DEF43C7514C4D4A9BDADD89A2F31D2EC5DB730EE9569EE08A6`.
+- Workflow file is `examples/lab43-crm/.github/workflows/ci.yml`. GitHub only auto-runs workflows from the **repository root** — promote/copy to a CRM-only repo or add a root workflow with `working-directory` to get a live Actions run.
+- Quote Maven `-D…` in PowerShell.
 
 ## Do the lab
 

@@ -46,6 +46,8 @@ Verified (2026-08-04): **Tests run: 4** · **BUILD SUCCESS** (`ErrorEnvelopeTest
 
 Verified on this instructor laptop (2026-08-04): Temurin JDK **21.0.11**, Maven **3.9.9**. Solutions copied to %USERPROFILE%\java-bootcamp\examples\labNN-crm and mvn -B test → **BUILD SUCCESS**.
 
+**Incremental full path (verified 2026-08-11):** `lab28-crm` → `lab29-crm`. Isolated `ErrorEnvelopeTest` **Tests run: 4**. Duplicate create is `BusinessException` (409) in this tree, not `IllegalStateException`. `@JsonAlias` accepts both GUIDE `id`/`name` and prior `customerId`/`fullName`. `ACC-FORCE-FAIL` stays HTTP **500** (not mapped to 409).
+
 ## Do the lab
 
 Complete every step in **[LAB-29-GUIDE.md](LAB-29-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  
