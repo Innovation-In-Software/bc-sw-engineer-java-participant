@@ -232,6 +232,15 @@ JSON encoding is optional bonus; key=value / `%X{...}` is enough for this lab. A
 **Do this:** Complete the starter `CorrelationFilter.java` TODOs (MDC key is **`corr`**, matching `%X{corr}`):
 
 ```java
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import org.slf4j.MDC;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
 @Component
 public class CorrelationFilter extends OncePerRequestFilter {
   public static final String HEADER = "X-Correlation-Id";
@@ -275,6 +284,11 @@ Response header echoes correlation; log lines show `corr=lab-request-001` for th
 **Do this:** Complete the starter TODOs. Set MDC **`cust`** and **`op`** (`create` / `get`) — do **not** log `fullName` or email. The filter owns `MDC.clear()`; the service only puts op-scoped keys:
 
 ```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+import java.util.Optional;
+
 private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
 
 public Customer create(Customer customer, String correlationId) {
@@ -314,6 +328,10 @@ Do **not** call `MDC.clear()` in the service — that would wipe `corr` mid-requ
 **Full path (optional homework):** Add a SLF4J WARN with a reason code — log `customerId`, never `fullName`:
 
 ```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+
 private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
 
 // inside create(...):
@@ -365,6 +383,21 @@ curl -s -H "X-Correlation-Id: lab-request-001" \
 **Do this:** Complete the starter `CustomerLoggingIT.java` TODOs. Starter seeds `CUS-1001` (Amina) — the smoke path is a **GET** with correlation header (matches solution):
 
 ```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(OutputCaptureExtension.class)
 class CustomerLoggingIT {

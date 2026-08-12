@@ -435,6 +435,9 @@ Pass correlation into `changeStatus` failures similarly. Require non-blank corre
 **Do this:** Complete starter `GlobalExceptionHandlerTest` methods:
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
 @Test
 void mapsNotFoundTo404() {
     var handler = new GlobalExceptionHandler();

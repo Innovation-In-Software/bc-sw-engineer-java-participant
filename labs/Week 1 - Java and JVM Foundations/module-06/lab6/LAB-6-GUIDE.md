@@ -679,6 +679,8 @@ Replace forms:
 **Do this:**
 
 ```java
+import java.util.Comparator;
+
 public void demonstrateSorting() {
     System.out.println("Salary Ascending:");
     employees.stream()
@@ -719,6 +721,8 @@ public void demonstrateSorting() {
 **Do this:**
 
 ```java
+import java.util.Comparator;
+
 public void displayDistinctDepartments() {
     System.out.println("Unique Departments:");
     employees.stream()
@@ -819,6 +823,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.DoubleSummaryStatistics;
 import java.util.stream.Collectors;
+import java.util.List;
 
 public void demonstrateCollectors() {
     List<Employee> active = employees.stream()
@@ -881,6 +886,12 @@ public void displaySummaryStatistics() {
 **Do this:**
 
 ```java
+import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 public void displayHighestPaidEmployeeOptional() {
     Optional<Employee> highestPaid = employees.stream()
             .max(Comparator.comparingDouble(Employee::getSalary));
@@ -1049,6 +1060,7 @@ public class ReportService {
 package com.academy.analytics;
 
 import java.util.Scanner;
+import java.util.Optional;
 
 public class Main {
 

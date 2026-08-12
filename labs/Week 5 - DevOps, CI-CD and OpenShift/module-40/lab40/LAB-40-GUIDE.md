@@ -148,6 +148,11 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.junit.jupiter.api.Test;
+import org.springframework.security.test.context.support.WithMockUser;
+
 @Test
 @WithMockUser(username = "agent-a", roles = "AGENT")
 void agentCannotReadAnotherAgentsCustomer() throws Exception {
@@ -278,6 +283,10 @@ Document method FQNs and risk notes under finding IDs `lab40-001`….
 Prefer parameterized access:
 
 ```java
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.Query;
+import java.util.Optional;
+
 @Query("select c from CustomerEntity c where lower(c.normalizedEmail) = lower(:email)")
 Optional<CustomerEntity> findByEmailIgnoreCase(@Param("email") String email);
 ```
@@ -295,6 +304,11 @@ Optional<CustomerEntity> findByEmailIgnoreCase(@Param("email") String email);
 **Do this:** Choose a safe, confirmed, high-value issue (example: object ownership / broken access control). Write a failing automated test first:
 
 ```java
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.junit.jupiter.api.Test;
+import org.springframework.security.test.context.support.WithMockUser;
+
 @Test
 @WithMockUser(username = "agent-a", roles = "AGENT")
 void agentCannotReadAnotherAgentsCustomer() throws Exception {

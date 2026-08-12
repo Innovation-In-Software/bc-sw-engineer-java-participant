@@ -136,6 +136,9 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
+
 @SpringBootTest
 class CrmApplicationTests {
   @Test void contextLoads() {}
@@ -261,6 +264,10 @@ Restart and curl health once config is live.
 **Do this:** Keep starter JavaBean `Customer` (`id`/`name`/`email`/`status` + getters). `@Service CustomerService` is backed by `ConcurrentHashMap` and **already seeds** `CUS-1001` / `CUS-1002`. Timed path does **not** require `@NotBlank` / validation starter (`@Valid` = optional full-path).
 
 ```java
+import org.springframework.stereotype.Service;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
+
 @Service
 public class CustomerService {
   private final Map<String, Customer> store = new ConcurrentHashMap<>();
@@ -415,6 +422,17 @@ mvn -B -Dtest=CrmApplicationTests test
 **Full path (this Step homework):** Add `CustomerControllerHttpTest` with `RANDOM_PORT` and create/get for `CUS-1001` + request header `X-Correlation-Id` (solution has this class; starter does not).
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerControllerHttpTest {
   @LocalServerPort int port;

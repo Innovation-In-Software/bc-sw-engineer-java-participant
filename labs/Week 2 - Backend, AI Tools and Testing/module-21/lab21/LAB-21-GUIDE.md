@@ -137,6 +137,9 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import org.springframework.boot.test.context.SpringBootTest;
+
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class ActuatorIT {
   // Starter method names:
@@ -257,6 +260,11 @@ Write two or three sentences in `docs/monitoring-report.md` distinguishing: a li
 **Do this:** Create `CrmReadinessIndicator.java`:
 
 ```java
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.stereotype.Component;
+
 @Component
 public class CrmReadinessIndicator implements HealthIndicator {
   private final AtomicBoolean ready = new AtomicBoolean(true);
@@ -331,6 +339,8 @@ curl -s http://localhost:8080/actuator/metrics/crm.customer.get
 **Do this:** Complete starter `ActuatorIT.java` methods:
 
 ```java
+import org.junit.jupiter.api.Test;
+
 @Test
 void healthAndProbesAreUp() {
   // GET /actuator/health, /actuator/health/liveness, /actuator/health/readiness → 200

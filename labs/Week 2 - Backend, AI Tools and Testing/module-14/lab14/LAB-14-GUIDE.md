@@ -322,6 +322,7 @@ import com.northstar.crm.dto.CustomerRequestDTO;
 import com.northstar.crm.dto.CustomerResponseDTO;
 import com.northstar.crm.entity.Customer;
 import com.northstar.crm.entity.CustomerStatus;
+import java.time.LocalDateTime;
 
 public final class CustomerMapper {
     private CustomerMapper() {}
@@ -423,6 +424,10 @@ Wire `Main` to create Amina via a valid DTO with correlation ID `lab-request-001
 **Do this:** Complete starter `CustomerRequestValidationTest.java` (package `com.northstar.crm`):
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
 @Test
 void validAminaRequestPasses() {
     CustomerRequestDTO dto = new CustomerRequestDTO();

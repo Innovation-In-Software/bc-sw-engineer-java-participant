@@ -142,6 +142,9 @@ mvn -version
 Study this pattern once before Step 1. Align with the **solution order**: validate amount → load from → **debit + save** → force-fail check → credit + log. Debit-before-fail makes rollback meaningful.
 
 ```java
+import org.springframework.transaction.annotation.Transactional;
+import java.math.BigDecimal;
+
 @Transactional
 public void transfer(String fromAccountId, String toAccountId, BigDecimal amount) {
   if (amount == null || amount.signum() <= 0) {
@@ -245,6 +248,14 @@ mvn -q -DskipTests package
 **Do this:** Confirm (starter already has):
 
 ```java
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import java.math.BigDecimal;
+import jakarta.persistence.GenerationType;
+import java.time.Instant;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 public interface AccountRepository extends JpaRepository<Account, String> {}
 
 @Entity
@@ -288,6 +299,11 @@ Optional Copilot prompt: “Spring Boot TransferService with @Transactional debi
 **Do this:** Thin controller returns a Map body (starter pattern):
 
 ```java
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import java.math.BigDecimal;
+import java.util.Map;
+
 @PostMapping
 public Map<String, String> transfer(@RequestBody Map<String, String> body) {
   transferService.transfer(

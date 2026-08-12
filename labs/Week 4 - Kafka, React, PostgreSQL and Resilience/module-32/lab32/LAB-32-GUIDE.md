@@ -310,6 +310,11 @@ Stub WireMock with 3000ms delay for `CUS-1001`.
 **Do this:** In `AccountProfileService`:
 
 ```java
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
+import java.util.concurrent.CompletableFuture;
+
 @CircuitBreaker(name = "accountProfile", fallbackMethod = "fallback")
 @Retry(name = "accountProfile")
 @TimeLimiter(name = "accountProfile")
@@ -333,6 +338,8 @@ Pass `X-Correlation-Id: lab-request-001` from the web layer into client headers 
 **Do this:**
 
 ```java
+import java.util.concurrent.CompletableFuture;
+
 private CompletableFuture<AccountSummary> fallback(
     String customerId, Throwable cause) {
   log.warn("account_profile_degraded customerId={} cause={}",

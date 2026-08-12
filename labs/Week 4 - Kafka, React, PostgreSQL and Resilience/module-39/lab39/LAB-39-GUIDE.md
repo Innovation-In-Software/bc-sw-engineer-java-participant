@@ -334,6 +334,20 @@ mvn -q spring-boot:run
 **Do this:** Create `CustomerEntity` roughly as:
 
 ```java
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Version;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.GenerationType;
+import java.util.HashSet;
+import java.time.Instant;
+import java.util.Set;
+
 @Entity
 @Table(name = "customer")
 public class CustomerEntity {
@@ -377,6 +391,15 @@ public class CustomerEntity {
 **Do this:**
 
 ```java
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GenerationType;
+
 @Entity
 @Table(name = "account")
 public class AccountEntity {
@@ -421,6 +444,11 @@ Round-trip `1250.50` in an IT.
 **Do this:**
 
 ```java
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
   Optional<CustomerEntity> findByPublicId(String publicId);
   boolean existsByEmail(String email);
@@ -447,6 +475,8 @@ mvn -q test -Dtest=CustomerRepositoryIT#findByPublicId
 **Do this:**
 
 ```java
+import org.springframework.transaction.annotation.Transactional;
+
 @Transactional
 public CustomerResponse create(CreateCustomerRequest request) {
   String email = normalize(request.email());
@@ -473,6 +503,9 @@ Seed/create `CUS-1001` Amina and `CUS-1002` Ravi in IT or a data loader.
 **Do this:** In controller:
 
 ```java
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 int safeSize = Math.min(Math.max(size, 1), 100);
 Pageable page = PageRequest.of(
     number,
@@ -496,6 +529,10 @@ Allow-list sort properties; reject unknown fields. Prefer status filter `ACTIVE`
 **Do this:** In `ApiExceptionHandler`:
 
 ```java
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
+
 @ExceptionHandler(DataIntegrityViolationException.class)
 ResponseEntity<ProblemDetail> duplicate(DataIntegrityViolationException ex) { /* 409 */ }
 

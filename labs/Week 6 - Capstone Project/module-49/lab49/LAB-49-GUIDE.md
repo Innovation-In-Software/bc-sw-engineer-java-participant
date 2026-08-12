@@ -200,6 +200,10 @@ mkdir -p ~/java-bootcamp/notes/screenshots/lab-49 backend/src/test/java/com/nort
 Example shapes (adapt to your IDs):
 
 ```java
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import java.time.Instant;
+
 public record CreateInteractionRequest(
     @NotBlank String customerId,
     @NotBlank String interactionType,  // CALL, EMAIL, NOTE, MEETING
@@ -256,6 +260,9 @@ Document in `docs/backend-demo.md`:
 * Propagate actor + `correlationId` without logging note secrets
 
 ```java
+import org.springframework.transaction.annotation.Transactional;
+import java.util.UUID;
+
 @Transactional
 public InteractionResponse create(UUID customerId, CreateInteractionRequest request, String correlationId) {
   var customer = customers.findById(customerId)
@@ -281,6 +288,14 @@ Unit-test the service with a fake publisher that records the event payload for `
 **Do this:** `POST /api/v1/interactions` returning 201 (+ `Location` if you add it). Use Problem Details for validation and not-found. Read `X-Correlation-ID` (default generate if absent—but demos must send `lab-request-001`). Prepare `@PreAuthorize` stubs if security present; Lab 51 hardens fully.
 
 ```java
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+
 @RestController
 @RequestMapping("/api/v1/interactions")
 class InteractionController {
@@ -418,6 +433,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 ### Event record
 
 ```java
+import java.time.Instant;
+import java.util.UUID;
+
 public record CustomerInteractionRecordedV1(
     UUID eventId, String eventType, int eventVersion,
     Instant occurredAt, String correlationId,

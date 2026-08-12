@@ -208,6 +208,9 @@ mvn -q -DskipTests package
 **Do this:** `CustomerRequest` is a **mutable class** (not a record). Add:
 
 ```java
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 @NotBlank private String id;
 @NotBlank private String name;
 @NotBlank @Email private String email;
@@ -231,6 +234,11 @@ mvn -q -DskipTests package
 **Do this:**
 
 ```java
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+
 @PostMapping
 public ResponseEntity<?> create(@Valid @RequestBody CustomerRequest request) {
   // existing service call
@@ -276,6 +284,11 @@ curl -s -i -X POST http://localhost:8080/api/customers \
 **Do this:** Fill starter TODOs. Build `ErrorResponse` with existing setters; map field errors to `FieldViolation(field, message)` only:
 
 ```java
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.http.ResponseEntity;
+
 @ExceptionHandler(MethodArgumentNotValidException.class)
 public ResponseEntity<ErrorResponse> handleValidation(
     MethodArgumentNotValidException ex, HttpServletRequest req) {
@@ -298,6 +311,8 @@ public ResponseEntity<ErrorResponse> handleValidation(
 **Do this:** Map **existing** service exceptions — do **not** invent a custom hierarchy for timed path:
 
 ```java
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
 @ExceptionHandler(IllegalArgumentException.class)  // → 404 Not Found
 @ExceptionHandler(IllegalStateException.class)     // → 409 Conflict
 ```
@@ -324,6 +339,9 @@ curl -s -i http://localhost:8080/api/customers/CUS-9999 \
 **Do this:**
 
 ```java
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.http.ResponseEntity;
+
 @ExceptionHandler(Exception.class)
 public ResponseEntity<ErrorResponse> fallback(...) {
   // log server-side; client message: "Unexpected error"; status 500

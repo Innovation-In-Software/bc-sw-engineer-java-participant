@@ -457,6 +457,8 @@ Create `Customer.java` with private fields `customerId`, `name`, `email`, `phone
 **Do this:** Create `BankService` with:
 
 ```java
+import java.util.Scanner;
+
 private static final int MAX_CUSTOMERS = 50;
 private static final int MAX_ACCOUNTS = 100;
 private static final int MAX_TRANSACTIONS = 500;

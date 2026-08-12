@@ -139,6 +139,10 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
+
 @Test
 void getSeededCus1001() {
   CustomerService service = new CustomerService(new InMemoryCustomerRepository());
@@ -198,6 +202,9 @@ mvn -q -DskipTests package
 **Already provided in starter:** `repository/CustomerRepository.java` with `save` / `findById` / `findAll` / `existsById`. **Do not reinvent** — open it, confirm signatures, then implement the in-memory class in Step 3.
 
 ```java
+import java.util.List;
+import java.util.Optional;
+
 public interface CustomerRepository {
   Customer save(Customer customer);
   Optional<Customer> findById(String id);
@@ -221,6 +228,12 @@ Optional Copilot prompt: “Spring Data style CustomerRepository for CRM id Stri
 **Do this:** `@Repository` class implementing the interface with `ConcurrentHashMap`. Seed on construction or `@PostConstruct`:
 
 ```java
+import org.springframework.stereotype.Repository;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 @Repository
 public class InMemoryCustomerRepository implements CustomerRepository {
   private final Map<String, Customer> store = new ConcurrentHashMap<>();
@@ -265,6 +278,9 @@ public class InMemoryCustomerRepository implements CustomerRepository {
 **Do this:** Constructor-inject `CustomerRepository`. Timed path: implement `get`, `create` (reject duplicate via `existsById`), `list`. **No** Spring Web imports. (`updateStatus` / PATCH = full-path homework.)
 
 ```java
+import org.springframework.stereotype.Service;
+import java.util.List;
+
 @Service
 public class CustomerService {
   private final CustomerRepository customerRepository;
@@ -350,6 +366,10 @@ curl -s -X POST http://localhost:8080/api/customers \
 **Do this:** `CustomerServiceTest` constructing `CustomerService` with `InMemoryCustomerRepository`. Timed Surefire: `getSeededCus1001` + `duplicateCreateRejected` (**Tests run: 2**).
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
+
 @Test
 void getSeededCus1001() {
   CustomerService service = new CustomerService(new InMemoryCustomerRepository());

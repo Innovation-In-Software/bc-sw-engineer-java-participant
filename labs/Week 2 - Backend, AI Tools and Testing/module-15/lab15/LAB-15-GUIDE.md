@@ -461,6 +461,10 @@ System.out.println("CUS-1001 still: " + service.findById("CUS-1001").orElseThrow
 2. Complete starter `CustomerValidatorTest` methods:
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
+
 @Test
 void prospectToActiveAllowed() {
     assertDoesNotThrow(() ->

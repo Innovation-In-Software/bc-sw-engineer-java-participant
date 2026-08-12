@@ -279,6 +279,13 @@ Prefer **manual construction** over `@InjectMocks` alone when the validator also
 **Do this:** Add:
 
 ```java
+import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.Test;
+import java.util.Optional;
+
 @Test
 void activateRaviUsesFindAndSave() {
     Customer ravi = new Customer(
@@ -314,6 +321,12 @@ mvn -q test -Dtest=CustomerServiceMockitoTest#activateRaviUsesFindAndSave
 **Do this:**
 
 ```java
+import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.Test;
+import java.util.Optional;
+
 @Test
 void notFoundNeverCallsSave() {
     when(repository.findById("CUS-9999")).thenReturn(Optional.empty());
@@ -341,6 +354,13 @@ Prefer `assertThrows(BusinessException.class, ...)` if Lab 16 types exist, and a
 **Do this:**
 
 ```java
+import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+
 @Test
 void addCustomerCapturesSavedEntity() {
     when(repository.existsById("CUS-1001")).thenReturn(false);
@@ -373,6 +393,13 @@ Align `existsBy*` method names with your Lab 15–16 validator.
 **Do this:** Complete starter `CustomerServiceBddMockTest.java` (method name `givenProspectWhenActivateThenSavedActive`):
 
 ```java
+import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import org.junit.jupiter.api.Test;
+import java.util.Optional;
+
 @Test
 void givenProspectWhenActivateThenSavedActive() {
     Customer ravi = new Customer(
@@ -504,6 +531,10 @@ _Mark **Pass** or **Fail** in your lab notes._
 ### Stub + verify
 
 ```java
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import java.util.Optional;
+
 when(repository.findById("CUS-1002")).thenReturn(Optional.of(ravi));
 verify(repository, never()).save(any());
 ```

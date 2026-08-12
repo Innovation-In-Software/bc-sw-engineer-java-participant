@@ -138,6 +138,8 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import org.springframework.boot.test.context.SpringBootTest;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerApiIT {
   // Starter methods: getAminaReturns200, createEchoesCorrelationHeader (POST CUS-1901),
@@ -218,6 +220,16 @@ mvn -q dependency:resolve
 **Do this:** Expose create and get endpoints that accept/return customer IDs and echo a correlation header. Seed or accept `CUS-1001` / `CUS-1002` as stable lab identities.
 
 ```java
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
@@ -261,6 +273,12 @@ Adapt method names to your Lab 15–18 service (`addCustomer` / `create`, etc.).
 **Do this:** Complete starter `CustomerApiIT.java` with `@SpringBootTest(webEnvironment = RANDOM_PORT)` and `TestRestTemplate`. Cover get Amina, create `CUS-1901` + correlation echo, and not-found `CUS-9999`.
 
 ```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerApiIT {
   @LocalServerPort int port;
@@ -327,6 +345,14 @@ Manually open `http://localhost:8080/customers.html` after `mvn spring-boot:run`
 **Do this:** In `CustomerUiIT.java`:
 
 ```java
+import java.time.Duration;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 @BeforeEach
 void setUp() {
   WebDriverManager.chromedriver().setup();
@@ -358,6 +384,12 @@ Prefer **explicit** waits; set implicit wait to 0 to avoid stacked wait surprise
 **Do this:** Create `CustomerFormPage.java`:
 
 ```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class CustomerFormPage {
   private final WebDriver driver;
   private final WebDriverWait wait;
@@ -387,6 +419,9 @@ public class CustomerFormPage {
 ```
 
 ```java
+import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+
 @Test
 void createCustomerViaUi() {
   var page = new CustomerFormPage(driver, wait).open(baseUrl);
@@ -434,6 +469,11 @@ ls target/surefire-reports/
 Optionally fail a locator on purpose, capture a screenshot on failure, then restore:
 
 ```java
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 if (testFailed) {
   Files.write(Path.of("target/ui-failure.png"),
       ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));

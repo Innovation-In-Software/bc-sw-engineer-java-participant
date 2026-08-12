@@ -423,6 +423,9 @@ mvn -q test -Dtest=CustomerServiceTest
 **Do this:** Ask Copilot Chat, without extra guidance, to “add one more test to `CustomerServiceTest`.” It may produce:
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+
 @Test
 void serviceIsNotNull() {
     assertNotNull(service);

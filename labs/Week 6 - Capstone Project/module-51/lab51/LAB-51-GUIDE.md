@@ -151,6 +151,13 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.junit.jupiter.api.Test;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 @Test
 void deleteCustomerRequiresManagerRole() throws Exception {
   mvc.perform(delete("/api/v1/customers/{id}", customerId)
@@ -200,6 +207,13 @@ Parts 1–8 map to Steps 1–8; Step 9 closes evidence.
 **Do this:** Configure OAuth2 resource server JWT; map roles from trusted claims; deny by default; method security where needed. Test anonymous, wrong-role, correct-role.
 
 ```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+
 @Bean
 SecurityFilterChain apiSecurity(HttpSecurity http) throws Exception {
   return http
@@ -217,6 +231,13 @@ SecurityFilterChain apiSecurity(HttpSecurity http) throws Exception {
 ```
 
 ```java
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.junit.jupiter.api.Test;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 @Test
 void deleteCustomerRequiresManagerRole() throws Exception {
   mvc.perform(delete("/api/v1/customers/{id}", customerId)

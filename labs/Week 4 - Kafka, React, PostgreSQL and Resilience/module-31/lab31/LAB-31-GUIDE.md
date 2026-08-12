@@ -245,6 +245,9 @@ Configure `JsonSerializer` / `JsonDeserializer` (or Boot defaults) as taught in 
 **Do this:**
 
 ```java
+import java.time.Instant;
+import java.util.Objects;
+
 public record CustomerEvent(
     String eventId, String eventType, int eventVersion,
     Instant occurredAt, String customerId, String correlationId,
@@ -305,6 +308,10 @@ mvn -q spring-boot:run
 **Do this:**
 
 ```java
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.KafkaHeaders;
+
 @KafkaListener(topics = "${crm.kafka.customer-events-topic}")
 void receive(CustomerEvent event,
     @Header(KafkaHeaders.RECEIVED_KEY) String key) {
@@ -329,6 +336,8 @@ Log `customer_event_received` with `eventId` + `customerId` + `correlationId` (`
 **Do this:**
 
 ```java
+import java.util.concurrent.ConcurrentHashMap;
+
 public boolean markIfNew(String eventId) {
   return processedIds.add(eventId); // lab: ConcurrentHashMap.newKeySet()
 }
@@ -355,6 +364,10 @@ Document that production must use a durable unique key (database) shared across 
 **Do this:** In `KafkaErrorConfig`:
 
 ```java
+import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
+import org.springframework.kafka.listener.DefaultErrorHandler;
+import org.springframework.util.backoff.FixedBackOff;
+
 var recoverer = new DeadLetterPublishingRecoverer(template);
 var handler = new DefaultErrorHandler(recoverer, new FixedBackOff(1000, 2));
 handler.addNotRetryableExceptions(
@@ -380,7 +393,10 @@ Publish a poison message (key mismatch or bad version) and a transient-failure s
 **Do this:** Use `@EmbeddedKafka` or Kafka Testcontainers:
 
 ```java
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
+import java.time.Duration;
+import org.junit.jupiter.api.Test;
 // or: Awaitility.await()...
 
 @Test

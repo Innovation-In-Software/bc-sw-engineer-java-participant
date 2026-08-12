@@ -405,6 +405,9 @@ Optionally flesh out correlation on not-found (starter shells already include up
 **Do this:** Replace the messy API with:
 
 ```java
+import java.util.HashMap;
+import java.util.Map;
+
 private final Map<String, Customer> customersById = new HashMap<>();
 
 public Customer createCustomer(String customerId, String fullName, String email,

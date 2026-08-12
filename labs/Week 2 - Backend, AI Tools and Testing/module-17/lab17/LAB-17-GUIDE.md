@@ -381,6 +381,9 @@ _Mark **Pass** or **Fail** in your lab notes._
 ### Parameterized excerpt
 
 ```java
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.ParameterizedTest;
+
 @ParameterizedTest
 @CsvSource({
         "PROSPECT,ACTIVE",

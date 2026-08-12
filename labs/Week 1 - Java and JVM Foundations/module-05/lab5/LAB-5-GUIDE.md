@@ -193,6 +193,12 @@ javac -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
 private final ArrayList<Book> books = new ArrayList<>();
 private final ArrayList<Member> members = new ArrayList<>();
 private final HashSet<String> bookIds = new HashSet<>();
@@ -301,6 +307,12 @@ Lab5-LibraryManagement/
 **Do this:** Create `LibraryService.java` with a `Scanner` field and:
 
 ```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
 private final ArrayList<Book> books = new ArrayList<>();
 private final ArrayList<Member> members = new ArrayList<>();
 private final HashSet<String> bookIds = new HashSet<>();

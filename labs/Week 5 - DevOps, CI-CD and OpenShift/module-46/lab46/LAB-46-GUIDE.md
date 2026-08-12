@@ -211,6 +211,13 @@ Max elapsed retry budget: 10s (lab) / document prod values separately
 **Do this:** Configure `DeadLetterPublishingRecoverer` and `DefaultErrorHandler`. Route exhausted records to a named DLT. Prevent infinite retry loops.
 
 ```java
+import org.apache.kafka.common.TopicPartition;
+import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
+import org.springframework.kafka.listener.DefaultErrorHandler;
+import org.springframework.util.backoff.ExponentialBackOff;
+
 @Bean
 DefaultErrorHandler kafkaErrorHandler(KafkaTemplate<Object, Object> template) {
   var recoverer = new DeadLetterPublishingRecoverer(template,
@@ -405,6 +412,13 @@ _Mark **Pass** or **Fail** in your lab notes._
 ### Spring Kafka error handler
 
 ```java
+import org.apache.kafka.common.TopicPartition;
+import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
+import org.springframework.kafka.listener.DefaultErrorHandler;
+import org.springframework.util.backoff.ExponentialBackOff;
+
 @Bean
 DefaultErrorHandler kafkaErrorHandler(KafkaTemplate<Object, Object> template) {
   var recoverer = new DeadLetterPublishingRecoverer(template,

@@ -137,6 +137,10 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+
 class CustomerServiceTest {
   @Test
   void createAndGetWithoutSpringContext() {
@@ -182,6 +186,9 @@ mkdir -p ~/java-bootcamp/notes/screenshots/lab-22
 Ensure `CrmApplication` (or equivalent) exists:
 
 ```java
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringApplication;
+
 @SpringBootApplication
 public class CrmApplication {
   public static void main(String[] args) {
@@ -277,6 +284,14 @@ Starter uses this JavaBean shape (`id`/`name`/`email`/`status`) for Jackson — 
 **Do this:** Prefer interfaces + annotated implementations. **Do not** instantiate them with `new` from the service.
 
 ```java
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.Map;
+import java.util.Optional;
+
 public interface CustomerRepository {
   Customer save(Customer customer);
   Optional<Customer> findById(String id);
@@ -321,6 +336,8 @@ Keep Lab 20 PII rules: notify with IDs/correlation only.
 **Do this:**
 
 ```java
+import org.springframework.stereotype.Service;
+
 @Service
 public class CustomerService {
   private final CustomerRepository customerRepository;
@@ -386,6 +403,9 @@ Match starter method names: service `create` / `get`, JSON fields `id`/`name`/`e
 **Do this:**
 
 ```java
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 @PostConstruct
 void init() {
   log.info("CustomerService ready");
@@ -414,6 +434,9 @@ Start the app, create `CUS-1002`, then stop the process (Ctrl+C) and capture des
 **Full path / homework (this Step):** Add `@SpringBootTest` class `CustomerServiceSpringTest` with method `springGraphCreatesAndGetsCus1001` that autowires `CustomerService` and asserts seeded `CUS-1001` plus create/get for Ravi (see solution). Until you add that class, plain `mvn test` runs the unit test only (**Tests run: 1**).
 
 ```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
 class CustomerServiceTest {
   @Test
   void createAndGetWithoutSpringContext() {
@@ -519,6 +542,8 @@ _Mark **Pass** or **Fail** in your lab notes._
 ### Constructor injection pattern
 
 ```java
+import org.springframework.stereotype.Service;
+
 @Service
 public class CustomerService {
   private final CustomerRepository repository;

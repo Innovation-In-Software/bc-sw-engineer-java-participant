@@ -264,6 +264,11 @@ Bind secret with `@Value("${northstar.security.jwt-secret}")`. Reject tokens tha
 **Do this:**
 
 ```java
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpStatus;
+import java.util.Map;
+
 @PostMapping("/login")
 public Map<String, String> login(@RequestBody Map<String, String> body) {
   UserDetails user = userDetailsService.loadUserByUsername(body.get("username"));

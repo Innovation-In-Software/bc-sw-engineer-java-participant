@@ -147,6 +147,11 @@ mvn -version
 Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
 
 ```java
+import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.w3c.dom.Element;
+
 @PayloadRoot(namespace = NAMESPACE, localPart = "GetCustomerRequest")
 @ResponsePayload
 public Element getCustomer(@RequestPayload Element request) {
@@ -228,6 +233,13 @@ mvn -q -DskipTests compile
 **Do this:** Complete starter TODOs in `@EnableWs` `WebServiceConfig` — servlet `/ws/*` + WSDL bean name `customers`. Port type must be **`CustomersPort`** (not `CustomerServicePort`).
 
 ```java
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.ws.transport.http.MessageDispatcherServlet;
+import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
+import org.springframework.xml.xsd.XsdSchema;
+
 @Bean
 ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(
     ApplicationContext context) {
