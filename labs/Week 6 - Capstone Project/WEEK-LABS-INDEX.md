@@ -17,7 +17,7 @@ This document is the **capstone master document** for Modules 48–52 and Labs 4
 | -------- | ---- |
 | **Capstone project brief (DOCX, company-shareable)** | [Java_Software_Engineer_Capstone.docx](Java_Software_Engineer_Capstone.docx) |
 | Capstone brief (Markdown) | [CAPSTONE-BRIEF-AND-RUBRIC.md](CAPSTONE-BRIEF-AND-RUBRIC.md) |
-| **Progress Check-In (not the final)** | Form: [Java_Software_Engineer_Capstone_Progress_Check_In.docx](Java_Software_Engineer_Capstone_Progress_Check_In.docx) · **Participants:** [how to use it + setup-ready checks](Java_Software_Engineer_Capstone_Progress_Check_In_PARTICIPANT.md) · Instructors: [full how-to](Java_Software_Engineer_Capstone_Progress_Check_In.md) |
+| **Progress Check-In (not the final)** | Form: [Java_Software_Engineer_Capstone_Progress_Check_In.docx](Java_Software_Engineer_Capstone_Progress_Check_In.docx) · [Participant guide (setup-ready checks)](Java_Software_Engineer_Capstone_Progress_Check_In_PARTICIPANT.md) |
 | Slide outline | [slides_outline.md](../../curriculum/Week%206%20-%20Capstone%20Project/slides_outline.md) |
 | Labs index | [labs/LABS-INDEX.md](../LABS-INDEX.md) |
 | Setup (Weeks 1–6) | [labs/SETUP-INSTRUCTIONS.md](../SETUP-INSTRUCTIONS.md) |
