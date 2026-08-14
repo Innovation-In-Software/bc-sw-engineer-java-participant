@@ -66,5 +66,6 @@ Continue remaining GUIDE steps as homework / full path if needed.
 | --- | --- |
 | CORS in browser | Match Spring allowlist to Vite origin |
 | Failed to fetch | curl API; fix VITE_API_BASE_URL; restart Vite |
+| `TS2339` Property `env` does not exist on `ImportMeta` | Runtime is fine (Vite injects env). Add `src/vite-env.d.ts` (`/// <reference types="vite/client" />`) and `"vite/client"` in `tsconfig.json` `compilerOptions.types`. Reload the IDE TS server. |
 | Abort toast | Ignore AbortError |
 | /api/api | Normalize base URL + path join |

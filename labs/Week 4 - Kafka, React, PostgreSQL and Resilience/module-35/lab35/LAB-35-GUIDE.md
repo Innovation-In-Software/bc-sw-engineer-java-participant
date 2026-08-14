@@ -207,9 +207,25 @@ VITE_API_BASE_URL=http://localhost:8080
 
 Copy to local `.env` (gitignored). Read with `import.meta.env.VITE_API_BASE_URL`. Restart Vite after changes.
 
-**Expected result:** Vite reads `localhost:8080/api` after restart; `.env.example` committed, secrets absent.
+TypeScript does not know Vite’s `import.meta.env` unless Vite client types are loaded. If you copied Lab 34 (or only pasted `http.ts`), add `src/vite-env.d.ts`:
 
-**If it fails:** Env ignored → restart Vite; confirm `VITE_` prefix. Typo `VITE_API` → match code.
+```typescript
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_API_BASE_URL: string
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
+```
+
+This lab’s `tsconfig.json` also lists `"types": ["vite/client", "vitest/globals"]` so the checker includes Vite’s `ImportMeta.env`. The timed starter already has both files.
+
+**Expected result:** Vite reads `localhost:8080` after restart; `.env.example` committed, secrets absent. `import.meta.env` type-checks (no TS2339).
+
+**If it fails:** Env ignored → restart Vite; confirm `VITE_` prefix. Typo `VITE_API` → match code. Red squiggle `TS2339: Property 'env' does not exist on type 'ImportMeta'` while `console.log(import.meta.env.VITE_API_BASE_URL)` still prints `http://localhost:8080` → runtime is fine; add `src/vite-env.d.ts` (and `"vite/client"` in `compilerOptions.types`). Reload the TypeScript / IDE window if the error lingers.
 
 ---
 
@@ -531,6 +547,7 @@ git status
 | Browser CORS error | Spring allowlist / port | Match Vite origin exactly |
 | `Failed to fetch` | API down / wrong URL | curl; fix `VITE_API_BASE_URL` |
 | Env not applied | No restart | Restart Vite |
+| `TS2339` on `import.meta.env` (runtime still prints the URL) | `vite/client` types not loaded (`tsconfig` `"types"` is only `vitest/globals`, or no `src/vite-env.d.ts`) | Add `src/vite-env.d.ts` with `/// <reference types="vite/client" />`; include `"vite/client"` in `compilerOptions.types` |
 | JSON parse on 204 | No status guard | Handle 204 |
 | Abort as error toast | Catch not ignoring abort | Ignore `AbortError` |
 | Duplicate customers | No saving flag | Disable submit while pending |
