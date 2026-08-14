@@ -1,14 +1,58 @@
-# Capstone Progress Check-In — how to use this document
+# Capstone Progress Check-In — participant guide
 
-**Instructors / setup.** Participants should use [Java_Software_Engineer_Capstone_Progress_Check_In_PARTICIPANT.md](Java_Software_Engineer_Capstone_Progress_Check_In_PARTICIPANT.md) (includes “setup is ready” checks).
+**For candidates / teams only.** This is not the final capstone.
 
-**Word file:** [Java_Software_Engineer_Capstone_Progress_Check_In.docx](Java_Software_Engineer_Capstone_Progress_Check_In.docx)
+**Form you fill:** the shared Google Doc your instructor opens for your team (from [Java_Software_Engineer_Capstone_Progress_Check_In.docx](Java_Software_Engineer_Capstone_Progress_Check_In.docx)).
 
-This README explains that Word / Google Doc in plain language: what it is, every step, and every term or abbreviation that appears in it.
+This guide explains that Google Doc: when setup is ready, what to type, and what the terms mean.
 
 ---
 
-## 1. What this is (and what it is not)
+## 1. Confirm setup is ready (do this first)
+
+Do **not** start filling the check-in until both lists below are true. If something fails, message your instructor — do not download a private Word copy and work there.
+
+### A. Your team Google Doc is ready
+
+You should have received a Google Doc named like `Team A — Capstone Progress Check-In` (or Team B / C / D).
+
+| Check | Ready looks like |
+| --- | --- |
+| ☐ You have the **link** from your instructor | Opens in the browser as a Google Doc, not an email attachment you edit alone |
+| ☐ The **title** matches your team | `Team A`, `Team B`, `Team C`, or `Team D` — Capstone Progress Check-In |
+| ☐ You can **type** in it | Cream-colored cells accept text. If you can only comment or view, sharing is not finished |
+| ☐ **All four** teammates open the **same** link | One shared doc. Four private copies is not ready |
+| ☐ Instructors can see it | You do not email the file. Saving in this Google Doc is the update |
+
+**Not ready:** you only have the `.docx` from GitHub and no team Google Doc link; you are asked to “make your own copy”; you cannot edit; two teammates have different documents.
+
+### B. Your capstone workspace is ready
+
+The check-in points at evidence in your repo. The Google Doc is empty until that workspace exists.
+
+| Check | Ready looks like |
+| --- | --- |
+| ☐ Lab 0 environment is in place | JDK **21**, Maven, Node, Docker, Git — same machine you used for Weeks 1–5 |
+| ☐ Bootcamp folder exists | `~/java-bootcamp` (macOS/Linux) or `%USERPROFILE%\java-bootcamp` (Windows) |
+| ☐ Team Git repository exists | You have a clone URL to paste into Section 1 of the check-in |
+| ☐ You can open the CRM project | `customer-management-platform` (or the path your instructor named) opens in IntelliJ or VS Code |
+| ☐ Weeks 1–5 are far enough along | You can start **Lab 48** (plan). You do not need Labs 49–52 done yet |
+
+Quick smoke (from your project / lab folder; adjust if your instructor gave a different path):
+
+```text
+java -version          → 21
+mvn -version           → Maven, Java 21
+git status
+```
+
+If `java -version` is not 21, or you have no team repo URL, **setup is not ready** — fix that before Checkpoint 1.
+
+When **A** and **B** are both true, continue. Fill Section 1 and roles once (Step 0 below), then use the three checkpoints.
+
+---
+
+## 2. What this is (and what it is not)
 
 | This check-in **is** | This check-in **is not** |
 | --- | --- |
@@ -17,44 +61,19 @@ This README explains that Word / Google Doc in plain language: what it is, every
 | Proof you are moving from plan → working slice → ready to present | A replacement for Labs 48–52, the repo, or the defense packet |
 | About 10–15 minutes of typing per checkpoint | A writing assignment that is scored on length |
 
-**What is scored at the end:** the live demo, the evidence in the Git repository, and the defense packet, using [Java_Software_Engineer_Capstone_Rubric.docx](Java_Software_Engineer_Capstone_Rubric.docx). The check-in only shows whether you are on track.
+**What is scored at the end:** the live demo, the evidence in the Git repository, and the defense packet. The check-in only shows whether you are on track.
 
-**Final work lives in:**
+**Final work lives in:** the team Git repository, Labs 48–52, and the `defense/` packet (slides, demo script, evidence index).
 
-- the team **Git repository**
-- **Labs 48–52** (plan, backend, frontend, release, defense)
-- the **defense packet** (`defense/` folder: slides, demo script, evidence index)
+Work **only** in the shared Google Doc. Type in the cream-colored cells.
 
 ---
 
-## 2. Who does what
+## 3. Your team
 
-| Person | Role |
-| --- | --- |
-| **Instructor (Thomas)** | Creates one Google Drive folder, four Google Docs (one per team), shares each doc with that team |
-| **Team (four candidates)** | Types only in **their** Google Doc (cream-colored cells) |
-| **Dr. Gurinderjeet Kaur** | Commenter on all four docs — can see progress without extra emails |
+Tick **your** team in the Google Doc. Do not change members unless your instructor approves it.
 
-Work **only** in the shared Google Doc. Do not download a private Word copy and do not email the file back and forth.
-
----
-
-## 3. Instructor setup (once)
-
-1. Create a Google Drive folder, for example `SWE2 Capstone — Progress Check-In`.
-2. Upload `Java_Software_Engineer_Capstone_Progress_Check_In.docx` and convert it to Google Docs if needed.
-3. Make **four copies**, named:
-   - `Team A — Capstone Progress Check-In`
-   - `Team B — Capstone Progress Check-In`
-   - `Team C — Capstone Progress Check-In`
-   - `Team D — Capstone Progress Check-In`
-4. Share **each** doc as **Editor** with that team’s four members only.
-5. Add **cu.gurinderjeet@gmail.com** as **Commenter** on all four docs.
-6. Keep yourself as folder owner. Send the folder link to Gurinder when it is ready.
-
-### Teams
-
-| Team | Members (Editors on that team’s doc only) |
+| Team | Members |
 | --- | --- |
 | **A** | ByongChul Hur, Cole Hansen, Michael McGrath, Christopher McEnroe |
 | **B** | Luke Pupilli, Timoth Mooney, Himank Juttiga, Chase Bulkin |
@@ -65,11 +84,11 @@ Work **only** in the shared Google Doc. Do not download a private Word copy and 
 
 ## 4. Team steps
 
-### Step 0 — Kickoff (fill once, before 17 August)
+### Step 0 — Kickoff (fill once, after setup is ready, before 17 August)
 
 Do this the first time you open the Google Doc. Do **not** repeat it at later checkpoints except to correct a URL or owner name.
 
-1. Tick **your** team in **Section 1**. Do not change members unless the instructor approves it.
+1. Tick **your** team in **Section 1**.
 2. Fill **repository and working agreement**:
    - Git repository URL
    - default working branch (for example `lab/48-crm`)
@@ -84,7 +103,7 @@ Do this the first time you open the Google Doc. Do **not** repeat it at later ch
 
 1. Update the **Status at a glance** row for checkpoint 1 (RAG + one-line status + Done).
 2. Update the **living progress tracker** (Lab 48 rows should be Done or In progress; Lab 49 started).
-3. Fill **Checkpoint 1** sections **A–F** (see [Section 5](#5-how-to-fill-a-checkpoint-af) below).
+3. Fill **Checkpoint 1** sections **A–F** (see [Section 5](#5-how-to-fill-a-checkpoint-af)).
 4. Stop. Do not create another document.
 
 ### Step 2 — Checkpoint 2 (Friday 21 August) — working slice
@@ -294,7 +313,7 @@ Honest Amber is useful. Inflated Green is not.
 
 ## 10. What the final will be judged on (reminder only)
 
-Copied here so the check-in and the rubric stay aligned. **This table is not a score for the check-in.**
+This table is **not** a score for the check-in. It is what the live demo and evidence packet will be judged on.
 
 | Criterion | Weight | Where the check-in points you |
 | --- | --- | --- |
@@ -316,7 +335,7 @@ A green demo without evidence does not count.
 
 | File | Purpose |
 | --- | --- |
-| [Java_Software_Engineer_Capstone_Progress_Check_In.docx](Java_Software_Engineer_Capstone_Progress_Check_In.docx) | The form teams fill (Google Doc copy) |
+| [Java_Software_Engineer_Capstone_Progress_Check_In.docx](Java_Software_Engineer_Capstone_Progress_Check_In.docx) | Template for the Google Doc you fill |
 | [Java_Software_Engineer_Capstone.docx](Java_Software_Engineer_Capstone.docx) | Capstone **project brief** (what to build) |
 | [Java_Software_Engineer_Capstone_Rubric.docx](Java_Software_Engineer_Capstone_Rubric.docx) | How the **final** is evaluated |
 | [WEEK-LABS-INDEX.md](WEEK-LABS-INDEX.md) | Week 6 labs, schedule, artifacts |
