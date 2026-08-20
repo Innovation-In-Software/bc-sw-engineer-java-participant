@@ -74,7 +74,7 @@ Create `Dockerfile.skeleton` notes:
 FROM _____ AS build
 WORKDIR /workspace
 COPY _____ .
-RUN ./mvnw -B -DskipTests package
+RUN mvn -B -DskipTests package
 FROM _____ AS runtime
 USER _____
 COPY --from=build _____ /app/app.jar

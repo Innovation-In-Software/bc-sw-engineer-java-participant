@@ -27,6 +27,6 @@
 
 ## Hard gate before Lab 41
 
-- [ ] Ex notes complete (order above)
-- [ ] Docker Desktop/engine available
-- [ ] Bootable CRM JAR path (Labs 39–40) identified
+- [ ] Ex notes complete in `java-bootcamp/examples/module-41-exercises/notes/`
+- [ ] Docker Desktop/engine available (`docker version` shows a Server)
+- [ ] Lab 40 CRM in `java-bootcamp/examples/lab40-crm`

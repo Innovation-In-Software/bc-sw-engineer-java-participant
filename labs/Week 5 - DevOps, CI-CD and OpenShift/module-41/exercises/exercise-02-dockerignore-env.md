@@ -59,7 +59,7 @@ Runtime config via env (DB URL, user, password)—never `ENV PASSWORD=...` in Do
 
 ## Step 3 — .env.example
 
-List keys only (no values): `SPRING_DATASOURCE_URL`, username, password placeholders, Java opts.
+List keys only (no values): `CRM_DB_HOST`, `CRM_DB_PORT`, `CRM_DB_NAME`, `CRM_DB_USER`, `CRM_DB_PASSWORD` (empty in example), `SPRING_PROFILES_ACTIVE=docker`. Local compose user is `crm`.
 
 ## Step 4 — Evidence path
 
@@ -92,7 +92,7 @@ Runtime config via env (DB URL, user, password)—never `ENV PASSWORD=...` in Do
 
 ## Step 3 — .env.example
 
-List keys only (no values): `SPRING_DATASOURCE_URL`, username, password placeholders, Java opts.
+List keys only (no values): `CRM_DB_HOST`, `CRM_DB_PORT`, `CRM_DB_NAME`, `CRM_DB_USER`, `CRM_DB_PASSWORD` (empty in example), `SPRING_PROFILES_ACTIVE=docker`. Local compose user is `crm`.
 
 ## Step 4 — Evidence path
 

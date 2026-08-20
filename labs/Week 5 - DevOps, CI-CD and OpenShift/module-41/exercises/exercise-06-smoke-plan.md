@@ -51,7 +51,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Steps
 
-Order: health ready → create/get `CUS-1001` → correlation header `lab-request-001` → stop container.
+Order: health ready → `GET /api/customers` (optional CUS-1001 row) → correlation header `lab-request-001` → stop container.
 
 ## Step 2 — Check the reference
 
@@ -84,7 +84,7 @@ From `examples/module-41-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Steps
 
-Order: health ready → create/get `CUS-1001` → correlation header `lab-request-001` → stop container.
+Order: health ready → `GET /api/customers` (optional CUS-1001 row) → correlation header `lab-request-001` → stop container.
 
 ## Step 2 — Check the reference
 

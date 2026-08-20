@@ -1,0 +1,8 @@
+<!--
+  TODO(lab41): Merge this dependency into java-bootcamp/examples/lab41-crm/pom.xml
+  next to your other starters. Do not expose env/beans.
+-->
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
