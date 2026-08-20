@@ -7,7 +7,7 @@
 | **Time** | 10–12 minutes |
 | **Checkpoint** | **A** (after slides 61–73) |
 | **Deliverable** | `notes/lab42-config-vs-secret.md` |
-| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+| **Fixtures** | CUS-1001 list smoke · Lab 41 image `crm-api:lab41` · no Secret values |
 
 ### What you will learn
 
@@ -19,11 +19,11 @@ Never commit kubeconfig, tokens, or Secret data values.
 
 ### Predict
 
-SPRING_DATASOURCE_PASSWORD — ConfigMap or Secret?
+`CRM_DB_PASSWORD` — ConfigMap or Secret? `CRM_DB_HOST` — ConfigMap or Secret?
 
 ### Debug
 
-Secret.example.yaml with real password — gate fail?
+`secret.example.yaml` applied (or committed with a real password) — gate fail?
 
 ### Troubleshooting
 
@@ -51,11 +51,11 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Sort list
 
-Sort: datasource URL host, DB password, Kafka bootstrap, JWT issuer URI, log level, feature flags.
+Sort: `CRM_DB_HOST`, `CRM_DB_NAME`, `CRM_DB_USER`, `CRM_DB_PASSWORD`, `SPRING_PROFILES_ACTIVE`, log level.
 
 ## Step 2 — Check the reference
 
-Secret data is created out-of-band; Git only gets `secret.example.yaml` without values.
+Secret data is created out-of-band; Git only gets `secret.example.yaml` without values. Never `kubectl apply` the example file.
 
 ## Step 3 — CRM fixtures
 
@@ -84,11 +84,11 @@ From `examples/module-42-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Sort list
 
-Sort: datasource URL host, DB password, Kafka bootstrap, JWT issuer URI, log level, feature flags.
+Sort: `CRM_DB_HOST`, `CRM_DB_NAME`, `CRM_DB_USER`, `CRM_DB_PASSWORD`, `SPRING_PROFILES_ACTIVE`, log level.
 
 ## Step 2 — Check the reference
 
-Secret data is created out-of-band; Git only gets `secret.example.yaml` without values.
+Secret data is created out-of-band; Git only gets `secret.example.yaml` without values. Never `kubectl apply` the example file.
 
 ## Step 3 — CRM fixtures
 

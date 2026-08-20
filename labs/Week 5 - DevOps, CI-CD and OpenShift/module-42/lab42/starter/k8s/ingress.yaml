@@ -5,12 +5,11 @@ metadata:
   labels:
     app: crm-api
   annotations:
-    # TODO(lab42): Traefik / TLS annotations per instructor (redirect HTTPS)
-    # traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  # TODO(lab42): ingressClassName if required (e.g. traefik)
+  ingressClassName: traefik
   rules:
-    - host: crm-api.TODO.example.test
+    - host: crm-api.training.example.test
       http:
         paths:
           - path: /
@@ -20,7 +19,4 @@ spec:
                 name: crm-api
                 port:
                   number: 80
-  # tls:
-  #   - hosts:
-  #       - crm-api.TODO.example.test
-  #     secretName: crm-api-tls
+  # TLS optional for local k3d training — smoke uses HTTP + Host header on :8088

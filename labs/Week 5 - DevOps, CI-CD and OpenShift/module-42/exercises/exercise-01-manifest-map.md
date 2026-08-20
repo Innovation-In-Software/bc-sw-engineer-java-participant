@@ -7,7 +7,7 @@
 | **Time** | 12–15 minutes |
 | **Checkpoint** | **A** (after slides 61–73) |
 | **Deliverable** | `notes/lab42-manifest-map.md` |
-| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+| **Fixtures** | CUS-1001 list smoke · Lab 41 image `crm-api:lab41` · no Secret values |
 
 ### What you will learn
 
@@ -29,7 +29,7 @@ Using OpenShift Route YAML on Traefik-only k3s — fix?
 
 | Symptom | Fix |
 | --- | --- |
-| No Lab 41 digest | Pin image digest from container lab |
+| No Lab 41 image | Build `crm-api:lab41` in Lab 41; record Image Id |
 | Applying to cluster in pre-lab | Notes/dry-run only until Lab 42 |
 
 **Module 42** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -65,7 +65,7 @@ List: Namespace (student), ConfigMap, Secret (ref only), Deployment, Service, In
 
 ## Step 2 — Check the reference
 
-Cohort cluster uses shared k3s with Traefik Ingress and per-student namespaces—use `kubectl` and instructor kubeconfig (never commit it).
+Default student cluster is **local k3d** (`lab42`, Traefik Ingress). Use `kubectl` with the k3d kubeconfig (never commit it). A shared instructor cluster is optional and only if the instructor publishes it.
 
 ## Step 3 — Labels
 
@@ -73,7 +73,7 @@ Propose app labels: `app=crm-api`, `lab=42`, `customer-fixture=synthetic`.
 
 ## Step 4 — Image pin
 
-Note image must be digest-pinned from Lab 41—not `:latest` alone.
+Note image is Lab 41 tag `crm-api:lab41` (record Image Id). Do not deploy `:latest` alone. A registry digest is optional until you push.
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -108,7 +108,7 @@ List: Namespace (student), ConfigMap, Secret (ref only), Deployment, Service, In
 
 ## Step 2 — Check the reference
 
-Cohort cluster uses shared k3s with Traefik Ingress and per-student namespaces—use `kubectl` and instructor kubeconfig (never commit it).
+Default student cluster is **local k3d** (`lab42`, Traefik Ingress). Use `kubectl` with the k3d kubeconfig (never commit it). A shared instructor cluster is optional and only if the instructor publishes it.
 
 ## Step 3 — Labels
 
@@ -116,7 +116,7 @@ Propose app labels: `app=crm-api`, `lab=42`, `customer-fixture=synthetic`.
 
 ## Step 4 — Image pin
 
-Note image must be digest-pinned from Lab 41—not `:latest` alone.
+Note image is Lab 41 tag `crm-api:lab41` (record Image Id). Do not deploy `:latest` alone. A registry digest is optional until you push.
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -128,7 +128,7 @@ Confirm fixtures if used: Amina `CUS-1001`/`ACTIVE`, Ravi `CUS-1002`/`PROSPECT`,
 
 ## Expected result
 
-A manifest object map with labels and digest-pin note in `notes/lab42-manifest-map.md`.
+A manifest object map with labels and Lab 41 image-id note in `notes/lab42-manifest-map.md`.
 
 ## If it fails
 
@@ -145,5 +145,5 @@ Self-check before marking Pass:
 - [ ] File exists at `notes/lab42-manifest-map.md`
 - [ ] Six object types listed
 - [ ] Traefik Ingress noted
-- [ ] Digest pin required
+- [ ] Image tag `crm-api:lab41` + Image Id noted
 

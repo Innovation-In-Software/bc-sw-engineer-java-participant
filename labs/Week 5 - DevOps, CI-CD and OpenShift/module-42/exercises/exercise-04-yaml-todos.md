@@ -7,11 +7,11 @@
 | **Time** | 12–15 minutes |
 | **Checkpoint** | **B** (after slides 74–77) |
 | **Deliverable** | `notes/lab42-yaml-todos.md` |
-| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+| **Fixtures** | CUS-1001 list smoke · Lab 41 image `crm-api:lab41` · no Secret values |
 
 ### What you will learn
 
-Fill image digest, resources, securityContext, probes, labels TODOs.
+Fill image tag `crm-api:lab41`, resources, securityContext, probes, labels TODOs.
 
 ### Enterprise context
 
@@ -29,7 +29,7 @@ ImagePullBackOff — checklist?
 
 | Symptom | Fix |
 | --- | --- |
-| Floating :latest only | Pin digest from Lab 41 |
+| Floating :latest only | Use tag `crm-api:lab41` and record Image Id |
 | Missing resources | Set CPU/memory requests and limits |
 
 **Module 42** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -81,18 +81,18 @@ spec:
         runAsUser: _____
       containers:
       - name: crm-api
-        image: _____@sha256:_____
+        image: crm-api:lab41
         ports:
-        - containerPort: _____
+        - containerPort: 8080
         readinessProbe:
           httpGet:
-            path: _____
-            port: _____
+            path: /actuator/health/readiness
+            port: http
 ```
 
 ## Step 2 — Fill
 
-Fill replicas, non-root, image digest placeholder, port, readiness path.
+Fill replicas (`1`), non-root UID `10001`, image tag `crm-api:lab41`, port `8080`, readiness path.
 
 ## Step 3 — Resources block
 

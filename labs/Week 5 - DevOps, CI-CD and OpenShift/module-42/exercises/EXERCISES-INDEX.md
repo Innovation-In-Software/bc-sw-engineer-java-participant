@@ -5,7 +5,7 @@
 **Module:** 42 — Kubernetes (k3s) Deployment  
 **Next:** [`../lab42/LAB-42-GUIDE.md`](../lab42/LAB-42-GUIDE.md)
 
-Complete **in order** after each slide checkpoint. Notes under `examples/module-42-exercises/` — not the graded lab.
+Complete **in order** after each slide checkpoint. Notes under `examples/module-42-exercises/` in **your** `java-bootcamp` — not the course clone, and not the graded lab.
 
 ## Practice order (interleaved)
 
@@ -26,7 +26,7 @@ Then **checkpoint E** → Lab 42.
 | Do now | Do not yet |
 | --- | --- |
 | Manifests, probes, secret split, rollback plan | Commit Secret values / kubeconfig |
-| Digest-pinned image references | GHA deploy (43–44) / Terraform cluster (45) |
+| Image tag `crm-api:lab41` + record Image Id | GHA deploy (43–44) / Terraform cluster (45) |
 
 ## Workspace
 
@@ -41,4 +41,4 @@ New-Item -ItemType Directory -Force -Path examples\module-42-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; runbook outline self-mark **Pass**; Lab 41 digest ready.
+All six notes files exist; runbook outline self-mark **Pass**; Lab 41 Image Id recorded for Lab 42.

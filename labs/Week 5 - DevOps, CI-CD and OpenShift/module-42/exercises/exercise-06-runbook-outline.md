@@ -7,7 +7,7 @@
 | **Time** | 8–10 minutes |
 | **Checkpoint** | **D** (after slides 85–87) |
 | **Deliverable** | `notes/lab42-runbook-outline.md` |
-| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+| **Fixtures** | CUS-1001 list smoke · Lab 41 image `crm-api:lab41` · no Secret values |
 
 ### What you will learn
 
@@ -29,7 +29,7 @@ Terraform/Ansible for cluster now — wrong lab?
 
 | Symptom | Fix |
 | --- | --- |
-| Vague 'kubectl apply somehow' | Exact -f paths and rollout status |
+| Vague 'kubectl apply somehow' | Exact listed `-f` files (not `k8s/`), `-n crm-training`, rollout status |
 | Secrets in runbook screenshots | Redact tokens/passwords |
 
 **Module 42** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -55,7 +55,7 @@ Prereqs, apply order, verify probes, smoke CRM, rollback, contacts.
 
 ## Step 2 — Apply order
 
-Propose order: ConfigMap → Secret (out-of-band) → Deployment → Service → Ingress.
+Propose order: ConfigMap → Secret (out-of-band, never apply `secret.example.yaml`) → Deployment → Service → Ingress.
 
 ## Step 3 — Safety
 
@@ -88,7 +88,7 @@ Prereqs, apply order, verify probes, smoke CRM, rollback, contacts.
 
 ## Step 2 — Apply order
 
-Propose order: ConfigMap → Secret (out-of-band) → Deployment → Service → Ingress.
+Propose order: ConfigMap → Secret (out-of-band, never apply `secret.example.yaml`) → Deployment → Service → Ingress.
 
 ## Step 3 — Safety
 

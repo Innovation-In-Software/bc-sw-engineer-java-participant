@@ -1,6 +1,6 @@
 # Module 42 exercise starters
 
-Copy into `~/java-bootcamp/examples/module-42-exercises/notes/` and fill TODOs.
+Copy into `~/java-bootcamp/examples/module-42-exercises/notes/` and fill TODOs. Do not write notes in the course clone.
 
 | File | Exercise |
 | --- | --- |

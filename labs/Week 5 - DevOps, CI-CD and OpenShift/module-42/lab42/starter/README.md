@@ -2,49 +2,76 @@
 
 **Theme:** k3s / Kubernetes manifests — Deployment, Service, ConfigMap, Ingress, probes
 
+## Two folders
+
+| Folder | You… |
+| ------ | ---- |
+| **Course clone** (this `starter/` directory) | Read / copy **from** here |
+| **`java-bootcamp`** | Copy these YAML stubs **to** `examples/lab42-crm`, fill TODOs, apply to **local k3d**, commit |
+
+Do **not** grade work inside the course `labs/` tree. IntelliJ stays on `java-bootcamp`. Starter is **not** a Spring app and **not** a cluster.
+
 ## Activity card
 
 | | |
 | --- | --- |
 | **Checkpoint** | **E** |
 | **Must prove** | dry-run · 3 probes · empty Secret example · runbook undo |
-| **Hard gate** | Pre-lab Pass · Lab 41 digest |
+| **Hard gate** | Pre-lab Pass · Lab 41 image `crm-api:lab41` |
 
 ## Copy into your workspace
 
-Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab42-crm`.
-
-**Windows (PowerShell)** — from this lab folder:
+**Windows (PowerShell):**
 
 ```powershell
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab42-crm" | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab42-crm\"
-cd $env:USERPROFILE\java-bootcamp\examples\lab42-crm
+$jb = "$env:USERPROFILE\java-bootcamp"
+$courseLab42 = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 5 - DevOps, CI-CD and OpenShift\module-42\lab42"
+
+New-Item -ItemType Directory -Force -Path "$jb\examples\lab42-crm" | Out-Null
+Copy-Item -Recurse -Force "$courseLab42\starter\*" "$jb\examples\lab42-crm\"
+cd "$jb\examples\lab42-crm"
 ```
 
 **macOS / Linux:**
 
 ```bash
-mkdir -p ~/java-bootcamp/examples/lab42-crm
-cp -R starter/. ~/java-bootcamp/examples/lab42-crm/
-cd ~/java-bootcamp/examples/lab42-crm
+JB=~/java-bootcamp
+COURSE_LAB42=~/bc-sw-engineer-java-participant/labs/Week\ 5\ -\ DevOps,\ CI-CD\ and\ OpenShift/module-42/lab42
+
+mkdir -p "$JB/examples/lab42-crm"
+cp -R "$COURSE_LAB42/starter/." "$JB/examples/lab42-crm/"
+cd "$JB/examples/lab42-crm"
 ```
+
+Then create k3d + `crm_lab42` as in [LAB-42-GUIDE.md](../LAB-42-GUIDE.md) Step 1.
 
 ## 45-minute checklist
 
-- [ ] Fill TODOs in `k8s/configmap.yaml`, `deployment.yaml`, `service.yaml`, `ingress.yaml`
-- [ ] Complete `k8s/secret.example.yaml` (structure only — no real values)
-- [ ] Set distinct startup / readiness / liveness probes
-- [ ] Pin image digest (from Lab 41); set resources + non-root securityContext
-- [ ] Dry-run apply; document commands in `docs/deployment-runbook.md`
+- [ ] Work is in `java-bootcamp/examples/lab42-crm` (not course `labs/`)
+- [ ] ConfigMap: profile **`docker`**, `CRM_DB_HOST=host.k3d.internal`, db **`crm_lab42`**, user **`crm`**
+- [ ] `secret.example.yaml` documents keys only — **never apply** it
+- [ ] Distinct startup / readiness / liveness (startup on **readiness** path)
+- [ ] Image `crm-api:lab41` (record Lab 41 Image Id; no fake digest)
+- [ ] Dry-run listed files (not `kubectl apply -f k8s/`)
+- [ ] Fill `docs/deployment-runbook.md`
 
 ## Smoke test
 
+From **`java-bootcamp/examples/lab42-crm`**:
+
 ```bash
-kubectl apply --dry-run=client -f k8s/
-# When kubeconfig + namespace ready (instructor k3s):
-# kubectl apply -f k8s/
-# kubectl rollout status deployment/crm-api -n <your-ns>
+kubectl apply --dry-run=client -n crm-training \
+  -f k8s/configmap.yaml -f k8s/deployment.yaml -f k8s/service.yaml -f k8s/ingress.yaml
+```
+
+Live apply (homework / full path) uses the same listed files plus an out-of-band Secret. Host-header smoke:
+
+```bash
+curl -fsS -H "Host: crm-api.training.example.test" \
+  http://127.0.0.1:8088/actuator/health/readiness
+curl -fsS -H "Host: crm-api.training.example.test" \
+  -H "X-Correlation-Id: lab-request-001" \
+  "http://127.0.0.1:8088/api/customers?status=ACTIVE"
 ```
 
 Evidence under `~/java-bootcamp/notes/screenshots/lab-42/` (redact kubeconfig/tokens).
@@ -53,13 +80,13 @@ Evidence under `~/java-bootcamp/notes/screenshots/lab-42/` (redact kubeconfig/to
 
 | Criterion | Pass / Fail |
 | --------- | ----------- |
-| Manifests pass `kubectl apply --dry-run=client` | Pass / Fail |
+| Work is in `java-bootcamp/examples/lab42-crm` | Pass / Fail |
+| Manifests pass listed-file dry-run | Pass / Fail |
 | Three distinct probes configured | Pass / Fail |
-| Secret example has no real passwords | Pass / Fail |
-| Runbook lists apply + rollback undo | Pass / Fail |
+| Secret example has no real passwords and is not applied | Pass / Fail |
+| Runbook lists apply + Host-header smoke + rollback undo | Pass / Fail |
 
-Continue remaining GUIDE steps as homework / full path if needed.
-
+Continue remaining GUIDE steps as homework (k3d import, live apply, list smoke, undo).
 
 ### Troubleshooting
 
@@ -67,5 +94,6 @@ Continue remaining GUIDE steps as homework / full path if needed.
 | --- | --- |
 | Dry-run schema errors | Fix API versions/required fields |
 | Selector mismatch | Align Service selector with Pod labels |
-| Probe copy-paste same | Distinct startup/ready/live |
+| Probe copy-paste same | Distinct startup / ready / live |
 | Real password in example | Remove; use placeholders only |
+| `apply -f k8s/` | That installs the fake Secret — apply listed files only |

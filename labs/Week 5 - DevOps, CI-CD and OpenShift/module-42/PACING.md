@@ -1,7 +1,7 @@
 # Module 42 — Learn → Practice → Review (participant)
 
 **Theme:** Kubernetes (k3s) Deployment (OpenShift comparison awareness)  
-**CRM:** Deployment + Service + ConfigMap + Secret refs + Ingress · digest-pinned Lab 41 image
+**CRM:** Deployment + Service + ConfigMap + Secret refs + Ingress · Lab 41 image `crm-api:lab41` on **local k3d**
 
 ## Checkpoint map
 
@@ -22,11 +22,11 @@
 | Do now | Don't yet |
 | --- | --- |
 | Manifests, probes, ConfigMap/Secret split, rollback plan | Commit Secret values / kubeconfig |
-| Digest-pinned image; Traefik Ingress (cohort default) | Invent Routes if cluster is Ingress-only |
+| Local k3d + imported `crm-api:lab41`; Traefik Ingress | Invent Routes; apply `secret.example.yaml` |
 | Runbook outline | GitHub Actions deploy (43–44) / Terraform cluster (45) |
 
 ## Hard gate before Lab 42
 
-- [ ] Ex notes complete
-- [ ] Lab 41 image digest known
-- [ ] Instructor namespace / kubeconfig plan (no secrets in Git)
+- [ ] Ex notes complete in `java-bootcamp/examples/module-42-exercises/notes/`
+- [ ] Lab 41 image `crm-api:lab41` on the laptop (Image Id recorded)
+- [ ] Docker Desktop + k3d plan (no secrets in Git)

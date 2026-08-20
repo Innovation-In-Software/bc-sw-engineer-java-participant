@@ -7,7 +7,7 @@
 | **Time** | 12–15 minutes |
 | **Checkpoint** | **B** (after slides 74–77) |
 | **Deliverable** | `notes/lab42-probe-design.md` |
-| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+| **Fixtures** | CUS-1001 list smoke · Lab 41 image `crm-api:lab41` · no Secret values |
 
 ### What you will learn
 
@@ -30,7 +30,7 @@ Same probe for all three — risk?
 | Symptom | Fix |
 | --- | --- |
 | CrashLoop from aggressive liveness | Lengthen startup; separate probes |
-| Health 401 | Permit actuator health in Security |
+| Health 404 | Profile must be `docker` so Lab 41 actuator probes exist |
 
 **Module 42** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
@@ -59,7 +59,7 @@ Do not point all three at the same shallow endpoint without thinking—readiness
 
 ## Step 3 — Paths
 
-Propose Actuator paths/ports for each probe (placeholders OK).
+Propose Actuator paths: startup and readiness on `/actuator/health/readiness`; liveness on `/actuator/health/liveness`.
 
 ## Step 4 — Failure story
 
@@ -92,7 +92,7 @@ Do not point all three at the same shallow endpoint without thinking—readiness
 
 ## Step 3 — Paths
 
-Propose Actuator paths/ports for each probe (placeholders OK).
+Propose Actuator paths: startup and readiness on `/actuator/health/readiness`; liveness on `/actuator/health/liveness`.
 
 ## Step 4 — Failure story
 

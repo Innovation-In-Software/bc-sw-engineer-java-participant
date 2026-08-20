@@ -7,7 +7,7 @@
 | **Time** | 10–12 minutes |
 | **Checkpoint** | **B** (after slides 74–77) |
 | **Deliverable** | `notes/lab42-rollout-rollback.md` |
-| **Fixtures** | CUS-1001 smoke · digest-pinned Lab 41 image · no Secret values |
+| **Fixtures** | CUS-1001 list smoke · Lab 41 image `crm-api:lab41` · no Secret values |
 
 ### What you will learn
 
@@ -51,11 +51,11 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Rollout watch
 
-List: `kubectl rollout status`, pod Ready, Ingress HTTP check, CRM get `CUS-1001`.
+List: `kubectl rollout status`, pod Ready, Host-header Ingress check on `:8088`, `GET /api/customers`.
 
 ## Step 2 — Check the reference
 
-Rollback rehearses a bad revision then `rollout undo` to known-good digest.
+Rollback rehearses a bad image tag then `rollout undo` to `crm-api:lab41`.
 
 ## Step 3 — Evidence
 
@@ -84,11 +84,11 @@ From `examples/module-42-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Rollout watch
 
-List: `kubectl rollout status`, pod Ready, Ingress HTTP check, CRM get `CUS-1001`.
+List: `kubectl rollout status`, pod Ready, Host-header Ingress check on `:8088`, `GET /api/customers`.
 
 ## Step 2 — Check the reference
 
-Rollback rehearses a bad revision then `rollout undo` to known-good digest.
+Rollback rehearses a bad image tag then `rollout undo` to `crm-api:lab41`.
 
 ## Step 3 — Evidence
 

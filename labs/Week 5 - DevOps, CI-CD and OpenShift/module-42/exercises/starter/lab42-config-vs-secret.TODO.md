@@ -2,7 +2,10 @@
 
 | Key | ConfigMap or Secret? |
 | --- | --- |
-| SPRING_DATASOURCE_URL | ConfigMap TODO |
-| SPRING_DATASOURCE_PASSWORD | Secret TODO |
+| CRM_DB_HOST | ConfigMap TODO |
+| CRM_DB_NAME | ConfigMap TODO |
+| CRM_DB_USER | ConfigMap TODO |
+| CRM_DB_PASSWORD | Secret TODO |
+| SPRING_PROFILES_ACTIVE | ConfigMap TODO (`docker`) |
 
-Never commit values for Secret.
+Never commit Secret values. Never `kubectl apply` `secret.example.yaml`.
