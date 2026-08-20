@@ -27,6 +27,7 @@
 
 ## Hard gate before Lab 40
 
-- [ ] Ex notes complete (order above)
-- [ ] Lab 39 `verify` green (fix inherited failures first)
-- [ ] Evidence folder plan under `notes/screenshots/lab-40/`
+- [ ] Ex notes complete in `java-bootcamp/examples/module-40-exercises/notes/` (order above)
+- [ ] Lab 39 `mvn -B test` green in `java-bootcamp/examples/lab39-crm`
+- [ ] Personal NVD API key requested (env only)
+- [ ] Evidence folder plan under `java-bootcamp/notes/screenshots/lab-40/`

@@ -1,6 +1,6 @@
 # Module 40 exercise starters
 
-Copy into `~/java-bootcamp/examples/module-40-exercises/notes/` and fill TODOs.
+Copy into **`java-bootcamp/examples/module-40-exercises/notes/`** (your repo) and fill TODOs. Read the exercise sheets from the course clone.
 
 | File | Exercise |
 | --- | --- |

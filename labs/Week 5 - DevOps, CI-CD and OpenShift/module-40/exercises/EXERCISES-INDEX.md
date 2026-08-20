@@ -5,7 +5,7 @@
 **Module:** 40 — Application Security Testing  
 **Next:** [`../lab40/LAB-40-GUIDE.md`](../lab40/LAB-40-GUIDE.md)
 
-Complete **in order** after each slide checkpoint. Notes under `examples/module-40-exercises/` — not the graded lab.
+Complete **in order** after each slide checkpoint. Notes under **`java-bootcamp/examples/module-40-exercises/`** — not the course clone and not the graded lab.
 
 ## Practice order (interleaved)
 
@@ -27,11 +27,13 @@ Then **checkpoint E** → Lab 40.
 | Surfaces, SCA plan, triage CSV, SAST notes, gate questions | Docker (41) / k3s (42) / GitHub Actions (43) |
 | Residual risk owner + expiry language | Silent suppressions / real PII in evidence |
 
-## Workspace
+## Workspace (your repo only)
 
 | | Windows | macOS |
 | --- | --- | --- |
 | Folder | `%USERPROFILE%\java-bootcamp\examples\module-40-exercises` | `~/java-bootcamp/examples/module-40-exercises` |
+
+Read exercise sheets in the **course clone**. Create the notes files in **`java-bootcamp`**.
 
 ```powershell
 cd $env:USERPROFILE\java-bootcamp
@@ -40,4 +42,4 @@ New-Item -ItemType Directory -Force -Path examples\module-40-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; go/no-go self-mark **Pass**; Lab 39 verify green before scanning.
+All six notes files exist in **`java-bootcamp`**; go/no-go self-mark **Pass**; Lab 39 `mvn -B test` green before scanning.

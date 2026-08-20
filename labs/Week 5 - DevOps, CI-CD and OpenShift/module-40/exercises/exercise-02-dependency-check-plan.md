@@ -29,7 +29,7 @@ Unpinned plugin version — what drifts?
 
 | Symptom | Fix |
 | --- | --- |
-| API key in Git | Use env only for NVD key |
+| API key in Git | Use env only for NVD key (`-DnvdApiKey`); never pom.xml |
 | Deleting the profile to go green | Triage/fix instead |
 
 **Module 40** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -55,7 +55,7 @@ Write a bullet plan for a Maven profile `-Psecurity-scan`: plugin goal, HTML+JSO
 
 ## Step 2 — Check the reference
 
-Confirm JDK 21 + Maven Wrapper habits: `./mvnw -B -Psecurity-scan dependency-check:check` from the CRM module root.
+Confirm JDK 21 + Maven habits: from **`java-bootcamp/examples/lab40-crm`** (not the course clone) run `mvn -B -Psecurity-scan dependency-check:check` with `-DnvdApiKey` from env (plugin pin **10.0.4**). Lab 39 has no wrapper — use `mvn`.
 
 ## Step 3 — Suppression policy draft
 
@@ -88,7 +88,7 @@ Write a bullet plan for a Maven profile `-Psecurity-scan`: plugin goal, HTML+JSO
 
 ## Step 2 — Check the reference
 
-Confirm JDK 21 + Maven Wrapper habits: `./mvnw -B -Psecurity-scan dependency-check:check` from the CRM module root.
+Confirm JDK 21 + Maven habits: from **`java-bootcamp/examples/lab40-crm`** (not the course clone) run `mvn -B -Psecurity-scan dependency-check:check` with `-DnvdApiKey` from env (plugin pin **10.0.4**). Lab 39 has no wrapper — use `mvn`.
 
 ## Step 3 — Suppression policy draft
 

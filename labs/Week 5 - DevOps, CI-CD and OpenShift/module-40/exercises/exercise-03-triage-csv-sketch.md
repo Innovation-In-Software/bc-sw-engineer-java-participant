@@ -11,7 +11,7 @@
 
 ### What you will learn
 
-Sketch CSV columns: CVE, severity, decision, owner, expiry.
+Sketch CSV columns used in Lab 40: finding_id, source, package_or_location, cve_or_rule, cvss, classification, owner, due_date, notes.
 
 ### Enterprise context
 
@@ -29,7 +29,7 @@ Accept forever with no owner — gate fail?
 
 | Symptom | Fix |
 | --- | --- |
-| Empty decision column | fix / accept / false-positive / defer |
+| Empty classification column | Use `confirmed` / `false_positive` / `mitigated` / `accepted` / `needs_review` |
 | Real customer PII in CSV | Synthetic fixtures only |
 
 **Module 40** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -53,26 +53,27 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 | Classification | Meaning |
 | --- | --- |
-| true_positive | Confirm and fix or accept with owner |
+| confirmed | Reachable/true issue — fix or accept with owner |
 | false_positive | Document CPE/path mismatch |
-| accepted_risk | Time-bounded, owned |
-| fixed | Re-scan evidence required |
+| mitigated | Control in place; still record evidence |
+| accepted | Time-bounded, owned, expiry required |
+| needs_review | Not classified yet |
 
 ## Step 1 — Columns
 
-Define CSV headers: finding_id, cve, cvss, dependency, path, classification, owner, due_date, notes.
+Use these headers (same as Lab 40 GUIDE): `finding_id,source,package_or_location,cve_or_rule,cvss,classification,owner,due_date,notes`.
 
 ## Step 2 — Check the reference
 
-Classifications: `true_positive`, `false_positive`, `accepted_risk`, `fixed`. Accepted risk needs owner + expiry.
+Classifications: `confirmed`, `false_positive`, `mitigated`, `accepted`, `needs_review`. `accepted` needs owner + expiry.
 
 ## Step 3 — Sample rows
 
-Invent two synthetic rows (not real CVEs from production). One true_positive on a transitive JAR; one false_positive with rationale.
+Invent two synthetic rows (not real production CVEs). One `confirmed` on a transitive JAR; one `false_positive` with rationale.
 
 ## Step 4 — CRM link
 
-Note how a true_positive on the API layer could affect agents opening `CUS-1001` profiles—without claiming you are remediating today.
+Note how a `confirmed` finding on the API layer could affect agents opening `CUS-1001` profiles—without claiming you are remediating today.
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -95,26 +96,27 @@ From `examples/module-40-exercises/`, create `notes/` if needed, then create `no
 
 | Classification | Meaning |
 | --- | --- |
-| true_positive | Confirm and fix or accept with owner |
+| confirmed | Reachable/true issue — fix or accept with owner |
 | false_positive | Document CPE/path mismatch |
-| accepted_risk | Time-bounded, owned |
-| fixed | Re-scan evidence required |
+| mitigated | Control in place; still record evidence |
+| accepted | Time-bounded, owned, expiry required |
+| needs_review | Not classified yet |
 
 ## Step 1 — Columns
 
-Define CSV headers: finding_id, cve, cvss, dependency, path, classification, owner, due_date, notes.
+Use these headers (same as Lab 40 GUIDE): `finding_id,source,package_or_location,cve_or_rule,cvss,classification,owner,due_date,notes`.
 
 ## Step 2 — Check the reference
 
-Classifications: `true_positive`, `false_positive`, `accepted_risk`, `fixed`. Accepted risk needs owner + expiry.
+Classifications: `confirmed`, `false_positive`, `mitigated`, `accepted`, `needs_review`. `accepted` needs owner + expiry.
 
 ## Step 3 — Sample rows
 
-Invent two synthetic rows (not real CVEs from production). One true_positive on a transitive JAR; one false_positive with rationale.
+Invent two synthetic rows (not real production CVEs). One `confirmed` on a transitive JAR; one `false_positive` with rationale.
 
 ## Step 4 — CRM link
 
-Note how a true_positive on the API layer could affect agents opening `CUS-1001` profiles—without claiming you are remediating today.
+Note how a `confirmed` finding on the API layer could affect agents opening `CUS-1001` profiles—without claiming you are remediating today.
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -141,7 +143,7 @@ A triage CSV sketch with two synthetic rows and clear classifications in `notes/
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab40-triage-csv-sketch.md`
-- [ ] Headers match the triage model
+- [ ] Headers match the Lab 40 GUIDE columns
 - [ ] Two sample rows classified
-- [ ] Accepted-risk rules stated
+- [ ] `accepted` rules (owner + expiry) stated
 

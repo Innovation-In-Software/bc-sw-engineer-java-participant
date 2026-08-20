@@ -2,7 +2,8 @@
 
 **App:** Northstar CRM (`lab40-crm`)  
 **Fixtures:** `CUS-1001`, `CUS-1002`, correlation `lab-request-001`  
-**Scan command:** `./mvnw -B -Psecurity-scan dependency-check:check`
+**Repo:** `java-bootcamp/examples/lab40-crm` (not the course clone)  
+**Scan command:** `mvn -B -Psecurity-scan dependency-check:check` + `-DnvdApiKey` from env + `-DdataDirectory` (plugin **10.0.4**)
 
 ## Summary
 

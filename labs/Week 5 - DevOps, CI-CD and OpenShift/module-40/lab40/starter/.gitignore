@@ -1,0 +1,7 @@
+target/
+dependency-check-data/
+.idea/
+*.iml
+.env
+*.log
+.DS_Store

@@ -19,7 +19,7 @@ Manual focused SAST complements Dependency-Check.
 
 ### Predict
 
-Object-level authz miss on GET /customers/{id} — how prove?
+Lab 39 `GET /api/customers` has no Spring Security — what do you record as the authz finding?
 
 ### Debug
 
@@ -30,13 +30,14 @@ DAST-only mindset — what do you miss offline?
 | Symptom | Fix |
 | --- | --- |
 | No code locations | Record class/method for each finding |
+| Looking for `GET /{id}` | Lab 39 is list-only (`CustomerController.list`) until you add GET-by-id |
 | CI workflow files now | Park GitHub Actions for Lab 43 |
 
 **Module 40** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
 
 ## Deliverable
 
-**Submit only** the file(s) below (not the graded lab).
+**Submit only** the file(s) below (not the graded lab). Write the file in **`java-bootcamp/examples/module-40-exercises/`**.
 
 | Item | Path (under `examples/module-40-exercises/`) |
 | ---- | --------------------------------------------- |
@@ -46,13 +47,15 @@ DAST-only mindset — what do you miss offline?
 
 Here is the shape of a complete answer for this exercise. Adapt the content — do not leave blanks.
 
-```markdown
-# Lab 40 — Fill SAST Path TODOs
+Use one notes file (`lab40-sast-todo-notes.md`) with two path blocks. Lab 39’s read API is `GET /api/customers` (query params `status`, `page`, `size`) — there is no `{id}` route yet.
 
-## Step 1 — Copy template
+Fill:
 
-In notes, create `sast-path-todo.md` with blanks:
-```
+- Endpoint
+- Authz check (Lab 39: none)
+- Sink (SQL/file/log)
+- Customer fixture used
+- Risk if missing check
 
 Then follow **Steps** to create your own file.
 
@@ -60,35 +63,28 @@ Then follow **Steps** to create your own file.
 
 ### Step 1 — Create the notes file
 
-From `examples/module-40-exercises/`, create `notes/` if needed, then create `notes/lab40-sast-todo-notes.md`.
+From `java-bootcamp/examples/module-40-exercises/`, create `notes/` if needed, then create `notes/lab40-sast-todo-notes.md`.
 
 ### Step 2 — Paste and complete this template
 
 ```markdown
 # Lab 40 — Fill SAST Path TODOs
 
-## Step 1 — Copy template
+## Path A — customer list (read)
 
-In notes, create `sast-path-todo.md` with blanks:
-```
-Endpoint: _____
-Authz check: _____
-Sink (SQL/file/log): _____
-Customer fixture used: _____
-Risk if missing check: _____
-```
+- Endpoint: GET /api/customers
+- Authz check: _____
+- Sink (SQL/file/log): _____
+- Customer fixture used: CUS-1001
+- Risk if missing check: _____
 
-## Step 2 — Fill for customer read
+## Path B — write / status change
 
-Fill blanks for `GET /api/customers/{id}` using `CUS-1001`. Authz must mention role/object-level check TODOs.
-
-## Step 3 — Second path
-
-Duplicate the template for a write path (update interaction or status) involving `CUS-1002`.
-
-## Step 4 — Self-check
-
-Ensure no passwords, tokens, or real PII appear. Mark items still `_____` that Lab 40 will prove with code.
+- Endpoint: _____
+- Authz check: _____
+- Sink (SQL/file/log): _____
+- Customer fixture used: CUS-1002
+- Risk if missing check: _____
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -118,4 +114,3 @@ Self-check before marking Pass:
 - [ ] Template filled for read and write paths
 - [ ] Fixtures CUS-1001/CUS-1002 used
 - [ ] No secrets in notes
-
