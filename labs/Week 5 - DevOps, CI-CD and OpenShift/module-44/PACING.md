@@ -1,7 +1,7 @@
 # Module 44 — Learn → Practice → Review (participant)
 
 **Theme:** Continuous Delivery and Release Management  
-**CRM:** Immutable promote test→staging→prod · gates · checklist · rollback · staging smoke
+**CRM:** Promote Lab 43 `jarSha256` test→staging→prod · gates · checklist · rollback · list-API smoke
 
 ## Checkpoint map
 
@@ -17,16 +17,19 @@
 
 **1 → 2 → 3 → 5 → 4 → 6** then Lab 44.
 
+Write notes in **`java-bootcamp/examples/module-44-exercises/notes/`**, not the course clone.
+
 ## Do / don't
 
 | Do now | Don't yet |
 | --- | --- |
-| Manifest digests; promotion gates; checklist; rollback; staging smoke plan | Rebuild artifact on deploy host |
-| Promote Lab 43 package-once identity | Put env secrets inside the artifact |
+| Manifest from Lab 43 `SHA256SUMS`; promotion gates; checklist; rollback; list-API smoke plan | Rebuild artifact on deploy host (`mvn package`) |
+| Promote Lab 43 package-once **`jarSha256`** | Invent GHCR digest / put env secrets inside the artifact |
+| Plan a **root** `crm-cd.yml` | Nested `.github/` under `examples/` as the live file |
 | Synthetic CRM fixtures only | Terraform/Ansible apply (Lab 45) / Kafka DLT (Lab 46) |
 
 ## Hard gate before Lab 44
 
-- [ ] Ex notes complete (order 1→2→3→5→4→6)
-- [ ] Lab 43 package-once SHA / digest available
+- [ ] Ex notes complete in `java-bootcamp/examples/module-44-exercises/notes/` (order 1→2→3→5→4→6)
+- [ ] Lab 43 `crm-jar` / `SHA256SUMS` available (`jarSha256` — image digest optional)
 - [ ] No secrets or real customer data in plans

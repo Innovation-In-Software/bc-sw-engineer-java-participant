@@ -1,6 +1,6 @@
 # Module 44 exercise starters
 
-Copy into `~/java-bootcamp/examples/module-44-exercises/notes/` and fill TODOs.
+Copy into **`java-bootcamp/examples/module-44-exercises/notes/`** (not the course clone) and fill TODOs.
 
 Complete in order **1 → 2 → 3 → 5 → 4 → 6**.
 

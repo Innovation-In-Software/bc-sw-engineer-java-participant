@@ -7,7 +7,7 @@
 | **Time** | 10–12 minutes |
 | **Checkpoint** | **C** (after slides 132–138) |
 | **Deliverable** | `notes/lab44-rollback-runbook.md` |
-| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · prior Lab 43 `jarSha256` · list-API verify |
 
 ### What you will learn
 
@@ -30,7 +30,7 @@ DB migrate not backward compatible — rollback limit?
 | Symptom | Fix |
 | --- | --- |
 | No known-good digest | Record prior before promote |
-| Kafka DLT procedures now | Park Lab 46 |
+| Kafka DLT procedures now | Park Lab 46 — Lab 44 smoke is the list API |
 
 **Module 44** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
@@ -61,9 +61,9 @@ Rollback names digest Y and a verification check—not “redeploy latest”.
 
 Write a target recovery time placeholder (e.g. under N minutes) and who declares SEV.
 
-## Step 4 — Kafka watch
+## Step 4 — List-API verify
 
-Optional one-liner: watch consumer lag after rollback (detail in Lab 46).
+Re-run readiness + **`GET /api/customers?status=ACTIVE`** with `lab-request-001`. Kafka DLT is Lab 46 — not required here.
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -94,9 +94,9 @@ Rollback names digest Y and a verification check—not “redeploy latest”.
 
 Write a target recovery time placeholder (e.g. under N minutes) and who declares SEV.
 
-## Step 4 — Kafka watch
+## Step 4 — List-API verify
 
-Optional one-liner: watch consumer lag after rollback (detail in Lab 46).
+Re-run readiness + **`GET /api/customers?status=ACTIVE`** with `lab-request-001`. Kafka DLT is Lab 46 — not required here.
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -116,7 +116,7 @@ Rollback runbook outline with verification in `notes/lab44-rollback-runbook.md`.
 | --- | --- |
 | No file / wrong name | Must be `notes/lab44-rollback-runbook.md` |
 | Rolling back to :latest | Pin known-good digest |
-| Skipping smoke after undo | Re-check CUS-1001 path |
+| Skipping smoke after undo | Re-check **`GET /api/customers`** (not `/{id}`) |
 
 ## Pass criteria
 

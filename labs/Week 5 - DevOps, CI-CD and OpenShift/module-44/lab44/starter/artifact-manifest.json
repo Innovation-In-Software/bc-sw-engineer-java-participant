@@ -1,15 +1,20 @@
 {
   "application": "crm-api",
   "version": "TODO(lab44)-semver",
-  "gitCommit": "TODO(lab44)-GITHUB_SHA",
-  "jarSha256": "TODO(lab44)-from-SHA256SUMS",
-  "imageRepository": "ghcr.io/TODO(lab44)/crm-api",
-  "imageDigest": "sha256:TODO(lab44)",
+  "gitCommit": "TODO(lab44)-GITHUB_SHA-from-Lab-43-SHA256SUMS",
+  "jarSha256": "TODO(lab44)-hex-from-Lab-43-SHA256SUMS",
+  "imageRepository": null,
+  "imageDigest": null,
+  "lab42ImageId": "TODO(lab44)-optional-docker-inspect-Id-or-null",
   "builtBy": "lab43-ci",
+  "knownGoodPrevious": {
+    "jarSha256": "TODO(lab44)-record-BEFORE-this-promote",
+    "version": "TODO(lab44)-prior"
+  },
   "environments": {
-    "test": { "promoted": false, "smoke": "TODO" },
-    "staging": { "promoted": false, "smoke": "TODO(lab44): CUS-1001 / lab-request-001" },
+    "test": { "promoted": false, "smoke": "TODO(lab44): Lab 43 verify green" },
+    "staging": { "promoted": false, "smoke": "TODO(lab44): GET /api/customers?status=ACTIVE + lab-request-001" },
     "production": { "promoted": false, "approval": "TODO(lab44)" }
   },
-  "notes": "Never put passwords, tokens, or kubeconfig here."
+  "notes": "Never put passwords, tokens, or kubeconfig here. imageDigest stays null unless you actually pushed a registry image. Do not invent ghcr.io/@sha256."
 }

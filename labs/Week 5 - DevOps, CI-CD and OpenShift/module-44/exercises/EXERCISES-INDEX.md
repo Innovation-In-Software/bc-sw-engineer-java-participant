@@ -5,7 +5,7 @@
 **Module:** 44 — Continuous Delivery and Release Management  
 **Next:** [`../lab44/LAB-44-GUIDE.md`](../lab44/LAB-44-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-44-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-44-exercises/` in **your** `java-bootcamp` — not the course clone, and not the graded lab.
 
 ## Practice order (interleaved)
 
@@ -26,8 +26,9 @@ Then **checkpoint E** → Lab 44.
 
 | Do now | Do not yet |
 | --- | --- |
-| Manifest, gates, checklist, rollback, staging smoke plan | Rebuild on deploy host; secrets in artifact |
-| Digest-based promote plan | Terraform/Ansible (Lab 45) / Kafka DLT (Lab 46) |
+| Manifest, gates, checklist, rollback, list-API smoke plan | Rebuild on deploy host; secrets in artifact |
+| Plan promote by Lab 43 **`jarSha256`** | Invent GHCR digest; Terraform/Ansible (Lab 45) / Kafka DLT (Lab 46) |
+| Plan a **root** `crm-cd.yml` | Nested `.github/` under `examples/` as the live file |
 
 ## Workspace
 
@@ -42,4 +43,4 @@ New-Item -ItemType Directory -Force -Path examples\module-44-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; checklist + rollback self-mark **Pass**; Lab 43 digest ready.
+All six notes files exist in **`java-bootcamp`**; checklist + rollback self-mark **Pass**; Lab 43 `jarSha256` ready (image digest optional).

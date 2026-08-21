@@ -7,7 +7,7 @@
 | **Time** | 10–12 minutes |
 | **Checkpoint** | **D** (after slides 139–143) |
 | **Deliverable** | `notes/lab44-checklist-todos.md` |
-| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 `jarSha256` · list-API smoke |
 
 ### What you will learn
 
@@ -53,7 +53,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 Create `release-checklist-todo.md`:
 - Artifact digest: (your note here)
-- Staging smoke CUS-1001: (your note here)
+- Staging smoke `GET /api/customers?status=ACTIVE`: (your note here)
 - Correlation lab-request-001: (your note here)
 - Approval recorded: (your note here)
 - Rollback digest ready: (your note here)
@@ -92,7 +92,7 @@ From `examples/module-44-exercises/`, create `notes/` if needed, then create `no
 
 Create `release-checklist-todo.md`:
 - Artifact digest: _____
-- Staging smoke CUS-1001: _____
+- Staging smoke `GET /api/customers?status=ACTIVE`: _____
 - Correlation lab-request-001: _____
 - Approval recorded: _____
 - Rollback digest ready: _____

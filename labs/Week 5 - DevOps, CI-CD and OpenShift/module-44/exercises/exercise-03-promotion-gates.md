@@ -7,7 +7,7 @@
 | **Time** | 12–15 minutes |
 | **Checkpoint** | **B** (after slides 128–131) |
 | **Deliverable** | `notes/lab44-promotion-gates.md` |
-| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 `jarSha256` · no rebuild on promote |
 
 ### What you will learn
 
@@ -19,7 +19,7 @@ Each environment has different risk; gates must be measurable, not vibes.
 
 ### Predict
 
-What blocks staging→prod if smoke fails on CUS-1001?
+What blocks staging→prod if list-API smoke fails (`GET /api/customers`)?
 
 ### Debug
 
@@ -30,7 +30,8 @@ Rebuilding on the deploy host during promote — risk?
 | Symptom | Fix |
 | --- | --- |
 | Subjective GO only | Add checklist evidence fields |
-| Skipping staging | Require staging smoke before prod candidate |
+| Skipping staging | Require staging list-API smoke (or tabletop SHA compare) before prod |
+| Nested CD YAML only | Live file is **repo-root** `crm-cd.yml` |
 
 **Module 44** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
@@ -51,7 +52,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Gate list
 
-Examples: verify green, SAST gate, staging smoke, change approval, residual risk owned.
+Examples: Lab 43 verify green, SHA match to `SHA256SUMS`, staging `GET /api/customers`, change approval, residual risk owned. No `mvn package` on the CD job.
 
 ## Step 2 — Check the reference
 
@@ -84,7 +85,7 @@ From `examples/module-44-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Gate list
 
-Examples: verify green, SAST gate, staging smoke, change approval, residual risk owned.
+Examples: Lab 43 verify green, SHA match to `SHA256SUMS`, staging `GET /api/customers`, change approval, residual risk owned. No `mvn package` on the CD job.
 
 ## Step 2 — Check the reference
 

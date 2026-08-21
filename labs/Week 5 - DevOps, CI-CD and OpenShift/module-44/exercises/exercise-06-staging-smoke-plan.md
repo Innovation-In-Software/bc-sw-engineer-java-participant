@@ -7,7 +7,7 @@
 | **Time** | 8–10 minutes |
 | **Checkpoint** | **D** (after slides 139–143) |
 | **Deliverable** | `notes/lab44-staging-smoke-plan.md` |
-| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 `jarSha256` · list API (no `/{id}`) |
 
 ### What you will learn
 
@@ -19,7 +19,7 @@ Non-prod smoke must not use real customer data; evidence is redacted.
 
 ### Predict
 
-Smoke 401 after promote — config drift or artifact change?
+Smoke 404 on `/api/customers/CUS-1001` — wrong route or missing customer?
 
 ### Debug
 
@@ -31,6 +31,9 @@ Smoke green but agents still fail — expand smoke?
 | --- | --- |
 | Real PII in smoke | Use synthetic fixtures only |
 | No correlation id | Include lab-request-001 style id |
+| `GET /api/customers/CUS-1001` 404 | This CRM has **no** per-id route — use **`GET /api/customers?status=ACTIVE`** |
+| Smoke 401 | Lab 41 has **no** Spring Security — that is the wrong CRM |
+| curl hostname NXDOMAIN | Host header + `http://127.0.0.1:8088` (Lab 42 k3d) |
 
 **Module 44** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 
@@ -51,7 +54,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Cases
 
-Read `CUS-1001`, optional activate path for `CUS-1002`, readiness, correlation header.
+Readiness + **`GET /api/customers?status=ACTIVE`** (Amina appears in the list). Optional second call without filter for Ravi `PROSPECT`. Correlation header. On k3d use Host header `:8088` — not `GET /api/customers/{id}`.
 
 ## Step 2 — Evidence
 
@@ -84,7 +87,7 @@ From `examples/module-44-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Cases
 
-Read `CUS-1001`, optional activate path for `CUS-1002`, readiness, correlation header.
+Readiness + **`GET /api/customers?status=ACTIVE`** (Amina appears in the list). Optional second call without filter for Ravi `PROSPECT`. Correlation header. On k3d use Host header `:8088` — not `GET /api/customers/{id}`.
 
 ## Step 2 — Evidence
 

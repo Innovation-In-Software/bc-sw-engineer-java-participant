@@ -7,7 +7,7 @@
 | **Time** | 8–10 minutes |
 | **Checkpoint** | **A** (after slides 122–127) |
 | **Deliverable** | `notes/lab44-cd-vs-cdeploy.md` |
-| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 `jarSha256` · notes in **java-bootcamp** |
 
 ### What you will learn
 
@@ -67,11 +67,11 @@ This cohort emphasizes delivery with gates/approvals—not blind auto-prod.
 
 ## Step 3 — CRM example
 
-Describe promoting `crm-api` digest that passed staging smoke for `CUS-1001`.
+Describe promoting the Lab 43 `jarSha256` that passed staging **`GET /api/customers?status=ACTIVE`** (Amina is an `ACTIVE` list fixture — there is no `GET /api/customers/{id}`).
 
 ## Step 4 — Quiz yourself
 
-Answer: if staging said GO on digest X, what must prod receive?
+Answer: if staging said GO on `jarSha256` X, what must prod receive?
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -108,11 +108,11 @@ This cohort emphasizes delivery with gates/approvals—not blind auto-prod.
 
 ## Step 3 — CRM example
 
-Describe promoting `crm-api` digest that passed staging smoke for `CUS-1001`.
+Describe promoting the Lab 43 `jarSha256` that passed staging **`GET /api/customers?status=ACTIVE`** (Amina is an `ACTIVE` list fixture — there is no `GET /api/customers/{id}`).
 
 ## Step 4 — Quiz yourself
 
-Answer: if staging said GO on digest X, what must prod receive?
+Answer: if staging said GO on `jarSha256` X, what must prod receive?
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.

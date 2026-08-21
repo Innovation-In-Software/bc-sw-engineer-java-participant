@@ -1,4 +1,6 @@
-# CD sketch — promote immutable CRM artifact (Lab 44)
+# CRM CD — copy this file to java-bootcamp/.github/workflows/crm-cd.yml
+# GitHub ignores examples/lab44-crm/.github/  (nested workflows never run)
+# Do not mvn / ./mvnw here. Promote Lab 43 crm-jar by run-id + jarSha256.
 name: CRM CD
 
 on:
@@ -9,13 +11,15 @@ on:
         required: true
         type: choice
         options: [test, staging, production]
-      artifact_digest:
-        description: "Image digest or JAR sha256 from Lab 43"
+      artifact_run_id:
+        description: "Lab 43 CRM CI run id that uploaded crm-jar (not this CD run)"
+        required: true
+      jar_sha256:
+        description: "Hex SHA-256 from Lab 43 SHA256SUMS (do not rebuild)"
         required: true
 
-# TODO(lab44): Prefer environment protection rules + required reviewers for production
-# TODO(lab44): Download CI artifact by digest — do not rebuild
-# TODO(lab44): Secrets only via GitHub Environments — never hardcode
+# TODO(lab44): Settings → Environments — required reviewers for production
+# Secrets only via GitHub Environments — never hardcode tokens or kubeconfig
 
 jobs:
   promote:
@@ -24,14 +28,39 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Verify manifest identity
+        working-directory: examples/lab44-crm
         run: |
-          echo "Promoting digest=${{ inputs.artifact_digest }} to ${{ inputs.environment }}"
-          # TODO(lab44): Compare against artifact-manifest.json
-      - name: Deploy (sketch)
+          set -euo pipefail
+          SHA="${{ inputs.jar_sha256 }}"
+          SHA="${SHA#sha256:}"
+          echo "Promoting jarSha256=${SHA} to ${{ inputs.environment }}"
+          grep -F "$SHA" artifact-manifest.json
+      - name: Download Lab 43 crm-jar (prior run — not this CD run)
+        uses: actions/download-artifact@v4
+        with:
+          name: crm-jar
+          run-id: ${{ inputs.artifact_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: dist/
+      - name: Confirm checksum (no Maven)
         run: |
-          echo "TODO(lab44): kubectl/helm/oc apply with pinned digest"
+          set -euo pipefail
+          JAR=$(ls dist/*.jar | grep -v original | head -1)
+          ACTUAL=$(sha256sum "$JAR" | awk '{print $1}')
+          EXPECTED="${{ inputs.jar_sha256 }}"
+          EXPECTED="${EXPECTED#sha256:}"
+          echo "downloaded=$ACTUAL expected=$EXPECTED"
+          test "$ACTUAL" = "$EXPECTED"
+      - name: Deploy sketch
+        run: |
+          set -euo pipefail
+          echo "Do not kubectl set image to ghcr.io unless you pushed."
+          echo "Local k3d (Lab 42): keep crm-api:lab41 / Image Id already imported."
+          echo "Identity is JAR SHA ${{ inputs.jar_sha256 }}"
           # Never echo secrets or kubeconfig contents
       - name: Smoke (non-prod)
         if: inputs.environment != 'production'
         run: |
-          echo "TODO(lab44): hit readiness + CUS-1001 smoke"
+          set -euo pipefail
+          echo "Local k3d: Host header + GET /api/customers?status=ACTIVE on :8088"
+          echo "There is no GET /api/customers/{id}. Do not expect 401 (no Spring Security)."

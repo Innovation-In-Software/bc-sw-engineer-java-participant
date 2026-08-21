@@ -7,11 +7,11 @@
 | **Time** | 10–12 minutes |
 | **Checkpoint** | **A** (after slides 122–127) |
 | **Deliverable** | `notes/lab44-manifest-fields.md` |
-| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 digest · no secrets in artifact |
+| **Fixtures** | CUS-1001/CUS-1002 synthetic · Lab 43 `SHA256SUMS` · image digest optional |
 
 ### What you will learn
 
-List immutable identity fields: version, commit, JAR SHA / image digest, prior known-good.
+List immutable identity fields: version, commit, **required** `jarSha256` from Lab 43, optional image digest, prior known-good.
 
 ### Enterprise context
 
@@ -19,7 +19,7 @@ Promote by digest—not floating :latest. Env secrets stay outside the artifact.
 
 ### Predict
 
-Which field proves staging and prod candidates are the same binary?
+Which field proves staging and prod candidates are the same bits if you never pushed GHCR?
 
 ### Debug
 
@@ -29,7 +29,7 @@ Manifest with passwords inside JSON — gate fail?
 
 | Symptom | Fix |
 | --- | --- |
-| Using only :latest | Pin digest/SHA-256 from Lab 43 |
+| Using only :latest or a fake GHCR digest | Pin **`jarSha256`** from Lab 43 `SHA256SUMS`; leave `imageDigest` null until you push |
 | Secrets in artifact | Keep config/secrets in env, not JAR |
 
 **Module 44** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -51,15 +51,15 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Fields
 
-semver, git_sha, jar_sha256, image_digest, built_at, pipeline_run_url.
+semver, git_sha, **required** jar_sha256 (from Lab 43 `SHA256SUMS`, not a local rebuild), optional image_digest (null if never pushed), known_good_previous, pipeline_run_url.
 
 ## Step 2 — Check the reference
 
-Prod candidate must match staging digest exactly.
+Prod candidate must match staging **`jarSha256`** exactly. Do not invent `ghcr.io/…@sha256:…`.
 
 ## Step 3 — Sample JSON
 
-Write a JSON stub with placeholder digests and version `1.4.0-rc.1`.
+Write a JSON stub with placeholder `jarSha256`, `imageDigest: null`, and version `1.4.0-rc.1`.
 
 ## Step 4 — Rollback target
 
@@ -84,15 +84,15 @@ From `examples/module-44-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Fields
 
-semver, git_sha, jar_sha256, image_digest, built_at, pipeline_run_url.
+semver, git_sha, **required** jar_sha256 (from Lab 43 `SHA256SUMS`, not a local rebuild), optional image_digest (null if never pushed), known_good_previous, pipeline_run_url.
 
 ## Step 2 — Check the reference
 
-Prod candidate must match staging digest exactly.
+Prod candidate must match staging **`jarSha256`** exactly. Do not invent `ghcr.io/…@sha256:…`.
 
 ## Step 3 — Sample JSON
 
-Write a JSON stub with placeholder digests and version `1.4.0-rc.1`.
+Write a JSON stub with placeholder `jarSha256`, `imageDigest: null`, and version `1.4.0-rc.1`.
 
 ## Step 4 — Rollback target
 
