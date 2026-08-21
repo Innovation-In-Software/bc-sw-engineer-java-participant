@@ -55,7 +55,7 @@ Outline: package once, write `SHA256SUMS`, record `GITHUB_SHA`, upload artifact.
 
 ## Step 2 — Check the reference
 
-Lab 44 promotes this identity—rebuilding silently on the deploy agent breaks the chain.
+The isolated `package` job re-runs Maven with skipTests (jobs do not share disks). Lab 44 must download `crm-jar` — a third `mvn package` on the deploy agent breaks the chain.
 
 ## Step 3 — Example lines
 
@@ -88,7 +88,7 @@ Outline: package once, write `SHA256SUMS`, record `GITHUB_SHA`, upload artifact.
 
 ## Step 2 — Check the reference
 
-Lab 44 promotes this identity—rebuilding silently on the deploy agent breaks the chain.
+The isolated `package` job re-runs Maven with skipTests (jobs do not share disks). Lab 44 must download `crm-jar` — a third `mvn package` on the deploy agent breaks the chain.
 
 ## Step 3 — Example lines
 

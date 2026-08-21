@@ -21,12 +21,12 @@
 
 | Do now | Don't yet |
 | --- | --- |
-| PR/main/tag policy; JDK 21 verify; package-once SHA | Put deploy creds / kubeconfig in YAML |
-| Actions secrets checklist; CI runbook | Full CD promotions (Lab 44) |
-| Controlled failure + restore plan | Terraform from CI (Lab 45) |
+| PR/main/tag policy; JDK 21 `mvn` verify; package-once SHA | Put deploy creds / kubeconfig in YAML |
+| Root workflow (`crm-ci.yml`); Actions secrets checklist | Nested `.github/` under `examples/` |
+| Controlled failure + restore plan | Full CD promotions (Lab 44) / Terraform from CI (Lab 45) |
 
 ## Hard gate before Lab 43
 
-- [ ] Ex notes complete (order 1→4→2→3→5→6)
-- [ ] CRM module compiles/tests under Maven locally
-- [ ] GitHub repo with Actions enabled (no secrets in Git)
+- [ ] Ex notes complete in `java-bootcamp/examples/module-43-exercises/notes/` (order 1→4→2→3→5→6)
+- [ ] Lab 41 CRM in `java-bootcamp/examples/lab41-crm` (not Lab 42 YAML)
+- [ ] GitHub repo (`java-bootcamp`) with Actions enabled (no secrets in Git)

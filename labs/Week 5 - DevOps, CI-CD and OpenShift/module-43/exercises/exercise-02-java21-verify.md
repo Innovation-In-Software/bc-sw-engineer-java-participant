@@ -51,7 +51,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Setup
 
-List Actions steps: checkout, setup-java Temurin 21 with Maven cache, `./mvnw -B clean verify`.
+List Actions steps: checkout, setup-java Temurin 21 with Maven cache (`cache-dependency-path: examples/lab43-crm/pom.xml`), `mvn -B clean verify` with `working-directory: examples/lab43-crm`.
 
 ## Step 2 — Check the reference
 
@@ -63,7 +63,7 @@ Write how you will intentionally break one test, observe CI red, then restore (p
 
 ## Step 4 — Local habit
 
-Note local preflight: `java -version` shows 21; `./mvnw -v` before pushing.
+Note local preflight: `java -version` shows 21; `mvn -v` before pushing (Lab 41 has no `mvnw`).
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -84,7 +84,7 @@ From `examples/module-43-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Setup
 
-List Actions steps: checkout, setup-java Temurin 21 with Maven cache, `./mvnw -B clean verify`.
+List Actions steps: checkout, setup-java Temurin 21 with Maven cache (`cache-dependency-path: examples/lab43-crm/pom.xml`), `mvn -B clean verify` with `working-directory: examples/lab43-crm`.
 
 ## Step 2 — Check the reference
 
@@ -96,7 +96,7 @@ Write how you will intentionally break one test, observe CI red, then restore (p
 
 ## Step 4 — Local habit
 
-Note local preflight: `java -version` shows 21; `./mvnw -v` before pushing.
+Note local preflight: `java -version` shows 21; `mvn -v` before pushing (Lab 41 has no `mvnw`).
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
@@ -123,7 +123,7 @@ Verify job plan with report upload and failure drill notes in `notes/lab43-java2
 Self-check before marking Pass:
 
 - [ ] File exists at `notes/lab43-java21-verify.md`
-- [ ] JDK 21 + mvnw verify listed
+- [ ] JDK 21 + `mvn` verify listed
 - [ ] Report upload planned
 - [ ] Failure drill described
 

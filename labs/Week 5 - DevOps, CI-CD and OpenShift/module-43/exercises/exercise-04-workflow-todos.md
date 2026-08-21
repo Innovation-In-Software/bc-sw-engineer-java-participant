@@ -29,7 +29,7 @@ Pipeline cannot find pom.xml — fix?
 
 | Symptom | Fix |
 | --- | --- |
-| Wrong working-directory | cd to CRM module path |
+| Wrong working-directory | Root workflow + `examples/lab43-crm`; nested `.github/` is ignored |
 | Secrets hardcoded in YAML | Use GitHub Actions secrets |
 
 **Module 43** · Hands-on exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -55,7 +55,7 @@ Create notes `ci.yml.skeleton` with blanks for `java-version`, verify command, a
 
 ## Step 2 — Fill
 
-Fill blanks using Temurin 21 and `./mvnw -B clean verify` / package-once pattern.
+Fill blanks using Temurin 21 and `mvn -B clean verify` / package-once pattern. Note the live file is `java-bootcamp/.github/workflows/crm-ci.yml`.
 
 ## Step 3 — Secrets comment
 
@@ -88,7 +88,7 @@ Create notes `ci.yml.skeleton` with blanks for `java-version`, verify command, a
 
 ## Step 2 — Fill
 
-Fill blanks using Temurin 21 and `./mvnw -B clean verify` / package-once pattern.
+Fill blanks using Temurin 21 and `mvn -B clean verify` / package-once pattern. Note the live file is `java-bootcamp/.github/workflows/crm-ci.yml`.
 
 ## Step 3 — Secrets comment
 

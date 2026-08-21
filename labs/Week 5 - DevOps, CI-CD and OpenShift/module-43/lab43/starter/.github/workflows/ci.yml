@@ -1,4 +1,5 @@
-# .github/workflows/ci.yml
+# CRM CI — copy this file to java-bootcamp/.github/workflows/crm-ci.yml
+# GitHub ignores examples/lab43-crm/.github/  (nested workflows never run)
 name: CRM CI
 
 on:
@@ -7,9 +8,31 @@ on:
     branches: [main]
     tags: ["v*"]
 
+defaults:
+  run:
+    working-directory: examples/lab43-crm
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: crm
+          POSTGRES_PASSWORD: change-me
+          POSTGRES_DB: crm_lab43
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U crm -d crm_lab43"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/crm_lab43
+      SPRING_DATASOURCE_USERNAME: crm
+      SPRING_DATASOURCE_PASSWORD: change-me
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -17,22 +40,27 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
+          cache-dependency-path: examples/lab43-crm/pom.xml
       - name: Verify
-        # TODO(lab43): Prefer ./mvnw if Wrapper is committed
-        run: mvn -B clean verify
-      # TODO(lab43): Optional security gate
+        # Lab 41 has no mvnw — use mvn. Do not -DskipTests on verify.
+        run: mvn -B -ntp clean verify
+      # TODO(lab43): Optional — keep continue-on-error for training NVD outages
       # - name: Dependency-Check
-      #   run: mvn -B -Psecurity-scan dependency-check:check
+      #   if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
+      #   continue-on-error: true
+      #   env:
+      #     NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+      #   run: mvn -B -ntp -Psecurity-scan dependency-check:check -DnvdApiKey=${NVD_API_KEY}
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: "**/target/surefire-reports/**"
+          path: examples/lab43-crm/target/surefire-reports/**
 
   package:
     needs: verify
-    # TODO(lab43): Confirm package-once only on main or version tags
+    # Package checksum only on main or version tags — not on every PR
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
@@ -42,16 +70,16 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
+          cache-dependency-path: examples/lab43-crm/pom.xml
       - name: Package once
         run: |
-          mvn -B -DskipTests package
-          # TODO(lab43): sha256sum (Linux) / shasum -a 256 (macOS runner notes)
+          mvn -B -ntp -DskipTests package
           sha256sum target/*.jar > target/SHA256SUMS
           echo "commit=${GITHUB_SHA}" >> target/SHA256SUMS
       - uses: actions/upload-artifact@v4
         with:
           name: crm-jar
           path: |
-            target/*.jar
-            target/SHA256SUMS
-      # TODO(lab43): Never echo secrets; deploy steps belong in Lab 44 CD
+            examples/lab43-crm/target/*.jar
+            examples/lab43-crm/target/SHA256SUMS
+      # Deploy belongs in Lab 44 — never echo secrets here

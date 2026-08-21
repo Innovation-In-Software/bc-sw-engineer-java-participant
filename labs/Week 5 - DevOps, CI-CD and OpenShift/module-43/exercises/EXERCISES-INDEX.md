@@ -5,7 +5,7 @@
 **Module:** 43 — GitHub Actions and CI/CD Integration  
 **Next:** [`../lab43/LAB-43-GUIDE.md`](../lab43/LAB-43-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-43-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-43-exercises/` in **your** `java-bootcamp` — not the course clone, and not the graded lab.
 
 ## Practice order (interleaved)
 
@@ -27,6 +27,7 @@ Then **checkpoint E** → Lab 43.
 | Do now | Do not yet |
 | --- | --- |
 | Triggers, verify, package-once, secrets rules, runbook | Deploy creds / kubeconfig in YAML |
+| Plan a **root** workflow path | Nested `.github/` under `examples/` as the live file |
 | Controlled failure plan | Full CD promotions (Lab 44) / Terraform CI (Lab 45) |
 
 ## Workspace
@@ -42,4 +43,4 @@ New-Item -ItemType Directory -Force -Path examples\module-43-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; secrets checklist + runbook self-mark **Pass**; CRM verifies locally.
+All six notes files exist; secrets checklist + runbook self-mark **Pass**; Lab 41 CRM verifies locally with **`mvn`**.

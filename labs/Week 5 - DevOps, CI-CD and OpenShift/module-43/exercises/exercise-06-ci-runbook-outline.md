@@ -55,7 +55,7 @@ Triggers, jobs, where reports live, how to re-run, what deploy steps exist (none
 
 ## Step 2 — Re-run recipe
 
-Bullet the GitHub UI/CLI re-run path and local `./mvnw -B clean verify` equivalent.
+Bullet the GitHub UI/CLI re-run path and local `mvn -B clean verify` equivalent (from `examples/lab43-crm`).
 
 ## Step 3 — Evidence index
 
@@ -88,7 +88,7 @@ Triggers, jobs, where reports live, how to re-run, what deploy steps exist (none
 
 ## Step 2 — Re-run recipe
 
-Bullet the GitHub UI/CLI re-run path and local `./mvnw -B clean verify` equivalent.
+Bullet the GitHub UI/CLI re-run path and local `mvn -B clean verify` equivalent (from `examples/lab43-crm`).
 
 ## Step 3 — Evidence index
 
