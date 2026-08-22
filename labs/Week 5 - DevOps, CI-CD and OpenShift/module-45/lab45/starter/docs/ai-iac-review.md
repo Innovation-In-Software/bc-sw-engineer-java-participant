@@ -1,6 +1,12 @@
 # Lab 45 — AI IaC review record
 
-## Prompts used (summarized)
+## Contract (fill first)
+
+- Allowed environments: `dev` | `test` | `staging` (no prod apply)
+- Forbidden: public DB, `0.0.0.0/0` on DB/SSH, secrets in Git, unpinned providers
+- Laptop path: `null_resource` only — do not apply to Lab 42 k3d
+
+## Prompts used (summarized) — entry `lab45-001`
 
 TODO(lab45): Paste constrained prompts (no secrets).
 
@@ -18,9 +24,9 @@ TODO(lab45): Paste constrained prompts (no secrets).
 
 ## Validation evidence
 
-- `terraform fmt` / `init -backend=false` / `validate`: TODO
-- Ansible `--syntax-check`: TODO
-- Plan read (or approved substitute): TODO
+- `terraform fmt` / `init -backend=false` / `validate` (**no** `-var`): TODO
+- `terraform plan -var=environment=dev -var=db_password=unused-local`: TODO
+- Ansible `--syntax-check` from lab root **or** residual risk (Windows): TODO
 
 ## Residual risks
 

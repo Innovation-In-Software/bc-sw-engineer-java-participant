@@ -1,10 +1,10 @@
-# Example inventory — replace hosts; never commit production IPs with secrets.
+# Example inventory at lab root (sibling of infra/). Never commit production IPs or secrets.
 all:
   children:
     crm:
       hosts:
         crm-dev-01:
           ansible_host: 127.0.0.1
-          # TODO(lab45): ansible_user, become method
+          # TODO(lab45): ansible_user, become method — syntax-check only unless instructor authorizes a host
       vars:
         environment: dev

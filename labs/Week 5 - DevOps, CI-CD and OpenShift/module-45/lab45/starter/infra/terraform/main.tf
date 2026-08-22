@@ -1,6 +1,6 @@
-# Lab 45 — CRM infra sketch (safe local validate without cloud apply)
-# TODO(lab45): Replace null resources with VPC/DB/runtime when sandbox allows.
-# FORBIDDEN: publicly reachable database, hardcoded passwords, open 0.0.0.0/0 SSH.
+# Lab 45 — CRM infra sketch (local validate/plan without cloud apply)
+# TODO(lab45): Replace null_resource with VPC/DB/runtime only in an authorized sandbox.
+# FORBIDDEN: public database, hardcoded passwords, 0.0.0.0/0 SSH/DB, environment=prod apply.
 
 locals {
   tags = {
@@ -16,9 +16,5 @@ resource "null_resource" "crm_stack_sketch" {
     environment = var.environment
     region      = var.region
   }
-  # TODO(lab45): Add provisioner-free documentation that real DB must be private subnet only
-}
-
-output "sketch_note" {
-  value = "TODO(lab45): Replace null_resource with real modules after human threat review"
+  # TODO(lab45): Document that a real DB must be private-subnet only (no public IP).
 }

@@ -1,19 +1,18 @@
 variable "environment" {
   type        = string
-  description = "dev | staging | prod"
-  # TODO(lab45): Add validation block for allowed values
+  description = "Non-prod only: dev | test | staging"
+  # TODO(lab45): validation { condition = contains(["dev", "test", "staging"], var.environment) ... }
 }
 
 variable "region" {
   type        = string
-  description = "Cloud region"
-  default     = "TODO(lab45)-region"
+  description = "Cloud region (sketch only on the laptop path)"
+  default     = "us-east-1"
 }
 
 variable "db_password" {
   type        = string
-  description = "Sensitive — supply via tfvars locally or secret store; never commit"
+  description = "Sensitive — local tfvars or secret store; never commit. Not used by null_resource."
   sensitive   = true
-  default     = ""
-  # TODO(lab45): Remove default in real stacks; require input from secret manager
+  # No default — pass -var on terraform plan only (validate does not take -var).
 }

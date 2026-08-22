@@ -31,6 +31,7 @@ Plan wants unexpected destroy — next step?
 | --- | --- |
 | Committing tfstate | gitignore; use remote state narrative |
 | Apply without reading plan | Fail the gate; review first |
+| `terraform validate -var=…` | `validate` takes no `-var` on Terraform 1.9; pass `-var` on `plan` |
 
 **Module 45** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
@@ -51,7 +52,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Command order
 
-`terraform fmt`, `init`, `validate`, `plan` (instructor-safe substitute if needed).
+`terraform fmt`, `init -backend=false`, `validate` (**no** `-var`), `plan -var=environment=dev` (and `-var=db_password=…` on **plan** only).
 
 ## Step 2 — Check the reference
 
@@ -84,7 +85,7 @@ From `examples/module-45-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Command order
 
-`terraform fmt`, `init`, `validate`, `plan` (instructor-safe substitute if needed).
+`terraform fmt`, `init -backend=false`, `validate` (**no** `-var`), `plan -var=environment=dev` (and `-var=db_password=…` on **plan** only).
 
 ## Step 2 — Check the reference
 

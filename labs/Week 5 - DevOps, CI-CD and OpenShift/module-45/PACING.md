@@ -17,16 +17,19 @@
 
 **1 → 2 → 3 → 4 → 5 → 6** then Lab 45.
 
+Write notes in **`java-bootcamp/examples/module-45-exercises/notes/`**, not the course clone.
+
 ## Do / don't
 
 | Do now | Don't yet |
 | --- | --- |
-| Infra contract; fmt/validate/plan narrative; idempotent Ansible sketch | Commit tfstate / real tfvars / cloud keys |
-| Constrained AI prompts + review record (≥1 harden/reject) | Unapproved destroy of shared training infra |
-| Cost/exposure awareness | Embed CRM PII in IaC; Kafka DLT procedures (Lab 46) |
+| Infra contract; fmt/validate/**plan** narrative; idempotent Ansible sketch | Commit tfstate / real tfvars / cloud keys |
+| Constrained AI prompts + review record (≥1 harden/reject) | Unapproved `apply`; apply to Lab 42 k3d |
+| Cost/exposure awareness | Embed CRM PII in IaC; Kafka DLT (Lab 46) |
+| `validate` **without** `-var` | `terraform validate -var=…` (CLI error on 1.9) |
 
 ## Hard gate before Lab 45
 
-- [ ] Ex notes complete
-- [ ] Contract forbids public DB / unbounded cost
+- [ ] Ex notes complete in `java-bootcamp/examples/module-45-exercises/notes/`
+- [ ] Contract forbids public DB / unbounded cost / prod apply
 - [ ] No secrets or state files planned for Git

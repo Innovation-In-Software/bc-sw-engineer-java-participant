@@ -5,7 +5,7 @@
 **Module:** 45 — Infrastructure as Code with Terraform and Ansible  
 **Next:** [`../lab45/LAB-45-GUIDE.md`](../lab45/LAB-45-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-45-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-45-exercises/` in **your** `java-bootcamp` — not the course clone, and not the graded lab.
 
 ## Practice order (interleaved)
 
@@ -25,7 +25,8 @@ Then **checkpoint E** → Lab 45.
 | Do now | Do not yet |
 | --- | --- |
 | Contract, TF checks, Ansible notes, AI prompt/review, cost quiz | Commit tfstate / real tfvars / cloud keys |
-| Reject public-DB AI output | Unapproved destroy of shared training; Kafka DLT (Lab 46) |
+| Reject public-DB AI output | Unapproved destroy / apply to Lab 42; Kafka DLT (Lab 46) |
+| Plan `validate` **without** `-var` | Treat `validate -var` as the working command |
 
 ## Workspace
 
@@ -40,4 +41,4 @@ New-Item -ItemType Directory -Force -Path examples\module-45-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; AI review outline + cost quiz self-mark **Pass**.
+All six notes files exist in **`java-bootcamp`**; AI review outline + cost quiz self-mark **Pass**.

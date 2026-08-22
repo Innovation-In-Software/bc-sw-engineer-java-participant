@@ -76,7 +76,7 @@ Environment: _____
 Must include: _____
 Must forbid: secrets, public DB, _____
 Assumptions: _____
-Output files: infra/terraform/*.tf, ansible/site.yml
+Output files: infra/terraform/*.tf, infra/ansible/site.yml
 ```
 
 ## Step 2 — Harden

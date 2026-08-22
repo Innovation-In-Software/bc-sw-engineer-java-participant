@@ -2,71 +2,88 @@
 
 **Theme:** Terraform + Ansible sketches — AI draft, human review, no secrets in Git
 
+## Two folders
+
+| Folder | You… |
+| ------ | ---- |
+| **Course clone** (this `starter/` directory) | Read / copy **from** here |
+| **`java-bootcamp`** | Copy **this starter** to `examples/lab45-crm`, fill TODOs, commit, push |
+
+Do **not** grade work inside the course `labs/` tree. IntelliJ stays on `java-bootcamp`. Starter is **IaC**, not a Spring app. **Do not copy Lab 44** (Maven CRM) or **Lab 42** (k8s YAML) into this folder.
+
 ## Activity card
 
 | | |
 | --- | --- |
 | **Checkpoint** | **E** |
-| **Must prove** | validate · no secrets · Ansible syntax · AI review ≥1 harden |
-| **Hard gate** | Pre-lab Pass · no public DB |
+| **Must prove** | `validate` (no `-var`) · `plan` read · no secrets · AI review ≥1 harden · Ansible syntax **or** residual risk |
+| **Hard gate** | Pre-lab Pass · no public DB · no unapproved `apply` |
 
 ## Copy into your workspace
 
-Do **not** grade work only inside the course `labs/` clone. Copy this `starter/` into your bootcamp examples tree as `lab45-crm`.
-
-**Windows (PowerShell)** — from this lab folder:
+**Windows (PowerShell):**
 
 ```powershell
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\java-bootcamp\examples\lab45-crm" | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" "$env:USERPROFILE\java-bootcamp\examples\lab45-crm\"
-cd $env:USERPROFILE\java-bootcamp\examples\lab45-crm
+$jb = "$env:USERPROFILE\java-bootcamp"
+$courseLab45 = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 5 - DevOps, CI-CD and OpenShift\module-45\lab45"
+
+New-Item -ItemType Directory -Force -Path "$jb\examples\lab45-crm","$jb\notes\screenshots\lab-45" | Out-Null
+Copy-Item -Recurse -Force "$courseLab45\starter\*" "$jb\examples\lab45-crm\"
+cd "$jb\examples\lab45-crm"
 ```
 
 **macOS / Linux:**
 
 ```bash
-mkdir -p ~/java-bootcamp/examples/lab45-crm
-cp -R starter/. ~/java-bootcamp/examples/lab45-crm/
-cd ~/java-bootcamp/examples/lab45-crm
+JB=~/java-bootcamp
+COURSE_LAB45=~/bc-sw-engineer-java-participant/labs/Week\ 5\ -\ DevOps,\ CI-CD\ and\ OpenShift/module-45/lab45
+
+mkdir -p "$JB/examples/lab45-crm" "$JB/notes/screenshots/lab-45"
+cp -R "$COURSE_LAB45/starter/." "$JB/examples/lab45-crm/"
+cd "$JB/examples/lab45-crm"
 ```
+
+Then fill the contract and run Terraform. See [LAB-45-GUIDE.md](../LAB-45-GUIDE.md) Step 1–5.
 
 ## 45-minute checklist
 
-- [ ] Complete TODOs in `infra/terraform/*.tf` (pinned providers, no public DB)
+- [ ] Work is in `java-bootcamp/examples/lab45-crm` (starter, not course `labs/`)
+- [ ] Complete TODOs in `infra/terraform/*.tf` (pinned providers, `environment` in dev/test/staging)
 - [ ] Fill `terraform.tfvars.example` (placeholders only)
-- [ ] Draft idempotent `infra/ansible/site.yml` + `inventory.example.yml`
-- [ ] Run `terraform fmt` / `validate` (or instructor `-backend=false` substitute)
-- [ ] Record AI corrections in `docs/ai-iac-review.md`
+- [ ] Draft idempotent `infra/ansible/site.yml` + root `inventory.example.yml`
+- [ ] `terraform fmt` / `init -backend=false` / `validate` / `plan` (no apply)
+- [ ] Record AI corrections in `docs/ai-iac-review.md` (`lab45-001`)
 
 ## Smoke test
 
-```bash
-cd infra/terraform
-terraform fmt -check -recursive || terraform fmt
+From **`java-bootcamp/examples/lab45-crm/infra/terraform`**:
+
+```powershell
+terraform fmt -recursive
 terraform init -backend=false
 terraform validate
-# From lab root: ansible-playbook --syntax-check -i inventory.example.yml infra/ansible/site.yml
+terraform plan -var='environment=dev' -var='db_password=unused-local'
 ```
 
-Evidence under `~/java-bootcamp/notes/screenshots/lab-45/` (no state secrets).
+Optional Ansible from **lab root**. Evidence under `~/java-bootcamp/notes/screenshots/lab-45/` (no state secrets).
 
 ## Timed-path Pass criteria
 
 | Criterion | Pass / Fail |
 | --------- | ----------- |
-| Providers pinned; `validate` succeeds | Pass / Fail |
+| Work is in `java-bootcamp/examples/lab45-crm` | Pass / Fail |
+| Providers pinned; `validate` succeeds **without** `-var` | Pass / Fail |
+| `plan` read (null sketch: 1 add); no apply | Pass / Fail |
 | No secrets in `.tf` / tfvars.example | Pass / Fail |
-| Ansible playbook syntax-check OK | Pass / Fail |
 | AI review documents ≥1 rejection/hardening | Pass / Fail |
-
-Continue remaining GUIDE steps as homework / full path if needed.
-
+| Ansible syntax-check **or** residual risk recorded | Pass / Fail |
 
 ### Troubleshooting
 
 | Symptom | Fix |
 | --- | --- |
-| validate fails | Fix HCL; pin providers; check required args |
-| No cloud auth | `terraform init -backend=false` |
-| AI public exposure | Reject; tighten contract; re-prompt |
-| Accidental local state | Delete state; ensure gitignore |
+| `validate -var` fails | `validate` takes no `-var` |
+| Copied Lab 44 / 42 | Copy **this starter** |
+| No cloud auth | Stay on `null_resource` |
+| AI public exposure | Reject; tighten contract |
+| Accidental local state | Delete; gitignore on **java-bootcamp** |
