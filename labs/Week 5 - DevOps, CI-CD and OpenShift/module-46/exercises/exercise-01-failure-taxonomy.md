@@ -23,14 +23,15 @@ Malformed JSON for CUS-1001 — retry forever or DLT?
 
 ### Debug
 
-Lag stuck with no DLT traffic — what to check?
+Lag stuck with no DLT traffic — factory unwired, or consumed Lab 30 `.dlq` instead of `.DLT`?
 
 ### Troubleshooting
 
 | Symptom | Fix |
 | --- | --- |
 | Infinite retry as strategy | Bound retries; route poison to DLT |
-| Dumping prod topics for notes | Use training topics only |
+| Dumping prod topics for notes | Use training topics only (`crm.customer-events.v1`) |
+| Notes saved in the course clone | Write under `java-bootcamp/examples/module-46-exercises/notes/` |
 
 **Module 46** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 

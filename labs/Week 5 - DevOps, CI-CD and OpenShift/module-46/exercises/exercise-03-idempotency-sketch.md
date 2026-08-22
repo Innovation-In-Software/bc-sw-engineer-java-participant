@@ -29,7 +29,7 @@ Duplicate side effects after DLT replay — fix?
 
 | Symptom | Fix |
 | --- | --- |
-| Only in-memory seen-set | Persist processed keys |
+| Only in-memory seen-set | Persist processed keys (Lab 31 `ProcessedEventStore` resets on restart) |
 | Email as metric tag | Use low-cardinality ids only |
 
 **Module 46** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
@@ -55,7 +55,7 @@ List side effects your consumer might own (projection upsert, email, audit row).
 
 ## Step 2 — Check the reference
 
-Idempotency keys / upserts / dedupe store—pick a strategy in notes.
+Idempotency keys / upserts / dedupe store—pick a strategy in notes. Lab 31 default is in-memory `eventId`.
 
 ## Step 3 — Scenario
 
@@ -88,7 +88,7 @@ List side effects your consumer might own (projection upsert, email, audit row).
 
 ## Step 2 — Check the reference
 
-Idempotency keys / upserts / dedupe store—pick a strategy in notes.
+Idempotency keys / upserts / dedupe store—pick a strategy in notes. Lab 31 default is in-memory `eventId`.
 
 ## Step 3 — Scenario
 

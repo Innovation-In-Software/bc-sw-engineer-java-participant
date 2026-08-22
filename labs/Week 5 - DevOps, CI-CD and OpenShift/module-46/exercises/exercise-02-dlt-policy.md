@@ -31,6 +31,7 @@ No DLT messages after poison — handler wiring?
 | --- | --- |
 | Missing not-retryable list | Classify deserialization/business rejects |
 | Skipping correlation headers | Preserve Spring DLT / custom headers |
+| Consuming `.dlq` | Spring default destination is **`.DLT`** |
 
 **Module 46** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 
@@ -51,11 +52,11 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Names
 
-Primary topic example `crm.customer.events`; DLT `crm.customer.events.DLT`; group `crm-customer-projection-v1`.
+Primary topic example `crm.customer-events.v1`; DLT `crm.customer-events.v1.DLT`; group `crm-notifications` (Lab 31). Lab 30 `.dlq` is a different name.
 
 ## Step 2 — Check the reference
 
-Use `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` pattern (Spring Kafka).
+Use `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` **wired on** `ConcurrentKafkaListenerContainerFactory` (Spring Kafka).
 
 ## Step 3 — Headers
 
@@ -84,11 +85,11 @@ From `examples/module-46-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Names
 
-Primary topic example `crm.customer.events`; DLT `crm.customer.events.DLT`; group `crm-customer-projection-v1`.
+Primary topic example `crm.customer-events.v1`; DLT `crm.customer-events.v1.DLT`; group `crm-notifications` (Lab 31). Lab 30 `.dlq` is a different name.
 
 ## Step 2 — Check the reference
 
-Use `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` pattern (Spring Kafka).
+Use `DefaultErrorHandler` + `DeadLetterPublishingRecoverer` **wired on** `ConcurrentKafkaListenerContainerFactory` (Spring Kafka).
 
 ## Step 3 — Headers
 

@@ -5,7 +5,7 @@
 **Module:** 46 — Kafka Resilience and Observability  
 **Next:** [`../lab46/LAB-46-GUIDE.md`](../lab46/LAB-46-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-46-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-46-exercises/` in **your** `java-bootcamp` — not the course clone, and not the graded lab.
 
 ## Practice order (interleaved)
 
@@ -26,8 +26,8 @@ Then **checkpoint E** → Lab 46.
 
 | Do now | Do not yet |
 | --- | --- |
-| Taxonomy, metrics, DLT, idempotency, dry-run replay, watch tie-in | Infinite retry; prod topic dumps |
-| Synthetic CRM ids only | Module 47 incident write-ups as this warmup |
+| Taxonomy, metrics, DLT, idempotency, dry-run replay, watch tie-in | Infinite retry; prod topic dumps; host `kafka-*.sh` on Windows |
+| Synthetic CRM ids only; Lab 31 topic `crm.customer-events.v1` | Module 47 incident write-ups as this warmup; copying Lab 41–45 as the Kafka app |
 
 ## Workspace
 
@@ -42,4 +42,4 @@ New-Item -ItemType Directory -Force -Path examples\module-46-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; DLT policy + replay dry-run self-mark **Pass**.
+All six notes files exist under **`java-bootcamp`**; DLT policy + replay dry-run self-mark **Pass**.

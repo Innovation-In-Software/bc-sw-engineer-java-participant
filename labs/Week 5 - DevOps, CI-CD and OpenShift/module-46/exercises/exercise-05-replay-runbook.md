@@ -31,6 +31,7 @@ Replay storms rebalance — tune?
 | --- | --- |
 | Replay all DLT at once | Rate-limit; sample first |
 | No success criteria | Define lag/DLT/CRM checks |
+| Host `kafka-console-consumer.sh` on Windows | `docker exec crm-kafka /opt/kafka/bin/….sh` |
 
 **Module 46** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 
@@ -51,7 +52,7 @@ Here is the shape of a complete answer for this exercise. Adapt the content — 
 
 ## Step 1 — Steps
 
-Inspect DLT → classify → dry-run → limited replay → verify projection → stop criteria.
+Inspect DLT (`docker exec crm-kafka … kafka-console-consumer.sh` on **`.DLT`**) → classify → dry-run → limited replay → verify projection → stop criteria.
 
 ## Step 2 — Check the reference
 
@@ -84,7 +85,7 @@ From `examples/module-46-exercises/`, create `notes/` if needed, then create `no
 
 ## Step 1 — Steps
 
-Inspect DLT → classify → dry-run → limited replay → verify projection → stop criteria.
+Inspect DLT (`docker exec crm-kafka … kafka-console-consumer.sh` on **`.DLT`**) → classify → dry-run → limited replay → verify projection → stop criteria.
 
 ## Step 2 — Check the reference
 

@@ -17,6 +17,8 @@
 
 **1 → 4 → 2 → 3 → 5 → 6** then Lab 46.
 
+Write notes in **`java-bootcamp/examples/module-46-exercises/notes/`**, not the course clone.
+
 ## Do / don't
 
 | Do now | Don't yet |
@@ -24,9 +26,11 @@
 | Failure taxonomy; metrics TODOs; DLT policy; idempotency; replay dry-run | Infinite retry as the error strategy |
 | Correlation headers; synthetic CUS-1001/1002 only | Dump production Kafka topics / PII in metrics |
 | Tie alerts to release watch | Module 47 incident storytelling as this lab |
+| Lab 31 topic names (`crm.customer-events.v1` / `.DLT`) | Invent `crm.customer.events`; copy Lab 41–45 as the Kafka app |
 
 ## Hard gate before Lab 46
 
-- [ ] Ex notes complete (order 1→4→2→3→5→6)
-- [ ] Basic produce/consume from Labs 30–31 available
+- [ ] Ex notes complete in `java-bootcamp/examples/module-46-exercises/notes/`
+- [ ] **Lab 31** CRM exists in `java-bootcamp/examples/lab31-crm` (Spring Kafka)
+- [ ] Lab 30 broker **or** EmbeddedKafka-only path
 - [ ] No secrets or real customer PII in notes

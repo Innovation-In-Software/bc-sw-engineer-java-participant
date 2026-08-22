@@ -16,7 +16,7 @@ _Derived from **16** curriculum slide diagram title(s) plus slide text for this 
 | **Consumer** | Kafka Consumer | Application that reads messages from Kafka topics. |
 | **Consumer Lag** | — | How far behind a consumer is from the latest messages. |
 | **DLQ** | Dead Letter Queue | Place for messages that keep failing so they don’t block the pipeline. |
-| **DLT** | Dead Letter Topic | The concrete Kafka topic (e.g. `crm.customer.events.DLT`) that implements the DLQ pattern in this module. |
+| **DLT** | Dead Letter Topic | The concrete Kafka topic (e.g. `crm.customer-events.v1.DLT`) that implements the DLQ pattern in this module. |
 | **ISR** | In-Sync Replicas | Replicas that are caught up with the leader. |
 | **Kafka** | Apache Kafka | Distributed event streaming platform (topics, brokers, consumers). |
 | **Message Backlog** | — | Queue of unprocessed messages waiting for consumers. |
@@ -65,7 +65,7 @@ _Derived from **16** curriculum slide diagram title(s) plus slide text for this 
 | Term | Full form | Simple meaning |
 | --- | --- | --- |
 | **API** | Application Programming Interface | Downstream service calls inside consumer logic that can add latency or cause backlogs. |
-| **CRM** | Customer Relationship Management | Northstar CRM — the customer platform whose crm.customer.events pipeline is this module's running scenario. |
+| **CRM** | Customer Relationship Management | Northstar CRM — the customer platform whose `crm.customer-events.v1` pipeline is this module's running scenario. |
 | **DB** | Database | Shorthand used for one of the named consumer-failure categories (validation, deserialization, timeout, DB, authz). |
 | **PII** | Personally Identifiable Information | Real customer data that must never appear in logs/metrics — only synthetic fixtures (CUS-1001/CUS-1002) are used. |
 | **SLA** | Service Level Agreement | Uptime/latency commitment put at risk when lag or backlogs grow unchecked. |

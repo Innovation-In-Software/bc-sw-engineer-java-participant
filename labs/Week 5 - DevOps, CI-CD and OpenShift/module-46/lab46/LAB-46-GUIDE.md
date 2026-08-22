@@ -10,6 +10,8 @@
 | Windows | [LAB-46-WINDOWS.md](LAB-46-WINDOWS.md) |
 | macOS | [LAB-46-MACOS.md](LAB-46-MACOS.md) |
 
+> **Two folders (do not mix):** [Clone the course repo · Commit in your own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md). Read this GUIDE in the **course clone**. Write, run, and **push** everything in **your** `java-bootcamp` repo.
+
 ---
 
 ## Activity card
@@ -18,12 +20,12 @@
 | --- | --- |
 | **Time** | ~45 min timed · full path 4–5 h |
 | **Checkpoint** | **E** (after Ex 1→4→2→3→5→6) |
-| **Must prove** | Bounded retry + DLT · not-retryable classification · dashboard signals · dry-run replay |
-| **Hard gate** | Pre-lab Pass · basic Kafka produce/consume available |
+| **Must prove** | One error handler on the factory · DLT topic · dashboard · dry-run replay |
+| **Hard gate** | Pre-lab Pass · **Lab 31 CRM** in `java-bootcamp` · Lab 30 broker **or** EmbeddedKafka |
 
 ### What you will learn
 
-Make CRM Kafka consumers failure-tolerant with DLT, idempotency, lag/metrics, and a safe replay runbook.
+Make Lab 31 CRM Kafka consumers diagnosable: bounded retry, DLT, idempotency notes, lag/metrics, safe replay.
 
 ### Enterprise context
 
@@ -35,77 +37,113 @@ Should malformed events stay on the main topic forever?
 
 ### Debug
 
-Poison event produced but DLT empty — what is unwired?
+Poison produced but DLT empty — factory unwired, wrong topic (`.dlq` vs `.DLT`), or `.sh` run on the Windows host?
+
+---
+
+## Two folders — every command below uses these paths
+
+| Folder | Remote | You… |
+| ------ | ------ | ---- |
+| **Course clone** (handouts) | `bc-sw-engineer-java-participant` | **Read** this GUIDE / starter. **Never** commit homework here. |
+| **Your repo** | private `java-bootcamp` | **Copy Lab 31**, merge starter docs/config, **commit**. |
+
+| Item | Course clone (read) | Your `java-bootcamp` (write) |
+| ---- | ------------------- | ---------------------------- |
+| This GUIDE | `labs/…/module-46/lab46/LAB-46-GUIDE.md` | — |
+| Starter docs + `KafkaErrorConfig` | `labs/…/module-46/lab46/starter/` | merge into `examples/lab46-crm/` |
+| Graded Kafka CRM | — | `examples/lab46-crm/` (copy of **Lab 31**, not Lab 41–45) |
+| Pre-lab notes | — | `examples/module-46-exercises/notes/` |
+| Screenshots | — | `notes/screenshots/lab-46/` (gitignored) |
+
+IntelliJ stays on `java-bootcamp`.
+
+**This lab returns to Week 4 Kafka CRM.** Copy **`examples/lab31-crm`**. **Do not** copy Lab 30 (no Spring Boot), Lab 41–45 (HTTP CRM, **no** Kafka), or starter-only (no `pom.xml`).
+
+**Broker:** Lab 30 Compose service **`crm-kafka`**, host **`localhost:9092`**. Start it from `examples/lab30-crm` (`docker compose up -d`). There is **no** `docker-compose.yml` in Lab 46.
+
+**Topics (keep Lab 31 names):**
+
+| Topic | Role |
+| ----- | ---- |
+| `crm.customer-events.v1` | Main stream (Lab 30/31) |
+| `crm.customer-events.v1.DLT` | Spring `DeadLetterPublishingRecoverer` default (`topic + ".DLT"`) |
+| `crm.customer-events.v1.dlq` | Lab 30 created this — **not** where Spring publishes unless you coded that name |
+
+Create `.DLT` if it does not exist. Consume **`.DLT`**, not `.dlq`, unless you changed the recoverer.
+
+**CLI:** always `docker exec crm-kafka /opt/kafka/bin/….sh`. There is no `kafka-console-consumer.sh` on the Windows PATH.
+
+**HTTP:** Actuator on **`http://localhost:8080`**. Do **not** use Lab 42 Host `:8088`.
+
+**One handler bean:** Lab 31 already has `KafkaErrorConfig`. Lab 46 **edits that class** (backoff, not-retryable, **wire `ConcurrentKafkaListenerContainerFactory`**). Do **not** add a second `@Bean DefaultErrorHandler` (`KafkaConsumerConfig`).
+
+**Idempotency:** Lab 31 `ProcessedEventStore` is in-memory. Timed path: document restart risk. Do not log emails.
 
 ---
 
 ## 45-minute timed path (use starter)
 
-> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: poison→DLT evidence, metrics/lag, replay dry-run, tests.
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: live poison→DLT via `docker exec`, Prometheus scrape, replay tabletop.
 
-In class, use the starter templates so the **core** objectives fit **~45 minutes**. The full Steps below remain for homework / extended depth.
-
-1. Open [`starter/README.md`](starter/README.md).
-2. Copy `starter/` into your `java-bootcamp/examples/…` target (see starter README).
-3. Fill every `// TODO` / `TODO` — do **not** wait on a perfect prior lab; the starter includes a baseline.
-4. Run the starter smoke test; evidence under `notes/screenshots/lab-46/`.
-5. Mark timed-path Pass criteria in the starter README. Continue remaining GUIDE steps as homework if needed.
+1. Open [`starter/README.md`](starter/README.md) **in the course clone**.
+2. In **`java-bootcamp`**, copy Lab 31 → `examples/lab46-crm`, merge starter **docs** + `KafkaErrorConfig`.
+3. Fill TODOs — do **not** work under `labs/`.
+4. `mvn -B -DskipTests compile` (or `mvn -B test` with EmbeddedKafka). Evidence under `notes/screenshots/lab-46/`.
+5. Mark timed-path Pass criteria in the starter README.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed (default)** | ~45 min | Starter TODOs + smoke test |
-| **Full (extended)** | see Duration | Every Step in this GUIDE |
+| **Timed (default)** | ~45 min | Factory-wired handler + docs + compile/tests |
+| **Full (extended)** | see Duration | Live broker poison→`.DLT` + lag describe + Prometheus |
 
 ---
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work.
+All of these live under **`java-bootcamp`**, not the course clone.
 
-| # | Deliverable |
-| - | ----------- |
-| 1 | Kafka error-handler configuration (retry + DLT) |
-| 2 | DLT inspection evidence |
-| 3 | `docs/kafka-dashboard.md` |
-| 4 | `docs/dlt-replay-runbook.md` |
-| 5 | Failure and recovery tests |
-| 6 | Metrics/lag evidence |
-| 7 | No secrets or real customer PII committed |
+| # | Deliverable | Where |
+| - | ----------- | ----- |
+| 1 | `KafkaErrorConfig` — recoverer + bounded backoff + **factory wiring** | `examples/lab46-crm/` |
+| 2 | DLT inspect evidence **or** EmbeddedKafka/tabletop note | `notes/screenshots/lab-46/` |
+| 3 | `docs/kafka-dashboard.md` | `examples/lab46-crm/docs/` |
+| 4 | `docs/dlt-replay-runbook.md` | same |
+| 5 | Tests green twice, or compile + documented IT gap | `src/test/…` |
+| 6 | No secrets / real PII | `git status` on **your** repo |
 
-**Must submit:** the items in the table above (sources + evidence + short notes).
+**Do not submit:** `target/`, broker dumps, kubeconfig, or a verbatim instructor `solution/`.
 
-**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
+---
 
 ## Lab Overview
 
-This Module 46 lab makes CRM Kafka consumers **diagnosable and failure-tolerant** using bounded retries, a dead-letter topic (DLT), idempotent handling, consumer-lag monitoring, and actionable Micrometer metrics. You will configure Spring Kafka error handling, capture DLT inspection evidence, document a dashboard, write `docs/dlt-replay-runbook.md`, and add failure/recovery tests.
+Harden Lab 31 Spring Kafka: bounded retries, DLT, correlation, lag, replay runbook. You are **not** adding Kafka to the Lab 41 Docker/k3d CRM.
 
 ## Learning Objectives
 
 After completing this lab, you will be able to:
 
-* Classify consumer failures (validation, deserialization, timeout, DB, authz)
-* Configure bounded retry and dead-letter behavior in Spring Kafka
-* Preserve correlation and original-topic diagnostics without leaking PII
-* Measure consumer lag and expose Micrometer/Prometheus metrics
-* Design dashboard panels and alert thresholds tied to user impact
+* Classify consumer failures (validation, deserialization, timeout, DB)
+* Configure bounded retry and DLT in Spring Kafka **on the listener factory**
+* Preserve correlation without leaking PII
+* Inspect lag via `docker exec` and Actuator/Prometheus on **8080**
+* Write a dry-run replay runbook
 
 ## Business Scenario
 
-A malformed customer event repeatedly blocks processing while lag grows unnoticed. Agents opening profiles for Amina (`CUS-1001`) see stale data; Ravi’s (`CUS-1002`) status projection never advances. The team needs failure classification, safe recovery, and evidence that replay will not duplicate business side effects (double emails, double ledger posts—whatever your CRM consumer owns).
-
-Use these examples consistently:
+A malformed customer event blocks the group while lag grows. Agents see stale Amina (`CUS-1001`) / Ravi (`CUS-1002`) projections. You need classification, DLT, and replay that will not double side effects.
 
 | ID | Name | Notes |
 | -- | ---- | ----- |
-| `CUS-1001` | Amina Khan | `ACTIVE` — projection / event fixture |
-| `CUS-1002` | Ravi Singh | `PROSPECT` — status-change events |
-| `lab-request-001` | — | correlation header / MDC |
-| `crm.customer.events` | — | primary topic (adapt name) |
-| `crm.customer.events.DLT` | — | dead-letter topic |
-| `crm-customer-projection-v1` | — | consumer group example |
+| `CUS-1001` | Amina Khan | `ACTIVE` — event fixture |
+| `CUS-1002` | Ravi Singh | `PROSPECT` |
+| `lab-request-001` | — | correlation |
+| `crm.customer-events.v1` | — | main topic |
+| `crm.customer-events.v1.DLT` | — | Spring DLT |
+| `crm-notifications` | — | Lab 31 default `group-id` (use whatever is in **your** `application.yml`) |
 
-**Security note for evidence.** Console-consume with headers for lab topics only. Never dump production topics. Redact tokens. Prefer customer **IDs** over names in logs and metrics tags (bounded cardinality—no raw emails as tag values).
+**Security note.** Training topics only. Log **customer IDs**, not emails.
 
 ---
 
@@ -114,252 +152,231 @@ Use these examples consistently:
 
 ```mermaid
 flowchart TB
-  Prod["Producer CRM API / lab tool"] --> Topic["crm.customer.events<br/>key=customerId"]
-  Topic --> L["@KafkaListener + DefaultErrorHandler"]
-  L -->|retry ExponentialBackOff| L
-  L -->|not-retryable| DLT["crm.customer.events.DLT"]
-  DLT --> Idem["Idempotent handler"]
-  DLT --> Obs["metrics / alerts"]
+  Prod["Lab 31 publisher"] --> Topic["crm.customer-events.v1"]
+  Topic --> L["@KafkaListener"]
+  L --> EH["CommonErrorHandler on factory"]
+  EH -->|retry backoff| L
+  EH -->|not-retryable / exhausted| DLT["crm.customer-events.v1.DLT"]
+  L --> Idem["ProcessedEventStore"]
+  EH --> Obs["lag / Prometheus :8080"]
 ```
+
+Replay from DLT **re-enters the listener** (then idempotency matters). The DLT is a sink, not the handler.
 
 ## Prerequisites
 
-Prior labs: [30](../../../Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/lab30/LAB-30-GUIDE.md) · [31](../../../Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/lab31/LAB-31-GUIDE.md).
+Prior labs: [Lab 31](../../../Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-31/lab31/LAB-31-GUIDE.md) in **`java-bootcamp`**. Broker: [Lab 30](../../../Week%204%20-%20Kafka,%20React,%20PostgreSQL%20and%20Resilience/module-30/lab30/LAB-30-GUIDE.md) Compose.
 
-Confirm (Lab 0 tools assumed):
+Confirm:
 
-* Kafka available (Docker Compose or instructor cluster)
-* Spring Boot CRM consumers compiling
-* Actuator/Prometheus exposure allowed in lab profile
-* Docker + monitoring endpoints as per lab
-* No secrets committed to Git
+* `examples/lab31-crm` has `pom.xml` + Spring Kafka
+* `crm-kafka` Up **or** you will use EmbeddedKafka only
+* No secrets in Git
 
 ### Pre-flight
 
-```bash
-java -version
-mvn -version
+```powershell
+git remote -v   # YOUR java-bootcamp
+cd $env:USERPROFILE\java-bootcamp\examples\lab30-crm
+docker compose ps
+```
+
+Working directory for the CRM:
+
+```text
+~/java-bootcamp/examples/lab46-crm
 ```
 
 ## Worked example (read before you code)
 
-Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+```powershell
+docker exec crm-kafka /opt/kafka/bin/kafka-topics.sh `
+  --bootstrap-server localhost:9092 --create --if-not-exists `
+  --topic crm.customer-events.v1.DLT --partitions 1 --replication-factor 1
 
-```bash
-curl -fsS http://localhost:8080/actuator/prometheus | head
-kafka-consumer-groups.sh --bootstrap-server localhost:9092 \
-  --group crm-customer-projection-v1 --describe
+docker exec crm-kafka /opt/kafka/bin/kafka-consumer-groups.sh `
+  --bootstrap-server localhost:9092 --group crm-notifications --describe
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** Instructors check **Lab 31 copy**, **one** handler on the **factory**, and DLT inspect on **`.DLT`**.
 
 ---
 
 ## Implementation Steps
 
-Complete each step in order. Commands assume `~/java-bootcamp/examples/lab46-crm` (Windows: `%USERPROFILE%\java-bootcamp\examples\lab46-crm`) unless noted. Parts 1–8 map to Steps 1–8.
+Complete each step in order. **Write** under `java-bootcamp`. **Read** starter from the course clone.
 
 ---
 
-### Step 1 — Map event flows (Part 1)
+### Step 1 — Copy Lab 31, merge starter, map event flows
 
-**Why:** You cannot alert or replay what you have not named.
+**Why:** You cannot alert or replay what you have not named. Starter is not a full Maven app.
 
 **Do this:**
 
-```bash
-cd ~/java-bootcamp/examples
-cp -r lab31-crm lab46-crm 2>/dev/null || cp -r lab30-crm lab46-crm 2>/dev/null || mkdir -p lab46-crm
-cd lab46-crm
-mkdir -p docs
-mkdir -p ~/java-bootcamp/notes/screenshots/lab-46
-git switch -c lab/46-crm 2>/dev/null || true
+**Windows (PowerShell):**
+
+```powershell
+$jb = "$env:USERPROFILE\java-bootcamp"
+$courseLab46 = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 5 - DevOps, CI-CD and OpenShift\module-46\lab46"
+
+Copy-Item -Recurse -Force "$jb\examples\lab31-crm" "$jb\examples\lab46-crm"
+New-Item -ItemType Directory -Force -Path "$jb\examples\lab46-crm\docs","$jb\notes\screenshots\lab-46" | Out-Null
+Copy-Item -Force "$courseLab46\starter\docs\*" "$jb\examples\lab46-crm\docs\"
+Copy-Item -Force "$courseLab46\starter\src\main\java\com\northstar\crm\config\KafkaErrorConfig.java" `
+  "$jb\examples\lab46-crm\src\main\java\com\northstar\crm\config\KafkaErrorConfig.java"
+Copy-Item -Force "$courseLab46\starter\src\main\resources\application.yml" `
+  "$jb\examples\lab46-crm\src\main\resources\application.yml"
+# That yml keeps Lab 31 topics (`crm.customer-events.v1`) and adds Actuator. Do not rename to crm.customer.events.
+cd "$jb\examples\lab46-crm"
 ```
 
-In `docs/kafka-dashboard.md`, list producer, topic, partition key, group, side effect, and owner. Document delivery and ordering assumptions. Identify sensitive fields that must not enter logs (email, phone, tokens).
+**macOS / Linux:**
 
-**Expected result:** Event-flow table for CRM customer events with owners and redaction rules.
+```bash
+JB=~/java-bootcamp
+COURSE_LAB46=~/bc-sw-engineer-java-participant/labs/Week\ 5\ -\ DevOps,\ CI-CD\ and\ OpenShift/module-46/lab46
 
-**If it fails:** Unknown side effects → stop and reverse-engineer the listener before coding DLT.
+cp -R "$JB/examples/lab31-crm" "$JB/examples/lab46-crm"
+mkdir -p "$JB/examples/lab46-crm/docs" "$JB/notes/screenshots/lab-46"
+cp "$COURSE_LAB46/starter/docs/"* "$JB/examples/lab46-crm/docs/"
+cp "$COURSE_LAB46/starter/src/main/java/com/northstar/crm/config/KafkaErrorConfig.java" \
+  "$JB/examples/lab46-crm/src/main/java/com/northstar/crm/config/KafkaErrorConfig.java"
+cp "$COURSE_LAB46/starter/src/main/resources/application.yml" \
+  "$JB/examples/lab46-crm/src/main/resources/application.yml"
+cd "$JB/examples/lab46-crm"
+```
+
+Confirm `pom.xml` exists. Confirm you did **not** copy Lab 44/45. Confirm there is **one** `KafkaErrorConfig` (no extra `KafkaConsumerConfig` `@Bean` handler). Add `spring-boot-starter-actuator` + `micrometer-registry-prometheus` to `pom.xml` if they are missing (Lab 31 did not include them).
+
+In `docs/kafka-dashboard.md`, list producer, topic `crm.customer-events.v1`, key=`customerId`, group, side effect, owner, redaction (no email in tags).
+
+**Expected result:** `lab46-crm` is Lab 31 + Lab 46 docs/config; event-flow table started.
+
+**If it fails:** Copied Lab 30 / 41 / starter-only → start over with **Lab 31**.
 
 ---
 
-### Step 2 — Define failure policy (Part 2)
+### Step 2 — Define failure policy
 
-**Why:** Retrying deserialization errors forever burns CPU and lag SLO.
+**Why:** Retrying deserialization forever burns CPU and lag SLO.
 
-**Do this:** Classify validation, deserialization, timeout, database, and authorization failures. Choose retryable exceptions. Set bounded attempts, backoff, and time budget. Record the policy in `docs/dlt-replay-runbook.md`.
-
-Example policy snippet:
+**Do this:** In `docs/dlt-replay-runbook.md`, classify:
 
 ```text
-IllegalArgumentException / JsonParseException → not retryable → DLT
-Transient DataAccessResourceFailureException → retry with backoff
-Max elapsed retry budget: 10s (lab) / document prod values separately
+InvalidCustomerEventException / UnsupportedEventVersionException / parse → not retryable → DLT
+Transient DataAccessResourceFailureException → retry with backoff, then DLT
+Max elapsed (lab): 10s
 ```
 
-**Expected result:** Written classification with retryable vs not-retryable lists.
-
-**If it fails:** Everything marked retryable → revise before implementing the handler.
+**Expected result:** Retryable vs not-retryable lists.
 
 ---
 
-### Step 3 — Configure retry and DLT (Part 3)
+### Step 3 — Bounded retry + DLT **on the factory**
 
-**Why:** Without a recoverer, exhausted retries may seek/stop/loop depending on defaults.
+**Why:** A `DefaultErrorHandler` `@Bean` that is never set on `ConcurrentKafkaListenerContainerFactory` does not run.
 
-**Do this:** Configure `DeadLetterPublishingRecoverer` and `DefaultErrorHandler`. Route exhausted records to a named DLT. Prevent infinite retry loops.
+**Do this:** Complete TODOs in `KafkaErrorConfig`: `DeadLetterPublishingRecoverer` (`topic + ".DLT"`), `ExponentialBackOff` (lab max elapsed 10s) or bounded `FixedBackOff`, `addNotRetryableExceptions`, and:
 
 ```java
-import org.apache.kafka.common.TopicPartition;
-import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
-import org.springframework.kafka.listener.DefaultErrorHandler;
-import org.springframework.util.backoff.ExponentialBackOff;
-
-@Bean
-DefaultErrorHandler kafkaErrorHandler(KafkaTemplate<Object, Object> template) {
-  var recoverer = new DeadLetterPublishingRecoverer(template,
-      (record, ex) -> new TopicPartition(record.topic() + ".DLT", record.partition()));
-  var backoff = new ExponentialBackOff(500L, 2.0);
-  backoff.setMaxElapsedTime(10_000L);
-  var handler = new DefaultErrorHandler(recoverer, backoff);
-  handler.addNotRetryableExceptions(IllegalArgumentException.class);
-  return handler;
-}
+factory.setCommonErrorHandler(kafkaErrorHandler);
 ```
 
-Wire the handler into concurrent Kafka listener container factory (as taught in class). Create the DLT if auto-create is disabled.
+Create the DLT topic (Step worked example). Do **not** add a second handler class.
 
-**Expected result:** Poison messages reach `*.DLT` after bounded retries; main consumer continues.
+**Expected result:** Poison/contract errors can reach `crm.customer-events.v1.DLT`; main consumer continues.
 
-**If it fails:** Infinite retry → verify not-retryable list and max elapsed time; check recoverer bean wiring.
+**If it fails:** Infinite retry → not-retryable + max elapsed. Dual beans → delete the extra `@Bean`.
 
 ---
 
-### Step 4 — Preserve diagnostics (Part 4)
+### Step 4 — Diagnostics (headers, not host `.sh`)
 
 **Why:** A DLT without headers is a black hole.
 
-**Do this:** Carry event and correlation IDs (`lab-request-001`). Record original topic, partition, offset, exception type, and timestamp (Spring Kafka DLT headers help). Redact tokens and customer details from custom log lines—log `CUS-1001`, not email.
+**Do this:** Keep `lab-request-001`. Log `CUS-1001`, not email.
 
-Produce a poison payload intentionally and inspect:
+Full path — inspect DLT:
 
-```bash
-kafka-console-consumer.sh --bootstrap-server localhost:9092 \
-  --topic crm.customer.events.DLT --from-beginning \
-  --property print.headers=true --max-messages 10
+```powershell
+docker exec crm-kafka /opt/kafka/bin/kafka-console-consumer.sh `
+  --bootstrap-server localhost:9092 `
+  --topic crm.customer-events.v1.DLT --from-beginning `
+  --property print.headers=true --max-messages 10 --timeout-ms 15000
 ```
 
-Save sanitized evidence under `notes/screenshots/lab-46/`.
+Timed path: tabletop this command + screenshot of config. Save under `notes/screenshots/lab-46/`.
 
-**Expected result:** DLT records show diagnostic headers; correlation present; no secrets/PII dumps.
+**Expected result:** You know **`.DLT`** is the Spring destination (Lab 30 `.dlq` is a different name).
 
-**If it fails:** Empty DLT → handler not registered or wrong topic naming; fix before metrics work.
+**If it fails:** Empty DLT → factory not wired, or you consumed `.dlq`. `.sh` not found → you ran the script on the host; use `docker exec`.
 
 ---
 
-### Step 5 — Make handling idempotent (Part 5)
+### Step 5 — Idempotency
 
 **Why:** At-least-once + replay without dedupe doubles side effects.
 
-**Do this:** Deduplicate by event ID or business key (`customerId` + event type + version). Store processed-event evidence transactionally where practical. Test duplicates and rebalance behavior with tests that republish the same event for `CUS-1002`.
+**Do this:** Keep `ProcessedEventStore.markIfNew(eventId)`. Test duplicate `CUS-1002` / same `eventId`. Document: in-memory store **resets on restart**.
 
-**Expected result:** Second delivery is a no-op (or safe merge); test proves it.
-
-**If it fails:** Deduped only in memory → document restart risk; prefer durable store for credit.
+**Expected result:** Second delivery is a no-op; restart risk written in the runbook.
 
 ---
 
-### Step 6 — Expose metrics (Part 6)
+### Step 6 — Metrics and lag
 
-**Why:** Lag you cannot scrape is lag you will learn about from angry agents.
+**Why:** Lag you cannot scrape is lag you learn about from agents.
 
-**Do this:** Count processed, failed, retried, and DLT records. Time handler latency and expose consumer lag (Micrometer Kafka binders / custom gauges as taught). Use bounded-cardinality metric tags (`topic`, `outcome`)—never per-email tags.
+**Do this:** Expose Actuator Prometheus in **lab profile** (`health,prometheus`). Tags: `topic` / `outcome` — never email.
 
-```yaml
-spring:
-  kafka:
-    consumer:
-      group-id: crm-customer-projection-v1
-      enable-auto-commit: false
-      properties:
-        isolation.level: read_committed
-        max.poll.interval.ms: 300000
-    listener:
-      ack-mode: record
-management:
-  endpoints.web.exposure.include: health,info,prometheus
-  metrics.tags.application: lab46-crm
+```powershell
+curl.exe -fsS http://localhost:8080/actuator/prometheus
+docker exec crm-kafka /opt/kafka/bin/kafka-consumer-groups.sh `
+  --bootstrap-server localhost:9092 --group crm-notifications --describe
 ```
 
-```bash
-curl -fsS http://localhost:8080/actuator/prometheus | head
-kafka-consumer-groups.sh --bootstrap-server localhost:9092 \
-  --group crm-customer-projection-v1 --describe
-```
+If the app is not running, timed path: document the commands + `mvn -B test`.
 
-**Expected result:** Prometheus scrape shows CRM consumer metrics; lag describable via CLI.
+**Expected result:** Scrape **or** CLI lag **or** documented substitute.
 
-**If it fails:** Endpoint 404 → expose Actuator carefully in lab profile only.
+**If it fails:** 404 → expose Actuator. Connection refused on 8080 → app not started (not k3d `:8088`).
 
 ---
 
-### Step 7 — Create alerts and dashboard notes (Part 7)
+### Step 7 — Dashboard notes
 
-**Why:** Metrics without thresholds become museum pieces.
+**Why:** Metrics without thresholds are museum pieces.
 
-**Do this:** In `docs/kafka-dashboard.md`, graph (or describe panels for) throughput, error rate, p95 latency, lag, and DLT growth. Define warning and critical thresholds. Tie alerts to user impact (“stale customer profile”) and link the replay runbook.
+**Do this:** Finish `docs/kafka-dashboard.md`: lag, DLT rate, retries, latency; warning/critical; user impact (stale CUS-* projections); link the runbook.
 
-Example thresholds (adapt):
-
-```text
-Lag > 1000 messages for 5m → warning
-Lag > 10000 or DLT rate > 0 for 2m → critical + page runbook
-```
-
-**Expected result:** Dashboard doc with panels, thresholds, and runbook link.
-
-**If it fails:** Thresholds with no user impact → rewrite the “so what” column.
+**Expected result:** Panels + “so what.”
 
 ---
 
-### Step 8 — Practice replay (Part 8)
+### Step 8 — Replay dry-run
 
-**Why:** Blind replay is how you page yourself twice.
+**Why:** Blind replay pages you twice.
 
-**Do this:** Fix root cause before replay. Select and rate-limit records explicitly. Verify ordering assumptions and absence of duplicate side effects. Write `docs/dlt-replay-runbook.md` with dry-run, selection criteria, rate limit, verification (fixtures `CUS-1001`/`CUS-1002`), and abort conditions.
+**Do this:** Finish `docs/dlt-replay-runbook.md`: fix root cause first, select records, rate-limit, verify fixtures, abort on duplicate side effects. Tabletop is valid on the timed path.
 
-**Expected result:** Runbook complete; at least one rehearsal (or tabletop) recorded.
-
-**If it fails:** Runbook says “republish all DLT” with no filter → add selective criteria.
+**Expected result:** Runbook a peer can follow.
 
 ---
 
 ### Step 9 — Failure experiments + evidence pack
 
-**Why:** Resilience untested is hope.
-
-**Do this:** Complete Failure Experiments. Run `mvn -q test` twice for determinism where tests exist. Keep Git clean of broker dumps. Append a verification block to `docs/dlt-replay-runbook.md`:
+**Do this:** Complete Failure Experiments. `mvn -B test` twice if EmbeddedKafka tests exist. `git status` on **your** repo.
 
 ```markdown
-## Lab Pass criteria
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Poison message → DLT with headers | Pass / Fail |
-| 2 | Duplicate event → no double side effect (CUS-1002) | Pass / Fail |
-| 3 | Lag describe output captured | Pass / Fail |
-| 4 | Prometheus snippet captured (sanitized) | Pass / Fail |
-| 5 | Replay dry-run steps rehearsed / tabletoped | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | Work in java-bootcamp; Lab 31 copy | Pass / Fail |
+| 2 | One handler on the factory | Pass / Fail |
+| 3 | DLT is .DLT (not host .sh / not .dlq unless you coded it) | Pass / Fail |
+| 4 | Dashboard + replay dry-run | Pass / Fail |
+| 5 | No PII/secrets in Git | Pass / Fail |
 ```
-
-**Expected result:** ≥3 experiments; DLT evidence; green tests; runbooks ready.
-
-**If it fails:** See Troubleshooting.
 
 ---
 
@@ -367,178 +384,69 @@ _Mark **Pass** or **Fail** in your lab notes._
 
 ### Checkpoint A — Tooling
 
-_Mark **Pass** or **Fail** in your lab notes._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | `lab46-crm` under `examples/` | Pass / Fail |
-| 2 | Kafka reachable; CRM app starts | Pass / Fail |
-| 3 | Actuator/Prometheus or CLI lag available | Pass / Fail |
+| 1 | `examples/lab46-crm` is Lab 31 (`pom.xml` + Kafka) | Pass / Fail |
+| 2 | `crm-kafka` Up **or** EmbeddedKafka-only path | Pass / Fail |
+| 3 | `crm.customer-events.v1.DLT` created or documented | Pass / Fail |
 
 ### Checkpoint B — Core resilience
 
-_Mark **Pass** or **Fail** in your lab notes._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Event flow map + failure policy documented | Pass / Fail |
-| 2 | `DefaultErrorHandler` + DLT recoverer configured | Pass / Fail |
-| 3 | Diagnostics headers / correlation preserved | Pass / Fail |
+| 1 | Event flow + failure policy | Pass / Fail |
+| 2 | Recoverer + backoff + **factory** | Pass / Fail |
+| 3 | Correlation / no email in logs | Pass / Fail |
 
 ### Checkpoint C — Idempotency + observability
 
-_Mark **Pass** or **Fail** in your lab notes._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Idempotent handling with test evidence | Pass / Fail |
-| 2 | Metrics + lag inspection evidence | Pass / Fail |
-| 3 | Dashboard + alert thresholds documented | Pass / Fail |
+| 1 | Duplicate event no-op + restart risk noted | Pass / Fail |
+| 2 | Lag or Prometheus (8080) or substitute | Pass / Fail |
+| 3 | Dashboard thresholds | Pass / Fail |
 
 ### Checkpoint D — Hygiene
 
-_Mark **Pass** or **Fail** in your lab notes._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | `docs/dlt-replay-runbook.md` complete | Pass / Fail |
-| 2 | No PII/secrets in logs or Git | Pass / Fail |
-| 3 | Controlled poison → DLT → recover path evidenced | Pass / Fail |
+| 1 | Replay runbook complete | Pass / Fail |
+| 2 | No PII/secrets | Pass / Fail |
+| 3 | Pushes to **your** remote | Pass / Fail |
 
 ---
 
-## Reference Commands, Configuration, and Code
+## Safety Rules
 
-### Spring Kafka error handler
-
-```java
-import org.apache.kafka.common.TopicPartition;
-import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
-import org.springframework.kafka.listener.DefaultErrorHandler;
-import org.springframework.util.backoff.ExponentialBackOff;
-
-@Bean
-DefaultErrorHandler kafkaErrorHandler(KafkaTemplate<Object, Object> template) {
-  var recoverer = new DeadLetterPublishingRecoverer(template,
-      (record, ex) -> new TopicPartition(record.topic() + ".DLT", record.partition()));
-  var backoff = new ExponentialBackOff(500L, 2.0);
-  backoff.setMaxElapsedTime(10_000L);
-  var handler = new DefaultErrorHandler(recoverer, backoff);
-  handler.addNotRetryableExceptions(
-      IllegalArgumentException.class,
-      org.springframework.messaging.converter.MessageConversionException.class
-  );
-  return handler;
-}
-```
-
-### Inspect lag and DLT
-
-```bash
-kafka-consumer-groups.sh --bootstrap-server localhost:9092 \
-  --group crm-customer-projection-v1 --describe
-kafka-console-consumer.sh --bootstrap-server localhost:9092 \
-  --topic crm.customer.events.DLT --from-beginning \
-  --property print.headers=true --max-messages 10
-curl -fsS http://localhost:8080/actuator/prometheus | rg -i "kafka|crm|dlt|consumer" || true
-```
-
-## Preconditions
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Root cause fixed and deployed | Pass / Fail |
-| 2 | Idempotency proven for event type | Pass / Fail |
-| 3 | Dry-run selection listed (offsets / eventIds) | Pass / Fail |
-## Steps
-
-1. Export selected DLT records (sanitize PII)
-2. Rate-limit republish to main topic
-3. Watch lag, error rate, DLT growth
-4. Verify CUS-1001 / CUS-1002 projections
-## Abort if
-
-- Duplicate side effects detected
-- Lag critical threshold exceeded
-## Correlation
-
-- Prefer lab-request-001 style IDs in lab evidence
-```
-
-### Dashboard outline (`docs/kafka-dashboard.md`)
-
-```markdown
-# CRM Kafka Dashboard
-## Panels
-
-1. Messages/sec processed
-2. Error rate
-3. p95 handler latency
-4. Consumer lag by group
-5. DLT publish rate
-## Thresholds
-
-- Warning / Critical (document values)
-## User impact
-
-- Stale profiles for agents (CUS-* projections)
-## Runbook link
-
-- docs/dlt-replay-runbook.md
-```
-
-### Commands
-
-```bash
-cd ~/java-bootcamp/examples/lab46-crm
-mvn -q -B clean test
-mvn -q -B spring-boot:run
-git status --short
-```
-
-### Evidence log template
-
-```markdown
-# Lab 46 Evidence Log
-- Topic / DLT / group:
-- Poison test correlation:
-## Results
-
-| Check | Result | Evidence |
-| ----- | ------ | -------- |
-| DLT receive | PASS/FAIL | |
-| Idempotent duplicate | PASS/FAIL | |
-| Lag visible | PASS/FAIL | |
-| Metrics scrape | PASS/FAIL | |
-| Replay dry-run | PASS/FAIL | |
-```
-
-### Artifact map
-
-| Artifact | Role |
-| -------- | ---- |
-| Kafka error-handler config | Retry + DLT wiring |
-| DLT inspection evidence | Poison-path proof |
-| `docs/kafka-dashboard.md` | Ops panels + thresholds |
-| `docs/dlt-replay-runbook.md` | Safe redrive procedure |
-| Failure/recovery tests | Regression safety |
-| Actuator Prometheus excerpt | Metrics evidence |
+* Never dump production Kafka topics.
+* Never log emails as metric tags.
+* Never add a second `DefaultErrorHandler` bean.
+* Never treat Lab 41–45 as the Kafka app.
+* Never run `kafka-*.sh` on the Windows host PATH.
 
 ---
+
+## Reference Commands
+
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\lab30-crm
+docker compose up -d
+docker exec crm-kafka /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+
+cd $env:USERPROFILE\java-bootcamp\examples\lab46-crm
+mvn -B test
+```
 
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
-| 1 | Publish poison JSON to main topic | Lands on DLT after budget | Keep sample for evidence |
-| 2 | Republish same valid event twice | Idempotent second apply | Assert counters/fixtures |
-| 3 | Stop consumer briefly | Lag rises; clears after start | Document lag signal |
-| 4 | Mark retryable as not-retryable wrongly | Premature DLT | Fix classification |
-| 5 | Log email in listener | PII leak smell | Redact; use customerId only |
+| 1 | Contract error (bad key / version) | Fast DLT | Keep sample |
+| 2 | Same eventId twice | Second is no-op | Assert store |
+| 3 | Stop consumer | Lag rises | Start again |
+| 4 | Consume `.dlq` while recoverer uses `.DLT` | Empty | Consume `.DLT` |
+| 5 | Second handler `@Bean` | Context fail / silent skip | One `KafkaErrorConfig` |
+| 6 | Log email in listener | PII smell | CustomerId only |
 
 ---
 
@@ -546,48 +454,49 @@ git status --short
 
 | Symptom | Likely cause | Fix |
 | ------- | ------------ | --- |
-| No DLT messages | Handler not on factory | Wire `CommonErrorHandler` on container factory |
-| Infinite retry | Missing not-retryable / budget | Add exceptions; set max elapsed |
-| Lag stuck | Poison still on main / stop | Check DLT routing; pause partitions if needed |
-| Duplicate side effects | No durable idempotency | Persist processed keys |
-| Metrics empty | Actuator not exposed | Lab profile exposure; security allowlist |
-| Rebalance storms | Long processing / max.poll | Tune poll interval; shorten work |
-| Header missing | Custom recoverer overrides | Preserve Spring DLT headers |
-| DLT topic missing | Auto-create disabled | Create `*.DLT` explicitly |
+| No `pom.xml` | Starter-only or Lab 30 | Copy **Lab 31** |
+| Copied Lab 41–45 | No Kafka | Copy **Lab 31** |
+| Work in course clone | Wrong folder | `java-bootcamp` |
+| `kafka-console-consumer.sh` not found | Host PATH | `docker exec crm-kafka …` |
+| Empty DLT on `.dlq` | Lab 30 name | Spring default is **`.DLT`** |
+| Empty DLT on `.DLT` | Factory not wired | `setCommonErrorHandler` |
+| Dual `DefaultErrorHandler` | Extra `KafkaConsumerConfig` | Delete extra `@Bean` |
+| Infinite retry | No not-retryable / budget | Classify + max elapsed |
+| Actuator on 8088 | Lab 42 habit | **8080** |
+| Metrics empty | Actuator not exposed | Lab profile include prometheus |
+| In-memory dupes after restart | `ProcessedEventStore` | Document; durable store for credit |
 
-## Security and Production Review
+## Evidence Log Template
 
-Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
-
-1. Which inputs are untrusted (Kafka payloads from other services)?
-2. Where are authn/authz for redrive enforced?
-3. Which values are sensitive in DLT bodies and logs?
+```markdown
+# Lab 46 Evidence Log
+- Repo (must be java-bootcamp):
+- Seed (must be Lab 31):
+- Topic / DLT / group:
+- Factory wired:
+- Poison/DLT (live or tabletop):
+```
 
 ---
-
 
 ## Cleanup
 
 ```bash
 cd ~/java-bootcamp/examples/lab46-crm
 mvn -q clean
-docker compose down 2>/dev/null || true
+# Broker stays with Lab 30 unless you intend to stop it:
+# cd ../lab30-crm && docker compose stop
 git status --short
 ```
 
-Purge lab DLT messages if shared brokers require it. Keep sanitized screenshots.
+**Keep `lab46-crm`**—Lab 47 may cite this failure class.
 
-**Keep `lab46-crm`**—Lab 47 may reference this failure class in incident communications.
-
+---
 
 ## Reflection Questions
 
 Write **1–3 sentence** answers (not essays):
 
-1. Which design decision most affected correctness (keying, DLT, or idempotency)?
+1. Which design decision most affected correctness (factory wiring, DLT name, or idempotency)?
 2. What evidence proves the poison path is bounded?
-3. Which failure was hardest to diagnose?
-
----
-
-
+3. Why must Lab 44 CD still not rebuild the JAR even if Kafka is healthy?

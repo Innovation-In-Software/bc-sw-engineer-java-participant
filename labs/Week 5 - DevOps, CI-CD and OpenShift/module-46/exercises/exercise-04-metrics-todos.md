@@ -23,7 +23,7 @@ High-cardinality email tags on metrics — risk?
 
 ### Debug
 
-Metrics empty in Actuator — exposure/security?
+Metrics empty in Actuator — exposure on **`:8080`** (not Lab 42 `:8088`)?
 
 ### Troubleshooting
 

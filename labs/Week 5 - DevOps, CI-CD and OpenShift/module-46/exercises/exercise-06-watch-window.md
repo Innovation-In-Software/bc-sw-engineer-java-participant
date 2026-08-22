@@ -23,7 +23,7 @@ What Kafka signals belong on a post-promote watch checklist?
 
 ### Debug
 
-Starting Module 47 slides during this warmup — park?
+Starting Module 47 slides during this warmup — park? Notes belong in `java-bootcamp`, not the course clone.
 
 ### Troubleshooting
 
