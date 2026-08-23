@@ -18,7 +18,8 @@ spec:
       # TODO: serviceAccountName / imagePullSecrets if required by cohort
       containers:
         - name: crm-api
-          # TODO: replace with immutable digest from pipeline
+          # Training-registry digest placeholder — not a required GHCR URL.
+          # Record a digest you actually built. Keep Lab 44 jarSha256 as JAR identity.
           image: ghcr.io/EXAMPLE_ORG/crm-api:REPLACE_WITH_DIGEST
           imagePullPolicy: IfNotPresent
           ports:

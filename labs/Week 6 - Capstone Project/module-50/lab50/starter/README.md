@@ -1,6 +1,15 @@
 # Lab 50 starter — session block (~45 minutes)
 
-**Theme:** Data/API checklist + SQL/Flyway stubs for UI→PostgreSQL journey  
+**Theme:** Data/API checklist + Flyway SQL (no React in this starter)
+
+## Two folders
+
+| Folder | You… |
+| ------ | ---- |
+| Course clone (this `starter/`) | Copy **from** here |
+| `java-bootcamp` | Merge **`db/`** + **`docs/data-api-checklist.md`** into `examples/customer-management-platform` |
+
+**Do not** `Copy-Item starter\*` over the Lab 48/49 tree. There is **no** `frontend/` here — `npm` is full-path homework.
 
 ## Activity card
 
@@ -8,67 +17,58 @@
 | --- | --- |
 | **Checkpoint** | **E** |
 | **Must prove** | checklist · SQL TODOs · fixtures · durability SELECT |
-| **Hard gate** | Pre-lab Pass · Lab 49 DTOs |
+| **Hard gate** | Lab 49 DTOs (`interactionType`, string `CUS-1001`) |
 
-**Target:** `~/java-bootcamp/examples/customer-management-platform/`
+## Copy
 
-Timed-path policy: [`labs/_STARTER-PATH.md`](../../../../_STARTER-PATH.md)
-
-## Copy into your workspace
-
-**Windows (PowerShell)** — from this lab folder:
+**Windows:**
 
 ```powershell
-$dest = "$env:USERPROFILE\java-bootcamp\examples\customer-management-platform"
-New-Item -ItemType Directory -Force -Path $dest | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" $dest\
+$jb = "$env:USERPROFILE\java-bootcamp"
+$course = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-50\lab50"
+$dest = "$jb\examples\customer-management-platform"
+New-Item -ItemType Directory -Force -Path "$dest\db\migration","$dest\docs","$jb\notes\screenshots\lab-50" | Out-Null
+Copy-Item -Force "$course\starter\db\migration\*" "$dest\db\migration\"
+Copy-Item -Force "$course\starter\docs\data-api-checklist.md" "$dest\docs\data-api-checklist.md"
 cd $dest
 ```
 
 **macOS / Linux:**
 
 ```bash
-mkdir -p ~/java-bootcamp/examples/customer-management-platform
-cp -R starter/. ~/java-bootcamp/examples/customer-management-platform/
-cd ~/java-bootcamp/examples/customer-management-platform
+DEST=~/java-bootcamp/examples/customer-management-platform
+COURSE=~/bc-sw-engineer-java-participant/labs/Week\ 6\ -\ Capstone\ Project/module-50/lab50
+mkdir -p "$DEST/db/migration" "$DEST/docs"
+cp "$COURSE/starter/db/migration/"* "$DEST/db/migration/"
+cp "$COURSE/starter/docs/data-api-checklist.md" "$DEST/docs/data-api-checklist.md"
+cd "$DEST"
 ```
 
-## 45-minute session checklist
+## Session checklist
 
-- [ ] Walk `docs/data-api-checklist.md` against Lab 49 DTO/API shapes
-- [ ] Complete column TODOs in `db/migration/V50__customer_interaction.sql`
-- [ ] Note Flyway versioning rules in `db/migration/README.md`
-- [ ] Sketch UI journey steps (search → profile → timeline → create) in checklist
-- [ ] List evidence commands for SQL proof of `CUS-1001` + `lab-request-001`
+- [ ] Checklist matches Lab 49 create body (not `channel`)
+- [ ] SQL TODOs: CHECK on `interaction_type`, timeline index, FK deferred if no customer table
+- [ ] Journey names CUS-1001 / lab-request-001
+- [ ] Durability SELECT drafted
 
-## Smoke test
+## Smoke
 
-```bash
-ls docs/data-api-checklist.md
-ls db/migration/V50__customer_interaction.sql
-# When Postgres available (full path / shared host):
-# flyway info   OR   start app and confirm migration applied
+```powershell
+Test-Path docs\data-api-checklist.md, db\migration\V50__customer_interaction.sql
 ```
 
-Evidence under `~/java-bootcamp/notes/screenshots/lab-50/`.
-
-## Timed-path Pass criteria
+## Pass criteria
 
 | Criterion | Pass / Fail |
 | --------- | ----------- |
-| Data/API checklist filled for create-interaction contract | Pass / Fail |
-| SQL stub has table + FK/index TODOs resolved or explicitly deferred | Pass / Fail |
-| Journey steps name Amina / correlation fixtures | Pass / Fail |
-| Durability proof query drafted (SELECT … WHERE correlation_id = …) | Pass / Fail |
-
-Full path (multi-day): React components, typed client, a11y, E2E, restart durability — see GUIDE.
-
+| Lab 48/49 files still present | Pass / Fail |
+| Checklist + SQL aligned to Lab 49 | Pass / Fail |
+| Durability SELECT drafted | Pass / Fail |
 
 ### Troubleshooting
 
 | Symptom | Fix |
 | --- | --- |
-| Checklist vs Lab 49 mismatch | Re-open Lab 49 DTO/demo.md |
-| Vague SQL TODOs | Name columns, FK, correlation_id |
-| No durability query | Draft SELECT by correlation_id |
-| Overwriting platform files | Merge carefully; backup first |
+| Overwrote ADRs | Copy two paths only |
+| `channel` / RAW(16) | Follow this SQL stub + Lab 49 |
+| `npm` required today | No — session has no frontend |

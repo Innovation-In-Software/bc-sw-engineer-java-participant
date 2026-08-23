@@ -23,7 +23,7 @@ What sits outside the system boundary vs inside?
 
 ### Debug
 
-Diagram with only 'the cloud' — rewrite?
+Diagram with only 'the cloud', or notes saved in the course clone — rewrite?
 
 ### Troubleshooting
 
@@ -31,6 +31,7 @@ Diagram with only 'the cloud' — rewrite?
 | --- | --- |
 | No trust boundaries | Mark browser/API/IdP edges |
 | Coding Spring now | Planning only; Lab 49 implements |
+| Notes in the course clone | Write under `java-bootcamp/examples/module-48-exercises/notes/` |
 
 **Module 48** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 

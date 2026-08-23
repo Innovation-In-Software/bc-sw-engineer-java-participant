@@ -31,6 +31,7 @@ Stories with no acceptance criteria — gate?
 | --- | --- |
 | Horizontal-only tasks | Rewrite as vertical user outcomes |
 | Random demo names | Use CUS-1001/CUS-1002 |
+| `GET /api/customers/{id}` as the interaction story | CAP-12 is **POST /api/v1/interactions** (new in Lab 49) |
 
 **Module 48** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 

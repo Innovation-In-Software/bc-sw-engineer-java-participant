@@ -5,7 +5,7 @@
 **Module:** 52 — Capstone Final Defense and Retrospective  
 **Next:** [`../lab52/LAB-52-GUIDE.md`](../lab52/LAB-52-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-52-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-52-exercises/` in **your** `java-bootcamp`.
 
 ## Practice order (interleaved)
 
@@ -25,7 +25,7 @@ Then **checkpoint E** → Lab 52.
 | Do now | Do not yet |
 | --- | --- |
 | Packet, demo, evidence map, Q&A, retro, rubric pointers | Invent evidence; rebuild whole capstone |
-| Synthetic fixtures; secrecy scrub | Real PII; secrets on slides |
+| Synthetic fixtures; secrecy scrub | Real PII; secrets on slides; `channel` / `GET /api/customers/{id}` demo |
 
 ## Workspace
 
@@ -40,4 +40,4 @@ New-Item -ItemType Directory -Force -Path examples\module-52-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; evidence map + demo fallback self-mark **Pass**.
+All six notes files exist under **`java-bootcamp`**; evidence map + demo fallback self-mark **Pass**.

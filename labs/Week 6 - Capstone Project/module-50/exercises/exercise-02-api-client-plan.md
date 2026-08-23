@@ -29,8 +29,10 @@ UI 200 but wrong TypeScript shape — fix?
 
 | Symptom | Fix |
 | --- | --- |
-| any everywhere | Type request/response DTOs |
+| any everywhere | Type request/response DTOs from Lab 49 (`interactionType`, not `channel`) |
 | Ignore 401/400 | Map Problem Details to UI |
+| `getCustomer` / `GET /{id}` | Lab 49 session is create-only; seed Amina/Ravi or add GET later |
+| 401 required today | JWT is Lab 51 |
 
 **Module 50** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 

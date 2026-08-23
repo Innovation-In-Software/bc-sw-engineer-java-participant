@@ -1,76 +1,84 @@
 # Lab 49 starter — session block (~45 minutes)
 
-**Theme:** Capstone backend interaction slice (service stub package)  
+**Theme:** In-memory interaction slice (`InteractionService` TODOs)
+
+## Two folders
+
+| Folder | You… |
+| ------ | ---- |
+| **Course clone** (this `starter/` directory) | Read / copy **from** here |
+| **`java-bootcamp`** | Merge **`backend/`** into `examples/customer-management-platform` (Lab 48 tree) |
+
+Do **not** copy starter `README.md` over Lab 48 ADRs. Do **not** copy Lab 41. Do **not** use `lab49-crm` as the default.
 
 ## Activity card
 
 | | |
 | --- | --- |
 | **Checkpoint** | **E** |
-| **Must prove** | service TODOs · compile · CUS-1001 fixtures · event V1 sketch |
-| **Hard gate** | Pre-lab Pass · Lab 48 story |
-
-**Target:** merge into `~/java-bootcamp/examples/customer-management-platform/` (or standalone `lab49-crm`)
-
-Timed-path policy: [`labs/_STARTER-PATH.md`](../../../../_STARTER-PATH.md)
+| **Must prove** | Service TODOs · `mvn -B test` · CUS-1001 · event V1 sketch |
+| **Hard gate** | Pre-lab Pass · Lab 48 CAP-12 |
 
 ## Copy into your workspace
 
-**Windows (PowerShell)** — from this lab folder:
+**Windows (PowerShell):**
 
 ```powershell
-$dest = "$env:USERPROFILE\java-bootcamp\examples\customer-management-platform"
-New-Item -ItemType Directory -Force -Path "$dest\backend" | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" $dest\
-cd $dest
+$jb = "$env:USERPROFILE\java-bootcamp"
+$courseLab49 = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-49\lab49"
+$dest = "$jb\examples\customer-management-platform"
+
+New-Item -ItemType Directory -Force -Path "$dest\backend","$dest\docs","$jb\notes\screenshots\lab-49" | Out-Null
+Copy-Item -Recurse -Force "$courseLab49\starter\backend\*" "$dest\backend\"
+Copy-Item -Force "$courseLab49\starter\docs\build-checklist.md" "$dest\docs\build-checklist.md"
+cd "$dest\backend"
 ```
 
 **macOS / Linux:**
 
 ```bash
-mkdir -p ~/java-bootcamp/examples/customer-management-platform
-cp -R starter/. ~/java-bootcamp/examples/customer-management-platform/
-cd ~/java-bootcamp/examples/customer-management-platform
-```
+JB=~/java-bootcamp
+COURSE_LAB49=~/bc-sw-engineer-java-participant/labs/Week\ 6\ -\ Capstone\ Project/module-49/lab49
+DEST="$JB/examples/customer-management-platform"
 
-If you already have a multi-module Maven layout, copy only `backend/` sources into your existing module and keep your root `pom.xml`.
+mkdir -p "$DEST/docs" "$DEST/backend" "$JB/notes/screenshots/lab-49"
+cp -R "$COURSE_LAB49/starter/backend/." "$DEST/backend/"
+cp "$COURSE_LAB49/starter/docs/build-checklist.md" "$DEST/docs/build-checklist.md"
+cd "$DEST/backend"
+```
 
 ## 45-minute session checklist
 
-- [ ] Open starter under IntelliJ; JDK 21 SDK
-- [ ] Fill `// TODO` in `InteractionService` (validate customer, persist, publish)
-- [ ] Fill `CreateInteractionRequest` validation annotations
-- [ ] Wire controller → service; return 201 shape for `CUS-1001`
-- [ ] Sketch event fields in `CustomerInteractionRecordedV1`
-- [ ] Run build smoke (`mvn -B -f backend/pom.xml test` or root verify)
+- [ ] Work is in `java-bootcamp/.../backend` (Lab 48 docs still present)
+- [ ] Fill `InteractionService` TODOs (no `UnsupportedOperationException`)
+- [ ] Known customers `CUS-1001` / `CUS-1002`; reject `CUS-9999`
+- [ ] Correlation: header > body > `lab-request-001`
+- [ ] `mvn -B test`
 
-## Build / smoke checklist
+## Smoke test
 
-```bash
-cd backend   # or platform root if pom is there
-mvn -B -q -DskipTests compile
-mvn -B test  # expect failures until TODOs filled — then green for session tests
+```powershell
+mvn -B test
 ```
 
-Evidence under `~/java-bootcamp/notes/screenshots/lab-49/`.
+Tests are red until TODOs are filled. No `./mvnw`. No Bearer token. Evidence under `notes/screenshots/lab-49/`.
 
 ## Timed-path Pass criteria
 
 | Criterion | Pass / Fail |
 | --------- | ----------- |
-| Service TODOs filled (no `UnsupportedOperationException`) | Pass / Fail |
-| Compile succeeds | Pass / Fail |
-| At least one unit test for create-interaction path green (or documented baseline) | Pass / Fail |
-| Fixtures `CUS-1001` / `lab-request-001` appear in code or test | Pass / Fail |
+| Lab 48 tree kept; `backend/` merged | Pass / Fail |
+| Service TODOs filled | Pass / Fail |
+| `mvn -B test` green | Pass / Fail |
+| Fixtures in code or test | Pass / Fail |
 
-Full path (multi-day): Flyway migration, Kafka IT, Problem Details, consumer/DLT, `docs/backend-demo.md` — see GUIDE.
-
+Full path: Flyway, Kafka, DLT, `docs/backend-demo.md` — see GUIDE.
 
 ### Troubleshooting
 
 | Symptom | Fix |
 | --- | --- |
-| UnsupportedOperationException left | Fill InteractionService TODOs |
-| Validation missing | Annotate CreateInteractionRequest |
-| Wrong module path | Merge into platform `backend/` carefully |
-| Tests red until TODOs | Expected; then green session tests |
+| `UnsupportedOperationException` | Fill `InteractionService` |
+| `./mvnw` missing | `mvn -B test` |
+| 401 on curl | Omit Authorization (Lab 51) |
+| Overwrote ADRs | Copy `backend/` only |

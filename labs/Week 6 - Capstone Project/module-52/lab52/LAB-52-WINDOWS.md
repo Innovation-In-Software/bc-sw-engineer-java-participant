@@ -4,60 +4,63 @@
 **Primary IDE:** IntelliJ IDEA Community Edition  
 **Optional IDE:** VS Code  
 **Shell:** Windows PowerShell  
-**Stack hint:** Capstone: full stack from prior weeks · IntelliJ primary  
+**Stack hint:** Session = `defense/` markdown · Full path = PDF + panel  
 **Full lab steps:** [LAB-52-GUIDE.md](LAB-52-GUIDE.md)  
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
-**Other OS:** [macOS guide](LAB-52-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
+**Other OS:** [macOS guide](LAB-52-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)  
+**Two folders:** [Clone + own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 
 ## Prerequisites (Windows)
 
-- [Lab 0 (Windows)](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) complete (JDK 21, Maven when needed, Git)
-- IntelliJ with **Project SDK 21** (open/run steps: [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md))
+- Git; Lab 48–51 tree in `examples\customer-management-platform`
+- IntelliJ on **`%USERPROFILE%\java-bootcamp`**
+- No Maven required for the session block
 
 ## Paths (Windows)
 
-| Item | Windows |
-| ---- | ------- |
-| Workspace (open in IDE) | `%USERPROFILE%\java-bootcamp` |
-| This lab project | `%USERPROFILE%\java-bootcamp\examples\customer-management-platform` |
-| Evidence / screenshots | `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-52` |
-| Shell | Windows PowerShell inside IntelliJ |
-| Path style | Backslashes; quote paths with spaces |
-
-```powershell
-cd $env:USERPROFILE\java-bootcamp
-# Lab 0 layout: evidence at workspace root; code under examples/
-New-Item -ItemType Directory -Force -Path notes\screenshots\lab-52 | Out-Null
-cd examples\customer-management-platform
-```
+| Item | Path |
+| ---- | ---- |
+| Course clone | `%USERPROFILE%\bc-sw-engineer-java-participant\` |
+| Platform tree | `%USERPROFILE%\java-bootcamp\examples\customer-management-platform` |
+| Evidence | `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-52` |
 
 ### Commands this lab typically uses
 
+**Do not** `Copy-Item starter\*` over the platform root. **Do not** `./mvnw`. **Do not** `mvn` as smoke.
+
 ```powershell
-cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+$jb = "$env:USERPROFILE\java-bootcamp"
+$course = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-52\lab52"
+$dest = "$jb\examples\customer-management-platform"
+
+New-Item -ItemType Directory -Force -Path "$dest\defense","$jb\notes\screenshots\lab-52" | Out-Null
+Copy-Item -Force "$course\starter\defense\*" "$dest\defense\"
+cd $dest
+Get-ChildItem defense\*.md
+Select-String -Path defense\*.md -Pattern 'CUS-1001|lab-request-001|POST /api/v1/interactions'
 ```
 
+Verified notes (2026-08-22): session is docs-only; create API is POST `/api/v1/interactions` with `interactionType`; gaps in Labs 48–51 must be labeled, not invented.
+
+### If it fails
+
+| Symptom | Fix |
+| --- | --- |
+| Overwrote Lab 48 README | Copy `defense\*` only |
+| `mvn` required today | No — session smoke is `Get-ChildItem` |
+| `channel` / nested URL | Lab 49 DTO |
+| Invented 401/digest | Finish Lab 51 or list a non-claim |
 
 ## Do the lab
 
-Complete every step in **[LAB-52-GUIDE.md](LAB-52-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  
-Open/run IntelliJ steps are the same every lab — see [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md).
-
-## Evidence / screenshots
-
-Save under `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-52`. Capture IntelliJ (project tree + Run/Terminal). Redact secrets.
+Complete **[LAB-52-GUIDE.md](LAB-52-GUIDE.md)**. Redact tokens.
 
 ## Pass criteria
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Workspace `%USERPROFILE%\java-bootcamp` open in IntelliJ with SDK **21** | Pass / Fail |
-| 2 | Lab project under `examples/customer-management-platform` as in [LAB-52-GUIDE.md](LAB-52-GUIDE.md) | Pass / Fail |
-| 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
-| 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
-| 5 | Screenshots (if required) under `notes/screenshots/lab-52/` | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | Work in `java-bootcamp` platform tree | Pass / Fail |
+| 2 | Session: outline + script + ≥5 evidence (or full pack) | Pass / Fail |
+| 3 | No secrets in `defense/` | Pass / Fail |
+| 4 | Screenshots under `notes/screenshots/lab-52/` | Pass / Fail |

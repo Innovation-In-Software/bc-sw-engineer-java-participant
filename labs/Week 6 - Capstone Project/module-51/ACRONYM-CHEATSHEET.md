@@ -16,7 +16,7 @@ _Capstone / text module: terms taken from slide text and the module topic (few o
 | **CVE** | Common Vulnerabilities and Exposures | Identifier for a known-vulnerable dependency; the dependency scan checks resolved libraries against CVE databases. |
 | **DAST** | Dynamic Application Security Testing | Find security issues by attacking a running app. |
 | **OWASP** | Open Worldwide Application Security Project | Community standards and top risks for app security. |
-| **RBAC** | Role-Based Access Control | AGENT/MANAGER authorization model; negative tests prove anonymous → 401, wrong role → 403, correct role → 200. |
+| **RBAC** | Role-Based Access Control | AGENT/MANAGER authorization; negatives prove anonymous → 401, wrong role → 403, AGENT create → 201. |
 | **SAST** | Static Application Security Testing | Find security issues by scanning source/binaries without running the app. |
 | **SQL** | Structured Query Language | SAST specifically catches SQL-injection-prone patterns in source. |
 
@@ -45,10 +45,10 @@ _Capstone / text module: terms taken from slide text and the module topic (few o
 | --- | --- | --- |
 | **Deployment** | — | K8s object that manages replica Pods and rolling updates. |
 | **Docker** | — | Tool to package apps as portable container images. |
-| **GHCR** | GitHub Container Registry | GitHub-hosted place to store container images. |
+| **GHCR** | GitHub Container Registry | Optional training registry. Lab 51 may use a local digest; do not invent `ghcr.io/you@sha256` as required. JAR identity remains Lab 44 `jarSha256`. |
 | **JDK** | Java Development Kit | Full build toolchain (compiler + JRE); used in the build stage but stripped from the slim runtime image. |
 | **JRE** | Java Runtime Environment | Minimal runtime-only base preferred for the final container stage instead of a full JDK. |
-| **k3s** | — | Lightweight Kubernetes distribution used in this course. |
+| **k3s** | — | Lightweight Kubernetes used for the capstone deploy (not Lab 42 **k3d** / Host `:8088`). |
 | **Kubernetes** | — | Container orchestration platform (often abbreviated K8s). |
 | **OS** | Operating System | Image scans inspect OS packages and layers baked into the built container. |
 

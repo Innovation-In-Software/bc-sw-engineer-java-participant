@@ -31,6 +31,7 @@ NFR with no measurement method — fix?
 | --- | --- |
 | Vague adjectives only | Add metric + target + how measured |
 | Skipping NFRs for later | Required before Lab 49 |
+| 401 on interactions as a Lab 48 code task | Security NFR is **Lab 51**; plan it, do not implement JWT today |
 
 **Module 48** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 

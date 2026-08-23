@@ -1,6 +1,15 @@
 # Lab 52 starter — session block (~45 minutes)
 
-**Theme:** Defense slide outline + demo script template  
+**Theme:** Defense slide outline + demo script + evidence index (docs only)
+
+## Two folders
+
+| Folder | You… |
+| ------ | ---- |
+| Course clone (this `starter/defense/`) | Copy **from** here |
+| `java-bootcamp` | Merge **`defense/`** into `examples/customer-management-platform` |
+
+**Do not** `Copy-Item starter\*` over the Lab 48–51 tree (this folder’s `README.md` would overwrite Lab 48 README). **Do not** `mvn` today.
 
 ## Activity card
 
@@ -8,65 +17,61 @@
 | --- | --- |
 | **Checkpoint** | **E** |
 | **Must prove** | outline · timed demo · ≥5 evidence · deny/fallback |
-| **Hard gate** | Pre-lab Pass · Labs 48–51 paths listed |
+| **Hard gate** | Labs 48–51 paths listed; gaps **labeled** |
 
-**Target:** `~/java-bootcamp/examples/customer-management-platform/defense/`
+## Copy
 
-Timed-path policy: [`labs/_STARTER-PATH.md`](../../../../_STARTER-PATH.md)
-
-## Copy into your workspace
-
-**Windows (PowerShell)** — from this lab folder:
+**Windows:**
 
 ```powershell
-$dest = "$env:USERPROFILE\java-bootcamp\examples\customer-management-platform"
-New-Item -ItemType Directory -Force -Path "$dest\defense" | Out-Null
-Copy-Item -Recurse -Force ".\starter\*" $dest\
-cd $dest\defense
+$jb = "$env:USERPROFILE\java-bootcamp"
+$course = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-52\lab52"
+$dest = "$jb\examples\customer-management-platform"
+New-Item -ItemType Directory -Force -Path "$dest\defense","$jb\notes\screenshots\lab-52" | Out-Null
+Copy-Item -Force "$course\starter\defense\*" "$dest\defense\"
+cd $dest
 ```
 
 **macOS / Linux:**
 
 ```bash
-mkdir -p ~/java-bootcamp/examples/customer-management-platform
-cp -R starter/. ~/java-bootcamp/examples/customer-management-platform/
-cd ~/java-bootcamp/examples/customer-management-platform/defense
+DEST=~/java-bootcamp/examples/customer-management-platform
+COURSE=~/bc-sw-engineer-java-participant/labs/Week\ 6\ -\ Capstone\ Project/module-52/lab52
+mkdir -p "$DEST/defense"
+cp "$COURSE/starter/defense/"* "$DEST/defense/"
+cd "$DEST"
 ```
 
-## 45-minute session checklist
+## Session checklist
 
-- [ ] Fill slide outline titles/speakers in `defense/slide-outline.md`
-- [ ] Time-box demo beats in `defense/demo-script.md` (Amina + `lab-request-001`)
-- [ ] List ≥5 evidence links in `defense/evidence-index.md` stub rows
-- [ ] Draft 3 Q&A cards (security, data, messaging)
-- [ ] Note fallback if live infra fails (screenshot / curl)
+- [ ] `defense/slide-outline.md` titles/speakers
+- [ ] Timed `defense/demo-script.md` (Amina + `lab-request-001` + POST `/api/v1/interactions`)
+- [ ] ≥5 real paths in `defense/evidence-index.md`
+- [ ] ≥3 Q&A cards
+- [ ] Fallback if live infra fails
+- [ ] Non-claims listed (no React / no JWT / Kafka stub / no k3s as applicable)
 
-## Smoke test
+## Smoke
 
-```bash
-ls defense/slide-outline.md defense/demo-script.md defense/evidence-index.md
-# Rehearse demo script aloud once (timer ~8–10 min happy path + deny beat)
+```powershell
+Get-ChildItem defense\*.md
+Test-Path defense\slide-outline.md, defense\demo-script.md, defense\evidence-index.md
 ```
 
-Evidence under `~/java-bootcamp/notes/screenshots/lab-52/`. Scrub secrets from portfolio pack.
-
-## Timed-path Pass criteria
+## Pass criteria
 
 | Criterion | Pass / Fail |
 | --------- | ----------- |
-| Slide outline covers business → architecture → demo → ops | Pass / Fail |
-| Demo script timed with fixture IDs | Pass / Fail |
-| Evidence index has paths for Labs 48–51 artifacts | Pass / Fail |
-| Failover / deny-path beat documented | Pass / Fail |
-
-Full path (multi-day): PDF export, full Q&A deck, retrospective, self-assessment, panel delivery — see GUIDE.
-
+| Lab 48–51 files still present | Pass / Fail |
+| Outline + timed script with fixtures | Pass / Fail |
+| Evidence index has real relative paths | Pass / Fail |
+| Deny/fallback documented without inventing 401 | Pass / Fail |
 
 ### Troubleshooting
 
 | Symptom | Fix |
 | --- | --- |
-| Evidence rows empty | Paste real Labs 48–51 relative paths |
-| Demo untimed | Add minute marks + speaker/operator |
-| No fallback | Screenshot or curl deny/happy path |
-| Secret in outline | Remove before rehearsal |
+| Overwrote ADRs | Copy `defense\*` only |
+| `channel` / nested URL | Lab 49 create body |
+| Invented digest | Label Lab 51 gap |
+| `mvn` / `./mvnw` | Docs-only smoke |

@@ -31,6 +31,8 @@ No deny-path beat — add?
 | --- | --- |
 | Untimed freeform demo | Add minute marks + roles |
 | Real PII in script | Synthetic fixtures only |
+| `channel` / nested URL | POST `/api/v1/interactions` + `interactionType` |
+| Invented 401 | Only after Lab 51 JWT; else label the gap |
 
 **Module 52** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 

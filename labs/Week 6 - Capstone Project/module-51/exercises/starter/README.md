@@ -1,6 +1,8 @@
 # Module 51 exercise starters
 
-Copy into `~/java-bootcamp/examples/module-51-exercises/notes/` and fill TODOs.
+Copy into **`java-bootcamp/examples/module-51-exercises/notes/`** (not the course clone `labs/`) and fill TODOs.
+
+Complete in order **1 → 2 → 3 → 4 → 5 → 6**. Smoke matrix uses **POST** `/api/v1/interactions`, not Week 5 `GET /api/customers/{id}`.
 
 | File | Exercise |
 | --- | --- |

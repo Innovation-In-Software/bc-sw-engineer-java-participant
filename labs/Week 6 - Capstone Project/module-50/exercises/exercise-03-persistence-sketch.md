@@ -31,6 +31,7 @@ Non-PostgreSQL types in migration — risk?
 | --- | --- |
 | No migration plan | Add V50-style stub columns/FKs |
 | Real PII in seeds | Synthetic fixtures only |
+| Oracle `RAW` / `channel` | Match Lab 49: VARCHAR `customer_id`, `interaction_type` |
 
 **Module 50** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 

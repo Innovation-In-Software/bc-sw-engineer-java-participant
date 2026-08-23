@@ -31,6 +31,7 @@ Publishing before DB commit — risk?
 | --- | --- |
 | No correlation id | Include lab-request-001 / header plan |
 | Unversioned 'done' | Name V1 fields explicitly |
+| Topic `crm.customer.events` | Use ADR-002 name (example `crm.customer.interactions.v1`) |
 
 **Module 49** · Analysis exercise · [setup + file names](EXERCISES-INDEX.md)
 

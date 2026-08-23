@@ -1,7 +1,7 @@
 # Lab 48: Capstone Planning and Architecture — Northstar CRM Executable Plan
 
 **Module:** 48 — Capstone Planning and Architecture  
-**Duration:** ~45 minutes (timed path / session block with starter) · Full path: 5–6 Hours
+**Duration:** ~45 minutes (session block with starter) · Full path: 5–6 Hours (multi-day)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
 
@@ -10,20 +10,22 @@
 | Windows | [LAB-48-WINDOWS.md](LAB-48-WINDOWS.md) |
 | macOS | [LAB-48-MACOS.md](LAB-48-MACOS.md) |
 
+> **Two folders (do not mix):** [Clone the course repo · Commit in your own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md). Read this GUIDE in the **course clone**. Write and **push** planning docs in **your** `java-bootcamp` repo.
+
 ---
 
 ## Activity card
 
 | | |
 | --- | --- |
-| **Time** | ~45 min session block · full path 5–6 h multi-day |
-| **Checkpoint** | **E** (after Ex 2→1→4→3→5→6) |
-| **Must prove** | context + fixtures · ≥1 ADR · backlog seeds · risk seeds · no secrets |
-| **Hard gate** | Pre-lab Pass · measurable NFR mindset · docs before coding Labs 49+ |
+| **Time** | ~45 min session · full path 5–6 h multi-day |
+| **Checkpoint** | **E** (after Ex **2 → 1 → 4 → 3 → 5 → 6**) |
+| **Must prove** | Context + fixtures · ≥1 ADR · backlog seeds · risk seeds · no secrets |
+| **Hard gate** | Pre-lab Pass · docs before Lab 49 code |
 
 ### What you will learn
 
-Produce an executable CRM architecture and delivery plan peers can follow into Labs 49–52.
+Produce an executable CRM plan peers can follow into Labs 49–52.
 
 ### Enterprise context
 
@@ -31,87 +33,112 @@ Ambiguous NFRs, missing ADRs, and undocumented risks are Week 6 defense blockers
 
 ### Predict
 
-Should Lab 49 start before ADRs and vertical backlog exist?
+Should Lab 49 start before ADRs and a vertical backlog exist?
 
 ### Debug
 
-Two Accepted ADRs that pick different databases — what do you do?
+Copied Lab 41 CRM into this folder, or ran `mvn compile` with no `pom.xml` — what went wrong?
 
 ---
 
-## 45-minute timed path (session block — use starter)
+## Two folders — every command below uses these paths
 
-> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: full NFRs, ≥5 ADRs, team plan, complete risk register.
+| Folder | Remote | You… |
+| ------ | ------ | ---- |
+| **Course clone** (handouts) | `bc-sw-engineer-java-participant` | **Read** this GUIDE / starter. **Never** commit homework here. |
+| **Your repo** | private `java-bootcamp` | **Copy starter docs** here, fill TODOs, **commit**. |
 
-In class, use the starter templates so the **session block** fits **~45 minutes**. Capstone planning remains **multi-day** on the full path below — the starter does not replace ADRs, NFRs, or the complete risk register.
+| Item | Course clone (read) | Your `java-bootcamp` (write) |
+| ---- | ------------------- | ---------------------------- |
+| This GUIDE | `labs/…/module-48/lab48/LAB-48-GUIDE.md` | — |
+| Starter planning docs | `labs/…/module-48/lab48/starter/` | `examples/customer-management-platform/` |
+| Graded plan | — | **`examples/customer-management-platform/`** (not `lab48-crm`) |
+| Pre-lab notes | — | `examples/module-48-exercises/notes/` |
+| Screenshots | — | `notes/screenshots/lab-48/` (gitignored) |
 
-1. Open [`starter/README.md`](starter/README.md).
-2. Copy `starter/` into `java-bootcamp/examples/customer-management-platform/` (see starter README).
-3. Fill context diagram stub, ≥1 ADR, backlog rows, and risk seeds — do **not** wait on a perfect prior lab.
-4. Run the starter smoke check; evidence under `notes/screenshots/lab-48/`.
-5. Mark timed-path Pass criteria in the starter README. Continue remaining GUIDE steps as homework / multi-day work.
+IntelliJ stays on `java-bootcamp`.
+
+**This lab is Markdown planning, not a Spring app.** Copy the **starter** into `examples/customer-management-platform/`. **Do not** copy Lab 31 / 41–47 CRM over this folder. Those stay at `examples/labXX-crm`. Labs 49–52 grow **this same tree**.
+
+**Do not** `mvn` / `./mvnw` as the Lab 48 smoke. Starter has **no** `pom.xml`.
+
+**Week 5 vs Week 6 contracts (plan the delta; do not pretend it already exists):**
+
+| Already true (Labs 40–45 / 31) | Capstone adds (Labs 49–51) |
+| ------------------------------ | -------------------------- |
+| `GET /api/customers` list only | **`POST /api/v1/interactions`** (Lab 49) |
+| No Spring Security | JWT 401/403 (Lab 51) |
+| Kafka `crm.customer-events.v1` / group `crm-notifications` | Interaction event `CustomerInteractionRecordedV1` (name the topic in ADR-002) |
+| Lab 42 **k3d** `crm-training` `:8088` | Lab 51 deploy target is **k3s** (digest-pinned). Do not treat k3d as the capstone cluster unless the instructor says so. |
+| Lab 44 identity **`jarSha256`** | Image digest is Lab 51; do not invent `ghcr.io/…@sha256:…` in ADRs |
+
+**Security NFR:** Unauthenticated `POST /api/v1/interactions` → 401 is a **Lab 51** target. Lab 49 may ship without JWT; do not fail the plan for that.
+
+---
+
+## 45-minute session block (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: all 5 ADRs, measurable NFRs, team plan, full risk register.
+
+1. Open [`starter/README.md`](starter/README.md) **in the course clone**.
+2. Copy starter into **`java-bootcamp/examples/customer-management-platform/`**.
+3. Fill context, **one** ADR, backlog rows, risk seeds — do **not** work under `labs/`.
+4. Smoke with `Test-Path` / `Get-ChildItem` (not Maven). Evidence under `notes/screenshots/lab-48/`.
+5. Mark session Pass criteria in the starter README.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed / session block** | ~45 min | Starter TODOs + smoke check |
-| **Full (multi-day)** | 5–6 Hours | Every Step in this GUIDE |
-
-Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
+| **Session (default)** | ~45 min | Context + ≥1 ADR + backlog/risk seeds |
+| **Full (multi-day)** | see Duration | Every Step in this GUIDE |
 
 ---
 
 ## What you'll submit (read this first)
 
-Keep this checklist visible while you work.
+All of these live under **`java-bootcamp/examples/customer-management-platform/`**.
 
-| # | Deliverable |
-| - | ----------- |
-| 1 | `docs/architecture/context.md` (C4 context + product outcome) |
-| 2 | `docs/architecture/container.md` (containers + data flow) |
-| 3 | `docs/nfrs.md` (measurable NFRs) — create if missing from starter |
-| 4 | `docs/adrs/` (≥5 ADRs: DB, messaging, consistency, auth, deploy) |
-| 5 | `docs/backlog.md` (prioritized vertical stories including interaction recording) |
-| 6 | `docs/risk-register.md` (scored risks with mitigations) |
-| 7 | `docs/team-plan.md` (owners, milestones, critical path) — create if missing from starter |
-| 8 | Baseline note if platform code already exists |
+| # | Deliverable | Session | Full path |
+| - | ----------- | ------- | --------- |
+| 1 | `docs/architecture/context.md` | Outcome + fixtures + stub | Complete C4 context |
+| 2 | `docs/architecture/container.md` | Sketch OK | Complete |
+| 3 | `docs/nfrs.md` | Seeds OK | Measurable table |
+| 4 | `docs/adrs/` | **≥1** filled ADR | **≥5** (DB, Kafka, consistency, auth, deploy) |
+| 5 | `docs/backlog.md` | CAP-12 + 2 more rows | Prioritized vertical set |
+| 6 | `docs/risk-register.md` | ≥2 scored risks | ≥6 with owners |
+| 7 | `docs/team-plan.md` | Owners sketched | Critical path complete |
+| 8 | `docs/plan-checklist.md` | Session boxes | Full-path boxes |
 
-**Must submit:** the items in the table above (sources + evidence + short notes).
+**Do not submit:** `target/`, secrets, kubeconfig, or a verbatim instructor `solution/`.
 
-**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
+---
 
 ## Lab Overview
 
-This Module 48 lab turns the Enterprise CRM brief into an **executable architecture and delivery plan**. You produce C4 context and container views, measurable NFRs, ADRs, a prioritized vertical backlog, ownership milestones, and a scored risk register—so Labs 49–52 implement against decisions rather than improvisation.
+Freeze the Enterprise CRM brief as an **executable plan** so Labs 49–52 implement decisions instead of improvising.
 
 ## Learning Objectives
 
 After completing this lab, you will be able to:
 
-* Clarify business scope, users, journeys, exclusions, and success measures
-* Produce C4 context diagrams with protocols and trust boundaries
-* Design container views placing React, Spring Boot, PostgreSQL, Kafka, identity, and observability
-* Define domain ownership and versioned HTTP/event contracts
-* Write measurable NFRs with method, environment, and thresholds
+* Name users, journeys, exclusions, and success measures
+* Draw C4 context with protocols and trust boundaries
+* Place React, Spring Boot, PostgreSQL, Kafka, IdP, and observability on a container view
+* Write measurable NFRs (method + environment + threshold)
+* Record ADRs, a vertical backlog, and scored risks
 
 ## Business Scenario
 
-The capstone team must deliver a coherent **Customer Management Platform**, not five disconnected demonstrations. Before coding Week 6 slices, reviewers freeze:
-
-**No Lab 49–52 work counts as “in scope” unless it maps to a backlog item, an ADR (or explicit out-of-scope note), and a measurable NFR or acceptance criterion.**
-
-You own the planning gate for agent journeys around Amina (`CUS-1001` ACTIVE), Ravi (`CUS-1002` PROSPECT→ACTIVE), interaction recording, search/profile/timeline, secure release, and final defense.
-
-Use these fixtures consistently:
+**No Lab 49–52 work counts as in-scope unless it maps to a backlog item, an ADR (or explicit out-of-scope note), and a measurable NFR or acceptance criterion.**
 
 | ID | Name | Notes |
 | -- | ---- | ----- |
-| `CUS-1001` | Amina Khan | `ACTIVE` — primary demo customer for interaction timeline |
-| `CUS-1002` | Ravi Singh | `PROSPECT` → `ACTIVE` — onboarding / status journey |
-| `CUS-9999` | — | not-found / negative paths in later labs |
-| `lab-request-001` | — | correlation ID on API, events, and failure evidence |
-| `CAP-12`, … | — | backlog story IDs in `docs/backlog.md` |
+| `CUS-1001` | Amina Khan | `ACTIVE` — CAP-12 interaction demo |
+| `CUS-1002` | Ravi Singh | `PROSPECT` → `ACTIVE` |
+| `CUS-9999` | — | not-found later |
+| `lab-request-001` | — | correlation on API and events |
+| `CAP-12` | — | Record interaction for Amina |
 
-**Security note for evidence.** Use fictional emails only (`amina.khan@example.test`, `ravi.singh@example.test`). Never paste real IdP secrets, kubeconfigs, or production URLs into ADRs.
+**Security note.** Fictional emails only (`amina.khan@example.test`). Never paste IdP secrets, kubeconfigs, or production URLs into ADRs.
 
 ---
 
@@ -131,23 +158,24 @@ flowchart TB
 
 ## Prerequisites
 
-Confirm (Lab 0 tools assumed):
-
-* JDK 21; Maven; Git; Docker available for later labs
-* Diagram/backlog tooling as instructed (Markdown Mermaid acceptable)
-* Access to capstone repo or `~/java-bootcamp/examples/`
-* No secrets committed to Git
+* Git + Markdown in IntelliJ (JDK/Maven **not** required today)
+* Lab 48 starter from the **course clone**
+* No secrets in Git
 
 ### Pre-flight
 
-```bash
-java -version
-mvn -version
+```powershell
+git remote -v   # YOUR java-bootcamp
+Test-Path "$env:USERPROFILE\java-bootcamp"
 ```
 
-## Worked example (read before you code)
+Working directory:
 
-Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+```text
+~/java-bootcamp/examples/customer-management-platform
+```
+
+## Worked example (read before you write)
 
 ```markdown
 ### CAP-12 — Record a customer interaction
@@ -155,383 +183,226 @@ As a service agent, I want to record an interaction for CUS-1001 (Amina Khan)
 so the next agent understands customer history.
 
 Acceptance criteria:
-1. Valid input returns 201 and a resource identifier; correlation `lab-request-001` preserved.
-2. The timeline shows the interaction within two seconds after refresh.
-3. A versioned event is published after (documented) consistency strategy.
+1. Valid `POST /api/v1/interactions` returns 201; correlation `lab-request-001` preserved.
+2. Timeline shows the interaction after refresh (Lab 50).
+3. A versioned event is published after the documented consistency strategy (ADR-003).
 4. Invalid notes return field-level errors and are not persisted.
-5. Audit data records actor and correlation ID without note contents.
+5. Audit records actor and correlation ID without note contents.
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+**What to notice:** This endpoint **does not exist** on the Week 5 list API. Lab 49 builds it.
 
 ---
 
 ## Implementation Steps
 
-Complete each step in order. Paths assume `~/java-bootcamp/examples/customer-management-platform` unless noted. Parts 1–8 of the legacy plan map to Steps 1–8; Step 9 closes evidence.
+Complete each step in order. **Write** under `java-bootcamp`. **Read** starter from the course clone.
 
 ---
 
-### Step 1 — Clarify product outcome (Part 1)
+### Step 1 — Copy starter, clarify product outcome
 
-**Why:** Without named users, journeys, exclusions, and success measures, later “done” is contested in the defense panel.
+**Why:** Without named users and exclusions, “done” is contested in Lab 52.
 
-**Do this:** In `docs/architecture/context.md` (or `docs/product-outcome.md`), define:
+**Do this:**
 
-* Primary users (service agent, manager, operator)
-* Journeys: search Amina/Ravi, view profile/timeline, record interaction, status change (where in scope)
-* In-scope capabilities vs explicit exclusions (e.g. billing, real PII import)
-* Success measures tied to Lab 52 demo minutes and NFR thresholds
-* Open questions with owners and due dates
+**Windows (PowerShell):**
 
-Include fixture table rows for `CUS-1001`, `CUS-1002`, and correlation `lab-request-001`.
+```powershell
+$jb = "$env:USERPROFILE\java-bootcamp"
+$courseLab48 = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-48\lab48"
 
-**Expected result:** A one-page outcome statement a peer can paraphrase; exclusions are explicit; questions have owners.
-
-**If it fails:** Vague “build a CRM” only → rewrite with users and measurable success. Real customer names → replace with synthetic fixtures.
-
----
-
-### Step 2 — Model system context (Part 2)
-
-**Why:** Context diagrams without trust boundaries hide IdP and data-exfiltration risks reviewers will probe.
-
-**Do this:** Complete `docs/architecture/context.md` with a C4 context view:
-
-* People: Service Agent, Manager, Platform Operator
-* Software systems: CRM Platform, Identity Provider, (optional) email/SMS gateway
-* Relationships labeled with protocols (HTTPS, OIDC/JWT) and trust boundaries
-* Keep implementation detail out (no class names, no Kafka topic internals yet)
-
-```mermaid
-flowchart TB
-  Agent["Service Agent"] -->|HTTPS| CRM["Customer Management Platform"]
-  Mgr["Manager"] -->|HTTPS| CRM
-  CRM -->|"OIDC / JWT validation"| IdP["Identity Provider"]
+New-Item -ItemType Directory -Force -Path "$jb\examples\customer-management-platform","$jb\notes\screenshots\lab-48" | Out-Null
+Copy-Item -Recurse -Force "$courseLab48\starter\*" "$jb\examples\customer-management-platform\"
+cd "$jb\examples\customer-management-platform"
 ```
 
-GitHub Markdown renders this as a flowchart (C4 Mermaid syntax is experimental and not reliable on GitHub).
+If the platform tree already has filled ADRs, **merge** — do not blindly overwrite.
 
-**Expected result:** Context diagram committed; protocols and trust boundaries labeled; no container internals polluting the view.
+**macOS / Linux:**
 
-**If it fails:** Mixing React/Kafka boxes into context → move those to Step 3. Missing IdP → add identity as external system.
+```bash
+JB=~/java-bootcamp
+COURSE_LAB48=~/bc-sw-engineer-java-participant/labs/Week\ 6\ -\ Capstone\ Project/module-48/lab48
 
----
-
-### Step 3 — Design containers and data flow (Part 3)
-
-**Why:** Container placement forces sync vs async decisions that ADRs and NFRs must later quantify.
-
-**Do this:** Write `docs/architecture/container.md` placing:
-
-* React CRM UI
-* Spring Boot API
-* PostgreSQL database
-* Kafka + notification/worker consumer
-* Identity Provider
-* Logs / metrics / traces
-
-Label synchronous (REST+JWT) and asynchronous (customer events) flows. Show deployment/admin boundaries (namespace, who may apply manifests).
-
-```mermaid
-flowchart LR
-  Agent["Service Agent"] -->|HTTPS| UI["React CRM"]
-  UI -->|"REST + JWT"| API["Spring Boot API"]
-  API -->|JPA/JDBC| DB[("PostgreSQL")]
-  API -->|"Customer events"| K[("Kafka")]
-  K --> Worker["Notification Consumer"]
-  API --> Obs["Logs / Metrics / Traces"]
-  Worker --> Obs
-  IdP["Identity Provider"] -->|OIDC/JWT| UI
-  IdP -->|JWKS| API
+mkdir -p "$JB/examples/customer-management-platform" "$JB/notes/screenshots/lab-48"
+cp -R "$COURSE_LAB48/starter/." "$JB/examples/customer-management-platform/"
+cd "$JB/examples/customer-management-platform"
 ```
 
-**Expected result:** Container diagram matches intended Lab 49–51 topology; sync/async edges are labeled.
+Fill `docs/architecture/context.md`: users, journeys (search Amina/Ravi, record interaction, status change), exclusions (billing, real PII), success measures, fixture table.
 
-**If it fails:** Orphan Kafka with no consumer → add worker or document “publish-only this week” as temporary risk. PostgreSQL omitted → add persistence container.
+**Expected result:** `customer-management-platform/docs/` exists; outcome names CUS-1001 / CUS-1002 / `lab-request-001`.
 
----
-
-### Step 4 — Define domain and contracts (Part 4)
-
-**Why:** Unversioned endpoints and events create Lab 50 contract breakage and Lab 52 panel failure.
-
-**Do this:** In `docs/architecture/container.md` or `docs/contracts.md`, identify ownership for:
-
-* Customer, Interaction, Case (if any), Notification side effects
-* Draft endpoint sketch: `POST /api/v1/interactions` with Problem Details errors (body includes `customerId`, `interactionType`, `summary`, `correlationId`)
-* Draft event: `CustomerInteractionRecordedV1` fields (eventId, type, version, time, actor, correlationId, customerId, interactionId, interactionType)
-* Compatibility policy: additive fields OK; breaking changes require version bump
-
-Reference fixtures: create interaction for `CUS-1001` with header `X-Correlation-ID: lab-request-001`.
-
-**Expected result:** Named owners for aggregates; HTTP + event sketches; versioning policy in one paragraph.
-
-**If it fails:** Exposing JPA entities as API contracts → rewrite as DTO/record contracts. Missing correlation field → add it before Lab 49.
+**If it fails:** Work ended in `labs/` → move to `java-bootcamp`. Copied Lab 41 → start over with **starter**.
 
 ---
 
-### Step 5 — Write measurable NFRs (Part 5)
+### Step 2 — Model system context
 
-**Why:** “Fast,” “secure,” and “scalable” without thresholds cannot be tested or defended.
+**Why:** Missing trust boundaries hide IdP and data-exfiltration risks.
 
-**Do this:** Author `docs/nfrs.md` covering at least:
+**Do this:** Complete the C4 context in `docs/architecture/context.md`. People: Service Agent, Manager, Operator. Systems: CRM Platform, Identity Provider. Label HTTPS / OIDC. Keep Kafka topic internals off this view.
 
-| Concern | Example threshold (adapt with instructor) | Measurement |
-| ------- | ---------------------------------------- | ----------- |
-| Latency | p95 create-interaction API ≤ 500 ms in lab | timed curl / Micrometer |
-| Availability | API readiness after deploy within 3 min | probe + smoke |
-| Recovery | Rollback previous digest ≤ 10 min | rehearse Lab 51 |
-| Security | Unauthenticated `/api/**` → 401; wrong role → 403 | security tests |
-| Accessibility | Keyboard-complete interaction form; labels associated | Lab 50 a11y check |
-| Retention | Logs retain correlation IDs; no note bodies | log review |
+**Expected result:** Protocols and trust boundaries labeled.
 
-State **method** and **environment** (local Docker vs training cluster) for each target. Ban unsupported adjectives.
-
-**Expected result:** Every NFR has number/boolean, how measured, where measured; a11y and recovery included.
-
-**If it fails:** Only performance numbers → add security/a11y/recovery. Thresholds without method → fill measurement column.
+**If it fails:** React/Kafka boxes on the context view → move them to Step 3.
 
 ---
 
-### Step 6 — Create prioritized backlog (Part 6)
+### Step 3 — Design containers and data flow
 
-**Why:** Horizontal “layers first” backlogs strand Week 6 without a demoable vertical slice.
+**Why:** Container placement forces the sync vs async decisions ADRs must quantify.
 
-**Do this:** Write `docs/backlog.md` with vertical stories ordered by value, risk, dependency, and learning. Include at least:
+**Do this:** Fill `docs/architecture/container.md`: React UI, Spring Boot API, PostgreSQL, Kafka + consumer, IdP, logs/metrics. Label REST+JWT vs customer/interaction events. Deploy boundary: **k3s in Lab 51** (not Lab 42 k3d unless assigned).
 
-```markdown
-### CAP-12 — Record a customer interaction
-As a service agent, I want to record an interaction for CUS-1001 (Amina Khan)
-so the next agent understands customer history.
+**Expected result:** Topology Labs 49–51 can implement.
 
-Acceptance criteria:
-1. Valid input returns 201 and a resource identifier; correlation `lab-request-001` preserved.
-2. The timeline shows the interaction within two seconds after refresh.
-3. A versioned event is published after (documented) consistency strategy.
-4. Invalid notes return field-level errors and are not persisted.
-5. Audit data records actor and correlation ID without note contents.
-```
-
-Also add stories mapping to Labs 49–52 (API/Kafka, React+PostgreSQL, JWT/pipeline/deploy, defense prep). Enabling tech stories must cite which outcome they unlock.
-
-**Expected result:** Prioritized vertical backlog; CAP-12 (or equivalent) present; Lab 49–52 traceability noted.
-
-**If it fails:** Purely technical tickets (“set up Kafka”) with no user outcome → rewrite as enabling work tied to CAP-*. Missing Amina/Ravi → add fixture-based acceptance.
+**If it fails:** Kafka with no consumer and no “publish-only this week” risk → add one.
 
 ---
 
-### Step 7 — Record architecture decisions (Part 7)
+### Step 4 — Define domain and contracts
 
-**Why:** Undocumented choices are re-argued in every demo and fail Lab 52 trade-off questions.
+**Why:** Unversioned endpoints break Lab 50 and Lab 52.
 
-**Do this:** Create ADRs under `docs/adrs/` for at least:
+**Do this:** Sketch `POST /api/v1/interactions` (body: `customerId`, `interactionType`, `summary`, `correlationId`) and event `CustomerInteractionRecordedV1`. Compatibility: additive OK; breaking changes version-bump. Header `X-Correlation-ID: lab-request-001`.
 
-1. PostgreSQL as system of record
-2. Kafka for customer interaction events
-3. Consistency strategy (after-commit publish, outbox candidate, etc.)
-4. JWT / OIDC resource-server authentication
-5. Container deploy target (k3s training namespace)
+**Expected result:** Named owners; HTTP + event sketches; versioning paragraph.
 
-Each ADR must include Status, Date, Owners, Context, Decision, Alternatives (≥2), Consequences.
-
-Skeleton:
-
-```markdown
-# ADR-003: Publish events after database commit
-- Status: Proposed
-- Date: 2026-07-14
-- Owners: Capstone Team
-## Context
-
-Describe the consistency problem and constraints.
-## Decision
-
-State the selected approach precisely.
-## Alternatives
-
-List at least two viable alternatives.
-## Consequences
-
-Record benefits, costs, failure modes, and follow-up work.
-```
-
-**Expected result:** ≥5 ADRs; alternatives and consequences present; statuses and owners set.
-
-**If it fails:** Decision-only sticky notes → expand alternatives/consequences. Conflicting ADRs → resolve or mark Superseded.
+**If it fails:** Planning `GET /api/customers/{id}` as the interaction API → Week 5 has **no** per-id GET. CAP-12 is **POST interactions**.
 
 ---
 
-### Step 8 — Plan delivery and risk (Part 8)
+### Step 5 — Write measurable NFRs
 
-**Why:** Unowned critical-path and unscoreable risks surface as Week 6 thrash and incomplete defense.
+**Why:** “Fast” cannot be tested.
 
-**Do this:** Complete `docs/team-plan.md` and `docs/risk-register.md`:
+**Do this:** Fill `docs/nfrs.md` (latency, availability, recovery, security, a11y, retention). Each row: number/boolean, method, environment. Security 401/403 is **Lab 51**. Recovery: rollback to prior **digest or `jarSha256`** (Lab 44/51) — do not invent GHCR digests.
 
-* Accountable owners for Labs 49–52 milestones
-* Integration points (UI↔API, API↔PostgreSQL, API↔Kafka, pipeline↔registry↔cluster)
-* Critical path diagram or ordered list
-* Risks scored (likelihood × impact) with trigger, mitigation, contingency, owner, due date
+**Expected result:** No unsupported adjectives.
 
-Minimum risks to include: Kafka lag, PostgreSQL migration failure, JWT misconfig, pipeline secret leak, demo environment outage, contract drift UI/API.
+---
 
-**Expected result:** Named owners; critical path visible; ≥6 scored risks with mitigations.
+### Step 6 — Create prioritized backlog
 
-**If it fails:** Risks listed without scores/owners → complete columns. “Hope” as mitigation → replace with testable control.
+**Why:** Horizontal “Kafka first” stories strand the demo.
+
+**Do this:** Complete `docs/backlog.md` with CAP-12 and stories mapped to Labs 49–52. Enabling tech stories must cite the outcome they unlock.
+
+**Expected result:** Vertical backlog; Amina/Ravi in acceptance.
+
+---
+
+### Step 7 — Record architecture decisions
+
+**Why:** Undocumented choices are re-argued in every demo.
+
+**Do this:** Session: fill **one** ADR. Full path: five files — PostgreSQL, Kafka, consistency (after-commit vs outbox), JWT (Lab 51), k3s digest-pin (Lab 51). Each: Status, Date, Owners, Context, Decision, Alternatives (≥2), Consequences.
+
+**Expected result:** Session ≥1; full path ≥5 with alternatives.
+
+**If it fails:** Two Accepted ADRs that pick different databases → supersede one.
+
+---
+
+### Step 8 — Plan delivery and risk
+
+**Why:** Unowned critical path becomes Week 6 thrash.
+
+**Do this:** Complete `docs/team-plan.md` and `docs/risk-register.md`. Minimum risks: Kafka lag, migration failure, JWT misconfig, secret leak, demo outage, UI/API contract drift.
+
+Keep this continuity list in the team plan:
+
+1. **Lab 49:** CAP-12 API + event for `CUS-1001` / `lab-request-001`
+2. **Lab 50:** React search/profile/timeline + PostgreSQL proof
+3. **Lab 51:** JWT deny-by-default, pipeline, k3s smoke + rollback
+4. **Lab 52:** Demo/evidence — **no new scope**
+
+**Expected result:** Named owners; scored risks.
 
 ---
 
 ### Step 9 — Failure experiments + evidence pack
 
-**Why:** Planning without a hostile review leaves false-confidence boxes for Lab 52.
-
-**Do this:** Complete Failure Experiments. Capture peer-review notes under `docs/notes/` or `reports/`. Ensure README points to the six core artifacts. Run a peer walkthrough: peer opens docs alone and restates CAP-12 + one ADR consequence.
-
-Also complete an evidence log:
+**Do this:** Complete Failure Experiments. Peer (or self) restates CAP-12 + one ADR consequence from docs alone. `git status` on **your** repo.
 
 ```markdown
-# Lab 48 Evidence Log
-- Branch and commit:
-- Environment:
-- Tool versions:
-- Peer reviewer:
-
-## Artifact checklist
-
-| Artifact | Path | Peer OK? |
-|---|---|---|
-| Context | docs/architecture/context.md | |
-| Containers | docs/architecture/container.md | |
-| NFRs | docs/nfrs.md | |
-| Backlog | docs/backlog.md | |
-| ADRs | docs/adrs/ | |
-| Risks | docs/risk-register.md | |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | Work in java-bootcamp / customer-management-platform | Pass / Fail |
+| 2 | Docs-only (no Maven as Lab 48 smoke) | Pass / Fail |
+| 3 | Fixtures + CAP-12 present | Pass / Fail |
+| 4 | Session: ≥1 ADR; full path: ≥5 | Pass / Fail |
+| 5 | No secrets | Pass / Fail |
 ```
-
-**Expected result:** ≥3 experiments recorded; peer reproduction noted; evidence log filled; no secrets in docs; `git status` clean of junk.
-
-**If it fails:** See Troubleshooting.
-
----
-
-### Working notes for Week 6 continuity
-
-Keep this short checklist in `docs/team-plan.md` so Labs 49–52 do not renegotiate scope mid-week:
-
-1. **Lab 49 owns:** CAP-12 API + Kafka for `CUS-1001` with `lab-request-001`.
-2. **Lab 50 owns:** React search/profile/timeline + PostgreSQL durability proof for the same fixtures.
-3. **Lab 51 owns:** JWT deny-by-default, pipeline gates, immutable image, smoke + rollback.
-4. **Lab 52 owns:** Demo script, evidence index, Q&A cards, retro, self-assessment—no new scope.
-
-If a story is deferred, mark it Explicitly Deferred with owner and date in the risk register—do not silently drop it.
 
 ---
 
 ## Implementation Checkpoints
 
-### Checkpoint A — Scope and structure
-
-_Mark **Pass** or **Fail** in your lab notes._
+### Checkpoint A — Tooling
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Capstone docs tree under `customer-management-platform/` (or instructor-approved `lab48-crm/`) | Pass / Fail |
-| 2 | Product outcome with users, journeys, exclusions, success measures | Pass / Fail |
-| 3 | Fixture IDs `CUS-1001`, `CUS-1002`, `lab-request-001` named in planning docs | Pass / Fail |
+| 1 | Tree is `examples/customer-management-platform/` (not `lab48-crm`) | Pass / Fail |
+| 2 | Copied **starter**, not Lab 41–47 | Pass / Fail |
+| 3 | Fixtures named | Pass / Fail |
 
 ### Checkpoint B — Architecture
 
-_Mark **Pass** or **Fail** in your lab notes._
-
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | C4 context with protocols and trust boundaries | Pass / Fail |
-| 2 | C4 containers: React, Spring Boot, PostgreSQL, Kafka, IdP, observability | Pass / Fail |
-| 3 | Domain/contract sketches with versioning policy | Pass / Fail |
+| 1 | Context with protocols / trust boundaries | Pass / Fail |
+| 2 | Containers include React, API, PostgreSQL, Kafka, IdP | Pass / Fail |
+| 3 | CAP-12 is POST interactions (not list-API `/{id}`) | Pass / Fail |
 
 ### Checkpoint C — Quality and decisions
 
-_Mark **Pass** or **Fail** in your lab notes._
+| # | Confirm | Your notes |
+| - | ------- | ---------- |
+| 1 | NFRs measurable (401 is Lab 51) | Pass / Fail |
+| 2 | Vertical backlog including CAP-12 | Pass / Fail |
+| 3 | Session ≥1 ADR / full path ≥5 | Pass / Fail |
+
+### Checkpoint D — Hygiene
 
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
-| 1 | Measurable NFRs (latency, security, a11y, recovery, retention) | Pass / Fail |
-| 2 | Prioritized vertical backlog including interaction story | Pass / Fail |
-| 3 | ≥5 ADRs with alternatives and consequences | Pass / Fail |
-
-### Checkpoint D — Delivery hygiene
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Team plan with owners and critical path | Pass / Fail |
-| 2 | Risk register scored with mitigations | Pass / Fail |
-| 3 | Peer review completed; no secrets in committed docs | Pass / Fail |
+| 1 | Team plan + scored risks | Pass / Fail |
+| 2 | No secrets | Pass / Fail |
+| 3 | Pushes to **your** remote | Pass / Fail |
 
 ---
 
-## Reference Commands, Configuration, and Code
+## Safety Rules
 
-### Vertical story excerpt
+* Never import real PII into planning docs.
+* Never commit tokens, kubeconfig, or `.env`.
+* Never treat Lab 42 k3d as “the” capstone cluster unless assigned.
+* Never start Lab 49 code before session-block docs exist.
 
-```markdown
-### CAP-12 — Record a customer interaction
-As a service agent, I want to record an interaction so the next agent understands customer history.
-Fixtures: CUS-1001 (Amina), correlation lab-request-001.
-```
+---
 
-### ADR skeleton
+## Reference Commands
 
-```markdown
-# ADR-00N: Title
-- Status: Proposed | Accepted | Superseded
-- Date: YYYY-MM-DD
-- Owners: ...
-
-
-## Context
-## Decision
-## Alternatives
-## Consequences
-
-```
-
-### Commands
-
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-mkdir -p docs/architecture docs/adrs reports
-mkdir -p ~/java-bootcamp/notes/screenshots/lab-48
-ls docs/architecture docs/adrs
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
+Get-ChildItem docs\architecture, docs\adrs
+Select-String -Path docs\**\*.md -Pattern 'CUS-1001|lab-request-001|CAP-12' | Select-Object -First 20
 git status --short
-# optional baseline if code exists:
-./mvnw -B -q clean verify 2>/dev/null || true
 ```
-
-### Artifact map
-
-| Artifact | Role |
-| -------- | ---- |
-| `docs/architecture/context.md` | C4 context + product outcome |
-| `docs/architecture/container.md` | Containers + data flow |
-| `docs/nfrs.md` | Measurable quality targets |
-| `docs/backlog.md` | Prioritized vertical stories |
-| `docs/adrs/*` | Decision records |
-| `docs/risk-register.md` | Scored risks |
-| `docs/team-plan.md` | Owners and milestones |
-
----
 
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
-| 1 | Remove trust boundaries from context | Peer cannot locate IdP risk | Restore boundaries |
-| 2 | Write NFR as “must be fast” | Cannot invent a test | Add numeric threshold |
-| 3 | Split backlog into UI-only then API-only | Demo path breaks across weeks | Re-slice vertical |
-| 4 | ADR with no alternatives | Reviewer rejects decision quality | Add ≥2 alternatives |
-| 5 | Risk “Kafka might fail” with no score/owner | Cannot prioritize mitigation | Score + assign owner |
+| 1 | Remove trust boundaries | Peer cannot locate IdP risk | Restore |
+| 2 | NFR = “must be fast” | Cannot invent a test | Add a number |
+| 3 | UI-only then API-only backlog | Demo path breaks | Re-slice vertical |
+| 4 | ADR with no alternatives | Reviewer rejects | Add ≥2 |
+| 5 | Risk with no score/owner | Cannot prioritize | Score + owner |
+| 6 | `mvn compile` in this folder | No `pom.xml` | Docs-only smoke |
 
 ---
 
@@ -539,48 +410,43 @@ git status --short
 
 | Symptom | Likely cause | Fix |
 | ------- | ------------ | --- |
-| Peer disagrees on scope | Missing exclusions | Add explicit out-of-scope list |
-| Diagrams ignored in review | Embedded images only, no source | Prefer Mermaid/text in repo |
-| Lab 49 unsure what to build | Backlog not vertical / no CAP-12 | Rewrite stories with acceptance |
-| Conflicting tech choices | No ADR status | Accept one ADR; supersede other |
-| “We’ll document later” | Evidence deferred | Finish docs before coding |
-| Secrets in screenshots | Pasted real tokens | Redact, rotate, replace evidence |
-| Fixture drift | Random demo names | Standardize on CUS-1001/1002 |
-| Inherited build red | Pre-existing platform fail | Record baseline; do not hide |
+| No `docs/` | Copied wrong folder | Copy **starter** |
+| Work in course clone | Wrong folder | `java-bootcamp` |
+| `mvn` / `./mvnw` fails | Docs lab | `Test-Path` / `Get-ChildItem` |
+| Copied Lab 41–47 | Wrong seed | Starter into `customer-management-platform` |
+| Planned `GET /api/customers/{id}` | Week 5 habit | CAP-12 is **POST /api/v1/interactions** |
+| GHCR digest in ADR | Lab 44 habit | `jarSha256` / Lab 51 digest after you have one |
+| k3d in ADR-005 as default | Lab 42 habit | Lab 51 is **k3s** unless assigned otherwise |
+| Two Accepted DB ADRs | Status drift | Supersede one |
+| Lab 49 unsure what to build | No CAP-12 | Rewrite vertical story |
 
-## Security and Production Review
+## Evidence Log Template
 
-Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
-
-1. Which inputs are untrusted (browser agents, JWT claims, Kafka payloads)?
-2. Where will authn/authz/validation be enforced (UI hints vs API enforcement)?
-3. Which values are sensitive—never in ADRs or screenshots?
+```markdown
+# Lab 48 Evidence Log
+- Repo (must be java-bootcamp):
+- Path (must be customer-management-platform):
+- Session vs full path:
+- Peer restated CAP-12:
+```
 
 ---
 
-
 ## Cleanup
 
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
 git status --short
-# Remove accidental secret files if any:
-# shred/delete local .env copies; do not commit
 ```
 
-Stop any exploratory containers started while sketching. Keep sanitized planning docs; delete generated noise.
+**Keep this tree**—Labs 49–52 implement and defend against it.
 
-**Keep the Lab 48 docs tree**—Labs 49–52 implement and defend against it. Do not delete Accepted ADRs without superseding.
-
+---
 
 ## Reflection Questions
 
 Write **1–3 sentence** answers (not essays):
 
-1. Which design decision most affected correctness of the Week 6 plan?
-2. What evidence proves the plan is executable (not decorative)?
-3. Which ambiguity was hardest to force into an explicit assumption or question?
-
----
-
-
+1. Which decision most affected the Week 6 plan (CAP-12, Kafka, or deploy target)?
+2. What evidence proves the plan is executable, not decorative?
+3. Which ambiguity did you force into an explicit assumption?

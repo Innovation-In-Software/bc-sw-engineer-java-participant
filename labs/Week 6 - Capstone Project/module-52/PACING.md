@@ -19,16 +19,18 @@ Optional after Lab: Week 6 wrap-up slides **157–168** (not Lab 52 graded files
 
 **1 → 2 → 3 → 4 → 5 → 6** then Lab 52.
 
+Write notes in **`java-bootcamp/examples/module-52-exercises/notes/`**.
+
 ## Do / don't
 
 | Do now | Don't yet |
 | --- | --- |
 | Packet index; timed demo; evidence map; Q&A; retro; rubric pointers | Invent evidence you do not have |
-| Synthetic fixtures; secrecy scrub; fallback path | Real customer data; secrets on slides |
-| Owned retro actions | Rebuild entire capstone during warmup |
+| Synthetic fixtures; secrecy scrub; fallback path | `channel` / nested interaction URL; real PII; secrets on slides |
+| Label Lab 49–51 gaps | `Copy-Item starter\*` over ADRs; `mvn` as Lab 52 smoke |
 
 ## Hard gate before Lab 52
 
-- [ ] Ex notes complete
+- [ ] Ex notes complete in `java-bootcamp/examples/module-52-exercises/notes/`
 - [ ] Labs 48–51 evidence paths listed (gaps labeled)
-- [ ] Demo script includes deny/fallback beat
+- [ ] Demo script includes deny/fallback without inventing 401

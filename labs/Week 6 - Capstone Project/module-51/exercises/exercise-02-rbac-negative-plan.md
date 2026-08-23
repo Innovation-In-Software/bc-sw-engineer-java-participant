@@ -19,7 +19,7 @@ Smoke that only proves happy-path 200 is not a release gate.
 
 ### Predict
 
-Anonymous GET /api/customers — expected status?
+Anonymous POST /api/v1/interactions — expected status?
 
 ### Debug
 
@@ -29,8 +29,9 @@ Valid token 401 — first checks?
 
 | Symptom | Fix |
 | --- | --- |
-| Only 200 smoke | Add 401/403 matrix |
+| Only 200 smoke | Add 401/403 matrix (POST interactions, not per-id GET) |
 | Issuer mismatch notes missing | Record issuer-uri/JWKS |
+| Invented Week 5 `GET /{id}` | Lab 49 create-only; add GET only if you built it |
 
 **Module 51** · Documentation exercise · [setup + file names](EXERCISES-INDEX.md)
 

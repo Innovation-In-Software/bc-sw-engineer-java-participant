@@ -5,7 +5,7 @@
 **Module:** 49 — Capstone Backend and Messaging  
 **Next:** [`../lab49/LAB-49-GUIDE.md`](../lab49/LAB-49-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-49-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-49-exercises/` in **your** `java-bootcamp` — not the course clone, and not `backend/` source.
 
 ## Practice order (interleaved)
 
@@ -25,8 +25,8 @@ Then **checkpoint E** → Lab 49.
 
 | Do now | Do not yet |
 | --- | --- |
-| Slice, layers, versioned event, test/demo DoD | React UI (Lab 50); full JWT hardening (Lab 51) |
-| Failure-path plan | Weaken validation for demos |
+| Slice, layers, versioned event, test/demo DoD | React UI (Lab 50); full JWT (Lab 51); `./mvnw`; Bearer on session API |
+| Failure-path plan | Weaken validation for demos; copying Lab 41 over the Lab 48 tree |
 
 ## Workspace
 
@@ -41,4 +41,4 @@ New-Item -ItemType Directory -Force -Path examples\module-49-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; DoD self-mark **Pass**.
+All six notes files exist under **`java-bootcamp`**; DoD self-mark **Pass**.

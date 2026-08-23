@@ -1,8 +1,8 @@
 # Module 50 exercise starters
 
-Copy into `~/java-bootcamp/examples/module-50-exercises/notes/` and fill TODOs.
+Copy into **`java-bootcamp/examples/module-50-exercises/notes/`** (not the course clone `labs/`) and fill TODOs.
 
-Complete in order **1 → 4 → 2 → 3 → 5 → 6**.
+Complete in order **1 → 4 → 2 → 3 → 5 → 6**. Do not invent `channel` or `GET /api/customers/{id}`.
 
 | File | Exercise |
 | --- | --- |

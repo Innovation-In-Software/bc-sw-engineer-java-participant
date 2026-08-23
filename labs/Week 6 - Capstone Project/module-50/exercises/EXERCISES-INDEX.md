@@ -5,7 +5,7 @@
 **Module:** 50 — Capstone Frontend and Persistence  
 **Next:** [`../lab50/LAB-50-GUIDE.md`](../lab50/LAB-50-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-50-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-50-exercises/` in **your** `java-bootcamp`.
 
 ## Practice order (interleaved)
 
@@ -26,8 +26,8 @@ Then **checkpoint E** → Lab 50.
 
 | Do now | Do not yet |
 | --- | --- |
-| Journey, a11y, typed client, persistence, verify/data-flow | Invent DTO shapes vs Lab 49 |
-| Synthetic fixtures; migration sketch | Lab 51 security/CI deploy as this warmup |
+| Journey, a11y, typed client, persistence, verify/data-flow | Invent `channel` or `GET /api/customers/{id}` |
+| Synthetic fixtures; migration sketch | Lab 51 JWT/CI/k3s as this warmup; `npm` is not a pre-lab |
 
 ## Workspace
 
@@ -42,4 +42,4 @@ New-Item -ItemType Directory -Force -Path examples\module-50-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; data-flow + verification self-mark **Pass**.
+All six notes files exist under **`java-bootcamp`**; data-flow + verification self-mark **Pass**.

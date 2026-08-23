@@ -1,7 +1,7 @@
 # Lab 49: Capstone Backend and Messaging — Northstar CRM Interaction Slice
 
 **Module:** 49 — Capstone Backend and Messaging  
-**Duration:** ~45 minutes (timed path / session block with starter) · Full path: 6–8 Hours
+**Duration:** ~45 minutes (session block with starter) · Full path: 6–8 Hours (multi-day)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
 
@@ -10,24 +10,26 @@
 | Windows | [LAB-49-WINDOWS.md](LAB-49-WINDOWS.md) |
 | macOS | [LAB-49-MACOS.md](LAB-49-MACOS.md) |
 
+> **Two folders (do not mix):** [Clone the course repo · Commit in your own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md). Read this GUIDE in the **course clone**. Write, run, and **push** in **your** `java-bootcamp` repo.
+
 ---
 
 ## Activity card
 
 | | |
 | --- | --- |
-| **Time** | ~45 min session block · full path 6–8 h multi-day |
-| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
-| **Must prove** | Service TODOs · compile · fixture IDs · event V1 sketch |
-| **Hard gate** | Pre-lab Pass · Lab 48 story selected · docs before claiming done |
+| **Time** | ~45 min session · full path 6–8 h multi-day |
+| **Checkpoint** | **E** (after Ex **1 → 2 → 3 → 4 → 5 → 6**) |
+| **Must prove** | Service TODOs · `mvn -B test` · CUS-1001 · event V1 sketch |
+| **Hard gate** | Pre-lab Pass · Lab 48 CAP-12 · docs before claiming done |
 
 ### What you will learn
 
-Implement a CRM interaction vertical slice: validated API, persistence, versioned Kafka event, tests, demo runbook.
+Implement CAP-12: validated `POST /api/v1/interactions`, persist, versioned event, tests, demo runbook.
 
 ### Enterprise context
 
-A green demo without tests, correlation, or failure-path evidence does not pass capstone quality.
+A green demo without tests, correlation, or a failure path does not pass capstone.
 
 ### Predict
 
@@ -35,83 +37,88 @@ Should the publisher run before the DB transaction commits?
 
 ### Debug
 
-Entity returned as JSON from the controller — what is missing?
+`./mvnw` not found, or `401` on a session curl with `Bearer $TOKEN` — what is wrong?
 
 ---
 
-## 45-minute timed path (session block — use starter)
+## Two folders — every command below uses these paths
 
-> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: Flyway, Kafka IT, consumer/DLT, verify twice, `docs/backend-demo.md`.
+| Folder | Remote | You… |
+| ------ | ------ | ---- |
+| **Course clone** | `bc-sw-engineer-java-participant` | **Read** GUIDE / starter. **Never** commit homework here. |
+| **Your repo** | private `java-bootcamp` | Merge starter **`backend/`** into the Lab 48 tree, fill TODOs, **commit**. |
 
-In class, use the starter service stub so the **session block** fits **~45 minutes**. Backend + messaging depth (Flyway, Kafka IT, consumer/DLT, full verify) remains **multi-day** on the full path.
+| Item | Course clone (read) | Your `java-bootcamp` (write) |
+| ---- | ------------------- | ---------------------------- |
+| This GUIDE | `labs/…/module-49/lab49/LAB-49-GUIDE.md` | — |
+| Starter backend | `labs/…/module-49/lab49/starter/backend/` | `examples/customer-management-platform/backend/` |
+| Lab 48 plan (keep) | — | `examples/customer-management-platform/docs/` (ADRs, backlog) |
+| Pre-lab notes | — | `examples/module-49-exercises/notes/` |
+| Screenshots | — | `notes/screenshots/lab-49/` |
 
-1. Open [`starter/README.md`](starter/README.md).
-2. Copy `starter/` into `java-bootcamp/examples/customer-management-platform/` (see starter README).
-3. Fill every `// TODO` in the interaction service stub — starter includes an in-memory baseline.
-4. Run the starter build/smoke; evidence under `notes/screenshots/lab-49/`.
-5. Mark timed-path Pass criteria in the starter README. Continue remaining GUIDE steps as homework / multi-day work.
+IntelliJ stays on `java-bootcamp`. Open the **`backend`** Maven module (JDK 21).
+
+**Merge into the Lab 48 tree.** Copy **`backend/`** + `docs/build-checklist.md`. **Do not** copy starter `README.md` over Lab 48 docs. **Do not** copy Lab 41–47 CRM. **Do not** use `lab49-crm` as the default folder.
+
+**Session starter is in-memory** (no JPA, no Kafka, no Flyway, **no Spring Security**). `mvn -B test` from `backend/` is the session smoke. Full path adds Flyway, Kafka, DLT, `docs/backend-demo.md`.
+
+**HTTP:** `POST http://localhost:8080/api/v1/interactions`. This route is **new**. Week 5 only had `GET /api/customers`. There is **no** `GET /api/customers/{id}`.
+
+**Auth:** Session curls **omit** `Authorization`. `$TOKEN` / JWT is **Lab 51**. A 401 on the session stub means you added security too early.
+
+**Customer id type:** **String** fixtures (`CUS-1001`). Do not switch the service to `UUID customerId`.
+
+**Kafka (full path):** topic from ADR-002 (example `crm.customer.interactions.v1`). CLI: `docker exec crm-kafka /opt/kafka/bin/….sh` (Lab 30 broker). There is no `kafka-console-consumer.sh` on the Windows PATH. Do not invent `crm.customer.events`.
+
+**Maven:** `mvn` from `backend/`. No wrapper unless you added one.
+
+---
+
+## 45-minute session block (use starter)
+
+> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework: Flyway, Kafka IT, consumer/DLT, verify twice, `docs/backend-demo.md`.
+
+1. Open [`starter/README.md`](starter/README.md) **in the course clone**.
+2. Merge `backend/` into **`java-bootcamp/examples/customer-management-platform/`**.
+3. Fill `InteractionService` TODOs — do **not** work under `labs/`.
+4. `mvn -B -f backend/pom.xml test`. Evidence under `notes/screenshots/lab-49/`.
+5. Mark session Pass criteria in the starter README.
 
 | Path | Time | Scope |
 | ---- | ---- | ----- |
-| **Timed / session block** | ~45 min | Starter TODOs + smoke test |
-| **Full (multi-day)** | 6–8 Hours | Every Step in this GUIDE |
-
-Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
+| **Session (default)** | ~45 min | Service TODOs + unit tests |
+| **Full (multi-day)** | see Duration | Every Step in this GUIDE |
 
 ---
 
-## What you'll submit (read this first)
+## What you'll submit
 
-Keep this checklist visible while you work.
+| # | Deliverable | Session | Full path |
+| - | ----------- | ------- | --------- |
+| 1 | `backend/` interaction slice | Service + tests | + Flyway/JPA |
+| 2 | Event V1 type | Sketch / stub publish | Kafka + DLT |
+| 3 | `docs/backend-demo.md` | Outline OK | Exact commands |
+| 4 | `mvn -B test` (session) / `mvn -B clean verify` twice (full) | Required | Required |
+| 5 | Failure path (CUS-9999 or invalid type) | Unit test | + HTTP Problem Details |
 
-| # | Deliverable |
-| - | ----------- |
-| 1 | Backend source changes for the interaction vertical slice |
-| 2 | Database migration for interaction persistence |
-| 3 | Versioned event contract (`CustomerInteractionRecordedV1` or equivalent) |
-| 4 | Unit and integration tests (HTTP, persistence, messaging) |
-| 5 | `docs/backend-demo.md` reproduction runbook |
-| 6 | Baseline and final validation results (`mvn clean verify`) |
-| 7 | One controlled failure-path result (invalid input or not-found) |
-| 8 | Concise setup and reproduction guide cross-links |
+**Do not submit:** `target/`, secrets, verbatim `solution/`.
 
-**Must submit:** the items in the table above (sources + evidence + short notes).
-
-**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
+---
 
 ## Lab Overview
 
-This Module 49 lab implements or extends the CRM **Spring Boot + Kafka vertical slice** for recording customer interactions: validated REST APIs, transaction-safe persistence, versioned events, resilient consumption, and automated tests—producing `docs/backend-demo.md` evidence for the defense.
-
-## Learning Objectives
-
-After completing this lab, you will be able to:
-
-* Implement layered Spring Boot features for a CRM vertical slice
-* Keep JPA entities out of external contracts; validate DTOs
-* Use transactions deliberately around persist + publish strategy
-* Publish versioned Kafka events with correlation and actor metadata
-* Consume idempotently with bounded retries and DLT
+Implement Lab 48 **CAP-12** on Spring Boot: DTO API, persist, versioned event, tests.
 
 ## Business Scenario
 
-Service agents need to record customer interactions for Amina (`CUS-1001`) and continue Ravi’s (`CUS-1002`) journey. Leadership freezes:
+**No merge without API evidence, persistence proof, versioned event proof, automated tests, and a documented failure path.**
 
-**No merge of the interaction slice without API evidence, persistence proof, versioned event proof, automated tests, and a documented failure path.**
-
-You own that backend gate using Lab 48 CAP-12 acceptance criteria.
-
-Use these fixtures consistently:
-
-| ID | Name | Notes |
-| -- | ---- | ----- |
-| `CUS-1001` | Amina Khan | `ACTIVE` — primary interaction create target |
-| `CUS-1002` | Ravi Singh | secondary customer / list filters |
-| `CUS-9999` | — | not-found paths |
-| `lab-request-001` | — | `X-Correlation-ID` on HTTP and events |
-| `capstone-49-001` | — | optional alternate correlation for smoke curls |
-
-**Security note for evidence.** Use fictional emails and summaries. Never log full interaction notes with secrets; never commit broker credentials.
+| ID | Notes |
+| -- | ----- |
+| `CUS-1001` | Amina — happy-path create |
+| `CUS-1002` | Ravi — known customer |
+| `CUS-9999` | not-found |
+| `lab-request-001` | `X-Correlation-ID` |
 
 ---
 
@@ -120,390 +127,216 @@ Use these fixtures consistently:
 
 ```mermaid
 flowchart TB
-  Ctrl["REST Controller<br/>JWT-ready"] --> Svc["Application Service<br/>@Transactional"]
-  Svc --> JPA["JPA Repository"]
-  JPA --> PG["PostgreSQL migrations"]
-  Svc --> Pub["Event Publisher"]
-  Pub --> Kafka["crm.customer.interactions.v1"]
-  Kafka --> Cons["consumers / handlers"]
+  Ctrl["POST /api/v1/interactions"] --> Svc["InteractionService"]
+  Svc --> Repo["Repository (session: in-memory)"]
+  Svc --> Pub["Event publisher (session: stub)"]
+  Pub --> Kafka["Full path: crm.customer.interactions.v1"]
 ```
 
 ## Prerequisites
 
-Prior labs: [Lab 48](../../module-48/lab48/LAB-48-GUIDE.md).
-
-Confirm (Lab 0 tools assumed):
-
-* Java 21 + Maven + Spring Boot backend present or scaffolded
-* shared Kafka (instructor bootstrap; local Compose optional if allowed) (or instructor broker)
-* JUnit 5 + Spring test stack
-* Lab 48 backlog + ADRs available under `docs/`
-* No secrets committed to Git
+Lab 48 docs in **`customer-management-platform/docs/`**. JDK 21 + Maven. Kafka/Postgres optional on the session path.
 
 ### Pre-flight
 
-```bash
+```powershell
 java -version
 mvn -version
+Test-Path "$env:USERPROFILE\java-bootcamp\examples\customer-management-platform\docs\backlog.md"
 ```
 
-## Worked example (read before you code)
+## Worked example (session — no Bearer)
 
-Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
-
-```bash
-curl -i -X POST "http://localhost:8080/api/v1/interactions" \
-  -H 'Content-Type: application/json' \
-  -H "Authorization: Bearer $TOKEN" \
-  -H 'X-Correlation-ID: lab-request-001' \
-  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
+```powershell
+curl.exe -i -X POST "http://localhost:8080/api/v1/interactions" `
+  -H "Content-Type: application/json" `
+  -H "X-Correlation-ID: lab-request-001" `
+  -d "{\"customerId\":\"CUS-1001\",\"interactionType\":\"NOTE\",\"summary\":\"Requested address update\",\"correlationId\":\"lab-request-001\"}"
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+App must be running. Session evidence can be **unit tests only** if you do not start the server.
 
 ---
 
 ## Implementation Steps
 
-Complete each step in order. Commands assume capstone `backend/` unless noted. Parts 1–8 map to Steps 1–8; Step 9 closes evidence.
-
 ---
 
-### Step 1 — Select vertical slice (Part 1)
+### Step 1 — Merge starter, freeze CAP-12
 
-**Why:** Coding without a frozen acceptance list produces feature sprawl and an undefendable demo.
+**Why:** Coding without a frozen DoD produces sprawl.
 
-**Do this:** Open Lab 48 `docs/backlog.md`. Choose CAP-12 (or instructor equivalent). In `docs/backend-demo.md` write:
+**Do this:**
 
-* Acceptance criteria copied and numbered
-* API, persistence, event, security stub, observability change list
-* Definition of done + demo evidence checklist before coding
-* Fixture plan: seed/find `CUS-1001`, correlation `lab-request-001`
+```powershell
+$jb = "$env:USERPROFILE\java-bootcamp"
+$courseLab49 = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-49\lab49"
+$dest = "$jb\examples\customer-management-platform"
 
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-mkdir -p ~/java-bootcamp/notes/screenshots/lab-49 backend/src/test/java/com/northstar/crm
+New-Item -ItemType Directory -Force -Path "$dest\backend","$dest\docs","$jb\notes\screenshots\lab-49" | Out-Null
+Copy-Item -Recurse -Force "$courseLab49\starter\backend\*" "$dest\backend\"
+Copy-Item -Force "$courseLab49\starter\docs\build-checklist.md" "$dest\docs\build-checklist.md"
+# Do NOT copy starter README over Lab 48 docs
+cd "$dest\backend"
 ```
 
-**Expected result:** Written DoD; peer can state what “done” means without watching you code.
+In `docs/backend-demo.md` (create it), paste CAP-12 acceptance from Lab 48. Fixture plan: `CUS-1001` / `lab-request-001`.
 
-**If it fails:** Story missing → return to Lab 48 or agree a CAP-12 substitute with instructor. Scope includes UI → defer UI to Lab 50.
+**Expected result:** `backend/pom.xml` exists; Lab 48 ADRs still present.
+
+**If it fails:** Overwrote `docs/adrs` → restore from git; copy only `backend/`.
 
 ---
 
-### Step 2 — Create domain and DTOs (Part 2)
+### Step 2 — DTOs (not entities)
 
-**Why:** Shipping JPA entities as JSON couples clients to persistence and breaks Lab 50 typing.
+**Why:** JPA entities as JSON couple Lab 50 to persistence.
 
-**Do this:** Create immutable request/response/event records. Keep entities internal. Use Bean Validation for `interactionType` (`CALL`, `EMAIL`, `NOTE`, `MEETING`). Customer id is a **String** fixture (`CUS-1001`), not a UUID path param.
+**Do this:** Keep records in `api/dto`. Customer id is **String**. Annotate `CreateInteractionRequest` (`@NotBlank`, `interactionType` CALL/EMAIL/NOTE/MEETING).
 
-Example shapes (adapt to your IDs):
+**Expected result:** Controller signatures use DTOs only.
 
-```java
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import java.time.Instant;
+---
 
-public record CreateInteractionRequest(
-    @NotBlank String customerId,
-    @NotBlank String interactionType,  // CALL, EMAIL, NOTE, MEETING
-    @NotBlank @Size(max = 1000) String summary,
-    String correlationId) {}
+### Step 3 — Persistence
 
-public record InteractionResponse(
-    String id, String customerId, String interactionType, String summary,
-    String correlationId, Instant createdAt) {}
+**Session:** in-memory `InteractionRepository` (`customerExists` for CUS-1001/1002).
 
-public record CustomerInteractionRecordedV1(
-    String eventId, String eventType, int eventVersion,
-    Instant occurredAt, String correlationId, String actor,
-    String customerId, String interactionId, String interactionType) {}
+**Full path:** Flyway `customer_interaction`, JPA, seed Amina/Ravi. Document PostgreSQL vs H2 profile.
+
+**Expected result:** Session: save in map. Full: migration applies.
+
+---
+
+### Step 4 — Application service
+
+**Why:** Controllers must not open Kafka clients.
+
+**Do this:** Fill `InteractionService.create`:
+
+1. Correlation: header > body > `lab-request-001`
+2. Reject `CUS-9999` (`UnknownCustomerException`)
+3. Map → `Interaction`, `createdAt = Instant.now()`
+4. `save`
+5. `eventPublisher.publish`
+6. Return `InteractionResponse`
+
+Use **String** `customerId`, not UUID. Align publish-vs-commit with Lab 48 ADR-003 on the full path (`@Transactional`).
+
+**Expected result:** `InteractionServiceTest` green (Amina 201-shape; unknown customer throws).
+
+**If it fails:** Tests still `UnsupportedOperationException` → TODOs not filled.
+
+---
+
+### Step 5 — REST endpoint
+
+**Do this:** `POST /api/v1/interactions` → **201**. Problem Details on the full path. Read `X-Correlation-ID`. **No** `@PreAuthorize` on the session stub.
+
+**Expected result:** MockMvc or curl 201 for CUS-1001; 400 invalid type; 404 CUS-9999 (full path mapping).
+
+**If it fails:** 401 → remove session security. 200 on create → use 201.
+
+---
+
+### Step 6 — Publish event (session stub / full Kafka)
+
+**Session:** `InteractionEventPublisher` may log. Sketch `CustomerInteractionRecordedV1` fields.
+
+**Full path:** topic `crm.customer.interactions.v1` (or ADR name), key = customerId, after-commit/outbox per ADR. Inspect with:
+
+```powershell
+docker exec crm-kafka /opt/kafka/bin/kafka-console-consumer.sh `
+  --bootstrap-server localhost:9092 `
+  --topic crm.customer.interactions.v1 --from-beginning --max-messages 1 --timeout-ms 15000
 ```
 
-**Expected result:** DTOs compile; entities not referenced from controller method signatures.
+Broker is Lab 30 `crm-kafka` if you use Compose.
 
-**If it fails:** Validation missing → add `@Valid` plan for Step 5. Entity in public API → introduce mapper.
-
----
-
-### Step 3 — Implement persistence (Part 3)
-
-**Why:** Constraints and indexes belong in migrations, not “Hibernate will figure it out.”
-
-**Do this:** Add Flyway/Liquibase migration for `customer_interaction` (PostgreSQL-compatible types if targeting PostgreSQL; H2/Testcontainers profile for CI if instructor allows). Repository methods by business need (`findByCustomerIdOrderByCreatedAtDesc`). Avoid N+1 when loading timelines.
-
-Inspect generated SQL in a test or log once. Seed Amina (`CUS-1001`) and Ravi (`CUS-1002`) via migration or `@Sql` so repository tests are deterministic.
-
-Document in `docs/backend-demo.md`:
-
-* Migration version id
-* Primary key strategy (UUID/RAW)
-* Index purpose (timeline by customer + time)
-* Which profile runs against PostgreSQL vs H2
-
-**Expected result:** Migration applies; repository round-trip saves interaction for seeded Amina; SQL plan/log inspected once.
-
-**If it fails:** Type mismatch PostgreSQL vs H2 → document profile strategy. Missing FK to customer → add constraint aligning with Lab 48 ADR. Flaky seed → use fixed fixture IDs, never random emails.
+**Expected result:** One event per successful create; includes `lab-request-001`.
 
 ---
 
-### Step 4 — Build application service (Part 4)
+### Step 7 — Resilient consumer (full path)
 
-**Why:** Controllers that open transactions and publish ad hoc skip business rules and correlation.
+**Why:** At-least-once without dedupe doubles side effects.
 
-**Do this:** Implement `InteractionService` with `@Transactional` boundary per Lab 48 consistency ADR:
+**Do this:** Validate `eventVersion`, dedupe `eventId`, bounded retry, DLT (Lab 46: factory-wired handler, topic + `.DLT`). Session: document “stub publisher, consumer later.”
 
-* Load customer or throw not-found for `CUS-9999`
-* Map conflict/validation outcomes
-* Persist interaction
-* Publish event via collaborator (not static Kafka client inside domain)
-* Propagate actor + `correlationId` without logging note secrets
+---
 
-```java
-import org.springframework.transaction.annotation.Transactional;
-import java.util.UUID;
+### Step 8 — Test the slice
 
-@Transactional
-public InteractionResponse create(UUID customerId, CreateInteractionRequest request, String correlationId) {
-  var customer = customers.findById(customerId)
-      .orElseThrow(() -> new CustomerNotFoundException(customerId));
-  var saved = interactions.save(mapper.toEntity(customer, request));
-  events.publish(eventFactory.interactionRecorded(saved, correlationId));
-  return mapper.toResponse(saved);
-}
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform\backend
+mvn -B test
+# Full path:
+# mvn -B clean verify
 ```
 
-Unit-test the service with a fake publisher that records the event payload for `lab-request-001`. Assert customer not-found never calls publish.
-
-**Expected result:** Service tests cover happy path + not-found without starting full server; publisher invoked only after successful save path.
-
-**If it fails:** Publish before persist without ADR → stop and align with Lab 48. Missing correlation → thread from controller header. Service opens Kafka admin clients → inject port so tests stay fast.
+**Expected result:** Session tests green. Full path: verify twice.
 
 ---
 
-### Step 5 — Expose REST endpoint (Part 5)
+### Step 9 — Failure experiments + evidence
 
-**Why:** Wrong status codes and opaque 500s block frontend integration and panel trust.
-
-**Do this:** `POST /api/v1/interactions` returning 201 (+ `Location` if you add it). Use Problem Details for validation and not-found. Read `X-Correlation-ID` (default generate if absent—but demos must send `lab-request-001`). Prepare `@PreAuthorize` stubs if security present; Lab 51 hardens fully.
-
-```java
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
-
-@RestController
-@RequestMapping("/api/v1/interactions")
-class InteractionController {
-  @PostMapping
-  ResponseEntity<InteractionResponse> create(
-      @RequestBody @Valid CreateInteractionRequest request,
-      @RequestHeader(value = "X-Correlation-ID", required = false) String correlationHeader) {
-    var result = service.create(request, correlationHeader);
-    return ResponseEntity.status(201).body(result);
-  }
-}
-```
-
-Also add GET timeline endpoint if CAP story requires it for Lab 50. Capture MockMvc JSON snippets (sanitized) under `~/java-bootcamp/notes/screenshots/lab-49/`.
-
-**Expected result:** Service/MockMvc: 201 for `CUS-1001`; validation error for invalid `interactionType`; `UnknownCustomerException` for `CUS-9999`.
-
-**If it fails:** 200 on create → fix to 201. Stack traces in body → Problem Details advice. Path variable type mismatch vs Lab 50 client → freeze ID type in contract doc.
-
----
-
-### Step 6 — Publish Kafka event (Part 6)
-
-**Why:** Unversioned fire-and-forget events become silent data loss under consumer lag.
-
-**Do this:** Use stable topic (e.g. `crm.customer.interactions.v1`) and partition key = customer id. Include event ID, type, version, time, actor, correlation ID. Publish only with documented consistency strategy (after commit / outbox).
-
-Verify with console consumer in demo.md.
-
-**Expected result:** One event for one successful create; payload includes `lab-request-001` and Amina’s customer id.
-
-**If it fails:** Event on validation failure → do not publish. Wrong key → fix partition key to customer.
-
----
-
-### Step 7 — Implement resilient consumer (Part 7)
-
-**Why:** At-least-once delivery without dedupe double-sends notifications and fails the defense.
-
-**Do this:** Consumer validates `eventVersion`, deduplicates on `eventId`, uses bounded retries, routes poison messages to DLT, and logs correlation without note body. Make lag/failure observable (counter or structured log).
-
-**Expected result:** Duplicate delivery is no-op; poison message lands in DLT (or documented training substitute).
-
-**If it fails:** Infinite retry storm → add backoff + DLT. Ignoring version → reject incompatible events.
-
----
-
-### Step 8 — Test complete slice (Part 8)
-
-**Why:** Untested messaging is a live-demo mystery failure in Lab 52.
-
-**Do this:** Write unit, MockMvc, JPA, Kafka IT, and failure tests. Prefer Testcontainers or approved Compose. Capture API, DB, and event evidence for `CUS-1001`.
-
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform/backend
-./mvnw -B clean verify
-# or from root if multi-module:
-# ./mvnw -B clean verify
-```
-
-Manual curl (adapt token/id):
-
-```bash
-curl -i -X POST "http://localhost:8080/api/v1/interactions" \
-  -H 'Content-Type: application/json' \
-  -H "Authorization: Bearer $TOKEN" \
-  -H 'X-Correlation-ID: lab-request-001' \
-  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
-```
-
-**Expected result:** `BUILD SUCCESS`; tests cover happy + negative; evidence noted in `docs/backend-demo.md`.
-
-**If it fails:** Flaky Kafka IT → awaitility + unique event IDs; fix shared topic pollution.
-
----
-
-### Step 9 — Failure experiments + evidence pack
-
-**Why:** Capstone credibility is failure-path literacy, not curl-once luck.
-
-**Do this:** Complete Failure Experiments. Fill `docs/backend-demo.md` with exact commands, topic name, migration id, and screenshots/excerpts under `~/java-bootcamp/notes/screenshots/lab-49/`. Run verify twice for determinism.
-
-**Expected result:** ≥3 experiments; identical consecutive verifies; peer can follow demo.md; no secrets committed.
-
-**If it fails:** See Troubleshooting.
+Fill `docs/backend-demo.md`. `git status` on **java-bootcamp**. No secrets.
 
 ---
 
 ## Implementation Checkpoints
 
-### Checkpoint A — Structure and scope
+### Checkpoint A — Structure
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Capstone backend (or `lab49-crm`) under `examples/` | Pass / Fail |
-| 2 | CAP story selected; DoD in `docs/backend-demo.md` | Pass / Fail |
-| 3 | Fixtures `CUS-1001` / `CUS-1002` / `lab-request-001` planned | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | `customer-management-platform/backend/` (not `lab49-crm`) | Pass / Fail |
+| 2 | Lab 48 docs still intact | Pass / Fail |
+| 3 | CAP-12 / fixtures planned | Pass / Fail |
 
 ### Checkpoint B — Core slice
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | DTOs + validation; entities not in API | Pass / Fail |
-| 2 | Migration + repository | Pass / Fail |
-| 3 | Transactional service + REST 201/Problem Details | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | DTOs; String customerId | Pass / Fail |
+| 2 | Service TODOs filled | Pass / Fail |
+| 3 | POST → 201 (or unit-test equivalent) | Pass / Fail |
 
 ### Checkpoint C — Messaging + tests
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Versioned event published with correlation | Pass / Fail |
-| 2 | Consumer dedupe/retry/DLT (or documented substitute) | Pass / Fail |
-| 3 | `mvn clean verify` green with HTTP/DB/messaging coverage | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | Event V1 sketched / stubbed | Pass / Fail |
+| 2 | Session: `mvn -B test` · Full: Kafka/DLT or documented substitute | Pass / Fail |
+| 3 | Unknown-customer test | Pass / Fail |
 
 ### Checkpoint D — Hygiene
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Two consecutive verifies identical success | Pass / Fail |
-| 2 | `docs/backend-demo.md` complete | Pass / Fail |
-| 3 | No secrets / `target/` committed | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | No `./mvnw` required | Pass / Fail |
+| 2 | No Bearer on session curls | Pass / Fail |
+| 3 | No secrets / `target/` | Pass / Fail |
 
 ---
 
-## Reference Commands, Configuration, and Code
+## Reference Commands
 
-### Event record
-
-```java
-import java.time.Instant;
-import java.util.UUID;
-
-public record CustomerInteractionRecordedV1(
-    UUID eventId, String eventType, int eventVersion,
-    Instant occurredAt, String correlationId,
-    String customerId, String interactionId, String interactionType) {}
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform\backend
+mvn -B test
 ```
-
-### Verify API and event
-
-```bash
-./mvnw -B clean verify
-curl -i -X POST http://localhost:8080/api/v1/interactions \
-  -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" \
-  -H 'X-Correlation-ID: lab-request-001' \
-  -d '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
-kafka-console-consumer.sh --bootstrap-server localhost:9092 \
-  --topic crm.customer.interactions.v1 --from-beginning --max-messages 1
-```
-
-### Commands
-
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-cd backend && mvn -B test   # timed path; Compose/Kafka optional full-path
-cd backend
-./mvnw -B -q test
-./mvnw -B clean verify
-./mvnw -B -q test -Dtest=InteractionControllerTest
-git status --short
-```
-
-## Prerequisites (JDK, Compose, profiles)
-## Seed customers (CUS-1001 Amina, CUS-1002 Ravi)
-## Happy path curl (lab-request-001)
-## Negative path curl (invalid interactionType, CUS-9999 → UnknownCustomerException)
-## SQL verification
-## Kafka verification (topic, sample payload fields)
-## Test commands (mvn clean verify)
-## Known limitations / ADR references
-
-```
-
-### Problem Details expectation (validation)
-
-```json
-{
-  "type": "about:blank",
-  "title": "Bad Request",
-  "status": 400,
-  "detail": "Validation failed",
-  "instance": "/api/v1/interactions"
-}
-```
-
-Adapt field names to your Problem Details implementation; keep status semantics stable for Lab 50.
-
----
 
 ## Failure Experiments
 
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
-| 1 | POST invalid interactionType | 400 / validation fail; no row; no event | Keep validation |
-| 2 | POST for `CUS-9999` | 404; bounded error | Keep mapping |
-| 3 | Break consumer idempotency briefly | Duplicate side effect | Restore dedupe |
-| 4 | Stop Kafka mid-publish (safe lab) | Failure matches ADR expectation | Restart broker |
-| 5 | Run `mvn -q test` twice | Identical results | Keep isolation |
-| 6 | POST with empty summary | 400; no event | Keep `@NotBlank` |
-| 7 | Reuse same `eventId` in consumer test | Second apply skipped | Keep dedupe store |
+| 1 | Invalid `interactionType` | 400 / validation; no event | Keep validation |
+| 2 | `CUS-9999` | Throws / 404; no publish | Keep mapping |
+| 3 | Bearer token on session stub | 401 if you added security | Remove JWT until Lab 51 |
+| 4 | `./mvnw` | File not found | Use `mvn` |
+| 5 | Host `kafka-*.sh` | Not on PATH | `docker exec crm-kafka …` |
+| 6 | UUID in `create(UUID customerId, …)` | Breaks CUS-1001 | String id |
 
 ---
 
@@ -511,48 +344,33 @@ Adapt field names to your Problem Details implementation; keep status semantics 
 
 | Symptom | Likely cause | Fix |
 | ------- | ------------ | --- |
-| Tests not discovered | Naming/path | `*Test`/`*IT` under `src/test/java` |
-| Kafka connection refused | Compose not up | `cd backend && mvn -B test   # timed path; Compose/Kafka optional full-path`; check port |
-| Event missing | Publish before commit / wrong topic | Align ADR; verify topic name |
-| Flaky IT | Shared consumer group / timing | Unique keys; awaitility |
-| PostgreSQL migration fail | Non-PostgreSQL SQL | Use compatible types/profiles |
-| 401/403 surprises | Security auto-config | Add test security config; Lab 51 hardens |
-| Correlation null | Header not read | Bind `X-Correlation-ID` |
-| Entity in JSON | Mapper skipped | Return DTO records only |
-
-## Security and Production Review
-
-Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
-
-1. Which inputs are untrusted (body, path ids, headers, Kafka payloads)?
-2. Where are authn/authz/validation enforced (validation now; JWT Lab 51)?
-3. Which values are sensitive—never in logs beyond samples?
+| No `pom.xml` | Copied README only | Copy **`backend/`** |
+| Overwrote Lab 48 ADRs | `Copy-Item starter\*` | Copy `backend/` only |
+| `./mvnw` not found | No wrapper | `mvn -B test` |
+| 401 on curl | JWT too early | Omit `Authorization` |
+| `GET /api/customers/CUS-1001` 404 | Week 5 habit | **POST /api/v1/interactions** |
+| Kafka `.sh` not found | Host PATH | `docker exec crm-kafka` |
+| Tests `UnsupportedOperationException` | TODOs left | Fill `InteractionService` |
+| Work in `labs/` | Wrong folder | `java-bootcamp` |
 
 ---
-
 
 ## Cleanup
 
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-./mvnw -q clean 2>/dev/null || (cd backend && ./mvnw -q clean)
-# stop optional Compose stack if you started one
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform\backend
+mvn -q clean
 git status --short
 ```
 
-Do not commit `target/` or broker data directories. Keep `docs/backend-demo.md` and sanitized screenshots.
-
-**Keep the Lab 49 backend slice**—Lab 50 builds UI and PostgreSQL proof on these contracts; Lab 51 secures and deploys them.
-
-
-## Reflection Questions
-
-Write **1–3 sentence** answers (not essays):
-
-1. Which design decision most affected correctness (transaction vs publish timing)?
-2. What evidence proves the slice works end-to-end?
-3. Which failure was hardest to diagnose (Kafka, JPA, validation)?
+**Keep this backend**—Lab 50 consumes the contract; Lab 51 secures and deploys it.
 
 ---
 
+## Reflection Questions
 
+Write **1–3 sentence** answers:
+
+1. Which decision most affected correctness (transaction vs publish)?
+2. What evidence proves the slice (tests vs live curl)?
+3. Why must session curls omit Bearer?

@@ -17,16 +17,18 @@
 
 **1 → 2 → 3 → 4 → 5 → 6** then Lab 49.
 
+Write notes in **`java-bootcamp/examples/module-49-exercises/notes/`**, not the course clone.
+
 ## Do / don't
 
 | Do now | Don't yet |
 | --- | --- |
-| One vertical slice; layer plan; versioned event sketch; test/demo DoD | Full production hardening of JWT (Lab 51) |
-| Failure-path test plan; Problem Details | Weaken validation for green demos |
-| CUS-1001 / lab-request-001 in plans | React UI (Lab 50) |
+| One vertical slice; layer plan; versioned event sketch; test/demo DoD | Full JWT (Lab 51); React (Lab 50) |
+| Failure-path test plan; Problem Details | Weaken validation; `./mvnw`; Bearer on session curls |
+| CUS-1001 / lab-request-001 in plans | Copy Lab 41; overwrite Lab 48 ADRs |
 
 ## Hard gate before Lab 49
 
-- [ ] Ex notes complete
-- [ ] Lab 48 story selected (or labeled CAP-12 equivalent)
+- [ ] Ex notes complete in `java-bootcamp/examples/module-49-exercises/notes/`
+- [ ] Lab 48 story selected (CAP-12) under `customer-management-platform/docs/`
 - [ ] Event contract versioned; no secrets in notes

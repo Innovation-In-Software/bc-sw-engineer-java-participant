@@ -5,7 +5,7 @@
 **Module:** 48 — Capstone Planning and Architecture  
 **Next:** [`../lab48/LAB-48-GUIDE.md`](../lab48/LAB-48-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-48-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-48-exercises/` in **your** `java-bootcamp` — not the course clone, and not the graded plan.
 
 ## Practice order (interleaved)
 
@@ -26,8 +26,8 @@ Then **checkpoint E** → Lab 48.
 
 | Do now | Do not yet |
 | --- | --- |
-| Context, NFRs, ADRs, backlog, risks, docs checklist | Implement Spring/React/Kafka features |
-| Measurable targets; fixture IDs in stories | Vague adjectives; secrets in docs |
+| Context, NFRs, ADRs, backlog, risks, docs checklist | Implement Spring/React/Kafka features; `mvn` as this warmup |
+| Measurable targets; fixture IDs in stories | Vague adjectives; secrets in docs; copying Lab 41 as the plan |
 
 ## Workspace
 
@@ -42,4 +42,4 @@ New-Item -ItemType Directory -Force -Path examples\module-48-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; docs checklist self-mark **Pass**.
+All six notes files exist under **`java-bootcamp`**; docs checklist self-mark **Pass**.

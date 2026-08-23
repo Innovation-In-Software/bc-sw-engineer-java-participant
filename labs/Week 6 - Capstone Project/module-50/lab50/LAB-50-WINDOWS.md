@@ -4,62 +4,72 @@
 **Primary IDE:** IntelliJ IDEA Community Edition  
 **Optional IDE:** VS Code  
 **Shell:** Windows PowerShell  
-**Stack hint:** Capstone: full stack from prior weeks · IntelliJ primary  
+**Stack hint:** Session = SQL + docs · Full path = Node 22 + Maven  
 **Full lab steps:** [LAB-50-GUIDE.md](LAB-50-GUIDE.md)  
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
-**Other OS:** [macOS guide](LAB-50-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
+**Other OS:** [macOS guide](LAB-50-MACOS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)  
+**Two folders:** [Clone + own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 
 ## Prerequisites (Windows)
 
-- [Lab 0 (Windows)](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-WINDOWS.md) complete (JDK 21, Maven when needed, Git)
-- IntelliJ with **Project SDK 21** (open/run steps: [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md))
+- Git; Lab 48–49 tree in `examples\customer-management-platform`
+- IntelliJ on **`%USERPROFILE%\java-bootcamp`**
+- Node 22 **only** for the full path (starter has **no** `frontend/`)
 
 ## Paths (Windows)
 
-| Item | Windows |
-| ---- | ------- |
-| Workspace (open in IDE) | `%USERPROFILE%\java-bootcamp` |
-| This lab project | `%USERPROFILE%\java-bootcamp\examples\customer-management-platform` |
-| Evidence / screenshots | `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-50` |
-| Shell | Windows PowerShell inside IntelliJ |
-| Path style | Backslashes; quote paths with spaces |
-
-```powershell
-cd $env:USERPROFILE\java-bootcamp
-# Lab 0 layout: evidence at workspace root; code under examples/
-New-Item -ItemType Directory -Force -Path notes\screenshots\lab-50 | Out-Null
-cd examples\customer-management-platform
-```
+| Item | Path |
+| ---- | ---- |
+| Course clone | `%USERPROFILE%\bc-sw-engineer-java-participant\` |
+| Platform tree | `%USERPROFILE%\java-bootcamp\examples\customer-management-platform` |
+| Evidence | `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-50` |
 
 ### Commands this lab typically uses
 
+**Do not** `Copy-Item starter\*` over the platform root. **Do not** `./mvnw`. **Do not** `npm` on the session path.
+
 ```powershell
-cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
-# Timed path (starter): SQL + docs only
-Select-String -Path db\migration\V50__customer_interaction.sql -Pattern 'CHECK|INDEX|crm.customer_interaction'
-# Full path only (when frontend/ exists):
-# cd frontend; npm ci; npm test; npm run build
+$jb = "$env:USERPROFILE\java-bootcamp"
+$course = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-50\lab50"
+$dest = "$jb\examples\customer-management-platform"
+
+New-Item -ItemType Directory -Force -Path "$dest\db\migration","$dest\docs","$jb\notes\screenshots\lab-50" | Out-Null
+Copy-Item -Force "$course\starter\db\migration\*" "$dest\db\migration\"
+Copy-Item -Force "$course\starter\docs\data-api-checklist.md" "$dest\docs\data-api-checklist.md"
+cd $dest
+Select-String -Path db\migration\V50__customer_interaction.sql -Pattern 'interaction_type|correlation_id|CHECK|INDEX'
 ```
+
+Full path (when `frontend/` exists):
+
+```powershell
+cd frontend
+npm ci
+npm test
+npm run build
+```
+
+Verified notes (2026-08-22): session is SQL + checklist; Lab 49 fields are `interactionType` / string `CUS-1001`; starter SQL is PostgreSQL VARCHAR/UUID, not Oracle RAW.
+
+### If it fails
+
+| Symptom | Fix |
+| --- | --- |
+| Overwrote ADRs | Copy `db\` + checklist only |
+| `npm` not found on session | Expected — no frontend in starter |
+| `channel` / `GET .../CUS-1001` | Use Lab 49 DTO; no per-id GET in Week 5 |
 
 
 ## Do the lab
 
-Complete every step in **[LAB-50-GUIDE.md](LAB-50-GUIDE.md)**. Wherever the GUIDE shows `~/java-bootcamp`, use `%USERPROFILE%\java-bootcamp`.  
-Open/run IntelliJ steps are the same every lab — see [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md).
-
-## Evidence / screenshots
-
-Save under `%USERPROFILE%\java-bootcamp\notes\screenshots\lab-50`. Capture IntelliJ (project tree + Run/Terminal). Redact secrets.
+Complete **[LAB-50-GUIDE.md](LAB-50-GUIDE.md)**.
 
 ## Pass criteria
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Workspace `%USERPROFILE%\java-bootcamp` open in IntelliJ with SDK **21** | Pass / Fail |
-| 2 | Lab project under `examples/customer-management-platform` as in [LAB-50-GUIDE.md](LAB-50-GUIDE.md) | Pass / Fail |
-| 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
-| 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
-| 5 | Screenshots (if required) under `notes/screenshots/lab-50/` | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | Work in `java-bootcamp` platform tree | Pass / Fail |
+| 2 | Session: checklist + V50 SQL (or full-path React) | Pass / Fail |
+| 3 | Types match Lab 49 | Pass / Fail |
+| 4 | Screenshots under `notes/screenshots/lab-50/` | Pass / Fail |

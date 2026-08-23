@@ -19,16 +19,18 @@ Slides 105–107 (Terraform/Ansible): awareness only—execute with GitHub Actio
 
 **1 → 2 → 3 → 4 → 5 → 6** then Lab 51.
 
+Write notes in **`java-bootcamp/examples/module-51-exercises/notes/`**.
+
 ## Do / don't
 
 | Do now | Don't yet |
 | --- | --- |
-| Threat/RBAC plan; gates; digest evidence; smoke/rollback; readiness | Commit kubeconfig / registry passwords / `.env` |
-| Pin image digest; deny-by-default | `:latest` as only identity; skip security tests |
-| Residual risk owners | Treat warmup as finished Lab 51 release |
+| Threat/RBAC plan; gates; digest + `jarSha256`; smoke/rollback | Commit kubeconfig / registry passwords / `.env` |
+| Pin image digest; deny-by-default | `:latest` only; Lab 42 k3d as capstone cluster; invented GHCR digest |
+| Session: stubs + checklist | `Copy-Item starter\*` over ADRs; `./mvnw`; JWT as today's code |
 
 ## Hard gate before Lab 51
 
-- [ ] Ex notes complete
-- [ ] 401/403 smoke matrix drafted
+- [ ] Ex notes complete in `java-bootcamp/examples/module-51-exercises/notes/`
+- [ ] 401/403 matrix uses **POST** `/api/v1/interactions`
 - [ ] Digest + rollback target named (placeholders OK)

@@ -39,6 +39,6 @@
 
 ## Script notes / TODOs
 
-- Exact curl commands: _____
-- SQL snippet: _____
-- Topic name: _____
+- Exact curl commands: POST `/api/v1/interactions` with `interactionType` (not `channel`); omit Bearer unless Lab 51 JWT is on
+- SQL snippet: `customer_id` + `correlation_id` (see Lab 50)
+- Topic name: Lab 49 ADR (e.g. `crm.customer.interactions.v1`) — not Lab 46 events topic

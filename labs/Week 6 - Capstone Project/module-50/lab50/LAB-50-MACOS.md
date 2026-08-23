@@ -4,62 +4,62 @@
 **Primary IDE:** IntelliJ IDEA Community Edition  
 **Optional IDE:** VS Code  
 **Shell:** macOS Terminal (zsh)  
-**Stack hint:** Capstone: full stack from prior weeks · IntelliJ primary  
+**Stack hint:** Session = SQL + docs · Full path = Node 22 + Maven  
 **Full lab steps:** [LAB-50-GUIDE.md](LAB-50-GUIDE.md)  
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
-**Other OS:** [Windows guide](LAB-50-WINDOWS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
+**Other OS:** [Windows guide](LAB-50-WINDOWS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)  
+**Two folders:** [Clone + own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 
 ## Prerequisites (macOS)
 
-- [Lab 0 (macOS)](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md) complete (JDK 21, Maven when needed, Git)
-- IntelliJ with **Project SDK 21** (open/run steps: [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md))
+- Git; Lab 48–49 tree in `examples/customer-management-platform`
+- IntelliJ on **`~/java-bootcamp`**
+- Node 22 **only** for the full path
 
 ## Paths (macOS)
 
-| Item | macOS |
-| ---- | ------- |
-| Workspace (open in IDE) | `~/java-bootcamp` |
-| This lab project | `~/java-bootcamp/examples/customer-management-platform` |
-| Evidence / screenshots | `~/java-bootcamp/notes/screenshots/lab-50` |
-| Shell | macOS Terminal inside IntelliJ |
-| Path style | Forward slashes |
-
-```bash
-cd ~/java-bootcamp
-# Lab 0 layout: evidence at workspace root; code under examples/
-mkdir -p notes/screenshots/lab-50
-cd examples/customer-management-platform
-```
+| Item | Path |
+| ---- | ---- |
+| Course clone | `~/bc-sw-engineer-java-participant/` |
+| Platform tree | `~/java-bootcamp/examples/customer-management-platform` |
+| Evidence | `~/java-bootcamp/notes/screenshots/lab-50` |
 
 ### Commands this lab typically uses
 
+**Do not** `cp -R starter/.` over the platform root. **Do not** `./mvnw`. **Do not** `npm` on the session path.
+
 ```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-# Timed path (starter): SQL + docs only
-rg -n 'CHECK|INDEX|crm.customer_interaction' db/migration/V50__customer_interaction.sql
-# Full path only (when frontend/ exists):
-# cd frontend && npm ci && npm test && npm run build
+JB=~/java-bootcamp
+COURSE=~/bc-sw-engineer-java-participant/labs/Week\ 6\ -\ Capstone\ Project/module-50/lab50
+DEST="$JB/examples/customer-management-platform"
+
+mkdir -p "$DEST/db/migration" "$DEST/docs" "$JB/notes/screenshots/lab-50"
+cp "$COURSE/starter/db/migration/"* "$DEST/db/migration/"
+cp "$COURSE/starter/docs/data-api-checklist.md" "$DEST/docs/data-api-checklist.md"
+cd "$DEST"
+grep -E 'interaction_type|correlation_id' db/migration/V50__customer_interaction.sql
 ```
 
+Full path: `cd frontend && npm ci && npm test && npm run build`. Same notes as Windows: [LAB-50-WINDOWS.md](LAB-50-WINDOWS.md).
+
+### If it fails
+
+| Symptom | Fix |
+| --- | --- |
+| Overwrote ADRs | Copy `db/` + checklist only |
+| `npm` not found on session | Expected |
+| `channel` / per-id GET | Lab 49 DTO; no Week 5 `/{id}` |
 
 ## Do the lab
 
-Complete every step in **[LAB-50-GUIDE.md](LAB-50-GUIDE.md)**. GUIDE paths already use `~/java-bootcamp`.  
-Open/run IntelliJ steps are the same every lab — see [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md).
-
-## Evidence / screenshots
-
-Save under `~/java-bootcamp/notes/screenshots/lab-50`. Capture IntelliJ (project tree + Run/Terminal). Redact secrets.
+Complete **[LAB-50-GUIDE.md](LAB-50-GUIDE.md)**.
 
 ## Pass criteria
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Workspace `~/java-bootcamp` open in IntelliJ with SDK **21** | Pass / Fail |
-| 2 | Lab project under `examples/customer-management-platform` as in [LAB-50-GUIDE.md](LAB-50-GUIDE.md) | Pass / Fail |
-| 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
-| 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
-| 5 | Screenshots (if required) under `notes/screenshots/lab-50/` | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | Work in `~/java-bootcamp` platform tree | Pass / Fail |
+| 2 | Session SQL+checklist or full-path React | Pass / Fail |
+| 3 | Types match Lab 49 | Pass / Fail |
+| 4 | Screenshots under `notes/screenshots/lab-50/` | Pass / Fail |

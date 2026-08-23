@@ -7,7 +7,7 @@ Fixtures: `CUS-1001` Amina · `CUS-1002` Ravi · `CUS-9999` not-found · `lab-re
 | Item | Expected | Your notes |
 | ---- | -------- | ---------- |
 | Create interaction method/path | `POST /api/v1/interactions` (or _____) | _____ |
-| Request body fields | customerId, type, summary, … | _____ |
+| Request body fields | `customerId`, `interactionType` (CALL/EMAIL/NOTE/MEETING), `summary`, `correlationId` — **not** `channel` | _____ |
 | Correlation header | `X-Correlation-ID` | _____ |
 | Success status | 201 + response id | _____ |
 | Not-found / invalid | Problem Details / 4xx | _____ |

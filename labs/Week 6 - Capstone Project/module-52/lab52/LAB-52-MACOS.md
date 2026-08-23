@@ -4,60 +4,63 @@
 **Primary IDE:** IntelliJ IDEA Community Edition  
 **Optional IDE:** VS Code  
 **Shell:** macOS Terminal (zsh)  
-**Stack hint:** Capstone: full stack from prior weeks · IntelliJ primary  
+**Stack hint:** Session = `defense/` markdown · Full path = PDF + panel  
 **Full lab steps:** [LAB-52-GUIDE.md](LAB-52-GUIDE.md)  
 **Pre-lab exercises:** [`../exercises/EXERCISES-INDEX.md`](../exercises/EXERCISES-INDEX.md)  
-**Other OS:** [Windows guide](LAB-52-WINDOWS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)
+**Other OS:** [Windows guide](LAB-52-WINDOWS.md) · [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md)  
+**Two folders:** [Clone + own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md)
 
 
 ## Prerequisites (macOS)
 
-- [Lab 0 (macOS)](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/module-00/lab0/LAB-0-MACOS.md) complete (JDK 21, Maven when needed, Git)
-- IntelliJ with **Project SDK 21** (open/run steps: [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md))
+- Git; Lab 48–51 tree in `examples/customer-management-platform`
+- IntelliJ on **`~/java-bootcamp`**
+- No Maven required for the session block
 
 ## Paths (macOS)
 
-| Item | macOS |
-| ---- | ------- |
-| Workspace (open in IDE) | `~/java-bootcamp` |
-| This lab project | `~/java-bootcamp/examples/customer-management-platform` |
-| Evidence / screenshots | `~/java-bootcamp/notes/screenshots/lab-52` |
-| Shell | macOS Terminal inside IntelliJ |
-| Path style | Forward slashes |
-
-```bash
-cd ~/java-bootcamp
-# Lab 0 layout: evidence at workspace root; code under examples/
-mkdir -p notes/screenshots/lab-52
-cd examples/customer-management-platform
-```
+| Item | Path |
+| ---- | ---- |
+| Course clone | `~/bc-sw-engineer-java-participant/` |
+| Platform tree | `~/java-bootcamp/examples/customer-management-platform` |
+| Evidence | `~/java-bootcamp/notes/screenshots/lab-52` |
 
 ### Commands this lab typically uses
 
+**Do not** `cp -R starter/.` over the platform root. **Do not** `./mvnw`. **Do not** `mvn` as smoke.
+
 ```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-mvn clean compile
-mvn -q -DskipTests package   # when the lab says so
+JB=~/java-bootcamp
+COURSE=~/bc-sw-engineer-java-participant/labs/Week\ 6\ -\ Capstone\ Project/module-52/lab52
+DEST="$JB/examples/customer-management-platform"
+
+mkdir -p "$DEST/defense" "$JB/notes/screenshots/lab-52"
+cp "$COURSE/starter/defense/"* "$DEST/defense/"
+cd "$DEST"
+ls defense/*.md
+grep -E 'CUS-1001|lab-request-001|POST /api/v1/interactions' defense/*.md
 ```
 
+Same notes as Windows: [LAB-52-WINDOWS.md](LAB-52-WINDOWS.md).
+
+### If it fails
+
+| Symptom | Fix |
+| --- | --- |
+| Overwrote Lab 48 README | Copy `defense/` only |
+| `mvn` required today | Session smoke is `ls defense` |
+| `channel` / nested URL | Lab 49 DTO |
+| Invented 401/digest | Finish Lab 51 or list a non-claim |
 
 ## Do the lab
 
-Complete every step in **[LAB-52-GUIDE.md](LAB-52-GUIDE.md)**. GUIDE paths already use `~/java-bootcamp`.  
-Open/run IntelliJ steps are the same every lab — see [IDE conventions](../../../Week%201%20-%20Java%20and%20JVM%20Foundations/_IDE-CONVENTIONS.md).
-
-## Evidence / screenshots
-
-Save under `~/java-bootcamp/notes/screenshots/lab-52`. Capture IntelliJ (project tree + Run/Terminal). Redact secrets.
+Complete **[LAB-52-GUIDE.md](LAB-52-GUIDE.md)**. Redact tokens.
 
 ## Pass criteria
 
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Workspace `~/java-bootcamp` open in IntelliJ with SDK **21** | Pass / Fail |
-| 2 | Lab project under `examples/customer-management-platform` as in [LAB-52-GUIDE.md](LAB-52-GUIDE.md) | Pass / Fail |
-| 3 | GUIDE deliverables / checkpoints complete | Pass / Fail |
-| 4 | Commands above succeed (or as the GUIDE specifies) | Pass / Fail |
-| 5 | Screenshots (if required) under `notes/screenshots/lab-52/` | Pass / Fail |
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | Work in `~/java-bootcamp` platform tree | Pass / Fail |
+| 2 | Session outline+script+evidence or full pack | Pass / Fail |
+| 3 | No secrets in `defense/` | Pass / Fail |
+| 4 | Screenshots under `notes/screenshots/lab-52/` | Pass / Fail |

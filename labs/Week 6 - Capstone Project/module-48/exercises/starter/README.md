@@ -1,6 +1,6 @@
 # Module 48 exercise starters
 
-Copy into `~/java-bootcamp/examples/module-48-exercises/notes/` and fill TODOs.
+Copy into `~/java-bootcamp/examples/module-48-exercises/notes/` (your repo, not the course clone) and fill TODOs.
 
 Complete in order **2 → 1 → 4 → 3 → 5 → 6**.
 

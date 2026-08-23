@@ -1,6 +1,8 @@
 # Module 52 exercise starters
 
-Copy into `~/java-bootcamp/examples/module-52-exercises/notes/` and fill TODOs.
+Copy into **`java-bootcamp/examples/module-52-exercises/notes/`** (not the course clone `labs/`) and fill TODOs.
+
+Complete in order **1 → 2 → 3 → 4 → 5 → 6**. Do not invent Lab 50/51 evidence. Demo create is **POST** `/api/v1/interactions`.
 
 | File | Exercise |
 | --- | --- |

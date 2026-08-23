@@ -17,16 +17,19 @@
 
 **2 → 1 → 4 → 3 → 5 → 6** then Lab 48.
 
+Write notes in **`java-bootcamp/examples/module-48-exercises/notes/`**, not the course clone.
+
 ## Do / don't
 
 | Do now | Don't yet |
 | --- | --- |
 | Context sketch; measurable NFRs; ADR topics; vertical stories; risks; docs checklist | Implement Spring/React features (Labs 49–50) |
 | Name CUS-1001/CUS-1002 in stories | Vague 'fast/scalable' NFRs; secrets in ADRs |
-| Plan GitHub Actions + k3s (Bitbucket as comparison only) | Skip planning docs to 'code first' |
+| Plan GitHub Actions + **k3s** (Lab 51); Bitbucket as comparison only | Copy Lab 41 into `customer-management-platform`; `mvn` as Lab 48 smoke |
+| Plan `POST /api/v1/interactions` as **new** (Lab 49) | Treat Week 5 `GET /api/customers/{id}` as if it existed |
 
 ## Hard gate before Lab 48
 
-- [ ] Ex notes complete (order 2→1→4→3→5→6)
+- [ ] Ex notes complete in `java-bootcamp/examples/module-48-exercises/notes/`
 - [ ] NFRs measurable; context has trust boundaries
 - [ ] No secrets in architecture notes

@@ -17,16 +17,18 @@
 
 **1 → 4 → 2 → 3 → 5 → 6** then Lab 50.
 
+Write notes in **`java-bootcamp/examples/module-50-exercises/notes/`**.
+
 ## Do / don't
 
 | Do now | Don't yet |
 | --- | --- |
-| Journey, a11y, typed client, persistence sketch, verify/data-flow | Invent DTO shapes that contradict Lab 49 |
-| Synthetic CUS-1001/1002; migration discipline | Real PII; production DB without migrations |
-| Plan loading/empty/error states | Security/CI deploy deep work (Lab 51) |
+| Journey, a11y, typed client, persistence sketch | Invent `channel` / `GET /api/customers/{id}` |
+| Session: SQL + checklist | `npm` / React unless you are on the full path |
+| Synthetic CUS-1001/1002 | Copy starter over Lab 48 ADRs; `./mvnw` |
 
 ## Hard gate before Lab 50
 
-- [ ] Ex notes complete (order 1→4→2→3→5→6)
+- [ ] Ex notes complete in `java-bootcamp/examples/module-50-exercises/notes/`
 - [ ] Lab 49 create-interaction contract known
 - [ ] Durability proof query drafted

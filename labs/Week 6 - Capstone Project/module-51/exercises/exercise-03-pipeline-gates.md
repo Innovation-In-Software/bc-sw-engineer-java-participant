@@ -30,7 +30,8 @@ Pipeline green with skipped tests — acceptable?
 | Symptom | Fix |
 | --- | --- |
 | Skip security job | Keep gate; triage exceptions |
-| :latest only identity | Pin digest |
+| `:latest` only identity | Pin digest **and** keep Lab 44 `jarSha256` |
+| Invented `ghcr.io/you@sha256` | Record a digest you actually built |
 
 **Module 51** · Architecture exercise · [setup + file names](EXERCISES-INDEX.md)
 

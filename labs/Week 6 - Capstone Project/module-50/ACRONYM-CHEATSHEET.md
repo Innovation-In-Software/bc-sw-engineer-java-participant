@@ -33,7 +33,7 @@ _Capstone / text module: terms taken from slide text and the module topic (few o
 | **ORM** | Object-Relational Mapping | Maps classes to tables (e.g., Hibernate). |
 | **PostgreSQL** | — | Popular open-source relational database used in this course. |
 | **SQL** | Structured Query Language | The query language behind every persistence proof — a row that survives an API restart is the module's hardest evidence bar. |
-| **UUID** | Universally Unique Identifier | Native PostgreSQL identifier type for `interaction_id` and `customer_id` (contrasted with Oracle's `RAW(16)`). |
+| **UUID** | Universally Unique Identifier | Starter row id type (`id UUID`). Public customer id remains the string `CUS-1001` (`VARCHAR`), not Oracle `RAW(16)`. |
 
 ---
 

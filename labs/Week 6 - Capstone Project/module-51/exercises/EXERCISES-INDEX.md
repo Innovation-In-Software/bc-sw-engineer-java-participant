@@ -5,7 +5,7 @@
 **Module:** 51 — Capstone Security, CI/CD and Deployment  
 **Next:** [`../lab51/LAB-51-GUIDE.md`](../lab51/LAB-51-GUIDE.md)
 
-Complete **in checkpoint order** after each slide pause. Notes under `examples/module-51-exercises/` — not the graded lab.
+Complete **in checkpoint order** after each slide pause. Notes under `examples/module-51-exercises/` in **your** `java-bootcamp`.
 
 ## Practice order (interleaved)
 
@@ -25,7 +25,7 @@ Then **checkpoint E** → Lab 51.
 | Do now | Do not yet |
 | --- | --- |
 | Threat/RBAC, gates, digest evidence, smoke/rollback, readiness | Commit secrets/kubeconfig; skip security tests |
-| Pin digests; deny-by-default | Treat warmup as finished release; Lab 52 defense packet |
+| Pin digests **and** Lab 44 `jarSha256`; deny-by-default | Invent `GET /api/customers/{id}` smoke; Lab 42 k3d as this lab |
 
 ## Workspace
 
@@ -40,4 +40,4 @@ New-Item -ItemType Directory -Force -Path examples\module-51-exercises\notes | O
 
 ## Done when
 
-All six notes files exist; readiness scorecard self-mark **Pass**.
+All six notes files exist under **`java-bootcamp`**; readiness scorecard self-mark **Pass**.

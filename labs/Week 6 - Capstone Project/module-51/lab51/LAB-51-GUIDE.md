@@ -1,7 +1,7 @@
 # Lab 51: Capstone Security, CI/CD, and Deployment — Northstar CRM Release Gate
 
 **Module:** 51 — Capstone Security, CI/CD, and Deployment  
-**Duration:** ~45 minutes (timed path / session block with starter) · Full path: 6–8 Hours
+**Duration:** ~45 minutes (session block with starter) · Full path: 6–8 Hours (multi-day)
 
 **Primary IDE:** IntelliJ IDEA Community Edition · **Optional IDE:** VS Code
 
@@ -10,20 +10,22 @@
 | Windows | [LAB-51-WINDOWS.md](LAB-51-WINDOWS.md) |
 | macOS | [LAB-51-MACOS.md](LAB-51-MACOS.md) |
 
+> **Two folders (do not mix):** [Clone the course repo · Commit in your own repo](../../../CLONE-AND-OWN-REPO-GUIDE.md). Read this GUIDE in the **course clone**. Write in **your** `java-bootcamp` repo.
+
 ---
 
 ## Activity card
 
 | | |
 | --- | --- |
-| **Time** | ~45 min session block · full path 6–8 h multi-day |
-| **Checkpoint** | **E** (after Ex 1→2→3→4→5→6) |
-| **Must prove** | Security checklist · Dockerfile non-root · k8s probes · 401/403 smoke matrix · rollback digest note |
-| **Hard gate** | Pre-lab Pass · no secrets in Git · Labs 48–50 smoke targets exist |
+| **Time** | ~45 min session · full path 6–8 h |
+| **Checkpoint** | **E** (after Ex **1 → 2 → 3 → 4 → 5 → 6**) |
+| **Must prove** | Security checklist · Dockerfile TODOs · k8s probes · 401/403 matrix · rollback digest note |
+| **Hard gate** | Pre-lab Pass · no secrets in Git · Labs 48–50 tree still intact |
 
 ### What you will learn
 
-Make CRM releasable: JWT/RBAC, gated CI/CD, digest-pinned image, k3s deploy, smoke, rollback.
+Make CRM releasable: JWT/RBAC (full path), gated CI, digest-pinned **k3s** deploy, smoke, rollback.
 
 ### Enterprise context
 
@@ -35,531 +37,235 @@ Should `:latest` be the only image identity in evidence?
 
 ### Debug
 
-Pipeline green after skipping security tests — pass or fail the gate?
+Copied starter `*` over Lab 48–50, used Lab 42 **k3d**, or invented `ghcr.io/…@sha256` as if it replaced Lab 44 **`jarSha256`**?
 
 ---
 
-## 45-minute timed path (session block — use starter)
+## Two folders
 
-> **Pacing reminder:** [PACING.md](../PACING.md) checkpoint **E**. Homework/multi-day: JWT, GH Actions, scans, live k3s rollout + rollback, `docs/security-deploy-demo.md`.
+| Folder | You… |
+| ------ | ---- |
+| Course clone | Read GUIDE / starter |
+| `java-bootcamp` | Merge **Dockerfile, k8s/, CI, checklist** into `examples/customer-management-platform/` |
 
-In class, use the starter security/deploy checklist plus Dockerfile/k8s stubs so the **session block** fits **~45 minutes**. JWT hardening, pipeline, live k3s rollout, and rollback rehearsal remain **multi-day** on the full path.
+| Item | Course clone | `java-bootcamp` |
+| ---- | ------------ | --------------- |
+| Starter | `lab51/starter/` (Dockerfile, `k8s/`, `.github/workflows/ci.yml`, `docs/security-deploy-checklist.md`) | same paths under the platform tree |
+| Lab 48–50 work | — | **Keep** ADRs, `backend/`, `db/`, frontend if present |
 
-1. Open [`starter/README.md`](starter/README.md).
-2. Copy `starter/` into `java-bootcamp/examples/customer-management-platform/` (see starter README).
-3. Fill checklist + Dockerfile/k8s TODOs — do **not** wait on a perfect cluster; dry-run is enough for the block.
-4. Run the starter smoke check; evidence under `notes/screenshots/lab-51/`.
-5. Mark timed-path Pass criteria in the starter README. Continue remaining GUIDE steps as homework / multi-day work.
+**Do not** `Copy-Item starter\*` over the platform root (that overwrites Lab 48 README/ADRs and can clobber `backend/`). **Do not** `./mvnw`. **Do not** treat Lab 42 **k3d** `lab42` / Host `:8088` as this lab’s cluster.
 
-| Path | Time | Scope |
-| ---- | ---- | ----- |
-| **Timed / session block** | ~45 min | Starter TODOs + smoke check |
-| **Full (multi-day)** | 6–8 Hours | Every Step in this GUIDE |
+**Contracts (must match Labs 49–50):**
 
-Policy: [`labs/_STARTER-PATH.md`](../../../_STARTER-PATH.md)
+| Topic | Use | Do not use |
+| ----- | --- | ---------- |
+| Primary smoke API | `POST /api/v1/interactions` | Invent `GET /api/customers/{id}` as a Week 5 route |
+| Anonymous | 401 without Bearer (full path) | Session JWT required |
+| Image identity | Pipeline digest **and** Lab 44 **`jarSha256`** | Invented GHCR digest as the only identity |
+| Cluster | Training **k3s** (full path) | Defaulting to Lab 42 k3d |
+
+**Session starter has no Spring Security code.** JWT tests, live `kubectl apply`, and image push are **full path**. Session dry-run / `Test-Path` is enough for the block.
+
+**Maven:** `mvn` from `backend/`. Dockerfile installs Maven in the build stage — that is fine; still no wrapper in student commands.
 
 ---
 
-## What you'll submit (read this first)
+## 45-minute session block
 
-Keep this checklist visible while you work.
+1. Open [`starter/README.md`](starter/README.md) in the **course clone**.
+2. Copy **Dockerfile**, **`k8s/`**, **`.github/workflows/ci.yml`**, **`docs/security-deploy-checklist.md`** into the platform tree.
+3. Fill checklist + Dockerfile/k8s TODOs. Live cluster is **not** required today.
+4. Smoke with `Test-Path` / `Select-String` (optional `docker build` / `kubectl --dry-run=client`).
+5. Mark session Pass criteria.
 
-| # | Deliverable |
-| - | ----------- |
-| 1 | Spring Security changes and authorization tests |
-| 2 | Pipeline definition |
-| 3 | Dockerfile and image digest record |
-| 4 | Deployment manifests (k3s) |
-| 5 | Security and deployment evidence (scans, smoke, rollback) |
-| 6 | Baseline and final validation results |
-| 7 | One controlled failure-path result (401/403 or failed rollout→rollback) |
-| 8 | Concise setup and reproduction guide |
+| Path | Scope |
+| ---- | ----- |
+| **Session** | Checklist + Dockerfile TODOs + k8s probes + 401/403 matrix + rollback digest placeholder |
+| **Full** | JWT resource server · GH Actions verify+image · scans · k3s digest pin · smoke · rollback · `docs/security-deploy-demo.md` |
 
-**Must submit:** the items in the table above (sources + evidence + short notes).
+---
 
-**Do not submit:** `target/`, `node_modules/`, secrets, heap dumps, or a verbatim instructor `solution/`.
+## What you'll submit
+
+| # | Deliverable | Session | Full |
+| - | ----------- | ------- | ---- |
+| 1 | `docs/security-deploy-checklist.md` | Required | Required |
+| 2 | Dockerfile (multi-stage, non-root TODO) | TODOs filled or tracked | Built image + digest |
+| 3 | `k8s/deployment.yaml` probes | TODOs filled | Applied on k3s |
+| 4 | `.github/workflows/ci.yml` | Copied / sketched | Green verify (+ image on `main`) |
+| 5 | JWT/RBAC + authz tests | Matrix notes | Required |
+| 6 | Digest + rollback note | Placeholder OK | Rehearsed |
+| 7 | `docs/security-deploy-demo.md` | Outline | Commands + sanitized evidence |
+| 8 | Secrets in Git | Must be **none** | Must be **none** |
+
+---
 
 ## Lab Overview
 
-This Module 51 lab makes the CRM **releasable**: harden JWT authorization, protect secrets and headers, enforce gated CI/CD, publish immutable containers, deploy with health probes, run smoke tests (including unauthorized paths), and prove rollback. Treat this as the Week 6 release gate, not an optional polish pass.
-
-## Learning Objectives
-
-After completing this lab, you will be able to:
-
-* Apply JWT authorization with deny-by-default request matching
-* Protect secrets, headers, and actuator exposure
-* Build gated CI/CD stages with verified artifacts
-* Publish immutable multi-stage non-root images
-* Deploy safely to Kubernetes (k3s) with probes
-
-## Business Scenario
-
-The integrated CRM cannot ship until security and delivery gates pass. Reviewers freeze:
-
-**No “deployed” claim without digest identity, smoke (auth + deny), health evidence, and a rehearsed rollback.**
-
-You own the release gate for the Week 6 platform using Amina/Ravi fixtures in smoke only.
-
-Use these fixtures consistently:
-
-| ID | Name | Notes |
-| -- | ---- | ----- |
-| `CUS-1001` | Amina Khan | smoke search/read target |
-| `CUS-1002` | Ravi Singh | optional second smoke record |
-| `lab-request-001` | — | correlation on interactive demos |
-| `release-smoke-${BUILD}` | — | correlation per pipeline smoke |
-| `crm-api:<version>-<gitsha>` | — | immutable image tag pattern |
-
-**Security note for evidence.** Redact tokens in pipeline logs pasted to docs. Never commit kubeconfig or registry passwords. Rotate any training secret that appears in screenshots.
-
----
-
-## Architecture Context
-### NOW (this lab)
-
-```mermaid
-flowchart TB
-  PR["Developer PR"] --> CI["CI: verify + image build<br/>(SAST/scans optional full-path)"]
-  CI --> Pub["publish artifact"]
-  Pub --> CD["CD: deploy staging -> gates -> prod"]
-  CD --> Sec["JWT/RBAC harden + secrets"]
-  CD --> Obs["health / metrics / rollback plan"]
-```
+Session: freeze the release gate on paper + stubs. Full path: deny-by-default JWT, one verified artifact, digest-pinned k3s, 401/403/201 smoke, rollback.
 
 ## Prerequisites
 
-Prior labs: [48](../../module-48/lab48/LAB-48-GUIDE.md) · [50](../../module-50/lab50/LAB-50-GUIDE.md).
-
-Confirm (Lab 0 tools assumed):
-
-* Capstone repo builds (backend + frontend as required)
-* Docker available; registry credentials via approved secret store
-* `kubectl` context for your training namespace
-* GitHub Actions (or instructor CI) + SAST tooling as instructed
-* No secrets committed to Git
+Labs 48–50 in `examples/customer-management-platform`. Docker/k3s/`kubectl` only on the **full** path.
 
 ### Pre-flight
 
-```bash
-java -version
-mvn -version
+```powershell
+Test-Path "$env:USERPROFILE\java-bootcamp\examples\customer-management-platform\backend\pom.xml"
 ```
 
-## Worked example (read before you code)
+## Worked example (session)
 
-Study this pattern once before Step 1. Your job is to apply the same idea in the Steps — do not skip ahead to a full solution.
+```powershell
+Select-String -Path Dockerfile -Pattern 'USER|HEALTHCHECK|FROM eclipse-temurin'
+Select-String -Path k8s\deployment.yaml -Pattern 'readinessProbe|livenessProbe|sha256'
+```
+
+Full-path authz idea (adapt to **your** routes — Lab 49 session is create-only):
 
 ```java
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import org.junit.jupiter.api.Test;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 @Test
-void deleteCustomerRequiresManagerRole() throws Exception {
-  mvc.perform(delete("/api/v1/customers/{id}", customerId)
-      .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
-     .andExpect(status().isForbidden());
-}
-
-@Test
-void anonymousCustomersUnauthorized() throws Exception {
-  mvc.perform(get("/api/v1/customers"))
-     .andExpect(status().isUnauthorized());
-}
-
-@Test
-void agentCanReadCustomers() throws Exception {
-  mvc.perform(get("/api/v1/customers").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
-     .andExpect(status().isOk());
+void anonymousCreateUnauthorized() throws Exception {
+  mvc.perform(post("/api/v1/interactions")
+          .contentType(MediaType.APPLICATION_JSON)
+          .content("{\"customerId\":\"CUS-1001\",\"interactionType\":\"NOTE\",\"summary\":\"x\"}"))
+      .andExpect(status().isUnauthorized());
 }
 ```
 
-**What to notice:** Match names, IDs, and failure behavior from the scenario — instructors check these.
+Do **not** copy a `DELETE /api/v1/customers/{id}` test unless you actually added that endpoint. 403 needs a **MANAGER-only** matcher you document (often a method you add in this lab).
 
 ---
 
 ## Implementation Steps
 
-Parts 1–8 map to Steps 1–8; Step 9 closes evidence.
+### Step 1 — Merge starter, threat-model the release
 
----
+```powershell
+$jb = "$env:USERPROFILE\java-bootcamp"
+$course = "$env:USERPROFILE\bc-sw-engineer-java-participant\labs\Week 6 - Capstone Project\module-51\lab51"
+$dest = "$jb\examples\customer-management-platform"
 
-### Step 1 — Threat-model release (Part 1)
-
-**Why:** Controls without a threat model become random checkboxes.
-
-**Do this:** Write `docs/threat-model.md` covering assets (tokens, customer records, events, admin), actors (agent, manager, attacker, operator), trust boundaries, abuse cases (token theft, privilege escalation, secret in image, unsigned latest tag). Map each high risk to a control + test.
-
-**Expected result:** Prioritized abuse list linked to Lab 51 steps.
-
-**If it fails:** Generic OWASP paste with no CRM specifics → rewrite with JWT/Kafka/PostgreSQL paths.
-
----
-
-### Step 2 — Secure HTTP endpoints (Part 2)
-
-**Why:** Open `/api/**` in a shared cluster fails the course on security.
-
-**Do this:** Configure OAuth2 resource server JWT; map roles from trusted claims; deny by default; method security where needed. Test anonymous, wrong-role, correct-role.
-
-```java
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.SecurityFilterChain;
-
-@Bean
-SecurityFilterChain apiSecurity(HttpSecurity http) throws Exception {
-  return http
-      .csrf(csrf -> csrf.disable()) // document why for bearer API
-      .cors(Customizer.withDefaults())
-      .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-      .authorizeHttpRequests(auth -> auth
-          .requestMatchers("/actuator/health/**").permitAll()
-          .requestMatchers(HttpMethod.DELETE, "/api/v1/customers/**").hasRole("MANAGER")
-          .requestMatchers("/api/v1/**").authenticated()
-          .anyRequest().denyAll())
-      .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
-      .build();
-}
+New-Item -ItemType Directory -Force -Path "$dest\docs","$dest\k8s","$dest\.github\workflows","$jb\notes\screenshots\lab-51" | Out-Null
+Copy-Item -Force "$course\starter\Dockerfile" "$dest\Dockerfile"
+Copy-Item -Force "$course\starter\k8s\*" "$dest\k8s\"
+Copy-Item -Force "$course\starter\.github\workflows\ci.yml" "$dest\.github\workflows\ci.yml"
+Copy-Item -Force "$course\starter\docs\security-deploy-checklist.md" "$dest\docs\security-deploy-checklist.md"
 ```
 
-```java
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import org.junit.jupiter.api.Test;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+Fill checklist threat rows. Full path: add `docs/threat-model.md` (tokens, customer records, events, admin; JWT theft; secret in image; `:latest` only).
 
-@Test
-void deleteCustomerRequiresManagerRole() throws Exception {
-  mvc.perform(delete("/api/v1/customers/{id}", customerId)
-      .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
-     .andExpect(status().isForbidden());
-}
+### Step 2 — Secure HTTP endpoints (full path)
 
-@Test
-void anonymousCustomersUnauthorized() throws Exception {
-  mvc.perform(get("/api/v1/customers"))
-     .andExpect(status().isUnauthorized());
-}
+OAuth2 resource server JWT; deny by default; permit actuator **health** only.
 
-@Test
-void agentCanReadCustomers() throws Exception {
-  mvc.perform(get("/api/v1/customers").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AGENT"))))
-     .andExpect(status().isOk());
-}
+| Call | Expect |
+| ---- | ------ |
+| `POST /api/v1/interactions` no token | **401** |
+| AGENT `POST /api/v1/interactions` | **201** (same body as Lab 49) |
+| Wrong role on a MANAGER-only route | **403** |
+| `GET /api/customers/{id}` | **Not** a Week 5 route — do not fail smoke on it |
+
+Anonymous `/api/customers` (Week 5 list) may 401 after you protect `/api/**` — that is fine. Do not claim a per-id GET existed before.
+
+### Step 3 — Harden application (full path)
+
+CORS allowlist; redact Authorization from logs; do **not** `management.endpoints.web.exposure.include=*`; document CSRF-off for bearer APIs.
+
+### Step 4 — Run security gates (full path)
+
+`mvn -B verify` from `backend/`. Scans (Trivy, gitleaks, Dependency-Check) are optional unless your instructor requires them — document exceptions with owner + expiry.
+
+### Step 5 — Build and publish once (full path)
+
+```powershell
+docker build -t "crm-api:$VERSION-$GIT_SHA" .
+docker image inspect "crm-api:$VERSION-$GIT_SHA" --format='{{index .RepoDigests 0}}'
 ```
 
-Document claim → role mapping (e.g. `realm_access.roles`) in `docs/security-deploy-demo.md`.
+Record **digest**. Registry may be training GHCR **or** local-only — do **not** invent `ghcr.io/you@sha256:…` if you never pushed. Keep Lab 44 **`jarSha256`** as the JAR identity.
 
-**Expected result:** Authorization tests green; anonymous `/api/customers` → 401; AGENT read OK; AGENT delete 403.
+### Step 6 — Delivery pipeline
 
-**If it fails:** `permitAll` on `/api/**` leftover → remove. Wrong claim mapping → fix converter. CSRF unexpected 403 on browser form posts → re-check token transport ADR.
+Starter CI: job **`verify`** (`mvn -B clean verify` in `backend/`) and **`image`** (`docker build -t crm-api:${GITHUB_SHA} .` from **platform root** on `main`). No secrets in YAML.
 
----
+### Step 7 — Deploy and verify (full path, k3s)
 
-### Step 3 — Harden application (Part 3)
+Pin `image: …@sha256:…`. Probes on `/actuator/health/readiness` and `/liveness` port **8080** (cluster Service, not Lab 42 `:8088`).
 
-**Why:** JWT alone does not stop log leakage or wide-open actuators.
+Windows smoke when the API is reachable:
 
-**Do this:** Validate input (already from Lab 49); constrain CORS to known UI origins; document CSRF decision for bearer tokens; redact Authorization and note bodies from logs; expose only required actuator endpoints; set security headers as instructed.
-
-Checklist to tick in demo.md:
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | CORS allowlist matches React origin(s) | Pass / Fail |
-| 2 | Actuator exposure limited to health/info (as approved) | Pass / Fail |
-| 3 | Logging MDC includes correlation id, not bearer token | Pass / Fail |
-| 4 | Error bodies do not dump stack traces to clients | Pass / Fail |
-| 5 | Security headers configured per instructor baseline | Pass / Fail |
-
-**Expected result:** Hardening notes + config diffs; actuator `env`/`beans` not public.
-
-**If it fails:** `management.endpoints.web.exposure.include=*` → restrict. CORS `*` with credentials → tighten. Tokens in access logs → redaction filter.
-
----
-
-### Step 4 — Run security gates (Part 4)
-
-**Why:** Unscanned images and secrets in Git are release-blockers.
-
-**Do this:** Execute tests, dependency scan, secret scan, and image scan (tools per instructor: OWASP Dependency-Check, Trivy, gitleaks, Snyk, etc.). Triage critical findings. Time-bound approved exceptions with owner, evidence, and expiry in `reports/` or `docs/`.
-
-**Expected result:** Scan reports sanitized and linked; criticals fixed or exceptioned.
-
-**If it fails:** Ignoring critical CVE without exception → create honest risk entry or upgrade.
-
----
-
-### Step 5 — Build and publish once (Part 5)
-
-**Why:** Rebuilding different bits per environment destroys provenance.
-
-**Do this:** Multi-stage Dockerfile; non-root user; tag by version + commit SHA; push to training registry; capture digest and SBOM if available. Never bake secrets into layers.
-
-```bash
-docker build -t "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}" .   # Dockerfile at CMP root; context includes backend/
-docker push "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}"
-docker image inspect "$REGISTRY/crm-api:${VERSION}-${GIT_SHA}" --format='{{index .RepoDigests 0}}'
+```powershell
+curl.exe -sS -o NUL -w "%{http_code}" "$env:CRM_URL/api/v1/interactions"
+# expect 401
+curl.exe -sS -o NUL -w "%{http_code}" -X POST "$env:CRM_URL/api/v1/interactions" `
+  -H "Authorization: Bearer $env:SMOKE_TOKEN" `
+  -H "Content-Type: application/json" `
+  -H "X-Correlation-ID: release-smoke-001" `
+  -d "{\"customerId\":\"CUS-1001\",\"interactionType\":\"NOTE\",\"summary\":\"Lab 51 smoke\",\"correlationId\":\"lab-request-001\"}"
+# expect 201 when JWT + seed customer exist
 ```
 
-**Expected result:** Digest recorded in `docs/security-deploy-demo.md`.
+Redact tokens in screenshots.
 
-**If it fails:** Running as root → set USER. `:latest` only → add immutable tag.
+### Step 8 — Prove recovery
 
----
+Redeploy previous digest (`kubectl rollout undo` or `kubectl set image …@sha256:…`). Document forward-only Flyway if rollback cannot reverse SQL.
 
-### Step 6 — Create delivery pipeline (Part 6)
+### Step 9 — Evidence
 
-**Why:** Manual “it works on my laptop” deploy is not a gate.
-
-**Do this:** Align with solution Capstone CI (`.github/workflows/ci.yml`): jobs **`verify`** (`mvn -B clean verify` in `backend/`) and **`image`** (`docker build -t crm-api:${GITHUB_SHA} .` from repo root on `main`). Dependency/secret/image **scans and SAST are optional full-path** gates — document them in the checklist if you add them; they are not required for the solution sketch.
-
-Minimum stage acceptance notes in demo.md:
-
-| Stage | Pass condition | Artifact out |
-| ----- | -------------- | ------------ |
-| verify | `mvn clean verify` green | test reports |
-| scans | no unexceptioned criticals | sanitized reports |
-| publish | push succeeds | tag + digest |
-| deploy | rollout ready | revision id |
-| smoke | 401 + authenticated read | smoke log |
-
-**Expected result:** Green pipeline run URL/ID recorded (sanitized).
-
-**If it fails:** Secrets in YAML → move to repository variables. Deploy without digest pin → fix imagePull to digest/tag. Deploy stage before scans → reorder gates.
+`docs/security-deploy-demo.md`: tag, digest, `jarSha256`, pipeline id, smoke, rollback. `git status` on **java-bootcamp**. No kubeconfig / `.env` committed.
 
 ---
 
-### Step 7 — Deploy and verify (Part 7)
+## Checkpoints
 
-**Why:** Rollout without smoke ships unbroken unit tests and broken runtime.
+**Session:** checklist filled; Dockerfile non-root TODO tracked; probes in YAML; 401/403 matrix written; Lab 48–50 files intact; no secrets.
 
-**Do this:** Apply manifests; wait for rollout; check readiness/liveness, routes, logs, metrics, Kafka lag if consumer deployed. Run smoke:
-
-```bash
-set -eu
-curl -fsS "$CRM_URL/actuator/health/readiness"
-test "$(curl -s -o /dev/null -w '%{http_code}' "$CRM_URL/api/v1/customers")" = "401"
-curl -fsS "$CRM_URL/api/v1/customers?page=0&size=1" \
-  -H "Authorization: Bearer $SMOKE_TOKEN" \
-  -H "X-Correlation-ID: release-smoke-${GITHUB_RUN_NUMBER}"
-# optional: assert CUS-1001 visible when seeded
-kubectl rollout status deployment/crm-api --timeout=180s
-```
-
-**Expected result:** Rollout healthy; 401/200 smoke evidence saved; correlation searchable in logs.
-
-**If it fails:** CrashLoop → read logs/events; fix probes/config. Smoke uses `:latest` mismatch → pin digest.
-
----
-
-### Step 8 — Prove recovery (Part 8)
-
-**Why:** Deploy without rollback is a hostage situation at demo time.
-
-**Do this:** Define rollback triggers and decision owner. Redeploy previous digest. Verify health and DB/event compatibility (no breaking migration assumed for rollback path—document if migrations are forward-only).
-
-**Expected result:** Rollback rehearsal recorded with timestamps and verification commands.
-
-**If it fails:** Only “delete pod” knowledge → practice image pin rollback. Forward-only migration → document contingency (restore backup) with instructor.
-
----
-
-### Step 9 — Failure experiments + evidence pack
-
-**Why:** Lab 52 will ask unauthorized and rollback questions under time pressure.
-
-**Do this:** Complete Failure Experiments. Assemble `docs/security-deploy-demo.md` + `reports/` with digest, pipeline ID, smoke outputs, rollback notes. Ensure `git status` has no secret files.
-
-Also freeze release identity for Lab 52:
-
-```markdown
-## Release identity
-
-- Image tag:
-- Digest:
-- Pipeline run:
-- Git SHA:
-- Smoke correlation:
-- Rollback digest:
-```
-
-**Expected result:** ≥3 experiments; peer can follow release runbook; sanitized evidence only; release identity frozen.
-
-**If it fails:** See Troubleshooting.
-
----
-
-## Implementation Checkpoints
-
-### Checkpoint A — Threat model and authz
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Threat model documents CRM-specific abuse cases | Pass / Fail |
-| 2 | JWT resource server deny-by-default | Pass / Fail |
-| 3 | Anonymous/wrong-role/correct-role tests green | Pass / Fail |
-
-### Checkpoint B — Harden and scan
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | CORS/actuators/logging hardened | Pass / Fail |
-| 2 | Dependency/secret/image scans executed | Pass / Fail |
-| 3 | Exceptions time-bounded with owners | Pass / Fail |
-
-### Checkpoint C — Ship and verify
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Non-root image published with digest | Pass / Fail |
-| 2 | Pipeline stages pass with artifact identity | Pass / Fail |
-| 3 | Deploy + auth/deny smoke evidence | Pass / Fail |
-
-### Checkpoint D — Recovery hygiene
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Rollback to previous digest proven | Pass / Fail |
-| 2 | Demo/security docs complete | Pass / Fail |
-| 3 | No secrets in Git or screenshots | Pass / Fail |
-
----
-
-## Reference Commands, Configuration, and Code
-
-### Smoke excerpt
-
-```bash
-curl -fsS "$CRM_URL/actuator/health/readiness"
-test "$(curl -s -o /dev/null -w '%{http_code}' "$CRM_URL/api/v1/customers")" = "401"
-kubectl rollout status deployment/crm-api --timeout=180s
-```
-
-### Commands
-
-```bash
-cd ~/java-bootcamp/examples/customer-management-platform
-./mvnw -B clean verify
-docker build -t crm-api:local .   # root context (see starter Dockerfile COPY backend/...)
-kubectl apply -f k8s/
-kubectl rollout status deployment/crm-api --timeout=180s
-git status --short
-```
-
-### Deployment probe sketch
-
-```yaml
-readinessProbe:
-  httpGet:
-    path: /actuator/health/readiness
-    port: 8080
-  initialDelaySeconds: 10
-  periodSeconds: 5
-livenessProbe:
-  httpGet:
-    path: /actuator/health/liveness
-    port: 8080
-  initialDelaySeconds: 30
-  periodSeconds: 10
-```
-
-Adapt paths to your Spring Boot actuator config; never probe a authenticated-only endpoint without a plan.
-
-## Threat model summary
-## Authz test evidence
-## Scan reports (paths)
-## Image tag + digest
-## Pipeline run id
-## Smoke commands + outcomes (401/403/200)
-## Rollback commands + outcomes
-## Residual risks / exceptions
-
-```
+**Full:** JWT tests green; digest-pinned k3s; 401 + authenticated POST; rollback rehearsal; sanitized demo.md.
 
 ---
 
 ## Failure Experiments
 
-| # | Experiment | Observe | Restore |
-| - | ---------- | ------- | ------- |
-| 1 | Call `/api/v1/**` without token | 401 | Keep rule |
-| 2 | AGENT calls MANAGER delete | 403 | Keep method security |
-| 3 | Deploy broken image tag | Rollout fails/probes fail | Roll back digest |
-| 4 | Temporarily expose actuator `env` | Sensitive leakage risk | Restrict exposure |
-| 5 | Fail secret scan with dummy token file | Gate fails | Remove file; rotate if needed |
-| 6 | Pull `:latest` vs digest mismatch | Wrong bits or confusion | Pin digest |
-| 7 | Disable readiness probe briefly | Traffic to unready pod risk | Restore probe |
+| # | Experiment | Fix |
+| - | ---------- | --- |
+| 1 | `Copy-Item starter\*` | Copy the four paths only |
+| 2 | `./mvnw` | `mvn` from `backend/` |
+| 3 | k3d / `:8088` as capstone | Lab 51 is **k3s**; Service port 8080 |
+| 4 | Invented GHCR digest | Record a digest you actually built; keep **`jarSha256`** |
+| 5 | Smoke `GET /api/customers/CUS-1001` | Use **POST** `/api/v1/interactions` |
+| 6 | `:latest` only | Pin digest |
+| 7 | Secret in Dockerfile | `secretRef` name only |
 
 ---
 
 ## Troubleshooting
 
-| Symptom | Likely cause | Fix |
-| ------- | ------------ | --- |
-| 401 with valid token | JWKS/issuer mismatch | Align Spring issuer-uri |
-| Image pull backoff | Wrong secret/digest | Fix pull secret; pin digest |
-| Readiness never ready | Bad probe path | Align actuator path |
-| Pipeline secret error | Scope/permission | Use secured variables |
-| Scan false positive | Triage | Document exception expiry |
-| Rollback breaks DB | Forward-only migration | Document restore strategy |
-| CORS only in browser | Origin mismatch | Update allowed origins |
-| Smoke flaky | DNS/route propagation | Wait/retry with timeout |
-
-## Security and Production Review
-
-Optional — jot brief notes in your README if useful for your progress check (not a separate essay):
-
-1. Which inputs are untrusted (tokens, headers, images, manifests)?
-2. Where are authn/authz/validation enforced (filter chain, method security)?
-3. Which values are sensitive—never in Git or CI logs?
+| Symptom | Fix |
+| ------- | --- |
+| Overwrote ADRs / backend | Copy specific files only |
+| 401 with “valid” token | Issuer/JWKS mismatch |
+| ImagePullBackOff | Wrong digest / missing pull secret |
+| Probe never ready | Path/port vs actuator |
+| Work in `labs/` | `java-bootcamp` |
+| Session `kubectl apply` fails | Dry-run is enough today |
 
 ---
-
 
 ## Cleanup
 
-```bash
-kubectl config current-context
-# scale down or leave per instructor policy
-docker image prune -f 2>/dev/null || true
+```powershell
+cd $env:USERPROFILE\java-bootcamp\examples\customer-management-platform
 git status --short
-# delete any local kubeconfig copies or .env you created
 ```
 
-Keep sanitized reports; remove plaintext secrets.
-
-**Keep Lab 51 pipeline, manifests, and digest evidence**—Lab 52 defense depends on them.
-
-
-## Reflection Questions
-
-Write **1–3 sentence** answers (not essays):
-
-1. Which design decision most affected correctness of the release gate?
-2. What evidence proves the deployment is the intended digest?
-3. Which failure was hardest to diagnose (JWT, pull secret, probes)?
+Keep pipeline, manifests, digest notes. Lab 52 defense uses them.
 
 ---
 
+## Reflection
 
+1. What proves the running bits are the intended digest?
+2. Why is anonymous **401** different from wrong-role **403**?
+3. What must not appear in Git or CI logs?

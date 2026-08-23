@@ -5,7 +5,7 @@
 | Category | Target | How measured | Environment |
 | -------- | ------ | ------------ | ----------- |
 | Latency (p95 create interaction) | _____ ms | _____ | _____ |
-| Security | Unauthenticated `POST /api/v1/interactions` → 401; wrong role → 403 | security tests | _____ |
+| Security | Unauthenticated `POST /api/v1/interactions` → 401; wrong role → 403 | security tests (**Lab 51** — plan here, implement later) | _____ |
 | Availability / recovery | _____ | _____ | _____ |
 | Accessibility | _____ | _____ | _____ |
 | Retention / privacy | _____ | _____ | _____ |
