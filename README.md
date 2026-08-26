@@ -5,7 +5,7 @@ Participant materials for the six-week **Java Software Engineer** bootcamp from 
 | | |
 | --- | --- |
 | **Repository** | [bc-sw-engineer-java-participant](https://github.com/Innovation-In-Software/bc-sw-engineer-java-participant) |
-| **Contents** | `slides/` (PDF) · `labs/` · Week 1–2 `solution/` only |
+| **Contents** | `slides/` (PDF) · `labs/` · Week 1–2 `solution/` only · `labs/setup_details/` Excel |
 
 ---
 
@@ -91,6 +91,19 @@ Participant materials for the six-week **Java Software Engineer** bootcamp from 
 | 50 | Capstone Frontend and Persistence |
 | 51 | Capstone Security, CI/CD and Deployment |
 | 52 | Capstone Final Defense and Retrospective |
+
+---
+
+## Lab environment credentials
+
+Cohort login workbooks are in [`labs/setup_details/`](labs/setup_details/):
+
+| Cohort | File |
+| --- | --- |
+| SWE1 | [`Software Engineer_ Java Full Stack Bootcamp SWE1 (7-20).xlsx`](labs/setup_details/Software%20Engineer_%20Java%20Full%20Stack%20Bootcamp%20SWE1%20(7-20).xlsx) |
+| SWE2 | [`Software Engineer_Java Full Stack Bootcamp SWE2 (7-20).xlsx`](labs/setup_details/Software%20Engineer_Java%20Full%20Stack%20Bootcamp%20SWE2%20(7-20).xlsx) |
+
+Open the workbook, find your `studentNN` row, and use `DB_Password` with JDBC `jdbc:postgresql://100.22.136.97:5432/bootcamp?currentSchema=studentNN`. Kubeconfig YAML files are **not** in this repository — the instructor distributes those separately. Do not commit passwords into your own `java-bootcamp` repo.
 
 ---
 
