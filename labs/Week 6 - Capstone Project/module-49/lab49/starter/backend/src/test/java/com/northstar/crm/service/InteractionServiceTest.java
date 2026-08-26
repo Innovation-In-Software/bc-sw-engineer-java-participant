@@ -39,6 +39,6 @@ class InteractionServiceTest {
     CreateInteractionRequest request =
         new CreateInteractionRequest("CUS-9999", "NOTE", "Should fail", "lab-request-001");
 
-    assertThrows(RuntimeException.class, () -> service.create(request, null));
+    assertThrows(UnknownCustomerException.class, () -> service.create(request, null));
   }
 }

@@ -41,7 +41,7 @@ cd "$DEST"
 grep -E 'interaction_type|correlation_id' db/migration/V50__customer_interaction.sql
 ```
 
-Full path: `cd frontend && npm ci && npm test && npm run build`. Same notes as Windows: [LAB-50-WINDOWS.md](LAB-50-WINDOWS.md).
+Full path: `cd frontend && npm ci && npm test && npm run build`. Keep `vite/client` types (`src/vite-env.d.ts`) or `tsc -b` fails on `import.meta.env`. Same notes as Windows: [LAB-50-WINDOWS.md](LAB-50-WINDOWS.md).
 
 ### If it fails
 

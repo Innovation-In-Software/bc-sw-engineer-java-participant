@@ -48,14 +48,21 @@ Full path (when Docker / k3s exist):
 
 ```powershell
 docker build -t crm-api:session-local .
+# Dry-run needs a reachable API. Leftover context k3d-lab42 (127.0.0.1:61269) fails even with --dry-run=client.
+$env:KUBECONFIG = "$env:USERPROFILE\path\to\studentNN.yaml"   # or instructor pack YAML
 kubectl apply --dry-run=client -f k8s\deployment.yaml
 cd backend
 mvn -B test
 ```
 
-Smoke API (full path, app up): **`POST /api/v1/interactions`** — see GUIDE. Use `curl.exe`. Expect 401 without Bearer.
+Smoke API (full path, app up): **`POST /api/v1/interactions`** — see GUIDE. Use `curl.exe`. Expect 401 without Bearer **only after JWT is on**. Session Lab 49 has **no** Spring Security (201 without a token).
 
-Verified notes (2026-08-22): session is checklist + stubs; identity is digest **and** Lab 44 `jarSha256`; cluster is **k3s**, not Lab 42 k3d `:8088`.
+Verified notes (2026-08-25):
+
+- Session is checklist + stubs; identity is digest **and** Lab 44 `jarSha256`; cluster is **k3s**, not Lab 42 k3d `:8088`.
+- `kubectl apply --dry-run=client` against instructor SWE1 kubeconfig: `deployment.apps/crm-api created (dry run)` + Service. Same command with current-context `k3d-lab42` (cluster down) errors `dial tcp 127.0.0.1:61269`.
+- Dockerfile `USER 10001` + `HEALTHCHECK` probe `/actuator/health/readiness`. Lab 49 session JAR has **no** Actuator (HTTP 404) — add Actuator on the Lab 51 full path before live probes.
+- Do **not** `kubectl apply` the placeholder `ghcr.io/EXAMPLE_ORG/crm-api@sha256:REPLACE_WITH_PIPELINE_DIGEST` to the shared host.
 
 ### If it fails
 
@@ -66,6 +73,7 @@ Verified notes (2026-08-22): session is checklist + stubs; identity is digest **
 | `GET .../CUS-1001` 404 | Week 5 has no per-id GET; smoke **POST** interactions |
 | Invented GHCR digest | Record a digest you built; keep `jarSha256` |
 | k3d muscle memory | Capstone deploy is **k3s** |
+| dry-run talks to `127.0.0.1:61269` | Context is dead Lab 42 k3d — set `KUBECONFIG` to `studentNN.yaml` |
 
 ## Do the lab
 

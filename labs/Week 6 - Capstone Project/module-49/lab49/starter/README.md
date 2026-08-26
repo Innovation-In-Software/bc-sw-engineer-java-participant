@@ -61,7 +61,7 @@ cd "$DEST/backend"
 mvn -B test
 ```
 
-Tests are red until TODOs are filled. No `./mvnw`. No Bearer token. Evidence under `notes/screenshots/lab-49/`.
+Tests are red until TODOs are filled (both Amina **201-shape** and `CUS-9999` → `UnknownCustomerException`). No `./mvnw`. No Bearer token. Evidence under `notes/screenshots/lab-49/`.
 
 ## Timed-path Pass criteria
 
@@ -81,4 +81,5 @@ Full path: Flyway, Kafka, DLT, `docs/backend-demo.md` — see GUIDE.
 | `UnsupportedOperationException` | Fill `InteractionService` |
 | `./mvnw` missing | `mvn -B test` |
 | 401 on curl | Omit Authorization (Lab 51) |
+| 400 on PowerShell curl | `--data-raw '{...}'` — see GUIDE |
 | Overwrote ADRs | Copy `backend/` only |

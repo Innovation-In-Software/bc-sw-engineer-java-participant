@@ -212,6 +212,7 @@ mvn -B test
 | RAW/UUID fight | Follow starter VARCHAR/UUID SQL |
 | DTO drift | Re-open Lab 49 records |
 | `npm` on session | Not required today |
+| `tsc` / `ImportMeta.env` | Keep `src/vite-env.d.ts` and `"types": ["vite/client", "vitest/globals"]` in `tsconfig.json` |
 | 401 | JWT is Lab 51 |
 | Work in `labs/` | `java-bootcamp` |
 

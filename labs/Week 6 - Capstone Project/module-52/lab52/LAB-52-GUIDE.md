@@ -128,13 +128,13 @@ Demo curl (when API is up — **Lab 49 body**). Session Lab 49 has **no** JWT �
 curl.exe -sS -X POST http://localhost:8080/api/v1/interactions `
   -H "Content-Type: application/json" `
   -H "X-Correlation-ID: lab-request-001" `
-  -d "{\"customerId\":\"CUS-1001\",\"interactionType\":\"NOTE\",\"summary\":\"Defense demo note\",\"correlationId\":\"lab-request-001\"}"
+  --data-raw '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Defense demo note","correlationId":"lab-request-001"}'
 ```
 
 401 beat (only after Lab 51 JWT):
 
 ```powershell
-curl.exe -sS -o NUL -w "%{http_code}" -X POST http://localhost:8080/api/v1/interactions -H "Content-Type: application/json" -d "{}"
+curl.exe -sS -o NUL -w "%{http_code}" -X POST http://localhost:8080/api/v1/interactions -H "Content-Type: application/json" --data-raw "{}"
 ```
 
 SQL (if Flyway applied):
@@ -226,6 +226,7 @@ Kill live API in rehearsal → failover. Peer-check orphan claims.
 | Overwrote ADRs | Copy `defense/` only |
 | Demo 404 on GET `/{id}` | Not a Week 5 route; curl POST or seed UI |
 | 401 on session stub | Lab 49 has no Spring Security — drop Bearer or finish Lab 51 |
+| 400 on PowerShell curl | `--data-raw '{"customerId":"CUS-1001",...}'` |
 | Work in `labs/` | `java-bootcamp` |
 | Kafka required live | Log stub is an honest session claim |
 

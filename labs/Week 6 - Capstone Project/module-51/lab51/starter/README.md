@@ -53,7 +53,7 @@ cd "$DEST"
 - [ ] Threat + gate rows in `docs/security-deploy-checklist.md`
 - [ ] Dockerfile TODOs: non-root, multi-stage (Maven in image is OK; student commands still use `mvn`)
 - [ ] k8s probes + digest placeholder (training registry — **not** a required GHCR URL)
-- [ ] Smoke matrix: anonymous **POST** `/api/v1/interactions` → 401; wrong role → 403; AGENT create → 201
+- [ ] Smoke matrix **on paper** (full path after JWT): anonymous **POST** `/api/v1/interactions` → 401; wrong role → 403; AGENT create → 201. Lab 49 session stub without JWT returns **201** unauthenticated — do not fail the session block for missing 401.
 - [ ] Rollback: previous digest placeholder (keep Lab 44 **`jarSha256`**)
 
 ## Smoke
@@ -63,7 +63,7 @@ Test-Path Dockerfile, k8s\deployment.yaml, .github\workflows\ci.yml, docs\securi
 Select-String -Path Dockerfile -Pattern 'USER|HEALTHCHECK|TODO'
 ```
 
-Optional: `docker build -t crm-api:session-local .` (needs Lab 49 `backend/` beside this Dockerfile). Optional: `kubectl apply --dry-run=client -f k8s/deployment.yaml`.
+Optional: `docker build -t crm-api:session-local .` (needs Lab 49 `backend/` beside this Dockerfile). Optional dry-run: set `KUBECONFIG` to your `studentNN.yaml` (shared k3s), then `kubectl apply --dry-run=client -f k8s/deployment.yaml`. Current-context `k3d-lab42` with the cluster down fails even for client dry-run.
 
 ## Pass criteria
 
@@ -81,5 +81,6 @@ Optional: `docker build -t crm-api:session-local .` (needs Lab 49 `backend/` bes
 | Overwrote ADRs | Copy four paths only |
 | `./mvnw` | `mvn` from `backend/` |
 | k3d / `:8088` | Lab 51 cluster is **k3s**; probes on 8080 |
+| dry-run `127.0.0.1:61269` | Point `KUBECONFIG` at `studentNN.yaml`, not leftover k3d |
 | Invented GHCR digest | Placeholder until you build; keep `jarSha256` |
 | JWT required today | Park — full path |

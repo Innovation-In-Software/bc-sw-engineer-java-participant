@@ -65,6 +65,7 @@ Same verification notes as Windows: merge **`backend/`** into the Lab 48 tree, `
 | --- | --- |
 | `./mvnw` not found | Use `mvn -B test` |
 | 401 | Drop Bearer until Lab 51 |
+| 400 on a JSON POST | Use single-quoted `--data-raw '{...}'` (or the bash `-d '{...}'` form below) |
 | Overwrote Lab 48 docs | Copy `backend/` only |
 
 

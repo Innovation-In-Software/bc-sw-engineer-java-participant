@@ -44,7 +44,7 @@ grep -E 'USER|HEALTHCHECK|FROM eclipse-temurin' Dockerfile
 grep -E 'readinessProbe|livenessProbe' k8s/deployment.yaml
 ```
 
-Full path: `docker build -t crm-api:session-local .` · `kubectl apply --dry-run=client -f k8s/deployment.yaml` · `cd backend && mvn -B test`. Same notes as Windows: [LAB-51-WINDOWS.md](LAB-51-WINDOWS.md).
+Full path: `docker build -t crm-api:session-local .` · `export KUBECONFIG=~/path/to/studentNN.yaml` then `kubectl apply --dry-run=client -f k8s/deployment.yaml` · `cd backend && mvn -B test`. Leftover context `k3d-lab42` (Lab 42) fails dry-run if that cluster is down. Same notes as Windows: [LAB-51-WINDOWS.md](LAB-51-WINDOWS.md).
 
 ### If it fails
 
@@ -55,6 +55,7 @@ Full path: `docker build -t crm-api:session-local .` · `kubectl apply --dry-run
 | Per-id GET 404 | Smoke **POST** `/api/v1/interactions` |
 | Invented GHCR digest | Digest you built + Lab 44 `jarSha256` |
 | k3d muscle memory | Capstone deploy is **k3s** |
+| dry-run hits `127.0.0.1:61269` | Context is dead Lab 42 k3d — `export KUBECONFIG=.../studentNN.yaml` |
 
 ## Do the lab
 

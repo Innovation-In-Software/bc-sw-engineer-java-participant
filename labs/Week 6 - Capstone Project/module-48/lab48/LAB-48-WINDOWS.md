@@ -56,6 +56,8 @@ Verified notes (2026-08-22):
 - CAP-12 is **`POST /api/v1/interactions`** (Lab 49). Week 5 has **no** `GET /api/customers/{id}`.
 - Lab 51 deploy is **k3s**. Lab 42 **k3d** `:8088` is not the default capstone cluster.
 
+Verified notes (2026-08-25): solution packet has five ADRs, `CUS-1001` / `CAP-12` / `lab-request-001` in `docs/`; no `pom.xml`. `Select-String -Path docs\*.md, docs\architecture\*.md, docs\adrs\*.md` works from the platform root.
+
 ### If it fails
 
 | Symptom | Fix |

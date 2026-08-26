@@ -43,6 +43,8 @@ Select-String -Path defense\*.md -Pattern 'CUS-1001|lab-request-001|POST /api/v1
 
 Verified notes (2026-08-22): session is docs-only; create API is POST `/api/v1/interactions` with `interactionType`; gaps in Labs 48–51 must be labeled, not invented.
 
+Verified notes (2026-08-25): solution `defense/` six markdown files; `demo-script.md` has `POST /api/v1/interactions`, `interactionType`, `CUS-1001`. Pre-flight `/actuator/health/readiness` is Lab 51 full path (Lab 49 session API returns **404**). PowerShell curls: `--data-raw '{...}'`.
+
 ### If it fails
 
 | Symptom | Fix |

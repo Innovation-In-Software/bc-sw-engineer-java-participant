@@ -56,14 +56,17 @@ Session curl (app running, **no** Bearer):
 curl.exe -i -X POST "http://localhost:8080/api/v1/interactions" `
   -H "Content-Type: application/json" `
   -H "X-Correlation-ID: lab-request-001" `
-  -d "{\"customerId\":\"CUS-1001\",\"interactionType\":\"NOTE\",\"summary\":\"Requested address update\",\"correlationId\":\"lab-request-001\"}"
+  --data-raw '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
 ```
 
-Verified notes (2026-08-22):
+Verified notes (2026-08-25):
 
 - Merge **`backend/`** into Lab 48’s `customer-management-platform`. Do not overwrite ADRs with starter `README.md`.
-- Session `pom.xml` has web + validation + test only (no JPA/Kafka/Security).
+- Session `pom.xml` has web + validation + test only (no JPA/Kafka/Security, **no Actuator**).
 - CAP-12 is **POST /api/v1/interactions**. Customer ids are **strings**.
+- `mvn -B test` on **solution**: 2 tests green (Temurin 21.0.11, Maven 3.9.9). Starter stays red until TODOs are filled (`UnknownCustomerException` for `CUS-9999`).
+- Live session API: **201** for `CUS-1001`; **500** for `CUS-9999` (no exception handler on the session stub); **400** for invalid `interactionType`; `/actuator/health/readiness` is **404** until Lab 51.
+- PowerShell: use `--data-raw '{...}'` (single quotes). Escaped `\"` inside `"..."` truncates the JSON and returns **400**.
 - Full-path Kafka CLI: `docker exec crm-kafka /opt/kafka/bin/….sh`.
 
 ### If it fails
@@ -72,6 +75,7 @@ Verified notes (2026-08-22):
 | --- | --- |
 | `./mvnw` not found | Use `mvn -B test` |
 | 401 | Drop Bearer until Lab 51 |
+| 400 on curl with a body | PowerShell ate the JSON — use `--data-raw '{...}'` |
 | Overwrote Lab 48 docs | Copy `backend/` only |
 | Copied Lab 41 | Start from Lab 48 tree + Lab 49 `backend/` |
 

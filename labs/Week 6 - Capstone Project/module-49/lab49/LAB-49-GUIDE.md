@@ -64,7 +64,7 @@ IntelliJ stays on `java-bootcamp`. Open the **`backend`** Maven module (JDK 21).
 
 **HTTP:** `POST http://localhost:8080/api/v1/interactions`. This route is **new**. Week 5 only had `GET /api/customers`. There is **no** `GET /api/customers/{id}`.
 
-**Auth:** Session curls **omit** `Authorization`. `$TOKEN` / JWT is **Lab 51**. A 401 on the session stub means you added security too early.
+**Auth:** Session curls **omit** `Authorization`. `$TOKEN` / JWT is **Lab 51**. A 401 on the session stub means you added security too early. `CUS-9999` is **500** until you add an exception handler (full path: 404 Problem Details).
 
 **Customer id type:** **String** fixtures (`CUS-1001`). Do not switch the service to `UUID customerId`.
 
@@ -151,7 +151,7 @@ Test-Path "$env:USERPROFILE\java-bootcamp\examples\customer-management-platform\
 curl.exe -i -X POST "http://localhost:8080/api/v1/interactions" `
   -H "Content-Type: application/json" `
   -H "X-Correlation-ID: lab-request-001" `
-  -d "{\"customerId\":\"CUS-1001\",\"interactionType\":\"NOTE\",\"summary\":\"Requested address update\",\"correlationId\":\"lab-request-001\"}"
+  --data-raw '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Requested address update","correlationId":"lab-request-001"}'
 ```
 
 App must be running. Session evidence can be **unit tests only** if you do not start the server.
@@ -332,7 +332,7 @@ mvn -B test
 | # | Experiment | Observe | Restore |
 | - | ---------- | ------- | ------- |
 | 1 | Invalid `interactionType` | 400 / validation; no event | Keep validation |
-| 2 | `CUS-9999` | Throws / 404; no publish | Keep mapping |
+| 2 | `CUS-9999` | Throws / **500** on the session stub (no exception handler); 404 on full path | Keep mapping |
 | 3 | Bearer token on session stub | 401 if you added security | Remove JWT until Lab 51 |
 | 4 | `./mvnw` | File not found | Use `mvn` |
 | 5 | Host `kafka-*.sh` | Not on PATH | `docker exec crm-kafka …` |
@@ -348,6 +348,8 @@ mvn -B test
 | Overwrote Lab 48 ADRs | `Copy-Item starter\*` | Copy `backend/` only |
 | `./mvnw` not found | No wrapper | `mvn -B test` |
 | 401 on curl | JWT too early | Omit `Authorization` |
+| 400 with a JSON body (PowerShell) | `\"` inside `"..."` truncated the body | `--data-raw '{"customerId":"CUS-1001",...}'` |
+| `CUS-9999` → 500 | Session stub has no `@ControllerAdvice` | Expected until full-path Problem Details / 404 mapping |
 | `GET /api/customers/CUS-1001` 404 | Week 5 habit | **POST /api/v1/interactions** |
 | Kafka `.sh` not found | Host PATH | `docker exec crm-kafka` |
 | Tests `UnsupportedOperationException` | TODOs left | Fill `InteractionService` |

@@ -75,7 +75,7 @@ Copied starter `*` over Lab 48–50, used Lab 42 **k3d**, or invented `ghcr.io/�
 1. Open [`starter/README.md`](starter/README.md) in the **course clone**.
 2. Copy **Dockerfile**, **`k8s/`**, **`.github/workflows/ci.yml`**, **`docs/security-deploy-checklist.md`** into the platform tree.
 3. Fill checklist + Dockerfile/k8s TODOs. Live cluster is **not** required today.
-4. Smoke with `Test-Path` / `Select-String` (optional `docker build` / `kubectl --dry-run=client`).
+4. Smoke with `Test-Path` / `Select-String` (optional `docker build` / `kubectl apply --dry-run=client` **after** `KUBECONFIG` points at shared k3s, not leftover Lab 42 k3d).
 5. Mark session Pass criteria.
 
 | Path | Scope |
@@ -191,18 +191,20 @@ Starter CI: job **`verify`** (`mvn -B clean verify` in `backend/`) and **`image`
 
 ### Step 7 — Deploy and verify (full path, k3s)
 
-Pin `image: …@sha256:…`. Probes on `/actuator/health/readiness` and `/liveness` port **8080** (cluster Service, not Lab 42 `:8088`).
+Pin `image: …@sha256:…`. Probes on `/actuator/health/readiness` and `/liveness` port **8080** (cluster Service, not Lab 42 `:8088`). Add **Actuator** (and JWT) on this full path — the Lab 49 session JAR returns **404** on those probe URLs.
+
+Set `KUBECONFIG` to your `studentNN.yaml` before dry-run or apply. Context `k3d-lab42` with that cluster down fails `kubectl apply --dry-run=client` (`127.0.0.1:61269`).
 
 Windows smoke when the API is reachable:
 
 ```powershell
 curl.exe -sS -o NUL -w "%{http_code}" "$env:CRM_URL/api/v1/interactions"
-# expect 401
+# expect 401 (full path JWT only)
 curl.exe -sS -o NUL -w "%{http_code}" -X POST "$env:CRM_URL/api/v1/interactions" `
   -H "Authorization: Bearer $env:SMOKE_TOKEN" `
   -H "Content-Type: application/json" `
   -H "X-Correlation-ID: release-smoke-001" `
-  -d "{\"customerId\":\"CUS-1001\",\"interactionType\":\"NOTE\",\"summary\":\"Lab 51 smoke\",\"correlationId\":\"lab-request-001\"}"
+  --data-raw '{"customerId":"CUS-1001","interactionType":"NOTE","summary":"Lab 51 smoke","correlationId":"lab-request-001"}'
 # expect 201 when JWT + seed customer exist
 ```
 
@@ -233,6 +235,7 @@ Redeploy previous digest (`kubectl rollout undo` or `kubectl set image …@sha25
 | 1 | `Copy-Item starter\*` | Copy the four paths only |
 | 2 | `./mvnw` | `mvn` from `backend/` |
 | 3 | k3d / `:8088` as capstone | Lab 51 is **k3s**; Service port 8080 |
+| 3b | dry-run to `127.0.0.1:61269` | `KUBECONFIG` = `studentNN.yaml` |
 | 4 | Invented GHCR digest | Record a digest you actually built; keep **`jarSha256`** |
 | 5 | Smoke `GET /api/customers/CUS-1001` | Use **POST** `/api/v1/interactions` |
 | 6 | `:latest` only | Pin digest |
@@ -247,9 +250,9 @@ Redeploy previous digest (`kubectl rollout undo` or `kubectl set image …@sha25
 | Overwrote ADRs / backend | Copy specific files only |
 | 401 with “valid” token | Issuer/JWKS mismatch |
 | ImagePullBackOff | Wrong digest / missing pull secret |
-| Probe never ready | Path/port vs actuator |
+| Probe never ready | Path/port vs actuator — add Actuator; Lab 49 session has none |
 | Work in `labs/` | `java-bootcamp` |
-| Session `kubectl apply` fails | Dry-run is enough today |
+| Session `kubectl apply` fails | Dry-run with **k3s** kubeconfig is enough today; leftover `k3d-lab42` context will not work |
 
 ---
 

@@ -50,7 +50,10 @@ npm test
 npm run build
 ```
 
-Verified notes (2026-08-22): session is SQL + checklist; Lab 49 fields are `interactionType` / string `CUS-1001`; starter SQL is PostgreSQL VARCHAR/UUID, not Oracle RAW.
+Verified notes (2026-08-25):
+
+- Session is SQL + checklist; Lab 49 fields are `interactionType` / string `CUS-1001`; starter SQL is PostgreSQL VARCHAR/UUID, not Oracle RAW.
+- Solution frontend (Node v24.18.0 / npm 11.6.2): `npm ci` + `npm test` (vitest 1 passed) + `npm run build` green after `vite/client` types (`src/vite-env.d.ts`). `tsc -b` fails without those types (`ImportMeta.env`).
 
 ### If it fails
 
