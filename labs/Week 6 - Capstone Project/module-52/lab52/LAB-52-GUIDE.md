@@ -91,6 +91,7 @@ Label **non-claims**: no React (session 50), in-memory repo (session 49), no JWT
 | # | Deliverable | Session | Full |
 | - | ----------- | ------- | ---- |
 | 1 | `defense/slide-outline.md` | Required | Required |
+| 1b | `defense/presentation-template.md` (fill, then PPT/PDF) | Outline fill | Required as PDF |
 | 2 | `defense/demo-script.md` | Required | Required |
 | 3 | `defense/evidence-index.md` (≥5 real paths) | Required | Required |
 | 4 | `defense/technical-q-and-a.md` | ≥3 cards | ≥10 cards |
@@ -166,7 +167,7 @@ Fill `evidence-index.md`. Every slide claim gets a path. List **non-claims**. Do
 
 ### Step 2 — Presentation story
 
-Users → NFRs/ADRs → vertical slice → gates → limitations. Full path: export PDF. Session: outline titles are enough.
+Fill [`starter/defense/presentation-template.md`](starter/defense/presentation-template.md) (**20** PowerPoint slides + hidden appendix, ~20 minutes speaking). Users → architecture → one decision per slide → live demo → security / release / tests / performance → gaps. Titles in guest language (no homework jargon). Full path: export `defense/final-presentation.pdf`. Session: outline titles plus a started template are enough.
 
 ### Step 3 — Demo script
 

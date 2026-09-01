@@ -45,6 +45,7 @@ cd "$DEST"
 ## Session checklist
 
 - [ ] `defense/slide-outline.md` titles/speakers
+- [ ] `defense/presentation-template.md` filled (**20** slides, then PPT → PDF on full path)
 - [ ] Timed `defense/demo-script.md` (Amina + `lab-request-001` + POST `/api/v1/interactions`)
 - [ ] ≥5 real paths in `defense/evidence-index.md`
 - [ ] ≥3 Q&A cards
